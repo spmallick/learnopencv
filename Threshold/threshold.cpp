@@ -21,8 +21,8 @@ int main( int argc, char** argv )
 	threshold(src,dst,0, 255, THRESH_BINARY); 
 	imwrite("opencv-threshold-example.jpg", dst); 
 
-  // Thresholding with maxval set to 128
-  threshold(src, dst, 0, 128, THRESH_BINARY); 
+	// Thresholding with maxval set to 128
+	threshold(src, dst, 0, 128, THRESH_BINARY); 
 	imwrite("opencv-thresh-binary-maxval.jpg", dst); 
 	
 	// Thresholding with threshold value set 127 
