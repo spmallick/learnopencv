@@ -41,7 +41,7 @@ int main( int argc, char** argv )
 
 
 	// Storage for blobs
-	std::vector<KeyPoint> keypoints;
+	vector<KeyPoint> keypoints;
 
 
 #if CV_MAJOR_VERSION < 3   // If you are using OpenCV 2
@@ -54,7 +54,7 @@ int main( int argc, char** argv )
 #else 
 
 	// Set up detector with params
-	Ptr<cv::SimpleBlobDetector> detector = cv::SimpleBlobDetector::create(params);   
+	Ptr<SimpleBlobDetector> detector = SimpleBlobDetector::create(params);   
 
 	// Detect blobs
 	detector->detect( im, keypoints);
