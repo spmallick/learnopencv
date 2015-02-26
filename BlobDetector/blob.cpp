@@ -39,15 +39,27 @@ int main( int argc, char** argv )
     params.filterByInertia = true;
     params.minInertiaRatio = 0.01;
     
-    // Set up detector with params
-    SimpleBlobDetector detector(params);
     
     // Storage for blobs
-    std::vector<KeyPoint> keypoints;
-    
-    // Detect blobs
-    detector.detect( im, keypoints);
-    
+		std::vector<KeyPoint> keypoints;
+
+
+#if CV_MAJOR_VERSION < 3   // If you are using OpenCV 2
+		
+		// Set up detector with params
+		SimpleBlobDetector detector(params);
+
+		// Detect blobs
+		detector.detect( im, keypoints);
+#else 
+		
+		// Set up detector with params
+		Ptr<cv::SimpleBlobDetector> detector = cv::SimpleBlobDetector::create(params);   
+		
+		// Detect blobs
+		detector->detect( im, keypoints);
+#endif 
+
     // Draw detected blobs as red circles.
     // DrawMatchesFlags::DRAW_RICH_KEYPOINTS flag ensures
     // the size of the circle corresponds to the size of blob
