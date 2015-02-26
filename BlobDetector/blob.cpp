@@ -71,6 +71,5 @@ int main( int argc, char** argv )
 	imshow("keypoints", im_with_keypoints );
 	waitKey(0);
 
-
 }
 
