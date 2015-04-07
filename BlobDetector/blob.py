@@ -5,7 +5,7 @@ import cv2
 import numpy as np;
 
 # Read image
-im = cv2.imread("blob.jpg")
+im = cv2.imread("blob.jpg", cv2.IMREAD_GRAYSCALE)
 
 # Setup SimpleBlobDetector parameters.
 params = cv2.SimpleBlobDetector_Params()
@@ -32,7 +32,11 @@ params.filterByInertia = True
 params.minInertiaRatio = 0.01
 
 # Create a detector with the parameters
-detector = cv2.SimpleBlobDetector(params)
+ver = (cv2.__version__).split('.')
+if int(ver[0]) < 3 :
+	detector = cv2.SimpleBlobDetector(params)
+else : 
+	detector = cv2.SimpleBlobDetector_create(params)
 
 
 # Detect blobs.

@@ -14,7 +14,7 @@ int main( int argc, char** argv )
 {
 
 	// Read image 
-	Mat src = imread("threshold.png", CV_LOAD_IMAGE_GRAYSCALE); 
+	Mat src = imread("threshold.png", IMREAD_GRAYSCALE); 
 	Mat dst; 
 	
 	// Basic threhold example 
