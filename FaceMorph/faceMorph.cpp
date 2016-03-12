@@ -32,13 +32,11 @@ void applyAffineTransform(Mat &warpImage, Mat &src, vector<Point2f> &srcTri, vec
     
     // Apply the Affine Transform just found to the src image
     warpAffine( src, warpImage, warpMat, warpImage.size(), INTER_LINEAR, BORDER_REFLECT_101);
-    
 }
 
 // Warps and alpha blends triangular regions from img1 and img2 to img
 void morphTriangle(Mat &img1, Mat &img2, Mat &img, vector<Point2f> &t1, vector<Point2f> &t2, vector<Point2f> &t, double alpha)
 {
-    
     
     // Find bounding rectangle for each triangle
     Rect r = boundingRect(t);
