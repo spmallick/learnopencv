@@ -16,7 +16,7 @@ def readPoints(path) :
     pointsArray = [];
 
     #List all files in the directory and read points from text files one by one
-    for filePath in os.listdir(path):
+    for filePath in sorted(os.listdir(path)):
         
         if filePath.endswith(".txt"):
             
@@ -41,7 +41,7 @@ def readImages(path) :
     imagesArray = [];
     
     #List all files in the directory and read points from text files one by one
-    for filePath in os.listdir(path):
+    for filePath in sorted(os.listdir(path)):
         if filePath.endswith(".jpg"):
             # Read image found.
             img = cv2.imread(os.path.join(path,filePath));
