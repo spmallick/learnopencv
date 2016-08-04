@@ -8,7 +8,8 @@
 #include <fstream>
 #include <dirent.h>
 #include <stdlib.h>
-
+#include <algorithm>
+#include <vector>
 using namespace cv;
 using namespace std;
 
@@ -68,6 +69,7 @@ void readFileNames(string dirName, vector<string> &imageFnames, vector<string> &
     //image extensions
     string imgExt = "jpg";
     string txtExt = "txt";
+    vector<string> files;
     
     if ((dir = opendir (dirName.c_str())) != NULL)
     {
@@ -79,11 +81,17 @@ void readFileNames(string dirName, vector<string> &imageFnames, vector<string> &
                 count++;
                 continue;
             }
+            string temp_name = ent->d_name;
+            files.push_back(temp_name);
             
+        }
+        std::sort(files.begin(),files.end());
+        for(int it=0;it<files.size();it++)
+        {
             string path = dirName;
+            string fname=files[it];
             
             
-            string fname = ent->d_name;
             
             if (fname.find(imgExt, (fname.length() - imgExt.length())) != std::string::npos)
             {
