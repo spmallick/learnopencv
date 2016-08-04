@@ -8,7 +8,8 @@
 #include <fstream>
 #include <dirent.h>
 #include <stdlib.h>
-
+#include <algorithm>
+#include <vector>
 using namespace cv;
 using namespace std;
 
@@ -88,7 +89,7 @@ void readFileNames(string dirName, vector<string> &imageFnames, vector<string> &
         for(int it=0;it<files.size();it++)
         {
             string path = dirName;
-            fname=files[i];
+            string fname=files[it];
             
             
             
