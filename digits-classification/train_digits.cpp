@@ -164,7 +164,7 @@ void SVMtrain(Mat &trainMat,vector<int> &trainLabels, Mat &testResponse,Mat &tes
     params.svm_type    = CvSVM::C_SVC;
     params.kernel_type = CvSVM::RBF;
     params.gamma = 0.50625;
-    params.C = 2.5;
+    params.C = 12.5;
     CvSVM svm;
     CvMat tryMat = trainMat;
     Mat trainLabelsMat(trainLabels.size(),1,CV_32FC1);
