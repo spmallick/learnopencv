@@ -56,7 +56,7 @@ int main(int argc, char **argv)
         // Start timer
         double timer = (double)getTickCount();
         
-        // update the tracking result
+        // Update the tracking result
         bool ok = tracker->update(frame, bbox);
         
         // Calculate Frames per second (FPS)
