@@ -82,9 +82,9 @@ def preprocess_simple(digits):
 
 def get_hog() : 
     winSize = (20,20)
-    blockSize = (10,10)
-    blockStride = (5,5)
-    cellSize = (10,10)
+    blockSize = (8,8)
+    blockStride = (4,4)
+    cellSize = (8,8)
     nbins = 9
     derivAperture = 1
     winSigma = -1.
