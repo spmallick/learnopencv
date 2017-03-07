@@ -105,9 +105,9 @@ void CreateDeskewedTrainTest(vector<Mat> &deskewedTrainCells,vector<Mat> &deskew
 
 HOGDescriptor hog(
         Size(20,20), //winSize
-        Size(10,10), //blocksize
-        Size(5,5), //blockStride,
-        Size(10,10), //cellSize,
+        Size(8,8), //blocksize
+        Size(4,4), //blockStride,
+        Size(8,8), //cellSize,
                  9, //nbins,
                   1, //derivAper,
                  -1, //winSigma,
