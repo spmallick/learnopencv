@@ -67,7 +67,8 @@ if __name__ == '__main__' :
         eyeOut = eye.copy()
 
         # Copy the mean image to the output image.
-        np.copyto(eyeOut, mean, where=mask)
+        #np.copyto(eyeOut, mean, where=mask)
+        eyeOut = np.where(mask, mean, eyeOut)
 
         # Copy the fixed eye to the output image.
         imgOut[y:y+h, x:x+w, :] = eyeOut
