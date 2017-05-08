@@ -1,14 +1,14 @@
 #include <opencv2/opencv.hpp>
 #include <iostream>
 #include <fstream>
- 
+#include <string> 
 using namespace cv;
 using namespace std;
 
 //Read points from text file
 vector<Point2f> readPoints(string pointsFileName){
 	vector<Point2f> points;
-	ifstream ifs(pointsFileName);
+	ifstream ifs (pointsFileName.c_str());
     float x, y;
 	int count = 0;
     while(ifs >> x >> y)
