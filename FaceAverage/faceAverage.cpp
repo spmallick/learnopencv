@@ -76,7 +76,7 @@ void readFileNames(string dirName, vector<string> &imageFnames, vector<string> &
         /* print all the files and directories within directory */
         while ((ent = readdir (dir)) != NULL)
         {
-            if(ent->d_name=="." || ent->d_name=="..")
+            if(strcmp(ent->d_name,".") == 0 || strcmp(ent->d_name,"..") == 0 )
             {
                 //count++;
                 continue;
