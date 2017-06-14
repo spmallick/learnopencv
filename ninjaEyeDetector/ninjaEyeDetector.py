@@ -49,8 +49,11 @@ while(True):
     # Display the resulting frame    
     cv2.imshow('Ninja Eye Detector',frame)
  
-    # Press Q on keyboard to stop recording
-    if cv2.waitKey(1) & 0xFF == ord('q'):
+    # Press ESC on keyboard to stop tracking
+    key = cv2.waitKey(1)
+ 
+    if (key==27):
+
       break
  
   # Break the loop

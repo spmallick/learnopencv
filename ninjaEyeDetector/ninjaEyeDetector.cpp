@@ -62,7 +62,7 @@ int main(void){
     imshow("Ninja Eye Detector", frame);
     int k = waitKey(1);
 
-    // Press ESC on keyboard to stop recording
+    // Press ESC on keyboard to stop tracking
     if(k == 27)
       break;
   }
