@@ -76,9 +76,9 @@ void readFileNames(string dirName, vector<string> &imageFnames, vector<string> &
         /* print all the files and directories within directory */
         while ((ent = readdir (dir)) != NULL)
         {
-            if(count < 2)
+            if(strcmp(ent->d_name,".") == 0 || strcmp(ent->d_name,"..") == 0 )
             {
-                count++;
+                //count++;
                 continue;
             }
             string temp_name = ent->d_name;
@@ -90,7 +90,6 @@ void readFileNames(string dirName, vector<string> &imageFnames, vector<string> &
         {
             string path = dirName;
             string fname=files[it];
-            
             
             
             if (fname.find(imgExt, (fname.length() - imgExt.length())) != std::string::npos)
@@ -107,7 +106,6 @@ void readFileNames(string dirName, vector<string> &imageFnames, vector<string> &
         }
         closedir (dir);
     }
-    
     
 }
 
@@ -221,16 +219,20 @@ int main( int argc, char** argv)
     // Read images in the directory
     vector<string> imageNames, ptsNames;
     readFileNames(dirName, imageNames, ptsNames);
+    //cout << imageNames.size() << ptsNames.size();
     
     // Exit program if no images or pts are found or if the number of image files does not match with the number of point files
-    if(imageNames.empty() || ptsNames.empty() || imageNames.size() != ptsNames.size())
+    if(imageNames.empty() || ptsNames.empty() || imageNames.size() != ptsNames.size()){
         exit(EXIT_FAILURE);
+    }
+        
     
     // Read points
     vector<vector<Point2f> > allPoints;
     readPoints(ptsNames, allPoints);
     
     int n = allPoints[0].size();
+    //cout << n<< endl;
     
     // Read images
     vector<Mat> images;
