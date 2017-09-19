@@ -7,7 +7,6 @@ Use "l" to display less rects, 'm' to display more rects, "q" to quit.
 '''
 
 import sys
-sys.path.insert(0, '/opt/lib/python3.5/dist-packages')
 import cv2
 
 if __name__ == '__main__':
@@ -17,8 +16,16 @@ if __name__ == '__main__':
         print(__doc__)
         sys.exit(1)
 
+    # speed-up using multithreads
+    cv2.setUseOptimized(True);
+    cv2.setNumThreads(4);
+
     # read image
     im = cv2.imread(sys.argv[1])
+    # resize image
+    newHeight = 200
+    newWidth = int(im.shape[1]*200/im.shape[0])
+    im = cv2.resize(im, (newWidth, newHeight))    
 
     # create Selective Search Segmentation Object using default parameters
     ss = cv2.ximgproc.segmentation.createSelectiveSearchSegmentation()

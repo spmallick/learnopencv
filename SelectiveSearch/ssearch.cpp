@@ -25,8 +25,16 @@ int main(int argc, char** argv) {
         return -1;
     }
 
+    // speed-up using multithreads
+    setUseOptimized(true);
+    setNumThreads(4);
+
     // read image
     Mat im = imread(argv[1]);
+    // resize image
+    int newHeight = 200;
+    int newWidth = im.cols*newHeight/im.rows;
+    resize(im, im, Size(newWidth, newHeight));
 
     // create Selective Search Segmentation Object using default parameters
     Ptr<SelectiveSearchSegmentation> ss = createSelectiveSearchSegmentation();
