@@ -30,7 +30,7 @@ Learn OpenCV  : C++ and Python Examples. You can find a details at [LearnOpenCV.
 |[Handwritten Digits Classification : An OpenCV ( C++ / Python ) Tutorial](http://www.learnopencv.com/handwritten-digits-classification-an-opencv-c-python-tutorial/) | [Code](https://github.com/spmallick/learnopencv/tree/master/digits-classification) |
 |[Training a better Haar and LBP cascade based Eye Detector using OpenCV](http://www.learnopencv.com/training-better-haar-lbp-cascade-eye-detector-opencv/) | |
 |[Deep Learning Book Gift Recipients](http://www.learnopencv.com/deep-learning-book-gift-recipients/) | | 
-|[Minified OpenCV Haar and LBP Cascades](http://www.learnopencv.com/minified-opencv-haar-and-lbp-cascades/) | |
+|[Minified OpenCV Haar and LBP Cascades](http://www.learnopencv.com/minified-opencv-haar-and-lbp-cascades/) | [Code](https://github.com/spmallick/learnopencv/tree/master/ninjaEyeDetector)|
 |[Deep Learning Book Gift](http://www.learnopencv.com/deep-learning-book-gift/) | |
 |[Histogram of Oriented Gradients](http://www.learnopencv.com/histogram-of-oriented-gradients/) | |
 |[Image Recognition and Object Detection : Part 1](http://www.learnopencv.com/image-recognition-and-object-detection-part1/) | |
@@ -47,7 +47,7 @@ Learn OpenCV  : C++ and Python Examples. You can find a details at [LearnOpenCV.
 |[Deep Learning Example using NVIDIA DIGITS 3 on EC2](http://www.learnopencv.com/deep-learning-example-using-nvidia-digits-3-on-ec2/) | |
 |[NVIDIA DIGITS 3 on EC2](http://www.learnopencv.com/nvidia-digits-3-on-ec2/) | |
 |[Homography Examples using OpenCV ( Python / C ++ )](http://www.learnopencv.com/homography-examples-using-opencv-python-c/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Homography) |
-|[Filling holes in an image using OpenCV ( Python / C++ )](http://www.learnopencv.com/filling-holes-in-an-image-using-opencv-python-c/) | |
+|[Filling holes in an image using OpenCV ( Python / C++ )](http://www.learnopencv.com/filling-holes-in-an-image-using-opencv-python-c/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Holes) |
 |[How to find frame rate or frames per second (fps) in OpenCV ( Python / C++ ) ?](http://www.learnopencv.com/how-to-find-frame-rate-or-frames-per-second-fps-in-opencv-python-cpp/) | [Code](https://github.com/spmallick/learnopencv/tree/master/FPS) |
 |[Delaunay Triangulation and Voronoi Diagram using OpenCV ( C++ / Python) ](http://www.learnopencv.com/delaunay-triangulation-and-voronoi-diagram-using-opencv-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Delaunay) |
 |[OpenCV (C++ vs Python) vs MATLAB for Computer Vision](http://www.learnopencv.com/opencv-c-vs-python-vs-matlab-for-computer-vision/) | |
