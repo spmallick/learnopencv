@@ -37,7 +37,7 @@ Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenC
 |[Head Pose Estimation using OpenCV and Dlib](http://www.learnopencv.com/head-pose-estimation-using-opencv-and-dlib/) | [Code](https://github.com/spmallick/learnopencv/tree/master/HeadPose) |
 |[Live CV : A Computer Vision Coding Application](http://www.learnopencv.com/live-cv/) | |
 |[Approximate Focal Length for Webcams and Cell Phone Cameras](http://www.learnopencv.com/approximate-focal-length-for-webcams-and-cell-phone-cameras/) | |
-|[Configuring Qt for OpenCV on OSX](http://www.learnopencv.com/configuring-qt-for-opencv-on-osx/) | |
+|[Configuring Qt for OpenCV on OSX](http://www.learnopencv.com/configuring-qt-for-opencv-on-osx/) | [Code](https://github.com/spmallick/learnopencv/tree/master/qt-test) |
 |[Rotation Matrix To Euler Angles](http://www.learnopencv.com/rotation-matrix-to-euler-angles/) | [Code](https://github.com/spmallick/learnopencv/tree/master/RotationMatrixToEulerAngles) |
 |[Speeding up Dlib’s Facial Landmark Detector](http://www.learnopencv.com/speeding-up-dlib-facial-landmark-detector/) | |
 |[Warp one triangle to another using OpenCV ( C++ / Python )](http://www.learnopencv.com/warp-one-triangle-to-another-using-opencv-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/WarpTriangle) |
@@ -54,7 +54,7 @@ Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenC
 |[Facial Landmark Detection](http://www.learnopencv.com/facial-landmark-detection/) | |
 |[Why does OpenCV use BGR color format ?](http://www.learnopencv.com/why-does-opencv-use-bgr-color-format/) | |
 |[Computer Vision for Predicting Facial Attractiveness](http://www.learnopencv.com/computer-vision-for-predicting-facial-attractiveness/) | [Code](https://github.com/spmallick/learnopencv/tree/master/FacialAttractiveness) |
-|[applyColorMap for pseudocoloring in OpenCV ( C++ / Python )](http://www.learnopencv.com/applycolormap-for-pseudocoloring-in-opencv-c-python/) | |
+|[applyColorMap for pseudocoloring in OpenCV ( C++ / Python )](http://www.learnopencv.com/applycolormap-for-pseudocoloring-in-opencv-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Colormap) |
 |[Image Alignment (ECC) in OpenCV ( C++ / Python )](http://www.learnopencv.com/image-alignment-ecc-in-opencv-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/ImageAlignment) |
 |[How to find OpenCV version in Python and C++ ?](http://www.learnopencv.com/how-to-find-opencv-version-python-cpp/) | |
 |[Baidu banned from ILSVRC 2015](http://www.learnopencv.com/baidu-banned-from-ilsvrc-2015/) | |
