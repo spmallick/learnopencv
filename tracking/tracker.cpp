@@ -16,13 +16,34 @@ int main(int argc, char **argv)
 {
     // List of tracker types in OpenCV 3.2
     // NOTE : GOTURN implementation is buggy and does not work.
-    const char *types[] = {"BOOSTING", "MIL", "KCF", "TLD","MEDIANFLOW", "GOTURN"};
-    vector <string> trackerTypes(types, std::end(types));
-    
+    string trackerTypes[6] = {"BOOSTING", "MIL", "KCF", "TLD","MEDIANFLOW", "GOTURN"};
+    // vector <string> trackerTypes(types, std::end(types));
+
     // Create a tracker
     string trackerType = trackerTypes[2];
-    Ptr<Tracker> tracker = Tracker::create(trackerType);
 
+    Ptr<Tracker> tracker;
+
+    #if (CV_MINOR_VERSION < 3)
+    {
+        tracker = Tracker::create(trackerType);
+    }
+    #else
+    {
+        if (trackerType == "BOOSTING")
+            tracker = TrackerBoosting::create();
+        if (trackerType == "MIL")
+            tracker = TrackerMIL::create();
+        if (trackerType == "KCF")
+            tracker = TrackerKCF::create();
+        if (trackerType == "TLD")
+            tracker = TrackerTLD::create();
+        if (trackerType == "MEDIANFLOW")
+            tracker = TrackerMedianFlow::create();
+        if (trackerType == "GOTURN")
+            tracker = TrackerGOTURN::create();
+    }
+    #endif
     // Read video
     VideoCapture video("videos/chaplin.mp4");
     
@@ -42,7 +63,7 @@ int main(int argc, char **argv)
     Rect2d bbox(287, 23, 86, 320);
     
     // Uncomment the line below to select a different bounding box
-    // bbox = selectROI(frame, false);
+    bbox = selectROI(frame, false);
 
     // Display bounding box.
     rectangle(frame, bbox, Scalar( 255, 0, 0 ), 2, 1 );
