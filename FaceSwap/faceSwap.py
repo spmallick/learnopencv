@@ -152,8 +152,8 @@ if __name__ == '__main__' :
     hullIndex = cv2.convexHull(np.array(points2), returnPoints = False)
           
     for i in xrange(0, len(hullIndex)):
-        hull1.append(points1[hullIndex[i]])
-        hull2.append(points2[hullIndex[i]])
+        hull1.append(points1[int(hullIndex[i])])
+        hull2.append(points2[int(hullIndex[i])])
     
     
     # Find delanauy traingulation for convex hull points
