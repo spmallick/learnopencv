@@ -5,6 +5,7 @@ Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenC
 
 | Blog Post        | |
 | ------------- |:-------------|
+|[High Dynamic Range (HDR) Imaging using OpenCV (C++/Python)](http://www.learnopencv.com/high-dynamic-range-hdr-imaging-using-opencv-cpp-python)      | [Code](https://github.com/spmallick/learnopencv/tree/master/hdr)|
 |[Deep learning using Keras – The Basics](http://www.learnopencv.com/deep-learning-using-keras-the-basics)      | [Code](https://github.com/spmallick/learnopencv/tree/master/keras-linear-regression)|
 |[Selective Search for Object Detection (C++ / Python)](http://www.learnopencv.com/selective-search-for-object-detection-cpp-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/SelectiveSearch) |
 |[Installing Deep Learning Frameworks on Ubuntu with CUDA support](http://www.learnopencv.com/installing-deep-learning-frameworks-on-ubuntu-with-cuda-support/) | |
