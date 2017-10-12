@@ -13,7 +13,7 @@ gaussianB = B.copy()
 combinedLaplacianPyramids = []
 
 # Number of levels in pyramids, try with different values 
-maxIterations = 6
+maxIterations = 4
 
 for i in range(maxIterations):
 
