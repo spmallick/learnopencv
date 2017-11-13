@@ -1,0 +1,2 @@
+model_checkpoint_path: "encode_model"
+all_model_checkpoint_paths: "encode_model"
