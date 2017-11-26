@@ -16,7 +16,7 @@ mask = 255 * np.ones(obj.shape, obj.dtype)
 
 # The location of the center of the src in the dst
 width, height, channels = im.shape
-center = (height/2, width/2)
+center = (int(height/2), int(width/2))
 
 # Seamlessly clone src into dst and put the results in output
 normal_clone = cv2.seamlessClone(obj, im, mask, center, cv2.NORMAL_CLONE)
