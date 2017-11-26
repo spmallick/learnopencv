@@ -5,6 +5,7 @@ Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenC
 
 | Blog Post        | |
 | ------------- |:-------------|
+|[Image Classification using Convolutional Neural Networks in Keras](https://www.learnopencv.com/image-classification-using-convolutional-neural-networks-in-keras)      | [Code](https://github.com/spmallick/learnopencv/tree/master/KerasCNN-CIFAR)|
 |[Understanding Autoencoders using Tensorflow (Python)](https://www.learnopencv.com/understanding-autoencoders-using-tensorflow-python/)      | [Code](https://github.com/spmallick/learnopencv/tree/master/DenoisingAutoencoder)|
 |[Best Project Award : Computer Vision for Faces](https://www.learnopencv.com/best-project-award-computer-vision-for-faces/) | |
 |[Understanding Activation Functions in Deep Learning](https://www.learnopencv.com/understanding-activation-functions-in-deep-learning/)      | |
