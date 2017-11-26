@@ -5,6 +5,7 @@ Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenC
 
 | Blog Post        | |
 | ------------- |:-------------|
+|[Exposure Fusion using OpenCV (C++/Python)](https://www.learnopencv.com/exposure-fusion-using-opencv-cpp-python/      | [Code](https://github.com/dasminakshi/learnopencv/tree/master/ExposureFusion)|
 |[Understanding Feedforward Neural Networks](https://www.learnopencv.com/understanding-feedforward-neural-networks/)      | |
 |[High Dynamic Range (HDR) Imaging using OpenCV (C++/Python)](http://www.learnopencv.com/high-dynamic-range-hdr-imaging-using-opencv-cpp-python)      | [Code](https://github.com/spmallick/learnopencv/tree/master/hdr)|
 |[Deep learning using Keras – The Basics](http://www.learnopencv.com/deep-learning-using-keras-the-basics)      | [Code](https://github.com/spmallick/learnopencv/tree/master/keras-linear-regression)|
