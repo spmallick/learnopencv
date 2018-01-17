@@ -12,26 +12,42 @@
 using namespace cv;
 using namespace std;
 
+#define MAX_SLIDER_VALUE 255
+#define NUM_EIGEN_FACES 10
+
+
+Size sz;
 
 // Weights for the different eigenvectors
-int wt_0 = 0;
-int wt_1 = 0;
-int wt_2 = 0;
-int wt_3 = 0;
-int wt_4 = 0;
-int wt_5 = 0;
-int wt_6 = 0;
-int wt_7 = 0;
-int wt_8 = 0;
-int wt_9 = 0;
+int sliderValues[10];
 
-int max_wt =255;
-
-// Matrix for average and eigenvectors
+// Matrices for average (mean) and eigenvectors
 Mat average, eigenvectors;
+
+// Initializes all eigenface weights to 0.
+// To do this we set the slider values to 128
+// because OpenCV does not allow negative values
+// for sliders. So we create negative values by
+// subtracting 128 from the actual slider value
+// Therefore,
+// weight = sliderValue - MAX_SLIDER_VALUE/2
+
+void initSliderValues()
+{
+  for(int i = 0; i < NUM_EIGEN_FACES; i++)
+  {
+    sliderValues[i] = MAX_SLIDER_VALUE/2;
+  }
+
+}
+
+
 // Read jpg files from the directory
 void readFileNames(string dirName, vector<string> &imageFnames)
 {
+  
+  cout << "Reading images from " << dirName;
+  
   DIR *dir;
   struct dirent *ent;
   int count = 0;
@@ -69,113 +85,189 @@ void readFileNames(string dirName, vector<string> &imageFnames)
     closedir (dir);
   }
   
+  cout << "... " << files.size() << " files read"<< endl;
+  
 }
 
-// Format images according to the requirement of pca function
-static  Mat formatImagesForPCA(const vector<Mat> &data)
+// Reshapes image to a long row vector
+static  Mat createDataMatrix(const vector<Mat> &images)
 {
-    Mat dst(static_cast<int>(data.size()), data[0].rows*data[0].cols*3, CV_32F);
-    for(unsigned int i = 0; i < data.size(); i++)
+  cout << "Creating data matrix from images ...";
+  
+  // Allocate space for all images in one data matrix.
+  // The size of the data matrix is
+  //
+  // ( w  * h  * 3, numImages )
+  //
+  // where,
+  //
+  // w = width of an image in the dataset.
+  // h = height of an image in the dataset.
+  // 3 is for the 3 color channels.
+  // numImages = number of images in the dataset.
+  
+  Mat data(static_cast<int>(images.size()), images[0].rows * images[0].cols * 3, CV_32F);
+  
+  // Turn an image into one row vector in the data matrix
+  for(unsigned int i = 0; i < images.size(); i++)
+  {
+    // Extract image as one long vector of size w x h x 3
+    Mat image = images[i].reshape(1,1);
+    
+    // Copy the long vector into one row of the destm
+    image.copyTo(data.row(i));
+    
+  }
+  
+  cout << " DONE" << endl;
+  return data;
+}
+
+// Calculate final image by adding weighted
+// EigenFaces to the mean image.
+void calcFinalImage(int ,void *)
+{
+  // Start with the mean image
+  Mat output = average.clone();
+  
+  // Add the eigen faces with the weights
+  for(int i = 0; i < NUM_EIGEN_FACES; i++)
+  {
+    Mat eigenFace = eigenvectors.row(i).reshape(3,sz.height);
+    
+    // OpenCV does not allow slider values to be negative.
+    // So we use weight = sliderValue - MAX_SLIDER_VALUE / 2
+    double weight = sliderValues[i] - MAX_SLIDER_VALUE/2;
+    output = output + eigenFace * weight;
+  }
+
+  resize(output, output, Size(), 2, 2);
+  
+  imshow("Result", output);
+  
+}
+
+// Reset slider values
+void resetSliderValues(int event, int x, int y, int flags, void* userdata)
+{
+  if (event == EVENT_LBUTTONDOWN)
+  {
+    for(int i = 0; i < NUM_EIGEN_FACES; i++)
     {
-        Mat image_row = data[i].clone().reshape(1,1);
-        Mat row_i = dst.row(i);
-        image_row.convertTo(row_i,CV_32F);
+      sliderValues[i] = 128;
+      setTrackbarPos("Weight" + to_string(i), "Trackbars", MAX_SLIDER_VALUE/2);
     }
-    return dst;
+    
+    calcFinalImage(0,0);
+    
+  }
 }
 
-// Add weighted eigen vectors to the average image
-void calcFinalImage(int ,void *){
-	Mat temp = average.clone();
-	Mat eig1 = eigenvectors.row(0).reshape(3,200);
-	Mat eig2 = eigenvectors.row(1).reshape(3,200);
-	Mat eig3 = eigenvectors.row(2).reshape(3,200);
-	Mat eig4 = eigenvectors.row(3).reshape(3,200);
-	Mat eig5 = eigenvectors.row(4).reshape(3,200);
-	Mat eig6 = eigenvectors.row(5).reshape(3,200);
-	Mat eig7 = eigenvectors.row(6).reshape(3,200);
-	Mat eig8 = eigenvectors.row(7).reshape(3,200);
-	Mat eig9 = eigenvectors.row(8).reshape(3,200);
-	Mat eig10 = eigenvectors.row(9).reshape(3,200);
-	temp = temp + eig1*wt_0;
-	temp = temp + eig2*wt_1;
-	temp = temp + eig3*wt_2;
-	temp = temp + eig4*wt_3;
-	temp = temp + eig5*wt_4;
-	temp = temp + eig6*wt_5;
-	temp = temp + eig7*wt_6;
-	temp = temp + eig8*wt_7;
-	temp = temp + eig9*wt_8;
-	temp = temp + eig10*wt_9;
-	imshow("Result", temp);
 
-}
-
-int main(int argc, char **argv){
-	cout << "Hello"<<endl;
-	string dirName = "../PCA/images";
-	// Add slash to directory name if missing
-  	if (!dirName.empty() && dirName.back() != '/')
-    	dirName += '/';
-    // Read images in the directory
-  	vector<string> imageNames;
-  	readFileNames(dirName, imageNames);
-
-  	// Exit program if no images are found or if the number of image files does not match with the number of point files
-  	if(imageNames.empty())exit(EXIT_FAILURE);
-
-  	vector <Mat> images;
-  	for(size_t i = 0; i < imageNames.size(); i++)
-	{
-		Mat img = imread(imageNames[i]);
-	    if(!img.data)
-	    {
-	      cout << "image " << imageNames[i] << " not read properly" << endl;
-	    }
-	    else
-	    {
-	        img.convertTo(img, CV_32FC3, 1/255.0);
-	        resize(img, img, Size(200,200),0,0, INTER_CUBIC);
-	        images.push_back(img);
-	    }
-  	}
-
-    // Initialize average image
-  	average= Mat::zeros(200,200, CV_32FC3);
-  	for(size_t i=0; i<images.size();i++){
+int main(int argc, char **argv)
+{
+  string dirName = "../PCA/images";
+  
+  // Add slash to directory name if missing
+  if (!dirName.empty() && dirName.back() != '/')
+    dirName += '/';
+  
+  
+  // Read images in the directory
+  vector<string> imageNames;
+  readFileNames(dirName, imageNames);
+  
+  
+  // Exit program if no images are found
+  if(imageNames.empty())exit(EXIT_FAILURE);
+  
+  // Read images
+  vector <Mat> images;
+  for(size_t i = 0; i < imageNames.size(); i++)
+  {
+    Mat img = imread(imageNames[i]);
+    if(!img.data)
+    {
+      cout << "image " << imageNames[i] << " not read properly" << endl;
+    }
+    else
+    {
+      if ( i == 0)
+      {
+        // Set size of images based on the first image.
+        // The rest of the code assumes all images are of this size.
+        sz = img.size();
+      }
+      // Convert images to floating point type
+      img.convertTo(img, CV_32FC3, 1/255.0);
+      images.push_back(img);
+      
+      // A vertically flipped image is also a valid face image.
+      // So lets use them as well.
+      Mat imgFlip;
+      flip(img, imgFlip, 1);
+      images.push_back(imgFlip);
+    }
+  }
+  
+  // Initialize average image
+  average= Mat::zeros(sz, CV_32FC3);
+  
+  // Calculate average image
+  for(size_t i=0; i<images.size();i++)
+  {
   		average = average+images[i];
-  	}
-    // Calculate average image
-  	average = average/(images.size());
-
-  	for(size_t i=0; i< images.size();i++)
+  }
+  average = average/(images.size());
+  
+  // Subtract mean face from every image.
+  for(size_t i=0; i< images.size();i++)
+  {
   		images[i] = images[i]-average;
-
-  	cout << "Formatting images..."<<endl;
-  	Mat data = formatImagesForPCA(images);
-  	cout << "DONE" << endl;
-
-  	cout << "Calculating PCA..." << endl;
-    // Calculate PCA of the data matrix
-  	PCA pca(data, cv::Mat(), PCA::DATA_AS_ROW, 10);
-  	cout << "DONE"<< endl;
-  	eigenvectors = pca.eigenvectors; 
-
-  	namedWindow("Trackbars", CV_WINDOW_AUTOSIZE);
-    // Show average image
-  	imshow("Average", average);
-
-    // Create trackbars
-  	createTrackbar( "Weight0", "Trackbars", &wt_0, max_wt, calcFinalImage);
-  	createTrackbar( "Weight1", "Trackbars", &wt_1, max_wt, calcFinalImage);
-  	createTrackbar( "Weight2", "Trackbars", &wt_2, max_wt, calcFinalImage);
-  	createTrackbar( "Weight3", "Trackbars", &wt_3, max_wt, calcFinalImage);
-  	createTrackbar( "Weight4", "Trackbars", &wt_4, max_wt, calcFinalImage);
-  	createTrackbar( "Weight5", "Trackbars", &wt_5, max_wt, calcFinalImage);
-  	createTrackbar( "Weight6", "Trackbars", &wt_6, max_wt, calcFinalImage);
-  	createTrackbar( "Weight7", "Trackbars", &wt_7, max_wt, calcFinalImage);
-  	createTrackbar( "Weight8", "Trackbars", &wt_8, max_wt, calcFinalImage);
-  	createTrackbar( "Weight9", "Trackbars", &wt_9, max_wt, calcFinalImage);
-  	waitKey(0);
+  }
+  
+  // Create data matrix for PCA.
+  Mat data = createDataMatrix(images);
+  
+  // Calculate PCA of the data matrix
+  cout << "Calculating PCA ...";
+  PCA pca(data, Mat(), PCA::DATA_AS_ROW, 10);
+  cout << " DONE"<< endl;
+  
+  //average = pca.mean;
+  //average = average.reshape(3,sz.height);
+  
+  // Find eigen vectors. These are the eigen faces
+  eigenvectors = pca.eigenvectors;
+  
+  // Show mean face image
+  Mat display;
+  resize(average, display, Size(), 2, 2);
+  
+  namedWindow("Result", CV_WINDOW_AUTOSIZE);
+  imshow("Result", display);
+  
+  imshow("Average", display);
+  
+  // Initialize sliders to 128
+  // Note : Actual weights used is ( sliderValue - 128 )
+  // because OpenCV sliders cannot be negative.
+  // So 128 corresponds to a weight of 0.
+  initSliderValues();
+  
+  // Create trackbars
+  namedWindow("Trackbars", CV_WINDOW_AUTOSIZE);
+  for(int i = 0; i < NUM_EIGEN_FACES; i++)
+  {
+    createTrackbar( "Weight" + to_string(i), "Trackbars", &sliderValues[i], MAX_SLIDER_VALUE, calcFinalImage);
+  }
+  
+  // You can reset the sliders by clicking on the mean image.
+  setMouseCallback("Result", resetSliderValues);
+  
+  cout << endl << "Usage:" << endl;
+  cout << "Change the weights using the sliders" << endl;
+  cout << "Click on the result window to reset sliders" << endl;
+  waitKey(0);
 }
 
