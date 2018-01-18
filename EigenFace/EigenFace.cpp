@@ -176,7 +176,7 @@ int main(int argc, char **argv)
   
   // Calculate PCA of the data matrix
   cout << "Calculating PCA ...";
-  PCA pca(data, Mat(), PCA::DATA_AS_ROW, 10);
+  PCA pca(data, Mat(), PCA::DATA_AS_ROW, NUM_EIGEN_FACES);
   cout << " DONE"<< endl;
   
   // Extract mean vector and reshape it to obtain average face

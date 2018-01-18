@@ -93,7 +93,7 @@ if __name__ == '__main__':
 
 	# Compute the eigenvectors from the stack of images created
 	print("Calculating PCA ", end="...")
-	mean, eigenVectors = cv2.PCACompute(data, mean=None, maxComponents=10)
+	mean, eigenVectors = cv2.PCACompute(data, mean=None, maxComponents=NUM_EIGEN_FACES)
 	print ("DONE")
 
 	averageFace = mean.reshape(sz)
@@ -131,11 +131,3 @@ if __name__ == '__main__':
 
 	cv2.waitKey(0)
 	cv2.destroyAllWindows()
-
-
-
-
-	
-	
-
-
