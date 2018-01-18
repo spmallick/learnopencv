@@ -19,28 +19,11 @@ using namespace std;
 Size sz;
 
 // Weights for the different eigenvectors
-int sliderValues[10];
+int sliderValues[NUM_EIGEN_FACES];
 
 // Matrices for average (mean) and eigenvectors
-Mat average, eigenvectors;
-
-// Initializes all eigenface weights to 0.
-// To do this we set the slider values to 128
-// because OpenCV does not allow negative values
-// for sliders. So we create negative values by
-// subtracting 128 from the actual slider value
-// Therefore,
-// weight = sliderValue - MAX_SLIDER_VALUE/2
-
-void initSliderValues()
-{
-  for(int i = 0; i < NUM_EIGEN_FACES; i++)
-  {
-    sliderValues[i] = MAX_SLIDER_VALUE/2;
-  }
-
-}
-
+Mat averageFace;
+vector<Mat> eigenFaces;
 
 // Read jpg files from the directory
 void readFileNames(string dirName, vector<string> &imageFnames)
@@ -89,7 +72,7 @@ void readFileNames(string dirName, vector<string> &imageFnames)
   
 }
 
-// Reshapes image to a long row vector
+// Create data matrix from a vector of images
 static  Mat createDataMatrix(const vector<Mat> &images)
 {
   cout << "Creating data matrix from images ...";
@@ -124,16 +107,16 @@ static  Mat createDataMatrix(const vector<Mat> &images)
 }
 
 // Calculate final image by adding weighted
-// EigenFaces to the mean image.
-void calcFinalImage(int ,void *)
+// EigenFaces to the average face.
+void createNewFace(int ,void *)
 {
   // Start with the mean image
-  Mat output = average.clone();
+  Mat output = averageFace.clone();
   
   // Add the eigen faces with the weights
   for(int i = 0; i < NUM_EIGEN_FACES; i++)
   {
-    Mat eigenFace = eigenvectors.row(i).reshape(3,sz.height);
+    Mat eigenFace = eigenFaces[i];
     
     // OpenCV does not allow slider values to be negative.
     // So we use weight = sliderValue - MAX_SLIDER_VALUE / 2
@@ -158,7 +141,7 @@ void resetSliderValues(int event, int x, int y, int flags, void* userdata)
       setTrackbarPos("Weight" + to_string(i), "Trackbars", MAX_SLIDER_VALUE/2);
     }
     
-    calcFinalImage(0,0);
+    createNewFace(0,0);
     
   }
 }
@@ -166,7 +149,7 @@ void resetSliderValues(int event, int x, int y, int flags, void* userdata)
 
 int main(int argc, char **argv)
 {
-  string dirName = "../PCA/images";
+  string dirName = "images";
   
   // Add slash to directory name if missing
   if (!dirName.empty() && dirName.back() != '/')
@@ -210,22 +193,6 @@ int main(int argc, char **argv)
     }
   }
   
-  // Initialize average image
-  average= Mat::zeros(sz, CV_32FC3);
-  
-  // Calculate average image
-  for(size_t i=0; i<images.size();i++)
-  {
-  		average = average+images[i];
-  }
-  average = average/(images.size());
-  
-  // Subtract mean face from every image.
-  for(size_t i=0; i< images.size();i++)
-  {
-  		images[i] = images[i]-average;
-  }
-  
   // Create data matrix for PCA.
   Mat data = createDataMatrix(images);
   
@@ -234,40 +201,44 @@ int main(int argc, char **argv)
   PCA pca(data, Mat(), PCA::DATA_AS_ROW, 10);
   cout << " DONE"<< endl;
   
-  //average = pca.mean;
-  //average = average.reshape(3,sz.height);
+  // Extract mean vector
+  averageFace = pca.mean;
   
-  // Find eigen vectors. These are the eigen faces
-  eigenvectors = pca.eigenvectors;
+  // Find eigen vectors.
+  Mat eigenvectors = pca.eigenvectors;
+  
+  // Reshape mean vector to obtain average face
+  averageFace = averageFace.reshape(3,sz.height);
+  
+  // Reshape Eigenvectors to obtain EigenFaces
+  for(int i = 0; i < NUM_EIGEN_FACES; i++)
+  {
+      Mat eigenFace = eigenvectors.row(i).reshape(3,sz.height);
+      eigenFaces.push_back(eigenFace);
+  }
+  
   
   // Show mean face image
   Mat display;
-  resize(average, display, Size(), 2, 2);
+  resize(averageFace, display, Size(), 2, 2);
   
   namedWindow("Result", CV_WINDOW_AUTOSIZE);
   imshow("Result", display);
-  
-  imshow("Average", display);
-  
-  // Initialize sliders to 128
-  // Note : Actual weights used is ( sliderValue - 128 )
-  // because OpenCV sliders cannot be negative.
-  // So 128 corresponds to a weight of 0.
-  initSliderValues();
   
   // Create trackbars
   namedWindow("Trackbars", CV_WINDOW_AUTOSIZE);
   for(int i = 0; i < NUM_EIGEN_FACES; i++)
   {
-    createTrackbar( "Weight" + to_string(i), "Trackbars", &sliderValues[i], MAX_SLIDER_VALUE, calcFinalImage);
+    sliderValues[i] = MAX_SLIDER_VALUE/2;
+    createTrackbar( "Weight" + to_string(i), "Trackbars", &sliderValues[i], MAX_SLIDER_VALUE, createNewFace);
   }
   
   // You can reset the sliders by clicking on the mean image.
   setMouseCallback("Result", resetSliderValues);
   
-  cout << endl << "Usage:" << endl;
-  cout << "Change the weights using the sliders" << endl;
-  cout << "Click on the result window to reset sliders" << endl;
+  cout << "Usage:" << endl 
+  << "\tChange the weights using the sliders" << endl
+  << "\tClick on the result window to reset sliders" << endl;
   waitKey(0);
 }
 
