@@ -6,10 +6,23 @@ import cv2
 import numpy as np
 
 # Create data matrix from a list of images
-# Each 
 def createDataMatrix(images):
 	print("Creating data matrix",end=" ... ")
+	''' 
+	Allocate space for all images in one data matrix.
+  The size of the data matrix is
+  
+  ( w  * h  * 3, numImages )
+  
+  where,
+  
+  w = width of an image in the dataset.
+  h = height of an image in the dataset.
+  3 is for the 3 color channels.
+  '''
+  
 	numImages = len(images)
+	sz = images[0].shape
 	data = np.zeros((numImages, sz[0] * sz[1] * sz[2]), dtype=np.float32)
 	for i in xrange(0, numImages):
 		image = images[i].flatten()
@@ -55,9 +68,15 @@ def readImages(path):
 
 # Add the weighted eigen faces to the mean face 
 def createNewFace(*args):
-	#global averageFace, sliderValues
+	# Start with the mean image
 	output = averageFace
+	
+	# Add the eigen faces with the weights
 	for i in xrange(0, NUM_EIGEN_FACES):
+		'''
+		OpenCV does not allow slider values to be negative. 
+		So we use weight = sliderValue - MAX_SLIDER_VALUE / 2
+		''' 
 		sliderValues[i] = cv2.getTrackbarPos("Weight" + str(i), "Trackbars");
 		weight = sliderValues[i] - MAX_SLIDER_VALUE/2
 		output = np.add(output, eigenFaces[i] * weight)

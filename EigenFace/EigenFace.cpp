@@ -99,7 +99,7 @@ static  Mat createDataMatrix(const vector<Mat> &images)
   // w = width of an image in the dataset.
   // h = height of an image in the dataset.
   // 3 is for the 3 color channels.
-  // numImages = number of images in the dataset.
+  
   
   Mat data(static_cast<int>(images.size()), images[0].rows * images[0].cols * 3, CV_32F);
   
@@ -128,12 +128,10 @@ void createNewFace(int ,void *)
   // Add the eigen faces with the weights
   for(int i = 0; i < NUM_EIGEN_FACES; i++)
   {
-    Mat eigenFace = eigenFaces[i];
-    
     // OpenCV does not allow slider values to be negative.
     // So we use weight = sliderValue - MAX_SLIDER_VALUE / 2
     double weight = sliderValues[i] - MAX_SLIDER_VALUE/2;
-    output = output + eigenFace * weight;
+    output = output + eigenFaces[i] * weight;
   }
 
   resize(output, output, Size(), 2, 2);
