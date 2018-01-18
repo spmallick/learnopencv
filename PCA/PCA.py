@@ -125,7 +125,8 @@ if __name__ == '__main__':
 	
 	print('''Usage:
 	Change the weights using the sliders
-	Click on the result window to reset sliders''')
+	Click on the result window to reset sliders
+	Hit ESC to terminate program.''')
 
 	cv2.waitKey(0)
 	cv2.destroyAllWindows()

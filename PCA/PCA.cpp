@@ -238,7 +238,10 @@ int main(int argc, char **argv)
   
   cout << "Usage:" << endl 
   << "\tChange the weights using the sliders" << endl
-  << "\tClick on the result window to reset sliders" << endl;
+  << "\tClick on the result window to reset sliders" << endl
+  << "\tHit ESC to terminate program." << endl;
+
   waitKey(0);
+  destroyAllWindows(); 
 }
 
