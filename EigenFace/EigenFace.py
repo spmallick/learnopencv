@@ -44,12 +44,13 @@ def readImages(path):
 	      # Append flipped image
 	      images.append(imFlip)
 
+  numImages = len(images) / 2
   # Exit if no image found
-  if len(images) == 0 :
+  if numImages == 0 :
 		print("No images found")
 		sys.exit(0)
 
-  print("Done")
+  print(str(numImages) + " files read.")
   return images
 
 # Add the weighted eigen faces to the mean face 
@@ -78,21 +79,21 @@ if __name__ == '__main__':
 	# Maximum weight
 	MAX_SLIDER_VALUE = 255
 
-	#Directory with images
+	# Directory containing images
 	dirName = "images"
 
-	# Read image paths
+	# Read images
 	images = readImages(dirName)
 	
+	# Size of images
 	sz = images[0].shape
 
+	# Create data matrix for PCA.
 	data = createDataMatrix(images)
-
-	
 
 	# Compute the eigenvectors from the stack of images created
 	print("Calculating PCA ", end="...")
-	mean, eigenVectors = cv2.PCACompute(data, mean=np.array([]), maxComponents=10)
+	mean, eigenVectors = cv2.PCACompute(data, mean=None, maxComponents=10)
 	print ("DONE")
 
 	averageFace = mean.reshape(sz)

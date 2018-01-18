@@ -16,8 +16,6 @@ using namespace std;
 #define NUM_EIGEN_FACES 10
 
 
-Size sz;
-
 // Weights for the different eigenvectors
 int sliderValues[NUM_EIGEN_FACES];
 
@@ -26,10 +24,14 @@ Mat averageFace;
 vector<Mat> eigenFaces;
 
 // Read jpg files from the directory
-void readFileNames(string dirName, vector<string> &imageFnames)
+void readImages(string dirName, vector<Mat> &images)
 {
   
   cout << "Reading images from " << dirName;
+
+  // Add slash to directory name if missing
+  if (!dirName.empty() && dirName.back() != '/')
+    dirName += '/';
   
   DIR *dir;
   struct dirent *ent;
@@ -48,27 +50,37 @@ void readFileNames(string dirName, vector<string> &imageFnames)
       {
         continue;
       }
-      string temp_name = ent->d_name;
-      files.push_back(temp_name);
-      
-    }
-    std::sort(files.begin(),files.end());
-    for(int it=0;it<files.size();it++)
-    {
-      string path = dirName;
-      string fname=files[it];
-      
+      string fname = ent->d_name;
       
       if (fname.find(imgExt, (fname.length() - imgExt.length())) != std::string::npos)
       {
-        path.append(fname);
-        imageFnames.push_back(path);
+        string path = dirName + fname;
+        Mat img = imread(path);
+        if(!img.data)
+        {
+          cout << "image " << path << " not read properly" << endl;
+        }
+        else
+        { 
+          // Convert images to floating point type
+          img.convertTo(img, CV_32FC3, 1/255.0);
+          images.push_back(img);
+          
+          // A vertically flipped image is also a valid face image.
+          // So lets use them as well.
+          Mat imgFlip;
+          flip(img, imgFlip, 1);
+          images.push_back(imgFlip);
+        }
       }
     }
     closedir (dir);
   }
+
+  // Exit program if no images are found
+  if(images.empty())exit(EXIT_FAILURE);
   
-  cout << "... " << files.size() << " files read"<< endl;
+  cout << "... " << images.size() / 2 << " files read"<< endl;
   
 }
 
@@ -149,49 +161,15 @@ void resetSliderValues(int event, int x, int y, int flags, void* userdata)
 
 int main(int argc, char **argv)
 {
-  string dirName = "images";
-  
-  // Add slash to directory name if missing
-  if (!dirName.empty() && dirName.back() != '/')
-    dirName += '/';
-  
+  // Directory containing images
+  string dirName = "images/";
   
   // Read images in the directory
-  vector<string> imageNames;
-  readFileNames(dirName, imageNames);
+  vector<Mat> images; 
+  readImages(dirName, images);
   
-  
-  // Exit program if no images are found
-  if(imageNames.empty())exit(EXIT_FAILURE);
-  
-  // Read images
-  vector <Mat> images;
-  for(size_t i = 0; i < imageNames.size(); i++)
-  {
-    Mat img = imread(imageNames[i]);
-    if(!img.data)
-    {
-      cout << "image " << imageNames[i] << " not read properly" << endl;
-    }
-    else
-    {
-      if ( i == 0)
-      {
-        // Set size of images based on the first image.
-        // The rest of the code assumes all images are of this size.
-        sz = img.size();
-      }
-      // Convert images to floating point type
-      img.convertTo(img, CV_32FC3, 1/255.0);
-      images.push_back(img);
-      
-      // A vertically flipped image is also a valid face image.
-      // So lets use them as well.
-      Mat imgFlip;
-      flip(img, imgFlip, 1);
-      images.push_back(imgFlip);
-    }
-  }
+  // Size of images. All images should be the same size. 
+  Size sz = images[0].size(); 
   
   // Create data matrix for PCA.
   Mat data = createDataMatrix(images);
@@ -201,14 +179,11 @@ int main(int argc, char **argv)
   PCA pca(data, Mat(), PCA::DATA_AS_ROW, 10);
   cout << " DONE"<< endl;
   
-  // Extract mean vector
-  averageFace = pca.mean;
+  // Extract mean vector and reshape it to obtain average face
+  averageFace = pca.mean.reshape(3,sz.height);
   
   // Find eigen vectors.
   Mat eigenvectors = pca.eigenvectors;
-  
-  // Reshape mean vector to obtain average face
-  averageFace = averageFace.reshape(3,sz.height);
   
   // Reshape Eigenvectors to obtain EigenFaces
   for(int i = 0; i < NUM_EIGEN_FACES; i++)
@@ -217,13 +192,12 @@ int main(int argc, char **argv)
       eigenFaces.push_back(eigenFace);
   }
   
-  
-  // Show mean face image
-  Mat display;
-  resize(averageFace, display, Size(), 2, 2);
+  // Show mean face image at 2x the original size
+  Mat output;
+  resize(averageFace, output, Size(), 2, 2);
   
   namedWindow("Result", CV_WINDOW_AUTOSIZE);
-  imshow("Result", display);
+  imshow("Result", output);
   
   // Create trackbars
   namedWindow("Trackbars", CV_WINDOW_AUTOSIZE);
