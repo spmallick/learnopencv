@@ -183,12 +183,12 @@ int main(int argc, char **argv)
   averageFace = pca.mean.reshape(3,sz.height);
   
   // Find eigen vectors.
-  Mat eigenvectors = pca.eigenvectors;
+  Mat eigenVectors = pca.eigenvectors;
   
   // Reshape Eigenvectors to obtain EigenFaces
   for(int i = 0; i < NUM_EIGEN_FACES; i++)
   {
-      Mat eigenFace = eigenvectors.row(i).reshape(3,sz.height);
+      Mat eigenFace = eigenVectors.row(i).reshape(3,sz.height);
       eigenFaces.push_back(eigenFace);
   }
   
