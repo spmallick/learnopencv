@@ -1,13 +1,8 @@
 #include <iostream>
-#include <fstream>
-#include <sstream>
 #include <opencv2/core/core.hpp>
 #include "opencv2/imgcodecs.hpp"
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/opencv.hpp>
-#include <dirent.h>
-#include <stdlib.h>
-#include <time.h>
 
 using namespace cv;
 using namespace std;
@@ -29,59 +24,32 @@ void readImages(string dirName, vector<Mat> &images)
   
   cout << "Reading images from " << dirName;
 
-  // Add slash to directory name if missing
-  if (!dirName.empty() && dirName.back() != '/')
-    dirName += '/';
-  
-  DIR *dir;
-  struct dirent *ent;
-  int count = 0;
-  
-  //image extensions
-  string imgExt = "jpg";
-  vector<string> files;
-  
-  if ((dir = opendir (dirName.c_str())) != NULL)
-  {
-    /* print all the files and directories within directory */
-    while ((ent = readdir (dir)) != NULL)
-    {
-      if(strcmp(ent->d_name,".") == 0 || strcmp(ent->d_name,"..") == 0 )
-      {
-        continue;
-      }
-      string fname = ent->d_name;
-      
-      if (fname.find(imgExt, (fname.length() - imgExt.length())) != std::string::npos)
-      {
-        string path = dirName + fname;
-        Mat img = imread(path);
-        if(!img.data)
-        {
-          cout << "image " << path << " not read properly" << endl;
-        }
-        else
-        { 
-          // Convert images to floating point type
-          img.convertTo(img, CV_32FC3, 1/255.0);
-          images.push_back(img);
-          
-          // A vertically flipped image is also a valid face image.
-          // So lets use them as well.
-          Mat imgFlip;
-          flip(img, imgFlip, 1);
-          images.push_back(imgFlip);
-        }
-      }
-    }
-    closedir (dir);
-  }
+  vector<String> files;
+  glob(dirName, files);
 
+  for (size_t i = 0; i < files.size(); ++i)
+  {
+      Mat img = imread(files[i]); // load the image
+      if (img.empty())            // invalid image, skip it.
+      {
+          cout << files[i] << " is invalid!" << endl;
+          continue;
+      }
+
+      // Convert images to floating point type
+      img.convertTo(img, CV_32FC3, 1 / 255.0);
+      images.push_back(img);
+
+      // A vertically flipped image is also a valid face image.
+      // So lets use them as well.
+      Mat imgFlip;
+      flip(img, imgFlip, 1);
+      images.push_back(imgFlip);
+  }
   // Exit program if no images are found
   if(images.empty())exit(EXIT_FAILURE);
-  
-  cout << "... " << images.size() / 2 << " files read"<< endl;
-  
+
+  cout << "... " << images.size() / 2 << " files read" << endl;
 }
 
 // Create data matrix from a vector of images
@@ -160,7 +128,7 @@ void resetSliderValues(int event, int x, int y, int flags, void* userdata)
 int main(int argc, char **argv)
 {
   // Directory containing images
-  string dirName = "images/";
+  string dirName = argc > 1 ? argv[1] : "./images/";
   
   // Read images in the directory
   vector<Mat> images; 
@@ -194,11 +162,11 @@ int main(int argc, char **argv)
   Mat output;
   resize(averageFace, output, Size(), 2, 2);
   
-  namedWindow("Result", CV_WINDOW_AUTOSIZE);
+  namedWindow("Result", WINDOW_AUTOSIZE);
   imshow("Result", output);
   
   // Create trackbars
-  namedWindow("Trackbars", CV_WINDOW_AUTOSIZE);
+  namedWindow("Trackbars", WINDOW_AUTOSIZE);
   for(int i = 0; i < NUM_EIGEN_FACES; i++)
   {
     sliderValues[i] = MAX_SLIDER_VALUE/2;
