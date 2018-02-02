@@ -4,6 +4,7 @@ Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenC
 ## List of Blog Posts
 
 | Blog Post        | |
+| ------------- |:-------------|
 |[OpenCV Transparent API](https://www.learnopencv.com/opencv-transparent-api/)| |
 |[Face Reconstruction using EigenFaces (C++/Python)](https://www.learnopencv.com/face-reconstruction-using-eigenfaces-cpp-python/)|[Code](https://github.com/spmallick/learnopencv/tree/master/ReconstructFaceUsingEigenFaces) |
 |[Eigenface using OpenCV (C++/Python)](https://www.learnopencv.com/eigenface-using-opencv-c-python/)| [Code](https://github.com/spmallick/learnopencv/tree/master/EigenFace)|
@@ -13,7 +14,7 @@ Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenC
 |[Technical Aspects of a Digital SLR](https://www.learnopencv.com/technical-aspects-of-a-digital-slr/) | |
 
 |[Using Harry Potter interactive wand with OpenCV to create magic](https://www.learnopencv.com/using-harry-potter-interactive-wand-with-opencv-to-create-magic/)| |
-| ------------- |:-------------|
+
 |[Install OpenCV 3 and Dlib on Windows ( Python only )](https://www.learnopencv.com/install-opencv-3-and-dlib-on-windows-python-only/)| |
 |[Image Classification using Convolutional Neural Networks in Keras](https://www.learnopencv.com/image-classification-using-convolutional-neural-networks-in-keras)      | [Code](https://github.com/spmallick/learnopencv/tree/master/KerasCNN-CIFAR)|
 |[Understanding Autoencoders using Tensorflow (Python)](https://www.learnopencv.com/understanding-autoencoders-using-tensorflow-python/)      | [Code](https://github.com/spmallick/learnopencv/tree/master/DenoisingAutoencoder)|
