@@ -12,7 +12,6 @@ Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenC
 |[Keras Tutorial : Transfer Learning using pre-trained models](https://www.learnopencv.com/keras-tutorial-transfer-learning-using-pre-trained-models/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Keras-Transfer-Learning) |
 |[Keras Tutorial : Using pre-trained Imagenet models](https://www.learnopencv.com/keras-tutorial-using-pre-trained-imagenet-models/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Keras-ImageNet-Models) |
 |[Technical Aspects of a Digital SLR](https://www.learnopencv.com/technical-aspects-of-a-digital-slr/) | |
-
 |[Using Harry Potter interactive wand with OpenCV to create magic](https://www.learnopencv.com/using-harry-potter-interactive-wand-with-opencv-to-create-magic/)| |
 
 |[Install OpenCV 3 and Dlib on Windows ( Python only )](https://www.learnopencv.com/install-opencv-3-and-dlib-on-windows-python-only/)| |
