@@ -1,10 +1,20 @@
 # learnopencv
-Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenCV.com](http://www.LearnOpenCV.com)
+Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenCV.com](https://www.LearnOpenCV.com)
 
 ## List of Blog Posts
 
 | Blog Post        | |
+|[OpenCV Transparent API](https://www.learnopencv.com/opencv-transparent-api/)| |
+|[Face Reconstruction using EigenFaces (C++/Python)](https://www.learnopencv.com/face-reconstruction-using-eigenfaces-cpp-python/)|[Code](https://github.com/spmallick/learnopencv/tree/master/ReconstructFaceUsingEigenFaces) |
+|[Eigenface using OpenCV (C++/Python)](https://www.learnopencv.com/eigenface-using-opencv-c-python/)| [Code](https://github.com/spmallick/learnopencv/tree/master/EigenFace)|
+|[Principal Component Analysis](https://www.learnopencv.com/principal-component-analysis/)| |
+|[Keras Tutorial : Transfer Learning using pre-trained models](https://www.learnopencv.com/keras-tutorial-transfer-learning-using-pre-trained-models/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Keras-Transfer-Learning) |
+|[Keras Tutorial : Using pre-trained Imagenet models](https://www.learnopencv.com/keras-tutorial-using-pre-trained-imagenet-models/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Keras-ImageNet-Models) |
+|[Technical Aspects of a Digital SLR](https://www.learnopencv.com/technical-aspects-of-a-digital-slr/) | |
+
+|[Using Harry Potter interactive wand with OpenCV to create magic](https://www.learnopencv.com/using-harry-potter-interactive-wand-with-opencv-to-create-magic/)| |
 | ------------- |:-------------|
+|[Install OpenCV 3 and Dlib on Windows ( Python only )](https://www.learnopencv.com/install-opencv-3-and-dlib-on-windows-python-only/)| |
 |[Image Classification using Convolutional Neural Networks in Keras](https://www.learnopencv.com/image-classification-using-convolutional-neural-networks-in-keras)      | [Code](https://github.com/spmallick/learnopencv/tree/master/KerasCNN-CIFAR)|
 |[Understanding Autoencoders using Tensorflow (Python)](https://www.learnopencv.com/understanding-autoencoders-using-tensorflow-python/)      | [Code](https://github.com/spmallick/learnopencv/tree/master/DenoisingAutoencoder)|
 |[Best Project Award : Computer Vision for Faces](https://www.learnopencv.com/best-project-award-computer-vision-for-faces/) | |
