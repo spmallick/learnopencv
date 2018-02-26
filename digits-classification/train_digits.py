@@ -34,47 +34,42 @@ def deskew(img):
     img = cv2.warpAffine(img, M, (SZ, SZ), flags=cv2.WARP_INVERSE_MAP | cv2.INTER_LINEAR)
     return img
 
-class StatModel(object):
-    def load(self, fn):
-        self.model.load(fn)  # Known bug: https://github.com/opencv/opencv/issues/4969
-    def save(self, fn):
-        self.model.save(fn)
+def svmInit(C=12.5, gamma=0.50625):
+  model = cv2.ml.SVM_create()
+  model.setGamma(gamma)
+  model.setC(C)
+  model.setKernel(cv2.ml.SVM_RBF)
+  model.setType(cv2.ml.SVM_C_SVC)
+  
+  return model
 
-class SVM(StatModel):
-    def __init__(self, C = 12.5, gamma = 0.50625):
-        self.model = cv2.ml.SVM_create()
-        self.model.setGamma(gamma)
-        self.model.setC(C)
-        self.model.setKernel(cv2.ml.SVM_RBF)
-        self.model.setType(cv2.ml.SVM_C_SVC)
+def svmTrain(model, samples, responses):
+  model.train(samples, cv2.ml.ROW_SAMPLE, responses)
+  return model
 
-    def train(self, samples, responses):
-        self.model.train(samples, cv2.ml.ROW_SAMPLE, responses)
+def svmPredict(model, samples):
+  return model.predict(samples)[1].ravel()
 
-    def predict(self, samples):
-
-        return self.model.predict(samples)[1].ravel()
-
-
-def evaluate_model(model, digits, samples, labels):
-    resp = model.predict(samples)
-    err = (labels != resp).mean()
-    print('Accuracy: %.2f %%' % ((1 - err)*100))
+def svmEvaluate(model, digits, samples, labels):
+    predictions = svmPredict(model, samples)
+    accuracy = (labels == predictions).mean()
+    print('Percentage Accuracy: %.2f %%' % (accuracy*100))
 
     confusion = np.zeros((10, 10), np.int32)
-    for i, j in zip(labels, resp):
+    for i, j in zip(labels, predictions):
         confusion[int(i), int(j)] += 1
     print('confusion matrix:')
     print(confusion)
 
     vis = []
-    for img, flag in zip(digits, resp == labels):
+    for img, flag in zip(digits, predictions == labels):
         img = cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)
         if not flag:
             img[...,:2] = 0
         
         vis.append(img)
     return mosaic(25, vis)
+
 
 def preprocess_simple(digits):
     return np.float32(digits).reshape(-1, SZ*SZ) / 255.0
@@ -134,18 +129,13 @@ if __name__ == '__main__':
     
     
     print('Training SVM model ...')
-    model = SVM()
-    model.train(hog_descriptors_train, labels_train)
-
-    print('Saving SVM model ...')
-    model.save('digits_svm.dat')
-
+    model = svmInit()
+    svmTrain(model, hog_descriptors_train, labels_train)
 
     print('Evaluating model ... ')
-    vis = evaluate_model(model, digits_test, hog_descriptors_test, labels_test)
+    vis = svmEvaluate(model, digits_test, hog_descriptors_test, labels_test)
+
     cv2.imwrite("digits-classification.jpg",vis)
     cv2.imshow("Vis", vis)
     cv2.waitKey(0)
-
-
-
+    cv2.destroyAllWindows()
