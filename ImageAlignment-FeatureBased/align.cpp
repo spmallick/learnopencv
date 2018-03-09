@@ -48,8 +48,7 @@ void alignImages(Mat &im1, Mat &im2, Mat &im1Reg, Mat &h)
   
   
   // Extract location of good matches
-  std::vector<Point2f> points1;
-  std::vector<Point2f> points2;
+  std::vector<Point2f> points1, points2;
   
   for( size_t i = 0; i < matches.size(); i++ )
   {
@@ -60,7 +59,7 @@ void alignImages(Mat &im1, Mat &im2, Mat &im1Reg, Mat &h)
   // Find homography
   h = findHomography( points1, points2, RANSAC );
   
-  // Use homography
+  // Use homography to warp image
   warpPerspective(im1, im1Reg, h, im2.size());
   
 }
@@ -68,11 +67,32 @@ void alignImages(Mat &im1, Mat &im2, Mat &im1Reg, Mat &h)
 
 int main(int argc, char **argv)
 {
-  Mat imReference = imread("form.jpg");
-  Mat im = imread("scanned-form.jpg");
+  // Read reference image
+  string refFilename("form.jpg"); 
+  cout << "Reading reference image : " << refFilename << endl; 
+  Mat imReference = imread(refFilename);
+
+
+  // Read image to be aligned
+  string imFilename("scanned-form.jpg");
+  cout << "Reading image to align : " << imFilename << endl; 
+  Mat im = imread(imFilename);
+
+  
+  // Registered image will be resotred in imReg. 
+  // The estimated homography will be stored in h. 
   Mat imReg, h;
   
+  // Align images
+  cout << "Aligning images ..." << endl; 
   alignImages(im, imReference, imReg, h);
-  imwrite("aligned.jpg", imReg);
+
+  // Write aligned image to disk. 
+  string outFilename("aligned.jpg");
+  cout << "Saving aligned image : " << outFilename << endl; 
+  imwrite(outFilename, imReg);
+
+  // Print estimated homography
+  cout << "Estimated homography : \n" << h << endl; 
   
 }
