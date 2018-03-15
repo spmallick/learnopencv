@@ -1,3 +1,4 @@
+from __future__ import print_function
 import cv2
 import numpy as np
 
@@ -51,9 +52,27 @@ def alignImages(im1, im2):
 
 
 if __name__ == '__main__':
-  im = cv2.imread("scanned-form.jpg", cv2.IMREAD_COLOR)
-  imReference = cv2.imread("form.jpg", cv2.IMREAD_COLOR)
   
-  imReg, h = alignImages(im, imReference)
-  cv2.imwrite("aligned.jpg", imReg)
+  # Read reference image
+  refFilename = "form.jpg"
+  print("Reading reference image : ", refFilename)
+  imReference = cv2.imread(refFilename, cv2.IMREAD_COLOR)
 
+  # Read image to be aligned
+  imFilename = "scanned-form.jpg"
+  print("Reading image to align : ", imFilename);  
+  im = cv2.imread(imFilename, cv2.IMREAD_COLOR)
+  
+  print("Aligning images ...")
+  # Registered image will be resotred in imReg. 
+  # The estimated homography will be stored in h. 
+  imReg, h = alignImages(im, imReference)
+  
+  # Write aligned image to disk. 
+  outFilename = "aligned.jpg"
+  print("Saving aligned image : ", outFilename); 
+  cv2.imwrite(outFilename, imReg)
+
+  # Print estimated homography
+  print("Estimated homography : \n",  h)
+  

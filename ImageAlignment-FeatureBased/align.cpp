@@ -6,7 +6,7 @@ using namespace std;
 using namespace cv;
 using namespace cv::xfeatures2d;
 
-const int MAX_MATCHES = 500;
+const int MAX_FEATURES = 500;
 const float GOOD_MATCH_PERCENT = 0.15f;
 
 
@@ -24,7 +24,7 @@ void alignImages(Mat &im1, Mat &im2, Mat &im1Reg, Mat &h)
   Mat descriptors1, descriptors2;
   
   // Detect ORB features and compute descriptors.
-  Ptr<Feature2D> orb = ORB::create(MAX_MATCHES);
+  Ptr<Feature2D> orb = ORB::create(MAX_FEATURES);
   orb->detectAndCompute(im1Gray, Mat(), keypoints1, descriptors1);
   orb->detectAndCompute(im2Gray, Mat(), keypoints2, descriptors2);
   
@@ -48,8 +48,7 @@ void alignImages(Mat &im1, Mat &im2, Mat &im1Reg, Mat &h)
   
   
   // Extract location of good matches
-  std::vector<Point2f> points1;
-  std::vector<Point2f> points2;
+  std::vector<Point2f> points1, points2;
   
   for( size_t i = 0; i < matches.size(); i++ )
   {
@@ -60,7 +59,7 @@ void alignImages(Mat &im1, Mat &im2, Mat &im1Reg, Mat &h)
   // Find homography
   h = findHomography( points1, points2, RANSAC );
   
-  // Use homography
+  // Use homography to warp image
   warpPerspective(im1, im1Reg, h, im2.size());
   
 }
@@ -68,11 +67,32 @@ void alignImages(Mat &im1, Mat &im2, Mat &im1Reg, Mat &h)
 
 int main(int argc, char **argv)
 {
-  Mat imReference = imread("form.jpg");
-  Mat im = imread("scanned-form.jpg");
+  // Read reference image
+  string refFilename("form.jpg"); 
+  cout << "Reading reference image : " << refFilename << endl; 
+  Mat imReference = imread(refFilename);
+
+
+  // Read image to be aligned
+  string imFilename("scanned-form.jpg");
+  cout << "Reading image to align : " << imFilename << endl; 
+  Mat im = imread(imFilename);
+
+  
+  // Registered image will be resotred in imReg. 
+  // The estimated homography will be stored in h. 
   Mat imReg, h;
   
+  // Align images
+  cout << "Aligning images ..." << endl; 
   alignImages(im, imReference, imReg, h);
-  imwrite("aligned.jpg", imReg);
+
+  // Write aligned image to disk. 
+  string outFilename("aligned.jpg");
+  cout << "Saving aligned image : " << outFilename << endl; 
+  imwrite(outFilename, imReg);
+
+  // Print estimated homography
+  cout << "Estimated homography : \n" << h << endl; 
   
 }
