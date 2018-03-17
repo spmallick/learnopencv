@@ -1,5 +1,6 @@
 #include <opencv2/opencv.hpp>
 #include <opencv2/face.hpp>
+#include "renderFace.hpp"
 
 #include <vector>
 #include <string>
@@ -8,62 +9,84 @@ using namespace std;
 using namespace cv;
 using namespace cv::face;
 
-void renderFace(Mat &im, vector<Rect> &faces, vector< vector<Point2f> > &landmarks)
-{
-  for(int i = 0; i < faces.size(); i++)
-  {
-    for(int k = 0; k < landmarks[i].size(); k++)
-    {
-      cv::circle(im,landmarks[i][k],3,cv::Scalar(0,0,255),FILLED);
-    }
-  }
-  
-}
 
 static bool detectFace(InputArray image, OutputArray faces, CascadeClassifier *cascade)
 {
+    // Convert image to grayscale
     Mat imGray;
     cvtColor(image, imGray, COLOR_BGR2GRAY);
     
-    vector<Rect> faces_;
-    cascade->detectMultiScale(imGray, faces_, 1.4, 2, CASCADE_SCALE_IMAGE, Size(100, 100));
-    Mat(faces_).copyTo(faces);
+    // Variable for storing face rectangles
+    vector<Rect> facesRects;
+
+    // Run OpenCV HAAR based face detector
+    cascade->detectMultiScale(imGray, facesRects, 1.5, 5, CASCADE_SCALE_IMAGE, Size(100, 100));
+    
+    // Copy results to output array 
+    Mat(facesRects).copyTo(faces);
     return true;
 }
 
 int main(int argc,char** argv)
 {
-    string faceDetectorFilename("haarcascade_frontalface_alt2.xml"); 
-    string landmarkDetectorFilename("lbfmodel.yaml");
-  
-    CascadeClassifier faceDetector(faceDetectorFilename);
-  
+    // Load Face Detector
+    CascadeClassifier faceDetector("haarcascade_frontalface_alt2.xml");
+
+    // Create an instance of FacemarkLBF. 
+    // The optional argument params can be used to read the parameters
+    // of the trained model 
     FacemarkLBF::Params params;
     Ptr<Facemark> facemark = FacemarkLBF::create(params);
 
+    // Set face detector 
     facemark->setFaceDetector((FN_FaceDetector)detectFace, &faceDetector);
-    facemark->loadModel(landmarkDetectorFilename);
+    
+    // Load landmark detector
+    facemark->loadModel("lbfmodel.yaml");
   
-    Mat im;
+    // Set up webcam for video capture
     VideoCapture cam(0);
+    
+    // Variable to store a video frame
+    Mat frame;
+
+    // Variable to store detected face rectangles
     vector<Rect> faces;
+    
     int count = 0; 
-    while(cam.read(im))
+
+    // Read a frame
+    while(cam.read(frame))
     {
-      
+      // Run face detection every 10th frame. 
+      // This is done for speedup
       if (count % 10 == 0)
       {
-        facemark->getFaces(im,faces);
+        faces.clear();
+        facemark->getFaces(frame,faces);
         count = 0; 
       }
       
+      // Variable for landmarks. 
+      // Landmarks for one face is a vector of points
+      // There can be more than one face. Hence, we 
+      // use a vector of vector of points. 
       vector< vector<Point2f> > landmarks;
-      bool success = facemark->fit(im,faces,landmarks);
+
+      // Run landmark detector
+      bool success = facemark->fit(frame,faces,landmarks);
       if(success)
       {
-        renderFace(im, faces, landmarks);
-        imshow("Facial Landmark Detection",im);
+        // If successful, render the landmarks on the face
+        for(int i = 0; i < landmarks.size(); i++)
+        {
+          renderFace(frame, landmarks[i]);
+        }
+        // Display results 
+        imshow("Facial Landmark Detection", frame);
         int key = waitKey(1);
+
+        // Exit loop if ESC is pressed
         if (key == 27)
         {
           break;
