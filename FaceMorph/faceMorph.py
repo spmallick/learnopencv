@@ -19,10 +19,10 @@ def readPoints(path) :
 # Apply affine transform calculated using srcTri and dstTri to src and
 # output an image of size.
 def applyAffineTransform(src, srcTri, dstTri, size) :
-    
+
     # Given a pair of triangles, find the affine transform.
     warpMat = cv2.getAffineTransform( np.float32(srcTri), np.float32(dstTri) )
-    
+
     # Apply the Affine Transform just found to the src image
     dst = cv2.warpAffine( src, warpMat, (size[0], size[1]), None, flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_REFLECT_101 )
 
@@ -44,7 +44,7 @@ def morphTriangle(img1, img2, img, t1, t2, t, alpha) :
     tRect = []
 
 
-    for i in xrange(0, 3):
+    for i in range(0, 3):
         tRect.append(((t[i][0] - r[0]),(t[i][1] - r[1])))
         t1Rect.append(((t1[i][0] - r1[0]),(t1[i][1] - r1[1])))
         t2Rect.append(((t2[i][0] - r2[0]),(t2[i][1] - r2[1])))
@@ -74,11 +74,11 @@ if __name__ == '__main__' :
     filename1 = 'hillary_clinton.jpg'
     filename2 = 'ted_cruz.jpg'
     alpha = 0.5
-    
+
     # Read images
     img1 = cv2.imread(filename1);
     img2 = cv2.imread(filename2);
-    
+
     # Convert Mat to float data type
     img1 = np.float32(img1)
     img2 = np.float32(img2)
@@ -89,7 +89,7 @@ if __name__ == '__main__' :
     points = [];
 
     # Compute weighted average point coordinates
-    for i in xrange(0, len(points1)):
+    for i in range(0, len(points1)):
         x = ( 1 - alpha ) * points1[i][0] + alpha * points2[i][0]
         y = ( 1 - alpha ) * points1[i][1] + alpha * points2[i][1]
         points.append((x,y))
@@ -102,11 +102,11 @@ if __name__ == '__main__' :
     with open("tri.txt") as file :
         for line in file :
             x,y,z = line.split()
-            
+
             x = int(x)
             y = int(y)
             z = int(z)
-            
+
             t1 = [points1[x], points1[y], points1[z]]
             t2 = [points2[x], points2[y], points2[z]]
             t = [ points[x], points[y], points[z] ]
@@ -118,3 +118,4 @@ if __name__ == '__main__' :
     # Display Result
     cv2.imshow("Morphed Face", np.uint8(imgMorph))
     cv2.waitKey(0)
+    cv2.destroyAllWindows()

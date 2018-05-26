@@ -196,5 +196,4 @@ if __name__ == '__main__' :
 
     cv2.imshow("Face Swapped", output)
     cv2.waitKey(0)
-
     cv2.destroyAllWindows()
