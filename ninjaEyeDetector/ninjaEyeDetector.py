@@ -48,14 +48,10 @@ while(True):
 
     # Display the resulting frame
     cv2.imshow('Ninja Eye Detector',frame)
-
     # Press ESC on keyboard to stop tracking
-    key = cv2.waitKey(1)
-
     if cv2.waitKey(2) & 0xFF == ord('q'):
         break
 # Release VideoCapture object
 cap.release()
-
 # Closes all the frames
 cv2.destroyAllWindows()
