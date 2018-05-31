@@ -20,7 +20,7 @@ def display(im, decodedObjects):
 
   # Loop over all decoded objects
   for decodedObject in decodedObjects: 
-    points = decodedObject.location
+    points = decodedObject.polygon
 
     # If the points do not form a quad, find convex hull
     if len(points) > 4 : 
