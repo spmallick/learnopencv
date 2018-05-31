@@ -1,5 +1,5 @@
 from __future__ import print_function
-import pyzbar.pyzbar as pyzbar
+from pyzbar import pyzbar
 import numpy as np
 import cv2
 
@@ -20,7 +20,7 @@ def display(im, decodedObjects):
 
   # Loop over all decoded objects
   for decodedObject in decodedObjects: 
-    points = decodedObject.location
+    points = decodedObject.polygon
 
     # If the points do not form a quad, find convex hull
     if len(points) > 4 : 
@@ -34,7 +34,7 @@ def display(im, decodedObjects):
 
     # Draw the convext hull
     for j in range(0,n):
-      cv2.line(im, hull[j], hull[ (j+1) % n], (255,0,0), 3)
+      cv2.line(im, hull[j], hull[ (j+1) % n], (255,0,0), 7)
 
   # Display results 
   cv2.imshow("Results", im);
