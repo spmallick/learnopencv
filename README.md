@@ -5,6 +5,15 @@ Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenC
 
 | Blog Post        | |
 | ------------- |:-------------|
+|[Deep Learning based Text Recognition (OCR) using Tesseract and OpenCV](https://www.learnopencv.com/deep-learning-based-text-recognition-ocr-using-tesseract-and-opencv/)| [Code](https://github.com/spmallick/learnopencv/tree/master/OCR)|
+|[Deep Learning based Human Pose Estimation using OpenCV ( C++ / Python )](https://www.learnopencv.com/deep-learning-based-human-pose-estimation-using-opencv-cpp-python/)|[ Code](https://github.com/spmallick/learnopencv/tree/master/OpenPose)|
+|[Number of Parameters and Tensor Sizes in a Convolutional Neural Network (CNN)](https://www.learnopencv.com/number-of-parameters-and-tensor-sizes-in-convolutional-neural-network/)| |
+|[How to convert your OpenCV C++ code into a Python module](https://www.learnopencv.com/how-to-convert-your-opencv-c-code-into-a-python-module/)|[ Code](https://github.com/spmallick/learnopencv/tree/master/pymodule)|
+|[CV4Faces : Best Project Award 2018](https://www.learnopencv.com/cv4faces-best-project-award-2018/)| |
+|[Facemark : Facial Landmark Detection using OpenCV](https://www.learnopencv.com/facemark-facial-landmark-detection-using-opencv/)|[ Code](https://github.com/spmallick/learnopencv/tree/master/FacialLandmarkDetection)|
+|[Image Alignment (Feature Based) using OpenCV (C++/Python)](https://www.learnopencv.com/image-alignment-feature-based-using-opencv-c-python/)| [Code](https://github.com/spmallick/learnopencv/tree/master/ImageAlignment-FeatureBased)|
+|[Barcode and QR code Scanner using ZBar and OpenCV](https://www.learnopencv.com/barcode-and-qr-code-scanner-using-zbar-and-opencv/)| [Code](https://github.com/spmallick/learnopencv/tree/master/barcode-QRcodeScanner)|
+|[Keras Tutorial : Fine-tuning using pre-trained models](https://www.learnopencv.com/keras-tutorial-fine-tuning-using-pre-trained-models/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Keras-Fine-Tuning)|
 |[OpenCV Transparent API](https://www.learnopencv.com/opencv-transparent-api/)| |
 |[Face Reconstruction using EigenFaces (C++/Python)](https://www.learnopencv.com/face-reconstruction-using-eigenfaces-cpp-python/)|[Code](https://github.com/spmallick/learnopencv/tree/master/ReconstructFaceUsingEigenFaces) |
 |[Eigenface using OpenCV (C++/Python)](https://www.learnopencv.com/eigenface-using-opencv-c-python/)| [Code](https://github.com/spmallick/learnopencv/tree/master/EigenFace)|
