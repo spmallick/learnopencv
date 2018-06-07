@@ -1,74 +1,66 @@
 #include <opencv2/opencv.hpp>
 #include <opencv2/face.hpp>
+#include "drawLandmarks.hpp"
 
-#include <vector>
-#include <string>
 
 using namespace std;
 using namespace cv;
 using namespace cv::face;
 
-void renderFace(Mat &im, vector<Rect> &faces, vector< vector<Point2f> > &landmarks)
-{
-  for(int i = 0; i < faces.size(); i++)
-  {
-    for(int k = 0; k < landmarks[i].size(); k++)
-    {
-      cv::circle(im,landmarks[i][k],3,cv::Scalar(0,0,255),FILLED);
-    }
-  }
-  
-}
-
-static bool detectFace(InputArray image, OutputArray faces, CascadeClassifier *cascade)
-{
-    Mat imGray;
-    cvtColor(image, imGray, COLOR_BGR2GRAY);
-    
-    vector<Rect> faces_;
-    cascade->detectMultiScale(imGray, faces_, 1.4, 2, CASCADE_SCALE_IMAGE, Size(100, 100));
-    Mat(faces_).copyTo(faces);
-    return true;
-}
 
 int main(int argc,char** argv)
 {
-    string faceDetectorFilename("haarcascade_frontalface_alt2.xml"); 
-    string landmarkDetectorFilename("lbfmodel.yaml");
-  
-    CascadeClassifier faceDetector(faceDetectorFilename);
-  
-    FacemarkLBF::Params params;
-    Ptr<Facemark> facemark = FacemarkLBF::create(params);
+    // Load Face Detector
+    CascadeClassifier faceDetector("haarcascade_frontalface_alt2.xml");
 
-    facemark->setFaceDetector((FN_FaceDetector)detectFace, &faceDetector);
-    facemark->loadModel(landmarkDetectorFilename);
-  
-    Mat im;
+    // Create an instance of Facemark
+    Ptr<Facemark> facemark = FacemarkLBF::create();
+
+    // Load landmark detector
+    facemark->loadModel("lbfmodel.yaml");
+
+    // Set up webcam for video capture
     VideoCapture cam(0);
-    vector<Rect> faces;
-    int count = 0; 
-    while(cam.read(im))
+    
+    // Variable to store a video frame and its grayscale 
+    Mat frame, gray;
+    
+    // Read a frame
+    while(cam.read(frame))
     {
       
-      if (count % 10 == 0)
-      {
-        facemark->getFaces(im,faces);
-        count = 0; 
-      }
+      // Find face
+      vector<Rect> faces;
+      // Convert frame to grayscale because
+      // faceDetector requires grayscale image.
+      cvtColor(frame, gray, COLOR_BGR2GRAY);
+
+      // Detect faces
+      faceDetector.detectMultiScale(gray, faces);
       
+      // Variable for landmarks. 
+      // Landmarks for one face is a vector of points
+      // There can be more than one face in the image. Hence, we 
+      // use a vector of vector of points. 
       vector< vector<Point2f> > landmarks;
-      bool success = facemark->fit(im,faces,landmarks);
+      
+      // Run landmark detector
+      bool success = facemark->fit(frame,faces,landmarks);
+      
       if(success)
       {
-        renderFace(im, faces, landmarks);
-        imshow("Facial Landmark Detection",im);
-        int key = waitKey(1);
-        if (key == 27)
+        // If successful, render the landmarks on the face
+        for(int i = 0; i < landmarks.size(); i++)
         {
-          break;
+          drawLandmarks(frame, landmarks[i]);
         }
       }
+
+      // Display results 
+      imshow("Facial Landmark Detection", frame);
+      // Exit loop if ESC is pressed
+      if (waitKey(1) == 27) break;
+      
     }
     return 0;
 }
