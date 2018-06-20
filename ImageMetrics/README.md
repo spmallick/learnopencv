@@ -1,6 +1,4 @@
-Please see the following [blog post](<link_goes_here>) for more details about this code
-
-[Image Quality Assessment: BRISQUE, a No-Reference Metric](<link_goes_here>)
+Please see the following [blog post](https://www.learnopencv.com/image-quality-assessment-brisque/) for more details about this code
 
 ## Installation Instructions
 **Python 2.x LIBSVM Installation**
@@ -20,12 +18,12 @@ For Python 3.x :
 
 ## Usage 
 **Python 2.x**
-python2 brisque_final.py <image_path>
+`python2 brisquequality.py <image_path>`
 
 **Python 3.x** 
-cd Python/libsvm/python/
-python3 brisque_final.py <image_path>
+`cd Python/libsvm/python/`
+`python3 brisquequality.py <image_path>`
 
 **C++**
 `cd C++/`
-`./brisquerevised -im <image_path>`
+`./brisquequality <image_path>`
