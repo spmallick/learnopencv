@@ -6,31 +6,24 @@ Please see the following [blog post](https://www.learnopencv.com/image-quality-a
 
 **Python 3.x LIVSVM Installation and C++ LIBSVM Installation**
 For C++ : 
-`cd C++/libsvm/`
-
-`cmake .`
-
-`make`
+cd C++/libsvm/
+cmake .
+make
 
 For Python 3.x :
-`cd Python/libsvm/`
-
-`make`
-
-`cd python`
-
-`make`
+cd Python/libsvm/
+make
+cd python
+make
 
 ## Usage 
 **Python 2.x**
-`python2 brisquequality.py <image_path>`
+python2 brisquequality.py <image_path>
 
 **Python 3.x** 
-`cd Python/libsvm/python/`
-
-`python3 brisquequality.py <image_path>`
+cd Python/libsvm/python/
+python3 brisquequality.py <image_path>
 
 **C++**
-`cd C++/`
-
-`./brisquequality <image_path>`
+cd C++/
+./brisquequality <image_path>
