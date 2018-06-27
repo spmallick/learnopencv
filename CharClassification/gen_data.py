@@ -9,7 +9,7 @@ PATH_TO_FONT_FILES = 'fonts/'
 OUTPUT_DIR = 'output/'
 NUM_IMAGES_PER_CLASS = 10
 
-
+# Get all files from directory
 def get_files_from_dir(dirname):
   list_files = (os.listdir(dirname))
   list_files = [dirname + x for x in list_files]
@@ -119,7 +119,7 @@ for i in range(0,len(char_list)):
     # Get random blur amount
     blur = random.randint(0,3)
     
-    #
+    # Get random noise amount
     noise = random.randint(0,5)
     
     # Add random shifts from the center
