@@ -14,7 +14,7 @@ Create synthetic data using ImageMagick. We have given an intuition behind creat
 
 `python3 generate-images.py` 
 
-The script first generates two directories *light_background_crops* and *dark_background_crops* containing 32x32 backgrounds crops. It then adds text and other artifacts like blur/noise/distortion to the backgrounds. To regenerate all data, delete *light_background_crops* and *dark_background_crops*. 
+The script first generates two directories *light_background_crops* and *dark_background_crops* containing 32x32 backgrounds crops. It then adds text and other artifacts like blur/noise/distortion to the backgrounds. To regenerate all data, delete *light_background_crops* and *dark_background_crops*. To generate training images, open the script and set OUTPUT_DIR = 'train/' and NUM_IMAGES_PER_CLASS = 800. Similarly, to generate test images, set OUTPUT_DIR = 'test/' and NUM_IMAGES_PER_CLASS = 200. 
 
 **Step 4:** 
 
