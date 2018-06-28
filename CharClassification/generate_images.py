@@ -45,9 +45,6 @@ def generate_crops(file_list, dirname):
       create_random_crops(f, 10, dirname)
 
 
-
-
-
 # List of characters
 char_list = []
 for i in range(65, 65+26):
@@ -139,4 +136,3 @@ for i in range(0,len(char_list)):
     # Uncomment line below to see what command is executed.
     # print(command)
     os.system(str(command))
-			
