@@ -1,14 +1,27 @@
-## Character Classification (of Synthetic Dataset) using Keras (CNN)
+## Character Classification (of Synthetic Dataset) using Keras (modified LeNet)
 
-1. `python3 generate-images.py `
+**Step 1:**
 
-This generates the synthetic dataset in this and this folder. 
+Download backgrounds and put the light and dark backgrounds separately. We'll be using them for creating synthetic dataset. We have uploaded sample backgrounds in light_backgrounds and dark_backgrounds for reference. 
 
-2. `python3 train_model.py`
+**Step 2:**
 
-This trains the model on the given dataset. 
+Download fonts from [here](https://fonts.google.com/). These fonts will be used for randomly selected font-type while creating synthetic dataset. 
 
-3. `python3 make_predictions.py <image_path>`
+**Step 3:**
 
-This predicts on the test images. Note: You have to specify your test image as an argument. 
+Create synthetic data using ImageMagick. We have given an intuition behind creating synthetic data, in our blog. This can be done with following command:
 
+`python3 generate-images.py` 
+
+**Step 4:** 
+
+Training the model on the given dataset. A modified LeNet structure has been used to train our model, using Keras. This can be done with following command:
+
+`python3 train_model.py`
+
+**Step 5:**
+
+In order to predict the digit or character in an image, execute the following command. Give the test image path as the argument. 
+
+`python3 make_predictions.py <image_path>`
