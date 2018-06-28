@@ -14,6 +14,8 @@ Create synthetic data using ImageMagick. We have given an intuition behind creat
 
 `python3 generate-images.py` 
 
+The script first generates two directories *light_background_crops* and *dark_background_crops* containing 32x32 backgrounds crops. It then adds text and other artifacts like blur/noise/distortion to the backgrounds. To regenerate all data, delete *light_background_crops* and *dark_background_crops*. 
+
 **Step 4:** 
 
 Training the model on the given dataset. A modified LeNet structure has been used to train our model, using Keras. This can be done with following command:
