@@ -1,4 +1,4 @@
-## Character Classification (of Synthetic Dataset) using Keras (CNN)
+## Character Classification (of Synthetic Dataset) using Keras (modified LeNet)
 
 **Step 1:**
 
