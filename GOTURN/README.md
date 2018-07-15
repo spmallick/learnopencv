@@ -1,4 +1,4 @@
-#OpenCV GOTURN Tracker Example (Python/C++)
+# OpenCV GOTURN Tracker Example (Python/C++)
 
 This example shows how to use GOTURN Tracker in OpenCV in Python and C++. Before running the code, make sure you have the following caffe model files available in the same folder as the codes:
 
@@ -50,5 +50,5 @@ Run `python objectTracking.py` in command line. This will display the `chaplin.m
 
 ### C++
 
-Run `g++ objectTracking.cpp -o objectTracking `pkg-config opencv --cflags --libs` in command line to compile the code.
+Run ``g++ objectTracking.cpp -o objectTracking `pkg-config opencv --cflags --libs`` in command line to compile the code.
 After compilation, use `./objectTracking` in command line to run the code.
