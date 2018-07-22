@@ -1,22 +1,17 @@
+/*
+Copyright 2018 Satya Mallick (LearnOpenCV.com)
+*/ 
+
 #include <opencv2/opencv.hpp>
 #include <opencv2/tracking.hpp>
-#include <opencv2/core/ocl.hpp>
- 
+
 using namespace cv;
 using namespace std;
  
-// Convert to string
-#define SSTR( x ) static_cast< std::ostringstream & >( \
-( std::ostringstream() << std::dec << x ) ).str()
- 
 int main(int argc, char **argv)
 {
-    // Create a tracker
-    string trackerType = "GOTURN";
- 
-    Ptr<Tracker> tracker;
- 
-    tracker = TrackerGOTURN::create();
+    // Create tracker
+    Ptr<Tracker> tracker = TrackerGOTURN::create();
 
     // Read video
     VideoCapture video("chaplin.mp4");
@@ -25,24 +20,24 @@ int main(int argc, char **argv)
     if(!video.isOpened())
     {
         cout << "Could not read video file" << endl;
-        return 1;
-         
+        return EXIT_FAILURE; 
     }
      
     // Read first frame
     Mat frame;
-    bool ok = video.read(frame);
-     
+    if (!video.read(frame))
+    {
+        cout << "Cannot read video file" << endl; 
+        return EXIT_FAILURE; 
+    }
+    
     // Define initial boundibg box
     Rect2d bbox(287, 23, 86, 320);
      
     // Uncomment the line below to select a different bounding box
     //bbox = selectROI(frame, false);
- 
-    // Display bounding box.
-    rectangle(frame, bbox, Scalar( 255, 0, 0 ), 2, 1 );
-    imshow("Tracking", frame);
-     
+  
+    // Initialize tracker with first frame and bounding box
     tracker->init(frame, bbox);
      
     while(video.read(frame))
@@ -68,20 +63,17 @@ int main(int argc, char **argv)
         }
          
         // Display tracker type on frame
-        putText(frame, trackerType + " Tracker", Point(100,20), FONT_HERSHEY_SIMPLEX, 0.75, Scalar(50,170,50),2);
+        putText(frame, "GOTURN Tracker", Point(100,20), FONT_HERSHEY_SIMPLEX, 0.75, Scalar(50,170,50),2);
          
         // Display FPS on frame
-        putText(frame, "FPS : " + SSTR(int(fps)), Point(100,50), FONT_HERSHEY_SIMPLEX, 0.75, Scalar(50,170,50), 2);
+        putText(frame, "FPS : " + to_string(int(fps)), Point(100,50), FONT_HERSHEY_SIMPLEX, 0.75, Scalar(50,170,50), 2);
  
         // Display frame.
         imshow("Tracking", frame);
          
         // Exit if ESC pressed.
-        int k = waitKey(1);
-        if(k == 27)
-        {
-            break;
-        }
- 
+        if(waitKey(1) == 27) break;
     }
+
+    return EXIT_SUCCESS; 
 }

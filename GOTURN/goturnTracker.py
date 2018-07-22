@@ -1,9 +1,18 @@
+# Copyright 2018 Satya Mallick (LearnOpenCV.com)
+
 # Import modules
-import cv2
-import sys
+import cv2, sys, os
+
+if  not (os.path.isfile('goturn.caffemodel') and os.path.isfile('goturn.prototxt')):
+    errorMsg = '''
+    Could not find GOTURN model in current directory.
+    Please ensure goturn.caffemodel and goturn.prototxt are in the current directory
+    '''
+
+    print(errorMsg)
+    sys.exit()
 
 # Create tracker
-tracker_type="GOTURN"
 tracker = cv2.TrackerGOTURN_create()   
 
 # Read video
@@ -56,7 +65,7 @@ while True:
         cv2.putText(frame, "Tracking failure detected", (100,80), cv2.FONT_HERSHEY_SIMPLEX, 0.75,(0,0,255),2)
 
     # Display tracker type on frame
-    cv2.putText(frame, tracker_type + " Tracker", (100,20), cv2.FONT_HERSHEY_SIMPLEX, 0.75, (50,170,50),2);
+    cv2.putText(frame, "GOTURN Tracker", (100,20), cv2.FONT_HERSHEY_SIMPLEX, 0.75, (50,170,50),2);
 
     # Display FPS on frame
     cv2.putText(frame, "FPS : " + str(int(fps)), (100,50), cv2.FONT_HERSHEY_SIMPLEX, 0.75, (50,170,50), 2);
