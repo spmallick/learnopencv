@@ -1,3 +1,16 @@
+import cv2
+import numpy as np
+import argparse
+
+# create object to pass argument
+arg_parse = argparse.ArgumentParser()
+arg_parse.add_argument("-i", "--ipimage", required=True,
+	help="input image path")
+args = vars(arg_parse.parse_args())
+
+# read image through command line 
+img = cv2.imread(args["ipimage"])
+
 # convert image to grayscale image
 gray_image = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
  
