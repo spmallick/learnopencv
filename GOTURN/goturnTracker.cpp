@@ -7,6 +7,9 @@ Copyright 2018 Satya Mallick (LearnOpenCV.com)
 
 using namespace cv;
 using namespace std;
+
+#define SSTR( x ) static_cast< std::ostringstream & >( \
+( std::ostringstream() << std::dec << x ) ).str()
  
 int main(int argc, char **argv)
 {
@@ -66,7 +69,7 @@ int main(int argc, char **argv)
         putText(frame, "GOTURN Tracker", Point(100,20), FONT_HERSHEY_SIMPLEX, 0.75, Scalar(50,170,50),2);
          
         // Display FPS on frame
-        putText(frame, "FPS : " + to_string(int(fps)), Point(100,50), FONT_HERSHEY_SIMPLEX, 0.75, Scalar(50,170,50), 2);
+        putText(frame, "FPS : " + SSTR(int(fps)), Point(100,50), FONT_HERSHEY_SIMPLEX, 0.75, Scalar(50,170,50), 2);
  
         // Display frame.
         imshow("Tracking", frame);

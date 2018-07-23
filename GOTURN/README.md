@@ -46,9 +46,9 @@ Click “Extract All Files” in the Folder Tasks pane on the right side of the 
 
 ### Python
 
-Run `python objectTracking.py` in command line. This will display the `chaplin.mp4` video with a bounding box around Charlie Chaplin.
+Run `python goturnTracker.py` in command line. This will display the `chaplin.mp4` video with a bounding box around Charlie Chaplin.
 
 ### C++
 
-Run ``g++ objectTracking.cpp -o objectTracking `pkg-config opencv --cflags --libs`` in command line to compile the code.
-After compilation, use `./objectTracking` in command line to run the code.
+Run ``g++ goturnTracker.cpp -o goturnTracker `pkg-config opencv --cflags --libs`` in command line to compile the code.
+After compilation, use `./goturnTracker` in command line to run the code.
