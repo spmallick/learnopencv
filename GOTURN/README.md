@@ -5,13 +5,16 @@ This example shows how to use GOTURN Tracker in OpenCV in Python and C++. Before
 1) `goturn.caffemodel` file
 2) `goturn.prototxt` file
 
-## Downloading model files
-`goturn.caffemodel` and `goturn.prototxt` file can be downloaded from ![opencv_extra](https://github.com/opencv/opencv_extra/tree/c4219d5eb3105ed8e634278fad312a1a8d2c182d/testdata/tracking).
+## Download model files ( EASY WAY ) 
+`goturn.caffemodel` and `goturn.prototxt` file can be downloaded from my [Dropbox Link](https://www.dropbox.com/sh/77frbrkmf9ojfm6/AACgY7-wSfj-LIyYcOgUSZ0Ua?dl=0)
+
+## Download model files ( OFFICIAL DIFFICULT WAY ) 
+`goturn.caffemodel` and `goturn.prototxt` file can be downloaded from [opencv_extra](https://github.com/opencv/opencv_extra/tree/c4219d5eb3105ed8e634278fad312a1a8d2c182d/testdata/tracking).
 To use the `goturn.caffemodel` file, first follow the instructions given below to unzip the split files.
 
-## Instructions to unzip `goturn.caffemodel` split zip files
+### Instructions to unzip `goturn.caffemodel` split zip files
 
-### Windows
+#### Windows
 
 1) Click “Start” if you have Windows XP or later versions and choose “Programs,” “Accessories” and “Windows Explorer.” The Windows Explorer window appears.
  
@@ -28,7 +31,7 @@ Click “Extract All Files” in the Folder Tasks pane on the right side of the 
 
 7) Copy/cut the unzipped `goturn.caffemodel` file to the directory containing the codes.
 
-### Linux
+#### Linux
 
 1) Use `terminal` to navigate to the folder containing the split zip files.
 
@@ -42,7 +45,7 @@ Click “Extract All Files” in the Folder Tasks pane on the right side of the 
 
 4) Move the unzipped `goturn.caffemodel` to the directory containing the codes.
 
-## Instructions to run the codes
+## Instructions to run the code
 
 ### Python
 
@@ -50,5 +53,5 @@ Run `python goturnTracker.py` in command line. This will display the `chaplin.mp
 
 ### C++
 
-Run ``g++ goturnTracker.cpp -o goturnTracker `pkg-config opencv --cflags --libs`` in command line to compile the code.
+Run ``g++ goturnTracker.cpp -o goturnTracker `pkg-config opencv --cflags --libs` `` in command line to compile the code.
 After compilation, use `./goturnTracker` in command line to run the code.
