@@ -1,10 +1,10 @@
-There are three types of data:
+There are **three types** of data:
 
 1. Linear Data **without** noise.
 2. Linear Data **with** noise.
 3. Non-Linear Data **with** noise.
 
-Steps:
+**Steps:**
 
 1. `cd <folder_name/classification>`
 2. Run python file: `python3 <filename.py>`
@@ -12,7 +12,7 @@ Steps:
 
 The data is in every folder. (Left and Right points)
 
-Data Filenames:
+**Data Filenames:**
 
 1. `points_leftside.txt` : Points of one class.
 2. `points_rightside.txt` : Point of other class.
