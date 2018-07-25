@@ -27,3 +27,4 @@ clf_predictions = clf.predict(X_test)
 
 # Plot decision function on training and test data
 plot_decision_function(X_train, y_train, X_test, y_test, clf)
+

@@ -5,6 +5,10 @@ Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenC
 
 | Blog Post        | |
 | ------------- |:-------------|
+|[GOTURN: Deep Learning based Object Tracking](https://www.learnopencv.com/goturn-deep-learning-based-object-tracking/) | [Code](https://github.com/spmallick/learnopencv/tree/master/GOTURN)|
+|[Find the Center of a Blob (Centroid) using OpenCV (C++/Python)](https://www.learnopencv.com/find-center-of-blob-centroid-using-opencv-cpp-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/CenterofBlob)|
+|[Support Vector Machines (SVM)](https://www.learnopencv.com/support-vector-machines-svm/)|
+|[Batch Normalization in Deep Networks](https://www.learnopencv.com/batch-normalization-in-deep-networks/) | [Code](https://github.com/spmallick/learnopencv/tree/master/BatchNormalization)|
 |[Deep Learning based Character Classification using Synthetic Dataset](https://www.learnopencv.com/deep-learning-character-classification-using-synthetic-dataset/) | [Code](https://github.com/spmallick/learnopencv/tree/master/CharClassification)|
 |[Image Quality Assessment : BRISQUE](https://www.learnopencv.com/image-quality-assessment-brisque/)| [Code](https://github.com/spmallick/learnopencv/tree/master/ImageMetrics)|
 |[Understanding AlexNet](https://www.learnopencv.com/understanding-alexnet/)|

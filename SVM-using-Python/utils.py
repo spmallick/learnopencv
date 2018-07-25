@@ -82,4 +82,4 @@ def plot_decision_function_helper(X, y, clf):
              linewidth=1, facecolors='k', c = 'k', label='Support Vectors')
  
   plt.legend(fontsize='small')
-  
+
