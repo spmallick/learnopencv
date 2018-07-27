@@ -5,6 +5,7 @@ Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenC
 
 | Blog Post        | |
 | ------------- |:-------------|
+|[SVM using Scikit-Learn in Python](https://www.learnopencv.com/svm-using-scikit-learn-in-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/SVM-using-Python)|
 |[GOTURN: Deep Learning based Object Tracking](https://www.learnopencv.com/goturn-deep-learning-based-object-tracking/) | [Code](https://github.com/spmallick/learnopencv/tree/master/GOTURN)|
 |[Find the Center of a Blob (Centroid) using OpenCV (C++/Python)](https://www.learnopencv.com/find-center-of-blob-centroid-using-opencv-cpp-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/CenterofBlob)|
 |[Support Vector Machines (SVM)](https://www.learnopencv.com/support-vector-machines-svm/)|
