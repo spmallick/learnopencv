@@ -1,3 +1,6 @@
+The blog post for this code is at 
+[SVM using scikit-learn](https://www.learnopencv.com/svm-using-scikit-learn-in-python/)
+
 There are **three types** of data:
 
 1. Linear Data **without** noise.
@@ -8,7 +11,6 @@ There are **three types** of data:
 
 1. `cd <folder_name>` (e.g. `cd Linear-Data-With-Noise`)
 2. Run python file: `python3 <filename.py>`
-3. The plots will be saved in the current folder. 
 
 The data is in every folder. (Left and Right points)
 
