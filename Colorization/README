@@ -1,14 +1,15 @@
 
 Run the getModels.sh file from command line to download the needed model files
 
+	sudo chmod a+x getModels.sh
 	./getModels.sh
 
 Python:
 Commandline usage to colorize 
 a single image:
-	python3 colorizeImage.py --input data/greyscaleImage.png
+	python3 colorizeImage.py --input greyscaleImage.png
 a video file:
-	python3 colorizeVideo.py --input data/greyscaleVideo.mov
+	python3 colorizeVideo.py --input greyscaleVideo.mp4
 
 
 C++:
@@ -19,7 +20,7 @@ g++ -ggdb `pkg-config --cflags --libs /usr/local/Cellar/opencv3/3.4.2/lib/pkgcon
 
 Commandline usage to colorize 
 a single image:
-	./colorizeImage.out data/greyscaleImage.png
+	./colorizeImage.out greyscaleImage.png
 a video file:
-	./colorizeVideo.out data/greyscaleVideo.png
+	./colorizeVideo.out greyscaleVideo.mp4
 

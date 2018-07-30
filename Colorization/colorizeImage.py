@@ -1,18 +1,24 @@
 # This code is written by Sunita Nayak at BigVision LLC. It is based on the OpenCV project.
 # It is subject to the license terms in the LICENSE file found in this distribution and at http://opencv.org/license.html
 
-#### Usage example: python3 colorize.py --input data/greyscaleImage.png
+#### Usage example: python3 colorize.py --input greyscaleImage.png
 
 import numpy as np
 import cv2 as cv
 import argparse
+import os.path
 
 parser = argparse.ArgumentParser(description='Colorize GreyScale Image')
-parser.add_argument('--input', help='Path to image.', required=True)
+parser.add_argument('--input', help='Path to image.')
 args = parser.parse_args()
 
 if args.input==None:
     print('Please give the input greyscale image name.')
+    print('Usage example: python3 colorizeImage.py --input greyscaleImage.png')
+    exit()
+
+if os.path.isfile(args.input)==0:
+    print('Input file does not exist')
     exit()
 
 # Read the input image
