@@ -1,6 +1,6 @@
 // This code is written by Sunita Nayak at BigVision LLC. It is based on the OpenCV project. It is subject to the license terms in the LICENSE file found in this distribution and at http://opencv.org/license.html
 
-// Usage example: ./colorizeImage.out data/greyscaleImage.png
+// Usage example: ./colorizeImage.out greyscaleImage.png
 
 #include <opencv2/dnn.hpp>
 #include <opencv2/imgproc.hpp>
