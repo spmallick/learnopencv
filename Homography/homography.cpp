@@ -30,7 +30,7 @@ int main( int argc, char** argv)
 {
 
     // Read in the image.
-    Mat im_src = imread("book.jpg");
+    Mat im_src = imread("book1.jpg");
 
     // Destination image
     Size size(300,400);
