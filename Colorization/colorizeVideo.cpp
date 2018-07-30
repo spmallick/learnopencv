@@ -1,7 +1,7 @@
 // This code is written by Sunita Nayak at BigVision LLC. It is based on the OpenCV project.
 // It is subject to the license terms in the LICENSE file found in this distribution and at http://opencv.org/license.html
 
-// Usage example: ./colorizeVideo.out greyscaleVideo.mov
+// Usage example: ./colorizeVideo.out greyscaleVideo.mp4
 
 #include <opencv2/dnn.hpp>
 #include <opencv2/imgproc.hpp>
@@ -50,7 +50,7 @@ int main(int argc, char **argv)
     if (argc < 2)
     {
         cout << "Please input the greyscale video filename." << endl;
-        cout << "Usage example: ./colorizeVideo.out greyscaleVideo.mov" << endl;
+        cout << "Usage example: ./colorizeVideo.out greyscaleVideo.mp4" << endl;
         return 1;
     }
     videoFileName = argv[1];
