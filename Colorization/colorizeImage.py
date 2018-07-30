@@ -9,7 +9,7 @@ import argparse
 import os.path
 
 parser = argparse.ArgumentParser(description='Colorize GreyScale Image')
-parser.add_argument('--input', help='Path to image.', required=True)
+parser.add_argument('--input', help='Path to image.')
 args = parser.parse_args()
 
 if args.input==None:
