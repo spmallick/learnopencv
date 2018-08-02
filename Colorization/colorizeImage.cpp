@@ -111,7 +111,10 @@ int main(int argc, char **argv)
     string str = imageFileName;
     str.replace(str.end()-4, str.end(), "");
     str = str+"_colorized.png";
-    imwrite(str, color*255);
+    
+    color = color*255;
+    color.convertTo(color, CV_8U);
+    imwrite(str, color);
 
     cout << "Colorized image saved as " << str << endl;
     
