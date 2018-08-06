@@ -40,12 +40,11 @@ Ptr<Tracker> createTrackerByName(string trackerType)
 }
 
 // Fill the vector with random colors
-void getRandomColors(vector<Scalar> colors, int numColors)
+void getRandomColors(vector<Scalar> &colors, int numColors)
 {
   RNG rng(0);
   for(int i=0; i < numColors; i++)
     colors.push_back(Scalar(rng.uniform(0,255), rng.uniform(0, 255), rng.uniform(0, 255))); 
-  return colors; 
 }
 
 int main(int argc, char * argv[]) 
@@ -55,7 +54,7 @@ int main(int argc, char * argv[])
   for (vector<string>::iterator it = trackerTypes.begin() ; it != trackerTypes.end(); ++it)
     std::cout << " " << *it << endl;
   
-  // Set 
+  // Set tracker type. Change this to try different trackers.
   string trackerType = "CSRT";
 
   // set default values for tracking algorithm and video
@@ -116,7 +115,7 @@ int main(int argc, char * argv[])
 
     //update the tracking result with new frame
     multiTracker->update(frame);
-  
+
     // draw tracked objects
     for(unsigned i=0; i<multiTracker->getObjects().size(); i++)
     {
@@ -124,7 +123,6 @@ int main(int argc, char * argv[])
     }
   
     // show frame
-    //resize(frame, writeframe, Size(), 0.5, 0.5);
     imshow("MultiTracker", frame);
     
     // quit on x button
