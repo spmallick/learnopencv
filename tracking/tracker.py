@@ -8,7 +8,7 @@ if __name__ == '__main__' :
     # Set up tracker.
     # Instead of MIL, you can also use
 
-    tracker_types = ['BOOSTING', 'MIL','KCF', 'TLD', 'MEDIANFLOW', 'GOTURN']
+    tracker_types = ['BOOSTING', 'MIL','KCF', 'TLD', 'MEDIANFLOW', 'GOTURN', 'CSRT']
     tracker_type = tracker_types[2]
 
     if int(minor_ver) < 3:
@@ -26,7 +26,8 @@ if __name__ == '__main__' :
             tracker = cv2.TrackerMedianFlow_create()
         if tracker_type == 'GOTURN':
             tracker = cv2.TrackerGOTURN_create()
-
+        if tracker_type == "CSRT":
+            tracker = cv2.TrackerCSRT_create()
 
     # Read video
     video = cv2.VideoCapture("videos/chaplin.mp4")

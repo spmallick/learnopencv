@@ -16,7 +16,7 @@ int main(int argc, char **argv)
 {
     // List of tracker types in OpenCV 3.2
     // NOTE : GOTURN implementation is buggy and does not work.
-    string trackerTypes[6] = {"BOOSTING", "MIL", "KCF", "TLD","MEDIANFLOW", "GOTURN"};
+    string trackerTypes[7] = {"BOOSTING", "MIL", "KCF", "TLD","MEDIANFLOW", "GOTURN", "CSRT"};
     // vector <string> trackerTypes(types, std::end(types));
 
     // Create a tracker
@@ -42,6 +42,8 @@ int main(int argc, char **argv)
             tracker = TrackerMedianFlow::create();
         if (trackerType == "GOTURN")
             tracker = TrackerGOTURN::create();
+        if (trackerType == "CSRT")
+            tracker = TrackerCSRT::create();
     }
     #endif
     // Read video
