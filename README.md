@@ -5,6 +5,7 @@ Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenC
 
 | Blog Post        | |
 | ------------- |:-------------|
+|[MultiTracker : Multiple Object Tracking using OpenCV (C++/Python)](https://www.learnopencv.com/multitracker-multiple-object-tracking-using-opencv-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/MultiObjectTracker) |
 |[Convolutional Neural Network based Image Colorization using OpenCV](https://www.learnopencv.com/convolutional-neural-network-based-image-colorization-using-opencv/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Colorization)|
 |[SVM using scikit-learn](https://www.learnopencv.com/svm-using-scikit-learn-in-python/)|[Code](https://github.com/spmallick/learnopencv/tree/master/SVM-using-Python)| 
 |[GOTURN: Deep Learning based Object Tracking](https://www.learnopencv.com/goturn-deep-learning-based-object-tracking/) | [Code](https://github.com/spmallick/learnopencv/tree/master/GOTURN)|
