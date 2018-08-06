@@ -17,7 +17,7 @@ It will most likely be gcc toolchain.
 `cmake ..`
 4. Now tell CMake to build project in Release mode: `cmake --build . --config Release`
 5. When the build is completed, executables will be generated in `build\Release` folder or `build` folder itself.
-6. Now go back to project directory (parent directory of build) and run the code: `./build/release/multiTracker`
+6. Now go back to project directory (parent directory of build) and run the code: `./build/multiTracker`
 
 ## Instructions for Python code
 1. Download the codes and extract the downloaded file, if required.
