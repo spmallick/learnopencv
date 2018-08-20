@@ -5,7 +5,7 @@ Run the getModels.sh file from command line to download the needed model files
 	./getModels.sh
 
 Python:
-Commandline usage to colorize 
+Commandline usage for object detection using YOLOv3 
 a single image:
 	python3 object_detection_yolo.py --image=bird.jpg
 a video file:

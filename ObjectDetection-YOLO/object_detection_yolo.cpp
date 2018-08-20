@@ -208,7 +208,7 @@ void postprocess(Mat& frame, const vector<Mat>& outs)
 void drawPred(int classId, float conf, int left, int top, int right, int bottom, Mat& frame)
 {
     //Draw a rectangle displaying the bounding box
-    rectangle(frame, Point(left, top), Point(right, bottom), Scalar(0, 0, 255));
+    rectangle(frame, Point(left, top), Point(right, bottom), Scalar(255, 178, 50), 3);
     
     //Get the label for the class name and its confidence
     string label = format("%.2f", conf);
@@ -222,7 +222,8 @@ void drawPred(int classId, float conf, int left, int top, int right, int bottom,
     int baseLine;
     Size labelSize = getTextSize(label, FONT_HERSHEY_SIMPLEX, 0.5, 1, &baseLine);
     top = max(top, labelSize.height);
-    putText(frame, label, Point(left, top), FONT_HERSHEY_SIMPLEX, 0.5, Scalar(255,255,255));
+    rectangle(frame, Point(left, top - round(1.5*labelSize.height)), Point(left + round(1.5*labelSize.width), top + baseLine), Scalar(255, 255, 255), FILLED);
+    putText(frame, label, Point(left, top), FONT_HERSHEY_SIMPLEX, 0.75, Scalar(0,0,0),1);
 }
 
 // Get the names of the output layers
