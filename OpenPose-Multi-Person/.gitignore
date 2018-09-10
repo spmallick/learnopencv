@@ -1,0 +1,8 @@
+multi-person-openpose
+pose/coco/pose_iter_440000.caffemodel
+out.*
+*.out
+debug*.*
+*.debug
+cpp.jpg
+py.jpg

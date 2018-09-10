@@ -1,0 +1,10 @@
+1. RUN getModels.sh from command line
+2. Use the Notebook for better understanding and debugging
+3. Download caffe model from http://posefs1.perception.cs.cmu.edu/Users/ZheCao/pose_iter_440000.caffemodel
+
+Requirements : 
+1. OpenCV > 3.4.1
+2. Matplotlib for Notebook
+
+Command to compile the cpp file in ubuntu:
+g++ -o3 -std=c++11 multi-person-openpose.cpp `pkg-config --libs --cflags opencv` -lpthread -o multi-person-openpose
