@@ -48,7 +48,7 @@ std::ostream& operator << (std::ostream& os, const ValidPair& vp)
 
 ////////////////////////////////
 
-template < class T > std::ostream& operator << (std::ostream& os, const std::vector<T>& v) 
+template < class T > std::ostream& operator << (std::ostream& os, const std::vector<T>& v)
 {
     os << "[";
 	bool first = true;
@@ -61,7 +61,7 @@ template < class T > std::ostream& operator << (std::ostream& os, const std::vec
     return os;
 }
 
-template < class T > std::ostream& operator << (std::ostream& os, const std::set<T>& v) 
+template < class T > std::ostream& operator << (std::ostream& os, const std::set<T>& v)
 {
     os << "[";
 	bool first = true;
@@ -129,11 +129,11 @@ void getKeyPoints(cv::Mat& probMap,double threshold,std::vector<KeyPoint>& keyPo
 
 void populateColorPalette(std::vector<cv::Scalar>& colors,int nColors){
 	std::random_device rd;
-    std::mt19937 gen(rd()); 
+    std::mt19937 gen(rd());
     std::uniform_int_distribution<> dis1(64, 200);
     std::uniform_int_distribution<> dis2(100, 255);
     std::uniform_int_distribution<> dis3(100, 255);
- 
+
 	for(int i = 0; i < nColors;++i){
 		colors.push_back(cv::Scalar(dis1(gen),dis2(gen),dis3(gen)));
 	}
@@ -148,7 +148,7 @@ void splitNetOutputBlobToParts(cv::Mat& netOutputBlob,const cv::Size& targetSize
 		cv::Mat part(h, w, CV_32F, netOutputBlob.ptr(0,i));
 
 		cv::Mat resizedPart;
-		
+
 		cv::resize(part,resizedPart,targetSize);
 
 		netOutputParts.push_back(resizedPart);
@@ -160,7 +160,7 @@ void populateInterpPoints(const cv::Point& a,const cv::Point& b,int numPoints,st
 	float yStep = ((float)(b.y - a.y))/(float)(numPoints-1);
 
 	interpCoords.push_back(a);
-	
+
 	for(int i = 1; i< numPoints-1;++i){
 		interpCoords.push_back(cv::Point(a.x + xStep*i,a.y + yStep*i));
 	}
@@ -177,9 +177,9 @@ void getValidPairs(const std::vector<cv::Mat>& netOutputParts,
 	int nInterpSamples = 10;
 	float pafScoreTh = 0.1;
 	float confTh = 0.7;
-	
+
 	for(int k = 0; k < mapIdx.size();++k ){
-		
+
 		//A->B constitute a limb
 		cv::Mat pafA = netOutputParts[mapIdx[k].first];
 		cv::Mat pafB = netOutputParts[mapIdx[k].second];
@@ -201,7 +201,7 @@ void getValidPairs(const std::vector<cv::Mat>& netOutputParts,
 
 		if(nA != 0 && nB != 0){
 			std::vector<ValidPair> localValidPairs;
-			
+
 			for(int i = 0; i< nA;++i){
 				int maxJ = -1;
 				float maxScore = -1;
@@ -241,7 +241,7 @@ void getValidPairs(const std::vector<cv::Mat>& netOutputParts,
 						if(score > pafScoreTh){
 							++numOverTh;
 						}
-						
+
 						pafScores.push_back(score);
 					}
 
@@ -254,17 +254,17 @@ void getValidPairs(const std::vector<cv::Mat>& netOutputParts,
 							found = true;
 						}
 					}
-					
+
 				}/* j */
 
 				if(found){
 					localValidPairs.push_back(ValidPair(candA[i].id,candB[maxJ].id,maxScore));
 				}
-				
+
 			}/* i */
 
 			validPairs.push_back(localValidPairs);
-			
+
 		} else {
 			invalidPairs.insert(k);
 			validPairs.push_back(std::vector<ValidPair>());
@@ -304,10 +304,10 @@ void getPersonwiseKeypoints(const std::vector<std::vector<ValidPair>>& validPair
 
 				lpkp.at(indexA) = localValidPairs[i].aId;
 				lpkp.at(indexB) = localValidPairs[i].bId;
-				
+
 				personwiseKeypoints.push_back(lpkp);
 			}
-			
+
 		}/* i */
 	}/* k */
 }
@@ -319,7 +319,7 @@ int main(int argc,char** argv) {
 	if(argc > 1){
 		inputFile = std::string(argv[1]);
 	}
-	
+
 	cv::Mat input = cv::imread(inputFile,CV_LOAD_IMAGE_COLOR);
 
  	std::chrono::time_point<std::chrono::system_clock> startTP = std::chrono::system_clock::now();
@@ -334,7 +334,7 @@ int main(int argc,char** argv) {
 
 	std::vector<cv::Mat> netOutputParts;
 	splitNetOutputBlobToParts(netOutputBlob,cv::Size(input.cols,input.rows),netOutputParts);
-	
+
 	std::chrono::time_point<std::chrono::system_clock> finishTP = std::chrono::system_clock::now();
 
 	std::cout << "Time Taken in forward pass = " << std::chrono::duration_cast<std::chrono::milliseconds>(finishTP - startTP).count() << " ms" << std::endl;
@@ -342,18 +342,18 @@ int main(int argc,char** argv) {
 	int keyPointId = 0;
 	std::vector<std::vector<KeyPoint>> detectedKeypoints;
 	std::vector<KeyPoint> keyPointsList;
-	
+
 	for(int i = 0; i < nPoints;++i){
 		std::vector<KeyPoint> keyPoints;
-		
+
 		getKeyPoints(netOutputParts[i],0.1,keyPoints);
 
 		std::cout << "Keypoints - " << keypointsMapping[i] << " : " << keyPoints << std::endl;
-		
+
 		for(int i = 0; i< keyPoints.size();++i,++keyPointId){
 			keyPoints[i].id = keyPointId;
 		}
-		
+
 		detectedKeypoints.push_back(keyPoints);
 		keyPointsList.insert(keyPointsList.end(),keyPoints.begin(),keyPoints.end());
 	}
@@ -389,8 +389,8 @@ int main(int argc,char** argv) {
 			const KeyPoint& kpA = keyPointsList[indexA];
 			const KeyPoint& kpB = keyPointsList[indexB];
 
-			cv::line(outputFrame,kpA.point,kpB.point,colors[i],2,cv::LINE_AA);
-			
+			cv::line(outputFrame,kpA.point,kpB.point,colors[i],3,cv::LINE_AA);
+
 		}
 	}
 

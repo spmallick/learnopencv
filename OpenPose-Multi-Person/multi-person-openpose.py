@@ -23,6 +23,11 @@ mapIdx = [[31,32], [39,40], [33,34], [35,36], [41,42], [43,44],
           [47,48], [49,50], [53,54], [51,52], [55,56],
           [37,38], [45,46]]
 
+colors = [ [0,100,255], [0,100,255], [0,255,255], [0,100,255], [0,255,255], [0,100,255],
+         [0,255,0], [255,200,100], [255,0,255], [0,255,0], [255,200,100], [255,0,255],
+         [0,0,255], [255,0,0], [200,200,0], [255,0,0], [200,200,0], [0,0,0]]
+
+
 def getKeypoints(probMap, threshold=0.1):
 
     mapSmooth = cv2.GaussianBlur(probMap,(3,3),0,0)
@@ -190,7 +195,6 @@ for part in range(nPoints):
     detected_keypoints.append(keypoints_with_id)
 
 
-colors = [ [randint(64,200), randint(100,255), randint(100,255)] for i in range(nPoints) ]
 frameClone = image1.copy()
 for i in range(nPoints):
     for j in range(len(detected_keypoints[i])):
@@ -207,7 +211,7 @@ for i in range(17):
             continue
         B = np.int32(keypoints_list[index.astype(int), 0])
         A = np.int32(keypoints_list[index.astype(int), 1])
-        cv2.line(frameClone, (B[0], A[0]), (B[1], A[1]), colors[i], 2, cv2.LINE_AA)
+        cv2.line(frameClone, (B[0], A[0]), (B[1], A[1]), colors[i], 3, cv2.LINE_AA)
 
 
 cv2.imshow("Detected Pose" , frameClone)
