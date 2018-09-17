@@ -6,7 +6,6 @@
 # Clean build directories
 rm -rf opencv/build
 rm -rf opencv_contrib/build
-rm -rf installation
 
 echo "OpenCV installation by learnOpenCV.com"
 
