@@ -172,6 +172,45 @@ ln -f -s $py2binPath cv2.so
 cd ~/.virtualenvs/OpenCV-$cvVersion-py3/lib/python3.5/site-packages/
 ln -f -s $py3binPath cv2.so
 
+# Step 6: Compile and install dlib
+echo "================================"
+echo "Compiling and installing dlib"
+cd $cwd
+wget http://dlib.net/files/dlib-19.6.tar.bz2
+tar xvf dlib-19.6.tar.bz2
+cd dlib-19.6/
+mkdir build
+cd build
+cmake ..
+cmake --build . --config Release
+sudo make install
+sudo ldconfig
+cd ..
+
+pkg-config --libs --cflags dlib-1
+
+
+############ For Python 2 ############
+workon OpenCV-"$cvVersion"-py2
+cd $cwd
+cd dlib-19.6
+python setup.py install
+rm -rf dist
+rm -rf tools/python/build
+rm python_examples/dlib.so
+
+cd ..
+
+############ For Python 3 ############
+workon OpenCV-"$cvVersion"-py3
+cd $cwd
+cd dlib-19.6
+python setup.py install
+rm -rf dist
+rm -rf tools/python/build
+rm python_examples/dlib.so
+
+cd $cwd
 
 # Print instructions
 echo "================================"
