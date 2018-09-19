@@ -5,7 +5,8 @@ Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenC
 
 | Blog Post        | |
 | ------------- |:-------------|
-|[Install OpenCV 4 on Ubuntu 16.04](https://www.learnopencv.com/install-opencv-4-on-ubuntu-16-04/) | [Code](https://github.com/spmallick/learnopencv/tree/master/InstallScript-Ubuntu16.04) |
+|[Install OpenCV 4 on Ubuntu 18.04](https://www.learnopencv.com/install-opencv-4-on-ubuntu-18-04/) | [Code](https://github.com/vishwesh5/learnopencv/blob/master/InstallScripts/installOpenCV-18-04.sh) |
+|[Install OpenCV 4 on Ubuntu 16.04](https://www.learnopencv.com/install-opencv-4-on-ubuntu-16-04/) | [Code](https://github.com/vishwesh5/learnopencv/blob/master/InstallScripts/installOpenCV-16-04.sh) |
 |[Multi-Person Pose Estimation in OpenCV using OpenPose](https://www.learnopencv.com/multi-person-pose-estimation-in-opencv-using-openpose/) | [Code](https://github.com/spmallick/learnopencv/tree/master/OpenPose-Multi-Person) |
 |[Heatmap for Logo Detection using OpenCV (Python)](https://www.learnopencv.com/heatmap-for-logo-detection-using-opencv-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/heatmap)|
 |[Deep Learning based Object Detection using YOLOv3 with OpenCV ( Python / C++ )](https://www.learnopencv.com/deep-learning-based-object-detection-using-yolov3-with-opencv-python-c/) | [Code](https://github.com/spmallick/learnopencv/tree/master/ObjectDetection-YOLO)|
