@@ -45,7 +45,7 @@ int main(int argc, char** argv) {
       CHAIN_APPROX_SIMPLE, Point(0, 0));
   
   // create convex hull vector
-  vector<vector<Point>> hull(contours.size());
+  vector< vector<Point> > hull(contours.size());
 
   // find convex hull for each contour
   for(int i = 0; i < contours.size(); i++)
