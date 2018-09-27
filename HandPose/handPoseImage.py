@@ -6,20 +6,21 @@ protoFile = "hand/pose_deploy.prototxt"
 weightsFile = "hand/pose_iter_102000.caffemodel"
 nPoints = 22
 POSE_PAIRS = [ [0,1],[1,2],[2,3],[3,4],[0,5],[5,6],[6,7],[7,8],[0,9],[9,10],[10,11],[11,12],[0,13],[13,14],[14,15],[15,16],[0,17],[17,18],[18,19],[19,20] ]
-
+net = cv2.dnn.readNetFromCaffe(protoFile, weightsFile)
 
 frame = cv2.imread("hand.jpg")
 frameCopy = np.copy(frame)
 frameWidth = frame.shape[1]
 frameHeight = frame.shape[0]
-threshold = 0.1
+aspect_ratio = frameWidth/frameHeight
 
-net = cv2.dnn.readNetFromCaffe(protoFile, weightsFile)
+threshold = 0.1
 
 t = time.time()
 # input image dimensions for the network
-inWidth = 368
 inHeight = 368
+inWidth = int(((aspect_ratio*inHeight)*8)//8)
+
 inpBlob = cv2.dnn.blobFromImage(frame, 1.0 / 255, (inWidth, inHeight),
                           (0, 0, 0), swapRB=False, crop=False)
 
@@ -27,9 +28,6 @@ net.setInput(inpBlob)
 
 output = net.forward()
 print("time taken by network : {:.3f}".format(time.time() - t))
-
-H = output.shape[2]
-W = output.shape[3]
 
 # Empty list to store the detected keypoints
 points = []

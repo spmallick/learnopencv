@@ -8,14 +8,20 @@ weightsFile = "hand/pose_iter_102000.caffemodel"
 nPoints = 22
 POSE_PAIRS = [ [0,1],[1,2],[2,3],[3,4],[0,5],[5,6],[6,7],[7,8],[0,9],[9,10],[10,11],[11,12],[0,13],[13,14],[14,15],[15,16],[0,17],[17,18],[18,19],[19,20] ]
 
-inWidth = 368
-inHeight = 368
 threshold = 0.1
 
 
 input_source = 0
 cap = cv2.VideoCapture(input_source)
 hasFrame, frame = cap.read()
+
+frameWidth = frame.shape[1]
+frameHeight = frame.shape[0]
+
+aspect_ratio = frameWidth/frameHeight
+
+inHeight = 368
+inWidth = int(((aspect_ratio*inHeight)*8)//8)
 
 vid_writer = cv2.VideoWriter('output.avi',cv2.VideoWriter_fourcc('M','J','P','G'), 15, (frame.shape[1],frame.shape[0]))
 
@@ -31,9 +37,6 @@ while 1:
         break
 
     print("imread = {}".format(time.time() - t))
-
-    frameWidth = frame.shape[1]
-    frameHeight = frame.shape[0]
 
     inpBlob = cv2.dnn.blobFromImage(frame, 1.0 / 255, (inWidth, inHeight),
                               (0, 0, 0), swapRB=False, crop=False)

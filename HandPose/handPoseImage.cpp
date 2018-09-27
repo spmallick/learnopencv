@@ -34,14 +34,18 @@ int main(int argc, char **argv)
       imageFile = argv[1];
     }
 
-    int inWidth = 368;
-    int inHeight = 368;
     float thresh = 0.01;
 
     Mat frame = imread(imageFile);
     Mat frameCopy = frame.clone();
     int frameWidth = frame.cols;
     int frameHeight = frame.rows;
+
+    float aspect_ratio = frameWidth/(float)frameHeight;
+    int inHeight = 368;
+    int inWidth = (int(aspect_ratio*inHeight) * 8) / 8;
+
+    cout << "inWidth = " << inWidth << " ; inHeight = " << inHeight << endl;
 
     double t = (double) cv::getTickCount();
     Net net = readNetFromCaffe(protoFile, weightsFile);

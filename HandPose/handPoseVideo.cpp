@@ -23,8 +23,6 @@ int nPoints = 22;
 
 int main(int argc, char **argv)
 {
-    int inWidth = 368;
-    int inHeight = 368;
     float thresh = 0.01;
 
     cv::VideoCapture cap(0);
@@ -38,6 +36,11 @@ int main(int argc, char **argv)
     Mat frame, frameCopy;
     int frameWidth = cap.get(CAP_PROP_FRAME_WIDTH);
     int frameHeight = cap.get(CAP_PROP_FRAME_HEIGHT);
+    float aspect_ratio = frameWidth/(float)frameHeight;
+    int inHeight = 368;
+    int inWidth = (int(aspect_ratio*inHeight) * 8) / 8;
+
+    cout << "inWidth = " << inWidth << " ; inHeight = " << inHeight << endl; 
 
     VideoWriter video("Output-Skeleton.avi",VideoWriter::fourcc('M','J','P','G'), 10, Size(frameWidth,frameHeight));
 
