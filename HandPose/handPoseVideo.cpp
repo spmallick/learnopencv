@@ -40,7 +40,7 @@ int main(int argc, char **argv)
     int inHeight = 368;
     int inWidth = (int(aspect_ratio*inHeight) * 8) / 8;
 
-    cout << "inWidth = " << inWidth << " ; inHeight = " << inHeight << endl; 
+    cout << "inWidth = " << inWidth << " ; inHeight = " << inHeight << endl;
 
     VideoWriter video("Output-Skeleton.avi",VideoWriter::fourcc('M','J','P','G'), 10, Size(frameWidth,frameHeight));
 
@@ -99,6 +99,7 @@ int main(int argc, char **argv)
         }
 
         t = ((double)cv::getTickCount() - t)/cv::getTickFrequency();
+        cout << "Time Taken for frame = " << t << endl;
         cv::putText(frame, cv::format("time taken = %.2f sec", t), cv::Point(50, 50), cv::FONT_HERSHEY_COMPLEX, .8, cv::Scalar(255, 50, 0), 2);
         // imshow("Output-Keypoints", frameCopy);
         imshow("Output-Skeleton", frame);
