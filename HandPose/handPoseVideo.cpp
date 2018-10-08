@@ -25,7 +25,7 @@ int main(int argc, char **argv)
 {
     float thresh = 0.01;
 
-    cv::VideoCapture cap(0);
+    cv::VideoCapture cap("asl.mp4");
 
     if (!cap.isOpened())
     {
