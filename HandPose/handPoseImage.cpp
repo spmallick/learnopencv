@@ -27,7 +27,7 @@ int main(int argc, char **argv)
 
     cout << "USAGE : ./handPoseImage <imageFile> " << endl;
 
-    string imageFile = "hand.jpg";
+    string imageFile = "right-frontal.jpg";
     // Take arguments from commmand line
     if (argc == 2)
     {
