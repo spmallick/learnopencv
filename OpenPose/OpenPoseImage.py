@@ -2,7 +2,7 @@ import cv2
 import time
 import numpy as np
 
-MODE = "MPI"
+MODE = "COCO"
 
 if MODE is "COCO":
     protoFile = "pose/coco/pose_deploy_linevec.prototxt"
