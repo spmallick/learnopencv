@@ -1,4 +1,4 @@
-
+from __future__ import division
 import cv2
 import time
 import sys
@@ -20,7 +20,7 @@ def detectFaceOpenCVDnn(net, frame):
             x2 = int(detections[0, 0, i, 5] * frameWidth)
             y2 = int(detections[0, 0, i, 6] * frameHeight)
             bboxes.append([x1, y1, x2, y2])
-            cv2.rectangle(frameOpencvDnn, (x1, y1), (x2, y2), (0, 255, 0), round(frameHeight/150), 8)
+            cv2.rectangle(frameOpencvDnn, (x1, y1), (x2, y2), (0, 255, 0), int(round(frameHeight/150)), 8)
     return frameOpencvDnn, bboxes
 
 if __name__ == "__main__" :

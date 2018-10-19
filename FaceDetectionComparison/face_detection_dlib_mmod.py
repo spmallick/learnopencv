@@ -1,4 +1,4 @@
-
+from __future__ import division
 import cv2
 import dlib
 import time
@@ -25,7 +25,7 @@ def detectFaceDlibMMOD(detector, frame, inHeight=300, inWidth=0):
         cvRect = [int(faceRect.rect.left()*scaleWidth), int(faceRect.rect.top()*scaleHeight),
                   int(faceRect.rect.right()*scaleWidth), int(faceRect.rect.bottom()*scaleHeight) ]
         bboxes.append(cvRect)
-        cv2.rectangle(frameDlibMMOD, (cvRect[0], cvRect[1]), (cvRect[2], cvRect[3]), (0, 255, 0), round(frameHeight/150), 4)
+        cv2.rectangle(frameDlibMMOD, (cvRect[0], cvRect[1]), (cvRect[2], cvRect[3]), (0, 255, 0), int(round(frameHeight/150)), 4)
     return frameDlibMMOD, bboxes
 
 if __name__ == "__main__" :

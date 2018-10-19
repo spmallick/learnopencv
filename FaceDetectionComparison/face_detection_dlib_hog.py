@@ -1,4 +1,4 @@
-
+from __future__ import division
 import cv2
 import dlib
 import time
@@ -25,7 +25,7 @@ def detectFaceDlibHog(detector, frame, inHeight=300, inWidth=0):
         cvRect = [int(faceRect.left()*scaleWidth), int(faceRect.top()*scaleHeight),
                   int(faceRect.right()*scaleWidth), int(faceRect.bottom()*scaleHeight) ]
         bboxes.append(cvRect)
-        cv2.rectangle(frameDlibHog, (cvRect[0], cvRect[1]), (cvRect[2], cvRect[3]), (0, 255, 0), round(frameHeight/150), 4)
+        cv2.rectangle(frameDlibHog, (cvRect[0], cvRect[1]), (cvRect[2], cvRect[3]), (0, 255, 0), int(round(frameHeight/150)), 4)
     return frameDlibHog, bboxes
 
 if __name__ == "__main__" :
