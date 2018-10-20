@@ -11,12 +11,13 @@ def detectFaceDlibHog(detector, frame, inHeight=300, inWidth=0):
     frameWidth = frameDlibHog.shape[1]
     if not inWidth:
         inWidth = int((frameWidth / frameHeight)*inHeight)
-    
+
     scaleHeight = frameHeight / inHeight
     scaleWidth = frameWidth / inWidth
-    
+
     frameDlibHogSmall = cv2.resize(frameDlibHog, (inWidth, inHeight))
 
+    frameDlibHogSmall = cv2.cvtColor(frameDlibHogSmall, cv2.COLOR_BGR2RGB)
     faceRects = detector(frameDlibHogSmall, 0)
     print(frameWidth, frameHeight, inWidth, inHeight)
     bboxes = []
@@ -61,10 +62,9 @@ if __name__ == "__main__" :
         vid_writer.write(outDlibHog)
         if frame_count == 1:
             tt_dlibHog = 0
-        
+
         k = cv2.waitKey(10)
         if k == 27:
             break
     cv2.destroyAllWindows()
     vid_writer.release()
-

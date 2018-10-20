@@ -11,14 +11,15 @@ def detectFaceDlibMMOD(detector, frame, inHeight=300, inWidth=0):
     frameWidth = frameDlibMMOD.shape[1]
     if not inWidth:
         inWidth = int((frameWidth / frameHeight)*inHeight)
-    
+
     scaleHeight = frameHeight / inHeight
     scaleWidth = frameWidth / inWidth
-    
+
     frameDlibMMODSmall = cv2.resize(frameDlibMMOD, (inWidth, inHeight))
 
+    frameDlibMMODSmall = cv2.cvtColor(frameDlibMMODSmall, cv2.COLOR_BGR2RGB)
     faceRects = detector(frameDlibMMODSmall, 0)
-    
+
     print(frameWidth, frameHeight, inWidth, inHeight)
     bboxes = []
     for faceRect in faceRects:
@@ -68,4 +69,3 @@ if __name__ == "__main__" :
             break
     cv2.destroyAllWindows()
     vid_writer.release()
-
