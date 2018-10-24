@@ -1,25 +1,37 @@
 #!/bin/bash
 
 ############## WELCOME #############
+# Get command line argument for verbose
+echo "Welcome to OpenCV Installation Script for Raspbian Stretch"
+echo "This script is provided by LearnOpenCV.com"
+echo "Maintained by Vishwesh Ravi Shrimali (vishweshshrimali5@gmail.com)"
+
+echo "Preparing system for installation..."
+sudo apt-get -y purge wolfram-engine
+sudo apt-get -y purge libreoffice*
+sudo apt-get -y clean
+sudo apt-get -y autoremove
+
+######### VERBOSE ON ##########
+
 # Step 0: Take inputs
-
-# Clean build directories
-rm -rf opencv/build
-rm -rf opencv_contrib/build
-
 echo "OpenCV installation by learnOpenCV.com"
 
 echo "Select OpenCV version to install (1 or 2)"
-echo "1. OpenCV 3.4.1 (default)"
+echo "1. OpenCV 3.4.3 (default)"
 echo "2. Master"
 
 read cvVersionChoice
 
 if [ "$cvVersionChoice" -eq 2 ]; then
-        cvVersion="master"
+cvVersion="master"
 else
-	cvVersion="3.4.1"
+	cvVersion="3.4.3"
 fi
+
+# Clean build directories
+rm -rf opencv/build
+rm -rf opencv_contrib/build
 
 # Create directory for installation
 mkdir installation
@@ -31,8 +43,8 @@ cwd=$(pwd)
 # Step 1: Update packages
 echo "Updating packages"
 
-sudo apt -y update
-sudo apt -y upgrade
+sudo apt-get -y update
+sudo apt-get -y upgrade
 echo "================================"
 
 echo "Complete"
@@ -40,36 +52,36 @@ echo "Complete"
 # Step 2: Install OS libraries
 echo "Installing OS libraries"
 
-sudo apt -y remove x264 libx264-dev
+sudo apt-get -y remove x264 libx264-dev
 
 ## Install dependencies
-sudo apt -y install build-essential checkinstall cmake pkg-config yasm
-sudo apt -y install git gfortran
-sudo apt -y install libjpeg8-dev libjasper-dev libpng12-dev
+sudo apt-get -y install build-essential checkinstall cmake pkg-config yasm
+sudo apt-get -y install git gfortran
+sudo apt-get -y install libjpeg8-dev libjasper-dev libpng12-dev
 
-sudo apt -y install libtiff5-dev
+sudo apt-get -y install libtiff5-dev
 
-sudo apt -y install libtiff-dev
+sudo apt-get -y install libtiff-dev
 
-sudo apt -y install libavcodec-dev libavformat-dev libswscale-dev libdc1394-22-dev
-sudo apt -y install libxine2-dev libv4l-dev
+sudo apt-get -y install libavcodec-dev libavformat-dev libswscale-dev libdc1394-22-dev
+sudo apt-get -y install libxine2-dev libv4l-dev
 cd /usr/include/linux
 sudo ln -s -f ../libv4l1-videodev.h videodev.h
 cd $cwd
 
-sudo apt -y install libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev
-sudo apt -y install libgtk2.0-dev libtbb-dev qt5-default
-sudo apt -y install libatlas-base-dev
-sudo apt -y install libfaac-dev libmp3lame-dev libtheora-dev
-sudo apt -y install libvorbis-dev libxvidcore-dev
-sudo apt -y install libopencore-amrnb-dev libopencore-amrwb-dev
-sudo apt -y install libavresample-dev
-sudo apt -y install x264 v4l-utils
+sudo apt-get -y install libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev
+sudo apt-get -y install libgtk2.0-dev libtbb-dev qt5-default
+sudo apt-get -y install libatlas-base-dev
+sudo apt-get -y install libmp3lame-dev libtheora-dev
+sudo apt-get -y install libvorbis-dev libxvidcore-dev libx264-dev
+sudo apt-get -y install libopencore-amrnb-dev libopencore-amrwb-dev
+sudo apt-get -y install libavresample-dev
+sudo apt-get -y install x264 v4l-utils
 
 # Optional dependencies
-sudo apt -y install libprotobuf-dev protobuf-compiler
-sudo apt -y install libgoogle-glog-dev libgflags-dev
-sudo apt -y install libgphoto2-dev libeigen3-dev libhdf5-dev doxygen
+sudo apt-get -y install libprotobuf-dev protobuf-compiler
+sudo apt-get -y install libgoogle-glog-dev libgflags-dev
+sudo apt-get -y install libgphoto2-dev libeigen3-dev libhdf5-dev doxygen
 echo "================================"
 
 echo "Complete"
@@ -78,16 +90,16 @@ echo "Complete"
 # Step 3: Install Python libraries
 echo "Install Python libraries"
 
-sudo apt -y install python-dev python-pip python3-dev python3-pip
+sudo apt-get -y install python-dev python-pip python3-dev python3-pip
 sudo -H pip2 install -U pip numpy
 sudo -H pip3 install -U pip numpy
-sudo apt -y install python3-testresources
+sudo apt-get -y install python3-testresources
 
 # Install virtual environment
 sudo -H pip2 install virtualenv virtualenvwrapper
 sudo -H pip3 install virtualenv virtualenvwrapper
-echo "# Virtual Environment Wrapper" >> ~/.bashrc
-echo "source /usr/local/bin/virtualenvwrapper.sh" >> ~/.bashrc
+echo "# Virtual Environment Wrapper" >> ~/.profile
+echo "source /usr/local/bin/virtualenvwrapper.sh" >> ~/.profile
 #source ~/.bashrc
 cd $cwd
 source /usr/local/bin/virtualenvwrapper.sh
@@ -103,7 +115,11 @@ mkvirtualenv OpenCV-"$cvVersion"-py2 -p python2
 workon OpenCV-"$cvVersion"-py2
 
 # now install python libraries within this virtual environment
-pip install numpy scipy matplotlib scikit-image scikit-learn ipython
+sudo sed -i 's/CONF_SWAPSIZE=100/CONF_SWAPSIZE=1024/g' /etc/dphys-swapfile
+sudo /etc/init.d/dphys-swapfile stop
+sudo /etc/init.d/dphys-swapfile start
+pip install numpy dlib
+#pip install scipy matplotlib scikit-image scikit-learn ipython
 
 # quit virtual environment
 deactivate
@@ -115,7 +131,8 @@ mkvirtualenv OpenCV-"$cvVersion"-py3 -p python3
 workon OpenCV-"$cvVersion"-py3
 
 # now install python libraries within this virtual environment
-pip install numpy scipy matplotlib scikit-image scikit-learn ipython
+pip install numpy dlib
+#pip install scipy matplotlib scikit-image scikit-learn ipython
 
 # quit virtual environment
 deactivate
@@ -144,22 +161,22 @@ cd opencv
 mkdir build
 cd build
 
-# For system wide installation:
-# Change CMAKE_INSTALL_PREFIX=/usr/local \
-
 cmake -D CMAKE_BUILD_TYPE=RELEASE \
-	        -D CMAKE_INSTALL_PREFIX=$cwd/installation/OpenCV-"$cvVersion" \
-	        -D INSTALL_C_EXAMPLES=ON \
-	        -D INSTALL_PYTHON_EXAMPLES=ON \
-	        -D WITH_TBB=ON \
-	        -D WITH_V4L=ON \
+		-D CMAKE_INSTALL_PREFIX=$cwd/installation/OpenCV-$cvVersion \
+		-D INSTALL_C_EXAMPLES=ON \
+		-D INSTALL_PYTHON_EXAMPLES=ON \
+		-D WITH_TBB=ON \
+		-D WITH_V4L=ON \
 		-D WITH_QT=ON \
 		-D WITH_OPENGL=ON \
 		-D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
 		-D BUILD_EXAMPLES=ON ..
 
-make -j4
+
+make -j$(nproc)
 make install
+sudo echo "$cwd/installation/OpenCV-$cvVersion/lib" >> /etc/ld.so.conf.d/opencv.conf
+ldconfig
 
 # Create symlink in virtual environment
 py2binPath=$(find $cwd/installation/OpenCV-$cvVersion/lib/ -type f -name "cv2.so")
@@ -171,44 +188,6 @@ ln -f -s $py2binPath cv2.so
 
 cd ~/.virtualenvs/OpenCV-$cvVersion-py3/lib/python3.5/site-packages/
 ln -f -s $py3binPath cv2.so
-
-# Step 6: Compile and install dlib
-echo "================================"
-echo "Compiling and installing dlib"
-cd $cwd
-wget http://dlib.net/files/dlib-19.6.tar.bz2
-tar xvf dlib-19.6.tar.bz2
-cd dlib-19.6/
-mkdir build
-cd build
-cmake ..
-cmake --build . --config Release
-sudo make install
-sudo ldconfig
-cd ..
-
-pkg-config --libs --cflags dlib-1
-
-
-############ For Python 2 ############
-workon OpenCV-"$cvVersion"-py2
-cd $cwd
-cd dlib-19.6
-python setup.py install
-rm -rf dist
-rm -rf tools/python/build
-rm python_examples/dlib.so
-
-cd ..
-
-############ For Python 3 ############
-workon OpenCV-"$cvVersion"-py3
-cd $cwd
-cd dlib-19.6
-python setup.py install
-rm -rf dist
-rm -rf tools/python/build
-rm python_examples/dlib.so
 
 cd $cwd
 
@@ -224,7 +203,7 @@ echo "cv2.__version__"
 if [ $cvVersionChoice -eq 2 ]; then
 	       echo "The output should be 4.0.0-pre"
 else
-               echo The output should be "$cvVersion"
+	       echo The output should be "$cvVersion"
 fi
 
 echo "deactivate"
@@ -235,11 +214,16 @@ echo "import cv2"
 echo "cv2.__version__"
 
 if [ $cvVersionChoice -eq 2 ]; then
-              echo "The output should be 4.0.0-pre"
+	      echo "The output should be 4.0.0-pre"
 else
-              echo The output should be "$cvVersion"
+	      echo The output should be "$cvVersion"
 fi
 
 echo "deactivate"
 
 echo "Installation completed successfully"
+
+sudo sed -i 's/CONF_SWAPSIZE=1024/CONF_SWAPSIZE=100/g' /etc/dphys-swapfile
+sudo /etc/init.d/dphys-swapfile stop
+sudo /etc/init.d/dphys-swapfile start
+echo "sudo modprobe bcm2835-v4l2" >> ~/.profile
