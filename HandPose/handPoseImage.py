@@ -1,3 +1,4 @@
+from __future__ import division
 import cv2
 import time
 import numpy as np
@@ -12,7 +13,7 @@ frame = cv2.imread("right-frontal.jpg")
 frameCopy = np.copy(frame)
 frameWidth = frame.shape[1]
 frameHeight = frame.shape[0]
-aspect_ratio = float(frameWidth)/frameHeight
+aspect_ratio = frameWidth/frameHeight
 
 threshold = 0.1
 
@@ -20,7 +21,7 @@ t = time.time()
 # input image dimensions for the network
 inHeight = 368
 inWidth = int(((aspect_ratio*inHeight)*8)//8)
-inpBlob = cv2.dnn.blobFromImage(frame, 1.0 / 255, (inHeight, inWidth), (0, 0, 0), swapRB=False, crop=False)
+inpBlob = cv2.dnn.blobFromImage(frame, 1.0 / 255, (inWidth, inHeight), (0, 0, 0), swapRB=False, crop=False)
 
 net.setInput(inpBlob)
 
