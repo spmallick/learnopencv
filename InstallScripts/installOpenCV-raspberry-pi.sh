@@ -144,12 +144,20 @@ echo "Complete"
 echo "Downloading opencv and opencv_contrib"
 git clone https://github.com/opencv/opencv.git
 cd opencv
-git checkout $cvVersion
+if [ "$cvVersionChoice" -eq 2 ]; then
+	git checkout $cvVersion
+else
+	git checkout 3.4
+fi
 cd ..
 
 git clone https://github.com/opencv/opencv_contrib.git
 cd opencv_contrib
-git checkout $cvVersion
+if [ "$cvVersionChoice" -eq 2 ]; then
+	git checkout $cvVersion
+else
+	git checkout 3.4
+fi
 cd ..
 echo "================================"
 echo "Complete"
