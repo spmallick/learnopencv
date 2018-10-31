@@ -11,7 +11,7 @@ rm -rf installation
 echo "OpenCV installation by learnOpenCV.com"
 
 echo "Select OpenCV version to install (1 or 2)"
-echo "1. OpenCV 3.4.1 (default)"
+echo "1. OpenCV 3.4.3 (default)"
 echo "2. Master"
 
 read cvVersionChoice
@@ -21,7 +21,7 @@ cvVersionChoice=1
 if [ "$cvVersionChoice" -eq 2 ]; then
 	cvVersion="master"
 else
-	cvVersion="3.4.1"
+	cvVersion="3.4.3"
 fi
 
 # Save current working directory
@@ -132,12 +132,20 @@ echo "Complete"
 echo "Downloading opencv and opencv_contrib"
 git clone https://github.com/opencv/opencv.git
 cd opencv
-git checkout $cvVersion
+if [ "$cvVersionChoice" -eq 2 ]; then
+	git checkout $cvVersion
+else
+	git checkout tags/3.4.3
+fi
 cd ..
 
 git clone https://github.com/opencv/opencv_contrib.git
 cd opencv_contrib
-git checkout $cvVersion
+if [ "$cvVersionChoice" -eq 2 ]; then
+	git checkout $cvVersion
+else
+	git checkout tags/3.4.3
+fi
 cd ..
 echo "================================"
 echo "Complete"
