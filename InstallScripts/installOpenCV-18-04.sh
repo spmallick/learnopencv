@@ -132,6 +132,7 @@ echo "Complete"
 echo "Downloading opencv and opencv_contrib"
 git clone https://github.com/opencv/opencv.git
 cd opencv
+git fetch --all --tags --prune
 if [ "$cvVersionChoice" -eq 2 ]; then
 	git checkout $cvVersion
 else
@@ -141,6 +142,7 @@ cd ..
 
 git clone https://github.com/opencv/opencv_contrib.git
 cd opencv_contrib
+git fetch --all --tags --prune
 if [ "$cvVersionChoice" -eq 2 ]; then
 	git checkout $cvVersion
 else
