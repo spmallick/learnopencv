@@ -16,7 +16,7 @@ echo "2. Master"
 
 read cvVersionChoice
 
-cvVersionChoice=1
+#cvVersionChoice=1
 
 if [ "$cvVersionChoice" -eq 2 ]; then
 	cvVersion="master"
