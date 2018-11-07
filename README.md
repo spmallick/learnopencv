@@ -5,11 +5,18 @@ Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenC
 
 | Blog Post        | |
 | ------------- |:-------------|
+|[Install OpenCV 4 on Windows](https://www.learnopencv.com/install-opencv-4-on-windows/) | [Code](https://github.com/spmallick/learnopencv/tree/master/InstallScripts/Windows) |
+|[Hand Keypoint Detection using Deep Learning and OpenCV](https://www.learnopencv.com/hand-keypoint-detection-using-deep-learning-and-opencv/) | [Code](https://github.com/spmallick/learnopencv/tree/master/HandPose)|
+|[Deep learning based Object Detection and Instance Segmentation using Mask R-CNN in OpenCV (Python / C++)](https://www.learnopencv.com/deep-learning-based-object-detection-and-instance-segmentation-using-mask-r-cnn-in-opencv-python-c/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Mask-RCNN) |
+|[Install OpenCV 4 on Ubuntu 18.04](https://www.learnopencv.com/install-opencv-4-on-ubuntu-18-04/) | [Code](https://github.com/spmallick/learnopencv/blob/master/InstallScripts/installOpenCV-18-04.sh) |
+|[Install OpenCV 4 on Ubuntu 16.04](https://www.learnopencv.com/install-opencv-4-on-ubuntu-16-04/) | [Code](https://github.com/spmallick/learnopencv/blob/master/InstallScripts/installOpenCV-16-04.sh) |
+|[Multi-Person Pose Estimation in OpenCV using OpenPose](https://www.learnopencv.com/multi-person-pose-estimation-in-opencv-using-openpose/) | [Code](https://github.com/spmallick/learnopencv/tree/master/OpenPose-Multi-Person) |
+|[Heatmap for Logo Detection using OpenCV (Python)](https://www.learnopencv.com/heatmap-for-logo-detection-using-opencv-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/heatmap)|
 |[Deep Learning based Object Detection using YOLOv3 with OpenCV ( Python / C++ )](https://www.learnopencv.com/deep-learning-based-object-detection-using-yolov3-with-opencv-python-c/) | [Code](https://github.com/spmallick/learnopencv/tree/master/ObjectDetection-YOLO)|
 |[Convex Hull using OpenCV in Python and C++](https://www.learnopencv.com/convex-hull-using-opencv-in-python-and-c/) | [Code](https://github.com/spmallick/learnopencv/tree/master/ConvexHull)|
 |[MultiTracker : Multiple Object Tracking using OpenCV (C++/Python)](https://www.learnopencv.com/multitracker-multiple-object-tracking-using-opencv-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/MultiObjectTracker) |
 |[Convolutional Neural Network based Image Colorization using OpenCV](https://www.learnopencv.com/convolutional-neural-network-based-image-colorization-using-opencv/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Colorization)|
-|[SVM using scikit-learn](https://www.learnopencv.com/svm-using-scikit-learn-in-python/)|[Code](https://github.com/spmallick/learnopencv/tree/master/SVM-using-Python)| 
+|[SVM using scikit-learn](https://www.learnopencv.com/svm-using-scikit-learn-in-python/)|[Code](https://github.com/spmallick/learnopencv/tree/master/SVM-using-Python)|
 |[GOTURN: Deep Learning based Object Tracking](https://www.learnopencv.com/goturn-deep-learning-based-object-tracking/) | [Code](https://github.com/spmallick/learnopencv/tree/master/GOTURN)|
 |[Find the Center of a Blob (Centroid) using OpenCV (C++/Python)](https://www.learnopencv.com/find-center-of-blob-centroid-using-opencv-cpp-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/CenterofBlob)|
 |[Support Vector Machines (SVM)](https://www.learnopencv.com/support-vector-machines-svm/)|[Code](https://github.com/spmallick/learnopencv/tree/master/SVM-using-Python)|
@@ -67,7 +74,7 @@ Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenC
 |[Object Tracking using OpenCV (C++/Python)](http://www.learnopencv.com/object-tracking-using-opencv-cpp-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/tracking) |
 |[Handwritten Digits Classification : An OpenCV ( C++ / Python ) Tutorial](http://www.learnopencv.com/handwritten-digits-classification-an-opencv-c-python-tutorial/) | [Code](https://github.com/spmallick/learnopencv/tree/master/digits-classification) |
 |[Training a better Haar and LBP cascade based Eye Detector using OpenCV](http://www.learnopencv.com/training-better-haar-lbp-cascade-eye-detector-opencv/) | |
-|[Deep Learning Book Gift Recipients](http://www.learnopencv.com/deep-learning-book-gift-recipients/) | | 
+|[Deep Learning Book Gift Recipients](http://www.learnopencv.com/deep-learning-book-gift-recipients/) | |
 |[Minified OpenCV Haar and LBP Cascades](http://www.learnopencv.com/minified-opencv-haar-and-lbp-cascades/) | [Code](https://github.com/spmallick/learnopencv/tree/master/ninjaEyeDetector)|
 |[Deep Learning Book Gift](http://www.learnopencv.com/deep-learning-book-gift/) | |
 |[Histogram of Oriented Gradients](http://www.learnopencv.com/histogram-of-oriented-gradients/) | |
