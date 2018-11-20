@@ -5,6 +5,8 @@ Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenC
 
 | Blog Post        | |
 | ------------- |:-------------|
+|[Universal Sentence Encoder]() | [Code](https://github.com/spmallick/learnopencv/blob/master/Universal-Sentence-Encoder) |
+|[Install OpenCV 4 on Raspberry Pi](https://www.learnopencv.com/install-opencv-4-on-raspberry-pi/) | [Code](https://github.com/spmallick/learnopencv/blob/master/InstallScripts/installOpenCV-raspberry-pi.sh) |
 |[Install OpenCV 4 on Windows](https://www.learnopencv.com/install-opencv-4-on-windows/) | [Code](https://github.com/spmallick/learnopencv/tree/master/InstallScripts/Windows) |
 |[Hand Keypoint Detection using Deep Learning and OpenCV](https://www.learnopencv.com/hand-keypoint-detection-using-deep-learning-and-opencv/) | [Code](https://github.com/spmallick/learnopencv/tree/master/HandPose)|
 |[Deep learning based Object Detection and Instance Segmentation using Mask R-CNN in OpenCV (Python / C++)](https://www.learnopencv.com/deep-learning-based-object-detection-and-instance-segmentation-using-mask-r-cnn-in-opencv-python-c/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Mask-RCNN) |
