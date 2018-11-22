@@ -137,6 +137,8 @@ while cv.waitKey(1) < 0:
         print("Done processing !!!")
         print("Output file is stored as ", outputFile)
         cv.waitKey(3000)
+        # Release device
+        cap.release()
         break
 
     # Create a 4D blob from a frame.
