@@ -5,6 +5,7 @@ Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenC
 
 | Blog Post        | |
 | ------------- |:-------------|
+|[OpenCV QR Code Scanner (C++ and Python)](https://www.learnopencv.com/opencv-qr-code-scanner-c-and-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/QRCode-OpenCV) |
 |[Install OpenCV 3.4.4 on Windows (C++ and Python)](https://www.learnopencv.com/install-opencv-3-4-4-on-windows/) | [Code](https://github.com/spmallick/learnopencv/tree/master/InstallScripts/Windows-3) |
 |[Install OpenCV 3.4.4 on Ubuntu 16.04 (C++ and Python)](https://www.learnopencv.com/install-opencv-3-4-4-on-ubuntu-16-04/) | [Code](https://github.com/spmallick/learnopencv/blob/master/InstallScripts/installOpenCV-3-16-04.sh) |
 |[Install OpenCV 3.4.4 on Ubuntu 18.04 (C++ and Python)](https://www.learnopencv.com/install-opencv-3-4-4-on-ubuntu-18-04/) | [Code](https://github.com/spmallick/learnopencv/blob/master/InstallScripts/installOpenCV-3-18-04.sh) |
