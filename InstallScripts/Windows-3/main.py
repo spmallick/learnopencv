@@ -19,7 +19,7 @@ def writeBatchFile(batchFile):
 	f_write.write("::====================================::\n")
 	
 	f_write.write("echo @echo off>>runScript.bat\n")
-	f_write.write("echo setlocal enabledelayedexpansion >> runScript.bat")
+	f_write.write("echo setlocal enabledelayedexpansion >> runScript.bat\n")
 	writeFlag=0
 	with open(batchFile,'r') as f:
 		for line in f.readlines():
