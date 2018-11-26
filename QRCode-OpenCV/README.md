@@ -15,9 +15,11 @@ make
 # How to Run the code
 
 ## C++ ##
+```
 ./qrCodeOpencv <filename>
-
+```
 ## Python ##
+```
 python qrCodeOpencv.py <filename>
-
+```
 **Note** : If you dont give any filename, it will use the default image provided.
