@@ -1,7 +1,7 @@
 
 # OpenCV QR Code Scanner
 
-This directory contains code for using OpenCV QR code. This code requires **OpenCV 4.0** or later. 
+This directory contains code for using OpenCV QR code. This code requires **OpenCV 3.4.4 or above** or later. 
 
 # For C++
 
