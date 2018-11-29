@@ -69,7 +69,7 @@ mkvirtualenv OpenCV-"$cvVersion"-py3 -p python3
 workon OpenCV-"$cvVersion"-py3
  
 # now install python libraries within this virtual environment
-pip install numpy scipy matplotlib scikit-image scikit-learn ipython
+pip install numpy scipy matplotlib scikit-image scikit-learn ipython dlib
  
 # quit virtual environment
 deactivate
