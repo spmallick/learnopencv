@@ -85,6 +85,7 @@ sudo -H pip3 install -U pip numpy
 sudo apt-get -y install python3-testresources
 
 # Install virtual environment
+echo "Creating Python environments"
 python3 -m venv OpenCV-"$cvVersion"-py3
 echo "# Virtual Environment Wrapper" >> ~/.bashrc
 echo "alias workoncv-$cvVersion=\"source $cwd/OpenCV-$cvVersion-py3/bin/activate\"" >> ~/.bashrc
@@ -93,13 +94,7 @@ echo "================================"
 
 echo "Complete"
 
-echo "Creating Python environments"
-
 ############ For Python 3 ############
-# create virtual environment
-mkvirtualenv OpenCV-"$cvVersion"-py3 -p python3
-workon OpenCV-"$cvVersion"-py3
-
 # now install python libraries within this virtual environment
 sudo sed -i 's/CONF_SWAPSIZE=100/CONF_SWAPSIZE=1024/g' /etc/dphys-swapfile
 sudo /etc/init.d/dphys-swapfile stop
