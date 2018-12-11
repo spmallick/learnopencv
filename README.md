@@ -5,6 +5,9 @@ Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenC
 
 | Blog Post        | |
 | ------------- |:-------------|
+|[Shape Matching using Hu Moments (C++/Python)](https://www.learnopencv.com/shape-matching-using-hu-moments-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/HuMoments) |
+|[Install OpenCV 4 on CentOS (C++ and Python)](https://www.learnopencv.com/install-opencv-4-on-centos-7/) | [Code](https://github.com/spmallick/learnopencv/blob/master/InstallScripts/installOpenCV-3-on-centos.sh) |
+|[Install OpenCV 3.4.4 on CentOS (C++ and Python)](https://www.learnopencv.com/install-opencv-3-4-4-on-centos-7/) | [Code](https://github.com/spmallick/learnopencv/blob/master/InstallScripts/installOpenCV-3-on-centos.sh) |
 |[Install OpenCV 3.4.4 on Red Hat (C++ and Python)](https://www.learnopencv.com/install-opencv-3-4-4-on-red-hat/) | [Code](https://github.com/spmallick/learnopencv/blob/master/InstallScripts/installOpenCV-3-on-red-hat.sh) |
 |[Install OpenCV 4 on Red Hat (C++ and Python)](https://www.learnopencv.com/install-opencv-4-on-red-hat/) | [Code](https://github.com/spmallick/learnopencv/blob/master/InstallScripts/installOpenCV-4-on-red-hat.sh) |
 |[Install OpenCV 4 on macOS (C++ and Python)](https://www.learnopencv.com/install-opencv-4-on-macos/) | [Code](https://github.com/spmallick/learnopencv/tree/master/InstallScripts/installOpenCV-4-macos.sh) |
