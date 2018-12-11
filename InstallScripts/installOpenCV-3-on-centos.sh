@@ -2,10 +2,10 @@
 
 echo "OpenCV installation by learnOpenCV.com"
 
-echo "Installing OpenCV - 4.0"
+echo "Installing OpenCV - 3.4.4"
  
 #Specify OpenCV version
-cvVersion="master"
+cvVersion="3.4.4"
 
 # Clean build directories
 rm -rf opencv
@@ -16,7 +16,6 @@ mkdir installation/OpenCV-"$cvVersion"
 
 # Save current working directory
 cwd=$(pwd)
-sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 sudo yum -y install epel-release
 sudo yum -y install git gcc gcc-c++ cmake3
 sudo yum -y install qt5-qtbase-devel
@@ -31,15 +30,18 @@ sudo rpm -Uvh http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release
 sudo yum install -y ffmpeg
 sudo yum install -y ffmpeg-devel
 
-sudo yum install -y libpng-devel
+ssudo yum install -y libpng-devel
+sudo yum install -y jasper-devel
 sudo yum install -y openexr-devel
 sudo yum install -y libwebp-devel
 sudo yum -y install libjpeg-turbo-devel 
 sudo yum install -y freeglut-devel mesa-libGL mesa-libGL-devel
 sudo yum -y install libtiff-devel 
-sudo yum -y install libdc1394-devel --skip-broken
+sudo yum -y install libdc1394-devel
 sudo yum -y install tbb-devel eigen3-devel
 sudo yum -y install boost boost-thread boost-devel
+sudo yum -y install libv4l-devel
+sudo yum -y install gstreamer-plugins-base-devel
 
 sudo pip3 install virtualenv virtualenvwrapper
 echo "export WORKON_HOME=$HOME/.virtualenvs" >> ~/.bashrc
@@ -66,18 +68,15 @@ deactivate
 
 git clone https://github.com/opencv/opencv.git
 cd opencv
-git checkout $cvVersion
+git checkout 3.4
 cd ..
  
 git clone https://github.com/opencv/opencv_contrib.git
 cd opencv_contrib
-git checkout $cvVersion
+git checkout 3.4
 cd ..
 
 cd opencv
-#echo "find_package(OpenGL REQUIRED)" >>./samples/cpp/CMakeLists.txt
-#echo "find_package(GLUT REQUIRED)" >> ./samples/cpp/CMakeLists.txt
-#sed -i '38s/.*/  ocv_target_link_libraries(${tgt} ${OPENCV_LINKER_LIBS} ${OPENCV_CPP_SAMPLES_REQUIRED_DEPS} ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})/' ./samples/cpp/CMakeLists.txt
 mkdir build
 cd build
 

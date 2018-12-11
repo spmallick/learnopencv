@@ -16,7 +16,6 @@ mkdir installation/OpenCV-"$cvVersion"
 
 # Save current working directory
 cwd=$(pwd)
-sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 sudo yum -y install epel-release
 sudo yum -y install git gcc gcc-c++ cmake3
 sudo yum -y install qt5-qtbase-devel
@@ -32,14 +31,17 @@ sudo yum install -y ffmpeg
 sudo yum install -y ffmpeg-devel
 
 sudo yum install -y libpng-devel
+sudo yum install -y jasper-devel
 sudo yum install -y openexr-devel
 sudo yum install -y libwebp-devel
 sudo yum -y install libjpeg-turbo-devel 
 sudo yum install -y freeglut-devel mesa-libGL mesa-libGL-devel
 sudo yum -y install libtiff-devel 
-sudo yum -y install libdc1394-devel --skip-broken
+sudo yum -y install libdc1394-devel
 sudo yum -y install tbb-devel eigen3-devel
 sudo yum -y install boost boost-thread boost-devel
+sudo yum -y install libv4l-devel
+sudo yum -y install gstreamer-plugins-base-devel
 
 sudo pip3 install virtualenv virtualenvwrapper
 echo "export WORKON_HOME=$HOME/.virtualenvs" >> ~/.bashrc
@@ -75,9 +77,9 @@ git checkout $cvVersion
 cd ..
 
 cd opencv
-#echo "find_package(OpenGL REQUIRED)" >>./samples/cpp/CMakeLists.txt
-#echo "find_package(GLUT REQUIRED)" >> ./samples/cpp/CMakeLists.txt
-#sed -i '38s/.*/  ocv_target_link_libraries(${tgt} ${OPENCV_LINKER_LIBS} ${OPENCV_CPP_SAMPLES_REQUIRED_DEPS} ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})/' ./samples/cpp/CMakeLists.txt
+echo "find_package(OpenGL REQUIRED)" >>./samples/cpp/CMakeLists.txt
+echo "find_package(GLUT REQUIRED)" >> ./samples/cpp/CMakeLists.txt
+sed -i '38s/.*/  ocv_target_link_libraries(${tgt} ${OPENCV_LINKER_LIBS} ${OPENCV_CPP_SAMPLES_REQUIRED_DEPS} ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})/' ./samples/cpp/CMakeLists.txt
 mkdir build
 cd build
 
