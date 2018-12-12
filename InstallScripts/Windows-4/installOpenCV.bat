@@ -47,7 +47,7 @@ mkdir build
 cd build
 ::xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx::
 ::DO_NOT_CHANGE::
-cmake -G "Visual Studio 14 2015 Win64" -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX=%cwd%/Installation -DINSTALL_C_EXAMPLES=ON -DINSTALL_C_EXAMPLES=ON -DINSTALL_PYTHON_EXAMPLES=ON -DOPENCV_EXTRA_MODULES_PATH=%cwd%\opencv_contrib\modules -DBUILD_opencv_saliency=OFF -DPYTHON3_EXECUTABLE=%envsDir%\OpenCV-%cvVersion%-py3\python.exe -DPYTHON3_INCLUDE_DIR=%envsDir%\OpenCV-%cvVersion%-py3\include -DPYTHON3_LIBRARY=%envsDir%\OpenCV-%cvVersion%-py3\libs\python36.lib -DPYTHON3_NUMPY_INCLUDE_DIRS=%envsDir%\OpenCV-%cvVersion%-py3\Lib\site-packages\numpy\core\include -DPYTHON3_PACKAGES_PATH=%envsDir%\OpenCV-%cvVersion%-py3\Lib\site-packages ..
+cmake -G "Visual Studio 15 2017 Win64" -T host=x64 -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX=%cwd%/Installation -DINSTALL_C_EXAMPLES=ON -DINSTALL_C_EXAMPLES=ON -DINSTALL_PYTHON_EXAMPLES=ON -DOPENCV_EXTRA_MODULES_PATH=%cwd%\opencv_contrib\modules -DBUILD_opencv_saliency=OFF -DPYTHON3_EXECUTABLE=%envsDir%\OpenCV-%cvVersion%-py3\python.exe -DPYTHON3_INCLUDE_DIR=%envsDir%\OpenCV-%cvVersion%-py3\include -DPYTHON3_LIBRARY=%envsDir%\OpenCV-%cvVersion%-py3\libs\python36.lib -DPYTHON3_NUMPY_INCLUDE_DIRS=%envsDir%\OpenCV-%cvVersion%-py3\Lib\site-packages\numpy\core\include -DPYTHON3_PACKAGES_PATH=%envsDir%\OpenCV-%cvVersion%-py3\Lib\site-packages ..
 ::DO_NOT_CHANGE::
 ::============================================::
 ::Compile OpenCV in release mode

@@ -5,17 +5,25 @@ Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenC
 
 | Blog Post        | |
 | ------------- |:-------------|
+|[Shape Matching using Hu Moments (C++/Python)](https://www.learnopencv.com/shape-matching-using-hu-moments-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/HuMoments) |
+|[Install OpenCV 4 on CentOS (C++ and Python)](https://www.learnopencv.com/install-opencv-4-on-centos-7/) | [Code](https://github.com/spmallick/learnopencv/blob/master/InstallScripts/installOpenCV-3-on-centos.sh) |
+|[Install OpenCV 3.4.4 on CentOS (C++ and Python)](https://www.learnopencv.com/install-opencv-3-4-4-on-centos-7/) | [Code](https://github.com/spmallick/learnopencv/blob/master/InstallScripts/installOpenCV-3-on-centos.sh) |
+|[Install OpenCV 3.4.4 on Red Hat (C++ and Python)](https://www.learnopencv.com/install-opencv-3-4-4-on-red-hat/) | [Code](https://github.com/spmallick/learnopencv/blob/master/InstallScripts/installOpenCV-3-on-red-hat.sh) |
+|[Install OpenCV 4 on Red Hat (C++ and Python)](https://www.learnopencv.com/install-opencv-4-on-red-hat/) | [Code](https://github.com/spmallick/learnopencv/blob/master/InstallScripts/installOpenCV-4-on-red-hat.sh) |
+|[Install OpenCV 4 on macOS (C++ and Python)](https://www.learnopencv.com/install-opencv-4-on-macos/) | [Code](https://github.com/spmallick/learnopencv/tree/master/InstallScripts/installOpenCV-4-macos.sh) |
+|[Install OpenCV 3.4.4 on Raspberry Pi](https://www.learnopencv.com/install-opencv-3-4-4-on-raspberry-pi/) | [Code](https://github.com/spmallick/learnopencv/blob/master/InstallScripts/installOpenCV-3-raspberry-pi.sh) |
+|[Install OpenCV 3.4.4 on macOS (C++ and Python)](https://www.learnopencv.com/install-opencv-3-4-4-on-macos/) | [Code](https://github.com/spmallick/learnopencv/blob/master/InstallScripts/installOpenCV-3-macos.sh) |
 |[OpenCV QR Code Scanner (C++ and Python)](https://www.learnopencv.com/opencv-qr-code-scanner-c-and-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/QRCode-OpenCV) |
 |[Install OpenCV 3.4.4 on Windows (C++ and Python)](https://www.learnopencv.com/install-opencv-3-4-4-on-windows/) | [Code](https://github.com/spmallick/learnopencv/tree/master/InstallScripts/Windows-3) |
-|[Install OpenCV 3.4.4 on Ubuntu 16.04 (C++ and Python)](https://www.learnopencv.com/install-opencv-3-4-4-on-ubuntu-16-04/) | [Code](https://github.com/spmallick/learnopencv/blob/master/InstallScripts/installOpenCV-3-16-04.sh) |
-|[Install OpenCV 3.4.4 on Ubuntu 18.04 (C++ and Python)](https://www.learnopencv.com/install-opencv-3-4-4-on-ubuntu-18-04/) | [Code](https://github.com/spmallick/learnopencv/blob/master/InstallScripts/installOpenCV-3-18-04.sh) |
+|[Install OpenCV 3.4.4 on Ubuntu 16.04 (C++ and Python)](https://www.learnopencv.com/install-opencv-3-4-4-on-ubuntu-16-04/) | [Code](https://github.com/spmallick/learnopencv/blob/master/InstallScripts/installOpenCV-3-on-Ubuntu-16-04.sh) |
+|[Install OpenCV 3.4.4 on Ubuntu 18.04 (C++ and Python)](https://www.learnopencv.com/install-opencv-3-4-4-on-ubuntu-18-04/) | [Code](https://github.com/spmallick/learnopencv/blob/master/InstallScripts/installOpenCV-3-on-Ubuntu-18-04.sh) |
 |[Universal Sentence Encoder](https://www.learnopencv.com/universal-sentence-encoder) | [Code](https://github.com/spmallick/learnopencv/blob/master/Universal-Sentence-Encoder) |
-|[Install OpenCV 4 on Raspberry Pi](https://www.learnopencv.com/install-opencv-4-on-raspberry-pi/) | [Code](https://github.com/spmallick/learnopencv/blob/master/InstallScripts/installOpenCV-raspberry-pi.sh) |
+|[Install OpenCV 4 on Raspberry Pi](https://www.learnopencv.com/install-opencv-4-on-raspberry-pi/) | [Code](https://github.com/spmallick/learnopencv/blob/master/InstallScripts/installOpenCV-4-raspberry-pi.sh) |
 |[Install OpenCV 4 on Windows (C++ and Python)](https://www.learnopencv.com/install-opencv-4-on-windows/) | [Code](https://github.com/spmallick/learnopencv/tree/master/InstallScripts/Windows-4) |
 |[Hand Keypoint Detection using Deep Learning and OpenCV](https://www.learnopencv.com/hand-keypoint-detection-using-deep-learning-and-opencv/) | [Code](https://github.com/spmallick/learnopencv/tree/master/HandPose)|
 |[Deep learning based Object Detection and Instance Segmentation using Mask R-CNN in OpenCV (Python / C++)](https://www.learnopencv.com/deep-learning-based-object-detection-and-instance-segmentation-using-mask-r-cnn-in-opencv-python-c/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Mask-RCNN) |
-|[Install OpenCV 4 on Ubuntu 18.04 (C++ and Python)](https://www.learnopencv.com/install-opencv-4-on-ubuntu-18-04/) | [Code](https://github.com/spmallick/learnopencv/blob/master/InstallScripts/installOpenCV-4-18-04.sh) |
-|[Install OpenCV 4 on Ubuntu 16.04 (C++ and Python)](https://www.learnopencv.com/install-opencv-4-on-ubuntu-16-04/) | [Code](https://github.com/spmallick/learnopencv/blob/master/InstallScripts/installOpenCV-4-16-04.sh) |
+|[Install OpenCV 4 on Ubuntu 18.04 (C++ and Python)](https://www.learnopencv.com/install-opencv-4-on-ubuntu-18-04/) | [Code](https://github.com/spmallick/learnopencv/blob/master/InstallScripts/installOpenCV-4-on-Ubuntu-18-04.sh) |
+|[Install OpenCV 4 on Ubuntu 16.04 (C++ and Python)](https://www.learnopencv.com/install-opencv-4-on-ubuntu-16-04/) | [Code](https://github.com/spmallick/learnopencv/blob/master/InstallScripts/installOpenCV-4-on-Ubuntu-16-04.sh) |
 |[Multi-Person Pose Estimation in OpenCV using OpenPose](https://www.learnopencv.com/multi-person-pose-estimation-in-opencv-using-openpose/) | [Code](https://github.com/spmallick/learnopencv/tree/master/OpenPose-Multi-Person) |
 |[Heatmap for Logo Detection using OpenCV (Python)](https://www.learnopencv.com/heatmap-for-logo-detection-using-opencv-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/heatmap)|
 |[Deep Learning based Object Detection using YOLOv3 with OpenCV ( Python / C++ )](https://www.learnopencv.com/deep-learning-based-object-detection-using-yolov3-with-opencv-python-c/) | [Code](https://github.com/spmallick/learnopencv/tree/master/ObjectDetection-YOLO)|
