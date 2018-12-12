@@ -15,5 +15,5 @@ MACRO(add_example name)
   TARGET_LINK_LIBRARIES(${name} ${OpenCV_LIBS})
 ENDMACRO()
 
-add_example(huMoments)
+add_example(HuMoments)
 add_example(shapeMatcher)
