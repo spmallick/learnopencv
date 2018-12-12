@@ -5,6 +5,7 @@ Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenC
 
 | Blog Post        | |
 | ------------- |:-------------|
+|[Duplicate Search on Quora Dataset](https://www.learnopencv.com/duplicate-search-on-quora-dataset/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Quora-Dataset-Duplicate-Search) |
 |[Shape Matching using Hu Moments (C++/Python)](https://www.learnopencv.com/shape-matching-using-hu-moments-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/HuMoments) |
 |[Install OpenCV 4 on CentOS (C++ and Python)](https://www.learnopencv.com/install-opencv-4-on-centos-7/) | [Code](https://github.com/spmallick/learnopencv/blob/master/InstallScripts/installOpenCV-3-on-centos.sh) |
 |[Install OpenCV 3.4.4 on CentOS (C++ and Python)](https://www.learnopencv.com/install-opencv-3-4-4-on-centos-7/) | [Code](https://github.com/spmallick/learnopencv/blob/master/InstallScripts/installOpenCV-3-on-centos.sh) |
