@@ -17,7 +17,7 @@ make
 ## C++ ##
 ## Find Hu Moments
 ```
-./huMoments images/*
+./HuMoments images/*
 ```
 
 ## Match shapes
@@ -29,7 +29,7 @@ make
 ## Python ##
 ## Find Hu Moments
 ```
-python huMoments.py images/*
+python HuMoments.py images/*
 ```
 
 ## Match shapes
