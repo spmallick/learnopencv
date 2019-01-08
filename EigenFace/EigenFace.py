@@ -10,21 +10,21 @@ def createDataMatrix(images):
 	print("Creating data matrix",end=" ... ")
 	''' 
 	Allocate space for all images in one data matrix.
-  The size of the data matrix is
-  
-  ( w  * h  * 3, numImages )
-  
-  where,
-  
-  w = width of an image in the dataset.
-  h = height of an image in the dataset.
-  3 is for the 3 color channels.
-  '''
+	The size of the data matrix is
+
+	( w  * h  * 3, numImages )
+
+	where,
+
+	w = width of an image in the dataset.
+	h = height of an image in the dataset.
+	3 is for the 3 color channels.
+	'''
   
 	numImages = len(images)
 	sz = images[0].shape
 	data = np.zeros((numImages, sz[0] * sz[1] * sz[2]), dtype=np.float32)
-	for i in xrange(0, numImages):
+	for i in range(0, numImages):
 		image = images[i].flatten()
 		data[i,:] = image
 	
@@ -33,38 +33,37 @@ def createDataMatrix(images):
 
 # Read images from the directory
 def readImages(path):
-  print("Reading images from " + path, end="...")
-  # Create array of array of images.
-  images = []
-  # List all files in the directory and read points from text files one by one
-  for filePath in sorted(os.listdir(path)):
-    fileExt = os.path.splitext(filePath)[1]
-    if fileExt in [".jpg", ".jpeg"]:
-     
-      # Add to array of images
-      imagePath = os.path.join(path, filePath)
-      im = cv2.imread(imagePath)
-      
-      if im is None :
-      	print("image:{} not read properly".format(imagePath))
-      else :
-	      # Convert image to floating point
-	      im = np.float32(im)/255.0
-	      # Add image to list
-	      images.append(im)
-	      # Flip image 
-	      imFlip = cv2.flip(im, 1);
-	      # Append flipped image
-	      images.append(imFlip)
+	print("Reading images from " + path, end="...")
+	# Create array of array of images.
+	images = []
+	# List all files in the directory and read points from text files one by one
+	for filePath in sorted(os.listdir(path)):
+		fileExt = os.path.splitext(filePath)[1]
+		if fileExt in [".jpg", ".jpeg"]:
 
-  numImages = len(images) / 2
-  # Exit if no image found
-  if numImages == 0 :
+			# Add to array of images
+			imagePath = os.path.join(path, filePath)
+			im = cv2.imread(imagePath)
+
+			if im is None :
+				print("image:{} not read properly".format(imagePath))
+			else :
+				# Convert image to floating point
+				im = np.float32(im)/255.0
+				# Add image to list
+				images.append(im)
+				# Flip image 
+				imFlip = cv2.flip(im, 1);
+				# Append flipped image
+				images.append(imFlip)
+	numImages = len(images) / 2
+	# Exit if no image found
+	if numImages == 0 :
 		print("No images found")
 		sys.exit(0)
 
-  print(str(numImages) + " files read.")
-  return images
+	print(str(numImages) + " files read.")
+	return images
 
 # Add the weighted eigen faces to the mean face 
 def createNewFace(*args):
@@ -72,7 +71,7 @@ def createNewFace(*args):
 	output = averageFace
 	
 	# Add the eigen faces with the weights
-	for i in xrange(0, NUM_EIGEN_FACES):
+	for i in range(0, NUM_EIGEN_FACES):
 		'''
 		OpenCV does not allow slider values to be negative. 
 		So we use weight = sliderValue - MAX_SLIDER_VALUE / 2
@@ -86,7 +85,7 @@ def createNewFace(*args):
 	cv2.imshow("Result", output)
 
 def resetSliderValues(*args):
-	for i in xrange(0, NUM_EIGEN_FACES):
+	for i in range(0, NUM_EIGEN_FACES):
 		cv2.setTrackbarPos("Weight" + str(i), "Trackbars", MAX_SLIDER_VALUE/2);	
 	createNewFace()
 
@@ -136,7 +135,7 @@ if __name__ == '__main__':
 	sliderValues = []
 	
 	# Create Trackbars
-	for i in xrange(0, NUM_EIGEN_FACES):
+	for i in range(0, NUM_EIGEN_FACES):
 		sliderValues.append(MAX_SLIDER_VALUE/2)
 		cv2.createTrackbar( "Weight" + str(i), "Trackbars", MAX_SLIDER_VALUE/2, MAX_SLIDER_VALUE, createNewFace)
 	
