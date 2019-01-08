@@ -56,7 +56,7 @@ def readImages(path):
 				imFlip = cv2.flip(im, 1);
 				# Append flipped image
 				images.append(imFlip)
-	numImages = len(images) / 2
+	numImages = int(len(images) / 2)
 	# Exit if no image found
 	if numImages == 0 :
 		print("No images found")
@@ -86,7 +86,7 @@ def createNewFace(*args):
 
 def resetSliderValues(*args):
 	for i in range(0, NUM_EIGEN_FACES):
-		cv2.setTrackbarPos("Weight" + str(i), "Trackbars", MAX_SLIDER_VALUE/2);	
+		cv2.setTrackbarPos("Weight" + str(i), "Trackbars", int(MAX_SLIDER_VALUE/2));
 	createNewFace()
 
 if __name__ == '__main__':
@@ -136,8 +136,8 @@ if __name__ == '__main__':
 	
 	# Create Trackbars
 	for i in range(0, NUM_EIGEN_FACES):
-		sliderValues.append(MAX_SLIDER_VALUE/2)
-		cv2.createTrackbar( "Weight" + str(i), "Trackbars", MAX_SLIDER_VALUE/2, MAX_SLIDER_VALUE, createNewFace)
+		sliderValues.append(int(MAX_SLIDER_VALUE/2))
+		cv2.createTrackbar( "Weight" + str(i), "Trackbars", int(MAX_SLIDER_VALUE/2), MAX_SLIDER_VALUE, createNewFace)
 	
 	# You can reset the sliders by clicking on the mean image.
 	cv2.setMouseCallback("Result", resetSliderValues);
