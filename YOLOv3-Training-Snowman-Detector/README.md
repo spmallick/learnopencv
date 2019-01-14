@@ -27,9 +27,10 @@ make
 
 7. Start the training as below, by giving the correct paths to all the files being used as arguments
 
-`cd ~/darknet
-./darknet detector train /data-ssd/sunita/snowman/darknet.data  /data-ssd/sunita/snowman/darknet-yolov3.cfg ./darknet53.conv.74 > /data-ssd/sunita/snowman/train.log
-`
+`cd ~/darknet`
+
+`./darknet detector train /path/to/snowman/darknet.data  /path/to/snowman/darknet-yolov3.cfg ./darknet53.conv.74 > /path/to/snowman/train.log`
+
 8. Give the correct path to the modelConfiguration and modelWeights files in object_detection_yolo.py and test any image or video for snowman detection, e.g.
 
 `python3 object_detection_yolo.py --image=snowmanImage.jpg`
