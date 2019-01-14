@@ -5,6 +5,7 @@ Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenC
 
 | Blog Post        | |
 | ------------- |:-------------|
+|[Training YOLOv3 : Deep Learning based Custom Object Detector](https://www.learnopencv.com/training-yolov3-deep-learning-based-custom-object-detector/) | [Code](https://github.com/spmallick/learnopencv/tree/master/YOLOv3-Training-Snowman-Detector	) |
 |[Using OpenVINO with OpenCV](https://www.learnopencv.com/using-openvino-with-opencv/) | [Code](https://github.com/spmallick/learnopencv/tree/master/OpenVINO-OpenCV) |
 |[Duplicate Search on Quora Dataset](https://www.learnopencv.com/duplicate-search-on-quora-dataset/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Quora-Dataset-Duplicate-Search) |
 |[Shape Matching using Hu Moments (C++/Python)](https://www.learnopencv.com/shape-matching-using-hu-moments-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/HuMoments) |
