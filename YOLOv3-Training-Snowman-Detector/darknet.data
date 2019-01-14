@@ -1,0 +1,6 @@
+classes = 1
+train  = /data-ssd/sunita/snowman/snowman_train.txt
+valid  = /data-ssd/sunita/snowman/snowman_test.txt
+names = /data-ssd/sunita/snowman/classes.names
+backup = /data-ssd/sunita/snowman/weights/
+
