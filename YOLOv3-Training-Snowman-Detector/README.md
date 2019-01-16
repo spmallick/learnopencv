@@ -2,6 +2,8 @@ Training YOLOv3 Object Detector - Snowman
 
 1. Download the images.
 
+`mkdir JPEGImages`
+
 `python3 downloadSnowmanData.py`
 
 2. Unzip labels.zip
