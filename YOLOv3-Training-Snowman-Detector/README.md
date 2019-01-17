@@ -13,12 +13,12 @@ Training YOLOv3 Object Detector - Snowman
 Give the correct path to the data JPEGImages folder. The 'labels' folder should be in the same directory as the JPEGImages folder.
 
 4. Install Darknet and compile it.
-`
+```
 cd ~
 git clone https://github.com/pjreddie/darknet
 cd darknet
 make
-`
+```
 5. Get the pretrained model
 
 `wget https://pjreddie.com/media/files/darknet53.conv.74 -O ~/darknet/darknet53.conv.74`
