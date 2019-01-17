@@ -8,7 +8,7 @@ Training YOLOv3 Object Detector - Snowman
 
 3. Create the train-test split
 
-`python3 splitTrainAndTest.py /data-ssd/sunita/snowman/JPEGImages/`
+`python3 splitTrainAndTest.py /data-ssd/sunita/snowman/JPEGImages`
 
 Give the correct path to the data JPEGImages folder. The 'labels' folder should be in the same directory as the JPEGImages folder.
 
