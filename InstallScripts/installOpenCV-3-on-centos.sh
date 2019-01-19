@@ -30,7 +30,7 @@ sudo rpm -Uvh http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release
 sudo yum install -y ffmpeg
 sudo yum install -y ffmpeg-devel
 
-ssudo yum install -y libpng-devel
+sudo yum install -y libpng-devel
 sudo yum install -y jasper-devel
 sudo yum install -y openexr-devel
 sudo yum install -y libwebp-devel
