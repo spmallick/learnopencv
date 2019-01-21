@@ -75,9 +75,9 @@ git checkout $cvVersion
 cd ..
 
 cd opencv
-echo "find_package(OpenGL REQUIRED)" >>./samples/cpp/CMakeLists.txt
-echo "find_package(GLUT REQUIRED)" >> ./samples/cpp/CMakeLists.txt
-sed -i '38s/.*/  ocv_target_link_libraries(${tgt} ${OPENCV_LINKER_LIBS} ${OPENCV_CPP_SAMPLES_REQUIRED_DEPS} ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})/' ./samples/cpp/CMakeLists.txt
+#echo "find_package(OpenGL REQUIRED)" >>./samples/cpp/CMakeLists.txt
+#echo "find_package(GLUT REQUIRED)" >> ./samples/cpp/CMakeLists.txt
+#sed -i '38s/.*/  ocv_target_link_libraries(${tgt} ${OPENCV_LINKER_LIBS} ${OPENCV_CPP_SAMPLES_REQUIRED_DEPS} ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})/' ./samples/cpp/CMakeLists.txt
 mkdir build
 cd build
 

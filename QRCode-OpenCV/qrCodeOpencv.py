@@ -32,6 +32,6 @@ if len(data)>0:
 else:
     print("QR Code not detected")
     cv2.imshow("Results", inputImage)
-
+cv2.imwrite("output.jpg",inputImage)
 cv2.waitKey(0)
 cv2.destroyAllWindows()

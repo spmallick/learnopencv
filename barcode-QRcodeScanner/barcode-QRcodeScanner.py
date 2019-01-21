@@ -10,7 +10,7 @@ def decode(im) :
   # Print results
   for obj in decodedObjects:
     print('Type : ', obj.type)
-    print('Data : ', obj.data,'\n')
+    print('Data : ', str(obj.data),'\n')
 
   return decodedObjects
 
