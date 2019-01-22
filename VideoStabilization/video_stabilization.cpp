@@ -28,7 +28,7 @@ using namespace std;
 using namespace cv;
 
 
-const int SMOOTHING_RADIUS = 30; // In frames. The larger the more stable the video, but less reactive to sudden panning
+const int SMOOTHING_RADIUS = 50; // In frames. The larger the more stable the video, but less reactive to sudden panning
 
 struct TransformParam
 {
@@ -71,12 +71,6 @@ struct Trajectory
     double a; // angle
 };
 
-
-void fixBorder(Mat &frame_stabilized)
-{
-  Mat T = getRotationMatrix2D(Point2f(frame_stabilized.cols/2, frame_stabilized.rows/2), 0, 1.04); 
-  warpAffine(frame_stabilized, frame_stabilized, T, frame_stabilized.size()); 
-}
 
 vector<Trajectory> cumsum(vector<TransformParam> &transforms)
 {
@@ -128,10 +122,17 @@ vector <Trajectory> smooth(vector <Trajectory>& trajectory, int radius)
   return smoothed_trajectory; 
 }
 
+void fixBorder(Mat &frame_stabilized)
+{
+  Mat T = getRotationMatrix2D(Point2f(frame_stabilized.cols/2, frame_stabilized.rows/2), 0, 1.04); 
+  warpAffine(frame_stabilized, frame_stabilized, T, frame_stabilized.size()); 
+}
+
+
 
 int main(int argc, char **argv)
 {
-    // Open video
+  // Read input video
   VideoCapture cap("video.mp4");
 
   // Get frame count
@@ -249,7 +250,7 @@ int main(int argc, char **argv)
     transforms_smooth.push_back(TransformParam(dx, dy, da));
   }
 
-  cap.set(CV_CAP_PROP_POS_FRAMES, 1);
+  cap.set(CV_CAP_PROP_POS_FRAMES, 0);
   Mat T(2,3,CV_64F);
   Mat frame, frame_stabilized, frame_out; 
 

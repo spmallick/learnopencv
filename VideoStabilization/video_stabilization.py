@@ -3,27 +3,18 @@ import numpy as np
 import cv2
 
 
-def movingAverage(y_value, radius): 
+def movingAverage(curve, radius): 
   window_size = 2 * radius + 1
   # Define the filter 
-  box_filter = np.ones(window_size)/window_size 
+  f = np.ones(window_size)/window_size 
   # Add padding to the boundaries 
-  y_pad = np.lib.pad(y_value, (radius, radius), 'edge') 
+  curve_pad = np.lib.pad(curve, (radius, radius), 'edge') 
   # Apply convolution 
-  y_smoothed = np.convolve(y_pad, box_filter, mode='same') 
+  curve_smoothed = np.convolve(curve_pad, f, mode='same') 
   # Remove padding 
-  y_smoothed = y_smoothed[radius:-radius]
-  # Sanity check
-  #assert y.shape == y_smooth.shape, print(y.shape, y_smoothed.shape) #sanity check 
-  return y_smoothed 
-
-def fixBorder(frame):
-  s = frame.shape
-  # Scale the image 4% without moving the center
-  T = cv2.getRotationMatrix2D((s[1]/2, s[0]/2), 0, 1.04)
-  frame = cv2.warpAffine(frame, T, (s[1], s[0]))
-  return frame
-
+  curve_smoothed = curve_smoothed[radius:-radius]
+  # return smoothed curve
+  return curve_smoothed 
 
 def smooth(trajectory): 
   smoothed_trajectory = np.copy(trajectory) 
@@ -33,8 +24,16 @@ def smooth(trajectory):
 
   return smoothed_trajectory
 
+def fixBorder(frame):
+  s = frame.shape
+  # Scale the image 4% without moving the center
+  T = cv2.getRotationMatrix2D((s[1]/2, s[0]/2), 0, 1.04)
+  frame = cv2.warpAffine(frame, T, (s[1], s[0]))
+  return frame
+
+
 # The larger the more stable the video, but less reactive to sudden panning
-SMOOTHING_RADIUS=30 
+SMOOTHING_RADIUS=50 
 
 # Read input video
 cap = cv2.VideoCapture('video.mp4') 
