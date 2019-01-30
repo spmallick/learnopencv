@@ -3,20 +3,32 @@ import cv2 as cv
 import math
 import argparse
 
-############ Add argument parser for command line arguments ############
-parser = argparse.ArgumentParser(description='Use this script to run TensorFlow implementation (https://github.com/argman/EAST) of EAST: An Efficient and Accurate Scene Text Detector (https://arxiv.org/abs/1704.03155v2)')
+parser = argparse.ArgumentParser(description='Use this script to run text detection deep learning networks using OpenCV.')
+# Input argument
 parser.add_argument('--input', help='Path to input image or video file. Skip this argument to capture frames from a camera.')
+# Model argument
 parser.add_argument('--model', default="frozen_east_text_detection.pb",
-                    help='Path to a binary .pb file of model contains trained weights.')
+                    help='Path to a binary .pb file of model contains trained weights.'
+                    )
+# Width argument
 parser.add_argument('--width', type=int, default=320,
-                    help='Preprocess input image by resizing to a specific width. It should be multiple by 32.')
+                    help='Preprocess input image by resizing to a specific width. It should be multiple by 32.'
+                   )
+# Height argument
 parser.add_argument('--height',type=int, default=320,
-                    help='Preprocess input image by resizing to a specific height. It should be multiple by 32.')
+                    help='Preprocess input image by resizing to a specific height. It should be multiple by 32.'
+                   )
+# Confidence threshold
 parser.add_argument('--thr',type=float, default=0.5,
-                    help='Confidence threshold.')
+                    help='Confidence threshold.'
+                   )
+# Non-maximum suppression threshold
 parser.add_argument('--nms',type=float, default=0.4,
-                    help='Non-maximum suppression threshold.')
+                    help='Non-maximum suppression threshold.'
+                   )
+
 args = parser.parse_args()
+
 
 ############ Utility functions ############
 def decode(scores, geometry, scoreThresh):
@@ -74,7 +86,7 @@ def decode(scores, geometry, scoreThresh):
     # Return detections and confidences
     return [detections, confidences]
 
-def main():
+if __name__ == "__main__":
     # Read and store arguments
     confThreshold = args.thr
     nmsThreshold = args.nms
@@ -142,6 +154,3 @@ def main():
         # Display the frame
         cv.imshow(kWinName,frame)
         cv.imwrite("out-{}".format(args.input),frame)
-
-if __name__ == "__main__":
-    main()
