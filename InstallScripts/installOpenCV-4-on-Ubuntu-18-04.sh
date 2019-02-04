@@ -65,7 +65,7 @@ echo "alias workoncv-$cvVersion=\"source $cwd/OpenCV-$cvVersion-py3/bin/activate
 source "$cwd"/OpenCV-"$cvVersion"-py3/bin/activate
 
 # now install python libraries within this virtual environment
-pip install numpy scipy matplotlib scikit-image scikit-learn ipython dlib
+pip install numpy scipy matplotlib scikit-image scikit-learn ipython dlib --user
  
 # quit virtual environment
 deactivate
