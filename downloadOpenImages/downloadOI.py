@@ -1,10 +1,14 @@
+#Author : Sunita Nayak, Big Vision LLC
+
+#### Usage example: python3 downloadOI.py --classes 'Ice_cream,Cookie' --mode train
+
 import argparse
 import csv
 import subprocess
 import os
 from tqdm import tqdm
 import multiprocessing
-from multiprocessing.dummy import Pool as ThreadPool
+from multiprocessing import Pool as thread_pool
 
 cpu_count = multiprocessing.cpu_count()
 
@@ -20,70 +24,70 @@ parser.add_argument("--inside", help="Include inside images", required=False, ty
 
 args = parser.parse_args()
 
-runMode = args.mode
+run_mode = args.mode
 
 threads = args.nthreads
 
 classes = []
-for className in args.classes.split(','):
-    classes.append(className)
+for class_name in args.classes.split(','):
+    classes.append(class_name)
 
 with open('./class-descriptions-boxable.csv', mode='r') as infile:
     reader = csv.reader(infile)
     dict_list = {rows[1]:rows[0] for rows in reader}
 
-subprocess.run(['rm', '-rf', runMode])
-subprocess.run([ 'mkdir', runMode])
+subprocess.run(['rm', '-rf', run_mode])
+subprocess.run([ 'mkdir', run_mode])
 
-pool = ThreadPool(threads)
+pool = thread_pool(threads)
 commands = []
 cnt = 0
 
 for ind in range(0, len(classes)):
     
-    className = classes[ind]
-    print("Class "+str(ind) + " : " + className)
+    class_name = classes[ind]
+    print("Class "+str(ind) + " : " + class_name)
     
-    subprocess.run([ 'mkdir', runMode+'/'+className])
+    subprocess.run([ 'mkdir', run_mode+'/'+class_name])
 
-    commandStr = "grep "+dict_list[className] + " ./" + runMode + "-annotations-bbox.csv"
-    class_annotations = subprocess.run(commandStr.split(), stdout=subprocess.PIPE).stdout.decode('utf-8')
+    command = "grep "+dict_list[class_name.replace('_', ' ')] + " ./" + run_mode + "-annotations-bbox.csv"
+    class_annotations = subprocess.run(command.split(), stdout=subprocess.PIPE).stdout.decode('utf-8')
     class_annotations = class_annotations.splitlines()
 
     for line in class_annotations:
 
-        lineParts = line.split(',')
+        line_parts = line.split(',')
         
         #IsOccluded,IsTruncated,IsGroupOf,IsDepiction,IsInside
-        if (args.occluded==0 and int(lineParts[8])>0):
-            print("Skipped %s",lineParts[0])
+        if (args.occluded==0 and int(line_parts[8])>0):
+            print("Skipped %s",line_parts[0])
             continue
-        if (args.truncated==0 and int(lineParts[9])>0):
-            print("Skipped %s",lineParts[0])
+        if (args.truncated==0 and int(line_parts[9])>0):
+            print("Skipped %s",line_parts[0])
             continue
-        if (args.groupOf==0 and int(lineParts[10])>0):
-            print("Skipped %s",lineParts[0])
+        if (args.groupOf==0 and int(line_parts[10])>0):
+            print("Skipped %s",line_parts[0])
             continue
-        if (args.depiction==0 and int(lineParts[11])>0):
-            print("Skipped %s",lineParts[0])
+        if (args.depiction==0 and int(line_parts[11])>0):
+            print("Skipped %s",line_parts[0])
             continue
-        if (args.inside==0 and int(lineParts[12])>0):
-            print("Skipped %s",lineParts[0])
+        if (args.inside==0 and int(line_parts[12])>0):
+            print("Skipped %s",line_parts[0])
             continue
 
         cnt = cnt + 1
 
-        command = 'aws s3 --no-sign-request --only-show-errors cp s3://open-images-dataset/'+runMode+'/'+lineParts[0]+'.jpg '+ runMode+'/'+className+'/'+lineParts[0]+'.jpg'
+        command = 'aws s3 --no-sign-request --only-show-errors cp s3://open-images-dataset/'+run_mode+'/'+line_parts[0]+'.jpg '+ run_mode+'/'+class_name+'/'+line_parts[0]+'.jpg'
         commands.append(command)
         
-        with open('%s/%s/%s.txt'%(runMode,className,lineParts[0]),'a') as f:
-            f.write(','.join([className, lineParts[4], lineParts[5], lineParts[6], lineParts[7]])+'\n')
+        with open('%s/%s/%s.txt'%(run_mode,class_name,line_parts[0]),'a') as f:
+            f.write(','.join([class_name, line_parts[4], line_parts[5], line_parts[6], line_parts[7]])+'\n')
 
 print("Annotation Count : "+str(cnt))
 commands = list(set(commands))
 print("Number of images to be downloaded : "+str(len(commands)))
 
-#list(tqdm(pool.imap(os.system, commands), total = len(commands) ))
+list(tqdm(pool.imap(os.system, commands), total = len(commands) ))
 
 pool.close()
 pool.join()
