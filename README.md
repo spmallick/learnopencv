@@ -5,6 +5,7 @@ Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenC
 
 | Blog Post        | |
 | ------------- |:-------------|
+|[Fast Image Downloader for Open Images V4 (Python)](https://www.learnopencv.com/fast-image-downloader-for-open-images-v4/) | [Code](https://github.com/spmallick/learnopencv/tree/master/downloadOpenImages) |
 |[Deep Learning based Text Detection Using OpenCV (C++/Python)](https://www.learnopencv.com/deep-learning-based-text-detection-using-opencv-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/TextDetectionEAST) |
 |[Video Stabilization Using Point Feature Matching in OpenCV](https://www.learnopencv.com/video-stabilization-using-point-feature-matching-in-opencv/) | [Code](https://github.com/spmallick/learnopencv/tree/master/VideoStabilization) |
 |[Training YOLOv3 : Deep Learning based Custom Object Detector](https://www.learnopencv.com/training-yolov3-deep-learning-based-custom-object-detector/) | [Code](https://github.com/spmallick/learnopencv/tree/master/YOLOv3-Training-Snowman-Detector	) |
