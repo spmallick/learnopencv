@@ -320,7 +320,7 @@ int main(int argc,char** argv) {
 		inputFile = std::string(argv[1]);
 	}
 
-	cv::Mat input = cv::imread(inputFile,CV_LOAD_IMAGE_COLOR);
+	cv::Mat input = cv::imread(inputFile, cv::IMREAD_COLOR);
 
  	std::chrono::time_point<std::chrono::system_clock> startTP = std::chrono::system_clock::now();
 
