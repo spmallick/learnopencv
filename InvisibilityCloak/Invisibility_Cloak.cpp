@@ -5,12 +5,22 @@
  
 using namespace std;
 using namespace cv;
- 
-int main(){
+
+
+const char* keys = "{ video  | | Path to the input video file. Skip this argument to capture frames from a camera.}";
+
+
+int main(int argc, char** argv){
+  // Parse command line arguments
+  CommandLineParser parser(argc,argv,keys);
  
   // Create a VideoCapture object and open the input file
-  // If the input is the web camera, pass 0 instead of the video file name
-  VideoCapture cap(0); 
+  VideoCapture cap; 
+  if (parser.has("video")){
+    cap.open(parser.get<String>("video"));
+  }
+  else
+    cap.open(0);
     
   // Check if camera opened successfully
   if(!cap.isOpened()){
