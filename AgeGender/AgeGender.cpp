@@ -132,9 +132,9 @@ int main(int argc, char** argv)
         string age = ageList[max_indice_age];
         cout << "Age: " << age << endl;
         string label = gender + ", " + age; // label
-        cv::putText(frame, label, Point(it->at(0), it->at(1) -20), cv::FONT_HERSHEY_SIMPLEX, 0.6, Scalar(255, 0, 0), 2, cv::LINE_AA);
-        imshow("Frame", frame);
-        imwrite("out.jpg",frame);
+        cv::putText(frameFace, label, Point(it->at(0), it->at(1) -20), cv::FONT_HERSHEY_SIMPLEX, 0.8, Scalar(0, 0, 255), 2, cv::LINE_AA);
+        imshow("Frame", frameFace);
+        imwrite("out.jpg",frameFace);
       }
 
     }
