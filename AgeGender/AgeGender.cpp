@@ -9,15 +9,11 @@ using namespace cv;
 using namespace cv::dnn;
 using namespace std;
 
-const char* keys =
-    "{ help  h     | | Print help message. }"
-    "{ input i     | | Path to input image or video file. Skip this argument to capture frames from a camera.}";
-
-tuple<Mat, vector<vector<int>>> getFaceBox(Net net, Mat &frameOpenCVDNN, double conf_threshold)
+tuple<Mat, vector<vector<int>>> getFaceBox(Net net, Mat &frame, double conf_threshold)
 {
+    Mat frameOpenCVDNN = frame.clone();
     int frameHeight = frameOpenCVDNN.rows;
     int frameWidth = frameOpenCVDNN.cols;
-
     double inScaleFactor = 1.0;
     Size size = Size(300, 300);
     // std::vector<int> meanVal = {104, 117, 123};
@@ -92,7 +88,8 @@ int main(int argc, char** argv)
       }
 
       vector<vector<int>> bboxes;
-      tie(frame, bboxes) = getFaceBox(faceNet, frame, 0.7);
+      Mat frameFace;
+      tie(frameFace, bboxes) = getFaceBox(faceNet, frame, 0.7);
 
       if(bboxes.size() == 0) {
         cout << "No face detected, checking next frame." << endl;
@@ -103,7 +100,7 @@ int main(int argc, char** argv)
         Mat face = frame(rec); // take the ROI of box on the frame
 
         Mat blob;
-        blobFromImage(face, blob, 1, Size(227, 227), MODEL_MEAN_VALUES, false);
+        blob = blobFromImage(face, 1, Size(227, 227), MODEL_MEAN_VALUES, false);
         genderNet.setInput(blob);
         // string gender_preds;
         vector<float> genderPreds = genderNet.forward();
@@ -131,12 +128,13 @@ int main(int argc, char** argv)
         */
 
         // finding maximum indicd in the age_preds vector
-        int max_indice_age = distance(agePreds.begin(), max_element(agePreds.begin(), agePreds.end()));
+        int max_indice_age = std::distance(agePreds.begin(), max_element(agePreds.begin(), agePreds.end()));
         string age = ageList[max_indice_age];
         cout << "Age: " << age << endl;
         string label = gender + ", " + age; // label
-        cv::putText(frame, label, Point(it->at(0), it->at(1) -20), cv::FONT_HERSHEY_SIMPLEX, 0.8, Scalar(255, 0, 0), 3, cv::LINE_AA);
+        cv::putText(frame, label, Point(it->at(0), it->at(1) -20), cv::FONT_HERSHEY_SIMPLEX, 0.6, Scalar(255, 0, 0), 2, cv::LINE_AA);
         imshow("Frame", frame);
+        imwrite("out.jpg",frame);
       }
 
     }

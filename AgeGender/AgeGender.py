@@ -65,7 +65,7 @@ while cv.waitKey(1) < 0:
         continue
 
     for bbox in bboxes:
-        print(bbox)
+        # print(bbox)
         face = frame[bbox[1]:bbox[3],bbox[0]:bbox[2]]
 
         blob = cv.dnn.blobFromImage(face, 1, (227, 227), MODEL_MEAN_VALUES, swapRB=False)
@@ -79,9 +79,10 @@ while cv.waitKey(1) < 0:
         agePreds = ageNet.forward()
         age = ageList[agePreds[0].argmax()]
         # print("Age Output : {}".format(agePreds))
-        print("Gender : {}".format(age))
+        print("Age : {}".format(age))
 
         label = "{}, {}".format(gender, age)
-        cv.putText(frameFace, label, (bbox[0], bbox[1]-20), cv.FONT_HERSHEY_SIMPLEX, 0.8, (255, 0, 0), 3, cv.LINE_AA)
+        cv.putText(frameFace, label, (bbox[0], bbox[1]-20), cv.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 2, cv.LINE_AA)
         cv.imshow("Age Gender Demo", frameFace)
+        cv.imwrite("out.jpg",frameFace)
     print("time : {:.3f}".format(time.time() - t))
