@@ -116,13 +116,13 @@ echo "Complete"
 echo "Downloading opencv and opencv_contrib"
 git clone https://github.com/opencv/opencv.git
 cd opencv
-git checkout master
+git checkout "$cvVersion"
 
 cd ..
 
 git clone https://github.com/opencv/opencv_contrib.git
 cd opencv_contrib
-git checkout master
+git checkout "$cvVersion"
 
 cd ..
 echo "================================"
