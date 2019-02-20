@@ -76,7 +76,7 @@ int main(int argc, char** argv)
         cap.open(argv[1]);
     else
         cap.open(0);
-
+    int padding = 20;
     while(waitKey(1) < 0) {
       // read frame
       Mat frame;
@@ -96,7 +96,7 @@ int main(int argc, char** argv)
         continue;
       }
       for (auto it = begin(bboxes); it != end(bboxes); ++it) {
-        Rect rec(it->at(0), it->at(1), it->at(2) - it->at(0), it->at(3) - it->at(1));
+        Rect rec(it->at(0) - padding, it->at(1) - padding, it->at(2) - it->at(0) + 2*padding, it->at(3) - it->at(1) + 2*padding);
         Mat face = frame(rec); // take the ROI of box on the frame
 
         Mat blob;
@@ -132,7 +132,7 @@ int main(int argc, char** argv)
         string age = ageList[max_indice_age];
         cout << "Age: " << age << endl;
         string label = gender + ", " + age; // label
-        cv::putText(frameFace, label, Point(it->at(0), it->at(1) -20), cv::FONT_HERSHEY_SIMPLEX, 0.8, Scalar(0, 0, 255), 2, cv::LINE_AA);
+        cv::putText(frameFace, label, Point(it->at(0), it->at(1) -15), cv::FONT_HERSHEY_SIMPLEX, 0.9, Scalar(0, 255, 255), 2, cv::LINE_AA);
         imshow("Frame", frameFace);
         imwrite("out.jpg",frameFace);
       }
