@@ -20,7 +20,7 @@ tuple<Mat, vector<vector<int>>> getFaceBox(Net net, Mat &frame, double conf_thre
     Scalar meanVal = Scalar(104, 117, 123);
 
     cv::Mat inputBlob;
-    cv::dnn::blobFromImage(frameOpenCVDNN, inputBlob, inScaleFactor, size, meanVal, true, false);
+    inputBlob = cv::dnn::blobFromImage(frameOpenCVDNN, inScaleFactor, size, meanVal, true, false);
 
     net.setInput(inputBlob, "data");
     cv::Mat detection = net.forward("detection_out");
