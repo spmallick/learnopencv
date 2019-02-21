@@ -6,7 +6,15 @@ This directory contains code for using OpenCV QR code. This code requires **Open
 # For C++
 
 ## How to compile the code
-First Specify the **OpenCV_DIR** in CMakeLists.txt file. Then,
+
+Specify the **OpenCV_DIR** in CMake option
+
+```
+cmake -D OpenCV_DIR=<path to opencv install directory>/lib/cmake/opencv4/ .
+make
+```
+
+OR First Specify the **OpenCV_DIR** in CMakeLists.txt file. Then,
 
 ```
 cmake .
