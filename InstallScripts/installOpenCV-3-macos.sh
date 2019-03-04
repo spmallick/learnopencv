@@ -41,10 +41,10 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 #=================================================================
 
-echo "Installing OpenCV - 3.4.4"
+echo "Installing OpenCV - 3.4.x"
  
 #Specify OpenCV version
-cvVersion="3.4.4"
+cvVersion="3.4"
 
 # Clean build directories
 rm -rf opencv/build
@@ -68,12 +68,12 @@ deactivate
 
 git clone https://github.com/opencv/opencv.git
 cd opencv
-git checkout 3.4
+git checkout "$cvVersion"
 cd ..
  
 git clone https://github.com/opencv/opencv_contrib.git
 cd opencv_contrib
-git checkout 3.4
+git checkout "$cvVersion"
 cd ..
 
 cd opencv
