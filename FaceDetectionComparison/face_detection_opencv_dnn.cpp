@@ -19,11 +19,11 @@ const cv::Scalar meanVal(104.0, 177.0, 123.0);
 
 #define CAFFE
 
-const std::string caffeConfigFile = "./deploy.prototxt";
-const std::string caffeWeightFile = "./res10_300x300_ssd_iter_140000_fp16.caffemodel";
+const std::string caffeConfigFile = "./models/deploy.prototxt";
+const std::string caffeWeightFile = "./models/res10_300x300_ssd_iter_140000_fp16.caffemodel";
 
-const std::string tensorflowConfigFile = "./opencv_face_detector.pbtxt";
-const std::string tensorflowWeightFile = "./opencv_face_detector_uint8.pb";
+const std::string tensorflowConfigFile = "./models/opencv_face_detector.pbtxt";
+const std::string tensorflowWeightFile = "./models/opencv_face_detector_uint8.pb";
 
 void detectFaceOpenCVDNN(Net net, Mat &frameOpenCVDNN)
 {

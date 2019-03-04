@@ -3,7 +3,7 @@
 echo "OpenCV installation by learnOpenCV.com"
  
 #Specify OpenCV version
-cvVersion="3.4.4"
+cvVersion="3.4"
 
 # Clean build directories
 rm -rf opencv/build
@@ -71,12 +71,12 @@ deactivate
 
 git clone https://github.com/opencv/opencv.git
 cd opencv
-git checkout $cvVersion
+git checkout "$cvVersion"
 cd ..
  
 git clone https://github.com/opencv/opencv_contrib.git
 cd opencv_contrib
-git checkout $cvVersion
+git checkout "$cvVersion"
 cd ..
 
 cd opencv

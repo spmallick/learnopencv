@@ -17,7 +17,7 @@ sudo apt-get -y autoremove
 # Step 0: Take inputs
 echo "OpenCV installation by learnOpenCV.com"
 
-cvVersion="3.4.4"
+cvVersion="3.4"
 
 # Clean build directories
 rm -rf opencv/build
@@ -111,13 +111,13 @@ echo "Complete"
 echo "Downloading opencv and opencv_contrib"
 git clone https://github.com/opencv/opencv.git
 cd opencv
-git checkout 3.4
+git checkout "$cvVersion"
 
 cd ..
 
 git clone https://github.com/opencv/opencv_contrib.git
 cd opencv_contrib
-git checkout 3.4
+git checkout "$cvVersion"
 
 cd ..
 echo "================================"

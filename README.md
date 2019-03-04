@@ -5,6 +5,7 @@ Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenC
 
 | Blog Post        | |
 | ------------- |:-------------|
+|[Gender & Age Classification using OpenCV Deep Learning ( C++/Python )](https://www.learnopencv.com/age-gender-classification-using-opencv-deep-learning-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/AgeGender) |
 |[Invisibility Cloak using Color Detection and Segmentation with OpenCV](https://www.learnopencv.com/invisibility-cloak-using-color-detection-and-segmentation-with-opencv/) | [Code](https://github.com/spmallick/learnopencv/tree/master/InvisibilityCloak) |
 |[Fast Image Downloader for Open Images V4 (Python)](https://www.learnopencv.com/fast-image-downloader-for-open-images-v4/) | [Code](https://github.com/spmallick/learnopencv/tree/master/downloadOpenImages) |
 |[Deep Learning based Text Detection Using OpenCV (C++/Python)](https://www.learnopencv.com/deep-learning-based-text-detection-using-opencv-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/TextDetectionEAST) |
