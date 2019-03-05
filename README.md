@@ -5,6 +5,7 @@ Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenC
 
 | Blog Post        | |
 | ------------- |:-------------|
+|[Xeus-Cling: Run C++ code in Jupyter Notebook](https://www.learnopencv.com/xeus-cling-run-c-code-in-jupyter-notebook/) | [Code](https://github.com/spmallick/learnopencv/tree/master/XeusCling) |
 |[Gender & Age Classification using OpenCV Deep Learning ( C++/Python )](https://www.learnopencv.com/age-gender-classification-using-opencv-deep-learning-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/AgeGender) |
 |[Invisibility Cloak using Color Detection and Segmentation with OpenCV](https://www.learnopencv.com/invisibility-cloak-using-color-detection-and-segmentation-with-opencv/) | [Code](https://github.com/spmallick/learnopencv/tree/master/InvisibilityCloak) |
 |[Fast Image Downloader for Open Images V4 (Python)](https://www.learnopencv.com/fast-image-downloader-for-open-images-v4/) | [Code](https://github.com/spmallick/learnopencv/tree/master/downloadOpenImages) |
