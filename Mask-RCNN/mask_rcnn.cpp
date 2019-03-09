@@ -1,4 +1,7 @@
-// This code is written at BigVision LLC. It is based on the OpenCV project. It is subject to the license terms in the LICENSE file found in this distribution and at http://opencv.org/license.html
+// Copyright (C) 2018-2019, BigVision LLC (LearnOpenCV.com), All Rights Reserved. 
+// Author : Sunita Nayak
+// Article : https://www.learnopencv.com/deep-learning-based-object-detection-and-instance-segmentation-using-mask-r-cnn-in-opencv-python-c/
+// License: BSD-3-Clause-Attribution (Please read the license file.)
 
 // Usage example:  ./mask_rcnn.out --video=run.mp4
 //                 ./mask_rcnn.out --image=bird.jpg
