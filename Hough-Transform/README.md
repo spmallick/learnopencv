@@ -6,12 +6,12 @@
 
 **Python**
 
-```python3 hough_line.py road.png```
+- ```python3 hough_line.py road.png```
 
 **C++**
 
-```g++ hough_line.cpp `pkg-config opencv --cflags --libs` -o hough_line```
-```./hough_line```
+- ```g++ hough_line.cpp `pkg-config opencv --cflags --libs` -o hough_line```
+- ```./hough_line```
 
 ### Hough Circle Transform
 
@@ -19,9 +19,9 @@
 
 **Python**
 
-```python3 hough_circles.py circles.png```
+- ```python3 hough_circles.py circles.png```
 
 **C++**
 
-```g++ hough_circles.cpp `pkg-config opencv --cflags --libs` -o hough_circles```
-```./hough_circles circles.png```
+- ```g++ hough_circles.cpp `pkg-config opencv --cflags --libs` -o hough_circles```
+- ```./hough_circles circles.png```
