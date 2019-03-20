@@ -32,14 +32,14 @@ background=0
 for i in range(60):
 	ret,background = cap.read()
 
-background = np.flip(background,axis=1)
+#background = np.flip(background,axis=1)
 
 while(cap.isOpened()):
 	ret, img = cap.read()
 	if not ret:
 		break
 	count+=1
-	img = np.flip(img,axis=1)
+	#img = np.flip(img,axis=1)
 	
 	# Converting the color space from BGR to HSV
 	hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
