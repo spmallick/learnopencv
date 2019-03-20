@@ -34,7 +34,7 @@ int main(int argc, char** argv){
     cap >> background;
   }
   
-  flip(background,background,1);
+  //flip(background,background,1);
 
   while(1)
   {
@@ -48,7 +48,7 @@ int main(int argc, char** argv){
       break;
     
     Mat hsv;
-    flip(frame,frame,1);
+    //flip(frame,frame,1);
     cvtColor(frame, hsv, COLOR_BGR2HSV);
 
     Mat mask1,mask2;

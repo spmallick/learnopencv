@@ -6,12 +6,21 @@
 
 **Python**
 
-- ```python3 hough_line.py road.png```
+- ```python3 hough_lines.py lanes.jpg```
 
 **C++**
 
-- ```g++ hough_line.cpp `pkg-config opencv --cflags --libs` -o hough_line```
-- ```./hough_line```
+- ```g++ hough_lines.cpp `pkg-config opencv --cflags --libs` -o hough_lines```
+- ```./hough_lines lanes.jpg```
+
+**CMake**
+
+- ```mkdir build```
+- ```cd build```
+- ```cmake ..```
+- ```cmake --build . --config Release```
+- ```cd ..```
+- ```./build/hough_lines lanes.jpg```
 
 ### Hough Circle Transform
 
@@ -19,9 +28,18 @@
 
 **Python**
 
-- ```python3 hough_circles.py circles.png```
+- ```python3 hough_circles.py brown-eyes.jpg```
 
 **C++**
 
 - ```g++ hough_circles.cpp `pkg-config opencv --cflags --libs` -o hough_circles```
-- ```./hough_circles circles.png```
+- ```./hough_circles brown-eyes.jpg```
+
+**CMake**
+
+- ```mkdir build```
+- ```cd build```
+- ```cmake ..```
+- ```cmake --build . --config Release```
+- ```cd ..```
+- ```./build/hough_circles lanes.jpg```

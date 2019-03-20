@@ -5,6 +5,7 @@ Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenC
 
 | Blog Post        | |
 | ------------- |:-------------|
+|[Hough Transform with OpenCV (C++/Python)](https://www.learnopencv.com/hough-transform-with-opencv-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Hough-Transform) |
 |[Xeus-Cling: Run C++ code in Jupyter Notebook](https://www.learnopencv.com/xeus-cling-run-c-code-in-jupyter-notebook/) | [Code](https://github.com/spmallick/learnopencv/tree/master/XeusCling) |
 |[Gender & Age Classification using OpenCV Deep Learning ( C++/Python )](https://www.learnopencv.com/age-gender-classification-using-opencv-deep-learning-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/AgeGender) |
 |[Invisibility Cloak using Color Detection and Segmentation with OpenCV](https://www.learnopencv.com/invisibility-cloak-using-color-detection-and-segmentation-with-opencv/) | [Code](https://github.com/spmallick/learnopencv/tree/master/InvisibilityCloak) |
