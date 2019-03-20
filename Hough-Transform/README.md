@@ -42,4 +42,4 @@
 - ```cmake ..```
 - ```cmake --build . --config Release```
 - ```cd ..```
-- ```./build/hough_circles lanes.jpg```
+- ```./build/hough_circles brown-eyes.jpg```
