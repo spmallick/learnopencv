@@ -11,68 +11,74 @@ using namespace cv;
 using namespace std;
 
 // Declare variables to store images
-Mat dst, gray_src, cdstP, src;
+Mat gray, cimg, img, edges;
 
-int thresh;
-const int thresh_max = 100;
-double t;
+int initThresh;
+const int maxThresh = 200;
+double p1,p2;
 
 // Vector to store circle points
 vector<Vec3f> circles;
 
-void on_trackbar( int , void* ) {
-  cdstP = gray_src.clone();
-  
-  // Apply hough transform
-  HoughCircles(cdstP, circles, HOUGH_GRADIENT, 1, cdstP.rows/64, 200, 10, 1, thresh);
-  
-  cdstP = src.clone();
+void onTrackbarChange( int , void* ) {
+  cimg = img.clone();
 
-  // Draw circle on points
+  p1 = initThresh;
+  p2 = initThresh * 0.4;
+  
+  // Detect circles using HoughCircles transform
+  HoughCircles(gray, circles, HOUGH_GRADIENT, 1, cimg.rows/64, p1, p2, 25, 50);
+
   for( size_t i = 0; i < circles.size(); i++ )
   {
       Point center(cvRound(circles[i][0]), cvRound(circles[i][1]));
       int radius = cvRound(circles[i][2]);
-      circle( cdstP, center, radius, Scalar(255, 255, 255), 2, 8, 0 );
+      // Draw the outer circle
+      circle( cimg, center, radius, Scalar(0, 255, 0), 2);
+      // Draw the center of the circle
+      circle( cimg, center, 2, Scalar(0, 0, 255), 3);
    }
 
-    cv::putText(cdstP, to_string(circles.size()), cv::Point(280, 60), cv::FONT_HERSHEY_SIMPLEX, 2, cv::Scalar(255, 0, 255), 4, cv::LINE_AA);
-    imshow( "Output-Image", cdstP);
+  // Display output image
+  imshow( "Image", cimg);
+
+  // Edge image for debugging
+  Canny(gray, edges, p1, p2);
+  imshow( "Edges", edges);
 }
 
 
 int main(int argc, char** argv){
   const char* file = argv[1];
-  src = imread(file, IMREAD_COLOR);
-  cv::resize(src, src, cv::Size(400, 400));
+  img = imread(file, IMREAD_COLOR);
 
-  if(src.empty())
+  if(img.empty())
   {
     cout << "Error reading image" << file<< endl;
     return -1;
   }
 
-  // Remove noise using medianBlur
-  medianBlur(src, src, 3);
-
   // Convert to gray-scale
-  cvtColor(src, gray_src, COLOR_BGR2GRAY);
+  cvtColor(img, gray, COLOR_BGR2GRAY);
 
-   // Will hold the results of the detection
-  namedWindow("Output-Image", 1);
+  // Will hold the results of the detection
+  namedWindow("Edges",1);
+  namedWindow("Image",1);
  
-  thresh = 10;
+  initThresh = 105;
 
-  createTrackbar("threshold", "Output-Image", &thresh, thresh_max, on_trackbar);
-  on_trackbar(thresh, 0);
+  createTrackbar("Threshold", "Image", &initThresh, maxThresh, onTrackbarChange);
+  onTrackbarChange(initThresh, 0);
 
-  imshow("source", src);
+  imshow("Image", img);
   while(true)
   {
-    int c;
-    c = waitKey( 0  );
-    if( (char)c == 27 )
+    int key;
+    key = waitKey( 0  );
+    if( (char)key == 27 )
       { break; }
   }
+
+  destroyAllWindows();
 
 }

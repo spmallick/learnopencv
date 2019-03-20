@@ -35,7 +35,7 @@ def onTrackbarChange(max_slider):
     
 if __name__ == "__main__":
     # Read image
-    img = cv2.imread('brown-eyes.jpg', 1)
+    img = cv2.imread(sys.argv[1], 1)
 
     # Convert to gray-scale
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -55,7 +55,7 @@ if __name__ == "__main__":
     
     while True:
         key = cv2.waitKey(1)
-        if key == ord('q') or key == 27:
+        if key == 27:
             break
 
     cv2.destroyAllWindows()
