@@ -18,7 +18,7 @@ make
 
 C. Usage
 1. Python
-python muti-person-openpose.py
+python multi-person-openpose.py
 
 2. C++
 ./multi-person-openpose
