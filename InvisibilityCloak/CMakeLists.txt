@@ -2,8 +2,6 @@ cmake_minimum_required(VERSION 2.8.12)
 
 PROJECT(Invisibility_Cloak)
 
-set(OpenCV_DIR /home/hp/workfolder/OpenCV-Installation/installation/OpenCV-3.4.3/share/OpenCV)
-
 ######################## EDIT IF REQUIRED ####################
 # ### If CMake is not able to find the path to OpenCV installation then Uncomment the line below and specify the path to OpenCV directory (i.e. the path to the OpenCVConfig.cmake file). Check the examples given below.
 #SET(OpenCV_DIR Enter-the-path-of-OpenCV-installation-on-your-system)

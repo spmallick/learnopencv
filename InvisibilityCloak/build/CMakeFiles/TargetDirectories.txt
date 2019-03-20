@@ -1,3 +1,0 @@
-/media/hp/My Passport/learnopencv/InvisibilityCloak/build/CMakeFiles/rebuild_cache.dir
-/media/hp/My Passport/learnopencv/InvisibilityCloak/build/CMakeFiles/Invisibility_Cloak.dir
-/media/hp/My Passport/learnopencv/InvisibilityCloak/build/CMakeFiles/edit_cache.dir
