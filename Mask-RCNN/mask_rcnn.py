@@ -1,3 +1,9 @@
+# Copyright (C) 2018-2019, BigVision LLC (LearnOpenCV.com), All Rights Reserved. 
+# Author : Sunita Nayak
+# Article : https://www.learnopencv.com/deep-learning-based-object-detection-and-instance-segmentation-using-mask-r-cnn-in-opencv-python-c/
+# License: BSD-3-Clause-Attribution (Please read the license file.)
+# This work is based on OpenCV samples code (https://opencv.org/license.html)    
+
 import cv2 as cv
 import argparse
 import numpy as np
