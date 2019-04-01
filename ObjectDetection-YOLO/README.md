@@ -56,6 +56,4 @@ g++ -ggdb pkg-config --cflags --libs /usr/local/Cellar/opencv3/3.4.2/lib/pkgconf
 
 
 ### Results of YOLOv3
-
-
-
+<img src = "https://github.com/gulshan-mittal/learnopencv/blob/dev1/ObjectDetection-YOLO/bird_yolo_out_py.jpg" width = 400 height = 300/>
