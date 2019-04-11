@@ -23,9 +23,11 @@ First of all Unzip the dlib.zip file
 ##### For individual face detectors
 
 * C++
+
   ``./face_detection_XXXX <filename>``
 
 * Python
+
   ``python face_detection_XXXX.py <filename>``
 
 ##### For running all together
