@@ -20,18 +20,18 @@ First of all Unzip the dlib.zip file
 
 **Note** : If you don't give any filename, it will use the **webcam**
 
-#### For individual face detectors
+##### For individual face detectors
 
-**C++**
-``./face_detection_XXXX <filename>``
+* C++
+  ``./face_detection_XXXX <filename>``
 
-**Python**
-``python face_detection_XXXX.py <filename>``
+* Python
+  ``python face_detection_XXXX.py <filename>``
 
-#### For running all together
+##### For running all together
 
-**C++**
-``./run-all <filename>``
+* C++
+  ``./run-all <filename>``
 
-**Python**
-``run-all.py <filename>``
+* Python
+  ``run-all.py <filename>``
