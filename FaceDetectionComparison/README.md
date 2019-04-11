@@ -33,7 +33,9 @@ First of all Unzip the dlib.zip file
 ##### For running all together
 
 * C++
+
   ``./run-all <filename>``
 
 * Python
+
   ``run-all.py <filename>``
