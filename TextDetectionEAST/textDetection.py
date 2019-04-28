@@ -145,7 +145,7 @@ if __name__ == "__main__":
             for j in range(4):
                 p1 = (vertices[j][0], vertices[j][1])
                 p2 = (vertices[(j + 1) % 4][0], vertices[(j + 1) % 4][1])
-                cv.line(frame, p1, p2, (0, 255, 0), 2, cv.LINE_AA);
+                cv.line(frame, p1, p2, (0, 255, 0), 2, cv.LINE_AA)
                 # cv.putText(frame, "{:.3f}".format(confidences[i[0]]), (vertices[0][0], vertices[0][1]), cv.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 1, cv.LINE_AA)
 
         # Put efficiency information
