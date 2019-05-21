@@ -5,6 +5,7 @@ Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenC
 
 | Blog Post        | |
 | ------------- |:-------------|
+|[Image Classification Using Transfer Learning in PyTorch](https://www.learnopencv.com/image-classification-using-transfer-learning-in-pytorch/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Image-Classification-in-PyTorch) |
 |[Hangman: Creating games in OpenCV](https://www.learnopencv.com/hangman-creating-games-in-opencv/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Hangman) |
 |[Image Inpainting with OpenCV (C++/Python)](https://www.learnopencv.com/image-inpainting-with-opencv-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Image-Inpainting) |
 |[Hough Transform with OpenCV (C++/Python)](https://www.learnopencv.com/hough-transform-with-opencv-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Hough-Transform) |
