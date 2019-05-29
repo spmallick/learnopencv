@@ -4,8 +4,8 @@ We show how to do inference with a PyTorch model using ONNX and Caffe2.
 
 ## Dependencies
 
-torch
-torchvision
+torch  
+torchvision  
 onnx
 
 ## Create conda environment
