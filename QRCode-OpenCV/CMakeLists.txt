@@ -2,7 +2,9 @@ cmake_minimum_required(VERSION 2.8.12)
 
 PROJECT(opencv_tests)
 
-set(OpenCV_DIR <specify your path to the opencv installation directory>installations/OpenCV4/lib/cmake/opencv4/)
+if(NOT OpenCV_DIR)
+  set(OpenCV_DIR <specify your path to the opencv installation directory>installations/OpenCV4/lib/cmake/opencv4/)
+endif()
 find_package( OpenCV REQUIRED )
 
 set(CMAKE_CXX_STANDARD 11)

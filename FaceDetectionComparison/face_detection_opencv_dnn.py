@@ -30,12 +30,12 @@ if __name__ == "__main__" :
     # 2. 8 bit Quantized version using Tensorflow ( 2.7 MB )
     DNN = "TF"
     if DNN == "CAFFE":
-        modelFile = "res10_300x300_ssd_iter_140000_fp16.caffemodel"
-        configFile = "deploy.prototxt"
+        modelFile = "models/res10_300x300_ssd_iter_140000_fp16.caffemodel"
+        configFile = "models/deploy.prototxt"
         net = cv2.dnn.readNetFromCaffe(configFile, modelFile)
     else:
-        modelFile = "opencv_face_detector_uint8.pb"
-        configFile = "opencv_face_detector.pbtxt"
+        modelFile = "models/opencv_face_detector_uint8.pb"
+        configFile = "models/opencv_face_detector.pbtxt"
         net = cv2.dnn.readNetFromTensorflow(modelFile, configFile)
 
     conf_threshold = 0.7
@@ -69,10 +69,9 @@ if __name__ == "__main__" :
         vid_writer.write(outOpencvDnn)
         if frame_count == 1:
             tt_opencvDnn = 0
-        
+
         k = cv2.waitKey(10)
         if k == 27:
             break
     cv2.destroyAllWindows()
     vid_writer.release()
-
