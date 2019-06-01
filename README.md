@@ -5,6 +5,10 @@ Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenC
 
 | Blog Post        | |
 | ------------- |:-------------|
+|[PyTorch Model Inference using ONNX and Caffe2](https://www.learnopencv.com/pytorch-model-inference-using-onnx-and-caffe2/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Inference-for-PyTorch-Models/ONNX-Caffe2) |
+|[Image Classification Using Transfer Learning in PyTorch](https://www.learnopencv.com/image-classification-using-transfer-learning-in-pytorch/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Image-Classification-in-PyTorch) |
+|[Hangman: Creating games in OpenCV](https://www.learnopencv.com/hangman-creating-games-in-opencv/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Hangman) |
+|[Image Inpainting with OpenCV (C++/Python)](https://www.learnopencv.com/image-inpainting-with-opencv-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Image-Inpainting) |
 |[Hough Transform with OpenCV (C++/Python)](https://www.learnopencv.com/hough-transform-with-opencv-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Hough-Transform) |
 |[Xeus-Cling: Run C++ code in Jupyter Notebook](https://www.learnopencv.com/xeus-cling-run-c-code-in-jupyter-notebook/) | [Code](https://github.com/spmallick/learnopencv/tree/master/XeusCling) |
 |[Gender & Age Classification using OpenCV Deep Learning ( C++/Python )](https://www.learnopencv.com/age-gender-classification-using-opencv-deep-learning-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/AgeGender) |
