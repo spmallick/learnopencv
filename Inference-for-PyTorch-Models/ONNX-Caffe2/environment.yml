@@ -11,6 +11,7 @@ dependencies:
         - numpy
         - protobuf
         - pip:
+                - torchsummary
                 - Pillow
                 - onnx
                 - future
