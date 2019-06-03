@@ -5,6 +5,8 @@ Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenC
 
 | Blog Post        | |
 | ------------- |:-------------|
+|[PyTorch for Beginners: Comparison of pre-trained models for Image Classification] (https://www.learnopencv.com/image-classification-using-pre-trained-models-using-pytorch/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Image-classification-pre-trained-models/Image_Classification_using_pre_trained_models.ipynb) |
+|[PyTorch for Beginners: Basics](https://www.learnopencv.com/pytorch-for-beginners-basics/) | [Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-for-Beginners/PyTorch_for_Beginners.ipynb) |
 |[PyTorch Model Inference using ONNX and Caffe2](https://www.learnopencv.com/pytorch-model-inference-using-onnx-and-caffe2/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Inference-for-PyTorch-Models/ONNX-Caffe2) |
 |[Image Classification Using Transfer Learning in PyTorch](https://www.learnopencv.com/image-classification-using-transfer-learning-in-pytorch/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Image-Classification-in-PyTorch) |
 |[Hangman: Creating games in OpenCV](https://www.learnopencv.com/hangman-creating-games-in-opencv/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Hangman) |
