@@ -60,7 +60,7 @@ void detectFaceDlibMMOD(net_type mmodFaceDetector, Mat &frameDlibMmod, int inHei
 
 int main( int argc, const char** argv )
 {
-  String mmodModelPath = "./mmod_human_face_detector.dat";
+  String mmodModelPath = "./models/mmod_human_face_detector.dat";
   net_type mmodFaceDetector;
   deserialize(mmodModelPath) >> mmodFaceDetector;
 
