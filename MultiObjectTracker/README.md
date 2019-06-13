@@ -23,6 +23,10 @@ It will most likely be gcc toolchain.
 1. Download the code and extract the downloaded file, if required.
 2. Use `python multiTracker.py` to run the code.
 
+## Special Python code with multiprocess for faster execution
+1. Download the code and extract the downloaded file, if required.
+2. Use `python multiTrackerWithTracker.py` to run the code and use `-v` flag to specify path to 'VideoFile'.
+
 ## Tracker selection
 The scripts use `CSRT` as the default tracking algorithm. To use any other algorithm, change `trackerType` variable to the tracker of your choice.
 
