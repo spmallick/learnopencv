@@ -4,4 +4,4 @@
 LearnOpenCV Blog : [Faster R-CNN Object Detection with PyTorch](https://www.learnopencv.com/faster-r-cnn-object-detection-with-pytorch)
 
 ## NoteBook
-Jupyter Notebook : [Notebook](PyTOrch_faster_RCNN.ipynb)
+Jupyter Notebook : [Notebook](PyTorch_faster_RCNN.ipynb)
