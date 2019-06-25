@@ -5,7 +5,7 @@ Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenC
 
 | Blog Post | |
 | ------------- |:-------------|
-|[PyTorch for Beginners: Mask R-CNN Instance Segmentation with PyTorch](https://www.learnopencv.com/faster-r-cnn-object-detection-with-pytorch) | [Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-faster-RCNN) |
+|[PyTorch for Beginners: Mask R-CNN Instance Segmentation with PyTorch](https://www.learnopencv.com/mask-r-cnn-instance-segmentation-with-pytorch/) | [Code](./PyTorch-Mask-RCNN) |
 |[PyTorch for Beginners: Faster R-CNN Object Detection with PyTorch](https://www.learnopencv.com/faster-r-cnn-object-detection-with-pytorch) | [Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-faster-RCNN) |
 |[PyTorch for Beginners: Semantic Segmentation using torchvision](https://www.learnopencv.com/pytorch-for-beginners-semantic-segmentation-using-torchvision/) | [Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-Segmentation-torchvision) |
 |[PyTorch for Beginners: Comparison of pre-trained models for Image Classification](https://www.learnopencv.com/image-classification-using-pre-trained-models-using-pytorch/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Image-classification-pre-trained-models/Image_Classification_using_pre_trained_models.ipynb) |
