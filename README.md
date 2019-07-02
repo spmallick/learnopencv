@@ -5,6 +5,7 @@ Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenC
 
 | Blog Post | |
 | ------------- |:-------------|
+|[EfficientNet: Theory + Code](https://www.learnopencv.com/efficientnet-theory-code) | [Code](https://github.com/spmallick/learnopencv/tree/master/EfficientNet) |
 |[PyTorch for Beginners: Mask R-CNN Instance Segmentation with PyTorch](https://www.learnopencv.com/mask-r-cnn-instance-segmentation-with-pytorch/) | [Code](./PyTorch-Mask-RCNN) |
 |[PyTorch for Beginners: Faster R-CNN Object Detection with PyTorch](https://www.learnopencv.com/faster-r-cnn-object-detection-with-pytorch) | [Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-faster-RCNN) |
 |[PyTorch for Beginners: Semantic Segmentation using torchvision](https://www.learnopencv.com/pytorch-for-beginners-semantic-segmentation-using-torchvision/) | [Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-Segmentation-torchvision) |
