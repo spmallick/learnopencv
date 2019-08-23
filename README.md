@@ -3,8 +3,19 @@ Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenC
 
 ## List of Blog Posts
 
-| Blog Post        | |
+| Blog Post | |
 | ------------- |:-------------|
+|[Applications of Foreground-Background separation with Semantic Segmentation](https://www.learnopencv.com/applications-of-foreground-background-separation-with-semantic-segmentation/) | [Code](https://github.com/spmallick/learnopencv/tree/master/app-seperation-semseg) |
+|[EfficientNet: Theory + Code](https://www.learnopencv.com/efficientnet-theory-code) | [Code](https://github.com/spmallick/learnopencv/tree/master/EfficientNet) |
+|[PyTorch for Beginners: Mask R-CNN Instance Segmentation with PyTorch](https://www.learnopencv.com/mask-r-cnn-instance-segmentation-with-pytorch/) | [Code](./PyTorch-Mask-RCNN) |
+|[PyTorch for Beginners: Faster R-CNN Object Detection with PyTorch](https://www.learnopencv.com/faster-r-cnn-object-detection-with-pytorch) | [Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-faster-RCNN) |
+|[PyTorch for Beginners: Semantic Segmentation using torchvision](https://www.learnopencv.com/pytorch-for-beginners-semantic-segmentation-using-torchvision/) | [Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-Segmentation-torchvision) |
+|[PyTorch for Beginners: Comparison of pre-trained models for Image Classification](https://www.learnopencv.com/image-classification-using-pre-trained-models-using-pytorch/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Image-classification-pre-trained-models/Image_Classification_using_pre_trained_models.ipynb) |
+|[PyTorch for Beginners: Basics](https://www.learnopencv.com/pytorch-for-beginners-basics/) | [Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-for-Beginners/PyTorch_for_Beginners.ipynb) |
+|[PyTorch Model Inference using ONNX and Caffe2](https://www.learnopencv.com/pytorch-model-inference-using-onnx-and-caffe2/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Inference-for-PyTorch-Models/ONNX-Caffe2) |
+|[Image Classification Using Transfer Learning in PyTorch](https://www.learnopencv.com/image-classification-using-transfer-learning-in-pytorch/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Image-Classification-in-PyTorch) |
+|[Hangman: Creating games in OpenCV](https://www.learnopencv.com/hangman-creating-games-in-opencv/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Hangman) |
+|[Image Inpainting with OpenCV (C++/Python)](https://www.learnopencv.com/image-inpainting-with-opencv-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Image-Inpainting) |
 |[Hough Transform with OpenCV (C++/Python)](https://www.learnopencv.com/hough-transform-with-opencv-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Hough-Transform) |
 |[Xeus-Cling: Run C++ code in Jupyter Notebook](https://www.learnopencv.com/xeus-cling-run-c-code-in-jupyter-notebook/) | [Code](https://github.com/spmallick/learnopencv/tree/master/XeusCling) |
 |[Gender & Age Classification using OpenCV Deep Learning ( C++/Python )](https://www.learnopencv.com/age-gender-classification-using-opencv-deep-learning-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/AgeGender) |
