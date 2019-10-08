@@ -49,7 +49,8 @@ genderNet = cv.dnn.readNet(genderModel, genderProto)
 faceNet = cv.dnn.readNet(faceModel, faceProto)
 
 # Open a video file or an image file or a camera stream
-cap = cv.VideoCapture(args.input if args.input else 0)
+# Capturing from primary camera
+cap = cv.VideoCapture(0)
 padding = 20
 while cv.waitKey(1) < 0:
     # Read frame
