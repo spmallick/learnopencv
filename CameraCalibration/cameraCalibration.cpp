@@ -28,7 +28,7 @@ int main()
   // Extracting path of individual image stored in a given directory
   std::vector<cv::String> images;
   // Path of the folder containing checkerboard images
-  std::string path = "../../images/*.jpg";
+  std::string path = "./images/*.jpg";
 
   cv::glob(path, images);
 
