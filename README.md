@@ -6,7 +6,7 @@ Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenC
 | Blog Post | |
 | ------------- |:-------------|
 |[Camera Calibration using OpenCV](https://www.learnopencv.com/camera-calibration-using-opencv/) |[Code](https://github.com/spmallick/learnopencv/tree/master/CameraCalibration)|
-|[Geometry of Image Formation](https://www.learnopencv.com/applications-of-foreground-background-separation-with-semantic-segmentation/) ||
+|[Geometry of Image Formation](https://www.learnopencv.com/geometry-of-image-formation/) ||
 |[Ensuring Training Reproducibility in Pytorch](https://www.learnopencv.com/ensuring-training-reproducibility-in-pytorch) ||
 |[Gaze Tracking](https://www.learnopencv.com/gaze-tracking/) ||
 |[Simple Background Estimation in Videos Using OpenCV](https://www.learnopencv.com/simple-background-estimation-in-videos-using-opencv-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/VideoBackgroundEstimation)|
