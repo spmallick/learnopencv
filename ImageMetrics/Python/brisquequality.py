@@ -203,4 +203,4 @@ if(len(sys.argv) != 2):
 
 # calculate quality score
 qualityscore = test_measure_BRISQUE(sys.argv[1])
-print "Score of the given image: ", qualityscore
+print ("Score of the given image: {}".format(qualityscore)) 
