@@ -9,6 +9,8 @@ Fast Image Downloader for Open Images V4
 `wget https://storage.googleapis.com/openimages/2018_04/class-descriptions-boxable.csv`
 
 `wget https://storage.googleapis.com/openimages/2018_04/train/train-annotations-bbox.csv`
+  
+ For windows: `python -m wget <URL>`
 
 3. Download the images from OpenImagesV4
 
