@@ -3,6 +3,12 @@ Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenC
 
 This repository is supported by [AI Courses by OpenCV](https://opencv.org/courses/). 
 
+<a href="https://opencv.org/courses/">
+<p align="center"> 
+<img src="docs/ai-courses.png">
+</p>
+</a>
+
 ## List of Blog Posts
 
 | Blog Post | |
