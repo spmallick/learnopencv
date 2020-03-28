@@ -1,6 +1,8 @@
 # learnopencv
 Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenCV.com](https://www.LearnOpenCV.com)
 
+This repository is supported by [AI Courses by OpenCV](https://opencv.org/courses/). 
+
 ## List of Blog Posts
 
 | Blog Post | |
