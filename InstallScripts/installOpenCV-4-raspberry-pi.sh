@@ -131,6 +131,7 @@ echo "Complete"
 # Step 5: Compile and install OpenCV with contrib modules
 echo "================================"
 echo "Compiling and installing OpenCV with contrib modules"
+sudo apt-get -y install libglfw3-dev libgl1-mesa-dev libglu1-mesa-dev
 cd opencv
 mkdir build
 cd build
