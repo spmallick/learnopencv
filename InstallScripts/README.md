@@ -30,3 +30,14 @@
 
 8. OpenCV Docker Image
 - [OpenCV 3.4.3, OpenCV 3.4.4 and OpenCV 4.0 Docker Image](https://www.learnopencv.com/install-opencv-docker-image-ubuntu-macos-windows/)
+
+
+# AI Courses by OpenCV
+
+Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/courses/) is a great place to start. 
+
+<a href="https://opencv.org/courses/">
+<p align="center"> 
+<img src="https://www.learnopencv.com/wp-content/uploads/2020/04/AI-Courses-By-OpenCV-Github.png">
+</p>
+</a>
