@@ -10,6 +10,7 @@ B.Compiling cpp file
 
 Using g++
 Command to compile the cpp file in ubuntu:
+
 g++ -o3 -std=c++11 multi-person-openpose.cpp `pkg-config --libs --cflags opencv` -lpthread -o multi-person-openpose
 
 Using CMake
@@ -18,9 +19,11 @@ make
 
 C. Usage
 1. Python
+
 python multi-person-openpose.py
 
 2. C++
+
 ./multi-person-openpose
 
 
