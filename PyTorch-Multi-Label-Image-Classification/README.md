@@ -1,6 +1,5 @@
-Please see the following [blog post](https://www.learnopencv.com/homography-examples-using-opencv-python-c/) for more details about this code
+This contains the code for **Multi-Label Image Classification with Pytorch**. For more information - visit [**Multi-Label Image Classification with Pytorch**](https://www.learnopencv.com/multi-label-image-classification-with-pytorch/)
 
-[Homography Examples using OpenCV ( Python / C ++ )](https://www.learnopencv.com/homography-examples-using-opencv-python-c/)
 
 
 # AI Courses by OpenCV

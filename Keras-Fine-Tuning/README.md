@@ -1,6 +1,5 @@
-Please see the following [blog post](https://www.learnopencv.com/homography-examples-using-opencv-python-c/) for more details about this code
+This contains the code for **Keras Tutorial : Fine-tuning using pre-trained models**. For more information - visit [**Keras Tutorial : Fine-tuning using pre-trained models**](https://www.learnopencv.com/keras-tutorial-fine-tuning-using-pre-trained-models/)
 
-[Homography Examples using OpenCV ( Python / C ++ )](https://www.learnopencv.com/homography-examples-using-opencv-python-c/)
 
 
 # AI Courses by OpenCV

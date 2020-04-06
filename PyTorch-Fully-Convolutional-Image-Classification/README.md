@@ -1,6 +1,5 @@
-Please see the following [blog post](https://www.learnopencv.com/homography-examples-using-opencv-python-c/) for more details about this code
+This contains the code for **Fully Convolutional Image Classification on Arbitrary Sized Image**. For more information - visit [**Fully Convolutional Image Classification on Arbitrary Sized Image**](https://www.learnopencv.com/fully-convolutional-image-classification-on-arbitrary-sized-image/)
 
-[Homography Examples using OpenCV ( Python / C ++ )](https://www.learnopencv.com/homography-examples-using-opencv-python-c/)
 
 
 # AI Courses by OpenCV

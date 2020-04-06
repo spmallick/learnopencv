@@ -23,3 +23,14 @@ Compile using:
 Run using:
 `./mask_rcnn.out --image=cars.jpg`
 `./mask_rcnn.out --video=cars.mp4`
+
+
+# AI Courses by OpenCV
+
+Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/courses/) is a great place to start. 
+
+<a href="https://opencv.org/courses/">
+<p align="center"> 
+<img src="https://www.learnopencv.com/wp-content/uploads/2020/04/AI-Courses-By-OpenCV-Github.png">
+</p>
+</a>

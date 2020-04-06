@@ -1,6 +1,5 @@
-Please see the following [blog post](https://www.learnopencv.com/homography-examples-using-opencv-python-c/) for more details about this code
+This contains the code for **Barcode and QR code Scanner using ZBar and OpenCV**. For more information - visit [Barcode and QR code Scanner using ZBar and OpenCV](https://www.learnopencv.com/barcode-and-qr-code-scanner-using-zbar-and-opencv/)
 
-[Homography Examples using OpenCV ( Python / C ++ )](https://www.learnopencv.com/homography-examples-using-opencv-python-c/)
 
 
 # AI Courses by OpenCV

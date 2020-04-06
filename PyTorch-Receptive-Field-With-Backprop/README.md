@@ -1,6 +1,5 @@
-Please see the following [blog post](https://www.learnopencv.com/homography-examples-using-opencv-python-c/) for more details about this code
+This contains the code for **CNN Receptive Field Computation Using Backprop**. For more information - visit [**CNN Receptive Field Computation Using Backprop**](https://www.learnopencv.com/cnn-receptive-field-computation-using-backprop/)
 
-[Homography Examples using OpenCV ( Python / C ++ )](https://www.learnopencv.com/homography-examples-using-opencv-python-c/)
 
 
 # AI Courses by OpenCV

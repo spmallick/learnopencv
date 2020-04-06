@@ -1,6 +1,5 @@
-Please see the following [blog post](https://www.learnopencv.com/homography-examples-using-opencv-python-c/) for more details about this code
+This contains the code for **Simple Background Estimation in Videos Using OpenCV**. For more information - visit [**Simple Background Estimation in Videos Using OpenCV**](https://www.learnopencv.com/simple-background-estimation-in-videos-using-opencv-c-python/)
 
-[Homography Examples using OpenCV ( Python / C ++ )](https://www.learnopencv.com/homography-examples-using-opencv-python-c/)
 
 
 # AI Courses by OpenCV

@@ -27,3 +27,14 @@ Training the model on the given dataset. A modified LeNet structure has been use
 In order to predict the digit or character in an image, execute the following command. Give the test image path as the argument. 
 
 `python3 make_predictions.py <image_path>`
+
+
+# AI Courses by OpenCV
+
+Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/courses/) is a great place to start. 
+
+<a href="https://opencv.org/courses/">
+<p align="center"> 
+<img src="https://www.learnopencv.com/wp-content/uploads/2020/04/AI-Courses-By-OpenCV-Github.png">
+</p>
+</a>
