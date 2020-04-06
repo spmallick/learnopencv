@@ -34,9 +34,10 @@ if __name__ == "__main__" :
     source = 0
     if len(sys.argv) > 1:
         source = sys.argv[1]
-
-    faceCascade = cv2.CascadeClassifier('./haarcascade_frontalface_default.xml')
-
+    # haarcascade_frontalface_default.xml is in models directory.
+    faceCascade = cv2.CascadeClassifier('models/haarcascade_frontalface_default.xml')
+    #faceCascade = cv2.CascadeClassifier('./haarcascade_frontalface_default.xml')
+    
     cap = cv2.VideoCapture(source)
     hasFrame, frame = cap.read()
 
@@ -64,9 +65,10 @@ if __name__ == "__main__" :
         if frame_count == 1:
             tt_opencvHaar = 0
         
-        k = cv2.waitKey(10)
-        if k == 27:
+        key = cv2.waitKey(1) & 0xFF
+        # click keyboard 'q' to exit
+        if key == ord("q"):
             break
+            
     cv2.destroyAllWindows()
     vid_writer.release()
-

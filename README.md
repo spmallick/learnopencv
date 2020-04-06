@@ -1,10 +1,36 @@
-# learnopencv
-Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenCV.com](https://www.LearnOpenCV.com)
+# LearnOpenCV
+This repo contains code for Computer Vision, Deep learning, and AI articles shared on our blog [LearnOpenCV.com](https://www.LearnOpenCV.com). 
+
+Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/courses/) is a great place to start. 
+
+<a href="https://opencv.org/courses/">
+<p align="center"> 
+<img src="https://www.learnopencv.com/wp-content/uploads/2020/04/AI-Courses-By-OpenCV-Github.png">
+</p>
+</a>
 
 ## List of Blog Posts
 
-| Blog Post        | |
+| Blog Post | |
 | ------------- |:-------------|
+|[Multi-Label Image Classification with Pytorch](https://www.learnopencv.com/multi-label-image-classification-with-pytorch/)|[Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-Multi-Label-Image-Classification)|
+|[CNN Receptive Field Computation Using Backprop](https://www.learnopencv.com/cnn-receptive-field-computation-using-backprop/)|[Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-Receptive-Field-With-Backprop)|
+|[Augmented Reality using AruCo Markers in OpenCV(C++ and Python)](https://www.learnopencv.com/augmented-reality-using-aruco-markers-in-opencv-(c++-python)/) |[Code](https://github.com/spmallick/learnopencv/tree/master/AugmentedRealityWithArucoMarkers)|
+|[Fully Convolutional Image Classification on Arbitrary Sized Image](https://www.learnopencv.com/fully-convolutional-image-classification-on-arbitrary-sized-image/)|[Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-Fully-Convolutional-Image-Classification)|
+|[Camera Calibration using OpenCV](https://www.learnopencv.com/camera-calibration-using-opencv/) |[Code](https://github.com/spmallick/learnopencv/tree/master/CameraCalibration)|
+|[Geometry of Image Formation](https://www.learnopencv.com/geometry-of-image-formation/) ||
+|[Ensuring Training Reproducibility in Pytorch](https://www.learnopencv.com/ensuring-training-reproducibility-in-pytorch) ||
+|[Gaze Tracking](https://www.learnopencv.com/gaze-tracking/) ||
+|[Simple Background Estimation in Videos Using OpenCV](https://www.learnopencv.com/simple-background-estimation-in-videos-using-opencv-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/VideoBackgroundEstimation)|
+|[Applications of Foreground-Background separation with Semantic Segmentation](https://www.learnopencv.com/applications-of-foreground-background-separation-with-semantic-segmentation/) | [Code](https://github.com/spmallick/learnopencv/tree/master/app-seperation-semseg) |
+|[EfficientNet: Theory + Code](https://www.learnopencv.com/efficientnet-theory-code) | [Code](https://github.com/spmallick/learnopencv/tree/master/EfficientNet) |
+|[PyTorch for Beginners: Mask R-CNN Instance Segmentation with PyTorch](https://www.learnopencv.com/mask-r-cnn-instance-segmentation-with-pytorch/) | [Code](./PyTorch-Mask-RCNN) |
+|[PyTorch for Beginners: Faster R-CNN Object Detection with PyTorch](https://www.learnopencv.com/faster-r-cnn-object-detection-with-pytorch) | [Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-faster-RCNN) |
+|[PyTorch for Beginners: Semantic Segmentation using torchvision](https://www.learnopencv.com/pytorch-for-beginners-semantic-segmentation-using-torchvision/) | [Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-Segmentation-torchvision) |
+|[PyTorch for Beginners: Comparison of pre-trained models for Image Classification](https://www.learnopencv.com/image-classification-using-pre-trained-models-using-pytorch/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Image-classification-pre-trained-models/Image_Classification_using_pre_trained_models.ipynb) |
+|[PyTorch for Beginners: Basics](https://www.learnopencv.com/pytorch-for-beginners-basics/) | [Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-for-Beginners/PyTorch_for_Beginners.ipynb) |
+|[PyTorch Model Inference using ONNX and Caffe2](https://www.learnopencv.com/pytorch-model-inference-using-onnx-and-caffe2/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Inference-for-PyTorch-Models/ONNX-Caffe2) |
+|[Image Classification Using Transfer Learning in PyTorch](https://www.learnopencv.com/image-classification-using-transfer-learning-in-pytorch/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Image-Classification-in-PyTorch) |
 |[Hangman: Creating games in OpenCV](https://www.learnopencv.com/hangman-creating-games-in-opencv/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Hangman) |
 |[Image Inpainting with OpenCV (C++/Python)](https://www.learnopencv.com/image-inpainting-with-opencv-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Image-Inpainting) |
 |[Hough Transform with OpenCV (C++/Python)](https://www.learnopencv.com/hough-transform-with-opencv-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Hough-Transform) |
