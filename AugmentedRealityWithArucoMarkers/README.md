@@ -42,3 +42,15 @@ Command line usage for running the code
 
 ### Results of YOLOv3
 <img src = "./augmented-reality-example.jpg" width = 1000 height = 282/>
+
+
+# AI Courses by OpenCV
+
+Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/courses/) is a great place to start. 
+
+<a href="https://opencv.org/courses/">
+<p align="center"> 
+<img src="https://www.learnopencv.com/wp-content/uploads/2020/04/AI-Courses-By-OpenCV-Github.png">
+</p>
+</a>
+
