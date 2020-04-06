@@ -1,4 +1,4 @@
-This contains the code for **Barcode and QR code Scanner using ZBar and OpenCV**. For more information - visit [blog](https://www.learnopencv.com/barcode-and-qr-code-scanner-using-zbar-and-opencv/)
+This contains the code for **Barcode and QR code Scanner using ZBar and OpenCV**. For more information - visit [Barcode and QR code Scanner using ZBar and OpenCV](https://www.learnopencv.com/barcode-and-qr-code-scanner-using-zbar-and-opencv/)
 
 
 
