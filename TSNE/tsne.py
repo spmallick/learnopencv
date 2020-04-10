@@ -140,8 +140,8 @@ def visualize_tsne_images(tx, ty, images, labels, plot_size=1000, max_image_size
         # put the image to its TSNE coordinates using numpy subarray indices
         tsne_plot[tl_y:br_y, tl_x:br_x, :] = image
 
-    cv2.imshow('T-SNE', tsne_plot)
-    cv2.waitKey()
+    plt.imshow(tsne_plot[:, :, ::-1])
+    plt.show()
 
 
 def visualize_tsne_points(tx, ty, labels):
