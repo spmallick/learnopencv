@@ -1,4 +1,0 @@
-torch==1.4
-torchvision==0.5.0
-opencv-python>=3.4.1.15
-torchsummary==1.5.1
