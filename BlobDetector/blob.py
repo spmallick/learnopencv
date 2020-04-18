@@ -2,7 +2,7 @@
 
 # Standard imports
 import cv2
-import numpy as np;
+import numpy as np
 
 # Read image
 im = cv2.imread("blob.jpg", cv2.IMREAD_GRAYSCALE)

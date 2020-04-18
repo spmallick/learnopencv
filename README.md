@@ -1,10 +1,28 @@
-# learnopencv
-Learn OpenCV  : C++ and Python Examples. You can find the details at [LearnOpenCV.com](https://www.LearnOpenCV.com)
+# LearnOpenCV
+This repo contains code for Computer Vision, Deep learning, and AI articles shared on our blog [LearnOpenCV.com](https://www.LearnOpenCV.com). 
+
+Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/courses/) is a great place to start. 
+
+<a href="https://opencv.org/courses/">
+<p align="center"> 
+<img src="https://www.learnopencv.com/wp-content/uploads/2020/04/AI-Courses-By-OpenCV-Github.png">
+</p>
+</a>
 
 ## List of Blog Posts
 
 | Blog Post | |
 | ------------- |:-------------|
+|[t-SNE for ResNet feature visualization](https://www.learnopencv.com/t-sne-for-resnet-feature-visualization/)|[Code](https://github.com/spmallick/learnopencv/tree/master/TSNE)|
+|[Multi-Label Image Classification with Pytorch](https://www.learnopencv.com/multi-label-image-classification-with-pytorch/)|[Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-Multi-Label-Image-Classification)|
+|[CNN Receptive Field Computation Using Backprop](https://www.learnopencv.com/cnn-receptive-field-computation-using-backprop/)|[Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-Receptive-Field-With-Backprop)|
+|[Augmented Reality using AruCo Markers in OpenCV(C++ and Python)](https://www.learnopencv.com/augmented-reality-using-aruco-markers-in-opencv-(c++-python)/) |[Code](https://github.com/spmallick/learnopencv/tree/master/AugmentedRealityWithArucoMarkers)|
+|[Fully Convolutional Image Classification on Arbitrary Sized Image](https://www.learnopencv.com/fully-convolutional-image-classification-on-arbitrary-sized-image/)|[Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-Fully-Convolutional-Image-Classification)|
+|[Camera Calibration using OpenCV](https://www.learnopencv.com/camera-calibration-using-opencv/) |[Code](https://github.com/spmallick/learnopencv/tree/master/CameraCalibration)|
+|[Geometry of Image Formation](https://www.learnopencv.com/geometry-of-image-formation/) ||
+|[Ensuring Training Reproducibility in Pytorch](https://www.learnopencv.com/ensuring-training-reproducibility-in-pytorch) ||
+|[Gaze Tracking](https://www.learnopencv.com/gaze-tracking/) ||
+|[Simple Background Estimation in Videos Using OpenCV](https://www.learnopencv.com/simple-background-estimation-in-videos-using-opencv-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/VideoBackgroundEstimation)|
 |[Applications of Foreground-Background separation with Semantic Segmentation](https://www.learnopencv.com/applications-of-foreground-background-separation-with-semantic-segmentation/) | [Code](https://github.com/spmallick/learnopencv/tree/master/app-seperation-semseg) |
 |[EfficientNet: Theory + Code](https://www.learnopencv.com/efficientnet-theory-code) | [Code](https://github.com/spmallick/learnopencv/tree/master/EfficientNet) |
 |[PyTorch for Beginners: Mask R-CNN Instance Segmentation with PyTorch](https://www.learnopencv.com/mask-r-cnn-instance-segmentation-with-pytorch/) | [Code](./PyTorch-Mask-RCNN) |

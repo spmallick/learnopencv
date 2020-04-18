@@ -10,6 +10,7 @@ B.Compiling cpp file
 
 Using g++
 Command to compile the cpp file in ubuntu:
+
 g++ -o3 -std=c++11 multi-person-openpose.cpp `pkg-config --libs --cflags opencv` -lpthread -o multi-person-openpose
 
 Using CMake
@@ -18,8 +19,22 @@ make
 
 C. Usage
 1. Python
+
 python multi-person-openpose.py
 
 2. C++
+
 ./multi-person-openpose
+
+
+# AI Courses by OpenCV
+
+Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/courses/) is a great place to start. 
+
+<a href="https://opencv.org/courses/">
+<p align="center"> 
+<img src="https://www.learnopencv.com/wp-content/uploads/2020/04/AI-Courses-By-OpenCV-Github.png">
+</p>
+</a>
+
 
