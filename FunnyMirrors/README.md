@@ -26,7 +26,7 @@ Command line usage for running the code
     python3 FunnyMirrorsVideo.py ./data/Video3.mp4 0
     ```
     
-    The syntax here is `python3 FunnyMirrorsVideo.py <VIDEO_FILE_PATH> <MODE_NUMBER>`. The `MODE_NUMBER` ranges from 0 to 7.
+    The syntax here is `python3 FunnyMirrorsVideo.py <VIDEO_FILE_PATH> <MODE_NUMBER>`. The `MODE_NUMBER` ranges from 0 to 7. It determines which funny mirror effect will be applied.
     
 
 ### Some funny mirrors generated
