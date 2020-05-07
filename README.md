@@ -13,7 +13,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | |
 | ------------- |:-------------|
-
+|[Graph Convolutional Networks: Model Relations In Data](https://www.learnopencv.com/graph-convolutional-networks:-model-relations-in-data/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Graph-Convolutional-Networks:-Model-Relations-In-Data)|
 |[Multi-Label Image Classification with PyTorch: Image Tagging](https://www.learnopencv.com//multi-label-image-classification-with-pytorch-image-tagging/)|[Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-Multi-Label-Image-Classification:-Image-Tagging)|
 |[Funny Mirrors Using OpenCV](https://www.learnopencv.com/Funny-Mirrors-Using-OpenCV/)|[code](https://github.com/spmallick/learnopencv/tree/master/FunnyMirrors)|
 |[t-SNE for ResNet feature visualization](https://www.learnopencv.com/t-sne-for-resnet-feature-visualization/)|[Code](https://github.com/spmallick/learnopencv/tree/master/TSNE)|
