@@ -1,4 +1,4 @@
-This contains the code for **Multi-Label Image Classification with Pytorch**. For more information - visit [**Multi-Label Image Classification with Pytorch**](https://www.learnopencv.com/multi-label-image-classification-with-pytorch/)
+This contains the code for **Getting Started with PyTorch Lightning**. For more information - visit [**Getting Started with PyTorch Lightning**](https://www.learnopencv.com/getting-started-with-pytorch-lightning/)
 
 
 
