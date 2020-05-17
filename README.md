@@ -13,7 +13,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | |
 | ------------- |:-------------|
-|[Creating a Virtual Pen & Eraser](http://www.learnopencv.com/creating-a-virtual-pen-and-eraser-with-opencv/) | [Code](https://github.com/TahaAnwar/learnopencv/tree/master/Creating%20a%20Virtual%20Pen%20%26%20Eraser) |
+|[Creating a Virtual Pen & Eraser](http://www.learnopencv.com/creating-a-virtual-pen-and-eraser-with-opencv/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Creating%20a%20Virtual%20Pen%20%26%20Eraser) |
 |[Getting Started with PyTorch Lightning](https://www.learnopencv.com/getting-started-with-pytorch-lightning/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Pytorch-Lightning)|
 |[Multi-Label Image Classification with PyTorch: Image Tagging](https://www.learnopencv.com/multi-label-image-classification-with-pytorch-image-tagging/)|[Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-Multi-Label-Image-Classification-Image-Tagging)|
 |[Funny Mirrors Using OpenCV](https://www.learnopencv.com/Funny-Mirrors-Using-OpenCV/)|[code](https://github.com/spmallick/learnopencv/tree/master/FunnyMirrors)|
