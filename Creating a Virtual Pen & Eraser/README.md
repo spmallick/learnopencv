@@ -2,7 +2,7 @@
 
 This repository contains the notebook for running the Virtual Pen & Eraser Pipeline:
 
-1. [Virtual Pen & Eraser](Creating a Virtual Pen and Eraser.ipynb)
+1. [Virtual Pen & Eraser](Creating_a_Virtual_Pen_and_Eraser.ipynb)
 
 
 # AI Courses by OpenCV
