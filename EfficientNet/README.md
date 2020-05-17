@@ -2,7 +2,7 @@
 
 This repository contains the notebook for performing the following comparison in PyTorch and Keras:
 
-1. [ResNet50 and EfficientNet-B0](Creating a Virtual Pen and Eraser.ipynb)
+1. [ResNet50 and EfficientNet-B0](EfficientNet_ResNet50.ipynb)
 
 
 # AI Courses by OpenCV
