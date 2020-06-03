@@ -1,6 +1,4 @@
-Efficient image loading
-
-Please visit the blog for details at https://www.learnopencv.com/efficient-image-loading/
+This contains the code for **Efficient image loading**. For more information - visit [**Efficient image loading**](https://www.learnopencv.com/efficient-image-loading/)
 
 
 # AI Courses by OpenCV
