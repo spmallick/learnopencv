@@ -65,6 +65,16 @@ def get_transform(train):
 def main(args):
     utils.init_distributed_mode(args)
     print(args)
+    # applying logging only in the main process
+    # ### OUR CODE ###
+    if utils.is_main_process():
+        # passing argparse config with hyperparameters
+        tensorboard.args = vars(args)
+        # init wandb using config and experiment name
+        wandb.init(config=vars(args), name=tensorboard.name)
+        # enable tensorboard sync
+        wandb.init(sync_tensorboard=True)
+    # ### END OF OUR CODE ###
 
     device = torch.device(args.device)
 
@@ -204,12 +214,4 @@ if __name__ == "__main__":
     if args.output_dir:
         utils.mkdir(args.output_dir)
 
-    # ### OUR CODE ###
-    # passing argparse config with hyperparameters
-    tensorboard.args = vars(args)
-    # init wandb using config and experiment name
-    wandb.init(config=vars(args), name=tensorboard.name)
-    # enable tensorboard sync
-    wandb.init(sync_tensorboard=True)
-    # ### END OF OUR CODE ###
     main(args)

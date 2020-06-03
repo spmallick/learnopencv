@@ -32,18 +32,20 @@ def train_one_epoch(model, optimizer, data_loader, device, epoch, print_freq):
         targets = [{k: v.to(device) for k, v in t.items()} for t in targets]
         loss_dict = model(images, targets)
 
+        # applying logging only in the main process
         # ### OUR CODE ###
-        # let's track the losses here by adding scalars
-        tensorboard.logger.add_scalar_dict(
-            # passing the dictionary of losses (pairs - loss_key: loss_value)
-            loss_dict,
-            # passing the global step (number of iterations)
-            global_step=tensorboard.global_iter,
-            # adding the tag to combine plots in a subgroup
-            tag="loss"
-        )
-        # incrementing the global step (number of iterations)
-        tensorboard.global_iter += 1
+        if utils.is_main_process():
+            # let's track the losses here by adding scalars
+            tensorboard.logger.add_scalar_dict(
+                # passing the dictionary of losses (pairs - loss_key: loss_value)
+                loss_dict,
+                # passing the global step (number of iterations)
+                global_step=tensorboard.global_iter,
+                # adding the tag to combine plots in a subgroup
+                tag="loss"
+            )
+            # incrementing the global step (number of iterations)
+            tensorboard.global_iter += 1
         # ### END OF OUR CODE ###
 
         losses = sum(loss for loss in loss_dict.values())
@@ -109,25 +111,27 @@ def evaluate(model, data_loader, device):
         model_time = time.time()
         outputs = model(images)
 
+        # applying logging only in the main process
         # ### OUR CODE ###
-        # let's track bounding box and labels predictions for the first 50 images
-        # as we hardly want to track all validation images
-        # but want to see how the predicted bounding boxes and labels are changing during the process
-        if i < 50:
-            # let's add tracking images with predicted bounding boxes
-            tensorboard.logger.add_image_with_boxes(
-                # adding pred_images tag to combine images in one subgroup
-                "pred_images/PD-{}".format(i),
-                # passing image tensor
-                img,
-                # passing predicted bounding boxes
-                outputs[0]["boxes"].cpu(),
-                # mapping & passing predicted labels
-                labels=[
-                    tensorboard.COCO_INSTANCE_CATEGORY_NAMES[i]
-                    for i in outputs[0]["labels"].cpu().numpy()
-                ],
-            )
+        if utils.is_main_process():
+            # let's track bounding box and labels predictions for the first 50 images
+            # as we hardly want to track all validation images
+            # but want to see how the predicted bounding boxes and labels are changing during the process
+            if i < 50:
+                # let's add tracking images with predicted bounding boxes
+                tensorboard.logger.add_image_with_boxes(
+                    # adding pred_images tag to combine images in one subgroup
+                    "pred_images/PD-{}".format(i),
+                    # passing image tensor
+                    img,
+                    # passing predicted bounding boxes
+                    outputs[0]["boxes"].cpu(),
+                    # mapping & passing predicted labels
+                    labels=[
+                        tensorboard.COCO_INSTANCE_CATEGORY_NAMES[i]
+                        for i in outputs[0]["labels"].cpu().numpy()
+                    ],
+                )
         # ### END OUR CODE ###
         outputs = [{k: v.to(cpu_device) for k, v in t.items()} for t in outputs]
         model_time = time.time() - model_time
@@ -144,7 +148,9 @@ def evaluate(model, data_loader, device):
     coco_evaluator.synchronize_between_processes()
 
     # accumulate predictions from all images
-    coco_evaluator.accumulate()
-    coco_evaluator.summarize()
+    # add main process check for multi-gpu training (torch.distributed)
+    if utils.is_main_process():
+        coco_evaluator.accumulate()
+        coco_evaluator.summarize()
     torch.set_num_threads(n_threads)
     return coco_evaluator
