@@ -1,0 +1,7 @@
+lmdb==0.98
+numpy==1.18.3
+opencv-python==4.2.0.34
+Pillow==7.1.2
+prettytable==0.7.2
+PyTurboJPEG==1.4.0
+tensorflow==2.1.0
