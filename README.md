@@ -14,6 +14,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 | Blog Post | |
 | ------------- |:-------------|
 |[Experiment Logging with TensorBoard and wandb](https://www.learnopencv.com/experiment-logging-with-tensorboard-and-wandb)|[Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-Vision-Experiment-Logging)|
+|[Efficient image loading](https://www.learnopencv.com/efficient-image-loading/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Efficient-image-loading) |
 |[Graph Convolutional Networks: Model Relations In Data](https://www.learnopencv.com/graph-convolutional-networks-model-relations-in-data/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Graph-Convolutional-Networks-Model-Relations-In-Data)|
 |[Getting Started with Federated Learning with PyTorch and PySyft](https://www.learnopencv.com/federated-learning-using-pytorch-and-pysyft/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Federated-Learning-Intro)|
 |[Creating a Virtual Pen & Eraser](http://www.learnopencv.com/creating-a-virtual-pen-and-eraser-with-opencv/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Creating-a-Virtual-Pen-and-Eraser) |
