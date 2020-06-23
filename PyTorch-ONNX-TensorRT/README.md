@@ -17,6 +17,10 @@ Please follow the [Installation Guide](https://docs.nvidia.com/deeplearning/tens
 4. Add the absolute path to CUDA, TensorRT, CuDNN libs to the environment variable ```PATH``` or ```LD_LIBRARY_PATH``` 
 5. Install [PyCUDA](https://docs.nvidia.com/deeplearning/tensorrt/install-guide/index.html#installing-pycuda)
 
+```shell script
+python3 trt_inference.py
+```
+
 # AI Courses by OpenCV
 
 Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/courses/) is a great place to start. 
