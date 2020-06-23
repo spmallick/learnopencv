@@ -13,11 +13,8 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | |
 | ------------- |:-------------|
-<<<<<<< HEAD
-|[Efficient image loading](https://www.learnopencv.com/efficient-image-loading/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Efficient-image-loading) |
-=======
 |[How to convert a model from PyTorch to TensorRT and speed up inference](https://www.learnopencv.com/how-to-convert-a-model-from-pytorch-to-tensorrt-and-speed-up-inference/) | [Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-ONNX-TensorRT) |
->>>>>>> update README.md
+|[Efficient image loading](https://www.learnopencv.com/efficient-image-loading/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Efficient-image-loading) |
 |[Graph Convolutional Networks: Model Relations In Data](https://www.learnopencv.com/graph-convolutional-networks-model-relations-in-data/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Graph-Convolutional-Networks-Model-Relations-In-Data)|
 |[Getting Started with Federated Learning with PyTorch and PySyft](https://www.learnopencv.com/federated-learning-using-pytorch-and-pysyft/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Federated-Learning-Intro)|
 |[Creating a Virtual Pen & Eraser](http://www.learnopencv.com/creating-a-virtual-pen-and-eraser-with-opencv/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Creating-a-Virtual-Pen-and-Eraser) |
