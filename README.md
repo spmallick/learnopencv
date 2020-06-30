@@ -13,6 +13,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | |
 | ------------- |:-------------|
+|[Image Matting with state-of-the-art Method “F, B, Alpha Matting”](https://www.learnopencv.com/image-matting-with-state-of-the-art-method-f-b-alpha-matting/)|[Code](https://github.com/spmallick/learnopencv/tree/master/FBAMatting) |
 |[Efficient image loading](https://www.learnopencv.com/efficient-image-loading/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Efficient-image-loading) |
 |[Graph Convolutional Networks: Model Relations In Data](https://www.learnopencv.com/graph-convolutional-networks-model-relations-in-data/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Graph-Convolutional-Networks-Model-Relations-In-Data)|
 |[Getting Started with Federated Learning with PyTorch and PySyft](https://www.learnopencv.com/federated-learning-using-pytorch-and-pysyft/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Federated-Learning-Intro)|
