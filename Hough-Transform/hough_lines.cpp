@@ -19,7 +19,6 @@ vector<Vec4i> lines;
 
 void onTrackbarChange( int , void* )
 { 
-  cimg = img.clone();
   dst = img.clone();
 
   th1 = initThresh;
