@@ -14,6 +14,7 @@ from tensorflow.keras.layers import (
 )
 from tensorflow.python.keras.engine import training
 from tensorflow.python.keras.utils import data_utils
+
 from utils import (
     BASE_WEIGHTS_PATH,
     WEIGHTS_HASHES,
@@ -93,93 +94,3 @@ def fully_convolutional_resnet50(
         # set ResNet50 FC-layer weights to final convolutional layer
         set_conv_weights(model=model, feature_extractor=resnet50_extractor)
     return model
-
-
-if __name__ == "__main__":
-
-    # read ImageNet class ids to a list of labels
-    with open("imagenet_classes.txt") as f:
-        labels = [line.strip() for line in f.readlines()]
-
-    # read image
-    original_image = cv2.imread("camel.jpg")
-
-    # convert image to the RGB format
-    image = cv2.cvtColor(original_image, cv2.COLOR_BGR2RGB)
-
-    # pre-process image
-    image = preprocess_input(image)
-
-    # convert image to NCHW tf.tensor
-    image = tf.expand_dims(image, 0)
-
-    # load modified resnet50 model with pre-trained ImageNet weights
-    model = fully_convolutional_resnet50(input_shape=(image.shape[-3:]))
-
-    # Perform inference.
-    # Instead of a 1×1000 vector, we will get a
-    # 1×1000×n×m output ( i.e. a probability map
-    # of size n × m for each 1000 class,
-    # where n and m depend on the size of the image).
-    preds = model.predict(image)
-    preds = tf.transpose(preds, perm=[0, 3, 1, 2])
-    preds = tf.nn.softmax(preds, axis=1)
-    print("Response map shape : ", preds.shape)
-
-    # find the class with the maximum score in the n × m output map
-    pred = tf.math.reduce_max(preds, axis=1)
-    class_idx = tf.math.argmax(preds, axis=1)
-    print(class_idx)
-
-    row_max = tf.math.reduce_max(pred, axis=1)
-    row_idx = tf.math.argmax(pred, axis=1)
-
-    col_idx = tf.math.argmax(row_max, axis=1)
-
-    predicted_class = tf.gather_nd(
-        class_idx, (0, tf.gather_nd(row_idx, (0, col_idx[0])), col_idx[0]),
-    )
-
-    # print top predicted class
-    print("Predicted Class : ", labels[predicted_class], predicted_class)
-
-    # find the n × m score map for the predicted class
-    score_map = tf.expand_dims(preds[0, predicted_class, :, :], 0).numpy()
-    score_map = score_map[0]
-
-    # resize score map to the original image size
-    score_map = cv2.resize(
-        score_map, (original_image.shape[1], original_image.shape[0]),
-    )
-
-    # binarize score map
-    _, score_map_for_contours = cv2.threshold(
-        score_map, 0.65, 1, type=cv2.THRESH_BINARY,
-    )
-    score_map_for_contours = score_map_for_contours.astype(np.uint8).copy()
-
-    # find the contour of the binary blob
-    contours, _ = cv2.findContours(
-        score_map_for_contours, mode=cv2.RETR_EXTERNAL, method=cv2.CHAIN_APPROX_SIMPLE,
-    )
-
-    # find bounding box around the object.
-    rect = cv2.boundingRect(contours[0])
-
-    # apply score map as a mask to original image
-    score_map = score_map - np.min(score_map[:])
-    score_map = score_map / np.max(score_map[:])
-
-    score_map = cv2.cvtColor(score_map, cv2.COLOR_GRAY2BGR)
-    masked_image = (original_image * score_map).astype(np.uint8)
-
-    # display bounding box
-    cv2.rectangle(
-        masked_image, rect[:2], (rect[0] + rect[2], rect[1] + rect[3]), (0, 0, 255), 2,
-    )
-
-    # display images
-    cv2.imshow("Original Image", original_image)
-    cv2.imshow("scaled_score_map", score_map)
-    cv2.imshow("activations_and_bbox", masked_image)
-    cv2.waitKey(0)

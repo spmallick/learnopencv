@@ -1,5 +1,2 @@
-albumentations==0.4.5
 opencv-python>=3.4.1.15
-# for FullyConvolutionalResnet18
-pytorch2keras==0.2.4
 tensorflow==2.1.0

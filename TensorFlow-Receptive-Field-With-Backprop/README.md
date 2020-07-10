@@ -1,5 +1,5 @@
-This contains the code for **CNN Receptive Field Computation Using Backprop with TensorFlow**. For more information - visit
-[**CNN Receptive Field Computation Using Backprop with TensorFlow**](https://www.learnopencv.com/cnn-receptive-field-computation-using-backprop-with-tensorflow/)
+This contains the code for **CNN Receptive Field Computation Using Backprop**. For more information - visit
+[**CNN Receptive Field Computation Using Backprop**](https://www.learnopencv.com/cnn-receptive-field-computation-using-backprop/)
 
 # AI Courses by OpenCV
 
