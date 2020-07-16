@@ -20,7 +20,7 @@ Mat imVector, meanVector, eigenVectors, im, display;
 // Right = Reconstructed Face
 void displayResult( Mat &left, Mat &right)
 {
-	hconcat(left,right, display); 	
+	hconcat(left,right, display);
 	resize(display, display, Size(), 4, 4);
 	imshow("Result", display);
 }
@@ -34,22 +34,21 @@ void reconstructFace(int sliderVal, void*)
 	{
 		// The weight is the dot product of the mean subtracted
 		// image vector with the EigenVector
-		double weight = imVector.dot(eigenVectors.row(i)); 
+		double weight = imVector.dot(eigenVectors.row(i));
 
 		// Add weighted EigenFace to the output
-		output = output + eigenFaces[i] * weight; 
+		output = output + eigenFaces[i] * weight;
 	}
 
 	displayResult(im, output);
 }
-	
 
 int main(int argc, char **argv)
 {
 
 	// Read model file
 	string modelFile("pcaParams.yml");
-	cout << "Reading model file " << modelFile << " ... " ; 
+	cout << "Reading model file " << modelFile << " ... ";
 
 	FileStorage file(modelFile, FileStorage::READ);
 	
@@ -65,11 +64,11 @@ int main(int argc, char **argv)
 
 	// Extract maximum number of EigenVectors. 
 	// This is the max(numImagesUsedInTraining, w * h * 3)
-	// where w = width, h = height of the training images. 
+	// where w = width, h = height of the training images.
 	int numEigenFaces = eigenVectors.size().height; 
 	cout <<  "DONE" << endl; 
 
-	cout << "Extracting mean face and eigen faces ... "; 
+	cout << "Extracting mean face and eigen faces ... ";
 	// Extract mean vector and reshape it to obtain average face
 	averageFace = meanVector.reshape(3,sz.height);
 	
@@ -82,27 +81,27 @@ int main(int argc, char **argv)
 	}
 	cout << "DONE" << endl; 
 
-	// Read new test image. This image was not used in traning. 
+	// Read new test image. This image was not used in traning.
 	string imageFilename("test/satya1.jpg");
 	cout << "Read image " << imageFilename << " and vectorize ... ";
 	im = imread(imageFilename);
 	im.convertTo(im, CV_32FC3, 1/255.0);
 	
 	// Reshape image to one long vector and subtract the mean vector
-	imVector = im.clone(); 
+	imVector = im.clone();
 	imVector = imVector.reshape(1, 1) - meanVector; 
-	cout << "DONE" << endl; 
+	cout << "DONE" << endl;
 
 
 	// Show mean face first
-	output = averageFace.clone(); 
+	output = averageFace.clone();
 
-	cout << "Usage:" << endl 
+	cout << "Usage:" << endl
 	<< "\tChange the slider to change the number of EigenFaces" << endl
 	<< "\tHit ESC to terminate program." << endl;
-	
-	namedWindow("Result", CV_WINDOW_AUTOSIZE);
-	int sliderValue; 
+
+	namedWindow("Result", cv::WINDOW_AUTOSIZE);
+	int sliderValue;
 
 	// Changing the slider value changes the number of EigenVectors
 	// used in reconstructFace.
@@ -110,10 +109,7 @@ int main(int argc, char **argv)
 	
 	// Display original image and the reconstructed image size by side
 	displayResult(im, output);
-	
 
 	waitKey(0);
 	destroyAllWindows(); 
 }
-
-

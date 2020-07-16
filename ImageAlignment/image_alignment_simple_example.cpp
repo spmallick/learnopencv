@@ -18,8 +18,8 @@ int main(void)
     
     // Convert images to gray scale;
     Mat im1_gray, im2_gray;
-    cvtColor(im1, im1_gray, CV_BGR2GRAY);
-    cvtColor(im2, im2_gray, CV_BGR2GRAY);
+    cvtColor(im1, im1_gray, cv::COLOR_BGR2GRAY);
+    cvtColor(im2, im2_gray, cv::COLOR_BGR2GRAY);
 
     // Define the motion model
     const int warp_mode = MOTION_EUCLIDEAN;
