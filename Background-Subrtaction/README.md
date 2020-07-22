@@ -1,3 +1,6 @@
+This contains the code for **Background Subtraction with OpenCV and BGS Libraries**. For more information - visit [Background Subtraction with OpenCV and BGS Libraries](https://www.learnopencv.com/background-subtraction-with-opencv-and-bgs-libraries/)
+
+
 ## Getting Started
 
 Please, follow the instructions to set up the environment for Linux-based systems. This installation guide is based on
@@ -214,3 +217,15 @@ python3 background_subtr_bgslib.py
 ```bash
 python3 background_subtr_bgslib.py --input_video <VIDEO_PATH>
 ```
+
+
+
+# AI Courses by OpenCV
+
+Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/courses/) is a great place to start. 
+
+<a href="https://opencv.org/courses/">
+<p align="center"> 
+<img src="https://www.learnopencv.com/wp-content/uploads/2020/04/AI-Courses-By-OpenCV-Github.png">
+</p>
+</a>
