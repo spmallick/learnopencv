@@ -18,7 +18,7 @@ def check_onnx_output(filename, input_data, torch_output):
     result = session.run([], {input_name: input_data.numpy()})
     for test_result, gold_result in zip(result, torch_output.values()):
         np.testing.assert_almost_equal(
-            gold_result.cpu().numpy(), test_result, decimal=2,
+            gold_result.cpu().numpy(), test_result, decimal=3,
         )
     return result
 
@@ -35,20 +35,23 @@ def check_onnx_model(model, onnx_filename, input_image):
 
 
 def check_coreml_model(coreml_filename, torch_model, input_data):
-    input_data = input_data.numpy()
-
-    # get CoreML model output
-    coreml_model = coremltools.models.MLModel(coreml_filename, useCPUOnly=True)
-    pred = coreml_model.predict({"input": input_data})
 
     # get PyTorch model output
     with torch.no_grad():
         torch_output = {"output": torch_model(input_data)}
 
+    # get CoreML model output
+    coreml_model = coremltools.models.MLModel(coreml_filename, useCPUOnly=True)
+
+    # convert input to numpy and get coreml model prediction
+    input_data = input_data.cpu().numpy()
+    pred = coreml_model.predict({"input": input_data})
+
     for key in pred:
         np.testing.assert_almost_equal(
             torch_output[key].cpu().numpy(), pred[key], decimal=3,
         )
+    print("CoreML model is checked!")
     return pred
 
 
@@ -97,7 +100,7 @@ def simplify_onnx(onnx_model, filename):
 
 
 def convert_onnx_to_coreml(onnx_model, model_name, torch_model, input_data):
-    model_coreml = convert(onnx_model)
+    model_coreml = convert(onnx_model, minimum_ios_deployment_target="13")
     coreml_filename = model_name + ".mlmodel"
     model_coreml.save(coreml_filename)
     if platform.system() == "Darwin":
