@@ -13,6 +13,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | |
 | ------------- |:-------------|
+|[Face Recognition with ArcFace](https://www.learnopencv.com/face-recognition-with-arcface/) | [Code](https://github.com/spmallick/learnopencv/tree/master/FaceRecognition)
 |[Playing Rock, Paper, Scissors with AI](https://www.learnopencv.com/playing-rock-paper-scissors-with-ai/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Playing-rock-paper-scissors-with-AI) |
 |[CNN Receptive Field Computation Using Backprop with TensorFlow](https://www.learnopencv.com/cnn-receptive-field-computation-using-backprop-with-tensorflow/)|[Code](https://github.com/spmallick/learnopencv/tree/master/TensorFlow-Receptive-Field-With-Backprop)|
 |[CNN Fully Convolutional Image Classification with TensorFlow](https://www.learnopencv.com/cnn-fully-convolutional-image-classification-with-tensorflow) | [Code](https://github.com/spmallick/learnopencv/tree/master/TensorFlow-Fully-Convolutional-Image-Classification) |
