@@ -44,41 +44,63 @@ static float hull_pts[] = {
 
 int main(int argc, char **argv)
 {
-    
+
     string videoFileName;
-    // Take arguments from commmand line
-    if (argc < 2)
+    string device;
+
+    // Take arguments from command line
+    if (argc == 3)
+    {
+        device = argv[2];
+    }
+    else if (argc == 2)
+        device = "cpu";
+    else
     {
         cout << "Please input the greyscale video filename." << endl;
         cout << "Usage example: ./colorizeVideo.out greyscaleVideo.mp4" << endl;
+        cout << "If you want to use GPU device instead of CPU, add one more argument." << endl;
+        cout << "Usage example: ./colorizeVideo.out greyscaleVideo.mp4 gpu" << endl;
         return 1;
     }
     videoFileName = argv[1];
-    
+
     cv::VideoCapture cap(videoFileName);
     if (!cap.isOpened())
     {
         cerr << "Unable to open video" << endl;
         return 1;
     }
-    
+
+    cout << "Input video file: " << videoFileName << endl;
+
     string protoFile = "./models/colorization_deploy_v2.prototxt";
     string weightsFile = "./models/colorization_release_v2.caffemodel";
-    //string weightsFile = "./models/colorization_release_v2_norebal.caffemodel";
 
     Mat frame, frameCopy;
     int frameWidth = cap.get(CAP_PROP_FRAME_WIDTH);
     int frameHeight = cap.get(CAP_PROP_FRAME_HEIGHT);
     
     string str = videoFileName;
-    str.replace(str.end()-4, str.end(), "");
-    string outVideoFileName = str+"_colorized.avi";
+    str.replace(str.end() - 4, str.end(), "");
+    string outVideoFileName = str + "_colorized.avi";
     VideoWriter video(outVideoFileName, VideoWriter::fourcc('M','J','P','G'), 60, Size(frameWidth,frameHeight));
 
-    // fixed input size for the pretrained network
+    // fixed input size for the pre-trained network
     const int W_in = 224;
     const int H_in = 224;
     Net net = dnn::readNetFromCaffe(protoFile, weightsFile);
+    if (device != "gpu")
+    {
+        cout << "Using CPU device" << endl;
+        net.setPreferableBackend(DNN_TARGET_CPU);
+    }
+    else
+    {
+        cout << "Using GPU device" << endl;
+        net.setPreferableBackend(DNN_BACKEND_CUDA);
+        net.setPreferableTarget(DNN_TARGET_CUDA);
+    }
 
     // setup additional layers:
     int sz[] = {2, 313, 1, 1};
@@ -88,6 +110,8 @@ int main(int argc, char **argv)
     Ptr<dnn::Layer> conv8_313_rh = net.getLayer("conv8_313_rh");
     conv8_313_rh->blobs.push_back(Mat(1, 313, CV_32F, Scalar(2.606)));
 
+    vector<float> timer;
+
     for(;;)
     {
 
@@ -96,6 +120,8 @@ int main(int argc, char **argv)
         
         frameCopy = frame.clone();
         
+        double t = (double) cv::getTickCount();
+
         // extract L channel and subtract mean
         Mat lab, L, input;
         frame.convertTo(frame, CV_32F, 1.0/255);
@@ -110,10 +136,10 @@ int main(int argc, char **argv)
         Mat result = net.forward();
         
         // retrieve the calculated a,b channels from the network output
-        Size siz(result.size[2], result.size[3]);
-        Mat a = Mat(siz, CV_32F, result.ptr(0,0));
-        Mat b = Mat(siz, CV_32F, result.ptr(0,1));
-        
+        Size out_size(result.size[2], result.size[3]);
+        Mat a = Mat(out_size, CV_32F, result.ptr(0, 0));
+        Mat b = Mat(out_size, CV_32F, result.ptr(0, 1));
+
         resize(a, a, frame.size());
         resize(b, b, frame.size());
         
@@ -122,11 +148,16 @@ int main(int argc, char **argv)
         merge(chn, 3, lab);
         cvtColor(lab, coloredFrame, COLOR_Lab2BGR);
         
-        coloredFrame = coloredFrame*255;
+        t = ((double)cv::getTickCount() - t)/cv::getTickFrequency();
+        timer.push_back(t);
+
+        coloredFrame = coloredFrame.mul(255);
         coloredFrame.convertTo(coloredFrame, CV_8U);
         video.write(coloredFrame);
 
     }
+
+    cout << "Time taken : " << accumulate(timer.begin(), timer.end(), 0.0) << " secs" << endl;
     cout << "Colorized video saved as " << outVideoFileName << endl << "Done !!!" << endl;
     cap.release();
     video.release();

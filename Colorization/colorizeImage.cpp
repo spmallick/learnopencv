@@ -43,35 +43,53 @@ static float hull_pts[] = {
 
 int main(int argc, char **argv)
 {
-    
+
     string imageFileName;
-    // Take arguments from commmand line
-    if (argc < 2)
+    string device;
+    // Take arguments from command line
+    if (argc == 3)
+    {
+        device = argv[2];
+    }
+    else if (argc == 2)
+        device = "cpu";
+    else
     {
         cout << "Please input the greyscale image filename." << endl;
         cout << "Usage example: ./colorizeImage.out greyscaleImage.png" << endl;
+        cout << "If you want to use GPU device instead of CPU, add one more argument." << endl;
+        cout << "Usage example:./colorizeImage.out greyscaleImage.png gpu" << endl;
         return 1;
     }
-    
+
     imageFileName = argv[1];
     Mat img = imread(imageFileName);
     if (img.empty())
     {
         cout << "Can't read image from file: " << imageFileName << endl;
-        return 2;
+        return 1;
     }
-    
+    cout << "Input image file: " << imageFileName << endl;
+
     string protoFile = "./models/colorization_deploy_v2.prototxt";
     string weightsFile = "./models/colorization_release_v2.caffemodel";
-    //string weightsFile = "./models/colorization_release_v2_norebal.caffemodel";
 
-    double t = (double) cv::getTickCount();
-    
-    // fixed input size for the pretrained network
+    // fixed input size for the pre-trained network
     const int W_in = 224;
     const int H_in = 224;
     Net net = dnn::readNetFromCaffe(protoFile, weightsFile);
-    
+    if (device != "gpu")
+    {
+        cout << "Using CPU device" << endl;
+        net.setPreferableBackend(DNN_TARGET_CPU);
+    }
+    else
+    {
+        cout << "Using GPU device" << endl;
+        net.setPreferableBackend(DNN_BACKEND_CUDA);
+        net.setPreferableTarget(DNN_TARGET_CUDA);
+    }
+
     // setup additional layers:
     int sz[] = {2, 313, 1, 1};
     const Mat pts_in_hull(4, sz, CV_32F, hull_pts);
@@ -79,7 +97,9 @@ int main(int argc, char **argv)
     class8_ab->blobs.push_back(pts_in_hull);
     Ptr<dnn::Layer> conv8_313_rh = net.getLayer("conv8_313_rh");
     conv8_313_rh->blobs.push_back(Mat(1, 313, CV_32F, Scalar(2.606)));
-    
+
+    double t = (double) cv::getTickCount();
+
     // extract L channel and subtract mean
     Mat lab, L, input;
     img.convertTo(img, CV_32F, 1.0/255);
@@ -87,19 +107,19 @@ int main(int argc, char **argv)
     extractChannel(lab, L, 0);
     resize(L, input, Size(W_in, H_in));
     input -= 50;
-    
+
     // run the L channel through the network
     Mat inputBlob = blobFromImage(input);
     net.setInput(inputBlob);
     Mat result = net.forward();
-    
+
     // retrieve the calculated a,b channels from the network output
-    Size siz(result.size[2], result.size[3]);
-    Mat a = Mat(siz, CV_32F, result.ptr(0,0));
-    Mat b = Mat(siz, CV_32F, result.ptr(0,1));
+    Size out_size(result.size[2], result.size[3]);
+    Mat a = Mat(out_size, CV_32F, result.ptr(0, 0));
+    Mat b = Mat(out_size, CV_32F, result.ptr(0, 1));
     resize(a, a, img.size());
     resize(b, b, img.size());
-    
+
     // merge, and convert back to BGR
     Mat color, chn[] = {L, a, b};
     merge(chn, 3, lab);
@@ -107,12 +127,12 @@ int main(int argc, char **argv)
 
     t = ((double)cv::getTickCount() - t)/cv::getTickFrequency();
     cout << "Time taken : " << t << " secs" << endl;
-    
+
     string str = imageFileName;
-    str.replace(str.end()-4, str.end(), "");
-    str = str+"_colorized.png";
-    
-    color = color*255;
+    str.replace(str.end() - 4, str.end(), "");
+    str = str + "_colorized.png";
+
+    color = color.mul(255);
     color.convertTo(color, CV_8U);
     imwrite(str, color);
 
