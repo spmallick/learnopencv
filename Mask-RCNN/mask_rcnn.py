@@ -1,8 +1,8 @@
-# Copyright (C) 2018-2019, BigVision LLC (LearnOpenCV.com), All Rights Reserved. 
+# Copyright (C) 2018-2019, BigVision LLC (LearnOpenCV.com), All Rights Reserved.
 # Author : Sunita Nayak
 # Article : https://www.learnopencv.com/deep-learning-based-object-detection-and-instance-segmentation-using-mask-r-cnn-in-opencv-python-c/
 # License: BSD-3-Clause-Attribution (Please read the license file.)
-# This work is based on OpenCV samples code (https://opencv.org/license.html)    
+# This work is based on OpenCV samples code (https://opencv.org/license.html)
 
 import cv2 as cv
 import argparse
@@ -24,13 +24,13 @@ args = parser.parse_args()
 def drawBox(frame, classId, conf, left, top, right, bottom, classMask):
     # Draw a bounding box.
     cv.rectangle(frame, (left, top), (right, bottom), (255, 178, 50), 3)
-    
+
     # Print a label of class.
     label = '%.2f' % conf
     if classes:
         assert(classId < len(classes))
         label = '%s:%s' % (classes[classId], label)
-    
+
     # Display the label at the top of the bounding box
     labelSize, baseLine = cv.getTextSize(label, cv.FONT_HERSHEY_SIMPLEX, 0.5, 1)
     top = max(top, labelSize[1])
@@ -51,7 +51,7 @@ def drawBox(frame, classId, conf, left, top, right, bottom, classMask):
 
     # Draw the contours on the image
     mask = mask.astype(np.uint8)
-    im2, contours, hierarchy = cv.findContours(mask,cv.RETR_TREE,cv.CHAIN_APPROX_SIMPLE)
+    contours, hierarchy = cv.findContours(mask,cv.RETR_TREE,cv.CHAIN_APPROX_SIMPLE)
     cv.drawContours(frame[top:bottom+1, left:right+1], contours, -1, color, 3, cv.LINE_8, hierarchy, 100)
 
 # For each frame, extract the bounding box and mask for each detected object
@@ -72,18 +72,18 @@ def postprocess(boxes, masks):
         score = box[2]
         if score > confThreshold:
             classId = int(box[1])
-            
+
             # Extract the bounding box
             left = int(frameW * box[3])
             top = int(frameH * box[4])
             right = int(frameW * box[5])
             bottom = int(frameH * box[6])
-            
+
             left = max(0, min(left, frameW - 1))
             top = max(0, min(top, frameH - 1))
             right = max(0, min(right, frameW - 1))
             bottom = max(0, min(bottom, frameH - 1))
-            
+
             # Extract the mask for the object
             classMask = mask[classId]
 
@@ -143,10 +143,10 @@ if (not args.image):
     vid_writer = cv.VideoWriter(outputFile, cv.VideoWriter_fourcc('M','J','P','G'), 28, (round(cap.get(cv.CAP_PROP_FRAME_WIDTH)),round(cap.get(cv.CAP_PROP_FRAME_HEIGHT))))
 
 while cv.waitKey(1) < 0:
-    
+
     # Get frame from the video
     hasFrame, frame = cap.read()
-    
+
     # Stop the program if reached end of video
     if not hasFrame:
         print("Done processing !!!")

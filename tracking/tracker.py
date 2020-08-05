@@ -1,9 +1,9 @@
 import cv2
 import sys
 
-(major_ver, minor_ver, subminor_ver) = (cv2.__version__).split('.')￼
+(major_ver, minor_ver, subminor_ver) = (cv2.__version__).split('.')
 
-if __name__ == '__main__' :
+if __name__ == '__main__':
 
     # Set up tracker.
     # Instead of MIL, you can also use
@@ -34,15 +34,15 @@ if __name__ == '__main__' :
 
     # Exit if video not opened.
     if not video.isOpened():
-        print "Could not open video"
+        print("Could not open video")
         sys.exit()
 
     # Read first frame.
     ok, frame = video.read()
     if not ok:
-        print 'Cannot read video file'
+        print('Cannot read video file')
         sys.exit()
-    
+
     # Define an initial bounding box
     bbox = (287, 23, 86, 320)
 
@@ -57,7 +57,7 @@ if __name__ == '__main__' :
         ok, frame = video.read()
         if not ok:
             break
-        
+
         # Start timer
         timer = cv2.getTickCount()
 
@@ -79,7 +79,7 @@ if __name__ == '__main__' :
 
         # Display tracker type on frame
         cv2.putText(frame, tracker_type + " Tracker", (100,20), cv2.FONT_HERSHEY_SIMPLEX, 0.75, (50,170,50),2);
-    
+
         # Display FPS on frame
         cv2.putText(frame, "FPS : " + str(int(fps)), (100,50), cv2.FONT_HERSHEY_SIMPLEX, 0.75, (50,170,50), 2);
 

@@ -15,7 +15,6 @@ if __name__ == '__main__' :
 
     im_dst = np.zeros(size, np.uint8)
 
-    
     pts_dst = np.array(
                        [
                         [0,0],
@@ -24,17 +23,16 @@ if __name__ == '__main__' :
                         [0, size[1] - 1 ]
                         ], dtype=float
                        )
-    
-    
-    print '''
+
+    print('''
         Click on the four corners of the book -- top left first and
         bottom left last -- and then hit ENTER
-        '''
-    
+        ''')
+
     # Show image and wait for 4 clicks.
     cv2.imshow("Image", im_src)
     pts_src = get_four_points(im_src);
-    
+
     # Calculate the homography
     h, status = cv2.findHomography(pts_src, pts_dst)
 
