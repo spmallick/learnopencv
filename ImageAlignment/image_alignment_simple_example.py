@@ -2,9 +2,9 @@
 
 '''
     OpenCV Image Alignment  Example
-    
+
     Copyright 2015 by Satya Mallick <spmallick@learnopencv.com>
-    
+
 '''
 
 import cv2
@@ -12,11 +12,11 @@ import numpy as np
 
 
 if __name__ == '__main__':
-    
+
     # Read the images to be aligned
     im1 =  cv2.imread("images/image1.jpg");
     im2 =  cv2.imread("images/image2.jpg");
-    
+
     # Convert images to grayscale
     im1_gray = cv2.cvtColor(im1,cv2.COLOR_BGR2GRAY)
     im2_gray = cv2.cvtColor(im2,cv2.COLOR_BGR2GRAY)
@@ -35,16 +35,16 @@ if __name__ == '__main__':
 
     # Specify the number of iterations.
     number_of_iterations = 5000;
-    
+
     # Specify the threshold of the increment
     # in the correlation coefficient between two iterations
     termination_eps = 1e-10;
-    
+
     # Define termination criteria
     criteria = (cv2.TERM_CRITERIA_EPS | cv2.TERM_CRITERIA_COUNT, number_of_iterations,  termination_eps)
 
     # Run the ECC algorithm. The results are stored in warp_matrix.
-    (cc, warp_matrix) = cv2.findTransformECC (im1_gray,im2_gray,warp_matrix, warp_mode, criteria)
+    (cc, warp_matrix) = cv2.findTransformECC (im1_gray,im2_gray,warp_matrix, warp_mode, criteria, None, 5)
 
 
     if warp_mode == cv2.MOTION_HOMOGRAPHY :
