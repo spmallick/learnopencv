@@ -13,6 +13,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | |
 | ------------- |:-------------|
+|[Tensorboard with PyTorch Lightning](https://www.learnopencv.com/tensorboard-with-pytorch-lightning)|[Code](https://github.com/spmallick/learnopencv/tree/master/TensorBoard-With-Pytorch-Lightning)
 |[Otsu's Thresholding with OpenCV](https://www.learnopencv.com/otsu-thresholding-with-opencv/)|[Code](https://github.com/spmallick/learnopencv/tree/master/otsu-method)
 |[PyTorch-to-CoreML-model-conversion](https://www.learnopencv.com/pytorch-to-coreml-model-conversion/) | [Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-to-CoreML-model-conversion)
 |[Playing Rock, Paper, Scissors with AI](https://www.learnopencv.com/playing-rock-paper-scissors-with-ai/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Playing-rock-paper-scissors-with-AI) |
