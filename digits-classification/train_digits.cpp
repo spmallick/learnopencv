@@ -27,7 +27,7 @@ Mat deskew(Mat& img){
 
 void loadTrainTestLabel(string &pathName, vector<Mat> &trainCells, vector<Mat> &testCells,vector<int> &trainLabels, vector<int> &testLabels)
 {
-    Mat img = imread(pathName,cv::IMREAD_GRAYSCALE);
+    Mat img = imread(pathName, cv::IMREAD_GRAYSCALE);
     int ImgCount = 0;
     for(int i = 0; i < img.rows; i = i + SZ)
     {
@@ -80,18 +80,19 @@ void CreateDeskewedTrainTest(vector<Mat> &deskewedTrainCells,vector<Mat> &deskew
 }
 
 HOGDescriptor hog(
-        Size(20,20), //winSize
-        Size(8,8), //blocksize
-        Size(4,4), //blockStride,
-        Size(8,8), //cellSize,
-                 9, //nbins,
-                  1, //derivAper,
-                 -1, //winSigma,
-                  0, //histogramNormType,
-                0.2, //L2HysThresh,
-                  0,//gammal correction,
-                  64,//nlevels=64
-                  1);
+    Size(20,20), //winSize
+    Size(8,8), //blocksize
+    Size(4,4), //blockStride,
+    Size(8,8), //cellSize,
+    9,   //nbins,
+    1,   //derivAper,
+    -1,  //winSigma,
+    cv::HOGDescriptor::HistogramNormType::L2Hys, //histogramNormType,
+    0.2, //L2HysThresh,
+    0,   //gammal correction,
+    64,  //nlevels=64
+    1
+);
 
 void CreateTrainTestHOG(vector<vector<float> > &trainHOG, vector<vector<float> > &testHOG, vector<Mat> &deskewedtrainCells, vector<Mat> &deskewedtestCells){
 
@@ -115,12 +116,12 @@ void ConvertVectortoMatrix(vector<vector<float> > &trainHOG, vector<vector<float
 
     for(int i = 0;i<trainHOG.size();i++){
         for(int j = 0;j<descriptor_size;j++){
-           trainMat.at<float>(i,j) = trainHOG[i][j]; 
+           trainMat.at<float>(i,j) = trainHOG[i][j];
         }
     }
     for(int i = 0;i<testHOG.size();i++){
         for(int j = 0;j<descriptor_size;j++){
-            testMat.at<float>(i,j) = testHOG[i][j]; 
+            testMat.at<float>(i,j) = testHOG[i][j];
         }
     }
 }
@@ -203,7 +204,7 @@ int main()
     svmTrain(model, trainMat, trainLabels);
 
     ///////////  SVM Testing  ////////////////
-    svmPredict(model, testResponse, testMat); 
+    svmPredict(model, testResponse, testMat);
 
     ////////////// Find Accuracy   ///////////
     float count = 0;
