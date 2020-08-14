@@ -1,5 +1,4 @@
 #include <iostream>
-#include "dataPath.hpp"
 #include <opencv2/opencv.hpp>
 #include <opencv2/imgproc.hpp>
 
@@ -16,7 +15,7 @@ int main(){
 	long double histogram[256];
  
     // initialize all intensity values to 0
-    for(int i = 0; i < 255; i++)
+    for(int i = 0; i < 256; i++)
     {
         histogram[i] = 0;
     }
