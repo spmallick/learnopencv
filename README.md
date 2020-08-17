@@ -13,6 +13,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | |
 | ------------- |:-------------|
+|[Using Facial Landmarks for Overlaying Faces with Medical Masks](https://www.learnopencv.com/using-facial-landmarks-for-overlaying-faces-with-masks/)|[Code](https://github.com/spmallick/learnopencv/tree/master/FaceMaskOverlay) |
 |[Tensorboard with PyTorch Lightning](https://www.learnopencv.com/tensorboard-with-pytorch-lightning)|[Code](https://github.com/spmallick/learnopencv/tree/master/TensorBoard-With-Pytorch-Lightning)
 |[Otsu's Thresholding with OpenCV](https://www.learnopencv.com/otsu-thresholding-with-opencv/)|[Code](https://github.com/spmallick/learnopencv/tree/master/otsu-method)
 |[PyTorch-to-CoreML-model-conversion](https://www.learnopencv.com/pytorch-to-coreml-model-conversion/) | [Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-to-CoreML-model-conversion)
