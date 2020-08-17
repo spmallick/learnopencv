@@ -120,7 +120,7 @@ int main(int argc, char** argv)
             break;
         }
         // Create a 4D blob from a frame.
-        blobFromImage(frame, blob, 1/255.0, cvSize(inpWidth, inpHeight), Scalar(0,0,0), true, false);
+        blobFromImage(frame, blob, 1/255.0, cv::Size(inpWidth, inpHeight), Scalar(0,0,0), true, false);
         
         //Sets the input to the network
         net.setInput(blob);
