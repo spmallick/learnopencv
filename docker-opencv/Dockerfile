@@ -44,6 +44,12 @@ RUN git clone https://github.com/opencv/opencv_contrib.git \
 
 WORKDIR $WORK_DIR
 
+RUN mkdir Sample-Code-Cpp-Unix && cd Sample-Code-Cpp-Unix \
+        && mkdir build \
+        && wget https://raw.githubusercontent.com/spmallick/learnopencv/master/docker-opencv/Sample-Code-Cpp-Unix/boy.jpg \
+        && wget https://raw.githubusercontent.com/spmallick/learnopencv/master/docker-opencv/Sample-Code-Cpp-Unix/CMakeLists.txt \
+        && wget https://raw.githubusercontent.com/spmallick/learnopencv/master/docker-opencv/Sample-Code-Cpp-Unix/sampleCode.cpp
+
 RUN apt-get -qq -y autoremove \
         && apt-get -qq autoclean
 
