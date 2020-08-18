@@ -27,6 +27,8 @@ public class DnnOpenCV {
     private static final String IMAGENET_CLASSES = "imagenet_classes.txt";
     private static final String MODEL_PATH = "models/pytorch_mobilenet.onnx";
 
+    private static final Scalar MEAN = new Scalar(0.485, 0.456, 0.406);
+    private static final Scalar STD = new Scalar(0.229, 0.224, 0.225);
 
     public static ArrayList<String> getImgLabels(String imgLabelsFilePath) throws IOException {
         ArrayList<String> imgLabels;
@@ -49,10 +51,6 @@ public class DnnOpenCV {
     }
 
     public static Mat getPreprocessedImage(String imagePath) {
-        // define mean and standard deviation
-        Scalar mean = new Scalar(0.485, 0.456, 0.406);
-        Scalar std = new Scalar(0.229, 0.224, 0.225);
-
         // get the image from the internal resource folder
         Mat image = Imgcodecs.imread(imagePath);
 
@@ -73,13 +71,13 @@ public class DnnOpenCV {
                 imgFloat,
                 1.0, /* default scalefactor */
                 new Size(TARGET_IMG_WIDTH, TARGET_IMG_HEIGHT), /* target size */
-                mean,  /* mean */
+                MEAN,  /* mean */
                 true, /* swapRB */
                 false /* crop */
         );
 
         // divide on std
-        Core.divide(blob, std, blob);
+        Core.divide(blob, STD, blob);
 
         return blob;
     }

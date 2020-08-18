@@ -134,26 +134,19 @@ sudo ldconfig
 
 which creates the necessary links and cache to our freshly built shared library.
 
-Rename the created Python3 bindings for OpenCV to `cv2.so`:
+Put ``lib/python3/cv2.cpython-37m-x86_64-linux-gnu.so`` into the virtual environment installed packages:
 
 ```bash
-mv lib/python3/cv2.cpython-37m-x86_64-linux-gnu.so cv2.so
+cp lib/python3/cv2.cpython-36m-x86_64-linux-gnu.so ~/env/lib/python3.7/site-packages/cv2.so
 ```
 
-Create a symlink of our OpenCV `cv2.so` into the virtual environment installed packages:
-
-```bash
-cd env/lib/python3.7/site-packages/
-ln -s ~/opencv/build/cv2.so cv2.so
-```
-
-The last step is to put ``~/opencv/build/lib/libopencv_java430.so`` to the ``/usr/lib`` directory:
+The last step is to put ``~/opencv/build/lib/libopencv_java430.so`` into the ``/usr/lib`` directory:
 
 ```bash
 sudo cp lib/libopencv_java430.so /usr/lib
 ```
 
-For Windows and macOS OpenCV Java build, please, follow the steps described in [Installing OpenCV for Java](https://opencv-java-tutorials.readthedocs.io/en/latest/01-installing-opencv-for-java.html).
+For Windows and macOS OpenCV Java build, please, follow the steps described in [Introduction to Java Development](https://docs.opencv.org/master/d9/d52/tutorial_java_dev_intro.html) or [Installing OpenCV for Java](https://opencv-java-tutorials.readthedocs.io/en/latest/01-installing-opencv-for-java.html).
 
 
 ## Executing Model Conversion and Test Script
