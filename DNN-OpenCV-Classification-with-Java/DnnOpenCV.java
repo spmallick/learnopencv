@@ -82,17 +82,21 @@ public class DnnOpenCV {
         return blob;
     }
 
-    public static void getPredictedClass(Mat classificationResult) {
+    public static String getPredictedClass(Mat classificationResult) {
         ArrayList<String> imgLabels = new ArrayList<String>();
         try {
             imgLabels = getImgLabels(IMAGENET_CLASSES);
         } catch (IOException ex) {
-
+            System.out.printf("Could not read %s file:%n", IMAGENET_CLASSES);
+            ex.printStackTrace();
+        }
+        if (imgLabels.isEmpty()) {
+            return "";
         }
         // obtain max prediction result
         Core.MinMaxLocResult mm = Core.minMaxLoc(classificationResult);
         double maxValIndex = mm.maxLoc.x;
-        System.out.println("Predicted Class: " + imgLabels.get((int) maxValIndex));
+        return imgLabels.get((int) maxValIndex);
     }
 
     public static void main(String[] args) {
@@ -115,6 +119,7 @@ public class DnnOpenCV {
         Mat classification = dnnNet.forward();
 
         // decode classification results
-        DnnOpenCV.getPredictedClass(classification);
+        String label = DnnOpenCV.getPredictedClass(classification);
+        System.out.println("Predicted Class: " + label);
     }
 }
