@@ -13,6 +13,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | |
 | ------------- |:-------------|
+|[The algorithmic approach to Optical Flow calculation](https://www.learnopencv.com/algorithmic-approach-to-optical-flow-calculation)|[Code](https://github.com/spmallick/learnopencv/tree/master/The-algorithmic-approach-to-optical-flow-calculation)|
 |[Using Facial Landmarks for Overlaying Faces with Medical Masks](https://www.learnopencv.com/using-facial-landmarks-for-overlaying-faces-with-masks/)|[Code](https://github.com/spmallick/learnopencv/tree/master/FaceMaskOverlay) |
 |[Tensorboard with PyTorch Lightning](https://www.learnopencv.com/tensorboard-with-pytorch-lightning)|[Code](https://github.com/spmallick/learnopencv/tree/master/TensorBoard-With-Pytorch-Lightning)
 |[Otsu's Thresholding with OpenCV](https://www.learnopencv.com/otsu-thresholding-with-opencv/)|[Code](https://github.com/spmallick/learnopencv/tree/master/otsu-method)
