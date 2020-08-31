@@ -26,21 +26,21 @@ vector<Mat> eigenFaces;
 // Read jpg files from the directory
 void readImages(string dirName, vector<Mat> &images)
 {
-  
+
   cout << "Reading images from " << dirName;
 
   // Add slash to directory name if missing
   if (!dirName.empty() && dirName.back() != '/')
     dirName += '/';
-  
+
   DIR *dir;
   struct dirent *ent;
   int count = 0;
-  
+
   //image extensions
   string imgExt = "jpg";
   vector<string> files;
-  
+
   if ((dir = opendir (dirName.c_str())) != NULL)
   {
     /* print all the files and directories within directory */
@@ -51,7 +51,7 @@ void readImages(string dirName, vector<Mat> &images)
         continue;
       }
       string fname = ent->d_name;
-      
+
       if (fname.find(imgExt, (fname.length() - imgExt.length())) != std::string::npos)
       {
         string path = dirName + fname;
@@ -65,7 +65,7 @@ void readImages(string dirName, vector<Mat> &images)
           // Convert images to floating point type
           img.convertTo(img, CV_32FC3, 1/255.0);
           images.push_back(img);
-          
+
           // A vertically flipped image is also a valid face image.
           // So lets use them as well.
           Mat imgFlip;
@@ -99,21 +99,19 @@ static  Mat createDataMatrix(const vector<Mat> &images)
   // w = width of an image in the dataset.
   // h = height of an image in the dataset.
   // 3 is for the 3 color channels.
-  
-  
+
   Mat data(static_cast<int>(images.size()), images[0].rows * images[0].cols * 3, CV_32F);
-  
+
   // Turn an image into one row vector in the data matrix
   for(unsigned int i = 0; i < images.size(); i++)
   {
     // Extract image as one long vector of size w x h x 3
     Mat image = images[i].reshape(1,1);
-    
+
     // Copy the long vector into one row of the destm
     image.copyTo(data.row(i));
-    
   }
-  
+
   cout << " DONE" << endl;
   return data;
 }
@@ -124,7 +122,7 @@ void createNewFace(int ,void *)
 {
   // Start with the mean image
   Mat output = averageFace.clone();
-  
+
   // Add the eigen faces with the weights
   for(int i = 0; i < NUM_EIGEN_FACES; i++)
   {
@@ -135,9 +133,9 @@ void createNewFace(int ,void *)
   }
 
   resize(output, output, Size(), 2, 2);
-  
+
   imshow("Result", output);
-  
+
 }
 
 // Reset slider values
@@ -161,53 +159,53 @@ int main(int argc, char **argv)
 {
   // Directory containing images
   string dirName = "images/";
-  
+
   // Read images in the directory
   vector<Mat> images; 
   readImages(dirName, images);
-  
+
   // Size of images. All images should be the same size. 
   Size sz = images[0].size(); 
-  
+
   // Create data matrix for PCA.
   Mat data = createDataMatrix(images);
-  
+
   // Calculate PCA of the data matrix
   cout << "Calculating PCA ...";
   PCA pca(data, Mat(), PCA::DATA_AS_ROW, NUM_EIGEN_FACES);
   cout << " DONE"<< endl;
-  
+
   // Extract mean vector and reshape it to obtain average face
   averageFace = pca.mean.reshape(3,sz.height);
-  
+
   // Find eigen vectors.
   Mat eigenVectors = pca.eigenvectors;
-  
+
   // Reshape Eigenvectors to obtain EigenFaces
   for(int i = 0; i < NUM_EIGEN_FACES; i++)
   {
       Mat eigenFace = eigenVectors.row(i).reshape(3,sz.height);
       eigenFaces.push_back(eigenFace);
   }
-  
+
   // Show mean face image at 2x the original size
   Mat output;
   resize(averageFace, output, Size(), 2, 2);
-  
-  namedWindow("Result", CV_WINDOW_AUTOSIZE);
+
+  namedWindow("Result", cv::WINDOW_AUTOSIZE);
   imshow("Result", output);
-  
+
   // Create trackbars
-  namedWindow("Trackbars", CV_WINDOW_AUTOSIZE);
+  namedWindow("Trackbars", cv::WINDOW_AUTOSIZE);
   for(int i = 0; i < NUM_EIGEN_FACES; i++)
   {
     sliderValues[i] = MAX_SLIDER_VALUE/2;
     createTrackbar( "Weight" + to_string(i), "Trackbars", &sliderValues[i], MAX_SLIDER_VALUE, createNewFace);
   }
-  
+
   // You can reset the sliders by clicking on the mean image.
   setMouseCallback("Result", resetSliderValues);
-  
+
   cout << "Usage:" << endl 
   << "\tChange the weights using the sliders" << endl
   << "\tClick on the result window to reset sliders" << endl

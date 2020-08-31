@@ -16,11 +16,11 @@ int main(){
   }
   
   // Default resolutions of the frame are obtained.The default resolutions are system dependent.
-  int frame_width = cap.get(CV_CAP_PROP_FRAME_WIDTH);
-  int frame_height = cap.get(CV_CAP_PROP_FRAME_HEIGHT);
+  int frame_width = cap.get(cv::CAP_PROP_FRAME_WIDTH);
+  int frame_height = cap.get(cv::CAP_PROP_FRAME_HEIGHT);
   
   // Define the codec and create VideoWriter object.The output is stored in 'outcpp.avi' file.
-  VideoWriter video("outcpp.avi",CV_FOURCC('M','J','P','G'),10, Size(frame_width,frame_height));
+  VideoWriter video("outcpp.avi", cv::VideoWriter::fourcc('M','J','P','G'), 10, Size(frame_width,frame_height));
 
   while(1){
 
