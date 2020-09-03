@@ -44,13 +44,25 @@ int nPoints = 18;
 int main(int argc, char **argv)
 {
 
-    cout << "USAGE : ./openpose <VideoFile> " << endl;
+    cout << "USAGE : ./OpenPose <videoFile> " << endl;
+    cout << "USAGE : ./OpenPose <videoFile> <device>" << endl;
     
+    string device = "cpu";
     string videoFile = "sample_video.mp4";
+
     // Take arguments from commmand line
     if (argc == 2)
     {   
+      if((string)argv[1] == "gpu")
+        device = "gpu";
+      else 
       videoFile = argv[1];
+    }
+    else if (argc == 3)
+    {
+        videoFile = argv[1];
+        if((string)argv[2] == "gpu")
+            device = "gpu";
     }
 
     int inWidth = 368;
@@ -72,6 +84,19 @@ int main(int argc, char **argv)
     VideoWriter video("Output-Skeleton.avi",VideoWriter::fourcc('M','J','P','G'), 10, Size(frameWidth,frameHeight));
 
     Net net = readNetFromCaffe(protoFile, weightsFile);
+    
+    if (device == "cpu")
+    {
+        cout << "Using CPU device" << endl;
+        net.setPreferableBackend(DNN_TARGET_CPU);
+    }
+    else if (device == "gpu")
+    {
+        cout << "Using GPU device" << endl;
+        net.setPreferableBackend(DNN_BACKEND_CUDA);
+        net.setPreferableTarget(DNN_TARGET_CUDA);
+    }
+
     double t=0;
     while( waitKey(1) < 0)
     {       
