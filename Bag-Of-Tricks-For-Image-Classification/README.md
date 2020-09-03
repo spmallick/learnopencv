@@ -70,7 +70,7 @@ python main.py --gpus [gpus_number] --data-root [path_to_dataset] -e --checkpoin
 
 You can also train a colab-based version of this model:
 
-[Open in Colab](https://colab.research.google.com/github/pvsemk/learnopencv/blob/master/Bag-Of-Tricks/Bag-Of-Tricks.ipynb)
+[Open in Colab](https://colab.research.google.com/github/spmallick/learnopencv/blob/master/Bag-Of-Tricks-For-Image-Classification/bag-of-tricks-colab.ipynb)
 
 ## AI Courses by OpenCV
 
