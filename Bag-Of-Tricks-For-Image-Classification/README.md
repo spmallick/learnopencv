@@ -1,7 +1,7 @@
 ## Description
 
 This repository contains classification pipeline for experiments with tricks listed in
-["Bag of Tricks for Image Classification with Convolutional Neural Networks"](https://arxiv.org/abs/1812.01187)
+["Bag of Tricks for Image Classification with Convolutional Neural Networks"](https://arxiv.org/abs/1812.01187). Visit [our blogpost](https://www.learnopencv.com/bag-of-tricks-for-image-classification-lets-check-if-it-is-working-or-not/) for more details.
 
 The pipeline is based on [pytorch-lightning framework](https://github.com/PyTorchLightning/pytorch-lightning).
 
