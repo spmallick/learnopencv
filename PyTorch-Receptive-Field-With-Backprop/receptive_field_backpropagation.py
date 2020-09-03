@@ -7,9 +7,11 @@ import torch.nn as nn
 from torchvision import transforms
 from FullyConvolutionalResnet18 import FullyConvolutionalResnet18
 
+import imutils
 
 Rect = namedtuple('Rect', 'x1 y1 x2 y2')
 
+displayWidth = 1024
 
 def backprop_receptive_field(image, predicted_class, scoremap, use_max_activation=True):
     model = FullyConvolutionalResnet18()
@@ -137,18 +139,23 @@ def run_resnet_inference(original_image):
         score_map = preds[0, predicted_class, :, :].cpu()
         print('Score Map shape : ', score_map.shape)
 
-    # Compute the receptive filed for the inference result
+    # Compute the receptive filed for the inference result for max activated pixel
     receptive_field_map = backprop_receptive_field(image, scoremap=score_map, predicted_class=predicted_class)
+    
+    # Compute the receptive filed for the inference result for the net prediction
+    receptive_field_net_pred_map = backprop_receptive_field(image, scoremap=score_map, predicted_class=predicted_class, use_max_activation=False)
 
     # Resize score map to the original image size
     score_map = score_map.numpy()[0]
     score_map = cv2.resize(score_map, (original_image.shape[1], original_image.shape[0]))
 
     # Display the images
-    cv2.imshow("Original Image", original_image)
-    cv2.imshow("Score map: activations and bbox", visualize_activations(original_image, score_map))
-    cv2.imshow("receptive_field_max_activation", visualize_activations(original_image, receptive_field_map, show_bounding_rect=True))
+    cv2.imshow("Original Image", imutils.resize(original_image,width=displayWidth))
+    cv2.imshow("Score map: activations and bbox", imutils.resize(visualize_activations(original_image, score_map,show_bounding_rect=True),width=displayWidth))
+    cv2.imshow("receptive_field_max_activation", imutils.resize(visualize_activations(original_image, receptive_field_map, show_bounding_rect=True),width=displayWidth))
+    cv2.imshow("receptive_field_net_prediction", imutils.resize(visualize_activations(original_image, receptive_field_net_pred_map, show_bounding_rect=True),width=displayWidth))
     cv2.waitKey(0)
+    cv2.destroyAllWindows()
 
 
 def main():

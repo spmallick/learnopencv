@@ -26,7 +26,7 @@ int main(int argc, const char *argv[])
 		// Should we apply Canny edge?
 		if (use_canny) {
 			// Yes, we should apply it.
-			cv::cvtColor(lena, frame, CV_BGR2GRAY);
+			cv::cvtColor(lena, frame, cv::COLOR_BGR2GRAY);
 			cv::Canny(frame, frame, low_threshold, high_threshold, 3);
 		} else {
 			// No, so just copy the original image to the displaying frame.
