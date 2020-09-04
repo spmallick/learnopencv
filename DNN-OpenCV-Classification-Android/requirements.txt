@@ -1,0 +1,6 @@
+albumentations>=0.4.5
+numpy>=1.19.1
+onnx>=1.7.0
+onnxruntime>=1.4.0
+torch>=1.5.1
+torchvision>=0.6.1
