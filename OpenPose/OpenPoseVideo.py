@@ -1,6 +1,13 @@
 import cv2
 import time
 import numpy as np
+import argparse
+
+parser = argparse.ArgumentParser(description='Run keypoint detection')
+parser.add_argument("--device", default="cpu", help="Device to inference on")
+parser.add_argument("--video_file", default="sample_video.mp4", help="Input Video")
+
+args = parser.parse_args()
 
 MODE = "MPI"
 
@@ -22,13 +29,20 @@ inHeight = 368
 threshold = 0.1
 
 
-input_source = "sample_video.mp4"
+input_source = args.video_file
 cap = cv2.VideoCapture(input_source)
 hasFrame, frame = cap.read()
 
 vid_writer = cv2.VideoWriter('output.avi',cv2.VideoWriter_fourcc('M','J','P','G'), 10, (frame.shape[1],frame.shape[0]))
 
 net = cv2.dnn.readNetFromCaffe(protoFile, weightsFile)
+if args.device == "cpu":
+    net.setPreferableBackend(cv2.dnn.DNN_TARGET_CPU)
+    print("Using CPU device")
+elif args.device == "gpu":
+    net.setPreferableBackend(cv2.dnn.DNN_BACKEND_CUDA)
+    net.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA)
+    print("Using GPU device")
 
 while cv2.waitKey(1) < 0:
     t = time.time()
