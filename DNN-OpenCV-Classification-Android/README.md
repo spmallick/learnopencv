@@ -1,4 +1,4 @@
-This contains the code for **Lightweight Android Application with OpenCV**. For more information - visit [**Lightweight Android Application with OpenCV**](https://www.learnopencv.com/image-classification-with-opencv-java/)
+This contains the code for **Image Classification with OpenCV for Android**. For more information - visit [**Image Classification with OpenCV for Android**](https://www.learnopencv.com/image-classification-with-opencv-for-android/)
 
 
 ## Getting Started
@@ -39,8 +39,7 @@ pip3 install -r requirements.txt
 
 ### OpenCV
 
-In this blog post we are using OpenCV 4.3.0 unavailable via `pip` and OpenCV for Java. That is why, we first need to build the
-OpenCV library. To do so:
+In this blog post we are using OpenCV 4.3.0 unavailable via `pip`. The first step is building the OpenCV library. To do so:
 
 1. Check the list of the below libraries. Install the missed dependencies:
 
@@ -53,14 +52,6 @@ sudo apt-get install libxvidcore-dev libx264-dev
 sudo apt-get install libgtk-3-dev
 sudo apt-get install libatlas-base-dev gfortran
 sudo apt-get install python3-dev
-```
-
-For OpenCV Java installation we used default Java Runtime Environment and Java Development Kit:
-
-```bash
-sudo apt-get install default-jre
-sudo apt-get install default-jdk
-sudo apt-get install ant
 ```
 
 2. Download the latest OpenCV version from the official repository:
@@ -99,20 +90,7 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
  -D OPENCV_ENABLE_NONFREE=ON \
  -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib/modules \
  -D PYTHON_EXECUTABLE=~/env/bin/python3 \
- -D BUILD_SHARED_LIBRARY=OFF \
- -D BUILD_TESTS=OFF \
- -D BUILD_PERF_TESTS=OFF \
  -D BUILD_EXAMPLES=ON ..
-```
-
-If you want to configure the build with some specific Java version, please, add the following fields, verifying the paths:
-
-```bash
- -D JAVA_AWT_INCLUDE_PATH=/usr/lib/jvm/java-1.x.x-openjdk-amd64/include \
- -D JAVA_AWT_LIBRARY=/usr/lib/jvm/java-1.x.x-openjdk-amd64/lib/libawt.so \
- -D JAVA_INCLUDE_PATH=/usr/lib/jvm/java-1.x.x-openjdk-amd64/include \
- -D JAVA_INCLUDE_PATH2=/usr/lib/jvm/java-1.x.x-openjdk-amd64/include/linux \
- -D JAVA_JVM_LIBRARY=/usr/lib/jvm/java-1.x.x-openjdk-amd64/include/jni.h \
 ```
 
 7. Check the output and make sure that everything is set correctly. After that we're ready to build it with:
@@ -121,10 +99,7 @@ If you want to configure the build with some specific Java version, please, add 
 make -j8
 ```
 
-Make sure, you didn't get any errors. In case of successful completion you will find the following files in the ``build`` directory:
-* ``bin/opencv-430.jar``
-* ``lib/libopencv_java430.so``
-* ``lib/python3/cv2.cpython-37m-x86_64-linux-gnu.so``
+Make sure, you didn't get any errors. In case of successful completion you will find the following files in the ``build`` directory ``lib/python3/cv2.cpython-37m-x86_64-linux-gnu.so``.
 
 Then run the following command:
 
@@ -134,30 +109,15 @@ sudo ldconfig
 
 which creates the necessary links and cache to our freshly built shared library.
 
-Rename the created Python3 bindings for OpenCV to `cv2.so`:
+The last step is to move ``lib/python3/cv2.cpython-37m-x86_64-linux-gnu.so`` into the virtual environment installed packages:
 
 ```bash
-mv lib/python3/cv2.cpython-37m-x86_64-linux-gnu.so cv2.so
+cp lib/python3/cv2.cpython-36m-x86_64-linux-gnu.so ~/env/lib/python3.7/site-packages/cv2.so
 ```
-
-Create a symlink of our OpenCV `cv2.so` into the virtual environment installed packages:
-
-```bash
-cd env/lib/python3.7/site-packages/
-ln -s ~/opencv/build/cv2.so cv2.so
-```
-
-The last step is to put ``~/opencv/build/lib/libopencv_java430.so`` to the ``/usr/lib`` directory:
-
-```bash
-sudo cp lib/libopencv_java430.so /usr/lib
-```
-
-For Windows and macOS OpenCV Java build, please, follow the steps described in [Installing OpenCV for Java](https://opencv-java-tutorials.readthedocs.io/en/latest/01-installing-opencv-for-java.html).
 
 ### OpenCV Android
 
-We will need [OpenCV for Android](https://github.com/opencv/opencv/releases/tag/4.3.0):
+For Android application development we will need [OpenCV for Android](https://github.com/opencv/opencv/releases/tag/4.3.0):
 
 ```bash
 wget https://github.com/opencv/opencv/releases/download/4.3.0/opencv-4.3.0-android-sdk.zip -O opencv-4.3.0-android-sdk.zip
@@ -181,19 +141,6 @@ python3 MobileNetV2Conversion.py --input_image <image_name>
 ```bash
 python3 MobileNetV2Conversion.py
 ```
-
-## Executing DNN OpenCV Java
-To compile ``DnnOpenCV.java`` run the following command setting the ``classpath`` key, which value is the full path to the ``opencv-430.jar``:
-
-``
-javac -cp ":/home/$USER/opencv/build/bin/opencv-430.jar" DnnOpenCV.java
-``
-
-To run the code, please, execute the following line:
-
-``
-java -cp ":/home/$USER/opencv/build/bin/opencv-430.jar" DnnOpenCV
-``
 
 # AI Courses by OpenCV
 
