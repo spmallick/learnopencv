@@ -23,9 +23,9 @@ def isRotationMatrix(R) :
 def rotationMatrixToEulerAngles(R) :
 
     assert(isRotationMatrix(R))
-    
+
     sy = math.sqrt(R[0,0] * R[0,0] +  R[1,0] * R[1,0])
-    
+
     singular = sy < 1e-6
 
     if  not singular :
@@ -41,25 +41,25 @@ def rotationMatrixToEulerAngles(R) :
 
 # Calculates Rotation Matrix given euler angles.
 def eulerAnglesToRotationMatrix(theta) :
-    
+
     R_x = np.array([[1,         0,                  0                   ],
                     [0,         math.cos(theta[0]), -math.sin(theta[0]) ],
                     [0,         math.sin(theta[0]), math.cos(theta[0])  ]
                     ])
-        
-        
-                    
+
+
+
     R_y = np.array([[math.cos(theta[1]),    0,      math.sin(theta[1])  ],
                     [0,                     1,      0                   ],
                     [-math.sin(theta[1]),   0,      math.cos(theta[1])  ]
                     ])
-                
+
     R_z = np.array([[math.cos(theta[2]),    -math.sin(theta[2]),    0],
                     [math.sin(theta[2]),    math.cos(theta[2]),     0],
                     [0,                     0,                      1]
                     ])
-                    
-                    
+
+
     R = np.dot(R_z, np.dot( R_y, R_x ))
 
     return R
@@ -69,10 +69,10 @@ if __name__ == '__main__' :
 
     # Randomly generate Euler angles
     e = np.random.rand(3) * math.pi * 2 - math.pi
-    
+
     # Calculate rotation matrix
     R = eulerAnglesToRotationMatrix(e)
-    
+
     # Calculate Euler angles from rotation matrix
     e1 = rotationMatrixToEulerAngles(R)
 
@@ -82,14 +82,7 @@ if __name__ == '__main__' :
     # Note e and e1 will be the same a lot of times
     # but not always. R and R1 should be the same always.
 
-    print "\nInput Euler angles :\n{0}".format(e)
-    print "\nR :\n{0}".format(R)
-    print "\nOutput Euler angles :\n{0}".format(e1)
-    print "\nR1 :\n{0}".format(R1)
-
-
-
-
-
-
-    
+    print("\nInput Euler angles :\n{0}".format(e))
+    print("\nR :\n{0}".format(R))
+    print("\nOutput Euler angles :\n{0}".format(e1))
+    print("\nR1 :\n{0}".format(R1))

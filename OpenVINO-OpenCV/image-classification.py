@@ -8,7 +8,7 @@ labels_file = caffe_root + 'data/ilsvrc12/synset_words.txt'
 prototxt = caffe_root + 'models/bvlc_reference_caffenet/deploy.prototxt'
 model = caffe_root + 'models/bvlc_reference_caffenet/bvlc_reference_caffenet.caffemodel'
 
-// load the labels file
+# load the labels file
 rows = open(labels_file).read().strip().split("\n")
 classes = [r[r.find(" ") + 1:].split(",")[0] for r in rows]
 

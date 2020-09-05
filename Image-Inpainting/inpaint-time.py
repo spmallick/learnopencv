@@ -51,7 +51,7 @@ def main():
 
     # If image is not read properly, return error
     if img is None:
-        print('Failed to load image file: {}'.format(args["image"]))
+        print('Failed to load image file: {}'.format(sys.argv[1]))
         return
 
     # Create a copy of original image

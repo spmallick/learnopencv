@@ -19,10 +19,10 @@ def readPoints(path) :
 # Apply affine transform calculated using srcTri and dstTri to src and
 # output an image of size.
 def applyAffineTransform(src, srcTri, dstTri, size) :
-    
+
     # Given a pair of triangles, find the affine transform.
     warpMat = cv2.getAffineTransform( np.float32(srcTri), np.float32(dstTri) )
-    
+
     # Apply the Affine Transform just found to the src image
     dst = cv2.warpAffine( src, warpMat, (size[0], size[1]), None, flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_REFLECT_101 )
 
@@ -74,11 +74,11 @@ if __name__ == '__main__' :
     filename1 = 'hillary_clinton.jpg'
     filename2 = 'ted_cruz.jpg'
     alpha = 0.5
-    
+
     # Read images
     img1 = cv2.imread(filename1);
     img2 = cv2.imread(filename2);
-    
+
     # Convert Mat to float data type
     img1 = np.float32(img1)
     img2 = np.float32(img2)
@@ -102,11 +102,11 @@ if __name__ == '__main__' :
     with open("tri.txt") as file :
         for line in file :
             x,y,z = line.split()
-            
+
             x = int(x)
             y = int(y)
             z = int(z)
-            
+
             t1 = [points1[x], points1[y], points1[z]]
             t2 = [points2[x], points2[y], points2[z]]
             t = [ points[x], points[y], points[z] ]

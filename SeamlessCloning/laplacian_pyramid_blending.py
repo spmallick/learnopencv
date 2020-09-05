@@ -62,7 +62,7 @@ combinedLaplacianPyramids.insert(0,lastCombined)
 
 # reconstructing image
 blendedImage = combinedLaplacianPyramids[0]
-for i in xrange(1,len(combinedLaplacianPyramids)):
+for i in range(1,len(combinedLaplacianPyramids)):
     # upSample and add to next level
     blendedImage = cv2.pyrUp(blendedImage)
     blendedImage = cv2.add(blendedImage, combinedLaplacianPyramids[i])
