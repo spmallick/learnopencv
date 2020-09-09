@@ -80,13 +80,13 @@ int main( int argc, const char** argv )
     else if (argc == 2)
     {
         videoFileName = argv[1];
-        device = "gpu";
+        device = "cpu";
         framework = "caffe";
     }
     else
     {
         videoFileName = "";
-        device = "gpu";
+        device = "cpu";
         framework = "caffe";
     }
 
@@ -109,6 +109,7 @@ int main( int argc, const char** argv )
     else
         net = cv::dnn::readNetFromTensorflow(tensorflowWeightFile, tensorflowConfigFile);
 
+#if (CV_MAJOR_VERSION >= 4)
     if (device == "CPU")
     {
         net.setPreferableBackend(DNN_TARGET_CPU);
@@ -118,6 +119,11 @@ int main( int argc, const char** argv )
         net.setPreferableBackend(DNN_BACKEND_CUDA);
         net.setPreferableTarget(DNN_TARGET_CUDA);
     }
+#else
+    // force CPU backend for OpenCV 3.x as CUDA backend is not supported there
+    net.setPreferableBackend(DNN_BACKEND_DEFAULT);
+    device = "cpu";
+#endif
 
     cv::VideoCapture source;
     if (videoFileName != "")
