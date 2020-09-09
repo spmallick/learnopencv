@@ -9,6 +9,8 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 </p>
 </a>
 
+CI status: badge here
+
 ## List of Blog Posts
 
 | Blog Post | |

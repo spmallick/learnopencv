@@ -1,0 +1,14 @@
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  cpp_build:
+    runs-on: ubuntu-latest
+    container: asmorkalov/learnopnecv_ci
+    steps:
+      - run: ./build_all.sh
