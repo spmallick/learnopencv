@@ -7,7 +7,7 @@ on:
       - master
 
 jobs:
-  cpp_build:
+  cppbuild:
     runs-on: ubuntu-latest
     container: asmorkalov/learnopnecv_ci
     steps:
