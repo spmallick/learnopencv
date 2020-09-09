@@ -18,6 +18,7 @@ def main(video, device):
 
     # init video capture with video
     cap = cv2.VideoCapture(video)
+
     # get default video FPS
     fps = cap.get(cv2.CAP_PROP_FPS)
     # get total number of video frames
@@ -75,7 +76,7 @@ def main(video, device):
                 start_of = time.time()
                 # calculate optical flow
                 flow = cv2.calcOpticalFlowFarneback(
-                    previous_frame, current_frame, None, 0.5, 3, 15, 3, 5, 1.2, 0,
+                    previous_frame, current_frame, None, 0.5, 5, 15, 3, 5, 1.2, 0,
                 )
                 # end of timer
                 end_of = time.time()
@@ -99,7 +100,7 @@ def main(video, device):
                 start_of = time.time()
                 # create optical flow instance
                 flow = cv2.cuda_FarnebackOpticalFlow.create(
-                    None, 0.5, 3, 15, 3, 5, 1.2, 0,
+                    5, 0.5, False, 15, 3, 5, 1.2, 0,
                 )
                 # calculate optical flow
                 flow = cv2.cuda_FarnebackOpticalFlow.calc(
@@ -116,16 +117,14 @@ def main(video, device):
             # start post-process timer
             start_post_time = time.time()
 
-            # convert from cartesian to polar to get magnitude and angle
+            # convert from cartesian to polar coordinates to get magnitude and angle
             mag, ang = cv2.cartToPolar(flow[..., 0], flow[..., 1])
             # set hue according to the angle of optical flow
             hsv[..., 0] = ang * 180 / np.pi / 2
             # set value according to the normalized magnitude of optical flow
             hsv[..., 2] = cv2.normalize(mag, None, 0, 255, cv2.NORM_MINMAX)
-            # convert hsv to rgb
-            rgb = cv2.cvtColor(hsv, cv2.COLOR_HSV2BGR)
-            # update previous_frame value
-            previous_frame = current_frame
+            # convert hsv to bgr
+            bgr = cv2.cvtColor(hsv, cv2.COLOR_HSV2BGR)
 
             # end post-process timer
             end_post_time = time.time()
@@ -139,10 +138,13 @@ def main(video, device):
 
             # visualization
             cv2.imshow("original", frame)
-            cv2.imshow("result", rgb)
+            cv2.imshow("result", bgr)
             k = cv2.waitKey(1)
             if k == 27:
                 break
+
+            # update previous_frame value
+            previous_frame = current_frame
 
     # release the capture
     cap.release()
@@ -150,21 +152,21 @@ def main(video, device):
     cv2.destroyAllWindows()
 
     # print results
-    print("Number of frames: ", num_frames)
+    print("Number of frames : ", num_frames)
 
     # elapsed time at each stage
     print("Elapsed time")
     for stage, seconds in timers.items():
-        print("-", stage, ": {:0.2f} seconds".format(sum(seconds)))
+        print("-", stage, ": {:0.3f} seconds".format(sum(seconds)))
 
     # calculate frames per second
-    print("Default video FPS: {:0.2f}".format(fps))
+    print("Default video FPS : {:0.3f}".format(fps))
 
     of_fps = (num_frames - 1) / sum(timers["optical flow"])
-    print("Optical flow FPS: {:0.2f}".format(of_fps))
+    print("Optical flow FPS : {:0.3f}".format(of_fps))
 
     full_fps = (num_frames - 1) / sum(timers["full pipeline"])
-    print("Full pipeline FPS: {:0.2f}".format(full_fps))
+    print("Full pipeline FPS : {:0.3f}".format(full_fps))
 
 
 if __name__ == "__main__":
@@ -187,6 +189,11 @@ if __name__ == "__main__":
     args = parser.parse_args()
     video = args.video
     device = args.device
+
+    # output passed arguments
+    print("Configuration")
+    print("- device : ", device)
+    print("- video file : ", video)
 
     # run pipeline
     main(video, device)

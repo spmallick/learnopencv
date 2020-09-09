@@ -1,7 +1,3 @@
-# OpenCV GPU Support 
-
-This repository contains the code for [OpenCV GPU Support](https://www.learnopencv.com/opencv-gpu-support/)
-
 ## Getting Started
 
 Our code is tested using Python 3.7.5, but it should also work with any other python3.x. If you'd like to check your
@@ -67,8 +63,8 @@ sudo apt-get install python3-dev
 2. Download the latest OpenCV version from the official repository:
 
 ```bash
-wget -O opencv.zip https://github.com/opencv/opencv/archive/4.3.0.zip
-wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/4.3.0.zip
+wget -O opencv.zip https://github.com/opencv/opencv/archive/4.4.0.zip
+wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/4.4.0.zip
 ```
 
 3. Unzip the downloaded archives:
@@ -81,8 +77,8 @@ unzip opencv_contrib.zip
 4. Rename the directories to match CMake paths:
 
 ```bash
-mv opencv-4.3.0 opencv
-mv opencv_contrib-4.3.0 opencv_contrib
+mv opencv-4.4.0 opencv
+mv opencv_contrib-4.4.0 opencv_contrib
 ```
 
 5. Compile OpenCV:
@@ -103,7 +99,6 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
       -D CMAKE_INSTALL_PREFIX=/usr/local \
       -D INSTALL_PYTHON_EXAMPLES=OFF \
       -D INSTALL_C_EXAMPLES=OFF \
-      -D OPENCV_ENABLE_NONFREE=ON \
       -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
       -D PYTHON_EXECUTABLE=env/bin/python3 \
       -D BUILD_EXAMPLES=ON \
@@ -145,6 +140,28 @@ ln -s ~/opencv/build/cv2.so cv2.so
 
 ## Running the Demo
 
+**C++**
+
+You first need to compile .cpp file with the following command:
+
+```bash
+g++ `pkg-config --cflags --libs opencv4` demo.cpp -o demo.out -lopencv_core -lopencv_highgui -lopencv_imgcodecs -lopencv_imgproc -lopencv_videoio -lopencv_video -lopencv_cudaarithm -lopencv_cudaoptflow -std=c++11
+
+```
+
+After that to run the demo, you will need to pass:
+
+- path to the video file,
+- device, to choose between CPU and GPU inference. By default, the device is set to "cpu".
+
+For example:
+
+```bash
+./demo.out video/boat.mp4 gpu
+```
+
+**Python**
+
 To run the demo, you will need to pass:
 
 - `--video` argument to set the path to the video file,
@@ -155,13 +172,3 @@ For example:
 ```bash
 python3 demo.py --video video/boat.mp4 --device "cpu"
 ```
-
-# AI Courses by OpenCV
-
-Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/courses/) is a great place to start. 
-
-<a href="https://opencv.org/courses/">
-<p align="center"> 
-<img src="https://www.learnopencv.com/wp-content/uploads/2020/04/AI-Courses-By-OpenCV-Github.png">
-</p>
-</a>
