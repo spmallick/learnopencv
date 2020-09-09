@@ -1,3 +1,7 @@
+# OpenCV GPU Support
+
+This repository contains the code for [OpenCV GPU Support](https://www.learnopencv.com/opencv-gpu-support/)
+
 ## Getting Started
 
 Our code is tested using Python 3.7.5, but it should also work with any other python3.x. If you'd like to check your
@@ -172,3 +176,14 @@ For example:
 ```bash
 python3 demo.py --video video/boat.mp4 --device "cpu"
 ```
+
+
+# AI Courses by OpenCV
+
+Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/courses/) is a great place to start.
+
+<a href="https://opencv.org/courses/">
+<p align="center">
+<img src="https://www.learnopencv.com/wp-content/uploads/2020/04/AI-Courses-By-OpenCV-Github.png">
+</p>
+</a>
