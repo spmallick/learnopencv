@@ -184,7 +184,7 @@ public:
         return u;
     }
 
-    UMatData* allocate(int dims0, const int* sizes, int type, void* data, size_t* step, int flags, UMatUsageFlags usageFlags) const
+    UMatData* allocate(int dims0, const int* sizes, int type, void* data, size_t* step, AccessFlag flags, UMatUsageFlags usageFlags) const
     {
         if( data != 0 )
         {
@@ -213,7 +213,7 @@ public:
         return allocate(o, dims0, sizes, type, step);
     }
 
-    bool allocate(UMatData* u, int accessFlags, UMatUsageFlags usageFlags) const
+    bool allocate(UMatData* u, AccessFlag accessFlags, UMatUsageFlags usageFlags) const
     {
         return stdAllocator->allocate(u, accessFlags, usageFlags);
     }
@@ -586,7 +586,7 @@ static PyObject * UMatWrapper_get(cv2_UMatWrapperObject* self)
 static PyObject * UMatWrapper_handle(cv2_UMatWrapperObject* self, PyObject *args, PyObject *kwds)
 {
     const char *kwlist[] = {"accessFlags", NULL};
-    int accessFlags;
+    AccessFlag accessFlags;
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i", (char**) kwlist, &accessFlags))
         return 0;
     return PyLong_FromVoidPtr(self->um->handle(accessFlags));
