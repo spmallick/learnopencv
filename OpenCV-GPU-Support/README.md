@@ -149,7 +149,7 @@ ln -s ~/opencv/build/cv2.so cv2.so
 You first need to compile .cpp file with the following command:
 
 ```bash
-g++ `pkg-config --cflags --libs opencv4` demo.cpp -o demo.out -lopencv_core -lopencv_highgui -lopencv_imgcodecs -lopencv_imgproc -lopencv_videoio -lopencv_video -lopencv_cudaarithm -lopencv_cudaoptflow -std=c++11
+g++ `pkg-config --cflags --libs opencv4` demo.cpp -o demo.out -lopencv_core -lopencv_highgui -lopencv_imgcodecs -lopencv_imgproc -lopencv_videoio -lopencv_video -lopencv_cudaarithm -lopencv_cudaoptflow -lopencv_cudaimgproc -lopencv_cudawarping -std=c++11
 
 ```
 

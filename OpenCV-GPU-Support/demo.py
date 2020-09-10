@@ -18,11 +18,10 @@ def main(video, device):
 
     # init video capture with video
     cap = cv2.VideoCapture(video)
-
     # get default video FPS
     fps = cap.get(cv2.CAP_PROP_FPS)
     # get total number of video frames
-    num_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+    num_frames = cap.get(cv2.CAP_PROP_FRAME_COUNT)
 
     # read the first frame
     ret, previous_frame = cap.read()
@@ -116,7 +115,6 @@ def main(video, device):
 
             # start post-process timer
             start_post_time = time.time()
-
             # convert from cartesian to polar coordinates to get magnitude and angle
             mag, ang = cv2.cartToPolar(flow[..., 0], flow[..., 1])
             # set hue according to the angle of optical flow
