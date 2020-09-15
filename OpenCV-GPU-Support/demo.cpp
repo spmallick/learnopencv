@@ -37,6 +37,7 @@ void calculate_optical_flow(string videoFileName, string device)
 
     // get default video FPS
     double fps = capture.get(CAP_PROP_FPS);
+
     // get total number of video frames
     int num_frames = int(capture.get(CAP_PROP_FRAME_COUNT));
 
@@ -44,34 +45,26 @@ void calculate_optical_flow(string videoFileName, string device)
     cv::Mat frame, previous_frame;
     capture >> frame;
 
-    // resize frame
-    cv::resize(frame, frame, Size(960, 540), 0, 0, INTER_LINEAR);
-
-    // convert to gray
-    cv::cvtColor(frame, previous_frame, COLOR_BGR2GRAY);
-
-    // upload pre-processed frame to GPU
-    cv::cuda::GpuMat gpu_previous;
-    gpu_previous.upload(previous_frame);
-
-    // declare outputs for optical flow
-    cv::Mat magnitude, normalized_magnitude, angle;
-    cv::Mat hsv[3], merged_hsv, hsv_u8, bgr;
-
-    cv::cuda::GpuMat gpu_magnitude, gpu_normalized_magnitude, gpu_angle;
-    cv::cuda::GpuMat gpu_hsv[3], gpu_merged_hsv, gpu_hsv_u8, gpu_bgr;
-
-    // set saturation to a maximum value
-    hsv[1] = cv::Mat::ones(frame.size(), CV_32F);
-    gpu_hsv[1].upload(hsv[1]);
-
-    while (true)
+    if (device == "cpu")
     {
-        // start full pipeline timer
-        auto start_full_time = high_resolution_clock::now();
+        // resize frame
+        cv::resize(frame, frame, Size(960, 540), 0, 0, INTER_LINEAR);
 
-        if (device == "cpu")
+        // convert to gray
+        cv::cvtColor(frame, previous_frame, COLOR_BGR2GRAY);
+
+        // declare outputs for optical flow
+        cv::Mat magnitude, normalized_magnitude, angle;
+        cv::Mat hsv[3], merged_hsv, hsv_8u, bgr;
+
+        // set saturation to 1
+        hsv[1] = cv::Mat::ones(frame.size(), CV_32F);
+
+        while (true)
         {
+            // start full pipeline timer
+            auto start_full_time = high_resolution_clock::now();
+
             // start reading timer
             auto start_read_time = high_resolution_clock::now();
 
@@ -142,10 +135,10 @@ void calculate_optical_flow(string videoFileName, string device)
             merge(hsv, 3, merged_hsv);
 
             // multiply each pixel value to 255
-            merged_hsv.convertTo(hsv_u8, CV_8U, 255);
+            merged_hsv.convertTo(hsv_8u, CV_8U, 255);
 
             // convert hsv to bgr
-            cv::cvtColor(hsv_u8, bgr, COLOR_HSV2BGR);
+            cv::cvtColor(hsv_8u, bgr, COLOR_HSV2BGR);
 
             // update previous_frame value
             previous_frame = current_frame;
@@ -155,9 +148,49 @@ void calculate_optical_flow(string videoFileName, string device)
 
             // add elapsed iteration time
             timers["post-process"].push_back(duration_cast<milliseconds>(end_post_time - start_post_time).count() / 1000.0);
+
+            // end full pipeline timer
+            auto end_full_time = high_resolution_clock::now();
+
+            // add elapsed iteration time
+            timers["full pipeline"].push_back(duration_cast<milliseconds>(end_full_time - start_full_time).count() / 1000.0);
+
+            // visualization
+            imshow("original", frame);
+            imshow("result", bgr);
+            int keyboard = waitKey(1);
+            if (keyboard == 27)
+                break;
         }
-        else
+    }
+    else
+    {
+        // resize frame
+        cv::resize(frame, frame, Size(960, 540), 0, 0, INTER_LINEAR);
+
+        // convert to gray
+        cv::cvtColor(frame, previous_frame, COLOR_BGR2GRAY);
+
+        // upload pre-processed frame to GPU
+        cv::cuda::GpuMat gpu_previous;
+        gpu_previous.upload(previous_frame);
+
+        // declare cpu outputs for optical flow
+        cv::Mat hsv[3], angle, bgr;
+
+        // declare gpu outputs for optical flow
+        cv::cuda::GpuMat gpu_magnitude, gpu_normalized_magnitude, gpu_angle;
+        cv::cuda::GpuMat gpu_hsv[3], gpu_merged_hsv, gpu_hsv_8u, gpu_bgr;
+
+        // set saturation to 1
+        hsv[1] = cv::Mat::ones(frame.size(), CV_32F);
+        gpu_hsv[1].upload(hsv[1]);
+
+        while (true)
         {
+            // start full pipeline timer
+            auto start_full_time = high_resolution_clock::now();
+
             // start reading timer
             auto start_read_time = high_resolution_clock::now();
 
@@ -231,10 +264,10 @@ void calculate_optical_flow(string videoFileName, string device)
             cv::cuda::merge(gpu_hsv, 3, gpu_merged_hsv);
 
             // multiply each pixel value to 255
-            gpu_merged_hsv.cv::cuda::GpuMat::convertTo(gpu_hsv_u8, CV_8U, 255.0);
+            gpu_merged_hsv.cv::cuda::GpuMat::convertTo(gpu_hsv_8u, CV_8U, 255.0);
 
             // convert hsv to bgr
-            cv::cuda::cvtColor(gpu_hsv_u8, gpu_bgr, COLOR_HSV2BGR);
+            cv::cuda::cvtColor(gpu_hsv_8u, gpu_bgr, COLOR_HSV2BGR);
 
             // send original frame from GPU back to CPU
             gpu_frame.download(frame);
@@ -250,21 +283,28 @@ void calculate_optical_flow(string videoFileName, string device)
 
             // add elapsed iteration time
             timers["post-process"].push_back(duration_cast<milliseconds>(end_post_time - start_post_time).count() / 1000.0);
+
+            // end full pipeline timer
+            auto end_full_time = high_resolution_clock::now();
+
+            // add elapsed iteration time
+            timers["full pipeline"].push_back(duration_cast<milliseconds>(end_full_time - start_full_time).count() / 1000.0);
+
+            // visualization
+            imshow("original", frame);
+            imshow("result", bgr);
+            int keyboard = waitKey(1);
+            if (keyboard == 27)
+                break;
         }
 
-        // end full pipeline timer
-        auto end_full_time = high_resolution_clock::now();
-
-        // add elapsed iteration time
-        timers["full pipeline"].push_back(duration_cast<milliseconds>(end_full_time - start_full_time).count() / 1000.0);
-
-        // visualization
-        imshow("original", frame);
-        imshow("result", bgr);
-        int keyboard = waitKey(1);
-        if (keyboard == 27)
-            break;
     }
+
+    // release the capture
+    capture.release();
+
+    // destroy all windows
+    destroyAllWindows();
 
     // print results
     cout << "Number of frames: "   << num_frames << std::endl;
