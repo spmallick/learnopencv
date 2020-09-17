@@ -36,7 +36,7 @@ int main(){
 	// Calculate bin_mids
 	long double bin_mids[256];
 	for(int i = 0; i < 256; i++){
-		bin_mids[i] = (bin_edges[i] + bin_edges[i+1])/2;
+		bin_mids[i] = (bin_edges[i] + bin_edges[(uchar)(i+1)])/2;
 	}
 	
 	// Calculate weight 1 and weight 2
