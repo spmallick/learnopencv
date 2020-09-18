@@ -14,6 +14,8 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 | Blog Post | |
 | ------------- |:-------------|
 |[Bag Of Tricks For Image Classification - Let's check if it is working or not](https://www.learnopencv.com/bag-of-tricks-for-image-classification-lets-check-if-it-is-working-or-not/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Bag-Of-Tricks-For-Image-Classification)
+|[Getting Started with OpenCV CUDA Module](https://www.learnopencv.com/getting-started-opencv-cuda-module/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Getting-Started-OpenCV-CUDA-Module)|
+|[Training a Custom Object Detector with DLIB & Making Gesture Controlled Applications](https://www.learnopencv.com/training-a-custom-object-detector-with-dlib-making-gesture-controlled-applications/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Training_a_custom_hand_detector_with_dlib) |
 |[How To Run Inference Using TensorRT C++ API](https://www.learnopencv.com/how-to-run-inference-using-tensorrt-c-api/) | [Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-ONNX-TensorRT-CPP) |
 |[Using Facial Landmarks for Overlaying Faces with Medical Masks](https://www.learnopencv.com/using-facial-landmarks-for-overlaying-faces-with-masks/)|[Code](https://github.com/spmallick/learnopencv/tree/master/FaceMaskOverlay) |
 |[Tensorboard with PyTorch Lightning](https://www.learnopencv.com/tensorboard-with-pytorch-lightning)|[Code](https://github.com/spmallick/learnopencv/tree/master/TensorBoard-With-Pytorch-Lightning)
