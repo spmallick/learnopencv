@@ -10,18 +10,30 @@ For more details refer to https://stanfordmlgroup.github.io/competitions/mrnet/
 
 </div>
 
-# Install dependencies
+<!-- # Install dependencies
 1. `pip install git+https://github.com/ncullen93/torchsample`
 2. `pip install nibabel`
 3. `pip install sklearn`
 4. `pip install pandas`
 
-Install other dependencies as per requirement
+Install other dependencies as per requirement -->
 
-# Instructions to run the training
+# Installation and Getting Started
 1. Clone the repository.
 
-2. Download the dataset (~5.7 GB), and put `train` and `valid` folders along with all the the `.csv` files inside `images` folder at root directory. 
+2. Set up the python(3.7) environment. I prefer conda. Given below is how to create a conda environment by the name `mrnet`
+```Shell
+$ conda create -n mrnet python=3.7
+$ conda activate mrnet
+```   
+Make sure you are always inside the `mrnet` environment while working with this project 
+
+3. Install dependencies. (You might want to select your virtual environment first)
+```Shell
+$ pip install -r requirements.txt
+```    
+
+4. Download the dataset (~5.7 GB), and put `train` and `valid` folders along with all the the `.csv` files inside `images` folder at root directory. 
 ```Shell
   images/
       train/
@@ -40,11 +52,29 @@ Install other dependencies as per requirement
       valid-meniscus.csv
 ```      
 
-3. Make a new folder called `weights` at root directory, and inside the `weights` folder create three more folders namely `acl`, `abnormal` and `meniscus`.
+5. Make a new folder called `weights` at root directory, and inside the `weights` folder create three more folders namely `acl`, `abnormal` and `meniscus`.
+```Shell
+$ mkdir weights
+$ cd weights
+$ mkdir abnormal meniscus acl
+$ cd ..
+```      
 
-4. All the hyperparameters are defined in `config.py` file. Feel free to play around those.
+6. All the hyperparameters are defined in `config.py` file. Feel free to play around those. Especially change the `task` to train on different diseases
 
-5. Now finally run the training using `python train.py`. All the logs for tensorboard will be stored in the `runs` directory at the root of the project.
+7. Now finally run the training using `python train.py`. All the logs for tensorboard will be stored in the `runs` directory at the root of the project.
+
+*  **Tensorboard** Use tensorboard to view the evaluation results. Run the following command. 
+
+```Shell
+$ tensorboard --logdir runs/
+```
+
+or if you are using a remote connection
+
+```Shell
+$ tensorboard --logdir runs/ --host= <host_ip_id>
+```
 
 # Understanding the Dataset
 

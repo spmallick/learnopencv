@@ -9,5 +9,6 @@
 .vscode
 
 runs/
-images/
+train/
+val/
 *__pycache__*
