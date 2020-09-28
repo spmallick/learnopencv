@@ -4,22 +4,32 @@ Calibrate your camera using OpenCV.
 
 ## Using the C++ code
 ### Compilation
-To compile the `cameraCalibration.cpp` code, use the following:
+To compile the `cameraCalibration.cpp`  and `cameraCalibrationWithUnistortion.cpp` code files, use the following:
 ```shell
 mkdir build
 cd build
 cmake ..
 cmake --build . --config Release
 ```
-### Usage
-Refer to the following to use the compiled file:
-`./build/cameraCalibration`
+## Usage
 
-## Using the python code
-### Usage
-Refer to the following to use the `cameraCalibration.py` file:
-`python3 cameraCalibration.py`
+### Using the C++ code
 
+Refer to the following to use the compiled files:
+
+```shell
+./build/cameraCalibration
+./build/cameraCalibrationWithUnistortion
+```
+
+### Using the python code
+
+Refer to the following to use the `cameraCalibration.py` and `cameraCalibrationWithUnistortion.py` files respectively:
+
+```shell
+python3 cameraCalibration.py
+python3 cameraCalibrationWithUnistortion.py
+```
 
 # AI Courses by OpenCV
 
