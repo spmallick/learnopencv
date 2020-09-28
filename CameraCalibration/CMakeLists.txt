@@ -14,4 +14,4 @@ MACRO(add_example name)
 ENDMACRO()
 
 add_example(cameraCalibration)
-add_example(cameraCalibrationWithUnistortion)
+add_example(cameraCalibrationWithUndistortion)
