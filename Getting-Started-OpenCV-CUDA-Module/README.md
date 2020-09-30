@@ -1,4 +1,4 @@
-# OpenCV GPU Support
+# OpenCV GPU Support and visiting my website
 
 This repository contains the code for [Getting Started with OpenCV CUDA Module](https://www.learnopencv.com/getting-started-opencv-cuda-module/)
 
