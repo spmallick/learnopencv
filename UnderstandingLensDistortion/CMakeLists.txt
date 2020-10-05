@@ -13,5 +13,4 @@ MACRO(add_example name)
   TARGET_LINK_LIBRARIES(${name} ${OpenCV_LIBS})
 ENDMACRO()
 
-add_example(cameraCalibration)
-add_example(cameraCalibrationWithUndistortion)
+add_example(Undistort)

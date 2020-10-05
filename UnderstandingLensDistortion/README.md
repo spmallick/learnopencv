@@ -1,10 +1,10 @@
-# Camera Calibration Using OpenCV
+# Understanding Lens Distortion
 
-Calibrate your camera using OpenCV.
+Understanding lens distortion using OpenCV.
 
 ## Using the C++ code
 ### Compilation
-To compile the `cameraCalibration.cpp`  and `cameraCalibrationWithUndistortion.cpp` code files, use the following:
+To compile the `Undistort.cpp` code file, use the following:
 ```shell
 mkdir build
 cd build
@@ -15,20 +15,18 @@ cmake --build . --config Release
 
 ### Using the C++ code
 
-Refer to the following to use the compiled files:
+Refer to the following to use the compiled file:
 
 ```shell
-./build/cameraCalibration
-./build/cameraCalibrationWithUndistortion
+./build/Undistort
 ```
 
 ### Using the python code
 
-Refer to the following to use the `cameraCalibration.py` and `cameraCalibrationWithUndistortion.py` files respectively:
+Refer to the following to use the `Undistort.py` file:
 
 ```shell
-python3 cameraCalibration.py
-python3 cameraCalibrationWithUndistortion.py
+python3 Undistort.py
 ```
 
 # AI Courses by OpenCV
