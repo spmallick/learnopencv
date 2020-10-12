@@ -1,7 +1,0 @@
-torchvision==0.3.0
-numpy==1.17.3
-wandb==0.8.36
-pycocotools==2.0
-torch==1.1.0
-Pillow==7.1.2
-tensorboardX==2.0
