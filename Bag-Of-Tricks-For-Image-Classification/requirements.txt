@@ -1,0 +1,8 @@
+albumentations==0.4.6
+numpy==1.19.1
+opencv-python==4.3.0.36
+Pillow==6.2.0
+pytorch-lightning==0.9.0
+tensorboard==2.2.0
+torchvision==0.6.1
+tqdm==4.48.1

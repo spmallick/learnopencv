@@ -23,12 +23,11 @@ Mat deskew(Mat& img){
     warpAffine(img, imgOut, warpMat, imgOut.size(),affineFlags);
 
     return imgOut;
-} 
+}
 
 void loadTrainTestLabel(string &pathName, vector<Mat> &trainCells, vector<Mat> &testCells,vector<int> &trainLabels, vector<int> &testLabels)
 {
-
-    Mat img = imread(pathName,CV_LOAD_IMAGE_GRAYSCALE);
+    Mat img = imread(pathName, cv::IMREAD_GRAYSCALE);
     int ImgCount = 0;
     for(int i = 0; i < img.rows; i = i + SZ)
     {
@@ -46,7 +45,7 @@ void loadTrainTestLabel(string &pathName, vector<Mat> &trainCells, vector<Mat> &
             ImgCount++;
         }
     }
-    
+
     cout << "Image Count : " << ImgCount << endl;
     float digitClassNumber = 0;
 
@@ -66,7 +65,6 @@ void loadTrainTestLabel(string &pathName, vector<Mat> &trainCells, vector<Mat> &
 }
 
 void CreateDeskewedTrainTest(vector<Mat> &deskewedTrainCells,vector<Mat> &deskewedTestCells, vector<Mat> &trainCells, vector<Mat> &testCells){
-    
 
     for(int i=0;i<trainCells.size();i++){
 
@@ -82,18 +80,20 @@ void CreateDeskewedTrainTest(vector<Mat> &deskewedTrainCells,vector<Mat> &deskew
 }
 
 HOGDescriptor hog(
-        Size(20,20), //winSize
-        Size(8,8), //blocksize
-        Size(4,4), //blockStride,
-        Size(8,8), //cellSize,
-                 9, //nbins,
-                  1, //derivAper,
-                 -1, //winSigma,
-                  0, //histogramNormType,
-                0.2, //L2HysThresh,
-                  0,//gammal correction,
-                  64,//nlevels=64
-                  1);
+    Size(20,20), //winSize
+    Size(8,8), //blocksize
+    Size(4,4), //blockStride,
+    Size(8,8), //cellSize,
+    9,   //nbins,
+    1,   //derivAper,
+    -1,  //winSigma,
+    cv::HOGDescriptor::HistogramNormType::L2Hys, //histogramNormType,
+    0.2, //L2HysThresh,
+    0,   //gammal correction,
+    64,  //nlevels=64
+    1
+);
+
 void CreateTrainTestHOG(vector<vector<float> > &trainHOG, vector<vector<float> > &testHOG, vector<Mat> &deskewedtrainCells, vector<Mat> &deskewedtestCells){
 
     for(int y=0;y<deskewedtrainCells.size();y++){
@@ -101,27 +101,27 @@ void CreateTrainTestHOG(vector<vector<float> > &trainHOG, vector<vector<float> >
         hog.compute(deskewedtrainCells[y],descriptors);
         trainHOG.push_back(descriptors);
     }
-   
+
     for(int y=0;y<deskewedtestCells.size();y++){
-        
+
         vector<float> descriptors;
         hog.compute(deskewedtestCells[y],descriptors);
         testHOG.push_back(descriptors);
-    } 
+    }
 }
+
 void ConvertVectortoMatrix(vector<vector<float> > &trainHOG, vector<vector<float> > &testHOG, Mat &trainMat, Mat &testMat)
 {
-
     int descriptor_size = trainHOG[0].size();
-    
+
     for(int i = 0;i<trainHOG.size();i++){
         for(int j = 0;j<descriptor_size;j++){
-           trainMat.at<float>(i,j) = trainHOG[i][j]; 
+           trainMat.at<float>(i,j) = trainHOG[i][j];
         }
     }
     for(int i = 0;i<testHOG.size();i++){
         for(int j = 0;j<descriptor_size;j++){
-            testMat.at<float>(i,j) = testHOG[i][j]; 
+            testMat.at<float>(i,j) = testHOG[i][j];
         }
     }
 }
@@ -165,7 +165,7 @@ void SVMevaluate(Mat &testResponse, float &count, float &accuracy, vector<int> &
   {
     // cout << testResponse.at<float>(i,0) << " " << testLabels[i] << endl;
     if(testResponse.at<float>(i,0) == testLabels[i])
-      count = count + 1;    
+      count = count + 1;
   }
   accuracy = (count/testResponse.rows)*100;
 }
@@ -173,29 +173,28 @@ void SVMevaluate(Mat &testResponse, float &count, float &accuracy, vector<int> &
 
 int main()
 {
-
     vector<Mat> trainCells;
     vector<Mat> testCells;
     vector<int> trainLabels;
     vector<int> testLabels;
     loadTrainTestLabel(pathName,trainCells,testCells,trainLabels,testLabels);
-        
+
     vector<Mat> deskewedTrainCells;
     vector<Mat> deskewedTestCells;
     CreateDeskewedTrainTest(deskewedTrainCells,deskewedTestCells,trainCells,testCells);
-    
+
     std::vector<std::vector<float> > trainHOG;
     std::vector<std::vector<float> > testHOG;
     CreateTrainTestHOG(trainHOG,testHOG,deskewedTrainCells,deskewedTestCells);
 
     int descriptor_size = trainHOG[0].size();
     cout << "Descriptor Size : " << descriptor_size << endl;
-    
+
     Mat trainMat(trainHOG.size(),descriptor_size,CV_32FC1);
     Mat testMat(testHOG.size(),descriptor_size,CV_32FC1);
-  
+
     ConvertVectortoMatrix(trainHOG,testHOG,trainMat,testMat);
-    
+
     float C = 12.5, gamma = 0.5;
 
     Mat testResponse;
@@ -205,14 +204,14 @@ int main()
     svmTrain(model, trainMat, trainLabels);
 
     ///////////  SVM Testing  ////////////////
-    svmPredict(model, testResponse, testMat); 
+    svmPredict(model, testResponse, testMat);
 
     ////////////// Find Accuracy   ///////////
     float count = 0;
     float accuracy = 0 ;
     getSVMParams(model);
     SVMevaluate(testResponse, count, accuracy, testLabels);
-    
+
     cout << "the accuracy is :" << accuracy << endl;
     return 0;
 }

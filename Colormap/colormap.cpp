@@ -37,9 +37,8 @@ string colormap_name(int id)
             return "COLORMAP_PINK";
         case COLORMAP_HOT :
             return "COLORMAP_HOT";
-        
     }
-    
+
     return "NONE";
 }
 
@@ -55,10 +54,10 @@ int main( int argc, char** argv )
             int k = i + j * 4;
             Mat im_color = im_out(Rect(i * 200, j * 200, 200, 200));
             applyColorMap(im, im_color, k);
-            putText(im_color, colormap_name(k), Point(30, 180), CV_FONT_HERSHEY_DUPLEX, 0.5, Scalar::all(255), 1, CV_AA);
+            putText(im_color, colormap_name(k), Point(30, 180), cv::FONT_HERSHEY_DUPLEX, 0.5, Scalar::all(255), 1, cv::LINE_AA);
         }
     }
-    
+
     imshow("Pseudo Colored", im_out);
     waitKey(0);
 }
