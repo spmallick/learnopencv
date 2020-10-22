@@ -102,7 +102,7 @@ if __name__ == '__main__' :
       # Delete cells that are part of the snake
       try:
           for part in snake:
-              s.remove(part.x*45 + part.y)
+              s.remove(part.x * BOARD_SIZE + part.y)
       except:
           pass
       
