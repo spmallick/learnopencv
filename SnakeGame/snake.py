@@ -100,11 +100,8 @@ if __name__ == '__main__' :
       # Create a list of all possible locations
       s = list(range(0, BOARD_SIZE ** 2))
       # Delete cells that are part of the snake
-      try:
-          for part in snake:
-              s.remove(part.x * BOARD_SIZE + part.y)
-      except:
-          pass
+      for part in snake:
+          s.remove(part.x * BOARD_SIZE + part.y)
       
       # Randomly pick from one of the remaining cells    
       a = choice(s)
@@ -151,14 +148,16 @@ if __name__ == '__main__' :
         
     if quit:
       break
-
+      
+    # The snake grows graduallly over multiple frames    
+    if grow > 0:
+      snake.append(SnakePart(snake[-1], subx, suby))
+      grow -= 1
+      
     # Grows the snake when it eats an apple
     if applex == head.x and appley == head.y:
       subx = snake[-1].x
       suby = snake[-1].y
       eaten = True
       grow += GROWTH
-    # The snake grows graduallly over multiple frames    
-    if grow > 0:
-      snake.append(SnakePart(snake[-1], subx, suby))
-      grow -= 1
+
