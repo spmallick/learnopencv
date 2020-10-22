@@ -13,6 +13,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | |
 | ------------- |:-------------|
+|[Snake Game with OpenCV Python](https://www.learnopencv.com/snake-game-with-opencv-python/)|[Code](https://github.com/spmallick/learnopencv/tree/master/SnakeGame)|
 |[Stanford MRNet Challenge: Classifying Knee MRIs](https://www.learnopencv.com/stanford-mrnet-challenge-classifying-knee-mris/)|[Code](https://github.com/spmallick/learnopencv/tree/master/MRNet-Single-Model)|
 |[Experiment Logging with TensorBoard and wandb](https://www.learnopencv.com/experiment-logging-with-tensorboard-and-wandb)|[Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-Vision-Experiment-Logging)|
 |[Understanding Lens Distortion](https://www.learnopencv.com/understanding-lens-distortion/)|[Code](https://github.com/spmallick/learnopencv/tree/master/UnderstandingLensDistortion)|
