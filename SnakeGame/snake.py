@@ -54,7 +54,7 @@ def display():
 def win_focus():
   # Ugly trick to get the window in focus.
   # Opens an image in fullscreen and then back to normal window
-  cv2.namedWindow("Snake Game", cv2.WINDOW_NORMAL);
+  cv2.namedWindow("Snake Game", cv2.WINDOW_AUTOSIZE);
   board = np.zeros([BOARD_SIZE * CELL_SIZE, BOARD_SIZE * CELL_SIZE, 3])
   cv2.imshow("Snake Game", board);
   cv2.setWindowProperty("Snake Game", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN);
