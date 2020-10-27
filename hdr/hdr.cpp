@@ -1,6 +1,7 @@
 #include <opencv2/photo.hpp>
 #include "opencv2/imgcodecs.hpp"
 #include <opencv2/highgui.hpp>
+#include <opencv2/xphoto/tonemap.hpp>
 #include <vector>
 #include <iostream>
 #include <fstream>
@@ -66,7 +67,7 @@ int main(int, char**argv)
   // Tonemap using Durand's method obtain 24-bit color image
   cout << "Tonemaping using Durand's method ... ";
   Mat ldrDurand;
-  Ptr<TonemapDurand> tonemapDurand = createTonemapDurand(1.5,4,1.0,1,1);
+  Ptr<cv::xphoto::TonemapDurand> tonemapDurand = cv::xphoto::createTonemapDurand(1.5,4,1.0,1,1);
   tonemapDurand->process(hdrDebevec, ldrDurand);
   ldrDurand = 3 * ldrDurand;
   imwrite("ldr-Durand.jpg", ldrDurand * 255);

@@ -1,6 +1,14 @@
 import cv2
 import time
 import numpy as np
+import argparse
+
+parser = argparse.ArgumentParser(description='Run keypoint detection')
+parser.add_argument("--device", default="cpu", help="Device to inference on")
+parser.add_argument("--image_file", default="single.jpeg", help="Input image")
+
+args = parser.parse_args()
+
 
 MODE = "COCO"
 
@@ -17,13 +25,21 @@ elif MODE is "MPI" :
     POSE_PAIRS = [[0,1], [1,2], [2,3], [3,4], [1,5], [5,6], [6,7], [1,14], [14,8], [8,9], [9,10], [14,11], [11,12], [12,13] ]
 
 
-frame = cv2.imread("single.jpeg")
+frame = cv2.imread(args.image_file)
 frameCopy = np.copy(frame)
 frameWidth = frame.shape[1]
 frameHeight = frame.shape[0]
 threshold = 0.1
 
 net = cv2.dnn.readNetFromCaffe(protoFile, weightsFile)
+
+if args.device == "cpu":
+    net.setPreferableBackend(cv2.dnn.DNN_TARGET_CPU)
+    print("Using CPU device")
+elif args.device == "gpu":
+    net.setPreferableBackend(cv2.dnn.DNN_BACKEND_CUDA)
+    net.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA)
+    print("Using GPU device")
 
 t = time.time()
 # input image dimensions for the network

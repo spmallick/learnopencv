@@ -1715,7 +1715,7 @@ namespace render
 
 		// Then the filling.
 		theContent.x++; theContent.y++; theContent.width -= 2; theContent.height -= 2;
-		cv::rectangle(aOverlay, theContent, cv::Scalar(0x31, 0x31, 0x31), CVUI_FILLED);
+		cv::rectangle(theBlock.where, theContent, cv::Scalar(0x31, 0x31, 0x31), CVUI_FILLED);
 
 		if (aTransparecy) {
 			theBlock.where.copyTo(aOverlay);
