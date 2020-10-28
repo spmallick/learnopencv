@@ -3,7 +3,7 @@
 
 # Stanford MRnet Challenge
 
-**This repo contains code for the MRNet Challenge**
+**This repo contains code for the MRNet Challenge (A Multi-Task Approach)**
 
 
 For more details refer to https://stanfordmlgroup.github.io/competitions/mrnet/
