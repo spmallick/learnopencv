@@ -1,6 +1,6 @@
 # Training a Custom Object Detector with DLIB &amp; Making Gesture Controlled Applications
 
-You can access the Tutorial for this repo [here](https://www.learnopencv.com/training-a-custom-object-detector-with-dlib-amp-making-gesture-controlled-applications/).
+You can access the Tutorial for this repo [here](https://www.learnopencv.com/training-a-custom-object-detector-with-dlib-making-gesture-controlled-applications/).
 
 [Training a Custom Object Detector with DLIB &amp; Making Gesture Controlled Applications Notebook](Training_a_custom_hand_Detector.ipynb)
 
