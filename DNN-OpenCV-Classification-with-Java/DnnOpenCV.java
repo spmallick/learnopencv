@@ -1,11 +1,13 @@
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
+import org.opencv.core.Point;
 import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
 import org.opencv.core.Size;
 import org.opencv.dnn.Net;
 import org.opencv.dnn.Dnn;
 import org.opencv.imgproc.Imgproc;
+import org.opencv.highgui.HighGui;
 import org.opencv.imgcodecs.Imgcodecs;
 
 import java.io.IOException;
@@ -30,6 +32,8 @@ public class DnnOpenCV {
     private static final Scalar MEAN = new Scalar(0.485, 0.456, 0.406);
     private static final Scalar STD = new Scalar(0.229, 0.224, 0.225);
 
+    private static Mat imageRead;
+
     public static ArrayList<String> getImgLabels(String imgLabelsFilePath) throws IOException {
         ArrayList<String> imgLabels;
         try (Stream<String> lines = Files.lines(Paths.get(imgLabelsFilePath))) {
@@ -52,10 +56,13 @@ public class DnnOpenCV {
 
     public static Mat getPreprocessedImage(String imagePath) {
         // get the image from the internal resource folder
-        Mat image = Imgcodecs.imread(imagePath);
-
+        imageRead = Imgcodecs.imread(imagePath);
+	
+    	// this object will store the preprocessed image
+	    Mat image = new Mat();
+	
         // resize input image
-        Imgproc.resize(image, image, new Size(256, 256));
+        Imgproc.resize(imageRead, image, new Size(256, 256));
 
         // create empty Mat images for float conversions
         Mat imgFloat = new Mat(image.rows(), image.cols(), CvType.CV_32FC3);
@@ -121,5 +128,14 @@ public class DnnOpenCV {
         // decode classification results
         String label = DnnOpenCV.getPredictedClass(classification);
         System.out.println("Predicted Class: " + label);
+        
+        // displaying the photo and putting the text on it
+        Point pos = new Point (50, 50);
+        Scalar colour = new Scalar(255, 255, 255);
+        Imgproc.putText(imageRead, "Predicted class is: " +label, pos, Imgproc.FONT_HERSHEY_SIMPLEX, 1.0, colour, 2);
+        HighGui.imshow("Input Image", imageRead);
+        if (HighGui.waitKey(0) == 27){
+        	System.exit(0);
+	    }
     }
 }
