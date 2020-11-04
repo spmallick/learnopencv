@@ -68,25 +68,28 @@ sudo apt-get install ant
 ```bash
 cd ~
 wget -O opencv.zip https://github.com/opencv/opencv/archive/4.3.0.zip
+wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/4.3.0.zip
 ```
 
 3. Unzip the downloaded archives:
 
 ```bash
 unzip opencv.zip
+unzip opencv_contrib.zip
 ```
 
 4. Rename the directories to match CMake paths:
 
 ```bash
 mv opencv-4.3.0 opencv
+mv opencv_contrib-4.3.0 opencv_contrib
 ```
 
 5. Compile OpenCV. Create and enter a build directory:
 
 ```bash
 cd ~/opencv
-mkdir build
+mkdir build && cd build
 ```
 
 6. Run CMake to configure the OpenCV build. Don't forget to set the right pass to the ``PYTHON_EXECUTABLE``:
@@ -99,6 +102,7 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
  -D OPENCV_ENABLE_NONFREE=ON \
  -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib/modules \
  -D PYTHON_EXECUTABLE=~/env/bin/python3 \
+ -D ANT_EXECUTABLE=/usr/bin/ant \
  -D BUILD_SHARED_LIBRARY=OFF \
  -D BUILD_TESTS=OFF \
  -D BUILD_PERF_TESTS=OFF \
@@ -150,20 +154,20 @@ For Windows and macOS OpenCV Java build, please, follow the steps described in [
 
 
 ## Executing Model Conversion and Test Script
-The proposed for the experiments ``MobileNetV2ToOnnx.py`` script supports the ``--input_image`` key to customize the model conversion pipeline. It defines the full input image path, including its name - ``"coffee.jpg"`` by default.
+The proposed for the experiments ``Mobilenetv2ToOnnx.py`` script supports the ``--input_image`` key to customize the model conversion pipeline. It defines the full input image path, including its name - ``"coffee.jpg"`` by default.
 
 To run MobileNetV2 conversion case, please, choose one of the described below scenarios:
 
 * for the custom input image and running evaluation of the converted model:
 
 ```bash
-python3 MobileNetV2Conversion.py --input_image "images/red-ceramic-mug.jpg"
+python3 Mobilenetv2ToOnnx.py --input_image "images/red-ceramic-mug.jpg"
 ```
 
 * for the default input image:
 
 ```bash
-python3 MobileNetV2Conversion.py
+python3 Mobilenetv2ToOnnx.py
 ```
 
 ## Executing DNN OpenCV Java
