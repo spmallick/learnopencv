@@ -1,10 +1,10 @@
 # LearnOpenCV
-This repo contains code for Computer Vision, Deep learning, and AI articles shared on our blog [LearnOpenCV.com](https://www.LearnOpenCV.com). 
+This repo contains code for Computer Vision, Deep learning, and AI articles shared on our blog [LearnOpenCV.com](https://www.LearnOpenCV.com).
 
-Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/courses/) is a great place to start. 
+Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/courses/) is a great place to start.
 
 <a href="https://opencv.org/courses/">
-<p align="center"> 
+<p align="center">
 <img src="https://www.learnopencv.com/wp-content/uploads/2020/04/AI-Courses-By-OpenCV-Github.png">
 </p>
 </a>
@@ -14,6 +14,16 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 | Blog Post | |
 | ------------- |:-------------|
 |[Image Classification with OpenCV Java](https://www.learnopencv.com/image-classification-with-opencv-java)|[Code](https://github.com/spmallick/learnopencv/tree/master/DNN-OpenCV-Classification-with-Java) |
+|[PyTorch to Tensorflow Model Conversion](https://www.learnopencv.com/pytorch-to-tensorflow-model-conversion/) | [Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-to-TensorFlow-Model-Conversion) |
+|[Snake Game with OpenCV Python](https://www.learnopencv.com/snake-game-with-opencv-python/)|[Code](https://github.com/spmallick/learnopencv/tree/master/SnakeGame) |
+|[Stanford MRNet Challenge: Classifying Knee MRIs](https://www.learnopencv.com/stanford-mrnet-challenge-classifying-knee-mris/)|[Code](https://github.com/spmallick/learnopencv/tree/master/MRNet-Single-Model) |
+|[Experiment Logging with TensorBoard and wandb](https://www.learnopencv.com/experiment-logging-with-tensorboard-and-wandb)|[Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-Vision-Experiment-Logging) |
+|[Understanding Lens Distortion](https://www.learnopencv.com/understanding-lens-distortion/)|[Code](https://github.com/spmallick/learnopencv/tree/master/UnderstandingLensDistortion) |
+|[Image Matting with state-of-the-art Method “F, B, Alpha Matting”](https://www.learnopencv.com/image-matting-with-state-of-the-art-method-f-b-alpha-matting/)|[Code](https://github.com/spmallick/learnopencv/tree/master/FBAMatting) |
+|[Bag Of Tricks For Image Classification - Let's check if it is working or not](https://www.learnopencv.com/bag-of-tricks-for-image-classification-lets-check-if-it-is-working-or-not/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Bag-Of-Tricks-For-Image-Classification) |
+|[Getting Started with OpenCV CUDA Module](https://www.learnopencv.com/getting-started-opencv-cuda-module/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Getting-Started-OpenCV-CUDA-Module) |
+|[Training a Custom Object Detector with DLIB & Making Gesture Controlled Applications](https://www.learnopencv.com/training-a-custom-object-detector-with-dlib-making-gesture-controlled-applications/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Training_a_custom_hand_detector_with_dlib) |
+|[How To Run Inference Using TensorRT C++ API](https://www.learnopencv.com/how-to-run-inference-using-tensorrt-c-api/) | [Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-ONNX-TensorRT-CPP) |
 |[Using Facial Landmarks for Overlaying Faces with Medical Masks](https://www.learnopencv.com/using-facial-landmarks-for-overlaying-faces-with-masks/)|[Code](https://github.com/spmallick/learnopencv/tree/master/FaceMaskOverlay) |
 |[Tensorboard with PyTorch Lightning](https://www.learnopencv.com/tensorboard-with-pytorch-lightning)|[Code](https://github.com/spmallick/learnopencv/tree/master/TensorBoard-With-Pytorch-Lightning) |
 |[Otsu's Thresholding with OpenCV](https://www.learnopencv.com/otsu-thresholding-with-opencv/)|[Code](https://github.com/spmallick/learnopencv/tree/master/otsu-method) |
