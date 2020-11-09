@@ -81,8 +81,8 @@ int main(){
 	vector<int> train_labels = generateLabels(train_size, train_data);
 	
 	// Scale data
-	train_data = scale_data(train_data);
-	test_data = scale_data(test_data);
+	//train_data = scale_data(train_data);
+	//test_data = scale_data(test_data);
 	
 	// Train model on the dataset
 	struct svm_parameter param; // parameters of svm
@@ -90,6 +90,19 @@ int main(){
 	// set parameters (optional)
 	param.svm_type = C_SVC;
 	param.kernel_type = RBF;
+	param.degree = 3;
+	param.gamma = 0.5;
+	param.coef0 = 0;
+	param.nu = 0.5;
+	param.cache_size = 100;
+	param.eps = 1e-3;
+	param.p = 0.1;
+	param.shrinking = 1;
+	param.probability = 0;
+	param.nr_weight = 0;
+	param.weight_label = NULL;
+	param.weight = NULL;
+	param.C = 10;
 
 	// Number of training examples
 	prob.l = train_size;
