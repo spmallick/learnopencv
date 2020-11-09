@@ -71,6 +71,18 @@ int main(){
 	// set parameters (optional)
 	param.svm_type = EPSILON_SVR;
 	param.kernel_type = RBF;
+	param.gamma = 0.5;
+	param.degree = 3;
+	param.coef0 = 0;
+	param.nu = 0.5;
+	param.C = 10;
+	param.eps = 1e-3;
+	param.p = 0.1;
+	param.shrinking = 1;
+	param.probability = 0;
+	param.nr_weight = 0;
+	param.weight_label = NULL;
+	param.weight = NULL;
 
 	// Number of training examples
 	prob.l = train_size;
@@ -114,7 +126,7 @@ int main(){
 	  svm_node* x_space = (svm_node*)malloc((featureNum+1) * sizeof(svm_node));
 	  for (int feature=0; feature < featureNum; feature++){
 		// feature value
-		x_space[feature].value= test_data[sample][feature];
+		x_space[feature].value= train_data[sample][feature];
 		// feature index
 		x_space[feature].index = feature+1;
 	  }
