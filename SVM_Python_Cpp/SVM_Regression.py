@@ -15,8 +15,10 @@ X, y = make_regression(n_samples = 1000, n_features = 2, n_informative = 2)
 X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = 0.3)
 
 ## Normalize data
-X_train = StandardScaler().fit_transform(X_train)
-X_test = StandardScaler().transform(X_test)
+scaler = StandardScaler()
+scaler.fit(X_train)
+X_train = scaler.transform(X_train)
+X_test = scaler.transform(X_test)
 
 ## Training the SVR model
 # make a SVR regressor
