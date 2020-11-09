@@ -61,7 +61,7 @@ vector<vector<double>> scale_data(vector<vector<double>> data) {
     for(int j = 0; j < data[i].size(); j++) {
       // scale data
       double value = 2 * (data[i][j] - minimum[j])/(maximum[j] - minimum[j]) -1;
-      feature.push_back(value);
+      featureSet.push_back(value);
     }
     scaled_data.push_back(featureSet);
   }
@@ -101,7 +101,7 @@ int main(){
 	  svm_node* x_space = (svm_node*)malloc((featureNum+1) * sizeof(svm_node));
 	  for (int feature=0; feature < featureNum; feature++){
 		// feature value
-		x_space[feature].value= X_train[sample][feature];
+		x_space[feature].value= train_data[sample][feature];
 		// feature index
 		x_space[feature].index = feature+1;
 	  }
@@ -132,7 +132,7 @@ int main(){
 	  svm_node* x_space = (svm_node*)malloc((featureNum+1) * sizeof(svm_node));
 	  for (int feature=0; feature < featureNum; feature++){
 		// feature value
-		x_space[feature].value= X_test[sample][feature];
+		x_space[feature].value= test_data[sample][feature];
 		// feature index
 		x_space[feature].index = feature+1;
 	  }
