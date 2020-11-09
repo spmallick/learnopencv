@@ -61,7 +61,7 @@ vector<vector<double>> scale_data(vector<vector<double>> data) {
     for(int j = 0; j < data[i].size(); j++) {
       // scale data
       //double value = 2 * (data[i][j] - minimum[j])/(maximum[j] - minimum[j]) -1;
-      double value = 2 * (data[i][j] - 0)/(999 - 0) -1;
+      double value = 2 * (data[i][j] - 0)/(999.0 - 0) -1;
       featureSet.push_back(value);
     }
     scaled_data.push_back(featureSet);
