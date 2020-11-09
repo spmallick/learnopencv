@@ -87,7 +87,7 @@ int main(){
 	// Train model on the dataset
 	struct svm_parameter param; // parameters of svm
 	struct svm_problem prob; // contains the training data in svm_node format
-	// set parameters (optional)
+	// set parameters
 	param.svm_type = C_SVC;
 	param.kernel_type = RBF;
 	param.degree = 3;
