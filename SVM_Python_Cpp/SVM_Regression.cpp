@@ -110,7 +110,7 @@ int main(){
 	int prediction;
 
 	// iterate over each test sample
-	for (int sample=0; sample < prob.l; sample++){
+	for (int sample=0; sample < test_data.size(); sample++){
 	  svm_node* x_space = (svm_node*)malloc((featureNum+1) * sizeof(svm_node));
 	  for (int feature=0; feature < featureNum; feature++){
 		// feature value
