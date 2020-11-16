@@ -50,46 +50,49 @@ void detectFaceDlibMMOD(net_type mmodFaceDetector, Mat &frameDlibMmod, int inHei
 
     for ( size_t i = 0; i < faceRects.size(); i++ )
     {
-      int x1 = (int)(faceRects[i].rect.left() * scaleWidth);
-      int y1 = (int)(faceRects[i].rect.top() * scaleHeight);
-      int x2 = (int)(faceRects[i].rect.right() * scaleWidth);
-      int y2 = (int)(faceRects[i].rect.bottom() * scaleHeight);
-      cv::rectangle(frameDlibMmod, Point(x1, y1), Point(x2, y2), Scalar(0,255,0), (int)(frameHeight/150.0), 4);
+        int x1 = (int)(faceRects[i].rect.left() * scaleWidth);
+        int y1 = (int)(faceRects[i].rect.top() * scaleHeight);
+        int x2 = (int)(faceRects[i].rect.right() * scaleWidth);
+        int y2 = (int)(faceRects[i].rect.bottom() * scaleHeight);
+        cv::rectangle(frameDlibMmod, Point(x1, y1), Point(x2, y2), Scalar(0,255,0), (int)(frameHeight/150.0), 4);
     }
 }
 
 int main( int argc, const char** argv )
 {
-  String mmodModelPath = "./mmod_human_face_detector.dat";
-  net_type mmodFaceDetector;
-  deserialize(mmodModelPath) >> mmodFaceDetector;
+    String mmodModelPath = "models/mmod_human_face_detector.dat";
+    net_type mmodFaceDetector;
+    deserialize(mmodModelPath) >> mmodFaceDetector;
 
-  VideoCapture source;
-  if (argc == 1)
-      source.open(0);
-  else
-      source.open(argv[1]);
-  Mat frame;
+    VideoCapture source;
+    if (argc == 1)
+        source.open(0, CAP_V4L);
+    else
+        source.open(argv[1]);
 
-  double tt_dlibMmod = 0;
-  double fpsDlibMmod = 0;
-  while(1)
-  {
-      source >> frame;
-      if(frame.empty())
-          break;
+    Mat frame;
 
-      double t = cv::getTickCount();
-      detectFaceDlibMMOD ( mmodFaceDetector, frame );
-      tt_dlibMmod = ((double)cv::getTickCount() - t)/cv::getTickFrequency();
-      fpsDlibMmod = 1/tt_dlibMmod;
-      putText(frame, format("DLIB MMOD ; FPS = %.2f",fpsDlibMmod), Point(10, 50), FONT_HERSHEY_SIMPLEX, 1.4, Scalar(0, 0, 255), 4);
-      imshow( "DLIB - MMOD Face Detection", frame );
-      int k = waitKey(5);
-      if(k == 27)
-      {
-        destroyAllWindows();
-        break;
-      }
+    double tt_dlibMmod = 0;
+    double fpsDlibMmod = 0;
+    while (true)
+    {
+        source >> frame;
+        if (frame.empty())
+            break;
+
+        double t = cv::getTickCount();
+        detectFaceDlibMMOD ( mmodFaceDetector, frame );
+        tt_dlibMmod = ((double)cv::getTickCount() - t)/cv::getTickFrequency();
+        fpsDlibMmod = 1/tt_dlibMmod;
+
+        putText(frame, format("DLIB MMOD; FPS = %.2f",fpsDlibMmod), Point(10, 50), FONT_HERSHEY_SIMPLEX, 1.3, Scalar(0, 0, 255), 4);
+        imshow("DLIB - MMOD Face Detection", frame);
+
+        int k = waitKey(5);
+        if(k == 27)
+        {
+            destroyAllWindows();
+            break;
+        }
     }
 }

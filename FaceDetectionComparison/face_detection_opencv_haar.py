@@ -1,7 +1,9 @@
-from __future__ import division
-import cv2
+import argparse
+import os
 import time
-import sys
+
+import cv2
+
 
 def detectFaceOpenCVHaar(faceCascade, frame, inHeight=300, inWidth=0):
     frameOpenCVHaar = frame.copy()
@@ -23,52 +25,89 @@ def detectFaceOpenCVHaar(faceCascade, frame, inHeight=300, inWidth=0):
         y1 = y
         x2 = x + w
         y2 = y + h
-        cvRect = [int(x1 * scaleWidth), int(y1 * scaleHeight),
-                  int(x2 * scaleWidth), int(y2 * scaleHeight)]
+        cvRect = [
+            int(x1 * scaleWidth),
+            int(y1 * scaleHeight),
+            int(x2 * scaleWidth),
+            int(y2 * scaleHeight),
+        ]
         bboxes.append(cvRect)
-        cv2.rectangle(frameOpenCVHaar, (cvRect[0], cvRect[1]), (cvRect[2], cvRect[3]), (0, 255, 0),
-                      int(round(frameHeight / 150)), 4)
+        cv2.rectangle(
+            frameOpenCVHaar,
+            (cvRect[0], cvRect[1]),
+            (cvRect[2], cvRect[3]),
+            (0, 255, 0),
+            int(round(frameHeight / 150)),
+            4,
+        )
     return frameOpenCVHaar, bboxes
 
-if __name__ == "__main__" :
-    source = 0
-    if len(sys.argv) > 1:
-        source = sys.argv[1]
-    # haarcascade_frontalface_default.xml is in models directory.
-    faceCascade = cv2.CascadeClassifier('models/haarcascade_frontalface_default.xml')
-    #faceCascade = cv2.CascadeClassifier('./haarcascade_frontalface_default.xml')
-    
-    cap = cv2.VideoCapture(source)
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Face detection")
+    parser.add_argument("--video", type=str, default="", help="Path to video file")
+    args = parser.parse_args()
+
+    source = args.video
+
+    faceCascade = cv2.CascadeClassifier("models/haarcascade_frontalface_default.xml")
+
+    outputFolder = "output-haar-videos"
+    if not os.path.exists(outputFolder):
+        os.makedirs(outputFolder)
+
+    if source:
+        cap = cv2.VideoCapture(source)
+        outputFile = os.path.basename(source)[:-4] + ".avi"
+    else:
+        cap = cv2.VideoCapture(0, cv2.CAP_V4L)
+        outputFile = "grabbed_from_camera.avi"
+
     hasFrame, frame = cap.read()
 
-    vid_writer = cv2.VideoWriter('output-haar-{}.avi'.format(str(source).split(".")[0]),cv2.VideoWriter_fourcc('M','J','P','G'), 15, (frame.shape[1],frame.shape[0]))
+    vid_writer = cv2.VideoWriter(
+        os.path.join(outputFolder, outputFile),
+        cv2.VideoWriter_fourcc("M", "J", "P", "G"),
+        25,
+        (frame.shape[1], frame.shape[0]),
+    )
 
     frame_count = 0
     tt_opencvHaar = 0
-    while(1):
+
+    while True:
         hasFrame, frame = cap.read()
         if not hasFrame:
             break
-        frame_count += 1
 
+        frame_count += 1
         t = time.time()
+
         outOpencvHaar, bboxes = detectFaceOpenCVHaar(faceCascade, frame)
         tt_opencvHaar += time.time() - t
         fpsOpencvHaar = frame_count / tt_opencvHaar
 
-        label = "OpenCV Haar ; FPS : {:.2f}".format(fpsOpencvHaar)
-        cv2.putText(outOpencvHaar, label, (10, 50), cv2.FONT_HERSHEY_SIMPLEX, 1.4, (0, 0, 255), 3, cv2.LINE_AA)
+        label = "OpenCV Haar; FPS : {:.2f}".format(fpsOpencvHaar)
+        cv2.putText(
+            outOpencvHaar,
+            label,
+            (10, 50),
+            cv2.FONT_HERSHEY_SIMPLEX,
+            1.3,
+            (0, 0, 255),
+            3,
+            cv2.LINE_AA,
+        )
 
         cv2.imshow("Face Detection Comparison", outOpencvHaar)
 
         vid_writer.write(outOpencvHaar)
         if frame_count == 1:
             tt_opencvHaar = 0
-        
-        key = cv2.waitKey(1) & 0xFF
-        # click keyboard 'q' to exit
-        if key == ord("q"):
+
+        key = cv2.waitKey(5)
+        if key == 27:
             break
-            
+
     cv2.destroyAllWindows()
     vid_writer.release()

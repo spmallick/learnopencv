@@ -315,16 +315,35 @@ void getPersonwiseKeypoints(const std::vector<std::vector<ValidPair>>& validPair
 
 int main(int argc,char** argv) {
 	std::string inputFile = "./group.jpg";
-
-	if(argc > 1){
-		inputFile = std::string(argv[1]);
-	}
+	std::string device = "cpu";
+	std::cout << "USAGE : ./multi-person-openpose <inputFile> <device>" << std::endl;
+	if (argc == 2){   
+      if((std::string)argv[1] == "gpu")
+        device = "gpu";
+      else 
+      inputFile = argv[1];
+    }
+    else if (argc == 3){
+        inputFile = argv[1];
+        if((std::string)argv[2] == "gpu")
+            device = "gpu";
+    }
 
 	cv::Mat input = cv::imread(inputFile, cv::IMREAD_COLOR);
 
  	std::chrono::time_point<std::chrono::system_clock> startTP = std::chrono::system_clock::now();
 
 	cv::dnn::Net inputNet = cv::dnn::readNetFromCaffe("./pose/coco/pose_deploy_linevec.prototxt","./pose/coco/pose_iter_440000.caffemodel");
+	
+	if (device == "cpu"){
+	std::cout << "Using CPU device" << std::endl;
+        inputNet.setPreferableBackend(cv::dnn::DNN_TARGET_CPU);
+    }
+    else if (device == "gpu"){
+	std::cout << "Using GPU device" << std::endl;
+        inputNet.setPreferableBackend(cv::dnn::DNN_BACKEND_CUDA);
+        inputNet.setPreferableTarget(cv::dnn::DNN_TARGET_CUDA);
+    }
 
 	cv::Mat inputBlob = cv::dnn::blobFromImage(input,1.0/255.0,cv::Size((int)((368*input.cols)/input.rows),368),cv::Scalar(0,0,0),false,false);
 
