@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "applicationId": "org.opencv",
+  "variantType": "LIBRARY",
+  "elements": [
+    {
+      "outputType": {
+        "type": "AAPT_FRIENDLY_MERGED_MANIFESTS"
+      },
+      "apkData": {
+        "type": "MAIN",
+        "splits": [],
+        "versionCode": -1,
+        "outputFile": "OpenCVLib430-release.aar",
+        "fullName": "release",
+        "baseName": "release",
+        "dirName": ""
+      },
+      "path": "AndroidManifest.xml",
+      "properties": {
+        "packageId": "org.opencv",
+        "split": ""
+      }
+    }
+  ]
+}

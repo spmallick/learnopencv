@@ -1,0 +1,7 @@
+org.opencv
+attr camera_id
+attr show_fps
+id any
+id back
+id front
+styleable CameraBridgeViewBase camera_id show_fps
