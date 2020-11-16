@@ -54,30 +54,41 @@ sudo apt-get install libatlas-base-dev gfortran
 sudo apt-get install python3-dev
 ```
 
+For OpenCV Java installation we used default Java Runtime Environment and Java Development Kit:
+
+```bash
+sudo apt-get install default-jre
+sudo apt-get install default-jdk
+sudo apt-get install ant
+```
+
 2. Download the latest OpenCV version from the official repository:
 
 ```bash
 cd ~
 wget -O opencv.zip https://github.com/opencv/opencv/archive/4.3.0.zip
+wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/4.3.0.zip
 ```
 
 3. Unzip the downloaded archives:
 
 ```bash
 unzip opencv.zip
+unzip opencv_contrib.zip
 ```
 
 4. Rename the directories to match CMake paths:
 
 ```bash
 mv opencv-4.3.0 opencv
+mv opencv_contrib-4.3.0 opencv_contrib
 ```
 
 5. Compile OpenCV. Create and enter a build directory:
 
 ```bash
 cd ~/opencv
-mkdir build
+mkdir build && cd build
 ```
 
 6. Run CMake to configure the OpenCV build. Don't forget to set the right pass to the ``PYTHON_EXECUTABLE``:
@@ -90,7 +101,21 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
  -D OPENCV_ENABLE_NONFREE=ON \
  -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib/modules \
  -D PYTHON_EXECUTABLE=~/env/bin/python3 \
+ -D ANT_EXECUTABLE=/usr/bin/ant \
+ -D BUILD_SHARED_LIBRARY=OFF \
+ -D BUILD_TESTS=OFF \
+ -D BUILD_PERF_TESTS=OFF \
  -D BUILD_EXAMPLES=ON ..
+```
+
+If you want to configure the build with some specific Java version, please, add the following fields, verifying the paths:
+
+```bash
+ -D JAVA_AWT_INCLUDE_PATH=/usr/lib/jvm/java-1.x.x-openjdk-amd64/include \
+ -D JAVA_AWT_LIBRARY=/usr/lib/jvm/java-1.x.x-openjdk-amd64/lib/libawt.so \
+ -D JAVA_INCLUDE_PATH=/usr/lib/jvm/java-1.x.x-openjdk-amd64/include \
+ -D JAVA_INCLUDE_PATH2=/usr/lib/jvm/java-1.x.x-openjdk-amd64/include/linux \
+ -D JAVA_JVM_LIBRARY=/usr/lib/jvm/java-1.x.x-openjdk-amd64/include/jni.h \
 ```
 
 7. Check the output and make sure that everything is set correctly. After that we're ready to build it with:
