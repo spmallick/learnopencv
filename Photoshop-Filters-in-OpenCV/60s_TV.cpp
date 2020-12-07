@@ -15,11 +15,11 @@ void tv_60(Mat img) {
 	int slider = 0;
 	int slider2 = 0;
 	createTrackbar("val","image",&slider,255,nothing);
-	createTrackbar("threshold","image",&slider,100,nothing);
+	createTrackbar("threshold","image",&slider2,100,nothing);
 
 	while (true) {
-		int width = img.size().height;
-		int height = img.size().width;
+		int height = img.size().height;
+		int width = img.size().width;
 		Mat gray;
 		cvtColor(img, gray, COLOR_BGR2GRAY);
 		float thresh = getTrackbarPos("threshold","image");
