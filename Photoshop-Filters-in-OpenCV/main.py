@@ -136,5 +136,5 @@ def sepia(img):
     cv2.destroyAllWindows()
 
 if __name__ == "__main__":
-    img = cv2.imread("Paris.jpg")
+    img = cv2.imread("image.jpg")
     duo_tone(img)
