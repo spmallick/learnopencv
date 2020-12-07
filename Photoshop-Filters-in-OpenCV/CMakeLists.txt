@@ -37,4 +37,9 @@ MACRO(add_example name)
   TARGET_LINK_LIBRARIES(${name} ${OpenCV_LIBS} )
 ENDMACRO()
 
-add_example(main)
+add_example(brightness)
+add_example(sepia)
+add_example(duo_tone)
+add_example(60s_TV)
+add_example(emboss)
+
