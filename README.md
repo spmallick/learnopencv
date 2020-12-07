@@ -13,6 +13,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | |
 | ------------- |:-------------|
+|[Photoshop Filters in OpenCV](https://www.learnopencv.com/photoshop-filters-in-opencv/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Photoshop-Filters-in-OpenCV)|
 |[Tetris Game using OpenCV Python](https://www.learnopencv.com/tetris-with-opencv-python)|[Code](https://github.com/spmallick/learnopencv/tree/master/Tetris)|
 |[Image Classification with OpenCV for Android](https://www.learnopencv.com/image-classification-with-opencv-for-android/) | [Code](https://github.com/spmallick/learnopencv/tree/master/DNN-OpenCV-Classification-Android) |
 |[Image Classification with OpenCV Java](https://www.learnopencv.com/image-classification-with-opencv-java)|[Code](https://github.com/spmallick/learnopencv/tree/master/DNN-OpenCV-Classification-with-Java) |
