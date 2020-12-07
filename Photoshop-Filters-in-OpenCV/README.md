@@ -1,5 +1,15 @@
 # Photoshop Filters in OpenCV
 
+## Filters Available
+
+The following filters are available in the repository:
+
+1. Brightness
+2. 60s TV
+3. Emboss
+4. Duo tone
+5. Sepia
+
 ## Instructions
 
 ### Python
