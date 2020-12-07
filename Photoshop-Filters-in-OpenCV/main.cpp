@@ -219,7 +219,7 @@ void sepia(Mat img){
 }
 
 int main(){
-	Mat img = imread("Paris.jpg");
+	Mat img = imread("image.jpg");
 	duo_tone(img);
 	return 0;
 }
