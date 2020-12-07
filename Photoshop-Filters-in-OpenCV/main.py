@@ -1,6 +1,9 @@
 import cv2
 import numpy as np
 
+def nothing(x):
+    pass
+
 def brightness(img):
     cv2.namedWindow('image')
     cv2.createTrackbar('val', 'image', 100, 150, nothing)
