@@ -14,6 +14,7 @@ In order to run the specific filter, please use `python <filter-name>.py`, for e
 cd build
 cmake ..
 cmake --build . --config Release
-cd ..```
+cd ..
+```
 
 2. To run the specific filter, please use `./filter-name`, for example, `./duo_tone`
