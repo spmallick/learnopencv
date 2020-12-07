@@ -1,6 +1,9 @@
 import cv2
 import numpy as np
 
+def nothing(x):
+    pass
+
 def tv_60(img):
     cv2.namedWindow('image')
     cv2.createTrackbar('val', 'image', 0, 255, nothing)
