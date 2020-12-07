@@ -1,4 +1,5 @@
 # Photoshop Filters in OpenCV
+This folder contains the code accompanying our blog post [Photoshop Filters in OpenCV](https://www.learnopencv.com/photoshop-filters-in-opencv)
 
 ## Filters Available
 
@@ -10,7 +11,7 @@ The following filters are available in the repository:
 4. Duo tone
 5. Sepia
 
-## Instructions
+## USAGE
 
 ### Python
 
@@ -28,3 +29,14 @@ cd ..
 ```
 
 2. To run the specific filter, please use `./filter-name`, for example, `./duo_tone`
+
+
+# AI Courses by OpenCV
+
+Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/courses/) is a great place to start. 
+
+<a href="https://opencv.org/courses/">
+<p align="center"> 
+<img src="https://www.learnopencv.com/wp-content/uploads/2020/04/AI-Courses-By-OpenCV-Github.png">
+</p>
+</a>
