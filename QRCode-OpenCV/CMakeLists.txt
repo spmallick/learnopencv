@@ -5,7 +5,7 @@ PROJECT(opencv_tests)
 if(NOT OpenCV_DIR)
   set(OpenCV_DIR <specify your path to the opencv installation directory>installations/OpenCV4/lib/cmake/opencv4/)
 endif()
-find_package( OpenCV REQUIRED )
+find_package(OpenCV REQUIRED core highgui objdetect)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
