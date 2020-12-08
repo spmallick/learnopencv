@@ -101,6 +101,7 @@ class HandPose:
 
 if __name__ == '__main__':
     input_source = "asl.mp4"
+    # input_source = 0 if using local camera
     protoFile = "hand/pose_deploy.prototxt"
     weightsFile = "hand/pose_iter_102000.caffemodel"
     nPoints = 22
