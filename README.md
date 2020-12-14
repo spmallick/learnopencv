@@ -13,6 +13,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | |
 | ------------- |:-------------|
+|[Classification With Localization: Convert any keras Classifier to a Detector](https://www.learnopencv.com/classification-with-localization/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Classification-with-localization-convert-any-keras-classifier-into-a-detector/README.md) |
 |[Photoshop Filters in OpenCV](https://www.learnopencv.com/photoshop-filters-in-opencv/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Photoshop-Filters-in-OpenCV)|
 |[Tetris Game using OpenCV Python](https://www.learnopencv.com/tetris-with-opencv-python)|[Code](https://github.com/spmallick/learnopencv/tree/master/Tetris)|
 |[Image Classification with OpenCV for Android](https://www.learnopencv.com/image-classification-with-opencv-for-android/) | [Code](https://github.com/spmallick/learnopencv/tree/master/DNN-OpenCV-Classification-Android) |
