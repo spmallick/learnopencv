@@ -29,6 +29,6 @@ MACRO(add_example name)
 ENDMACRO()
 
 #COMPILE CPP FILES USING THIS LINE
-add_example(Implementation)
-add_example(Otsu_method)
+add_example(otsu_implementation)
+add_example(otsu_method)
 #add_example(sampleCode2) and so on

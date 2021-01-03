@@ -1,0 +1,8 @@
+R_DEF: Internal format may change without notice
+local
+attr? camera_id
+attr? show_fps
+id any
+id back
+id front
+styleable CameraBridgeViewBase show_fps camera_id

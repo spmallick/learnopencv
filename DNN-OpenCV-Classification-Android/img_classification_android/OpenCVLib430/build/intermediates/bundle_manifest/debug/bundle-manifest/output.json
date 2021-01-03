@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "applicationId": "org.opencv",
+  "variantType": "BASE_APK",
+  "elements": [
+    {
+      "outputType": {
+        "type": "BUNDLE_MANIFEST"
+      },
+      "apkData": {
+        "type": "MAIN",
+        "splits": [],
+        "versionCode": -1,
+        "outputFile": "OpenCVLib430-debug.apk",
+        "fullName": "debug",
+        "baseName": "debug",
+        "dirName": ""
+      },
+      "path": "AndroidManifest.xml",
+      "properties": {
+        "packageId": "org.opencv",
+        "split": "",
+        "minSdkVersion": "1"
+      }
+    }
+  ]
+}

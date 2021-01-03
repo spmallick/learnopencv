@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/home/anastasia/AndroidStudioProjects/img_classification_android/OpenCVLib430/src/main/res"/><source path="/home/anastasia/AndroidStudioProjects/img_classification_android/OpenCVLib430/build/generated/res/rs/debug"/><source path="/home/anastasia/AndroidStudioProjects/img_classification_android/OpenCVLib430/build/generated/res/resValues/debug"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main" generated-set="main$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/home/anastasia/AndroidStudioProjects/img_classification_android/OpenCVLib430/src/main/res"><file path="/home/anastasia/AndroidStudioProjects/img_classification_android/OpenCVLib430/src/main/res/values/attrs.xml" qualifiers=""><declare-styleable name="CameraBridgeViewBase">
+       <attr format="boolean" name="show_fps"/>
+       <attr format="integer" name="camera_id">
+          <enum name="any" value="-1"/>
+          <enum name="back" value="99"/>
+          <enum name="front" value="98"/>
+       </attr>
+    </declare-styleable></file></source><source path="/home/anastasia/AndroidStudioProjects/img_classification_android/OpenCVLib430/build/generated/res/rs/debug"/><source path="/home/anastasia/AndroidStudioProjects/img_classification_android/OpenCVLib430/build/generated/res/resValues/debug"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/home/anastasia/AndroidStudioProjects/img_classification_android/OpenCVLib430/src/debug/res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug" generated-set="debug$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/home/anastasia/AndroidStudioProjects/img_classification_android/OpenCVLib430/src/debug/res"/></dataSet><mergedItems><configuration qualifiers=""><declare-styleable name="CameraBridgeViewBase">
+       <attr format="boolean" name="show_fps"/>
+       <attr format="integer" name="camera_id">
+          <enum name="any" value="-1"/>
+          <enum name="back" value="99"/>
+          <enum name="front" value="98"/>
+       </attr>
+    </declare-styleable></configuration></mergedItems></merger>
