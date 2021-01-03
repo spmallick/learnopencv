@@ -1,8 +1,8 @@
 # Optical Flow demo
 
-This contains the code for **Algorithmic approach to Optical Flow calculation** post
+This contains the code for **Optical Flow in OpenCV (C++/Python)** post
 For more information - visit 
-[The algorithmic approach to Optical Flow calculation](https://www.learnopencv.com/algorithmic-approach-to-optical-flow-calculation)
+[Optical Flow in OpenCV (C++/Python)](https://www.learnopencv.com/optical-flow-in-opencv)
 
 ## Python
 
