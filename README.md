@@ -13,6 +13,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | |
 | ------------- |:-------------|
+|[The algorithmic approach to Optical Flow calculation](https://www.learnopencv.com/algorithmic-approach-to-optical-flow-calculation)|[Code](https://github.com/spmallick/learnopencv/tree/master/The-algorithmic-approach-to-optical-flow-calculation)|
 |[Introduction to Epipolar Geometry and Stereo Vision](https://www.learnopencv.com/introduction-to-epipolar-geometry-and-stereo-vision/)|[Code](https://github.com/spmallick/learnopencv/tree/master/EpipolarGeometryAndStereoVision)|
 |[Classification With Localization: Convert any keras Classifier to a Detector](https://www.learnopencv.com/classification-with-localization/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Classification-with-localization-convert-any-keras-classifier-into-a-detector/README.md) |
 |[Photoshop Filters in OpenCV](https://www.learnopencv.com/photoshop-filters-in-opencv/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Photoshop-Filters-in-OpenCV)|
