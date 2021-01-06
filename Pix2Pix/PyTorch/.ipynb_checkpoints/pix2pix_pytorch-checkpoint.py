@@ -101,7 +101,7 @@ def normalize(inp, tar):
     target_image = (tar / 127.5) - 1
     return input_image, target_image
         
-class Train(object):
+class Train_Normalize(object):
     def __call__(self, image):
         inp, tar = read_image(image)
         inp, tar = random_jittering_mirroring(inp, tar)
@@ -111,7 +111,7 @@ class Train(object):
         return image_a, image_b
     
     
-class Val(object):
+class Val_Normalize(object):
     def __call__(self, image):
         inp, tar = read_image(image)
         #inp, tar = random_jittering_mirroring(inp, tar)
