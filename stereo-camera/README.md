@@ -1,6 +1,6 @@
 # Custom Low-Cost Stereo Camera Using OpenCV
 
-Create a custom low-cost stereo camera and capture 3D videos with it using OpenCV.
+Create a custom low-cost stereo camera and capture 3D videos with it using OpenCV. [Refer to the blog post for details](https://www.learnopencv.com/making-a-low-cost-stereo-camera-using-opencv/)
 
 ## Using the C++ code
 ### Compilation
@@ -12,9 +12,6 @@ cmake ..
 cmake --build . --config Release
 ```
 ## Usage
-
-### Using the C++ code
-
 Refer to the following to use the compiled files:
 
 ```shell
