@@ -13,6 +13,9 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | |
 | ------------- |:-------------|
+|[Making A Low-Cost Stereo Camera Using OpenCV](https://www.learnopencv.com/making-a-low-cost-stereo-camera-using-opencv/)|[Code](https://github.com/spmallick/learnopencv/tree/master/stereo-camera)|
+|[Optical Flow in OpenCV (C++/Python)](https://www.learnopencv.com/optical-flow-in-opencv)|[Code](https://github.com/spmallick/learnopencv/tree/master/Optical-Flow-in-OpenCV)|
+|[Introduction to Epipolar Geometry and Stereo Vision](https://www.learnopencv.com/introduction-to-epipolar-geometry-and-stereo-vision/)|[Code](https://github.com/spmallick/learnopencv/tree/master/EpipolarGeometryAndStereoVision)|
 |[Classification With Localization: Convert any keras Classifier to a Detector](https://www.learnopencv.com/classification-with-localization/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Classification-with-localization-convert-any-keras-classifier-into-a-detector/README.md) |
 |[Photoshop Filters in OpenCV](https://www.learnopencv.com/photoshop-filters-in-opencv/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Photoshop-Filters-in-OpenCV)|
 |[Tetris Game using OpenCV Python](https://www.learnopencv.com/tetris-with-opencv-python)|[Code](https://github.com/spmallick/learnopencv/tree/master/Tetris)|
