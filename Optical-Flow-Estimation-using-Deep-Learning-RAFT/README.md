@@ -1,4 +1,5 @@
-# RAFT inference
+# RAFT: Optical Flow estimation using Deep Learning
+This folder contains code accompanying the blog post [RAFT: Optical Flow estimation using Deep Learning](https://learnopencv.com/optical-flow-using-deep-learning-raft) 
 
 ## Installation
 
