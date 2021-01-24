@@ -1,3 +1,6 @@
+# Background Subtraction with OpenCV and BGS Libraries
+This folder contains code for tutorial on [Background Subtraction with OpenCV and BGS Libraries](https://learnopencv.com/background-subtraction-with-opencv-and-bgs-libraries)
+
 ## Getting Started
 
 Please, follow the instructions to set up the environment for Linux-based systems. This installation guide is based on
@@ -267,3 +270,13 @@ By default `space_traffic.mp4` will be used. To provide another video as input, 
 ```bash
 ./background_subtr_bgslib.out --input=<VIDEO_PATH>
 ```
+
+# AI Courses by OpenCV
+
+Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/courses/) is a great place to start. 
+
+<a href="https://opencv.org/courses/">
+<p align="center"> 
+<img src="https://www.learnopencv.com/wp-content/uploads/2020/04/AI-Courses-By-OpenCV-Github.png">
+</p>
+</a>
