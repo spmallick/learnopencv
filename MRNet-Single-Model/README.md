@@ -1,12 +1,12 @@
 <div align="center">
 <img src="content/logo.jpg" width ="600" height="300"/>
 
-# Stanford MRnet Challenge
+# Classifying Knee MRI images using Deep Learning
 
-**This repo contains code for the MRNet Challenge**
+**This repo contains code for the post [Stanford MRNet Challenge: Classifying Knee MRIs](https://www.learnopencv.com/stanford-mrnet-challenge-classifying-knee-mris/)**
 
 
-For more details refer to https://stanfordmlgroup.github.io/competitions/mrnet/
+For details about the dataset and the competition, refer to https://stanfordmlgroup.github.io/competitions/mrnet/
 
 </div>
 

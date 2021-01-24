@@ -1,0 +1,8 @@
+int attr camera_id 0x0
+int attr show_fps 0x0
+int id any 0x0
+int id back 0x0
+int id front 0x0
+int[] styleable CameraBridgeViewBase { 0x0, 0x0 }
+int styleable CameraBridgeViewBase_camera_id 0
+int styleable CameraBridgeViewBase_show_fps 1
