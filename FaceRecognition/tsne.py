@@ -89,6 +89,7 @@ def visualize_tsne_images(tx, ty, images, plot_size=1000, max_image_size=100):
     plt.figure('Embeddings projection with t-SNE')
     plt.axis('off')
     plt.imshow(tsne_plot[:, :, ::-1])
+    plt.savefig('tsne_plot.jpg')
     plt.show()
 
 
