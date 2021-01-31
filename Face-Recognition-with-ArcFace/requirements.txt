@@ -1,8 +1,0 @@
-matplotlib==3.3.0
-numpy==1.19.0
-opencv-python==4.3.0.36
-pillow==7.2.0
-scikit-learn==0.23.1
-torch==1.5.1
-torchvision==0.6.1
-tqdm==4.47.0
