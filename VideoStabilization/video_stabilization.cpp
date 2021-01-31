@@ -143,10 +143,10 @@ int main(int argc, char **argv)
   int h = int(cap.get(CAP_PROP_FRAME_HEIGHT));
 
   // Get frames per second (fps)
-  double fps = cap.get(CV_CAP_PROP_FPS);
+  double fps = cap.get(cv::CAP_PROP_FPS);
 
   // Set up output video
-  VideoWriter out("video_out.avi", CV_FOURCC('M','J','P','G'), fps, Size(2 * w, h));
+  VideoWriter out("video_out.avi", cv::VideoWriter::fourcc('M','J','P','G'), fps, Size(2 * w, h));
   
   // Define variable for storing frames
   Mat curr, curr_gray;
@@ -250,7 +250,7 @@ int main(int argc, char **argv)
     transforms_smooth.push_back(TransformParam(dx, dy, da));
   }
 
-  cap.set(CV_CAP_PROP_POS_FRAMES, 0);
+  cap.set(cv::CAP_PROP_POS_FRAMES, 0);
   Mat T(2,3,CV_64F);
   Mat frame, frame_stabilized, frame_out; 
 

@@ -1,10 +1,10 @@
 # LearnOpenCV
-This repo contains code for Computer Vision, Deep learning, and AI articles shared on our blog [LearnOpenCV.com](https://www.LearnOpenCV.com). 
+This repo contains code for Computer Vision, Deep learning, and AI articles shared on our blog [LearnOpenCV.com](https://www.LearnOpenCV.com).
 
-Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/courses/) is a great place to start. 
+Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/courses/) is a great place to start.
 
 <a href="https://opencv.org/courses/">
-<p align="center"> 
+<p align="center">
 <img src="https://www.learnopencv.com/wp-content/uploads/2020/04/AI-Courses-By-OpenCV-Github.png">
 </p>
 </a>
@@ -14,6 +14,30 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 | Blog Post | |
 | ------------- |:-------------|
 |[Face Recognition with ArcFace](https://www.learnopencv.com/face-recognition-with-arcface/) | [Code](https://github.com/spmallick/learnopencv/tree/master/FaceRecognition)
+|[Background Subtraction with OpenCV and BGS Libraries](https://www.learnopencv.com/background-subtraction-with-opencv-and-bgs-libraries/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Background-Subrtaction) |
+|[RAFT: Optical Flow estimation using Deep Learning](https://learnopencv.com/optical-flow-using-deep-learning-raft/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Optical-Flow-Estimation-using-Deep-Learning-RAFT)|
+|[Making A Low-Cost Stereo Camera Using OpenCV](https://www.learnopencv.com/making-a-low-cost-stereo-camera-using-opencv/)|[Code](https://github.com/spmallick/learnopencv/tree/master/stereo-camera)|
+|[Optical Flow in OpenCV (C++/Python)](https://www.learnopencv.com/optical-flow-in-opencv)|[Code](https://github.com/spmallick/learnopencv/tree/master/Optical-Flow-in-OpenCV)|
+|[Introduction to Epipolar Geometry and Stereo Vision](https://www.learnopencv.com/introduction-to-epipolar-geometry-and-stereo-vision/)|[Code](https://github.com/spmallick/learnopencv/tree/master/EpipolarGeometryAndStereoVision)|
+|[Classification With Localization: Convert any keras Classifier to a Detector](https://www.learnopencv.com/classification-with-localization/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Classification-with-localization-convert-any-keras-classifier-into-a-detector/README.md) |
+|[Photoshop Filters in OpenCV](https://www.learnopencv.com/photoshop-filters-in-opencv/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Photoshop-Filters-in-OpenCV)|
+|[Tetris Game using OpenCV Python](https://www.learnopencv.com/tetris-with-opencv-python)|[Code](https://github.com/spmallick/learnopencv/tree/master/Tetris)|
+|[Image Classification with OpenCV for Android](https://www.learnopencv.com/image-classification-with-opencv-for-android/) | [Code](https://github.com/spmallick/learnopencv/tree/master/DNN-OpenCV-Classification-Android) |
+|[Image Classification with OpenCV Java](https://www.learnopencv.com/image-classification-with-opencv-java)|[Code](https://github.com/spmallick/learnopencv/tree/master/DNN-OpenCV-Classification-with-Java) |
+|[PyTorch to Tensorflow Model Conversion](https://www.learnopencv.com/pytorch-to-tensorflow-model-conversion/) | [Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-to-TensorFlow-Model-Conversion) |
+|[Snake Game with OpenCV Python](https://www.learnopencv.com/snake-game-with-opencv-python/)|[Code](https://github.com/spmallick/learnopencv/tree/master/SnakeGame) |
+|[Stanford MRNet Challenge: Classifying Knee MRIs](https://www.learnopencv.com/stanford-mrnet-challenge-classifying-knee-mris/)|[Code](https://github.com/spmallick/learnopencv/tree/master/MRNet-Single-Model) |
+|[Experiment Logging with TensorBoard and wandb](https://www.learnopencv.com/experiment-logging-with-tensorboard-and-wandb)|[Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-Vision-Experiment-Logging) |
+|[Understanding Lens Distortion](https://www.learnopencv.com/understanding-lens-distortion/)|[Code](https://github.com/spmallick/learnopencv/tree/master/UnderstandingLensDistortion) |
+|[Image Matting with state-of-the-art Method “F, B, Alpha Matting”](https://www.learnopencv.com/image-matting-with-state-of-the-art-method-f-b-alpha-matting/)|[Code](https://github.com/spmallick/learnopencv/tree/master/FBAMatting) |
+|[Bag Of Tricks For Image Classification - Let's check if it is working or not](https://www.learnopencv.com/bag-of-tricks-for-image-classification-lets-check-if-it-is-working-or-not/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Bag-Of-Tricks-For-Image-Classification) |
+|[Getting Started with OpenCV CUDA Module](https://www.learnopencv.com/getting-started-opencv-cuda-module/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Getting-Started-OpenCV-CUDA-Module) |
+|[Training a Custom Object Detector with DLIB & Making Gesture Controlled Applications](https://www.learnopencv.com/training-a-custom-object-detector-with-dlib-making-gesture-controlled-applications/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Training_a_custom_hand_detector_with_dlib) |
+|[How To Run Inference Using TensorRT C++ API](https://www.learnopencv.com/how-to-run-inference-using-tensorrt-c-api/) | [Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-ONNX-TensorRT-CPP) |
+|[Using Facial Landmarks for Overlaying Faces with Medical Masks](https://www.learnopencv.com/using-facial-landmarks-for-overlaying-faces-with-masks/)|[Code](https://github.com/spmallick/learnopencv/tree/master/FaceMaskOverlay) |
+|[Tensorboard with PyTorch Lightning](https://www.learnopencv.com/tensorboard-with-pytorch-lightning)|[Code](https://github.com/spmallick/learnopencv/tree/master/TensorBoard-With-Pytorch-Lightning) |
+|[Otsu's Thresholding with OpenCV](https://www.learnopencv.com/otsu-thresholding-with-opencv/)|[Code](https://github.com/spmallick/learnopencv/tree/master/otsu-method) |
+|[PyTorch-to-CoreML-model-conversion](https://www.learnopencv.com/pytorch-to-coreml-model-conversion/) | [Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-to-CoreML-model-conversion) |
 |[Playing Rock, Paper, Scissors with AI](https://www.learnopencv.com/playing-rock-paper-scissors-with-ai/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Playing-rock-paper-scissors-with-AI) |
 |[CNN Receptive Field Computation Using Backprop with TensorFlow](https://www.learnopencv.com/cnn-receptive-field-computation-using-backprop-with-tensorflow/)|[Code](https://github.com/spmallick/learnopencv/tree/master/TensorFlow-Receptive-Field-With-Backprop)|
 |[CNN Fully Convolutional Image Classification with TensorFlow](https://www.learnopencv.com/cnn-fully-convolutional-image-classification-with-tensorflow) | [Code](https://github.com/spmallick/learnopencv/tree/master/TensorFlow-Fully-Convolutional-Image-Classification) |

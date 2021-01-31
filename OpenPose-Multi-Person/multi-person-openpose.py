@@ -2,8 +2,17 @@ import cv2
 import time
 import numpy as np
 from random import randint
+import argparse
 
-image1 = cv2.imread("group.jpg")
+parser = argparse.ArgumentParser(description='Run keypoint detection')
+parser.add_argument("--device", default="cpu", help="Device to inference on")
+parser.add_argument("--image_file", default="group.jpg", help="Input image")
+
+args = parser.parse_args()
+
+
+
+image1 = cv2.imread(args.image_file)
 
 protoFile = "pose/coco/pose_deploy_linevec.prototxt"
 weightsFile = "pose/coco/pose_iter_440000.caffemodel"
@@ -36,7 +45,7 @@ def getKeypoints(probMap, threshold=0.1):
     keypoints = []
 
     #find the blobs
-    _, contours, _ = cv2.findContours(mapMask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    contours, _ = cv2.findContours(mapMask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
     #for each blob find the maxima
     for cnt in contours:
@@ -164,6 +173,13 @@ frameHeight = image1.shape[0]
 
 t = time.time()
 net = cv2.dnn.readNetFromCaffe(protoFile, weightsFile)
+if args.device == "cpu":
+    net.setPreferableBackend(cv2.dnn.DNN_TARGET_CPU)
+    print("Using CPU device")
+elif args.device == "gpu":
+    net.setPreferableBackend(cv2.dnn.DNN_BACKEND_CUDA)
+    net.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA)
+    print("Using GPU device")
 
 # Fix the input Height and get the width according to the Aspect Ratio
 inHeight = 368

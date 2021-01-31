@@ -1,0 +1,6 @@
+numpy==1.19.1
+opencv-python==4.3.0.38
+Pillow==7.2.0
+scipy==1.5.2
+torch==1.6.0
+torchvision==0.7.0
