@@ -15,8 +15,9 @@ a video file:
 C++:
 
 Compilation examples:
-g++ -ggdb `pkg-config --cflags --libs /usr/local/Cellar/opencv3/3.4.2/lib/pkgconfig/opencv.pc` colorizeImage.cpp -o colorizeImage.out
-g++ -ggdb `pkg-config --cflags --libs /usr/local/Cellar/opencv3/3.4.2/lib/pkgconfig/opencv.pc` colorizeVideo.cpp -o colorizeVideo.out
+g++ `pkg-config --cflags --libs opencv4` colorizeImage.cpp -o colorizeImage.out -lopencv_core -lopencv_dnn -lopencv_highgui -lopencv_imgcodecs -lopencv_imgproc -std=c++11 
+g++ `pkg-config --cflags --libs opencv4` colorizeVideo.cpp -o colorizeVideo.out -lopencv_core -lopencv_dnn -lopencv_highgui -lopencv_imgcodecs -lopencv_imgproc -lopencv_videoio -std=c++11 
+
 
 Commandline usage to colorize 
 a single image:
