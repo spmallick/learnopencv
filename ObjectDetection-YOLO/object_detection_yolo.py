@@ -1,7 +1,9 @@
 # This code is written at BigVision LLC. It is based on the OpenCV project. It is subject to the license terms in the LICENSE file found in this distribution and at http://opencv.org/license.html
 
-# Usage example:  python3 object_detection_yolo.py --video=run.mp4
-#                 python3 object_detection_yolo.py --image=bird.jpg
+# Usage example:  python3 object_detection_yolo.py --video=run.mp4 --device 'cpu'
+#                 python3 object_detection_yolo.py --video=run.mp4 --device 'gpu'
+#                 python3 object_detection_yolo.py --image=bird.jpg --device 'cpu'
+#                 python3 object_detection_yolo.py --image=bird.jpg --device 'gpu'
 
 import cv2 as cv
 import argparse
@@ -16,6 +18,7 @@ inpWidth = 416       #Width of network's input image
 inpHeight = 416      #Height of network's input image
 
 parser = argparse.ArgumentParser(description='Object Detection using YOLO in OPENCV')
+parser.add_argument('--device', default='cpu', help="Device to perform inference on 'cpu' or 'gpu'.")
 parser.add_argument('--image', help='Path to image file.')
 parser.add_argument('--video', help='Path to video file.')
 args = parser.parse_args()
@@ -31,8 +34,15 @@ modelConfiguration = "yolov3.cfg"
 modelWeights = "yolov3.weights"
 
 net = cv.dnn.readNetFromDarknet(modelConfiguration, modelWeights)
-net.setPreferableBackend(cv.dnn.DNN_BACKEND_OPENCV)
-net.setPreferableTarget(cv.dnn.DNN_TARGET_CPU)
+
+if(args.device == 'cpu'):
+    net.setPreferableBackend(cv.dnn.DNN_BACKEND_OPENCV)
+    net.setPreferableTarget(cv.dnn.DNN_TARGET_CPU)
+    print('Using CPU device.')
+elif(args.device == 'gpu'):
+    net.setPreferableBackend(cv.dnn.DNN_BACKEND_CUDA)
+    net.setPreferableTarget(cv.dnn.DNN_TARGET_CUDA)
+    print('Using GPU device.')
 
 # Get the names of the output layers
 def getOutputsNames(net):
