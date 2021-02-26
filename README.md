@@ -10,7 +10,6 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 </a>
 
 ## List of Blog Posts
-https://github.com/spmallick/learnopencv/blob/master/Classification-with-localization-convert-any-keras-classifier-into-a-detector/README.md
 | Blog Post | |
 | ------------- |:-------------|
 |[Video Classification & Human Activity Recognition](https://learnopencv.com/introduction-to-video-classification-human-activity-recognition/) | [Code](https://github.com/spmallick/learnopencv/tree/master/video-classification-and-human-activity-recognition)
