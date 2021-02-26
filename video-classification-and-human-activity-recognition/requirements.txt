@@ -1,0 +1,9 @@
+tensorflow==2.4.1
+numpy==1.18.5
+opencv-contrib-python==4.1.2.30
+sklearn==0.22.2.post1
+matplotlib==3.2.2
+urllib3==1.24.3
+pafy==0.5.5
+moviepy==0.2.3.5
+youtube_dl
