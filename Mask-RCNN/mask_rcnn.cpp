@@ -18,6 +18,7 @@ const char* keys =
 "{help h usage ? | | Usage examples: \n\t\t./mask-rcnn.out --image=traffic.jpg \n\t\t./mask-rcnn.out --video=sample.mp4}"
 "{image i        |<none>| input image   }"
 "{video v       |<none>| input video   }"
+"{device d       |<none| cpu or gpu> }"
 ;
 using namespace cv;
 using namespace dnn;
@@ -50,6 +51,8 @@ int main(int argc, char** argv)
     ifstream ifs(classesFile.c_str());
     string line;
     while (getline(ifs, line)) classes.push_back(line);
+
+    string device = parser.get<String>("device");
     
     // Load the colors
     string colorsFile = "colors.txt";
@@ -70,8 +73,18 @@ int main(int argc, char** argv)
 
     // Load the network
     Net net = readNetFromTensorflow(modelWeights, textGraph);
-    net.setPreferableBackend(DNN_BACKEND_OPENCV);
-    net.setPreferableTarget(DNN_TARGET_CPU);
+
+    if (device == "cpu")
+    {
+        cout << "Using CPU device" << endl;
+        net.setPreferableBackend(DNN_TARGET_CPU);
+    }
+    else if (device == "gpu")
+    {
+        cout << "Using GPU device" << endl;
+        net.setPreferableBackend(DNN_BACKEND_CUDA);
+        net.setPreferableTarget(DNN_TARGET_CUDA);
+    }
     
     // Open a video file or an image file or a camera stream.
     string str, outputFile;
@@ -86,6 +99,7 @@ int main(int argc, char** argv)
         {
             // Open the image file
             str = parser.get<String>("image");
+
             //cout << "Image file input : " << str << endl;
             ifstream ifile(str);
             if (!ifile) throw("error");
@@ -104,7 +118,7 @@ int main(int argc, char** argv)
             outputFile = str;
         }
         // Open the webcam
-        else cap.open(parser.get<int>("device"));
+        else cap.open(parser.get<int>("webcam"));
         
     }
     catch(...) {
