@@ -12,6 +12,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
+|[How to use OpenCV DNN Module with NVIDIA GPUs](https://learnopencv.com/opencv-dnn-with-gpu-support/) | [code](https://github.com/spmallick/learnopencv/tree/master/OpenCV-dnn-gpu-support-Linux) |
 |[Video Classification & Human Activity Recognition](https://learnopencv.com/introduction-to-video-classification-human-activity-recognition/) | [Code](https://github.com/spmallick/learnopencv/tree/master/video-classification-and-human-activity-recognition)
 |[Face Recognition with ArcFace](https://www.learnopencv.com/face-recognition-with-arcface/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Face-Recognition-with-ArcFace)
 |[Background Subtraction with OpenCV and BGS Libraries](https://www.learnopencv.com/background-subtraction-with-opencv-and-bgs-libraries/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Background-Subtraction) |
