@@ -7,7 +7,7 @@ Download models from
 
 COCO : https://www.dropbox.com/s/2h2bv29a130sgrk/pose_iter_440000.caffemodel?dl=0
 
-MPI : https://www.dropbox.com/s/drumc6dzllfed16/pose_iter_160000.caffemodel?dl=0"
+MPI : https://www.dropbox.com/s/drumc6dzllfed16/pose_iter_160000.caffemodel?dl=0
 
 ## Run Code:
 
@@ -35,7 +35,3 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 <img src="https://www.learnopencv.com/wp-content/uploads/2020/04/AI-Courses-By-OpenCV-Github.png">
 </p>
 </a>
-
-
-
-https://learnopencv.com/opencv-dnn-with-gpu-support/
