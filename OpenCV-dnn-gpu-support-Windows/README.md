@@ -15,10 +15,10 @@ MPI : https://www.dropbox.com/s/drumc6dzllfed16/pose_iter_160000.caffemodel?dl=0
 ```
 mkdir build
 cd build
-cmake ..
-make
+cmake -G "Visual Studio 16 2019" ..
+cmake --build . --config Release
 cd ..
-./build/OpenPoseVideo <input_file> <gpu/cpu>
+./build/Release/OpenPoseVideo <input_file> <gpu/cpu>
 ```
 
 ### Python
