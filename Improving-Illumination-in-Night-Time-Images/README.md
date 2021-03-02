@@ -5,11 +5,11 @@
 
 ### Python
 
-To run the code in Python, please use `python night_images.py`
+To run the code in Python, please go into the `python` folder and use `python night_images.py`
 
 ### C++
 
-To run the code in C++, please follow the steps given below:
+To run the code in C++, please go into the `cpp` folder and follow the steps given below:
 
 ```
 mkdir build
