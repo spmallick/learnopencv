@@ -18,7 +18,7 @@ const char* keys =
 "{help h usage ? | | Usage examples: \n\t\t./mask-rcnn.out --image=traffic.jpg \n\t\t./mask-rcnn.out --video=sample.mp4}"
 "{image i        |<none>| input image   }"
 "{video v       |<none>| input video   }"
-"{device d       |<none| cpu or gpu> }"
+"{device d       |<none>| device }"
 ;
 using namespace cv;
 using namespace dnn;
