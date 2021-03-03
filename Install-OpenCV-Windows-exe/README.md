@@ -1,6 +1,9 @@
-# Installers for Install OpenCV on Windows – C++ / Python
+# Windows Executables for Installing OpenCV on Windows
 
-This repository contains the C++ installers for [Install OpenCV on Windows](https://learnopencv.com/install-opencv-on-windows/)
+This repository contains the C++ installers described on our blog post [Install OpenCV on Windows](https://learnopencv.com/install-opencv-on-windows/).
+
+## Overview
+Just download the relevant exe file from the table given below depending on your Visual Studio version and the opencv version you want. After download, double click on the exe file and OpenCV for C++ development will be installed. [You can download the sample code from here](https://www.dropbox.com/s/fhef2wchmrhmbz7/sampleCode.zip?dl=1) to try out the installation. [For more details, please check out the blog post]((https://learnopencv.com/install-opencv-on-windows/).
 
 ## Download links
 | OpenCV Version | Visual Studio 16 | Visual Studio 15 | Visual Studio 14 |
