@@ -86,7 +86,7 @@ def reduce_init_t(init_t):
     init_t = init_t.astype(np.float64)/255
     return init_t
 
-im = cv2.imread('dark_light.png')
+im = cv2.imread('dark.png')
 orig = im.copy()
 
 tmin = 0.1   # minimum value for t to make J image
@@ -106,36 +106,3 @@ cv2.imshow('F_enhanced', f_enhanced)
 cv2.imshow('F_enhanced2', f_enhanced2)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
-# dehaze(I, tmin, w, alpha, omega, p, eps)
-# m, n, _ = I.shape
-# Idark, Ibright = get_illumination_channel(I, w)
-
-# A = get_atmosphere(I, Ibright, p)
-# print('atmosphere:{}'.format(A))
-
-# init_t = get_initial_transmission(A, Ibright)
-# # cv2.imshow('coindndf_orig', (init_t*255).astype(np.uint8))
-# init_t2 = reduce_init_t(init_t)
-
-# corrected_t = get_corrected_transmission(I, A, Idark, Ibright, init_t, alpha, omega, w)
-# # cv2.imshow('corrected_t_orig', (corrected_t*255).astype(np.uint8))
-# corrected_t2 = get_corrected_transmission(I, A, Idark, Ibright, init_t2, alpha, omega, w)
-# # cv2.imshow('corrected_t', (corrected_t2*255).astype(np.uint8))
-# # guided filter
-# normI = (I - I.min()) / (I.max() - I.min())  # min-max normalize I
-# refined_t = guided_filter(normI, corrected_t, w, eps)
-# refined_t2 = guided_filter(normI, corrected_t2, w, eps)
-
-# J_refined = get_final_image(I, A, refined_t, tmin)
-# J_refined2 = get_final_image(I, A, refined_t2, tmin)
-# enhanced = (J_refined*255).astype(np.uint8)
-# f_enhanced = cv2.detailEnhance(enhanced, sigma_s=10, sigma_r=0.15)
-# f_enhanced = cv2.edgePreservingFilter(f_enhanced, flags=1, sigma_s=64, sigma_r=0.2)
-# enhanced2 = (J_refined2*255).astype(np.uint8)
-# f_enhanced2 = cv2.detailEnhance(enhanced2, sigma_s=10, sigma_r=0.15)
-# f_enhanced2 = cv2.edgePreservingFilter(f_enhanced2, flags=1, sigma_s=64, sigma_r=0.2)
-# cv2.imshow('original', orig)
-# cv2.imshow('F_enhanced', f_enhanced)
-# cv2.imshow('F_enhanced2', f_enhanced2)
-# cv2.waitKey(0)
-# cv2.destroyAllWindows()
