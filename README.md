@@ -12,7 +12,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
-|[Improving Illumination in Night Time Images](https://learnopencv.com/improving-illumination-in-night-time-images/){target="_blank"} | [Code](https://github.com/spmallick/learnopencv/tree/master/Improving-Illumination-in-Night-Time-Images) |
+|[Improving Illumination in Night Time Images](https://learnopencv.com/improving-illumination-in-night-time-images/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Improving-Illumination-in-Night-Time-Images) |
 |[Video Classification and Human Activity Recognition](https://learnopencv.com/introduction-to-video-classification-and-human-activity-recognition/) | [Code](https://github.com/spmallick/learnopencv/tree/master/video-classification-and-human-activity-recognition) |
 |[How to use OpenCV DNN Module with Nvidia GPU on Windows](https://learnopencv.com/how-to-use-opencv-dnn-module-with-nvidia-gpu-on-windows) | [Code](https://github.com/spmallick/learnopencv/tree/master/OpenCV-dnn-gpu-support-Windows) |
 |[How to use OpenCV DNN Module with NVIDIA GPUs](https://learnopencv.com/opencv-dnn-with-gpu-support/) | [Code](https://github.com/spmallick/learnopencv/tree/master/OpenCV-dnn-gpu-support-Linux) |
