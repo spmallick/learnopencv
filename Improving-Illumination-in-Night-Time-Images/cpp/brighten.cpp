@@ -1,5 +1,4 @@
 #include <iostream>
-#include <bits/stdc++.h> 
 #include <opencv2/core/core.hpp>
 #include <opencv2/opencv.hpp>
 #include <opencv2/highgui/highgui.hpp>
@@ -273,8 +272,10 @@ cv::Mat dehaze(cv::Mat img, float tmin=0.1, int w = 15, float alpha=0.4, float o
 int main() {
 	cv::Mat img = cv::imread("dark.png");
 	cv::Mat out_img = dehaze(img);
-
-	cv::imshow("im", out_img);
+	cv::Mat out_img2 = dehaze(img,0.1,15,0.4,0.75,0.1,1e-3,true);
+	cv::imshow("original",img);
+	cv::imshow("F_enhanced", out_img);
+	cv::imshow("F_enhanced2", out_img2);
 	cv::waitKey(0);
 	return 0;
 }
