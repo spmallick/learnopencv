@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8.12)
 
 PROJECT(Project)
 
-#SET(OpenCV_DIR /path/to/opencv/folder)
+SET(OpenCV_DIR /path/to/opencv/config)
 find_package(OpenCV REQUIRED)
 
 include_directories(${OpenCV_INCLUDE_DIRS})

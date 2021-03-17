@@ -1,5 +1,4 @@
 import cv2 as cv
-import numpy as np
 
 # Print OpenCV Version
 print(cv.__version__)
