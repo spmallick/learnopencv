@@ -66,14 +66,63 @@ int main(int argc, char** argv)
 
     vector<string> genderList = {"Male", "Female"};
 
+
+    cout << "USAGE : ./AgeGender <videoFile> " << endl;
+    cout << "USAGE : ./AgeGender <device> " << endl;
+    cout << "USAGE : ./AgeGender <videoFile> <device>" << endl;
+
+    string device = "cpu";
+
+    string videoFile = "0";
+
+    // Take arguments from commmand line
+    if (argc == 2)
+    {   
+      if((string)argv[1] == "gpu")
+        device = "gpu";
+      else if((string)argv[1] == "cpu")
+        device = "cpu";
+      else 
+      videoFile = argv[1];
+    }
+    else if (argc == 3)
+    {
+        videoFile = argv[1];
+        if((string)argv[2] == "gpu")
+            device = "gpu";
+    }
+
     // Load Network
     Net ageNet = readNet(ageModel, ageProto);
     Net genderNet = readNet(genderModel, genderProto);
     Net faceNet = readNet(faceModel, faceProto);
 
+    if (device == "cpu")
+    {
+        cout << "Using CPU device" << endl;
+        ageNet.setPreferableBackend(DNN_TARGET_CPU);
+        
+        genderNet.setPreferableBackend(DNN_TARGET_CPU);
+
+        faceNet.setPreferableBackend(DNN_TARGET_CPU);
+    }
+    else if (device == "gpu")
+    {
+        cout << "Using GPU device" << endl;
+        ageNet.setPreferableBackend(DNN_BACKEND_CUDA);
+        ageNet.setPreferableTarget(DNN_TARGET_CUDA);
+
+        genderNet.setPreferableBackend(DNN_BACKEND_CUDA);
+        genderNet.setPreferableTarget(DNN_TARGET_CUDA);
+
+        faceNet.setPreferableBackend(DNN_BACKEND_CUDA);
+        faceNet.setPreferableTarget(DNN_TARGET_CUDA);
+    }
+
+
     VideoCapture cap;
-    if (argc > 1)
-        cap.open(argv[1]);
+    if (videoFile.length() > 1)
+        cap.open(videoFile);
     else
         cap.open(0);
     int padding = 20;
