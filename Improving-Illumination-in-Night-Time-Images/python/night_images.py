@@ -74,7 +74,7 @@ def dehaze(I, tmin, w, alpha, omega, p, eps, reduce=False):
     enhanced = (J_refined*255).astype(np.uint8)
     f_enhanced = cv2.detailEnhance(enhanced, sigma_s=10, sigma_r=0.15)
     f_enhanced = cv2.edgePreservingFilter(f_enhanced, flags=1, sigma_s=64, sigma_r=0.2)
-    return enhanced
+    return f_enhanced
 
 def reduce_init_t(init_t):
     init_t = (init_t*255).astype(np.uint8)
