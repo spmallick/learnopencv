@@ -4,7 +4,7 @@ Create a custom low-cost stereo camera and capture depth maps with it using Open
 
 ## Using the C++ code
 ### Compilation
-To compile the `obstacle_avoidance.cpp`, `obstacle_avoidance.cpp` and `disparity2depth_calib.cpp` code files, use the following:
+To compile the `disparity_params_gui.cpp`, `obstacle_avoidance.cpp` and `disparity2depth_calib.cpp` code files, use the following:
 ```shell
 mkdir build
 cd build
@@ -18,7 +18,7 @@ cmake --build . --config Release
 Refer to the following to use the compiled files:
 
 ```shell
-./build/obstacle_avoidance
+./build/disparity_params_gui
 ./build/obstacle_avoidance
 ./build/disparity2depth_calib
 ```
@@ -28,7 +28,7 @@ Refer to the following to use the compiled files:
 Refer to the following to use the `obstacle_avoidance.py`, `obstacle_avoidance.py` and `disparity2depth_calib.py` files respectively:
 
 ```shell
-python3 obstacle_avoidance.py
+python3 disparity_params_gui.py
 python3 obstacle_avoidance.py
 python3 disparity2depth_calib.py
 ```
