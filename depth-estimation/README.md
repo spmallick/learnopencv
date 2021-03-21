@@ -19,8 +19,8 @@ Refer to the following to use the compiled files:
 
 ```shell
 ./build/disparity_params_gui
-./build/obstacle_avoidance
 ./build/disparity2depth_calib
+./build/obstacle_avoidance
 ```
 
 ### Using the python code
@@ -29,8 +29,8 @@ Refer to the following to use the `obstacle_avoidance.py`, `obstacle_avoidance.p
 
 ```shell
 python3 disparity_params_gui.py
-python3 obstacle_avoidance.py
 python3 disparity2depth_calib.py
+python3 obstacle_avoidance.py
 ```
 
 # AI Courses by OpenCV
