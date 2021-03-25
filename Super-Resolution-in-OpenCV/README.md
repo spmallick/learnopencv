@@ -1,5 +1,5 @@
 # Super Resolution in OpenCV
-This folder contains the code for the blog post [Super Resolution in OpenCV](https://learnopencv.com/super-resolution-in-opencv/)
+This folder contains code for the blog post [Super Resolution in OpenCV](https://learnopencv.com/super-resolution-in-opencv/)
 
 Please note that the code requires installation of OpenCV Contrib module along with the core modules.
 
