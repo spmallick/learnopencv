@@ -37,11 +37,11 @@
 
 ### Python
 
-To run the code in Python, please go into the `python` folder and and execute the Python scripts in each of the respective sub-folders.
+To run the code in Python, please go into the `python` folder and execute the Python scripts in each of the respective sub-folders.
 
 ### C++
 
-To run the code in C++, please go into the `cpp` folder, then into each of the respective sub-folders and follow the steps below:
+To run the code in C++, please go into the `cpp` folder, then go into each of the respective sub-folders and follow the steps below:
 
 ```
 mkdir build
