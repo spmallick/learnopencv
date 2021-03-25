@@ -1,4 +1,14 @@
 # Super Resolution in OpenCV
+This folder contains the code for the blog post [Super Resolution in OpenCV](https://learnopencv.com/super-resolution-in-opencv/)
+
+The model files used in the example code can be downloaded from the links below.
+
+[EDSR](https://github.com/Saafke/EDSR_Tensorflow/tree/master/models)
+[ESPCN](https://github.com/fannymonori/TF-ESPCN/tree/master/export)
+[FSRCNN](https://github.com/Saafke/FSRCNN_Tensorflow/tree/master/models)
+[LapSRN](https://github.com/fannymonori/TF-LapSRN/tree/master/export)
+
+You should also check out [opencv_contrib repository](https://github.com/opencv/opencv_contrib/tree/master/modules/dnn_superres) for more details on OpenCV Super Resolution
 
 
 ## Instructions
