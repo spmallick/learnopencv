@@ -1,6 +1,8 @@
 # Super Resolution in OpenCV
 This folder contains the code for the blog post [Super Resolution in OpenCV](https://learnopencv.com/super-resolution-in-opencv/)
 
+Please note that the code requires installation of OpenCV Contrib module along with the core modules.
+
 The model files used in the example code can be downloaded from the links below.
 
 * [EDSR](https://github.com/Saafke/EDSR_Tensorflow/tree/master/models)
