@@ -25,7 +25,7 @@ Refer to the following to use the compiled files:
 
 ### Using the python code
 
-Refer to the following to use the `disparity_params_gui.py`, `obstacle_avoidance.py` and `disparity2depth_calib.py` files respectively:
+To run the code in Python, please go into the `python` folder and refer to the following to use the `disparity_params_gui.py`, `obstacle_avoidance.py` and `disparity2depth_calib.py` files respectively:
 
 ```shell
 python3 disparity_params_gui.py
