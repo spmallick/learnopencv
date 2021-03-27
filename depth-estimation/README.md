@@ -2,18 +2,18 @@
 
 Create a custom low-cost stereo camera and capture depth maps with it using OpenCV.
 
-## Using the C++ code
-### Compilation
-To compile the `disparity_params_gui.cpp`, `obstacle_avoidance.cpp` and `disparity2depth_calib.cpp` code files, use the following:
+## Usage
+
+### C++ code
+
+To run the code in C++, please go into the `cpp` folder, then compile the `disparity_params_gui.cpp`, `obstacle_avoidance.cpp` and `disparity2depth_calib.cpp` code files, use the following:
+
 ```shell
 mkdir build
 cd build
 cmake ..
 cmake --build . --config Release
 ```
-## Usage
-
-### Using the C++ code
 
 Refer to the following to use the compiled files:
 
