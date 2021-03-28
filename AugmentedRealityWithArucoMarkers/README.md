@@ -40,7 +40,7 @@ Command line usage for running the code
      ./augmented_reality_with_aruco.out --video=test.mp4
     ```
 
-### Results of YOLOv3
+### Results
 <img src = "./augmented-reality-example.jpg" width = 1000 height = 282/>
 
 

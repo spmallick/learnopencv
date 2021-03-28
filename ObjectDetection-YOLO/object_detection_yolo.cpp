@@ -14,6 +14,7 @@ const char* keys =
 "{help h usage ? | | Usage examples: \n\t\t./object_detection_yolo.out --image=dog.jpg \n\t\t./object_detection_yolo.out --video=run_sm.mp4}"
 "{image i        |<none>| input image   }"
 "{video v       |<none>| input video   }"
+"{device d       |<cpu>| input device   }"
 ;
 using namespace cv;
 using namespace dnn;
@@ -49,6 +50,9 @@ int main(int argc, char** argv)
     ifstream ifs(classesFile.c_str());
     string line;
     while (getline(ifs, line)) classes.push_back(line);
+
+    string device = "cpu";
+    device = parser.get<String>("device");
     
     // Give the configuration and weight files for the model
     String modelConfiguration = "yolov3.cfg";
@@ -56,8 +60,19 @@ int main(int argc, char** argv)
 
     // Load the network
     Net net = readNetFromDarknet(modelConfiguration, modelWeights);
-    net.setPreferableBackend(DNN_BACKEND_OPENCV);
-    net.setPreferableTarget(DNN_TARGET_CPU);
+
+    if (device == "cpu")
+    {
+        cout << "Using CPU device" << endl;
+        net.setPreferableBackend(DNN_TARGET_CPU);
+    }
+    else if (device == "gpu")
+    {
+        cout << "Using GPU device" << endl;
+        net.setPreferableBackend(DNN_BACKEND_CUDA);
+        net.setPreferableTarget(DNN_TARGET_CUDA);
+    }
+
     
     // Open a video file or an image file or a camera stream.
     string str, outputFile;
@@ -120,7 +135,7 @@ int main(int argc, char** argv)
             break;
         }
         // Create a 4D blob from a frame.
-        blobFromImage(frame, blob, 1/255.0, cvSize(inpWidth, inpHeight), Scalar(0,0,0), true, false);
+        blobFromImage(frame, blob, 1/255.0, cv::Size(inpWidth, inpHeight), Scalar(0,0,0), true, false);
         
         //Sets the input to the network
         net.setInput(blob);
