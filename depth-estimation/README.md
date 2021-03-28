@@ -37,10 +37,6 @@ python3 disparity2depth_calib.py
 python3 obstacle_avoidance.py
 ```
 
-### C++
-
-To run the code in C++, please go into the `cpp` folder. Then compile the code files, use the following commands:
-=======
 ## Usage
 
 ### C++ code
