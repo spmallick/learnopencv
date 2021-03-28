@@ -39,7 +39,7 @@ python3 obstacle_avoidance.py
 
 ### C++
 
-To run the code in C++, please go into the `cpp` folder. To compile the `disparity_params_gui.cpp`, `obstacle_avoidance.cpp` and `disparity2depth_calib.cpp` code files, use the following:
+To run the code in C++, please go into the `cpp` folder. To compile the code files, use the following commands:
 
 ```shell
 mkdir build
@@ -48,7 +48,7 @@ cmake ..
 cmake --build . --config Release
 ```
 
-Use the following commands to use the compiled files:
+Use the following commands to execute the compiled files:
 
 ```shell
 ./build/disparity_params_gui
