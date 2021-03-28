@@ -60,7 +60,7 @@ int main()
   cv::Ptr<cv::StereoBM> stereo = cv::StereoBM::create();
 
   // Reading the stored the StereoBM parameters
-  cv::FileStorage cv_file = cv::FileStorage("data/depth_estimation_params_cpp.xml", cv::FileStorage::READ);
+  cv::FileStorage cv_file = cv::FileStorage("../data/depth_estimation_params_cpp.xml", cv::FileStorage::READ);
   cv_file["numDisparities"] >> numDisparities;
   cv_file["blockSize"] >> blockSize;
   cv_file["preFilterType"] >> preFilterType;
@@ -91,7 +91,7 @@ int main()
   cv::Mat Right_Stereo_Map1, Right_Stereo_Map2;
 
   // Reading the mapping values for stereo image rectification
-  cv::FileStorage cv_file2 = cv::FileStorage("data/stereo_rectify_maps.xml", cv::FileStorage::READ);
+  cv::FileStorage cv_file2 = cv::FileStorage("../data/stereo_rectify_maps.xml", cv::FileStorage::READ);
   cv_file2["Left_Stereo_Map_x"] >> Left_Stereo_Map1;
   cv_file2["Left_Stereo_Map_y"] >> Left_Stereo_Map2;
   cv_file2["Right_Stereo_Map_x"] >> Right_Stereo_Map1;
@@ -195,7 +195,7 @@ int main()
   M = sol.at<float>(0,0);
 
   // Storing the updated value of M along with the stereo parameters
-  cv::FileStorage cv_file3 = cv::FileStorage("data/depth_estimation_params_cpp.xml", cv::FileStorage::WRITE);
+  cv::FileStorage cv_file3 = cv::FileStorage("../data/depth_estimation_params_cpp.xml", cv::FileStorage::WRITE);
   cv_file3.write("numDisparities",numDisparities);
   cv_file3.write("blockSize",blockSize);
   cv_file3.write("preFilterType",preFilterType);

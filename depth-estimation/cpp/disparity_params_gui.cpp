@@ -100,7 +100,7 @@ int main()
   cv::Mat Right_Stereo_Map1, Right_Stereo_Map2;
 
   // Reading the mapping values for stereo image rectification
-  cv::FileStorage cv_file2 = cv::FileStorage("data/stereo_rectify_maps.xml", cv::FileStorage::READ);
+  cv::FileStorage cv_file2 = cv::FileStorage("../data/stereo_rectify_maps.xml", cv::FileStorage::READ);
   cv_file2["Left_Stereo_Map_x"] >> Left_Stereo_Map1;
   cv_file2["Left_Stereo_Map_y"] >> Left_Stereo_Map2;
   cv_file2["Right_Stereo_Map_x"] >> Right_Stereo_Map1;
@@ -200,7 +200,7 @@ int main()
   
   std::cout << "Saving depth estimation paraeters ......";
 
-  cv::FileStorage cv_file = cv::FileStorage("data/depth_estimation_params_cpp.xml", cv::FileStorage::WRITE);
+  cv::FileStorage cv_file = cv::FileStorage("../data/depth_estimation_params_cpp.xml", cv::FileStorage::WRITE);
   cv_file.write("numDisparities",numDisparities);
   cv_file.write("blockSize",blockSize);
   cv_file.write("preFilterType",preFilterType);
