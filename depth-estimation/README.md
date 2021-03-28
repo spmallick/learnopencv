@@ -39,7 +39,7 @@ python3 obstacle_avoidance.py
 
 ### C++
 
-To run the code in C++, please go into the `cpp` folder. To compile the code files, use the following commands:
+To run the code in C++, please go into the `cpp` folder. Then compile the code files, use the following commands:
 
 ```shell
 mkdir build
