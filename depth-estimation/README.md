@@ -15,7 +15,6 @@ cmake ..
 cmake --build . --config Release
 ```
 
-Refer to the following to use the compiled files:
 
 ```shell
 ./build/disparity_params_gui
