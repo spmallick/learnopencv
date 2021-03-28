@@ -2,6 +2,45 @@
 
 Create a custom low-cost stereo camera and capture depth maps with it using OpenCV.
 
+## Directory Structure
+**All the code files and folders follow the following structure.**
+
+```
+├── cpp
+│   ├── disparity2depth_calib.cpp
+│   ├── disparity_params_gui.cpp
+│   ├── obstacle_avoidance.cpp
+│   └── CMakeLists.txt
+├── data
+│   ├── depth_estimation_params.xml
+│   ├── depth_estimation_params_cpp.xml
+│   ├── depth_estmation_params_py.xml
+│   ├── depth_params.xml
+│   └── stereo_rectify_maps.xml
+├── python
+│   ├── disparity2depth_calib.py
+│   ├── disparity_params_gui.py
+│   ├── obstacle_avoidance.py
+│   └── requirements.txt
+└── README.md
+```
+
+## Instructions
+
+### Python
+
+To run the code in Python, please go into the `python` folder and execute the Python scripts using the following commands:
+
+```shell
+python3 disparity_params_gui.py
+python3 disparity2depth_calib.py
+python3 obstacle_avoidance.py
+```
+
+### C++
+
+To run the code in C++, please go into the `cpp` folder. Then compile the code files, use the following commands:
+=======
 ## Usage
 
 ### C++ code
@@ -15,6 +54,9 @@ cmake ..
 cmake --build . --config Release
 ```
 
+Use the following commands to execute the compiled files:
+=======
+
 
 ```shell
 ./build/disparity_params_gui
@@ -22,6 +64,8 @@ cmake --build . --config Release
 ./build/obstacle_avoidance
 ```
 
+
+=======
 ### Using the python code
 
 To run the code in Python, please go into the `python` folder and refer to the following to use the `disparity_params_gui.py`, `obstacle_avoidance.py` and `disparity2depth_calib.py` files respectively:
@@ -31,6 +75,7 @@ python3 disparity_params_gui.py
 python3 disparity2depth_calib.py
 python3 obstacle_avoidance.py
 ```
+
 
 # AI Courses by OpenCV
 
