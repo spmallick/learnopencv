@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<opencv_storage>
+<fRelLBSPThreshold>3.3300000429153442e-01</fRelLBSPThreshold>
+<nDescDistThresholdOffset>3</nDescDistThresholdOffset>
+<nMinColorDistThreshold>30</nMinColorDistThreshold>
+<nBGSamples>50</nBGSamples>
+<nRequiredBGSamples>2</nRequiredBGSamples>
+<nSamplesForMovingAvgs>100</nSamplesForMovingAvgs>
+<showOutput>0</showOutput>
+</opencv_storage>

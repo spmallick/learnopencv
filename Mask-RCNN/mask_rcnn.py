@@ -18,6 +18,7 @@ maskThreshold = 0.3  # Mask threshold
 parser = argparse.ArgumentParser(description='Use this script to run Mask-RCNN object detection and segmentation')
 parser.add_argument('--image', help='Path to image file')
 parser.add_argument('--video', help='Path to video file.')
+parser.add_argument("--device", default="cpu", help="Device to inference on")
 args = parser.parse_args()
 
 # Draw the predicted bounding box, colorize and show the mask on the image
@@ -51,7 +52,7 @@ def drawBox(frame, classId, conf, left, top, right, bottom, classMask):
 
     # Draw the contours on the image
     mask = mask.astype(np.uint8)
-    im2, contours, hierarchy = cv.findContours(mask,cv.RETR_TREE,cv.CHAIN_APPROX_SIMPLE)
+    contours, hierarchy = cv.findContours(mask,cv.RETR_TREE,cv.CHAIN_APPROX_SIMPLE)
     cv.drawContours(frame[top:bottom+1, left:right+1], contours, -1, color, 3, cv.LINE_8, hierarchy, 100)
 
 # For each frame, extract the bounding box and mask for each detected object
@@ -103,8 +104,15 @@ modelWeights = "./mask_rcnn_inception_v2_coco_2018_01_28/frozen_inference_graph.
 
 # Load the network
 net = cv.dnn.readNetFromTensorflow(modelWeights, textGraph);
-net.setPreferableBackend(cv.dnn.DNN_BACKEND_OPENCV)
-net.setPreferableTarget(cv.dnn.DNN_TARGET_CPU)
+
+if args.device == "cpu":
+    net.setPreferableBackend(cv.dnn.DNN_TARGET_CPU)
+    print("Using CPU device")
+elif args.device == "gpu":
+    net.setPreferableBackend(cv.dnn.DNN_BACKEND_CUDA)
+    net.setPreferableTarget(cv.dnn.DNN_TARGET_CUDA)
+    print("Using GPU device")
+
 
 # Load the classes
 colorsFile = "colors.txt";

@@ -34,3 +34,14 @@ To do the same for Python code, edit `trackerType` variable in [line number 46](
 
 ## GOTURN Tracker
 For instructions regarding how to use GOTURN tracker, please refer to the blog on [GOTURN: Deep Learning based Object Tracking](https://www.learnopencv.com/goturn-deep-learning-based-object-tracking) and the corresponding [GitHub repository](https://github.com/spmallick/learnopencv/tree/master/GOTURN).
+
+
+# AI Courses by OpenCV
+
+Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/courses/) is a great place to start. 
+
+<a href="https://opencv.org/courses/">
+<p align="center"> 
+<img src="https://www.learnopencv.com/wp-content/uploads/2020/04/AI-Courses-By-OpenCV-Github.png">
+</p>
+</a>

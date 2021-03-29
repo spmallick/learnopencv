@@ -26,3 +26,14 @@ The enclosed notebook lets you
 2. Use the ONNX model for inference in Caffe2
 
 More details can be found in the [blog](https://www.learnopencv.com/pytorch-model-inference-using-onnx-and-caffe2/)
+
+
+# AI Courses by OpenCV
+
+Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/courses/) is a great place to start. 
+
+<a href="https://opencv.org/courses/">
+<p align="center"> 
+<img src="https://www.learnopencv.com/wp-content/uploads/2020/04/AI-Courses-By-OpenCV-Github.png">
+</p>
+</a>

@@ -19,6 +19,7 @@ inpHeight = 416 #608     #Height of network's input image
 parser = argparse.ArgumentParser(description='Object Detection using YOLO in OPENCV')
 parser.add_argument('--image', help='Path to image file.')
 parser.add_argument('--video', help='Path to video file.')
+parser.add_argument("--device", default="cpu", help="Device to inference on")
 args = parser.parse_args()
         
 # Load names of classes
@@ -34,8 +35,13 @@ modelConfiguration = "/data-ssd/sunita/snowman/darknet-yolov3.cfg";
 modelWeights = "/data-ssd/sunita/snowman/darknet-yolov3_final.weights";
 
 net = cv.dnn.readNetFromDarknet(modelConfiguration, modelWeights)
-net.setPreferableBackend(cv.dnn.DNN_BACKEND_OPENCV)
-net.setPreferableTarget(cv.dnn.DNN_TARGET_CPU)
+if args.device == "cpu":
+    net.setPreferableBackend(cv.dnn.DNN_TARGET_CPU)
+    print("Using CPU device")
+elif args.device == "gpu":
+    net.setPreferableBackend(cv.dnn.DNN_BACKEND_CUDA)
+    net.setPreferableTarget(cv.dnn.DNN_TARGET_CUDA)
+    print("Using GPU device")
 
 # Get the names of the output layers
 def getOutputsNames(net):
