@@ -15,4 +15,7 @@ ENDMACRO()
 
 add_example(disparity_params_gui)
 add_example(disparity2depth_calib)
+
+add_example(obstacle_avoidance)
+=======
 add_example(obstacle_avoidance)
