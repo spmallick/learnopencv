@@ -1,3 +1,4 @@
+
 cmake_minimum_required(VERSION 2.8.12)
 
 set(CMAKE_CXX_STANDARD 14)
@@ -15,7 +16,4 @@ ENDMACRO()
 
 add_example(disparity_params_gui)
 add_example(disparity2depth_calib)
-
-add_example(obstacle_avoidance)
-=======
 add_example(obstacle_avoidance)
