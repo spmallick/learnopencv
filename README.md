@@ -9,13 +9,10 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 </p>
 </a>
 
-https://learnopencv.com/depth-perception-using-stereo-camera-python-c/
-
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
-|[Depth perception using stereo camera (Python/C++)](https://learnopencv.com/depth-perception-using-stereo-camera-python-c/
-)| [Code](https://github.com/spmallick/learnopencv/tree/master/Depth-Perception-Using-Stereo-Camera) |
+|[Depth perception using stereo camera (Python/C++)](https://learnopencv.com/depth-perception-using-stereo-camera-python-c/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Depth-Perception-Using-Stereo-Camera) |
 |[Contour Detection using OpenCV (Python/C++)](https://learnopencv.com/contour-detection-using-opencv-python-c/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Contour-Detection-using-OpenCV) |
 |[Super Resolution in OpenCV](https://learnopencv.com/super-resolution-in-opencv/)| [Code](https://github.com/spmallick/learnopencv/blob/master/Super-Resolution-in-OpenCV) |
 |[Improving Illumination in Night Time Images](https://learnopencv.com/improving-illumination-in-night-time-images/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Improving-Illumination-in-Night-Time-Images) |
