@@ -13,33 +13,57 @@ Command line usage for object detection using YOLOv3
 
 * Python
 
-  * A single image:
-    	
+  * Using CPU
 
+    * A single image:
+    ```bash
+    python3 object_detection_yolo.py --image=bird.jpg --device 'cpu'
+    ```
+
+    * A video file:
+     ```bash
+     python3 object_detection_yolo.py --video=run.mp4 --device 'cpu'
+     ```
+
+  * Using GPU
+
+    * A single image:
     ```bash
     python3 object_detection_yolo.py --image=bird.jpg --device 'gpu'
     ```
 
-  * A video file:
-
-       ```bash
-       python3 object_detection_yolo.py --video=run.mp4 --device 'gpu'
-       ```
+    * A video file:
+     ```bash
+     python3 object_detection_yolo.py --video=run.mp4 --device 'gpu'
+     ```
 
        
 
 * C++:
 
-  * A single image:
-        
+  * Using CPU
+
+    * A single image:
+
+    ```bash
+    ./build/object_detection_yolo --image=bird.jpg --device=cpu
+    ```
+
+    * A video file:
+
+    ```bash
+     ./build/object_detection_yolo --video=run.mp4 --device=cpu
+    ```
+
+  * Using GPU
+
+    * A single image:
 
     ```bash
     ./build/object_detection_yolo --image=bird.jpg --device=gpu
     ```
 
-    
-
-  * A video file:
+    * A video file:
 
     ```bash
      ./build/object_detection_yolo --video=run.mp4 --device=gpu
