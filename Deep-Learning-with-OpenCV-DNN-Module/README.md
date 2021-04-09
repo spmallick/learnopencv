@@ -28,16 +28,18 @@
 │   ├── object_detection_classes_coco.txt
 │   ├── ssd_mobilenet_v2_coco_2018_03_29.pbtxt.txt
 │   └── video_1.mp4
+├── outputs
+│   ├── image_result.jpg
+│   ├── result_image.jpg
+│   └── video_result.mp4
 ├── python
 │   ├── classification
 │   │   ├── classify.py
 │   │   └── README.md
-│   └── detection
-│       ├── detect_img.py
-│       ├── detect_vid.py
-│       ├── image_result.jpg
-│       ├── README.md
-│       └── video_result.mp4
+│   ├── detection
+│   │   ├── detect_img.py
+│   │   └── detect_vid.py
+│   └── requirements.txt
 └── README.md
 ```
 
@@ -81,6 +83,18 @@ cd ..
 ```
 
 
+
+## Outputs
+
+### Image Classification
+
+* ![](outputs/result_image.jpg)
+
+### Object Detection
+
+* ![](outputs/image_result.jpg)
+
+  
 
 # AI Courses by OpenCV
 
