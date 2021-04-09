@@ -44,5 +44,5 @@ int main(int, char**) {
                 2);
         
     imshow("Image", image);
-    imwrite("result_image.jpg", image);
+    imwrite("../../outputs/result_image.jpg", image);
 }

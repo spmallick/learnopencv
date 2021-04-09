@@ -20,7 +20,7 @@ cap = cv2.VideoCapture('../../input/video_1.mp4')
 frame_width = int(cap.get(3))
 frame_height = int(cap.get(4))
 # create the `VideoWriter()` object
-out = cv2.VideoWriter('video_result.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 30, 
+out = cv2.VideoWriter('../../outputs/video_result.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 30, 
                       (frame_width, frame_height))
 
 # detect objects in each frame of the video

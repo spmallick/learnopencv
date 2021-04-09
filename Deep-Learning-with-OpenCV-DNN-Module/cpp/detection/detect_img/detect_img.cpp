@@ -53,7 +53,7 @@ int main(int, char**) {
     }    
 
     imshow("image", image);
-    imwrite("image_result.jpg", image);
+    imwrite("../../../outputs/image_result.jpg", image);
     waitKey(0);
     destroyAllWindows();
 

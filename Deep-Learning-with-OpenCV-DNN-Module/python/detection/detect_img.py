@@ -48,6 +48,6 @@ for detection in output[0, 0, :, :]:
         cv2.putText(image, class_name, (int(box_x), int(box_y - 5)), cv2.FONT_HERSHEY_SIMPLEX, 1, color, 2)
 
 cv2.imshow('image', image)
-cv2.imwrite('image_result.jpg', image)
+cv2.imwrite('../../outputs/image_result.jpg', image)
 cv2.waitKey(0)
 cv2.destroyAllWindows()

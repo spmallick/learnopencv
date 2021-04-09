@@ -29,7 +29,7 @@ int main(int, char**) {
     int frame_width = static_cast<int>(cap.get(3));
     int frame_height = static_cast<int>(cap.get(4));
     // create the `VideoWriter()` object
-    VideoWriter out("video_result.avi", VideoWriter::fourcc('M', 'J', 'P', 'G'), 30, 
+    VideoWriter out("../../../outputs/video_result.avi", VideoWriter::fourcc('M', 'J', 'P', 'G'), 30, 
                     Size(frame_width, frame_height));
 
     while (cap.isOpened()) {
