@@ -1,4 +1,4 @@
-# Introduction to Autoenncoder in TensorFlow
+# Introduction to Autoencoder in TensorFlow
 
 ## Package Dependencies
 
