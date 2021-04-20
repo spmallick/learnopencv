@@ -9,9 +9,6 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 </p>
 </a>
 
-
-https://github.com/TahaAnwar/learnopencv/tree/master/Playing-Chrome-TRex-Game-with-Augmented-Reality
-
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
