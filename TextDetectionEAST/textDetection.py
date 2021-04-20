@@ -27,6 +27,9 @@ parser.add_argument('--nms',type=float, default=0.4,
                     help='Non-maximum suppression threshold.'
                    )
 
+parser.add_argument('--device', default="cpu", help="Device to inference on")
+
+
 args = parser.parse_args()
 
 
@@ -96,6 +99,14 @@ if __name__ == "__main__":
 
     # Load network
     net = cv.dnn.readNet(model)
+    if args.device == "cpu":
+        net.setPreferableBackend(cv.dnn.DNN_TARGET_CPU)
+        print("Using CPU device")
+    elif args.device == "gpu":
+        net.setPreferableBackend(cv.dnn.DNN_BACKEND_CUDA)
+        net.setPreferableTarget(cv.dnn.DNN_TARGET_CUDA)
+        print("Using GPU device")
+
 
     # Create a new named window
     kWinName = "EAST: An Efficient and Accurate Scene Text Detector"
@@ -153,4 +164,4 @@ if __name__ == "__main__":
 
         # Display the frame
         cv.imshow(kWinName,frame)
-        cv.imwrite("out-{}".format(args.input),frame)
+        cv.imwrite("output.png",frame)

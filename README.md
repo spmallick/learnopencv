@@ -12,7 +12,17 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
-|[Video Classification & Human Activity Recognition](https://learnopencv.com/introduction-to-video-classification-human-activity-recognition/) | [Code](https://github.com/spmallick/learnopencv/tree/master/video-classification-and-human-activity-recognition)
+|[Autoencoder in TensorFlow 2: Beginner’s Guide](https://learnopencv.com/autoencoder-in-tensorflow-2-beginners-guide/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Autoencoder-in-TensorFlow) |
+|[Deep Learning with OpenCV DNN Module: A Definitive Guide](https://learnopencv.com/deep-learning-with-opencvs-dnn-module-a-definitive-guide/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Deep-Learning-with-OpenCV-DNN-Module) |
+|[Depth perception using stereo camera (Python/C++)](https://learnopencv.com/depth-perception-using-stereo-camera-python-c/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Depth-Perception-Using-Stereo-Camera) |
+|[Contour Detection using OpenCV (Python/C++)](https://learnopencv.com/contour-detection-using-opencv-python-c/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Contour-Detection-using-OpenCV) |
+|[Super Resolution in OpenCV](https://learnopencv.com/super-resolution-in-opencv/)| [Code](https://github.com/spmallick/learnopencv/blob/master/Super-Resolution-in-OpenCV) |
+|[Improving Illumination in Night Time Images](https://learnopencv.com/improving-illumination-in-night-time-images/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Improving-Illumination-in-Night-Time-Images) |
+|[Video Classification and Human Activity Recognition](https://learnopencv.com/introduction-to-video-classification-and-human-activity-recognition/) | [Code](https://github.com/spmallick/learnopencv/tree/master/video-classification-and-human-activity-recognition) |
+|[How to use OpenCV DNN Module with Nvidia GPU on Windows](https://learnopencv.com/how-to-use-opencv-dnn-module-with-nvidia-gpu-on-windows) | [Code](https://github.com/spmallick/learnopencv/tree/master/OpenCV-dnn-gpu-support-Windows) |
+|[How to use OpenCV DNN Module with NVIDIA GPUs](https://learnopencv.com/opencv-dnn-with-gpu-support/) | [Code](https://github.com/spmallick/learnopencv/tree/master/OpenCV-dnn-gpu-support-Linux) |
+|[Code OpenCV in Visual Studio](https://learnopencv.com/code-opencv-in-visual-studio/) | |
+|[Install OpenCV on Windows – C++ / Python](https://learnopencv.com/install-opencv-on-windows/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Install-OpenCV-Windows-exe) |
 |[Face Recognition with ArcFace](https://www.learnopencv.com/face-recognition-with-arcface/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Face-Recognition-with-ArcFace)
 |[Background Subtraction with OpenCV and BGS Libraries](https://www.learnopencv.com/background-subtraction-with-opencv-and-bgs-libraries/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Background-Subtraction) |
 |[RAFT: Optical Flow estimation using Deep Learning](https://learnopencv.com/optical-flow-using-deep-learning-raft/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Optical-Flow-Estimation-using-Deep-Learning-RAFT)|

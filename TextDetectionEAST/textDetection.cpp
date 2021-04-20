@@ -1,6 +1,7 @@
 #include <opencv2/imgproc.hpp>
 #include <opencv2/highgui.hpp>
 #include <opencv2/dnn.hpp>
+#include <iostream>
 
 using namespace cv;
 using namespace cv::dnn;
@@ -12,7 +13,8 @@ const char* keys =
     "{ width       | 320 | Preprocess input image by resizing to a specific width. It should be multiple by 32. }"
     "{ height      | 320 | Preprocess input image by resizing to a specific height. It should be multiple by 32. }"
     "{ thr         | 0.5 | Confidence threshold. }"
-    "{ nms         | 0.4 | Non-maximum suppression threshold. }";
+    "{ nms         | 0.4 | Non-maximum suppression threshold. }"
+    "{ device         | cpu | Device to run Deep Learning inference. }";
 
 void decode(const Mat& scores, const Mat& geometry, float scoreThresh,
             std::vector<RotatedRect>& detections, std::vector<float>& confidences);
@@ -43,8 +45,21 @@ int main(int argc, char** argv)
 
     CV_Assert(!model.empty());
 
+    String device = parser.get<String>("device");
+    
     // Load network.
     Net net = readNet(model);
+        if (device == "cpu")
+    {
+        std::cout << "Using CPU device" << std::endl;
+        net.setPreferableBackend(DNN_TARGET_CPU);
+    }
+    else if (device == "gpu")
+    {
+        std::cout << "Using GPU device" << std::endl;
+        net.setPreferableBackend(DNN_BACKEND_CUDA);
+        net.setPreferableTarget(DNN_TARGET_CUDA);
+    }
 
     // Open a video file or an image file or a camera stream.
     VideoCapture cap;
