@@ -2,7 +2,7 @@
 
 You can access the Tutorial for this repo [here]().
 
-[Playing Chromes's Dino with OpenCV](Chrome's_Dino_with_OpenCV.ipynb)
+[Playing Chromes's Dino with OpenCV](https://learnopencv.com/playing-chromes-t-rex-game-with-augmented-reality/)
 
 If you're unable to install dlib by doing `pip install dlib` then you should do: `pip install dlib==19.21.1`
 
