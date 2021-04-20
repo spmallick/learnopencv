@@ -9,9 +9,13 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 </p>
 </a>
 
+
+https://github.com/TahaAnwar/learnopencv/tree/master/Playing-Chrome-TRex-Game-with-Augmented-Reality
+
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
+|[Playing Chrome's T-Rex Game with Augmented Reality](https://learnopencv.com/playing-chromes-t-rex-game-with-augmented-reality/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Playing-Chrome-TRex-Game-with-Augmented-Reality) |
 |[Autoencoder in TensorFlow 2: Beginner’s Guide](https://learnopencv.com/autoencoder-in-tensorflow-2-beginners-guide/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Autoencoder-in-TensorFlow) |
 |[Deep Learning with OpenCV DNN Module: A Definitive Guide](https://learnopencv.com/deep-learning-with-opencvs-dnn-module-a-definitive-guide/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Deep-Learning-with-OpenCV-DNN-Module) |
 |[Depth perception using stereo camera (Python/C++)](https://learnopencv.com/depth-perception-using-stereo-camera-python-c/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Depth-Perception-Using-Stereo-Camera) |
