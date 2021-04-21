@@ -26,7 +26,7 @@ out = cv2.VideoWriter('../../outputs/video_result.mp4', cv2.VideoWriter_fourcc(*
 # detect objects in each frame of the video
 while cap.isOpened():
     ret, frame = cap.read()
-    if ret == True:
+    if ret:
         image = frame
         image_height, image_width, _ = image.shape
         # create blob from image
