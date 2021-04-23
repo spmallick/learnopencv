@@ -82,24 +82,24 @@ g++ -ggdb pkg-config --cflags --libs /usr/local/Cellar/opencv3/3.4.2/lib/pkgconf
 
 * Using CMake
 
- * On Unix systems
+  * On Unix systems
 
-```bash
-mkdir build && cd build
-cmake ..
-cmake --build . --config Release
-cd ..
-```
+  ```bash
+  mkdir build && cd build
+  cmake ..
+  cmake --build . --config Release
+  cd ..
+  ```
 
- * On Windows systems
+  * On Windows systems
 
-```bash
-mkdir build
-cd build
-cmake -G "Visual Studio 16 2019" ..
-cmake --build . --config Release
-cd ..
-```
+  ```bash
+  mkdir build
+  cd build
+  cmake -G "Visual Studio 16 2019" ..
+  cmake --build . --config Release
+  cd ..
+  ```
 
 **Note: To run on Windows system, change syntax accordingly:**
 
