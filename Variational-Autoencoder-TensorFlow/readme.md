@@ -1,4 +1,5 @@
 # Variational Autoencoder in TensorFlow
+This folder contains the code and instructions accompanying the blog post [Variational Autoencoder in Tensorflow](https://learnopencv.com/variational-autoencoder-in-tensorflow)
 
 ## Package Dependencies
 
