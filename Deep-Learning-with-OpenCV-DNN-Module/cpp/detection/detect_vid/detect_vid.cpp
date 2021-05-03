@@ -35,6 +35,8 @@ int main(int, char**) {
     while (cap.isOpened()) {
         Mat image;
         bool isSuccess = cap.read(image);
+
+        if (! isSucess) break;
         
         int image_height = image.cols;
         int image_width = image.rows;
@@ -63,7 +65,7 @@ int main(int, char**) {
             }
         }
         
-    //     imshow("image", image);
+        imshow("image", image);
         out.write(image);
         int k = waitKey(10);
         if (k == 113){
