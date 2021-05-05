@@ -12,7 +12,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
-|[Playing Chrome's T-Rex Game with Facial Gestures](https://learnopencv.com/playing-chromes-t-rex-game-with-facial-gestures/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Playing-Chrome-TRex-Game-with-Augmented-Reality) |
+|[Playing Chrome's T-Rex Game with Facial Gestures](https://learnopencv.com/playing-chromes-t-rex-game-with-facial-gestures/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Playing-Chrome-TRex-Game-with-Facial-Gestures) |
 |[Variational Autoencoder in TensorFlow](https://learnopencv.com/variational-autoencoder-in-tensorflow/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Variational-Autoencoder-TensorFlow) |
 |[Autoencoder in TensorFlow 2: Beginner’s Guide](https://learnopencv.com/autoencoder-in-tensorflow-2-beginners-guide/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Autoencoder-in-TensorFlow) |
 |[Deep Learning with OpenCV DNN Module: A Definitive Guide](https://learnopencv.com/deep-learning-with-opencvs-dnn-module-a-definitive-guide/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Deep-Learning-with-OpenCV-DNN-Module) |
