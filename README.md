@@ -12,6 +12,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
+|[MRNet – The Multi-Task Approach](https://learnopencv.com/mrnet-multitask-approach/)| [Code](https://github.com/spmallick/learnopencv/tree/master/MRnet-MultiTask-Approach) |
 |[Generative and Discriminative Models](https://learnopencv.com/generative-and-discriminative-models/)| |
 |[Playing Chrome's T-Rex Game with Facial Gestures](https://learnopencv.com/playing-chromes-t-rex-game-with-facial-gestures/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Playing-Chrome-TRex-Game-with-Facial-Gestures) |
 |[Variational Autoencoder in TensorFlow](https://learnopencv.com/variational-autoencoder-in-tensorflow/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Variational-Autoencoder-TensorFlow) |
