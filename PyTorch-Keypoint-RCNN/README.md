@@ -33,7 +33,7 @@ To run the jupyter notebook, open it in a Jupyter console and run cells seqentia
 
 ## Human Pose Estimation Output
 
-![](./output/skeleton-img.png)
+![](./output/skeleton-img.jpg)
 
 
 

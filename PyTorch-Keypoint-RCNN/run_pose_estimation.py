@@ -135,8 +135,8 @@ def draw_skeleton_per_person(img, all_keypoints, all_scores, confs, keypoint_thr
 
 
 keypoints_img = draw_keypoints_per_person(img, output["keypoints"], output["keypoints_scores"], output["scores"],keypoint_threshold=2)
-cv2.imwrite("output/keypoints-img.png", keypoints_img)
+cv2.imwrite("output/keypoints-img.jpg", keypoints_img)
 
 
 skeletal_img = draw_skeleton_per_person(img, output["keypoints"], output["keypoints_scores"], output["scores"],keypoint_threshold=2)
-cv2.imwrite("output/skeleton-img.png", skeletal_img)
+cv2.imwrite("output/skeleton-img.jpg", skeletal_img)
