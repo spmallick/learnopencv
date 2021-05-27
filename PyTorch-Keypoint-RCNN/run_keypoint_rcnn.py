@@ -25,7 +25,7 @@ keypoints = ['nose','left_eye','right_eye','left_ear','right_ear','left_shoulder
 from torchvision import transforms as T
 
 # Read the image using opencv 
-img_path = "./images/pexels-run-ffwpu-2982100.jpg"
+img_path = "./images/image_1.jpg"
 img = cv2.imread(img_path)
 
 # preprocess the input image
@@ -135,8 +135,8 @@ def draw_skeleton_per_person(img, all_keypoints, all_scores, confs, keypoint_thr
 
 
 keypoints_img = draw_keypoints_per_person(img, output["keypoints"], output["keypoints_scores"], output["scores"],keypoint_threshold=2)
-cv2.imwrite("./keypoints-img.png", keypoints_img)
+cv2.imwrite("output/keypoints-img.png", keypoints_img)
 
 
 skeletal_img = draw_skeleton_per_person(img, output["keypoints"], output["keypoints_scores"], output["scores"],keypoint_threshold=2)
-cv2.imwrite("./skeleton-img.png", skeletal_img)
+cv2.imwrite("output/skeleton-img.png", skeletal_img)
