@@ -28,7 +28,7 @@
 
 To run the Python script, execute `python run_pose_estimation.py`
 
-To run the jupyter notebook, open it in a Jupyter console and run cells seqentially.
+To run the jupyter notebook, open it in a Jupyter console and run cells sequentially.
 
 
 ## Human Pose Estimation Output
