@@ -1,6 +1,6 @@
 # Code for Non Maximum Suppression using PyTorch
 
-[Open Notebook in Google Colab](https://colab.research.google.com/github/spmallick/learnopencv/Non-Maximum-Suppression/nms_pytorch.ipynb)
+[Open Notebook in Google Colab](https://colab.research.google.com/github/spmallick/learnopencv/tree/master/Non-Maximum-Suppression/nms_pytorch.ipynb)
 
 ## Sample Result
 
