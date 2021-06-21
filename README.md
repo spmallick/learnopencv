@@ -12,6 +12,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
+|[Human Pose Estimation using Keypoint RCNN in PyTorch](https://learnopencv.com/human-pose-estimation-using-keypoint-rcnn-in-pytorch/)|[Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-Keypoint-RCNN)|
 |[Non Maximum Suppression: Theory and Implementation in PyTorch](https://learnopencv.com/non-maximum-suppression-theory-and-implementation-in-pytorch)|[Code](https://github.com/spmallick/learnopencv/tree/master/Non-Maximum-Suppression)|
 |[MRNet – The Multi-Task Approach](https://learnopencv.com/mrnet-multitask-approach/)| [Code](https://github.com/spmallick/learnopencv/tree/master/MRnet-MultiTask-Approach) |
 |[Generative and Discriminative Models](https://learnopencv.com/generative-and-discriminative-models/)| |
