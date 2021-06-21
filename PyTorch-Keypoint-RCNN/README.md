@@ -8,7 +8,7 @@
 
 ```
 
-├── input
+├── images
 │   ├── image_1.png
 │    
 ├── run_keypoint_rcnn.py
