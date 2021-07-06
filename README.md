@@ -12,6 +12,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
+|[Deep Convolutional GAN in PyTorch and TensorFlow](https://learnopencv.com/deep-convolutional-gan-in-pytorch-and-tensorflow/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Deep-Convolutional-GAN)|
 |[Introduction to Generative Adversarial Networks (GANs)](https://learnopencv.com/introduction-to-generative-adversarial-networks/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Intro-to-Generative-Adversarial-Network)|
 |[Human Pose Estimation using Keypoint RCNN in PyTorch](https://learnopencv.com/human-pose-estimation-using-keypoint-rcnn-in-pytorch/)|[Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-Keypoint-RCNN)|
 |[Non Maximum Suppression: Theory and Implementation in PyTorch](https://learnopencv.com/non-maximum-suppression-theory-and-implementation-in-pytorch)|[Code](https://github.com/spmallick/learnopencv/tree/master/Non-Maximum-Suppression)|
