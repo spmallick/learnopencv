@@ -1,27 +1,41 @@
-# Deep Convolutional GAN in TensorFlow and PyTorch
+# Conditional GAN in TensorFlow and PyTorch
 
 ## Package Dependencies
 
-This repository trains the Deep Convolutional GAN in both Pytorch and Tensorflow on Anime-Faces dataset. It is tested with:
+This repository trains the Conditional GAN in both Pytorch and Tensorflow on the Fashion MNIST and Rock-Paper-Scissors dataset. It is tested with:
 
 - `Cuda-11.1`
 - `Cudnn-8.0`
 
-The Pytorch and Tensorflow scripts require [numpy](https://numpy.org/), [tf-nightly-gpu](https://pypi.org/project/tf-nightly-gpu/), [torch](https://pypi.org/project/torch/). 
+The Pytorch and Tensorflow scripts require [numpy](https://numpy.org/), [tensorflow](https://www.tensorflow.org/install), [torch](https://pypi.org/project/torch/). 
 To get the versions of these packages you need for the program, use pip: (Make sure pip is upgraded: ` python3 -m pip install -U pip`)
+
 ```
 pip3 install -r requirements.txt 
+```
+
+## Directory Structure
+
+```
+├── PyTorch
+│   ├── CGAN-PyTorch.ipynb
+│   └── cgan_pytorch.py
+└── TensorFlow
+    ├── CGAN-FashionMnist-TensorFlow.ipynb
+    ├── cgan_fashionmnist_tensorflow.py
+    ├── CGAN-RockPaperScissor-TensorFlow.ipynb
+    └── cgan_rockpaperscissor_tensorflow.py
 ```
 
 ## Instructions
 
 ### PyTorch
 
-To train the Deep Convolutional GAN with Pytorch, please go into the `Pytorch` folder and execute the Jupyter Notebook.
+To train the Conditional GAN with Pytorch, please go into the `Pytorch` folder and execute the Jupyter Notebook.
 
 ### TensorFlow
 
-To train the Deep Convolutional GAN with TensorFlow, please go into the `Tensorflow` folder and execute the Jupyter Notebook.
+To train the Conditional GAN with TensorFlow, please go into the `Tensorflow` folder and execute the Jupyter Notebook.
 
 
 # AI Courses by OpenCV
