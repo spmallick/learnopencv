@@ -15,11 +15,14 @@ pip3 install -r requirements.txt
 
 ## Directory Structure
 
+
 ```
 ├── PyTorch
-│   └── DCGAN_Anime_Pytorch.ipynb
+│   ├── DCGAN_Anime_Pytorch.ipynb
+│   └── dcgan_anime_pytorch.py
 └── TensorFlow
-    └── DCGAN_Anime_Tensorflow.ipynb
+    ├── DCGAN_Anime_Tensorflow.ipynb
+    └── dcgan_anime_tesnorflow.py
 ```
 
 
