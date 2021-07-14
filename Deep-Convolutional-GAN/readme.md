@@ -2,7 +2,7 @@
 
 ## Package Dependencies
 
-This repository trains the Deep Convolutional GAN in both Pytorch and Tensorflow on Anime-Faces dataset. It is tested with:
+This repository trains the Deep Convolutional GAN in both Pytorch and Tensorflow on [Anime-Faces dataset](https://github.com/bchao1/Anime-Face-Dataset). It is tested with:
 
 - `Cuda-11.1`
 - `Cudnn-8.0`
