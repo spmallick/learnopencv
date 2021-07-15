@@ -7,7 +7,7 @@ This repository trains the Generative Adversarial Network in both Pytorch and Te
 - `Cuda-11.1`
 - `Cudnn-8.0`
 
-The Pytorch and Tensorflow scripts require [numpy](https://numpy.org/), [tf-nightly-gpu](https://pypi.org/project/tf-nightly-gpu/), [torch](https://pypi.org/project/torch/). 
+The Pytorch and Tensorflow scripts require [numpy](https://numpy.org/), [tensorflow](https://www.tensorflow.org/install), [torch](https://pypi.org/project/torch/). 
 To get the versions of these packages you need for the program, use pip: (Make sure pip is upgraded: ` python3 -m pip install -U pip`)
 ```
 pip3 install -r requirements.txt 
