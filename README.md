@@ -12,6 +12,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
+|[Pix2Pix:Image-to-Image Translation in PyTorch & TensorFlow](https://learnopencv.com/paired-image-to-image-translation-pix2pix/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Image-to-Image-Translation-with-GAN)|
 |[Conditional GAN (cGAN) in PyTorch and TensorFlow](https://learnopencv.com/conditional-gan-cgan-in-pytorch-and-tensorflow/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Conditional-GAN-PyTorch-TensorFlow)|
 |[Deep Convolutional GAN in PyTorch and TensorFlow](https://learnopencv.com/deep-convolutional-gan-in-pytorch-and-tensorflow/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Deep-Convolutional-GAN)|
 |[Introduction to Generative Adversarial Networks (GANs)](https://learnopencv.com/introduction-to-generative-adversarial-networks/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Intro-to-Generative-Adversarial-Network)|
