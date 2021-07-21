@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Action Classification using detectron and LSTM</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style>
+  .bg-1 {
+    background-color: #1abc9c; /* Green */
+    color: #ffffff;
+  }
+  .container-fluid {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+  </style>    
+</head>
+<body>
+
+<div class="container-fluid bg-1 text-center">
+    <h3>Let's do human action classification</h3>  
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <!-- Do something with the message -->
+                <div id="alert">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                    <strong>ERROR: </strong> {{ message }} 
+                </div>
+
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% if obj.is_video_display %}
+    <script>
+
+    var source = new EventSource("{{ url_for('analyze', filename=obj.video) }}");
+    source.onmessage = function(event) {
+      $('.progress-bar').css('width', event.data+'%').attr('aria-valuenow', event.data);
+      $('.progress-bar-label').text(event.data+'%');
+
+      if(event.data == 100){
+        source.close()
+        $('#result').css("display","block")        
+        $('#result div').prepend('<img src="{{ url_for('get_result_video', filename=obj.video) }}" width="480" height="320"/>') 
+        $('#result div').prepend('<br/>')
+        $('#result div').prepend('<a href="{{ url_for('get_analyzed_file', filename=obj.video) }}">Download Result File</a>')
+      }
+    }
+    </script>
+    <div > 
+        Input video <br/>
+        <video width="480" height="320" controls>
+        <source src={{ url_for('get_file', filename=obj.video) }} alt="User Video" type="video/mp4">
+        Your browser does not support the video tag.
+        </video>
+        <br><br>Video Analysis Progress bar<br><br>
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+            <span class="progress-bar-label">0%</span>
+          </div>
+        </div>
+        <div id="result" style="display:none">
+          <br>Video Analysis Result<br>          
+          <div>
+          </div>          
+        </div>
+        
+    </div>
+    {% else %}
+      <table class="table">
+      <tr>
+      <td>
+      <form method=POST enctype=multipart/form-data action="{{ url_for('upload') }}">
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" name="video" id="video" accept=".mp4">
+          <label class="custom-file-label" for="video">Choose video to analyse</label>
+        </div>
+        <div class="mt-3">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+      </td>
+      <td>
+        OR
+      </td>
+      <td>
+        <form method=POST enctype=multipart/form-data action="{{ url_for('sample') }}">
+          <video width="480" height="320" controls>
+            <source src={{ url_for('get_file', filename=obj.video) }} alt="User Video" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="mt-3">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </td>
+      </tr>
+      </table>
+    {% endif %}
+</div>
+
+</body>
+
+<script>
+  // Add the following code if you want the name of the file appear on select
+  $(".custom-file-input").on("change", function() {
+    var fileName = $(this).val().split("\\").pop();
+    $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+  });
+ </script>
+</html>
