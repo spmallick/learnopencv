@@ -42,8 +42,8 @@ You will see two options to do action classification
 
 When you click on 'Submit', you will see a progress bar showing the progress and once done, you can download the output from the 'Download Result File' link. If you have submitted using the sample video given on the page, you can see that our model was able to classify the actions decently well. Actions infered from the video are shown on the out put video.
 
-## Colab notebooks
+## Jupyter notebooks
 
-We have provided google colab notebooks to run the application 
-1. To run the application in google colab,  use *human_action_classification.ipynb*
+We have provided jupytyer notebooks to run the application 
+1. To run the application (for example in google colab),  use *human_action_classification.ipynb*
 2. To train the LSTM model, use *lstm_train.ipynb* (You don't need this unless you want to retrain the model with your own data set or experiment with it.)
