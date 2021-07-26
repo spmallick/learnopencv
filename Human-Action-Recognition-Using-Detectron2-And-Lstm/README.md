@@ -4,7 +4,7 @@ This is an application built to show how human action classification can be done
 2D pose estimation is done using Facebook AI Research's Detectron2. 
 A LSTM model is used to classify actions from 2D pose estimation output from a sequence of consecutive frames on a video. 
 
-You can find the Complete blogpost [here](https://learnopencv.com/introduction-to-video-classification-human-activity-recognition//).
+You can find the Complete blogpost [here](https://learnopencv.com/human-action-recognition-using-detectron2-and-lstm/).
 
 We also provide the colab notebook: [![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1mr3wJUeS1mFJVgMoo3TgnyMSmwPtwCvR?usp=sharing)
  
