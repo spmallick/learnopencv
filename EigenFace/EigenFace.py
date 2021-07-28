@@ -8,6 +8,7 @@ import numpy as np
 # Read images from the directory.
 def readImages(path):
     print("Reading images from " + path, end = "...")
+
     # Create array of array of images.
     images = []
     # List all files in the directory and read points from text files one by one.
@@ -42,7 +43,15 @@ def readImages(path):
 # Create data matrix from a list of images.
 def createDataMatrix(images):
     print("Creating data matrix", end = " ... ")
-
+    ''' 
+	Allocate space for all images in one data matrix.
+	The size of the data matrix is
+	( w  * h  * 3, numImages )
+	where,
+	w = width of an image in the dataset.
+	h = height of an image in the dataset.
+	3 is for the 3 color channels.
+	'''
     numImages = len(images)
     sz = images[0].shape
     # Data matrix.
@@ -63,6 +72,10 @@ def createNewFace(*args):
     # Add the eigen faces with the weights.
     for i in range(0, NUM_EIGEN_FACES):
         # Get trackbar position.
+        '''
+		OpenCV does not allow slider values to be negative. 
+		So we use weight = sliderValue - MAX_SLIDER_VALUE / 2
+		''' 
         sliderValues[i] = cv2.getTrackbarPos("Weight" + str(i), "Trackbars");
         weight = sliderValues[i] - MAX_SLIDER_VALUE/2
         # Add the weighted eigen face to the mean face.
