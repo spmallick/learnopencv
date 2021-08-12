@@ -12,6 +12,8 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
+|[Post Training Quantization with OpenVino Toolkit](https://learnopencv.com/post-training-quantization-with-openvino-toolkit/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Post-Training-Quantization-with-OpenVino-Toolkit)|
+|[Introduction to Intel OpenVINO Toolkit](https://learnopencv.com/introduction-to-intel-openvino-toolkit/)||
 |[Human Action Recognition using Detectron2 and LSTM](https://learnopencv.com/human-action-recognition-using-detectron2-and-lstm/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Human-Action-Recognition-Using-Detectron2-And-Lstm)|
 |[Pix2Pix:Image-to-Image Translation in PyTorch & TensorFlow](https://learnopencv.com/paired-image-to-image-translation-pix2pix/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Image-to-Image-Translation-with-GAN)|
 |[Conditional GAN (cGAN) in PyTorch and TensorFlow](https://learnopencv.com/conditional-gan-cgan-in-pytorch-and-tensorflow/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Conditional-GAN-PyTorch-TensorFlow)|
