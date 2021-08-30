@@ -2,12 +2,13 @@
 
 ## **GOAL:**
 
-In this project we will play with an image to detect the faces and then we will apply the blurr effect on some part of that image. And then we will also learn how to deblur the face. This project will be done with the help of some libraries like keras, tensorflow, opencv, matplotlib, numpy, scikit-image, mtcnn using Python programming.
+In this project we will play with an image to detect the faces and then we will apply the blur effect on some part of that image. And then we will also learn how to deblur the face. This project will be done with the help of some libraries like keras, tensorflow, opencv, matplotlib, numpy, scikit-image, mtcnn using Python programming.
 
 **DATASET:**
 
-We will be using image of our choice.
+We will be using image of our choice to blur or deblur as this is the most common case scenerio.
 
+---
 
 **LIBRARIES NEEDED:**
 - Tensorflow
@@ -18,9 +19,25 @@ We will be using image of our choice.
 - Matplotlib
 - Scikit-image
 
-## **What I Have Done:**
+---
 
-### **1. For Face Blurring**
+**Applications**
+
+**1. Face Blurring:**
+- News sites. 
+- Dating sites.
+- User generated content.
+
+**2. Face Deblurring**
+- Identity verification for physical and logical access.
+- Deblurring images clicked on mobile phone.
+- Photo editing software.
+
+---
+
+## **Approach I used in the models:**
+
+>### **1. For Face Blurring**
 
 ![image](https://raw.githubusercontent.com/hrugved06/learnopencv/master/Face%20Blurring%20and%20Deblurring/images/assets/ppl.jpg)![image](https://raw.githubusercontent.com/hrugved06/learnopencv/master/Face%20Blurring%20and%20Deblurring/images/assets/arrow.png)![image](https://raw.githubusercontent.com/hrugved06/learnopencv/master/Face%20Blurring%20and%20Deblurring/images/assets/Blurred_Image.png)
 
@@ -44,10 +61,10 @@ To start using this project, follow the below guidelines:
 pip install -r requirements.txt
 ```
 
-- Run `face_detection_and_blurring.ipynb` file in Google Colab or Jupyter Notebook or any other platform 💻
+- Run `face_detection_and_blurring.ipynb` file in Google Colab or Jupyter Notebook or any other platform 💻 </br> </br>
 
 
-### **2. Face deblurring operation**
+>### **2. Face deblurring operation**
 
 ![image](https://user-images.githubusercontent.com/78999467/115102986-2b809c80-9f6e-11eb-82f7-e6a5a5de3f85.png)![image](https://user-images.githubusercontent.com/78999467/115102966-04c26600-9f6e-11eb-841d-994a925343c6.png)![image](https://user-images.githubusercontent.com/78999467/115102989-33404100-9f6e-11eb-832e-91348d7a0b7c.png)
 
@@ -70,12 +87,14 @@ In our work instead of making assumptions over the prior, we adopt a **learning 
 
 1) Training an End-to-End model for deblurring of images (CelebA) following the work in CNN For Direct Text Deblurring, using Keras. The first layer filter size is adjusted to be approximately equal to the blur kernel size. Pre-Trained model with weights and some images from test set are uploaded.
 2) **Importing Necessary Packages**
+
+
 3) **Loading Images**
 
 - Only showing a small set of images from the local test set we generated.
 
 4) **Loading input blurred images:**
-![image](https://user-images.githubusercontent.com/78999467/115102547-430a5600-9f6b-11eb-9691-74045164dbbc.png)
+![image](https://raw.githubusercontent.com/hrugved06/learnopencv/master/Face%20Blurring%20and%20Deblurring/images/assets/input.png)
 
 5) **Defining CNN Model for Training Model**
 
@@ -86,11 +105,13 @@ In our work instead of making assumptions over the prior, we adopt a **learning 
 
 - Deblurred images as output:
 
-![image](https://user-images.githubusercontent.com/78999467/115102584-8fee2c80-9f6b-11eb-8db9-068dc3ab2ff6.png)
+![image](https://raw.githubusercontent.com/hrugved06/learnopencv/master/Face%20Blurring%20and%20Deblurring/images/assets/output.png)
 
-
+---
 
 
 **CONCLUSION:**
 
-Finally, we have created a project in which we have detected some faces and then applied the blurr effect on them. And we have also learnt how to work with such type of blurring effects and we can blurr any part of image in this way, the output we got with this project is also attached here.
+Finally, we have created a project in which we have detected some faces and then applied the blurr effect on them. And we have also learnt how to work with such type of blurring effects and we can blurr any part of image in this way. Similarly, we trained a face deblurring model which proves useful during crime investigation for detecting blurred faces and also is still a very common problem in the low range smartphones where these phones captures very blurry photographs which can be now solved using this model.
+
+---
