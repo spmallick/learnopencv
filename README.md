@@ -12,6 +12,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
+|[Social Distance Monitoring With OAK-D](https://learnopencv.com/social-distance-monitoring-with-oak-d)|[Code](https://github.com/spmallick/learnopencv/tree/master/oakd-social-distance-monitor)|
 | [Introduction to OpenVino Deep Learning Workbench](https://learnopencv.com/introduction-to-openvino-deep-learning-workbench/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Introduction-to-OpenVino-Deep-Learning-Workbench) |
 | [Running OpenVino Models on Intel Integrated GPU](https://learnopencv.com/running-openvino-models-on-intel-integrated-gpu/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Running-OpenVino-Models-on-Intel-Integrated-GPU) |
 |[Post Training Quantization with OpenVino Toolkit](https://learnopencv.com/post-training-quantization-with-openvino-toolkit/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Post-Training-Quantization-with-OpenVino-Toolkit)|

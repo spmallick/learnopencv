@@ -3,7 +3,7 @@
 ## Prerequisites
 
 ```
-Pip install depthai
+pip install depthai
 ```
 
 ## Run Code
