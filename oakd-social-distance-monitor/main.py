@@ -7,7 +7,7 @@ import time
 from itertools import combinations
 import math
 
-def calculate_distance(dx, dy, dz):
+def calculateDistance(dx, dy, dz):
     distance = math.sqrt(dx ** 2 + dy ** 2 + dz ** 2)
     return distance
 
@@ -92,47 +92,45 @@ spatialDetectionNetwork.boundingBoxMapping.link(xoutBoundingBoxDepthMapping.inpu
 stereo.depth.link(spatialDetectionNetwork.inputDepth)
 spatialDetectionNetwork.passthroughDepth.link(xoutDepth.input)
 
-def create_bird_frame():
-    max_z = 5000
-    min_z = 300
-    max_x = 600
-    min_x = -600
+def createBirdFrame():
+    maxZ = 5000
+    minZ = 300
     fov = 68.7938
-    min_distance = 0.827
-    bird_frame = np.zeros((416, 100, 3), np.uint8)
-    min_y = int((1 - (min_distance - min_z) / (max_z - min_z)) * bird_frame.shape[0])
-    cv2.rectangle(bird_frame, (0, min_y), (bird_frame.shape[1], bird_frame.shape[0]), (70, 70, 70), -1)
+    minDistance = 0.827
+    birdFrame = np.zeros((416, 100, 3), np.uint8)
+    minY = int((1 - (minDistance - minZ) / (maxZ - minZ)) * birdFrame.shape[0])
+    cv2.rectangle(birdFrame, (0, minY), (birdFrame.shape[1], birdFrame.shape[0]), (70, 70, 70), -1)
     alpha = (180 - fov) / 2
-    center = int(bird_frame.shape[1] / 2)
-    max_p = bird_frame.shape[0] - int(math.tan(math.radians(alpha)) * center)
-    fov_cnt = np.array([
-        (0, bird_frame.shape[0]),
-        (bird_frame.shape[1], bird_frame.shape[0]),
-        (bird_frame.shape[1], max_p),
-        (center, bird_frame.shape[0]),
-        (0, max_p),
-        (0, bird_frame.shape[0]),
+    center = int(birdFrame.shape[1] / 2)
+    maxP = birdFrame.shape[0] - int(math.tan(math.radians(alpha)) * center)
+    fovCnt = np.array([
+        (0, birdFrame.shape[0]),
+        (birdFrame.shape[1], birdFrame.shape[0]),
+        (birdFrame.shape[1], maxP),
+        (center, birdFrame.shape[0]),
+        (0, maxP),
+        (0, birdFrame.shape[0]),
     ])
-    bird_frame = cv2.fillPoly(bird_frame, [fov_cnt], color=(70, 70, 70))
-    return bird_frame
+    birdFrame = cv2.fillPoly(birdFrame, [fovCnt], color=(70, 70, 70))
+    return birdFrame
 
-def calc_x(val, distance_bird_frame):
-    max_x = 600
-    min_x = -600
-    norm = min(max_x, max(val, min_x))
-    center = (norm - min_x) / (max_x - min_x) * distance_bird_frame.shape[1]
-    bottom_x = max(center - 2, 0)
-    top_x = min(center + 2, distance_bird_frame.shape[1])
-    return int(bottom_x), int(top_x)
+def calcX(val, distanceBirdFrame):
+    maxX = 600
+    minX = -600
+    norm = min(maxX, max(val, minX))
+    center = (norm - minX) / (maxX - minX) * distanceBirdFrame.shape[1]
+    bottomX = max(center - 2, 0)
+    topX = min(center + 2, distanceBirdFrame.shape[1])
+    return int(bottomX), int(topX)
 
-def calc_z(val, distance_bird_frame):
-    max_z = 5000
-    min_z = 300
-    norm = min(max_z, max(val, min_z))
-    center = (1 - (norm - min_z) / (max_z - min_z)) * distance_bird_frame.shape[0]
-    bottom_z = max(center - 2, 0)
-    top_z = min(center + 2, distance_bird_frame.shape[0])
-    return int(bottom_z), int(top_z)
+def calcZ(val, distanceBirdFrame):
+    maxZ = 5000
+    minZ = 300
+    norm = min(maxZ, max(val, minZ))
+    center = (1 - (norm - minZ) / (maxZ - minZ)) * distanceBirdFrame.shape[0]
+    bottomZ = max(center - 2, 0)
+    topZ = min(center + 2, distanceBirdFrame.shape[0])
+    return int(bottomZ), int(topZ)
 
 # Pipeline is defined, now we can connect to the device
 
@@ -155,17 +153,17 @@ with dai.Device(pipeline) as device:
     color = (255, 255, 255)
 
     while True:
-        bird_frame = create_bird_frame()
+        birdFrame = createBirdFrame()
         inPreview = previewQueue.get()
         inNN = detectionNNQueue.get()
         depth = depthQueue.get()
 
         counter+=1
-        current_time = time.monotonic()
-        if (current_time - startTime) > 1 :
-            fps = counter / (current_time - startTime)
+        currentTime = time.monotonic()
+        if (currentTime - startTime) > 1 :
+            fps = counter / (currentTime - startTime)
             counter = 0
-            startTime = current_time
+            startTime = currentTime
 
         frame = inPreview.getCvFrame()
         detections = inNN.detections
@@ -175,7 +173,7 @@ with dai.Device(pipeline) as device:
         # If the frame is available, draw bounding boxes on it and show the frame
             height = frame.shape[0]
             width  = frame.shape[1]
-            centroid_dict = dict()
+            centroidDict = dict()
             objectId = 0
             for detection in detections:
                 try:
@@ -203,43 +201,43 @@ with dai.Device(pipeline) as device:
                         y2 = int(detection.ymax * height)
                         center = (int((x1+x2)/2), int((y1+y2)/2))
                         xsp, ysp, zsp = int(detection.spatialCoordinates.x), int(detection.spatialCoordinates.y), int(detection.spatialCoordinates.z)
-                        centroid_dict[objectId] = (x1, x2, y1, y2, xsp, ysp, zsp, center)
+                        centroidDict[objectId] = (x1, x2, y1, y2, xsp, ysp, zsp, center)
                         objectId += 1
 
-            red_zone_list = [] # List containing which Object id is in under threshold distance condition.
+            redZoneList = [] # List containing which Object id is in under threshold distance condition.
 
-            for (id1, p1), (id2, p2) in combinations(centroid_dict.items(), 2):
+            for (id1, p1), (id2, p2) in combinations(centroidDict.items(), 2):
                 dx, dy, dz = p1[4] - p2[4], p1[5] - p2[5], p1[6] - p2[6]
-                distance = calculate_distance(dx, dy, dz)
+                distance = calculateDistance(dx, dy, dz)
                 if(int(distance) < 2000 and int(distance) != 0):
-                    start_point = p1[7]
-                    end_point = p2[7]
-                    text_coord = (int((start_point[0]+end_point[0])/2),int((start_point[1]+end_point[1])/2)+20)
-                    cv2.line(frame, start_point, end_point, (0, 0, 255), 2)
-                    cv2.putText(frame, str(round(distance/1000,2))+' m', text_coord, cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1)
-                    if id1 not in red_zone_list:
-                        red_zone_list.append(id1)
-                    if id2 not in red_zone_list:
-                        red_zone_list.append(id2)
+                    startPoint = p1[7]
+                    endPoint = p2[7]
+                    textCoord = (int((startPoint[0]+endPoint[0])/2),int((startPoint[1]+endPoint[1])/2)+20)
+                    cv2.line(frame, startPoint, endPoint, (0, 0, 255), 2)
+                    cv2.putText(frame, str(round(distance/1000,2))+' m', textCoord, cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1)
+                    if id1 not in redZoneList:
+                        redZoneList.append(id1)
+                    if id2 not in redZoneList:
+                        redZoneList.append(id2)
 
-            for idx, box in centroid_dict.items():
-                left, right = calc_x(box[4], bird_frame)
-                top, bottom = calc_z(box[6], bird_frame)
-                if idx in red_zone_list:   # if id is in red zone list
+            for idx, box in centroidDict.items():
+                left, right = calcX(box[4], birdFrame)
+                top, bottom = calcZ(box[6], birdFrame)
+                if idx in redZoneList:   # if id is in red zone list
                     cv2.rectangle(frame, (box[0], box[2]), (box[1], box[3]), (0, 0, 255), 2) # Create Red bounding boxes  #starting point, ending point size of 2
-                    cv2.rectangle(bird_frame, (left, top), (right, bottom), (0, 0, 255), 2)
+                    cv2.rectangle(birdFrame, (left, top), (right, bottom), (0, 0, 255), 2)
                 else:
                     cv2.rectangle(frame, (box[0], box[2]), (box[1], box[3]), (0, 255, 0), 2)
-                    cv2.rectangle(bird_frame, (left, top), (right, bottom), (0, 255, 0), 2)
+                    cv2.rectangle(birdFrame, (left, top), (right, bottom), (0, 255, 0), 2)
 
 
-            text = "No of at-risk people: %s" % str(math.ceil(int(len(red_zone_list))/3))          # Count People at Risk
+            text = "No of at-risk people: %s" % str(math.ceil(int(len(redZoneList))/3))          # Count People at Risk
             location = (10,25)                          # Set the location of the displayed text
             cv2.putText(frame, text, location, cv2.FONT_HERSHEY_SIMPLEX, 1, (246,86,86), 2, cv2.LINE_AA)
 
         cv2.putText(frame, "NN fps: {:.2f}".format(fps), (2, frame.shape[0] - 4), cv2.FONT_HERSHEY_TRIPLEX, 0.4, color)
         
-        finalframe=np.concatenate((bird_frame, frame), axis = 1)
+        finalframe=np.concatenate((birdFrame, frame), axis = 1)
         
         cv2.imshow("rgb", finalframe)
 
