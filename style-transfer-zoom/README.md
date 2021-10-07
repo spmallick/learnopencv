@@ -13,9 +13,6 @@ Python livedemo.py
 ./train.sh
 ```
 
-## Expected Output
-![](https://youtu.be/Rz4J3T1uYYo)
-
 # AI Courses by OpenCV
 
 Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/courses/) is a great place to start.
