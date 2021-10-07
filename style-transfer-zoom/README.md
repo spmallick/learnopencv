@@ -1,4 +1,4 @@
-# Custom Low-Cost Stereo Camera Using OpenCV
+# Real-time style transfer in a zoom meeting
 
 This folder contains code for [Real-time style transfer in a zoom meeting](https://learnopencv.com/real-time-style-transfer-in-a-zoom-meeting/)
 
