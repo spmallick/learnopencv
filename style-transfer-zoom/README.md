@@ -58,7 +58,7 @@ python3 livedemo_macwin.py
 
 If you are on linux, use
 
-``Shell
+```Shell
 python3 livedemo.py
 ```
 
