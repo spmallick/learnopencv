@@ -1,5 +1,6 @@
-# style-transfer-zoom
-Style transfer in real time on a zoom video call
+# Real-time style transfer in a zoom meeting
+
+This folder contains code for [Real-time style transfer in a zoom meeting](https://learnopencv.com/real-time-style-transfer-in-a-zoom-meeting/)
 
 ## Expected environment
 
@@ -64,3 +65,14 @@ python3 livedemo.py
 Once the script is running, you can join any zoom/skype/teams meeting 
 and choose the virtual camera. You will see stylized output and 
 so will your friends in the meeting.
+
+
+# AI Courses by OpenCV
+
+Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/courses/) is a great place to start.
+
+<a href="https://opencv.org/courses/">
+<p align="center">
+<img src="https://www.learnopencv.com/wp-content/uploads/2020/04/AI-Courses-By-OpenCV-Github.png">
+</p>
+</a>
