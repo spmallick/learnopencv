@@ -289,7 +289,7 @@ if __name__=="__main__":
 	styleloss=StyleLoss()
 	contentloss=ContentLoss()
 	loss_network= models.resnet18()
-	loss_network.load_state_dict(torch.load('./models/resnet_9.pt')['model'])
+	loss_network.load_state_dict(torch.load(cfg.LOSS_NET_PATH)['model'])
 
 	for p in loss_network.parameters():
 		p.requires_grad=False #freeze loss network

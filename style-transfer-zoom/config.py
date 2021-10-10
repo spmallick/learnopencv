@@ -8,4 +8,6 @@ EPOCHS=10
 SAVE_PATH='./resnet_{}.pt'
 EVAL_INTERVAL=1000
 LR=1e-4
+
+LOSS_NET_PATH='./models/resnet_9.pt'
 STYLE_TARGET='./manulogo.png'

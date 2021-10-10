@@ -9,11 +9,6 @@ import config as cfg
 
 manager=DataManager(cfg.IMGPATH_FILE, cfg.SOFT_TARGET_PATH, [224,224])
 
-
-n_images=len(image_paths)
-
-print('Inferring on {} images'.format(n_images))
-
 device=torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 
 print('Using device {}'.format(torch.cuda.get_device_name(device)))
