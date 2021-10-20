@@ -7,7 +7,7 @@
 pip install depthai
 ```
 
-You can purchase yours from the [OpenCV Store](https://store.opencv.ai/)
+You can purchase the OAK device of your choice from the [OpenCV Store](https://store.opencv.ai/)
                                            
 # AI Courses by OpenCV
 
