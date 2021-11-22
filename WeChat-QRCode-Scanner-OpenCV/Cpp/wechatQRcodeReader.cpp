@@ -34,7 +34,7 @@ int main()
 
 	// Read image.
 	Mat img;
-	img = imread("sample-qr-code.jpg");
+	img = imread("sample-qrcode.jpg");
 
 	vector<Mat> points;
 	// Start time.
