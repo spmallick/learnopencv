@@ -12,6 +12,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
+|[WeChat QR Code Scanner in OpenCV](https://learnopencv.com/wechat-qr-code-scanner-in-opencv)|[Code](https://github.com/spmallick/learnopencv/tree/master/WeChat-QRCode-Scanner-OpenCV)|
 |[Model Selection and Benchmarking with Modelplace.AI](https://learnopencv.com/model-selection-and-benchmarking-with-modelplace-ai/)|[Model Zoo](https://modelplace.ai/)|
 |[Real-time style transfer in a zoom meeting](https://learnopencv.com/real-time-style-transfer-in-a-zoom-meeting/)|[Code](https://github.com/spmallick/learnopencv/tree/master/style-transfer-zoom)|
 | [Introduction to OpenVino Deep Learning Workbench](https://learnopencv.com/introduction-to-openvino-deep-learning-workbench/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Introduction-to-OpenVino-Deep-Learning-Workbench) |
