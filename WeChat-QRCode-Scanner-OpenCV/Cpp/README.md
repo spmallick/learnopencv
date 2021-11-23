@@ -1,0 +1,1 @@
+### CPP code for implementing WeChat QR code scanner
