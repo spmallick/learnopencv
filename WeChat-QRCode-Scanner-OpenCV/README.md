@@ -19,8 +19,9 @@ python wechatQRcodeReader.py <input_file> (Leave blank for default image)
 ```
 
 ## Sample Result
-
-![](WeChat-vs-OpenCV.gif)
+<p align="center">
+<img src="WeChat-vs-OpenCV.gif" alt="T-Rex Bot Demo")
+</p>
 
 
 # AI Courses by OpenCV
