@@ -1,6 +1,8 @@
 # Code for Getting started with OAK Series
 
-[Please check out the video series on OAK](https://www.youtube.com/playlist?list=PLfYPZalDvZDLOjzSkoHQ2_h4joHNUegbB)
+This folder contains the code for the blog post: [Introduction to OpenCV AI Kit and DepthAI](https://learnopencv.com/introduction-to-opencv-ai-kit-and-depthai/)
+
+[Also check out the video series on OAK](https://www.youtube.com/playlist?list=PLfYPZalDvZDLOjzSkoHQ2_h4joHNUegbB)
 
 ## Installation
 ```
