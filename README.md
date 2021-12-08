@@ -12,6 +12,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
+|[Stereo Vision and Depth Estimation using OpenCV AI Kit](https://learnopencv.com/stereo-vision-and-depth-estimation-using-opencv-ai-kit/)|[Code](https://github.com/spmallick/learnopencv/tree/master/oak-getting-started)|
 |[Introduction to OpenCV AI Kit and DepthAI](https://learnopencv.com/introduction-to-opencv-ai-kit-and-depthai/)|[Code](https://github.com/spmallick/learnopencv/tree/master/oak-getting-started)|
 |[WeChat QR Code Scanner in OpenCV](https://learnopencv.com/wechat-qr-code-scanner-in-opencv)|[Code](https://github.com/spmallick/learnopencv/tree/master/WeChat-QRCode-Scanner-OpenCV)|
 |[AI behind the Diwali 2021 ‘Not just a Cadbury ad’](https://learnopencv.com/ai-behind-the-diwali-2021-not-just-a-cadbury-ad/)| |
