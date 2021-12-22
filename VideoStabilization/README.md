@@ -15,7 +15,7 @@ python3 video_stabilization.py
 ## C++ 
 Compile using the following
 ```
-g++ -O3 -std=c++11 `pkg-config --cflags --libs opencv` video_stabilization.py -o video_stabilization
+g++ -O3 -std=c++11 `pkg-config --cflags --libs opencv` video_stabilization.cpp -o video_stabilization
 ```
 Run using the following command 
 ```
