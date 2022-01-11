@@ -28,7 +28,7 @@ The only dependency not installed by JetPack is PyTorch 1.9 along with its compa
 
 ## How to use
 
-### Step 1
+## Step 1
 Convert the torchvision model to onnx format with
 ```Shell
 python3 segmodel_to_onnx.py
