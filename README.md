@@ -12,6 +12,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
+|[Building Industrial embedded deep learning inference pipelines with TensorRT](https://learnopencv.com/building-industrial-embedded-deep-learning-inference-pipelines-with-tensorrt/)|[Code](https://github.com/spmallick/learnopencv/tree/master/industrial_cv_TensorRT_python)|
 |[Transfer Learning for Medical Images](https://learnopencv.com/transfer-learning-for-medical-images/)||
 |[Stereo Vision and Depth Estimation using OpenCV AI Kit](https://learnopencv.com/stereo-vision-and-depth-estimation-using-opencv-ai-kit/)|[Code](https://github.com/spmallick/learnopencv/tree/master/oak-getting-started)|
 |[Introduction to OpenCV AI Kit and DepthAI](https://learnopencv.com/introduction-to-opencv-ai-kit-and-depthai/)|[Code](https://github.com/spmallick/learnopencv/tree/master/oak-getting-started)|
