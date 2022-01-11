@@ -62,4 +62,4 @@ python3 pytrt.py --precision int8 --device 2DLAs --infile input.mp4
 ```
 
 ## Results
-![Results](https://github.com/learnopencv/industrial_cv_TensorRT_python/blob/main/TensorRT%20GPU%2C%20DLA%2C%20int8%20inference.png)
+![Results](https://github.com/spmallick/learnopencv/blob/master/industrial_cv_TensorRT_python/TensorRT%20GPU%2C%20DLA%2C%20int8%20inference.png)
