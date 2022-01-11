@@ -1,5 +1,6 @@
-# pyTensorRT
-Python tutorial for TensorRT
+# Building Industrial embedded deep learning inference pipelines with TensorRT
+
+This folder contains code for the blog post [Building Industrial embedded deep learning inference pipelines with TensorRT](https://learnopencv.com/building-industrial-embedded-deep-learning-inference-pipelines-with-tensorrt/)
 
 ## Environment
 All code was tested on Jetson AGX Xavier 16 GB Developer Kit running the latest **JetPack 4.6 (rev 3)** at the time of writing.
@@ -63,3 +64,15 @@ python3 pytrt.py --precision int8 --device 2DLAs --infile input.mp4
 
 ## Results
 ![Results](https://github.com/spmallick/learnopencv/blob/master/industrial_cv_TensorRT_python/TensorRT%20GPU%2C%20DLA%2C%20int8%20inference.png)
+
+
+# AI Courses by OpenCV
+
+Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/courses/) is a great place to start. 
+
+<a href="https://opencv.org/courses/">
+<p align="center"> 
+<img src="https://www.learnopencv.com/wp-content/uploads/2020/04/AI-Courses-By-OpenCV-Github.png">
+</p>
+</a>
+
