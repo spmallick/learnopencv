@@ -12,6 +12,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
+|[Ensemble Deep Learning-based Defect Classification and Detection in SEM Images](https://learnopencv.com/ensemble-deep-learning-based-defect-classification-and-detection-in-sem-images/)||
 |[Building Industrial embedded deep learning inference pipelines with TensorRT](https://learnopencv.com/building-industrial-embedded-deep-learning-inference-pipelines-with-tensorrt/)|[Code](https://github.com/spmallick/learnopencv/tree/master/industrial_cv_TensorRT_python)|
 |[Transfer Learning for Medical Images](https://learnopencv.com/transfer-learning-for-medical-images/)||
 |[Stereo Vision and Depth Estimation using OpenCV AI Kit](https://learnopencv.com/stereo-vision-and-depth-estimation-using-opencv-ai-kit/)|[Code](https://github.com/spmallick/learnopencv/tree/master/oak-getting-started)|
