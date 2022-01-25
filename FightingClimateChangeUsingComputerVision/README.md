@@ -9,7 +9,7 @@
 ## Instructions
 
 ### Demo video running the colab notebooks <br />
-[![](./images/video.png)](https://www.youtube.com/watch?v=FLxf8vcaCso)
+[![](./images/video.PNG)](https://www.youtube.com/watch?v=FLxf8vcaCso)
 
 
 ### Image Web Scraper and Annotation Tool<br/> 
