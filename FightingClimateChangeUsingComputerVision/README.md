@@ -1,4 +1,4 @@
-# Plastic Waste Detection with Computer Vision And Deep Learning
+# Plastic Waste Detection with Deep Learning
 <p align="center">
   <img src="./images/demo.gif" alt="Sublime's custom image"/>
 </p>
