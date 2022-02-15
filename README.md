@@ -12,6 +12,10 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
+|[How to build Chrome Dino game bot using OpenCV Feature Matching](https://learnopencv.com/how-to-build-chrome-dino-game-bot-using-opencv-feature-matching/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Chrome-Dino-Bot-using-OpenCV-feature-matching)|
+|[Top 10 Sources to Find Computer Vision and AI Models](https://learnopencv.com/top-10-sources-to-find-computer-vision-and-ai-models/)||
+|[Multi-Attribute and Graph-based Object Detection](https://learnopencv.com/multi-attribute-and-graph-based-object-detection/)||
+|[Plastic Waste Detection with Deep Learning](https://learnopencv.com/plastic-waste-detection-with-deep-learning/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Plastic-Waste-Detection-with-Deep-Learning)|
 |[Ensemble Deep Learning-based Defect Classification and Detection in SEM Images](https://learnopencv.com/ensemble-deep-learning-based-defect-classification-and-detection-in-sem-images/)||
 |[Building Industrial embedded deep learning inference pipelines with TensorRT](https://learnopencv.com/building-industrial-embedded-deep-learning-inference-pipelines-with-tensorrt/)|[Code](https://github.com/spmallick/learnopencv/tree/master/industrial_cv_TensorRT_python)|
 |[Transfer Learning for Medical Images](https://learnopencv.com/transfer-learning-for-medical-images/)||
