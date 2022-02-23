@@ -12,6 +12,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
+|[Disparity Estimation using Deep Learning](https://learnopencv.com/disparity-estimation-using-deep-learning/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Disparity-Estimation-Using-Deep-Learning)|
 |[How to build Chrome Dino game bot using OpenCV Feature Matching](https://learnopencv.com/how-to-build-chrome-dino-game-bot-using-opencv-feature-matching/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Chrome-Dino-Bot-using-OpenCV-feature-matching)|
 |[Top 10 Sources to Find Computer Vision and AI Models](https://learnopencv.com/top-10-sources-to-find-computer-vision-and-ai-models/)||
 |[Multi-Attribute and Graph-based Object Detection](https://learnopencv.com/multi-attribute-and-graph-based-object-detection/)||
