@@ -12,6 +12,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
+|[Building a Body Posture Analysis System using MediaPipe](https://learnopencv.com/building-a-body-posture-analysis-system-using-mediapipe/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Posture-analysis-system-using-MediaPipe-Pose)|
 |[Introduction to MediaPipe](https://learnopencv.com/introduction-to-mediapipe/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Introduction-to-MediaPipe)|
 |[Disparity Estimation using Deep Learning](https://learnopencv.com/disparity-estimation-using-deep-learning/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Disparity-Estimation-Using-Deep-Learning)|
 |[How to build Chrome Dino game bot using OpenCV Feature Matching](https://learnopencv.com/how-to-build-chrome-dino-game-bot-using-opencv-feature-matching/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Chrome-Dino-Bot-using-OpenCV-feature-matching)|
