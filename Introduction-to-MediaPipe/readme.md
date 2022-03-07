@@ -2,7 +2,7 @@
 
 The notebook contains example code of accompanying our tutorial on [Introduction to Mediapipe](https://learnopencv.com/introduction-to-mediapipe/)
 
-You can run the example Notebook on [Google Colab](https://colab.research.google.com/github/spmallick/learnopencv/blob/master/Introduction-to-MediaPipe/MediaPipe-sample-solutions.ipynb){:target="_blank"}
+You can run the example Notebook on [Google Colab](https://colab.research.google.com/github/spmallick/learnopencv/blob/master/Introduction-to-MediaPipe/MediaPipe-sample-solutions.ipynb)
 
 ## Dependencies
 Install required packages using the following command.
