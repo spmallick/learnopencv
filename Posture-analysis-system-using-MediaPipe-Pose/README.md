@@ -5,7 +5,7 @@ The file contains python script for implementing poor posture alert system using
 Step by step code explanation has been provided in the notebook. You can also check out colab version here.
 
 <br>
-[![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/spmallick/learnopencv/blob/master/Posture-analysis-system-using-MediaPipe-Pose/human_posture_analysis.ipynb)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/spmallick/learnopencv/blob/master/Posture-analysis-system-using-MediaPipe-Pose/human_posture_analysis.ipynb)
 
 
 ### Install required packages
