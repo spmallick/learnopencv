@@ -8,6 +8,14 @@ This code takes a two step approach where License plates are first detected usin
 ```
 pip install -r requirements.txt
 ```
+## Notebooks
+This repository contains three jupyter notebooks, each one of performing different tasks.
+
+- **ALPR_inference.ipynb**: This notebook contains the pipeline required for end to end inference of the Automatic License plate recognition on images and videos along with the implementation of tracker. Run this notebook to perform ALPR on an image or a video.
+
+- **License_plate_detection_YOLOv4.ipynb**: This notebook contains end to end implementation of license plate detection using YOLOv4. It includes code for training, evaluation and inference based on darknet.
+
+- **OCR_comparison.ipynb**: This notebook compares performances of three of the PaddleOCR algorithms. The algorithms include, pp-ocr, pp-ocr(server), SRN.
 
 ## ALPR output example
 
