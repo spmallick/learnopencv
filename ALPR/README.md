@@ -2,7 +2,7 @@
 
 This repository contains code of our blog post Automatic License Plate Recognition. 
 
-This code takes a two step approach where License plates are first detected using [YOLOv4](https://github.com/AlexeyAB/darknet) and OCR then is applied using [PaddleOCR](https://github.com/PaddlePaddle/PaddleOCR) on the detected License plates.
+This code takes a two step approach where License plates are first detected using [YOLOv4](https://github.com/AlexeyAB/darknet) and OCR is then applied using [PaddleOCR](https://github.com/PaddlePaddle/PaddleOCR) on the detected License plates.
 
 ## Requirements
 `pip install -r requirements.txt`
