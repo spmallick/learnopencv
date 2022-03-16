@@ -19,7 +19,7 @@ This repository contains three jupyter notebooks, each one of performing differe
 
 ## ALPR output example
 
-![ALPR output](https://user-images.githubusercontent.com/64148610/158340552-bf0fadef-0019-481d-bdce-010f3c5ecff7.gif)
+![ALPR output](https://user-images.githubusercontent.com/64148610/158544760-75cee7a6-8461-4aba-b6a7-06b85723bc14.gif)
 
 # AI Courses by OpenCV
 
