@@ -15,7 +15,7 @@ This repository contains three jupyter notebooks, each one of performing differe
 
 - **[License_plate_detection_YOLOv4.ipynb](https://colab.research.google.com/github/sanyam83/learnopencv/blob/master/ALPR/License_plate_detection_YOLOv4.ipynb)**: This notebook contains end to end implementation of license plate detection using YOLOv4. It includes code for training, evaluation and inference based on darknet.
 
-- **OCR_comparison.ipynb**: This notebook compares performances of three of the PaddleOCR algorithms. The algorithms include, pp-ocr, pp-ocr(server), SRN.
+- **[OCR_comparison.ipynb](https://colab.research.google.com/github/sanyam83/learnopencv/blob/master/ALPR/OCR_comparison.ipynb)**: This notebook compares performances of three of the PaddleOCR algorithms. The algorithms include, pp-ocr, pp-ocr(server), SRN.
 
 ## ALPR output example
 
