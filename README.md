@@ -12,6 +12,9 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
+|[NVIDIA GTC 2022 Day 3 Highlights: Deep Dive into Hopper architecture](https://learnopencv.com/nvidia-gtc-2022-day-3-highlights-deep-dive-into-hopper-architecture/)||
+|[NVIDIA GTC 2022 Day 2 Highlights: Jensen’s Keynote](https://learnopencv.com/nvidia-gtc-2022-day-2-highlights/)||
+|[NVIDIA GTC 2022 Day 1 Highlights: Brilliant Start](https://learnopencv.com/gtc-day-1-highlights/)||
 |[Automatic License Plate Recognition using Python](https://learnopencv.com/automatic-license-plate-recognition-using-deep-learning/)|[Code](https://github.com/spmallick/learnopencv/tree/master/ALPR)|
 |[Building a Body Posture Analysis System using MediaPipe](https://learnopencv.com/building-a-body-posture-analysis-system-using-mediapipe/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Posture-analysis-system-using-MediaPipe-Pose)|
 |[Introduction to MediaPipe](https://learnopencv.com/introduction-to-mediapipe/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Introduction-to-MediaPipe)|
