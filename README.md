@@ -12,6 +12,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
+|[NVIDIA GTC 2022 Day 4 Highlights: Meet the new Jetson Orin](https://learnopencv.com/nvidia-gtc-2022-day-4-highlights-meet-the-new-jetson-orin/)||
 |[NVIDIA GTC 2022 Day 3 Highlights: Deep Dive into Hopper architecture](https://learnopencv.com/nvidia-gtc-2022-day-3-highlights-deep-dive-into-hopper-architecture/)||
 |[NVIDIA GTC 2022 Day 2 Highlights: Jensen’s Keynote](https://learnopencv.com/nvidia-gtc-2022-day-2-highlights/)||
 |[NVIDIA GTC 2022 Day 1 Highlights: Brilliant Start](https://learnopencv.com/gtc-day-1-highlights/)||
