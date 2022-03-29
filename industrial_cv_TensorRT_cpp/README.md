@@ -1,4 +1,4 @@
-# pyTensorRT
+# TensorRT C++ API
 AUTOSAR C++ compliant code using TensorRT for deep learning inference
 
 ## Environment
@@ -58,7 +58,7 @@ cp ../industrial_cv_TensorRT_python/segmodel.onnx ./build
 cd build
 cmake -DCMAKE_BUILD_TYPE=Debug ../
 make
-./trt_test
+./trt_test ./segmodel.onnx
 #this will reproduce the fps numbers from python tutorial for FP16
 ```
 
