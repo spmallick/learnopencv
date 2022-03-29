@@ -66,3 +66,14 @@ make
 These are same as what we got with python API. Refer to our TensorRT [python tutorial](https://github.com/spmallick/learnopencv/tree/master/industrial_cv_TensorRT_python) for details.
 
 ![Results](https://github.com/spmallick/learnopencv/blob/master/industrial_cv_TensorRT_python/TensorRT%20GPU%2C%20DLA%2C%20int8%20inference.png)
+
+# AI Courses by OpenCV
+
+Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/courses/) is a great place to start. 
+
+<a href="https://opencv.org/courses/">
+<p align="center"> 
+<img src="https://www.learnopencv.com/wp-content/uploads/2020/04/AI-Courses-By-OpenCV-Github.png">
+</p>
+</a>
+
