@@ -17,7 +17,7 @@ python apply_filter.py
 
 ## Sample Output
 
-![](outputs/anonymous_output.png)
+![](https://learnopencv.com/wp-content/uploads/2022/04/Create-Snapchat-Filters-using-MediaPipe.gif)
 
 # AI Courses by OpenCV
 
