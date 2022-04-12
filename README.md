@@ -12,7 +12,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
-|[Object Detection using Yolov5 and OpenCV DNN (C++/Python)](https://learnopencv.com/object-detection-using-yolov5-and-opencv-dnn-in-c-and-python/)|[Code](https://github/spmallick/learnopencv/blob/master/Object-Detection-using-YOLOv5-and-OpenCV-DNN-in-CPP-and-Python)|
+|[Object Detection using Yolov5 and OpenCV DNN (C++/Python)](https://learnopencv.com/object-detection-using-yolov5-and-opencv-dnn-in-c-and-python/)|[Code](https://github/spmallick/learnopencv/tree/master/Object-Detection-using-YOLOv5-and-OpenCV-DNN-in-CPP-and-Python)|
 |[Create Snapchat/Instagram filters using Mediapipe](https://learnopencv.com/create-snapchat-instagram-filters-using-mediapipe/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Create-AR-filters-using-Mediapipe)|
 |[AUTOSAR C++ compliant deep learning inference with TensorRT](https://learnopencv.com/autosar-c-compliant-deep-learning-inference-with-tensorrt/)|[Code](https://github.com/spmallick/learnopencv/tree/master/industrial_cv_TensorRT_cpp)|
 |[NVIDIA GTC 2022 Day 4 Highlights: Meet the new Jetson Orin](https://learnopencv.com/nvidia-gtc-2022-day-4-highlights-meet-the-new-jetson-orin/)||
