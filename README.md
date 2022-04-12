@@ -12,6 +12,9 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
+|[Object Detection using Yolov5 and OpenCV DNN (C++/Python)](https://learnopencv.com/object-detection-using-yolov5-and-opencv-dnn-in-c-and-python/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Object-Detection-using-YOLOv5-and-OpenCV-DNN-in-CPP-and-Python)|
+|[Create Snapchat/Instagram filters using Mediapipe](https://learnopencv.com/create-snapchat-instagram-filters-using-mediapipe/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Create-AR-filters-using-Mediapipe)|
+|[AUTOSAR C++ compliant deep learning inference with TensorRT](https://learnopencv.com/autosar-c-compliant-deep-learning-inference-with-tensorrt/)|[Code](https://github.com/spmallick/learnopencv/tree/master/industrial_cv_TensorRT_cpp)|
 |[NVIDIA GTC 2022 Day 4 Highlights: Meet the new Jetson Orin](https://learnopencv.com/nvidia-gtc-2022-day-4-highlights-meet-the-new-jetson-orin/)||
 |[NVIDIA GTC 2022 Day 3 Highlights: Deep Dive into Hopper architecture](https://learnopencv.com/nvidia-gtc-2022-day-3-highlights-deep-dive-into-hopper-architecture/)||
 |[NVIDIA GTC 2022 Day 2 Highlights: Jensen’s Keynote](https://learnopencv.com/nvidia-gtc-2022-day-2-highlights/)||
@@ -250,3 +253,4 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 |[Turn your OpenCV Code into a Web API in under 10 minutes — Part 1](http://www.learnopencv.com/turn-your-opencv-Code-into-a-web-api-in-under-10-minutes-part-1/) | |
 |[How to compile OpenCV sample Code ?](http://www.learnopencv.com/how-to-compile-opencv-sample-Code/) | |
 |[Install OpenCV 3 on Yosemite ( OSX 10.10.x )](http://www.learnopencv.com/install-opencv-3-on-yosemite-osx-10-10-x/) | |
+|[Create Snapchat/Instagram Filters Using Medipipe](https://learnopencv.com/create-snapchat-instagram-filters-using-mediapipe/) |  [Code](https://github.com/spmallick/learnopencv/tree/master/Create-AR-filters-using-Mediapipe)  |
