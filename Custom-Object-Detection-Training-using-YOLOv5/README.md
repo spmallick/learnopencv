@@ -2,7 +2,7 @@
 
 
 
-This repository contains the code for the LearnOpenCV blog post ***Custom Object Detection using YOLOv5***.
+This repository contains the code for the LearnOpenCV blog post [Custom Object Detection Training using YOLOv5](https://learnopencv.com/custom-object-detection-training-using-yolov5/).
 
 
 
@@ -12,7 +12,7 @@ The `Custom_Object_Detection_using_YOLOv5.ipynb` Jupyter Notebook contains all t
 * Training a medium YOLOv5 model.
 * Training a medium YOLOv5 model by freezing the first 15 blocks.
 
-
+[You can run the notebook on Google Colab as well.](https://colab.research.google.com/github/spmallick/learnopencv/blob/master/Custom-Object-Detection-Training-using-YOLOv5/Custom_Object_Detection_using_YOLOv5.ipynb)
 
 ## AI Courses by OpenCV
 
