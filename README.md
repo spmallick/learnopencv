@@ -259,3 +259,4 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 |[Install OpenCV 3 on Yosemite ( OSX 10.10.x )](http://www.learnopencv.com/install-opencv-3-on-yosemite-osx-10-10-x/) | |
 |[Create Snapchat/Instagram Filters Using Medipipe](https://learnopencv.com/create-snapchat-instagram-filters-using-mediapipe/) |  [Code](https://github.com/spmallick/learnopencv/tree/master/Create-AR-filters-using-Mediapipe)  |
 |[Object detection with depth measurement using pre-trained models with OAK-D](https://learnopencv.com/object-detection-with-depth-measurement-with-oak-d/) |  [Code](https://github.com/spmallick/learnopencv/tree/master/OAK-Object-Detection-with-Depth)  |
+|[DepthAi Pipeline Overview](https://learnopencv.com/depthai-pipeline-overview-creating-a-complex-pipeline/) |  [Code](https://github.com/spmallick/learnopencv/tree/master/OAK-DepthAi-Pipeline-Overview)  |
