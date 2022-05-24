@@ -1,0 +1,1 @@
+('superintended', 0.68117815)
