@@ -16,7 +16,8 @@ This repository contains two different notebooks for performing both the tasks a
 - **[OCR_comparison.ipynb](https://colab.research.google.com/github/sanyam83/learnopencv/blob/master/Optical%20Character%20Recognition%20using%20PaddleOCR/OCR_comparison.ipynb)**: This notebook conatins the comparison code of the models provided by PaddleOCR toolkit. In this PP-OCRv3, PP-OCRv2, SRN and NRTR are tested on COCO text dataset. 
 
 ## Output examples
-
+![receipt](https://github.com/sanyam83/learnopencv/blob/master/Optical%20Character%20Recognition%20using%20PaddleOCR/output_images/06-receipt1-output.jpg)
+![id](https://github.com/sanyam83/learnopencv/blob/master/Optical%20Character%20Recognition%20using%20PaddleOCR/output_images/10-id-card-output.jpg)
 # AI Courses by OpenCV
 
 Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/courses/) is a great place to start. 
