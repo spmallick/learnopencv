@@ -1,0 +1,33 @@
+#You must ensure nmake.exe, cl.exe, link.exe are in system path.
+#VCVARS64.bat
+#Under dosbox prompt
+#nmake -f Makefile.win
+
+##########################################
+CXX = cl.exe
+CFLAGS = /nologo /O2 /EHsc /I. /D _WIN64 /D _CRT_SECURE_NO_DEPRECATE
+TARGET = windows
+
+all: $(TARGET)\svm-train.exe $(TARGET)\svm-predict.exe $(TARGET)\svm-scale.exe $(TARGET)\svm-toy.exe lib
+
+$(TARGET)\svm-predict.exe: svm.h svm-predict.c svm.obj
+	$(CXX) $(CFLAGS) svm-predict.c svm.obj -Fe$(TARGET)\svm-predict.exe
+
+$(TARGET)\svm-train.exe: svm.h svm-train.c svm.obj
+	$(CXX) $(CFLAGS) svm-train.c svm.obj -Fe$(TARGET)\svm-train.exe
+
+$(TARGET)\svm-scale.exe: svm.h svm-scale.c
+	$(CXX) $(CFLAGS) svm-scale.c -Fe$(TARGET)\svm-scale.exe
+
+$(TARGET)\svm-toy.exe: svm.h svm.obj svm-toy\windows\svm-toy.cpp
+	$(CXX) $(CFLAGS) svm-toy\windows\svm-toy.cpp svm.obj user32.lib gdi32.lib comdlg32.lib  -Fe$(TARGET)\svm-toy.exe
+
+svm.obj: svm.cpp svm.h
+	$(CXX) $(CFLAGS) -c svm.cpp
+
+lib: svm.cpp svm.h svm.def
+	$(CXX) $(CFLAGS) -LD svm.cpp -Fe$(TARGET)\libsvm -link -DEF:svm.def 
+
+clean:
+	-erase /Q *.obj $(TARGET)\*.exe $(TARGET)\*.dll $(TARGET)\*.exp $(TARGET)\*.lib
+

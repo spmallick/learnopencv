@@ -1,0 +1,5 @@
+pyautogui==0.9.48
+matplotlib==3.1.0
+numpy==1.18.3
+opencv-contrib-python==4.3.0
+dlib==19.18.0
