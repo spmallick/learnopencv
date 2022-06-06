@@ -3,10 +3,12 @@ import cv2
 import pyvirtualcam
 from pyvirtualcam import PixelFormat
 from utils import handsutils
+import platform
 
 
 def main():
     # Start video capture and set defaults
+    device_val = None
     cap = cv2.VideoCapture(0)
     pref_width = 1280
     pref_height = 720
@@ -20,7 +22,11 @@ def main():
     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
     fps = cap.get(cv2.CAP_PROP_FPS)
 
-    with pyvirtualcam.Camera(width, height, fps, device="/dev/video2", fmt=PixelFormat.BGR) as cam:
+    os = platform.system()
+    if os == "Linux":
+        device_val = "/dev/video2"
+
+    with pyvirtualcam.Camera(width, height, fps, device=device_val, fmt=PixelFormat.BGR) as cam:
         print('Virtual camera device: ' + cam.device)
         while True:
             success, img = cap.read()

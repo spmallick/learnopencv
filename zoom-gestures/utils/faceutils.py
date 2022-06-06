@@ -23,15 +23,16 @@ def background_blur(image):
         image.flags.writeable = True
         # Convert Image to BGR from RGB
         image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
-
+        # Add a joint bilateral filter
+        mask = cv2.ximgproc.jointBilateralFilter(np.uint8(results.segmentation_mask),
+                                                 image,
+                                                 15, 5, 5)
         # Create a condition for blurring the background
         condition = np.stack(
             (results.segmentation_mask,) * 3, axis=-1) > 0.1
 
-        # Create a blurred background image
-        bg_image = cv2.GaussianBlur(image, (55, 55), 0)
         # Remove map the image on blurred background
-        output_image = np.where(condition, image, bg_image)
+        output_image = np.where(condition, image, mask)
 
         # Flip the output
         output_image = cv2.flip(output_image, 1)
