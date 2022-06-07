@@ -265,4 +265,3 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 |[Object detection with depth measurement using pre-trained models with OAK-D](https://learnopencv.com/object-detection-with-depth-measurement-with-oak-d/) |  [Code](https://github.com/spmallick/learnopencv/tree/master/OAK-Object-Detection-with-Depth)  |
 |[DepthAi Pipeline Overview](https://learnopencv.com/depthai-pipeline-overview-creating-a-complex-pipeline/) |  [Code](https://github.com/spmallick/learnopencv/tree/master/OAK-DepthAi-Pipeline-Overview)  |
 |[Anti-Spoofing Face Recognition with OAK-D](https://learnopencv.com/anti-spoofing-face-recognition-system-using-oak-d-and-depthai/) |  [Code](https://github.com/spmallick/learnopencv/tree/master/Anti-Spoofing-Face-Recognition-with-OAK-D)  |
-|[Gesture control in a Zoom Call](https://learnopencv.com/gesture-control-in-a-zoom-call/) |  [Code](https://github.com/spmallick/learnopencv/tree/master/zoom-gestures)  |
