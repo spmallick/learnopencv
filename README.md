@@ -12,6 +12,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
+|[Optical Character Recognition using PaddleOCR](https://learnopencv.com/optical-character-recognition-using-paddleocr/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Optical-Character-Recognition-using-PaddleOCR)|
 |[Gesture Control in Zoom Call using Mediapipe](https://learnopencv.com/gesture-control-in-zoom-call-using-mediapipe/)|[Code](https://github.com/spmallick/learnopencv/tree/master/zoom-gestures)|
 |[A Deep Dive into Tensorflow Model Optimization](https://learnopencv.com/deep-dive-into-tensorflow-model-optimization-toolkit/)|[Code](https://github.com/spmallick/learnopencv/tree/master/A-Deep-Dive-into-Tensorflow-Model-Optimization)|
 |[Anti-Spoofing Face Recognition System using OAK-D and DepthAI](https://learnopencv.com/anti-spoofing-face-recognition-system-using-oak-d-and-depthai/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Anti-Spoofing-Face-Recognition-with-OAK-D)|
