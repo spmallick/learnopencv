@@ -1,9 +1,6 @@
 # Understanding Multiple Object Tracking using DeepSORT
 
-**This directory contains code for the article "[Understanding Multiple Object Tracking using DeepSORT](https://learnopencv.com/understanding-multiple-object-tracking-using-deepsort/)**
-
-## Overview
-
+**This directory contains code for the article [Understanding Multiple Object Tracking using DeepSORT](https://learnopencv.com/understanding-multiple-object-tracking-using-deepsort/)**
 
 
 For more details refer to the blogpost: https://learnopencv.com/understanding-multiple-object-tracking-using-deepsort/
