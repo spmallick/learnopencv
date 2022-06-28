@@ -12,7 +12,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
-|[IoU:Understanding Intersection Over Union in Object Detection and Segmentation](https://learnopencv.com/iou-understanding-intersection-over-union-in-object-detection-and-segmentation/)|[Code](https://github/spmallick/learnopencv/blob/master/IoU-Intersection-Over-Union)|
+|[Intersection-over-Union(IoU)-in-Object-Detection-and-Segmentation](https://learnopencv.com/intersection-over-unioniou-in-object-detection-and-segmentation/)|[Code](https://github/spmallick/learnopencv/blob/master/Intersection-over-Union-IoU-in-Object-Detection-and-Segmentation)|
 |[Understanding Multiple Object Tracking using DeepSORT](https://learnopencv.com/understanding-multiple-object-tracking-using-deepsort/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Understanding-Multiple-Object-Tracking-using-DeepSORT)|
 |[Optical Character Recognition using PaddleOCR](https://learnopencv.com/optical-character-recognition-using-paddleocr/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Optical-Character-Recognition-using-PaddleOCR)|
 |[Gesture Control in Zoom Call using Mediapipe](https://learnopencv.com/gesture-control-in-zoom-call-using-mediapipe/)|[Code](https://github.com/spmallick/learnopencv/tree/master/zoom-gestures)|
