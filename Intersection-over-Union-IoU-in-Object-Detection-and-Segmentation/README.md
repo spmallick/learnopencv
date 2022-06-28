@@ -2,8 +2,8 @@
 
 This directory contains code for implementing IoU calculation using NumPy and PyTorch. You will learn the pre-existing along with defining a function manually. Check out the Colab notebooks below.
 
- - [NumPy](https://colab.research.google.com/github/spmallick/learnopencv/tree/master/Intersection-over-Union-IoU-in-Object-Detection-and-Segmentation/IoU_NumPy.ipynb)
- - [PyTorch](https://colab.research.google.com/github/spmallick/learnopencv/tree/master/Intersection-over-Union-IoU-in-Object-Detection-and-Segmentation/IoU_PyTorch.ipynb)
+ - [NumPy](https://colab.research.google.com/github/spmallick/learnopencv/blob/master/Intersection-over-Union-IoU-in-Object-Detection-and-Segmentation/IoU_NumPy.ipynb)
+ - [PyTorch](https://colab.research.google.com/github/spmallick/learnopencv/blob/master/Intersection-over-Union-IoU-in-Object-Detection-and-Segmentation/IoU_PyTorch.ipynb)
 
 Install [PyTorch](https://pytorch.org/get-started/locally/) for local system.
 
