@@ -36,7 +36,7 @@ int main(int, char**) {
         Mat image;
         bool isSuccess = cap.read(image);
 
-        if (! isSucess) break;
+        if (! isSuccess) break;
         
         int image_height = image.cols;
         int image_width = image.rows;
