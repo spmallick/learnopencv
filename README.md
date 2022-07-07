@@ -12,7 +12,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 ## List of Blog Posts
 | Blog Post | Download |
 | ------------- |:-------------|
-|[Demystifying GPU Architectures For Deep Learning – Part 1](https://learnopencv.com/demystifying-gpu-architectures-for-deep-learning/)||
+|[Demystifying GPU Architectures For Deep Learning – Part 1](https://learnopencv.com/demystifying-gpu-architectures-for-deep-learning/)|[Code](https://www.dropbox.com/sh/b5y85yjyt1cxizn/AACpsOeqXcLJUMclEql7qXiEa?dl=1)|
 |[Intersection over Union(IoU) in Object Detection and Segmentation](https://learnopencv.com/intersection-over-unioniou-in-object-detection-and-segmentation/)|[Code](https://www.dropbox.com/sh/ba110s8gcrs29sx/AADDqQJ2tPUaC9gtLlX-ekFqa?dl=1)|
 |[Understanding Multiple Object Tracking using DeepSORT](https://learnopencv.com/understanding-multiple-object-tracking-using-deepsort/)|[Code](https://www.dropbox.com/sh/9b950v9rpe70pr0/AAAeXNIf21ZBxkMBtVc69XDqa?dl=1)|
 |[Optical Character Recognition using PaddleOCR](https://learnopencv.com/optical-character-recognition-using-paddleocr/)|[Code](https://www.dropbox.com/sh/lp03r43e3gneq9o/AAAlSOXQQihAGpCk4SD2DG2ea?dl=1)|
