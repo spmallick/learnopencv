@@ -23,6 +23,10 @@ sudo modprobe v4l2loopback
 python3 main.py
 ```
 
+### Download Code
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download.png" alt="Download Code" width="150">](https://www.dropbox.com/sh/y32jehs8s6xklrk/AACfMVxK6_0Bd6UxlkOGT8bZa?dl=1)
+
 
 # AI Courses by OpenCV
 
