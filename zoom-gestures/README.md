@@ -1,5 +1,7 @@
 # Zoom Gestures 
 
+<img src="https://learnopencv.com/wp-content/uploads/2022/06/Gesture-Control-in-Zoom-Meeting-MediaPipe.jpg" alt="Zoom Gesture using MediaPipe feature image">
+
 ## Installation and Implementation
 
 ### Environment Setup
@@ -23,9 +25,7 @@ sudo modprobe v4l2loopback
 python3 main.py
 ```
 
-### Download Code
-
-[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download.png" alt="Download Code" width="150">](https://www.dropbox.com/sh/y32jehs8s6xklrk/AACfMVxK6_0Bd6UxlkOGT8bZa?dl=1)
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="150">](https://www.dropbox.com/sh/y32jehs8s6xklrk/AACfMVxK6_0Bd6UxlkOGT8bZa?dl=1)
 
 
 # AI Courses by OpenCV

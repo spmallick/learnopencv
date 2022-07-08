@@ -10,20 +10,19 @@ Kernel version:
 sf@trantor:~/Downloads$ uname -r
 5.4.0-121-generic
 ```
-## Download Code
 
-[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download.png" alt="Download Code" width="150">](https://www.dropbox.com/sh/b5y85yjyt1cxizn/AACpsOeqXcLJUMclEql7qXiEa?dl=1)
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="150">](https://www.dropbox.com/sh/b5y85yjyt1cxizn/AACpsOeqXcLJUMclEql7qXiEa?dl=1)
 
 ## How to use
 
-## Compile and run
+### Compile and run
 
 ```Shell
 nvcc cuda_matmul.cu -lm -o cu_mm.out
 ./cu_mm.out 2048 256 512
 ```
 
-## Results
+### Results
 
 On the tested system, the GPU was about 650 times faster than the CPU.
 
