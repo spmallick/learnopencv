@@ -1,4 +1,4 @@
-#This project describes detecting machine readable zones in passport images
+#This project describes how to detect machine readable zones in passport images
 #Refer to "Input Images" and "Output Images" folder for results
 import cv2
 import numpy as np
