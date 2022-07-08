@@ -10,6 +10,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 </a>
 
 ## List of Blog Posts
+
 | Blog Post | Code |
 | ------------- |:-------------|
 |[Demystifying GPU Architectures For Deep Learning](https://learnopencv.com/demystifying-gpu-architectures-for-deep-learning/)|[Code](https://github.com/spmallick/learnopencv/tree/master/gpu_arch_and_CUDA)|
@@ -21,7 +22,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 |[Anti-Spoofing Face Recognition System using OAK-D and DepthAI](https://learnopencv.com/anti-spoofing-face-recognition-system-using-oak-d-and-depthai/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Anti-Spoofing-Face-Recognition-with-OAK-D)|
 |[DepthAI Pipeline Overview: Creating a Complex Pipeline](https://learnopencv.com/depthai-pipeline-overview-creating-a-complex-pipeline/)|[Code](https://github.com/spmallick/learnopencv/tree/master/OAK-DepthAi-Pipeline-Overview)|
 |[TensorFlow Lite Model Maker: Create Models for On-Device Machine Learning](https://learnopencv.com/tensorflow-lite-model-maker-create-models-for-on-device-machine-learning/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Tensorflow-Lite-Model-Maker-Create-Models-for-On-Device-ML)|
-|[TensorFlow Lite: Model Optimization for	On Device Machine Learning](https://learnopencv.com/tensorflow-lite-model-optimization-for-on-device-machine-learning)|[Code](https://github.com/spmallick/learnopencv/tree/master/TensorFlow-Lite-Model-Optimization-for-On-Device-MachineLearning)|
+|[TensorFlow Lite: Model Optimization for On Device Machine Learning](https://learnopencv.com/tensorflow-lite-model-optimization-for-on-device-machine-learning)|[Code](https://github.com/spmallick/learnopencv/tree/master/TensorFlow-Lite-Model-Optimization-for-On-Device-MachineLearning)|
 |[Object detection with depth measurement using pre-trained models with OAK-D](https://learnopencv.com/object-detection-with-depth-measurement-with-oak-d/)|[Code](https://github.com/spmallick/learnopencv/tree/master/OAK-Object-Detection-with-Depth)|
 |[Custom Object Detection Training using YOLOv5](https://learnopencv.com/custom-object-detection-training-using-yolov5/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Custom-Object-Detection-Training-using-YOLOv5)|
 |[Object Detection using Yolov5 and OpenCV DNN (C++/Python)](https://learnopencv.com/object-detection-using-yolov5-and-opencv-dnn-in-c-and-python/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Object-Detection-using-YOLOv5-and-OpenCV-DNN-in-CPP-and-Python)|
