@@ -17,7 +17,6 @@ def get_image(image_path):
     return image
 
 # We now define the complete code as a method that we can call to extract the top colors from the image and display them as a pie chart. I’ve named the method as get_colors and it takes 3 arguments:
-# 
 #     image: The image whose colors we wish to extract.
 #     number_of_colors: Total colors we want to extract.
 #     show_chart: A boolean that decides whether we show the pie chart or not
