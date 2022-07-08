@@ -1,6 +1,6 @@
 # Demystifying GPU architectures for deep learning
 
-This folder contains code for the blog post [Demystifying GPU architectures for deep learning](add-link)
+This folder contains code for the blog post [Demystifying GPU architectures for deep learning](https://learnopencv.com/demystifying-gpu-architectures-for-deep-learning/)
 
 ## Environment
 All code was tested on a PC with RTX 3090 and AMD Ryzen 5800X.
