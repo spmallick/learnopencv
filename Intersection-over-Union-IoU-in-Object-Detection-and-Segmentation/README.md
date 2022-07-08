@@ -14,9 +14,8 @@ Check out the Colab notebooks below.
 
 Install [PyTorch](https://pytorch.org/get-started/locally/) for local system.
 
-### Download Code
 
-[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download.png" alt="Download Code" width="150">](https://www.dropbox.com/sh/ba110s8gcrs29sx/AADDqQJ2tPUaC9gtLlX-ekFqa?dl=1)
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button.png" alt="Download Code" width="150">](https://www.dropbox.com/sh/ba110s8gcrs29sx/AADDqQJ2tPUaC9gtLlX-ekFqa?dl=1)
 
 
 # AI Courses by OpenCV
