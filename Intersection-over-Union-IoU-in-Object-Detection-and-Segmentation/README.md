@@ -5,7 +5,7 @@
 <br>
 <br>
 
-This directory contains code for implementing IoU calculation using NumPy and PyTorch. You will learn the in-built and manual methods to implement IoU. Find out detailed explanation in the blog post [Intersection over Union (IoU) in Object Detection anb Segmentation](https://learnopencv.com/intersection-over-union-iou-in-object-detection-and-segmentation/). 
+This directory contains code for implementing IoU calculation using NumPy and PyTorch. You will learn the in-built and manual methods to implement IoU. Find out detailed explanation in the blog post [Intersection over Union (IoU) in Object Detection and Segmentation](https://learnopencv.com/intersection-over-union-iou-in-object-detection-and-segmentation/). 
 <br>
 Check out the Colab notebooks below.
 
