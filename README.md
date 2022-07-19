@@ -10,20 +10,15 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 </a>
 
 ## List of Blog Posts
-
-| Blog Post | Code |
+| Blog Post | |
 | ------------- |:-------------|
-|[Demystifying GPU architectures for deep learning: Part 2](https://learnopencv.com/demystifying-gpu-architectures-for-deep-learning-part-2/)|[Code](https://github.com/spmallick/learnopencv/tree/master/gpu_arch_and_CUDA)|
-|[Demystifying GPU Architectures For Deep Learning](https://learnopencv.com/demystifying-gpu-architectures-for-deep-learning/)|[Code](https://github.com/spmallick/learnopencv/tree/master/gpu_arch_and_CUDA)|
-|[Intersection-over-Union(IoU)-in-Object-Detection-and-Segmentation](https://learnopencv.com/intersection-over-unioniou-in-object-detection-and-segmentation/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Intersection-over-Union-IoU-in-Object-Detection-and-Segmentation)|
-|[Understanding Multiple Object Tracking using DeepSORT](https://learnopencv.com/understanding-multiple-object-tracking-using-deepsort/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Understanding-Multiple-Object-Tracking-using-DeepSORT)|
 |[Optical Character Recognition using PaddleOCR](https://learnopencv.com/optical-character-recognition-using-paddleocr/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Optical-Character-Recognition-using-PaddleOCR)|
 |[Gesture Control in Zoom Call using Mediapipe](https://learnopencv.com/gesture-control-in-zoom-call-using-mediapipe/)|[Code](https://github.com/spmallick/learnopencv/tree/master/zoom-gestures)|
 |[A Deep Dive into Tensorflow Model Optimization](https://learnopencv.com/deep-dive-into-tensorflow-model-optimization-toolkit/)|[Code](https://github.com/spmallick/learnopencv/tree/master/A-Deep-Dive-into-Tensorflow-Model-Optimization)|
 |[Anti-Spoofing Face Recognition System using OAK-D and DepthAI](https://learnopencv.com/anti-spoofing-face-recognition-system-using-oak-d-and-depthai/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Anti-Spoofing-Face-Recognition-with-OAK-D)|
 |[DepthAI Pipeline Overview: Creating a Complex Pipeline](https://learnopencv.com/depthai-pipeline-overview-creating-a-complex-pipeline/)|[Code](https://github.com/spmallick/learnopencv/tree/master/OAK-DepthAi-Pipeline-Overview)|
 |[TensorFlow Lite Model Maker: Create Models for On-Device Machine Learning](https://learnopencv.com/tensorflow-lite-model-maker-create-models-for-on-device-machine-learning/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Tensorflow-Lite-Model-Maker-Create-Models-for-On-Device-ML)|
-|[TensorFlow Lite: Model Optimization for On Device Machine Learning](https://learnopencv.com/tensorflow-lite-model-optimization-for-on-device-machine-learning)|[Code](https://github.com/spmallick/learnopencv/tree/master/TensorFlow-Lite-Model-Optimization-for-On-Device-MachineLearning)|
+|[TensorFlow Lite: Model Optimization for	On Device Machine Learning](https://learnopencv.com/tensorflow-lite-model-optimization-for-on-device-machine-learning)|[Code](https://github.com/spmallick/learnopencv/tree/master/TensorFlow-Lite-Model-Optimization-for-On-Device-MachineLearning)|
 |[Object detection with depth measurement using pre-trained models with OAK-D](https://learnopencv.com/object-detection-with-depth-measurement-with-oak-d/)|[Code](https://github.com/spmallick/learnopencv/tree/master/OAK-Object-Detection-with-Depth)|
 |[Custom Object Detection Training using YOLOv5](https://learnopencv.com/custom-object-detection-training-using-yolov5/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Custom-Object-Detection-Training-using-YOLOv5)|
 |[Object Detection using Yolov5 and OpenCV DNN (C++/Python)](https://learnopencv.com/object-detection-using-yolov5-and-opencv-dnn-in-c-and-python/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Object-Detection-using-YOLOv5-and-OpenCV-DNN-in-CPP-and-Python)|
@@ -272,3 +267,4 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 |[DepthAi Pipeline Overview](https://learnopencv.com/depthai-pipeline-overview-creating-a-complex-pipeline/) |  [Code](https://github.com/spmallick/learnopencv/tree/master/OAK-DepthAi-Pipeline-Overview)  |
 |[Anti-Spoofing Face Recognition with OAK-D](https://learnopencv.com/anti-spoofing-face-recognition-system-using-oak-d-and-depthai/) |  [Code](https://github.com/spmallick/learnopencv/tree/master/Anti-Spoofing-Face-Recognition-with-OAK-D)  |
 |[Understanding Multiple Object Tracking using DeepSORT](https://learnopencv.com/understanding-multiple-object-tracking-using-deepsort/) |  [Code](https://github.com/spmallick/learnopencv/tree/master/Understanding-Multiple-Object-Tracking-using-DeepSORT)  |
+|[Automatic Document Scanner](https://learnopencv.com/automatic-document-scanner-using-opencv/) |  [Code](https://github.com/spmallick/learnopencv/tree/master/Automatic-Document-Scanner)  |
