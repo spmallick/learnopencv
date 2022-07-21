@@ -12,6 +12,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
+|[https://learnopencv.com/automatic-document-scanner-using-opencv/](https://learnopencv.com/automatic-document-scanner-using-opencv/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Automatic-Document-Scanner)|
 |[Demystifying GPU architectures for deep learning: Part 2](https://learnopencv.com/demystifying-gpu-architectures-for-deep-learning-part-2/)|[Code](https://github.com/spmallick/learnopencv/tree/master/gpu_arch_and_CUDA)|
 |[Demystifying GPU Architectures For Deep Learning](https://learnopencv.com/demystifying-gpu-architectures-for-deep-learning/)|[Code](https://github.com/spmallick/learnopencv/tree/master/gpu_arch_and_CUDA)|
 |[Intersection-over-Union(IoU)-in-Object-Detection-and-Segmentation](https://learnopencv.com/intersection-over-unioniou-in-object-detection-and-segmentation/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Intersection-over-Union-IoU-in-Object-Detection-and-Segmentation)|
