@@ -3,8 +3,6 @@
 **This repository contains code for [Anti-Spoofing Face Recognition System using OAK-D and DepthAI](https://learnopencv.com/anti-spoofing-face-recognition-system-using-oak-d-and-depthai/) blogpost**.
 
 
-For more details refer to the [blogpost](https://learnopencv.com/anti-spoofing-face-recognition-system-using-oak-d-and-depthai/).
-
 [<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/4xl3tvo7vuu6lz2/AACCG_AOfTggykhFQAiWbPPWa?dl=1)
 
 ## Install requirements
