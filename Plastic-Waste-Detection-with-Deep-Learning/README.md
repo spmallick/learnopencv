@@ -1,4 +1,9 @@
 # Plastic Waste Detection with Deep Learning
+
+**This repository contains code for [Plastic waste detection with deep learning](https://learnopencv.com/plastic-waste-detection-with-deep-learning/) blogpost**.
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/82gpp6xytjmtcnp/AADLXuRsH30vjdXtFnfmw2p3a?dl=1)
+
 <p align="center">
   <img src="./images/demo.gif" alt="Sublime's custom image"/>
 </p>
