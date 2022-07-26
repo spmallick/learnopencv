@@ -1,11 +1,11 @@
-# Code for "DepthAI Pipeline Overview: Creating a Complex Pipeline"
+# DepthAI Pipeline Overview: Creating a Complex Pipeline
 
-**This repo contains code for "DepthAI Pipeline Overview: Creating a Complex Pipeline" Blogpost**
+**This repository contains code for [DepthAI Pipeline Overview: Creating a Complex Pipeline](https://learnopencv.com/depthai-pipeline-overview-creating-a-complex-pipeline/) blogpost**.
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/oon2rklwhfmjkfd/AACsZN5WOjYRLIfOPL521108a?dl=1)
 
 
-For more details refer to the blogpost: https://learnopencv.com/depthai-pipeline-overview-creating-a-complex-pipeline/
-
-## Install requirements
+## Install Requirements
 ```
 pip install -r requirements.txt
 ```
