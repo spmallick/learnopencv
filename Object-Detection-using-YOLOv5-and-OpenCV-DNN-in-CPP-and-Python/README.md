@@ -1,11 +1,13 @@
 # Object Detection using YOLOv5 and OpenCV DNN (C++/Python)
 
-The repository contains code for the tutorial [Object Detection using yolov5 in OpenCV DNN framework](https://learnopencv.com/object-detection-using-yolov5-and-opencv-dnn-in-c-and-python/). Use this 
-[Colab notebook](https://colab.research.google.com/github/spmallick/learnopencv/blob/master/Object-Detection-using-YOLOv5-and-OpenCV-DNN-in-CPP-and-Python/Convert_PyTorch_models.ipynb) to convert native PyTorch models into ONNX format.
+**This repository contains the code for [Object Detection using YOLOv5 and OpenCV DNN in C++ and Python](https://learnopencv.com/object-detection-using-yolov5-and-opencv-dnn-in-c-and-python/) blogpost**.
+
 
 ![Feature Image](https://learnopencv.com/wp-content/uploads/2022/04/yolov5-feature-image.gif)
 
 ## Install Dependancies
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/f41c0c6hvdw25ws/AABb2gk5SdkYLPopkz-u3dzia?dl=1)
 
 ```
 pip install -r requirements.txt
