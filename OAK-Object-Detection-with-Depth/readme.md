@@ -1,11 +1,13 @@
 # Code for Object detection with depth measurement using pre-trained models with OAK-D
 
-**This repo contains code for "Object detection with depth measurement using pre-trained models with OAK-D" Blogpost**
+**This repository contains code for [Object detection with depth measurement using pre-trained models with OAK-D](https://learnopencv.com/object-detection-with-depth-measurement-with-oak-d/) blogpost**.
 
 
-For more details refer to the blogpost: https://learnopencv.com/object-detection-with-depth-measurement-with-oak-d/
 
 ## Install requirements
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/gnsv3fj9qxgzzcq/AADFKAjEHlMtWDR5ADBpNzdBa?dl=1)
+
 ```
 pip install -r requirements.txt
 ```

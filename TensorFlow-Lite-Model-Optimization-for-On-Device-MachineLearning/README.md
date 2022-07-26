@@ -2,7 +2,6 @@
 
 **This repository contains code for [TensorFlow Lite: Model Optimization for On-Device Machine Learning](https://learnopencv.com/tensorflow-lite-model-optimization-for-on-device-machine-learning) blogpost**.
 
-(https://colab.research.google.com/github/spmallick/learnopencv/blob/master/TensorFlow-Lite-Model-Optimization-for-On-Device-MachineLearning/TensorFlow_Lite_Model_Optimization_for_On_Device_Machine_Learning.ipynb).
 
 <img src="https://learnopencv.com/wp-content/uploads/2022/05/tflite_feature_image-1-scaled.jpg" align="middle">
 
