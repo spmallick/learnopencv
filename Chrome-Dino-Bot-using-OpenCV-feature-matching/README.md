@@ -1,8 +1,12 @@
 # T-Rex Game Bot using Feature Matching in OpenCV
 
+**This repository contains code for [How to build Chrome Dino game bot using OpenCV Feature Matching](https://learnopencv.com/how-to-build-chrome-dino-game-bot-using-opencv-feature-matching/) blogpost**.
+
 A bot to automate Chrome Dino game using Feature Matching, AutoPyGUI and MSS.
 
 ### Install required packages
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/yjrnt9vhifvku8a/AABJaZvimTLz6PbaGCAbCGEVa?dl=1)
 
 ```
 pip install -r requirements.txt

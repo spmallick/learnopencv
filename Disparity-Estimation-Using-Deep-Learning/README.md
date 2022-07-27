@@ -1,6 +1,10 @@
 # Disparity Estimation Using Deep Learning
 
-The directory contains the notebook and required files for the blogpost on [Disparity Estimation using Deep Learning](https://learnopencv.com/disparity-estimation-using-deep-learning/). You can also [Open the Notebook on Google Colab](https://colab.research.google.com/github/spmallick/learnopencv/blob/master/Disparity-Estimation-Using-Deep-Learning/PSMNet_Test_Example.ipynb) to experiment.
+**This repository contains code for [Disparity Estimation using Deep Learning](https://learnopencv.com/disparity-estimation-using-deep-learning/) blogpost**.
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/lubth5kne36hjaa/AADIBbCPzrqcSmaQhQpFj3uPa?dl=1) 
+
+You can also [Open the Notebook on Google Colab](https://colab.research.google.com/github/spmallick/learnopencv/blob/master/Disparity-Estimation-Using-Deep-Learning/PSMNet_Test_Example.ipynb) to experiment.
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/spmallick/learnopencv/blob/master/Disparity-Estimation-Using-Deep-Learning/PSMNet_Test_Example.ipynb)
 

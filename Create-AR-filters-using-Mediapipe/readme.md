@@ -1,11 +1,13 @@
-# Code for Create Snapchat/Instagram Filters Using Medipipe
+# Create Snapchat/Instagram Filters Using Medipipe
 
-**This repo contains code for "Create Snapchat/Instagram Filters Using Medipipe" Blogpost**
+**This repository contains code for [Create Snapchat/Instagram Filters Using Medipipe](https://learnopencv.com/create-snapchat-instagram-filters-using-mediapipe/) blogpost**.
 
-
-For more details refer to the blogpost: https://learnopencv.com/create-snapchat-instagram-filters-using-mediapipe/
 
 ## Install requirements
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/6ic5oiih2jwufp4/AABBQmu-wi61_ZFkHnKdHGmNa?dl=1)
+
+
 ```
 pip install -r requirements.txt
 ```

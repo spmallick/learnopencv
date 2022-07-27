@@ -1,6 +1,9 @@
 # Building Industrial embedded deep learning inference pipelines with TensorRT
 
-This folder contains code for the blog post [Building Industrial embedded deep learning inference pipelines with TensorRT](https://learnopencv.com/building-industrial-embedded-deep-learning-inference-pipelines-with-tensorrt/)
+**This repository contains code for [Building Industrial embedded deep learning inference pipelines with TensorRT](https://learnopencv.com/building-industrial-embedded-deep-learning-inference-pipelines-with-tensorrt/) blogpost**.
+
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/tthiog92zve8x40/AAARBlt_1o_ZYJBbMd2K-jNBa?dl=1)
 
 ## Environment
 All code was tested on Jetson AGX Xavier 16 GB Developer Kit running the latest **JetPack 4.6 (rev 3)** at the time of writing.

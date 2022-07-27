@@ -1,10 +1,13 @@
 # TensorFlow Lite: Model Optimization for On-Device Machine Learning
 
-The notebook contains the code for Model Optimization using TensorFlow Lite. Open it in [Google Colab](https://colab.research.google.com/github/spmallick/learnopencv/blob/master/TensorFlow-Lite-Model-Optimization-for-On-Device-MachineLearning/TensorFlow_Lite_Model_Optimization_for_On_Device_Machine_Learning.ipynb).
+**This repository contains code for [TensorFlow Lite: Model Optimization for On-Device Machine Learning](https://learnopencv.com/tensorflow-lite-model-optimization-for-on-device-machine-learning) blogpost**.
+
 
 <img src="https://learnopencv.com/wp-content/uploads/2022/05/tflite_feature_image-1-scaled.jpg" align="middle">
 
 ## Install Requirements
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/6wjtg7edkdyrv1a/AAAwqeIq_4NZtMK_MoP5l00Ja?dl=1)
 
 ```
 pip install -r requirements.txt
