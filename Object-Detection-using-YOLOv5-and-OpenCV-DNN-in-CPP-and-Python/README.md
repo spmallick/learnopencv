@@ -3,7 +3,7 @@
 **This repository contains the code for [Object Detection using YOLOv5 and OpenCV DNN in C++ and Python](https://learnopencv.com/object-detection-using-yolov5-and-opencv-dnn-in-c-and-python/) blogpost**.
 
 
-![Feature Image](https://learnopencv.com/wp-content/uploads/2022/04/yolov5-feature-image.gif)
+<img src="https://learnopencv.com/wp-content/uploads/2022/04/yolov5-feature-image.gif" alt="Introduction to YOLOv5 with OpenCV DNN" width="950")
 
 ## Install Dependancies
 
