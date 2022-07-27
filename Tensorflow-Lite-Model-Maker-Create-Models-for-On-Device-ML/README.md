@@ -2,7 +2,7 @@
 
 **The repository cointains the code for [Tensorflow Lite Model Maker: Create Models for On-Device ML](https://learnopencv.com/tensorflow-lite-model-maker-create-models-for-on-device-machine-learning/) blogpost**. 
 
-<img src="https://learnopencv.com/wp-content/uploads/2022/05/TensorFlow-Lite-Model-Maker-Create-Models-for-On-Device-Machine-Learning-1024x576.jpg" alt="faeture-image" align="middle">
+<img src="https://learnopencv.com/wp-content/uploads/2022/05/TensorFlow-Lite-Model-Maker-Create-Models-for-On-Device-Machine-Learning-1024x576.jpg" alt="TFLite Model Maker featureimage" width="950">
 
 ### PREREQUISITES
 
