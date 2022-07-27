@@ -4,7 +4,7 @@
 
 **This repository contains the code for [Custom Object Detection Training using YOLOv5](https://learnopencv.com/custom-object-detection-training-using-yolov5/) blogpost**.
 
-<img src="https://learnopencv.com/wp-content/uploads/2022/04/Custom-Object-Detection-Training-using-YOLOv5-1.gif" alt="Custom Object Detection Training YOLOv5">
+<img src="https://learnopencv.com/wp-content/uploads/2022/04/Custom-Object-Detection-Training-using-YOLOv5-1.gif" alt="Custom Object Detection Training YOLOv5" width="1000">
 
 [<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/7kjsprbqjoxtjwp/AADpbZ3vjZubETY9_hWjdnXWa?dl=1)
 
