@@ -1,4 +1,4 @@
-# Code for Create Snapchat/Instagram Filters Using Medipipe
+# Create Snapchat/Instagram Filters Using Medipipe
 
 **This repository contains code for [Create Snapchat/Instagram Filters Using Medipipe](https://learnopencv.com/create-snapchat-instagram-filters-using-mediapipe/) blogpost**.
 
