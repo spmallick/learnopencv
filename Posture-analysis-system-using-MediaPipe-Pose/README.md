@@ -1,4 +1,7 @@
-# HUMAN POSE ESTIMATION USING MEDIAPIPE
+# Building a Poor Body Posture Detection and Alert System using MediaPipe
+
+**This repository contains code for [Building a Poor Body Posture Detection and Alert System using MediaPipe](https://learnopencv.com/building-a-body-posture-analysis-system-using-mediapipe/) blogpost**
+
 ## Building a Posture Corrector Application
 
 The file contains python script for implementing poor posture alert system using Mediapipe Pose Solution and OpenCV. <br> <br> 
@@ -9,6 +12,8 @@ Step by step code explanation has been provided in the notebook. You can also ch
 
 
 ### Install required packages
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/1khxfddj1zrrbwa/AACTzkIgAkcdqSP9fxqDu5bia?dl=1)
 
 ```
 pip install -r requirements.txt
