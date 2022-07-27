@@ -12,6 +12,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
+|[Pothole Detection using YOLOv4 and Darknet](https://learnopencv.com/pothole-detection-using-yolov4-and-darknet/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Pothole-Detection-using-YOLOv4-and-Darknet)|
 |[Automatic Document Scanner using OpenCV](https://learnopencv.com/automatic-document-scanner-using-opencv/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Automatic-Document-Scanner)|
 |[Demystifying GPU architectures for deep learning: Part 2](https://learnopencv.com/demystifying-gpu-architectures-for-deep-learning-part-2/)|[Code](https://github.com/spmallick/learnopencv/tree/master/gpu_arch_and_CUDA)|
 |[Demystifying GPU Architectures For Deep Learning](https://learnopencv.com/demystifying-gpu-architectures-for-deep-learning/)|[Code](https://github.com/spmallick/learnopencv/tree/master/gpu_arch_and_CUDA)|
@@ -273,3 +274,4 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 |[Anti-Spoofing Face Recognition with OAK-D](https://learnopencv.com/anti-spoofing-face-recognition-system-using-oak-d-and-depthai/) |  [Code](https://github.com/spmallick/learnopencv/tree/master/Anti-Spoofing-Face-Recognition-with-OAK-D)  |
 |[Understanding Multiple Object Tracking using DeepSORT](https://learnopencv.com/understanding-multiple-object-tracking-using-deepsort/) |  [Code](https://github.com/spmallick/learnopencv/tree/master/Understanding-Multiple-Object-Tracking-using-DeepSORT)  |
 |[Automatic Document Scanner](https://learnopencv.com/automatic-document-scanner-using-opencv/) |  [Code](https://github.com/spmallick/learnopencv/tree/master/Automatic-Document-Scanner)  |
+|[Pothole Detection using YOLOv4 and Darknet](https://learnopencv.com/pothole-detection-using-yolov4-and-darknet/) |  [Code](https://github.com/spmallick/learnopencv/tree/master/Pothole-Detection-using-YOLOv4-and-Darknet)  |
