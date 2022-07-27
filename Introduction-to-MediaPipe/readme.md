@@ -1,6 +1,8 @@
 # Introduction to MediaPipe
 
-The notebook contains example code of accompanying our tutorial on [Introduction to Mediapipe](https://learnopencv.com/introduction-to-mediapipe/)
+**This repository contains code for [Introduction to Mediapipe](https://learnopencv.com/introduction-to-mediapipe/) blogpost**.
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/m71wktssm0vtenf/AACyM9vndSfV4nTuUAiW6j5-a?dl=1)
 
 You can run the example Notebook on [Google Colab](https://colab.research.google.com/github/spmallick/learnopencv/blob/master/Introduction-to-MediaPipe/MediaPipe-sample-solutions.ipynb)
 
