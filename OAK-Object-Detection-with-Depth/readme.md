@@ -1,4 +1,4 @@
-Object detection with depth measurement using pre-trained models with OAK-D
+# Object detection with depth measurement using pre-trained models with OAK-D
 
 **This repository contains code for [Object detection with depth measurement using pre-trained models with OAK-D](https://learnopencv.com/object-detection-with-depth-measurement-with-oak-d/) blogpost**.
 
