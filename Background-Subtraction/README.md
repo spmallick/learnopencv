@@ -1,18 +1,16 @@
 # Background Subtraction with OpenCV and BGS Libraries
-This folder contains code for tutorial on [Background Subtraction with OpenCV and BGS Libraries](https://learnopencv.com/background-subtraction-with-opencv-and-bgs-libraries)
+
+**This repository contains code for [Background Subtraction with OpenCV and BGS Libraries](https://learnopencv.com/background-subtraction-with-opencv-and-bgs-libraries) blogpost**.
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/x2qyr29bcj1euu8/AAAyiHdaRlMKo5VOujrHacY8a?dl=1)
 
 ## Getting Started
 
-Please, follow the instructions to set up the environment for Linux-based systems. This installation guide is based on
-[the official instruction](https://github.com/andrewssobral/bgslibrary/wiki/Wrapper:-Python#building-bgslibrary-with-python-support-on-linux),
-with some additions and corrections.
+Please, follow the instructions to set up the environment for Linux-based systems. This installation guide is based on [the official instruction](https://github.com/andrewssobral/bgslibrary/wiki/Wrapper:-Python#building-bgslibrary-with-python-support-on-linux), with some additions and corrections.
 
-If you are using Windows OS follow the
-[Building BGSLibrary with Python support on Windows](https://github.com/andrewssobral/bgslibrary/wiki/Wrapper:-Python#building-bgslibrary-with-python-support-on-windows)
-section from the same instruction.
+If you are using Windows OS follow the [Building BGSLibrary with Python support on Windows](https://github.com/andrewssobral/bgslibrary/wiki/Wrapper:-Python#building-bgslibrary-with-python-support-on-windows) section from the same instruction.
 
-Our code is tested using Python 3.7.5, but it should also work with any other python3.x. If you'd like to check your
-version run:
+Our code is tested using Python 3.7.5, but it should also work with any other python3.x. If you'd like to check your version run:
 
 ```bash
 python3 -V
@@ -22,8 +20,7 @@ _Note:_ We assume, that your current location is `learnopencv/Background-Subtrac
 
 ### Virtual Environment
 
-Let's create a new virtual environment. You'll need to install [virtualenv](https://pypi.org/project/virtualenv/)
-package if you don't have it:
+Let's create a new virtual environment. You'll need to install [virtualenv](https://pypi.org/project/virtualenv/) package if you don't have it:
 
 ```bash
 pip install virtualenv
@@ -40,7 +37,6 @@ The last thing we have to do is to activate it:
 ```bash
 source  venv/bin/activate
 ```
-
 To will need also to install numpy package:
 
 ```bash
@@ -49,9 +45,7 @@ pip install numpy
 
 ### OpenCV
 
-In this blog post we are using BGS Library, which is heavily based on OpenCV. That is why, we first need to build the
-OpenCV library. To do so:
-
+In this blog post we are using BGS Library, which is heavily based on OpenCV. That is why, we first need to build the OpenCV library. To do so:
 1. Install dependencies:
 
 ```bash
@@ -191,9 +185,7 @@ python3 demo.py
 
 ### Python
 
-The proposed for experiments `background_subtr_opencv.py` and `background_subtr_bgslib.py` scripts support
-`--input_video` key to customize the background subtraction pipeline. `--input_video` contains the path to the input
-video. By default its value is `"space_traffic.mp4"`. Please, follow the below instructions for each case.
+The proposed for experiments `background_subtr_opencv.py` and `background_subtr_bgslib.py` scripts support `--input_video` key to customize the background subtraction pipeline. `--input_video` contains the path to the input video. By default its value is `"space_traffic.mp4"`. Please, follow the below instructions for each case.
 
 #### OpenCV Library
 
