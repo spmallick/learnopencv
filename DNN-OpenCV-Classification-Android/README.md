@@ -1,10 +1,13 @@
-This contains the code for **Image Classification with OpenCV for Android**. For more information - visit [**Image Classification with OpenCV for Android**](https://www.learnopencv.com/image-classification-with-opencv-for-android/)
+## Image Classification with OpenCV for Android
+
+**This repository contains the code for [Image Classification with OpenCV for Android](https://www.learnopencv.com/image-classification-with-opencv-for-android/) blogpost**.
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/iryux8cmo872fwd/AAAnz-XBt21iS9_tubco6tGia?dl=1)
 
 
 ## Getting Started
 
-Our code is tested using Python 3.7.5, but it should also work with any other python3.x. If you'd like to check your
-version run:
+Our code is tested using Python 3.7.5, but it should also work with any other python3.x. If you'd like to check your version run:
 
 ```bash
 python3 -V
