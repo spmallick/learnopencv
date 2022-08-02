@@ -1,9 +1,11 @@
 
 # Deep Convolutional GAN in TensorFlow and PyTorch
 **This repository contains code for [Deep Convolutional GAN in TensorFlow and PyTorch](https://learnopencv.com/deep-convolutional-gan-in-pytorch-and-tensorflow/) blogpost**.
-## Package Dependencies
+
 [<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/hmlrgfz4wvpm6wf/AAChCpEYJK74EQxjs8PTHyIta?dl=1)
 
+
+## Package Dependencies
 
 The repository also trains the Deep Convolutional GAN in both Pytorch and Tensorflow on [Anime-Faces dataset](https://github.com/bchao1/Anime-Face-Dataset). It is tested with the following CUDA versions.
 
