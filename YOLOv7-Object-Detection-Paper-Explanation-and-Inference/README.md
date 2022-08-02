@@ -19,6 +19,12 @@ The `yolov7_keypoint.py` script contains the code for pose estimation using the 
 * Copy the script into the cloned `yolov7` repository/directory.
 * Execute: `python yolov7_keypoint.py` 
 
+
+
+![](results/video_4_keypoint_with_boxes.gif)
+
+![](results/video_5_keypoint_with_boxes.gif)
+
 ## AI Courses by OpenCV
 
 Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/courses/) is a great place to start.
