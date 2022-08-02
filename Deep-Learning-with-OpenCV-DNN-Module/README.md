@@ -1,6 +1,8 @@
 # Deep Learning with OpenCV's DNN Module
 
+**This repsitory contains code for [Deep Learning with OpenCV DNN Module: A Definitive Guide](https://learnopencv.com/deep-learning-with-opencvs-dnn-module-a-definitive-guide/) blogpost**.
 
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/5qn1qivoz4f97ro/AAB2kWYR1deNgJBlG3N5QSnEa?dl=1)
 
 ## Directory Structure
 
