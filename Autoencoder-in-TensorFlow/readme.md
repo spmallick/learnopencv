@@ -1,8 +1,13 @@
 # Introduction to Autoencoder in TensorFlow
 
+**This repsitory contains code for [Autoencoder in TensorFlow 2: Beginner’s Guide](https://learnopencv.com/autoencoder-in-tensorflow-2-beginners-guide/) blogpost**.
+
 ## Package Dependencies
 
-This repository trains the Autoencoder in Tensorflow framework on Fashion-MNIST and Cartoon dataset. The cartoon dataset can be download from [here](https://google.github.io/cartoonset/). 
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/vu2yg2qzfwogi8h/AABCHs4txiXMxOle_LFNSzMUa?dl=1)
+
+
+This repository also trains the Autoencoder in Tensorflow framework on Fashion-MNIST and Cartoon dataset. The cartoon dataset can be downloaded from [here](https://google.github.io/cartoonset/).
 
 The code is tested with:
 

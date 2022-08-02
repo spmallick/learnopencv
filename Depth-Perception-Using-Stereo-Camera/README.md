@@ -1,4 +1,9 @@
+
 # Depth Estimation using Stereo Camera and OpenCV
+
+**This repository contains code for [Depth Estimation using Stereo Camera and OpenCV](https://learnopencv.com/depth-perception-using-stereo-camera-python-c/) blogpost**.
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/cl70ubt31ya0e64/AABA77qwIX8rFiclw8drdPSXa?dl=1)
 
 Create a custom low-cost stereo camera and capture depth maps with it using OpenCV.
 
