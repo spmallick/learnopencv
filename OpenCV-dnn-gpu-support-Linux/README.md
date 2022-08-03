@@ -1,6 +1,9 @@
-# Code for How to use OpenCV DNN Module with NVIDIA GPUs
 
-This repository contains the code for [How to use OpenCV DNN Module with NVIDIA GPUs](https://www.learnopencv.com/opencv-dnn-with-gpu-support/)
+## Code for How to use OpenCV DNN Module with NVIDIA GPUs On Linux
+
+**This repository contains the code for [How to use OpenCV DNN Module with NVIDIA GPUs On Linux](https://www.learnopencv.com/opencv-dnn-with-gpu-support/) blogpost**.
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/ifwvza21tc0t7ma/AADuY0w1PgwDVmSLcwyQDhxfa?dl=1)
 
 ## Models
 Download models from
