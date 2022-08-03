@@ -1,6 +1,9 @@
+
 # Face recognition with ArcFace
 
-Code for https://www.learnopencv.com/face-recognition-with-arcface/ blog post which illustrates concepts from face recognition.
+**This repository contains code for [Face recognition with ArcFace](https://www.learnopencv.com/face-recognition-with-arcface/) blogpost**.
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/peco9u3q485tems/AADaPVWIPn-Ly1LnuLKjHnmKa?dl=1)
 
 ## Original source code
 
@@ -28,11 +31,7 @@ Download checkpoint for a model from [GoogleDrive](https://drive.google.com/driv
 
 ## Data
 
-All datasets with faces must support
-[ImageFolder](https://pytorch.org/docs/stable/torchvision/datasets.html#imagefolder) format. Look at the prepared examples
-in `data` directory.
-
-For all subsequent commands use `tags` argument to select specific datasets in `data` directory.
+All datasets with faces must support [ImageFolder](https://pytorch.org/docs/stable/torchvision/datasets.html#imagefolder) format. Look at the prepared examples in `data` directory. For all subsequent commands use `tags` argument to select specific datasets in `data` directory.
 
 ## Data preprocessing
 To prepare data with cropped and aligned faces from your original images, run:
