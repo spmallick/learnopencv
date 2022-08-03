@@ -1,4 +1,9 @@
-# Code for Non Maximum Suppression using PyTorch
+
+## Code for Non Maximum Suppression using PyTorch
+
+**This repository contains code for [Non Maximum Suppression: Theory and Implementation in PyTorch](https://learnopencv.com/non-maximum-suppression-theory-and-implementation-in-pytorch) blogpost**.
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/qfoebje5lc4rovf/AAARcLzABGVvSBifBCqa1Abga?dl=1)
 
 [Open Notebook in Google Colab](https://colab.research.google.com/github/spmallick/learnopencv/blob/master/Non-Maximum-Suppression/nms_pytorch.ipynb)
 
