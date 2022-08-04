@@ -6,7 +6,7 @@
 
 ## Package Dependencies
 
-The repository also trains the Pix2Pix GAN in both Pytorch and Tensorflow on the Edges2Shoes dataset. It is tested with:
+The repository trains the Pix2Pix GAN in both Pytorch and Tensorflow on the Edges2Shoes dataset. It is tested with:
 
 - `Cuda-11.1`
 - `Cudnn-8.0`
