@@ -51,7 +51,7 @@ Install other dependencies as per requirement.
 
 <div align="center">
 
-<img src="content/mri_scan.png" width ="650" height="450"/>
+<img src="content/mri_scan.png" width ="600" height="450"/>
 
 </div>
   
