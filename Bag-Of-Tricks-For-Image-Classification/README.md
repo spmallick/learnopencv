@@ -1,7 +1,9 @@
-## Description
 
-This repository contains classification pipeline for experiments with tricks listed in
-["Bag of Tricks for Image Classification with Convolutional Neural Networks"](https://arxiv.org/abs/1812.01187). Visit [our blogpost](https://www.learnopencv.com/bag-of-tricks-for-image-classification-lets-check-if-it-is-working-or-not/) for more details.
+## Bag of Tricks for Image Classification with Convolutional Neural Networks
+
+**This repository contains code for [Bag of Tricks for Image Classification with Convolutional Neural Networks](https://learnopencv.com/bag-of-tricks-for-image-classification/) blogpost**.
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/szhe8r7eecr4xsp/AAANsa-FIaRNXIip3X_IA71Za?dl=1)
 
 The pipeline is based on [pytorch-lightning framework](https://github.com/PyTorchLightning/pytorch-lightning).
 
@@ -47,16 +49,11 @@ You can turn on any trick by adding the corresponding key:
 --use-knowledge-distillation for Knowledge Distillation;
 ```
 
-_Note:_ If you want to train the model on GPU you should always use `--gpus` key, without it the pytorch lightning
-console log will show you that the GPU is used but the training will be performed on CPU.
+_Note:_ If you want to train the model on GPU you should always use `--gpus` key, without it the pytorch lightning console log will show you that the GPU is used but the training will be performed on CPU.
 
-For Knowledge Distillation, please, download the teacher weights from
-[Dropbox](https://www.dropbox.com/s/za5eeyhhy6pmpd2/bag_of_tricks_resnet50_teacher.ckpt?dl=0).
+For Knowledge Distillation, please, download the teacher weights from [Dropbox](https://www.dropbox.com/s/za5eeyhhy6pmpd2/bag_of_tricks_resnet50_teacher.ckpt?dl=0).
 
-Run `python main.py --help` to see all possible arguments. This command will also show you the arguments for pytorch
-lightning Trainer. Please, see the
-[official documentation](https://pytorch-lightning.readthedocs.io/en/0.8.5/trainer.html#trainer-flags) for details about
-them.
+Run `python main.py --help` to see all possible arguments. This command will also show you the arguments for pytorch lightning Trainer. Please, see the [official documentation](https://pytorch lightning.readthedocs.io/en/0.8.5/trainer.html#trainer-flags) for details about them.
 
 ### Testing
 
@@ -81,3 +78,4 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 <img src="https://www.learnopencv.com/wp-content/uploads/2020/04/AI-Courses-By-OpenCV-Github.png">
 </p>
 </a>
+
