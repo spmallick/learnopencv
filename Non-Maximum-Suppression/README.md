@@ -1,5 +1,5 @@
 
-## Code for Non Maximum Suppression using PyTorch
+# Non Maximum Suppression: Theory and Implementation in PyTorch
 
 **This repository contains code for [Non Maximum Suppression: Theory and Implementation in PyTorch](https://learnopencv.com/non-maximum-suppression-theory-and-implementation-in-pytorch) blogpost**.
 
