@@ -51,9 +51,9 @@ You can turn on any trick by adding the corresponding key:
 
 _Note:_ If you want to train the model on GPU you should always use `--gpus` key, without it the pytorch lightning console log will show you that the GPU is used but the training will be performed on CPU.
 
-For Knowledge Distillation, please, download the teacher weights from [Dropbox](https://www.dropbox.com/s/za5eeyhhy6pmpd2/bag_of_tricks_resnet50_teacher.ckpt?dl=0).
+For Knowledge Distillation, please, download the teacher weights from [Dropbox](https://www.dropbox.com/s/za5eeyhhy6pmpd2/bag_of_tricks_resnet50_teacher.ckpt?dl=1).
 
-Run `python main.py --help` to see all possible arguments. This command will also show you the arguments for pytorch lightning Trainer. Please, see the [official documentation](https://pytorch lightning.readthedocs.io/en/0.8.5/trainer.html#trainer-flags) for details about them.
+Run `python main.py --help` to see all possible arguments. This command will also show you the arguments for pytorch lightning Trainer. Please, see the [official documentation](https://pytorch-lightning.readthedocs.io/en/0.8.5/trainer.html#trainer-flags) for details about them.
 
 ### Testing
 
