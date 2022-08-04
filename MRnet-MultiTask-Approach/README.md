@@ -78,7 +78,7 @@ Major challenge with while selecting the model structure was the inconsistency i
 
 <div align="center">
 
-<img src="content/model.png">
+<img src="content/model.png" height="550">
 
 </div>
 
