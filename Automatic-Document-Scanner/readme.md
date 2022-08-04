@@ -1,8 +1,10 @@
 # Automatic Document Scanner using OpenCV
 
-**This repository contains code for [Automatic Document Scanner using OpenCV](https://learnopencv.com/automatic-document-scanner-using-opencv/) Blogpost**
+**This repository contains code for [Automatic Document Scanner using OpenCV](https://learnopencv.com/automatic-document-scanner-using-opencv/) blog post**.
 
-In this post, you will learn the following.
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/i338audbv9yaptp/AABKAptWYRt8UMFZRz-QXrFPa?dl=1)
+
+In this post, you will learn the following,
 
 * Morphology
 * Canny Edge Detection
@@ -10,12 +12,6 @@ In this post, you will learn the following.
 * Corner Detection using Douglas-Peucker algorithm
 * Homography
 * Perspective Transform
-
-For more details refer to the [blogpost](https://learnopencv.com/automatic-document-scanner-using-opencv/).
-
-
-[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/i338audbv9yaptp/AABKAptWYRt8UMFZRz-QXrFPa?dl=1)
-
 
 ## Install requirements
 ```
