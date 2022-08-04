@@ -1,8 +1,10 @@
 # Demystifying GPU architectures for deep learning
 
-<img src="https://learnopencv.com/wp-content/uploads/2022/07/Demystifying-GPU-architectures-for-deep-learning.jpg" alt="Demystifying GPU architectures for deep learning">
+**This folder contains code for [Demystifying GPU architectures for deep learning](https://learnopencv.com/demystifying-gpu-architectures-for-deep-learning/) blog post**.
 
-This folder contains code for the blog post [Demystifying GPU architectures for deep learning](https://learnopencv.com/demystifying-gpu-architectures-for-deep-learning/)
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://www.dropbox.com/sh/b5y85yjyt1cxizn/AACpsOeqXcLJUMclEql7qXiEa?dl=1)
+
+<img src="https://learnopencv.com/wp-content/uploads/2022/07/Demystifying-GPU-architectures-for-deep-learning.jpg" alt="Demystifying GPU architectures for deep learning">
 
 ## Environment
 All code was tested on a PC with RTX 3090 and AMD Ryzen 5800X.
@@ -12,9 +14,6 @@ Kernel version:
 sf@trantor:~/Downloads$ uname -r
 5.4.0-121-generic
 ```
-
-[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://www.dropbox.com/sh/b5y85yjyt1cxizn/AACpsOeqXcLJUMclEql7qXiEa?dl=1)
-
 ## How to use
 
 ### Compile and run
