@@ -1,6 +1,9 @@
-# OpenCV GPU Support
 
-This repository contains the code for [Getting Started with OpenCV CUDA Module](https://www.learnopencv.com/getting-started-opencv-cuda-module/)
+# Getting Started with OpenCV CUDA Module
+
+**This repository contains code for [Getting Started with OpenCV CUDA Module](https://www.learnopencv.com/getting-started-opencv-cuda-module/) blogpost**.
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/1ijilsp7m6rmx7q/AABUVfmaK2DYL2QI-89lqoDma?dl=1)
 
 ## Getting Started
 
@@ -42,13 +45,11 @@ pip install numpy
 
 ### Installing CUDA
 
-The code was tested using CUDA Toolkit 10.2. Please follow the official instruction to download
-[CUDA Toolkit 10.2](https://developer.nvidia.com/cuda-10.2-download-archive) or higher.
+The code was tested using CUDA Toolkit 10.2. Please follow the official instruction to download [CUDA Toolkit 10.2](https://developer.nvidia.com/cuda-10.2-download-archive) or higher.
 
 ### OpenCV with CUDA Support
 
-In this blog post, we're using OpenCV with CUDA support to accelerate OpenCV algorithms. That is why we will need to
-customize the OpenCV library build and make it from scratch. To do so:
+In this blog post, we're using OpenCV with CUDA support to accelerate OpenCV algorithms. That is why we will need to customize the OpenCV library build and make it from scratch. To do so:
 
 1. Install dependencies:
 
@@ -95,8 +96,7 @@ mkdir build
 cd build
 ```
 
-Run CMake to configure the OpenCV build. Don't forget to set the right pass to the `PYTHON_EXECUTABLE`. If you are using
-the CUDA version different from `10.2`, please change the last 3 arguments accordingly.
+Run CMake to configure the OpenCV build. Don't forget to set the right pass to the `PYTHON_EXECUTABLE`. If you are using the CUDA version different from `10.2`, please change the last 3 arguments accordingly.
 
 ```bash
 cmake -D CMAKE_BUILD_TYPE=RELEASE \
@@ -128,7 +128,6 @@ sudo ldconfig
 ```
 
 which creates the necessary links and cache to our freshly built shared library.
-
 Rename the created Python3 bindings for OpenCV to `cv2.so`:
 
 ```bash
