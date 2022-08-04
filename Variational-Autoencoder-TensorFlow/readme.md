@@ -1,17 +1,20 @@
+
 # Variational Autoencoder in TensorFlow
-This folder contains the code and instructions accompanying the blog post [Variational Autoencoder in Tensorflow](https://learnopencv.com/variational-autoencoder-in-tensorflow)
+
+**This repsitory contains code and instructions for the [Variational Autoencoder in Tensorflow](https://learnopencv.com/variational-autoencoder-in-tensorflow) blogpost**.
 
 ## Package Dependencies
 
-This repository trains the Variational Autoencoder in Tensorflow framework on Fashion-MNIST and Cartoon dataset. The cartoon dataset can be download from [here](https://google.github.io/cartoonset/). 
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/gj39qjvne6lsx5e/AADNlERXgARutPci9K_1be_Ha?dl=1)
+
+The repository also trains the Variational Autoencoder in Tensorflow framework on Fashion-MNIST and Cartoon dataset. The cartoon dataset can be download from [here](https://google.github.io/cartoonset/).
 
 The code is tested with:
 
 - `Cuda-11.1`
 - `Cudnn-8.0`
 
-The Tensorflow notebook requires [numpy](https://numpy.org/), [tf-nightly-gpu](https://pypi.org/project/tf-nightly-gpu/), [opencv](https://pypi.org/project/opencv-python/), [sklearn](https://pypi.org/project/scikit-learn/). 
-To get the versions of these packages you need for the program, use pip: (Make sure pip is upgraded: ` python3 -m pip install -U pip`)
+The Tensorflow notebook requires [numpy](https://numpy.org/), [tf-nightly-gpu](https://pypi.org/project/tf-nightly-gpu/), [opencv](https://pypi.org/project/opencv-python/), [sklearn](https://pypi.org/project/scikit-learn/). To get the versions of these packages you need for the program, use pip: (Make sure pip is upgraded: ` python3 -m pip install -U pip`)
 
 ```python
 pip3 install -r requirements.txt 

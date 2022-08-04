@@ -1,14 +1,15 @@
-<div align="center">
-<img src="content/logo.jpg" width ="600" height="300"/>
-
 # Stanford MRnet Challenge
 
-**This repo contains code for the MRNet Challenge (A Multi-Task Approach)**
+**This repository contains code for [MRNet – The Multi-Task Approach](https://learnopencv.com/mrnet-multitask-approach/) blogpost**.
 
+<div align="center">
+<img src="https://learnopencv.com/wp-content/uploads/2022/08/MRNet-1.png" width="1000">
 
-For more details refer to https://stanfordmlgroup.github.io/competitions/mrnet/
+For more details refer to https://stanfordmlgroup.github.io/competitions/mrnet/.
 
 </div>
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/65y1c1n13e7n1m9/AABvtFGLf2oXSvkixdEU8Szga?dl=1)
 
 # Install dependencies
 1. `pip install git+https://github.com/ncullen93/torchsample`
@@ -16,7 +17,7 @@ For more details refer to https://stanfordmlgroup.github.io/competitions/mrnet/
 3. `pip install sklearn`
 4. `pip install pandas`
 
-Install other dependencies as per requirement
+Install other dependencies as per requirement.
 
 # Instructions to run the training
 1. Clone the repository.
@@ -50,7 +51,7 @@ Install other dependencies as per requirement
 
 <div align="center">
 
-<img src="content/mri_scan.png" width ="650" height="600"/>
+<img src="content/mri_scan.png" width ="600" height="450"/>
 
 </div>
   
@@ -69,7 +70,7 @@ Plane 2- with 34 slices
 
 Place 3 with 35 slices
 
-Each MRI has to be classisifed against 3 diseases
+Each MRI has to be classisifed against 3 diseases.
 
 Major challenge with while selecting the model structure was the inconsistency in the data. Although the image size remains constant , the number of slices per plane are variable within a single MRI and varies across all MRIs.
 
@@ -77,7 +78,7 @@ Major challenge with while selecting the model structure was the inconsistency i
 
 <div align="center">
 
-<img src="content/model.png" width ="700" height="490"/>
+<img src="content/model.png" height="550">
 
 </div>
 

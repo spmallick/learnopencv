@@ -1,19 +1,22 @@
-# Human action recognition using Detectron2 and LSTM
+
+# Human Action Recognition using Detectron2 and LSTM
+
+**This repository contains code for [Human Action Recognition using Detectron2 and LSTM](https://learnopencv.com/human-action-recognition-using-detectron2-and-lstm/) blogpost**.
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/by7lb7c16u7l1kn/AACeWs1gepOp0N1VfB5kdkvCa?dl=1)
+
 This is an application built to show how human action classification can be done using 2D Pose Estimation and LSTM RNN machine learning models. 
 
-2D pose estimation is done using Facebook AI Research's Detectron2. 
-A LSTM model is used to classify actions from 2D pose estimation output from a sequence of consecutive frames on a video. 
-
-You can find the Complete blogpost [here](https://learnopencv.com/human-action-recognition-using-detectron2-and-lstm/).
+2D pose estimation is done using Facebook AI Research's Detectron2. A LSTM model is used to classify actions from 2D pose estimation output from a sequence of consecutive frames on a video. 
 
 We also provide the colab notebook: [![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1mr3wJUeS1mFJVgMoo3TgnyMSmwPtwCvR?usp=sharing)
  
 
 ## LSTM training
 
-We have trained our own LSTM model from data set given under https://github.com/stuarteiffert/RNN-for-Human-Activity-Recognition-using-2D-Pose-Input
+We have trained our own LSTM model from data set given under https://github.com/stuarteiffert/RNN-for-Human-Activity-Recognition-using-2D-Pose-Input.
 
-Since we are using Detectron2 for pose estimation, we have retrofitted the dataset to map to Detectron2 output format for training our LSTM model. (Original dataset is created using [OpenPose](https://github.com/CMU-Perceptual-Computing-Lab/openpose) library which output 18 keypoints (or more) per human from the input image while Detectron2 produces only 17 keypoints)
+Since we are using Detectron2 for pose estimation, we have retrofitted the dataset to map to Detectron2 output format for training our LSTM model. (Original dataset is created using [OpenPose](https://github.com/CMU-Perceptual-Computing-Lab/openpose) library which output 18 keypoints (or more) per human from the input image while Detectron2 produces only 17 keypoints).
 
 Model classifies the action into 6 categories
 - JUMPING

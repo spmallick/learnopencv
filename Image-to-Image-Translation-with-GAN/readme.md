@@ -1,10 +1,12 @@
-# Pix2Pix: Image-to-Image Translation with GAN in PyTorch & TensorFlow
+## Pix2Pix: Image-to-Image Translation with GAN in PyTorch & TensorFlow
 
+**This repository contains code for [Pix2Pix: Image-to-Image Translation with GAN in PyTorch & TensorFlow](https://learnopencv.com/paired-image-to-image-translation-pix2pix/) blogpost**.
 
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/bgs8ifp334zuhxu/AADSkegkecS4borKaOi3W8oIa?dl=1)
 
 ## Package Dependencies
 
-This repository trains the Pix2Pix GAN in both Pytorch and Tensorflow on the Edges2Shoes dataset. It is tested with:
+The repository also trains the Pix2Pix GAN in both Pytorch and Tensorflow on the Edges2Shoes dataset. It is tested with:
 
 - `Cuda-11.1`
 - `Cudnn-8.0`
@@ -19,17 +21,17 @@ pip3 install -r requirements.txt
 
 ```
 ├── PyTorch
-│   ├── torch
-│   │   ├── images
-│   │   └── training_weights
-│   ├── pix2pix_pytorch.ipynb
-│   └── pix2pix_pytorch.py
+│   ├── torch
+│   │   ├── images
+│   │   └── training_weights
+│   ├── pix2pix_pytorch.ipynb
+│   └── pix2pix_pytorch.py
 ├── TensorFlow
-│   ├── model_single
-│   ├── results_images_single
-│   ├── pix2pix-tensorflow-multi_gpu.py
-│   ├── pix2pix-tensorflow_single_gpu.ipynb
-│   └── pix2pix-tensorflow-single_gpu.py
+│   ├── model_single
+│   ├── results_images_single
+│   ├── pix2pix-tensorflow-multi_gpu.py
+│   ├── pix2pix-tensorflow_single_gpu.ipynb
+│   └── pix2pix-tensorflow-single_gpu.py
 ```
 
 ## Instructions
