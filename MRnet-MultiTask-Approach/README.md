@@ -1,16 +1,15 @@
-<div align="center">
-<img src="content/logo.jpg" width ="600" height="300"/>
-
 # Stanford MRnet Challenge
 
 **This repository contains code for [MRNet – The Multi-Task Approach](https://learnopencv.com/mrnet-multitask-approach/) blogpost**.
 
-[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/65y1c1n13e7n1m9/AABvtFGLf2oXSvkixdEU8Szga?dl=1)
-
+<div align="center">
+<img src="https://learnopencv.com/wp-content/uploads/2022/08/MRNet-1.png" width="1000">
 
 For more details refer to https://stanfordmlgroup.github.io/competitions/mrnet/.
 
 </div>
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/65y1c1n13e7n1m9/AABvtFGLf2oXSvkixdEU8Szga?dl=1)
 
 # Install dependencies
 1. `pip install git+https://github.com/ncullen93/torchsample`
