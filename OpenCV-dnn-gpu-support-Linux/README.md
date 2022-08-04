@@ -9,9 +9,9 @@
 
 Download models from the following sources.
 
-COCO : https://www.dropbox.com/s/2h2bv29a130sgrk/pose_iter_440000.caffemodel?dl=1
+[COCO](https://www.dropbox.com/s/2h2bv29a130sgrk/pose_iter_440000.caffemodel?dl=1)
 
-MPI : https://www.dropbox.com/s/drumc6dzllfed16/pose_iter_160000.caffemodel?dl=1
+[MPI](https://www.dropbox.com/s/drumc6dzllfed16/pose_iter_160000.caffemodel?dl=1)
 
 ## Run Code:
 
