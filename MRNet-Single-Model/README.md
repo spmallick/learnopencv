@@ -5,11 +5,11 @@
 <div align="center">
 <img src="https://learnopencv.com/wp-content/uploads/2022/08/MRNet-1.png" width ="1000">
 
-[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/0jy7h1b4yj1elgn/AAAnStaGub3S4vJF9Blm8mtta?dl=1)
-
 For details about the dataset and the competition, refer to https://stanfordmlgroup.github.io/competitions/mrnet/
 
 </div>
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/0jy7h1b4yj1elgn/AAAnStaGub3S4vJF9Blm8mtta?dl=1)
 
 <!-- # Install dependencies
 1. `pip install git+https://github.com/ncullen93/torchsample`
