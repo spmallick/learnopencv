@@ -1,7 +1,7 @@
 
-# Windows Executables for Installing OpenCV on Windows
+# Install OpenCV on Windows – C++ / Python
 
-**This repository contains code for[Windows Executables for Installing OpenCV on Windows](https://learnopencv.com/install-opencv-on-windows/) blogpost**.
+**This repository contains code for [Install OpenCV on Windows – C++ / Python](https://learnopencv.com/install-opencv-on-windows/) blogpost**.
 
 [<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/w1ecd2lngjpwpgi/AADsGxwPI6VHeRTwiSQcRYmva?dl=1)
 
