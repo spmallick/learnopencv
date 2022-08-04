@@ -3,7 +3,7 @@
 **This repository contains code for [Stanford MRNet Challenge: Classifying Knee MRIs](https://www.learnopencv.com/stanford-mrnet-challenge-classifying-knee-mris/) blogpost**.
 
 <div align="center">
-<img src="https://learnopencv.com/wp-content/uploads/2022/08/MRNet.png" width ="900">
+<img src="https://learnopencv.com/wp-content/uploads/2022/08/MRNet.png" width ="1000">
 
 [<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/0jy7h1b4yj1elgn/AAAnStaGub3S4vJF9Blm8mtta?dl=1)
 
