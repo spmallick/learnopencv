@@ -1,6 +1,6 @@
-# Implementing Tetris Game using OpenCV and Python
+# Tetris with OpenCV Python
 
-**This repository contains the code for [implementing the famous Tetris game in Python using OpenCV](https://www.learnopencv.com/tetris-with-opencv-python) blogpost**.
+**This repository contains code for [Tetris with OpenCV Python](https://www.learnopencv.com/tetris-with-opencv-python) blogpost**.
 
 [<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/qa8utwtur6vevo3/AAB4tsRIKTxjrtQtT3QXrcn5a?dl=1)
 
