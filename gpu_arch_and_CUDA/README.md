@@ -1,6 +1,8 @@
 # Demystifying GPU architectures for deep learning
 
-**This folder contains code for [Demystifying GPU architectures for deep learning](https://learnopencv.com/demystifying-gpu-architectures-for-deep-learning/) blog post**.
+**This folder contains code for the following blog posts**.
+1. [Demystifying GPU architectures for deep learning part 1](https://learnopencv.com/demystifying-gpu-architectures-for-deep-learning/)
+2. [Demystifying GPU architectures for deep learning part 2](https://learnopencv.com/demystifying-gpu-architectures-for-deep-learning-part-2/)
 
 [<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://www.dropbox.com/sh/b5y85yjyt1cxizn/AACpsOeqXcLJUMclEql7qXiEa?dl=1)
 
