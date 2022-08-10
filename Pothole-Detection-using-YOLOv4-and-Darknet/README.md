@@ -1,6 +1,8 @@
 # Pothole Detection using YOLOv4 and Darknet
 
-This repository contains the code for the LearnOpenCV blog post [Pothole Detection using YOLOv4 and Darknet](https://learnopencv.com/pothole-detection-using-yolov4-and-darknet/).
+**This repository contains the code for [Pothole Detection using YOLOv4 and Darknet](https://learnopencv.com/pothole-detection-using-yolov4-and-darknet/) blog post**.
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/qlydlz7xlsjoq3a/AAAC1y4Ma0TnnGJR2mgNzgSia?dl=1)
 
 **Here we train YOLOv4 and YOLOv4-Tiny models with 4 different experimental settings on a pothole detection dataset. We also run inference in real-time using the trained models.**
 
