@@ -4,9 +4,9 @@
 1. [Demystifying GPU architectures for deep learning part 1](https://learnopencv.com/demystifying-gpu-architectures-for-deep-learning/)
 2. [Demystifying GPU architectures for deep learning part 2](https://learnopencv.com/demystifying-gpu-architectures-for-deep-learning-part-2/)
 
-[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://www.dropbox.com/sh/b5y85yjyt1cxizn/AACpsOeqXcLJUMclEql7qXiEa?dl=1)
-
 <img src="https://learnopencv.com/wp-content/uploads/2022/07/Demystifying-GPU-architectures-for-deep-learning.jpg" alt="Demystifying GPU architectures for deep learning">
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://www.dropbox.com/sh/b5y85yjyt1cxizn/AACpsOeqXcLJUMclEql7qXiEa?dl=1)
 
 ## Environment
 All code was tested on a PC with RTX 3090 and AMD Ryzen 5800X.
