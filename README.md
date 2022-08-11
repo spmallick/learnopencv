@@ -12,6 +12,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
+|[Mean Average Precision (mAP) in Object Detection](https://learnopencv.com/mean-average-precision-map-object-detection-model-evaluation-metric/)||
 |[YOLOv7 Object Detection Paper Explanation and Inference](https://learnopencv.com/yolov7-object-detection-paper-explanation-and-inference/)|[Code](https://github.com/spmallick/learnopencv/tree/master/YOLOv7-Object-Detection-Paper-Explanation-and-Inference)|
 |[Pothole Detection using YOLOv4 and Darknet](https://learnopencv.com/pothole-detection-using-yolov4-and-darknet/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Pothole-Detection-using-YOLOv4-and-Darknet)|
 |[Automatic Document Scanner using OpenCV](https://learnopencv.com/automatic-document-scanner-using-opencv/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Automatic-Document-Scanner)|
