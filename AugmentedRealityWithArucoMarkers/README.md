@@ -1,4 +1,8 @@
-### Augmented Reality using AruCo Markers in OpenCV
+# Augmented Reality using ArUco Markers in OpenCV (C++ / Python)
+
+**This repository contains the code for [Augmented Reality using ArUco Markers in OpenCV (C++ / Python)](https://learnopencv.com/augmented-reality-using-aruco-markers-in-opencv-c++-python/) blog post**.
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/k8mbua12pmqh4o2/AAC0N6jG7X8wtZfMUpDa9y1Ma?dl=1)
 
 We show how to use the AruCo markers in OpenCV using an augmented reality application to replace the image inside a picture frame on a wall to display new images or videos in the frame.
 
