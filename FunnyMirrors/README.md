@@ -1,4 +1,8 @@
-### Funny Mirrors using OpenCV
+# Funny Mirrors using OpenCV
+
+**This repository contains code for [Funny Mirrors using OpenCV](https://learnopencv.com/Funny-Mirrors-Using-OpenCV/) blog post**.
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/tn9t8zpovkvaw36/AAD0URDxfYY8rdOWOEzs2B1sa?dl=1)
 
 We show how to create some funny mirror effects using OpenCV. The blog is based on fundamental concepts like camera projection, intrinsic and extrinsic 
 camera parameters and mesh-based image warping.
