@@ -1,6 +1,8 @@
-This contains the code for **Applications of Foreground-Background separation with Semantic Segmentation**. For more information - visit [**Applications of Foreground-Background separation with Semantic Segmentation**](https://www.learnopencv.com/applications-of-foreground-background-separation-with-semantic-segmentation/)
+## Applications of Foreground-Background separation with Semantic Segmentation
 
+**This repository contains the code for [Applications of Foreground-Background separation with Semantic Segmentation](https://www.learnopencv.com/applications-of-foreground-background-separation-with-semantic-segmentation/) blog post**.
 
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/n10qek00uoh1dqn/AADC89ZU-sYeTIpycvzHbOQ-a?dl=1)
 
 # AI Courses by OpenCV
 
