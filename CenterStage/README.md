@@ -1,9 +1,9 @@
 # Center Stage
 
 
-<img src="https://learnopencv.com/wp-content/uploads/2022/08/Center-Stage-for-Zoom-Meeting-MediaPipe.jpg" alt="Zoom Center using MediaPipe feature image" width="800">
+<img src="https://learnopencv.com/wp-content/uploads/2022/08/Center-Stage-for-Zoom-Calls-using-Mediapipe-feature.gif" alt="Zoom Center using MediaPipe feature image" width="800">
 
-This repository contains code for [Center Stage for Zoom Calls using MediaPipe](https://learnopencv.com/Center-Stage-for-zoom-call-using-mediapipe/)
+This repository contains code for [Center Stage for Zoom Calls using MediaPipe](https://learnopencv.com/center-stage-for-zoom-calls-using-mediapipe/)
 
 
 ## Installation and Implementation
