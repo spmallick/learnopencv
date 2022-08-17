@@ -8,6 +8,12 @@ This repository contains the code for the LearnOpenCV blog post [Pothole Detecti
 
 - The `custom_inference_script` directory contains the customized `darknet_video.py` Python file. The Darknet code has been customized to show the FPS on the videos when running the inference. After cloning and building Darknet, replace the original `darknet_video.py` file with the one in the `custom_inference_script` directory. 
 
+
+
+***Download the YOLOv4 Pothole dataset trained weights [from here](https://drive.google.com/file/d/1vXTyWuvFCy7P0GEvQLYtpcxDi6yqZ9ce/view?usp=sharing).***
+
+
+
 ## AI Courses by OpenCV
 
 Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/courses/) is a great place to start.
