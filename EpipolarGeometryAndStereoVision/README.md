@@ -1,5 +1,10 @@
+
 # Introduction to Epipolar Geometry and Stereo Vision
-This folder contains the code for the blog post on [Introduction to Epipolar Geometry and Stereo Vision](https://www.learnopencv.com/introduction-to-epipolar-geometry-and-stereo-vision/). 
+
+**This repository contains code for [Introduction to Epipolar Geometry and Stereo Vision](https://www.learnopencv.com/introduction-to-epipolar-geometry-and-stereo-vision/) blogpost**.
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/yrpjfmzk9xkai1y/AACsZdvgM4RKlvRe0QyTbfNia?dl=1)
+
 ## Compilation
 To compile the `stereo.cpp` code file, use the following:
 ```shell

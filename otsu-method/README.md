@@ -1,5 +1,8 @@
-This contains the code for **Otsu's Thresholding Technique**. For more information - visit
-[**Otsu's Thresholding Technique**](https://www.learnopencv.com/otsus-thresholding-technique/)
+# Otsu’s Thresholding with OpenCV
+
+**This repository contains the code for [Otsu’s Thresholding with OpenCV](https://learnopencv.com/otsu-thresholding-with-opencv/) blog post**.
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/wjkb5c8rmg5wqr5/AAB1Qz1B-KRLf9RJXJ-DU8dWa?dl=1)
 
 # AI Courses by OpenCV
 

@@ -1,6 +1,8 @@
-# Custom Low-Cost Stereo Camera Using OpenCV
+# Making a Low-Cost Stereo Camera Using OpenCV
 
-Create a custom low-cost stereo camera and capture 3D videos with it using OpenCV. [Refer to the blog post for details](https://www.learnopencv.com/making-a-low-cost-stereo-camera-using-opencv/)
+**This repository contains code for [Making a low-cost stereo camera using OpenCV](https://www.learnopencv.com/making-a-low-cost-stereo-camera-using-opencv/) blogpost**.
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/7vs36qm9ntx5m7c/AAB88GWgDoCnNpJ4EAU3cRIra?dl=1)
 
 ## Using the C++ code
 ### Compilation
