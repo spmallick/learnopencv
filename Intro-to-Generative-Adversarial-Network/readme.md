@@ -6,7 +6,7 @@
 [<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/ov4evajodhe3sxk/AAD8HAVFHBRhZ27AOwjZV41ua?dl=1)
 ## Package Dependencies
 
-The repository also trains the Generative Adversarial Network in both Pytorch and Tensorflow on Fashion-MNIST dataset. It is tested with:
+The repository trains the Generative Adversarial Network in both Pytorch and Tensorflow on Fashion-MNIST dataset. It is tested with:
 
 - `Cuda-11.1`
 - `Cudnn-8.0`

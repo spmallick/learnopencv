@@ -1,6 +1,6 @@
 # Understanding Lens Distortion
 
-**This repository contains code for [understanding-lens-distortion](https://learnopencv.com/understanding-lens-distortion/) blogpost**.
+**This repository contains code for [Understanding Lens Distortion](https://learnopencv.com/understanding-lens-distortion/) blogpost**.
 
 [<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/03pw70l8q0wurls/AAAZPjBGDqGNznnbAVGWzq07a?dl=1)
 
