@@ -2,7 +2,7 @@
 
 
 
-This repository contains the code for the LearnOpenCV blog post **Fine Tuning YOLOv7**.
+This repository contains the code for the LearnOpenCV blog post **[Fine Tuning YOLOv7](https://learnopencv.com/fine-tuning-yolov7-on-custom-dataset/)**.
 
 We train YOLOv7 and YOLOv7-Tiny models on a custom pothole detection dataset.
 
