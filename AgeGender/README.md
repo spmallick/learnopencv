@@ -1,4 +1,4 @@
-# Code for Age Gender recognition using Deep Learning
+# Gender and Age Classification using OpenCV Deep Learning ( C++/Python )
 
 **This repository contains the code for [Gender and Age Classification using OpenCV Deep Learning ( C++/Python )](https://learnopencv.com/age-gender-classification-using-opencv-deep-learning-c-python/) blog post**.
 
