@@ -16,7 +16,7 @@ In this post, you will learn the following,
 
 ### Document Scanner Application
 
-<img src = 'app_images\app_demo.png'>
+<img src = 'app_images/app_demo.png'>
 
 # AI Courses by OpenCV
 
