@@ -12,6 +12,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
+|[Document Scanner: Custom Semantic Segmentation using PyTorch-DeepLabV3](https://learnopencv.com/custom-document-segmentation-using-deep-learning/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Document-Scanner-Custom-Semantic-Segmentation-using-PyTorch-DeepLabV3)|
 |[Fine Tuning YOLOv7 on Custom Dataset](https://learnopencv.com/fine-tuning-yolov7-on-custom-dataset/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Fine-Tuning-YOLOv7)|
 |[Center Stage for Zoom Calls using MediaPipe](https://learnopencv.com/Center-Stage-for-zoom-call-using-mediapipe/)|[Code](https://github.com/spmallick/learnopencv/tree/master/CenterStage)|
 |[Mean Average Precision (mAP) in Object Detection](https://learnopencv.com/mean-average-precision-map-object-detection-model-evaluation-metric/)||
