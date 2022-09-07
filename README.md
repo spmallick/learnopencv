@@ -12,6 +12,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
+|[What is Face Detection? – The Ultimate Guide for 2022](https://learnopencv.com/what-is-face-detection-the-ultimate-guide/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Face-Detection-Ultimate-Guide) |
 |[Document Scanner: Custom Semantic Segmentation using PyTorch-DeepLabV3](https://learnopencv.com/custom-document-segmentation-using-deep-learning/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Document-Scanner-Custom-Semantic-Segmentation-using-PyTorch-DeepLabV3)|
 |[Fine Tuning YOLOv7 on Custom Dataset](https://learnopencv.com/fine-tuning-yolov7-on-custom-dataset/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Fine-Tuning-YOLOv7)|
 |[Center Stage for Zoom Calls using MediaPipe](https://learnopencv.com/Center-Stage-for-zoom-call-using-mediapipe/)|[Code](https://github.com/spmallick/learnopencv/tree/master/CenterStage)|
@@ -273,4 +274,3 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 |[Turn your OpenCV Code into a Web API in under 10 minutes — Part 1](http://www.learnopencv.com/turn-your-opencv-Code-into-a-web-api-in-under-10-minutes-part-1/) | |
 |[How to compile OpenCV sample Code ?](http://www.learnopencv.com/how-to-compile-opencv-sample-Code/) | |
 |[Install OpenCV 3 on Yosemite ( OSX 10.10.x )](http://www.learnopencv.com/install-opencv-3-on-yosemite-osx-10-10-x/) | |
-|[What is Face Detection? – The Ultimate Guide for 2022](https://learnopencv.com/what-is-face-detection-the-ultimate-guide/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Face-Detection-Ultimate-Guide) |
