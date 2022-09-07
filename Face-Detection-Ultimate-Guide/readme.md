@@ -4,6 +4,7 @@
 
 
 ## Run the notebook in Google Colab environment
+![Open Notebook in Colab](https://colab.research.google.com/github/spmallick/learnopencv/blob/master/Face-Detection-Ultimate-Guide/face_detection_inference_combined.ipynb)
 
 # AI Courses by OpenCV
 
