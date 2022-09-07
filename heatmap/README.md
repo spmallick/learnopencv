@@ -1,8 +1,8 @@
-# Heatmaps for logo detection 
+# Heatmap for Logo Detection using OpenCV (Python)
 
-Download data by clicking on the link below
+**This repository contains code for [Heatmap for Logo Detection using OpenCV (Python)](https://learnopencv.com/heatmap-for-logo-detection-using-opencv-python/) blog post**.
 
-[Heatmap Data](http://media.orpix-inc.com/heatmap-data.zip)
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/0ewv1kc7mk7v7nd/AAAFlNoAbsQPpZwRqM_5X7-Ua?dl=1)
 
 Once the data is generated run the script to produce the heatmap 
 

@@ -1,5 +1,8 @@
-# Image Inpainting
+# Image Inpainting with OpenCV (C++/Python)
 
+**This repository contains the code for [Image Inpainting with OpenCV (C++/Python)](https://learnopencv.com/image-inpainting-with-opencv-c-python/) blog post**.
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/z6nb29e6i4kzk0m/AABvm0ggBw3cfQkTc9Yn_PtZa?dl=1)
 
 ## Usage
 
