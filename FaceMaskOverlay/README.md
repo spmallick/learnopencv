@@ -1,18 +1,16 @@
 # Using Facial Landmarks for Overlaying Faces with Medical Masks
 
-This repository contains the code for [Using Facial Landmarks for Overlaying Faces with 
-Masks](https://www.learnopencv.com/using-facial-landmarks-for-overlaying-faces-with-masks/) blog post.
+**This repository contains the code for [Using Facial Landmarks for Overlaying Faces with Masks](https://www.learnopencv.com/using-facial-landmarks-for-overlaying-faces-with-masks/) blog post**.
 
-Most of the code is based on the
-[HRNet-Facial-Landmark-Detection](https://github.com/HRNet/HRNet-Facial-Landmark-Detection) repository, huge thanks to
-them.
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/zriu09eaunjp0lu/AADXO9ccFm1ELWvNh2YWqQAJa?dl=1)
+
+Most of the code is based on the [HRNet-Facial-Landmark-Detection](https://github.com/HRNet/HRNet-Facial-Landmark-Detection) repository, huge thanks to  them.
 
 ## Quick start
 
 ### Environment
 
-This code is developed using Python 3.6 and PyTorch 1.0.0 on Ubuntu 16.04 with NVIDIA GPU. Other platforms or GPUs are
-not fully tested.
+This code is developed using Python 3.6 and PyTorch 1.0.0 on Ubuntu 16.04 with NVIDIA GPU. Other platforms or GPUs are not fully tested.
 
 ### Installation
 

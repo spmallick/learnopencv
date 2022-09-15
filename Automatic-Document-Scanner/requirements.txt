@@ -1,0 +1,6 @@
+opencv-contrib-python-headless == 4.5.5.64
+numpy == 1.21.6
+streamlit == 1.10.0
+streamlit_drawable_canvas == 0.8
+Pillow == 9.1.1
+matplotlib == 3.5.2

@@ -1,10 +1,31 @@
+#include <string>
+#include <opencv2/opencv.hpp>
 #include <opencv2/dnn_superres.hpp>
 
-img=cv::imread("image.png")
-DnnSuperResImpl sr;
-string model_path = "ESPCN_x4.pb";
-sr.readModel(model_path);
-sr.setModel("espcn", 4); // set the model by passing the value and the upsampling ratio
-Mat result; // creating blank mat for result
-sr.upsample(img, result); // upscale the input image
-cv::imwrite("output.png",result)
+int main(){
+
+	// Read image
+	cv::Mat img = cv::imread("image.png");
+
+	// Make DNN Super resolution instance
+	cv::dnn_superres::DnnSuperResImpl sr;
+
+	// Read the model
+	std::string model_path = "ESPCN_x4.pb";
+	sr.readModel(model_path);
+
+	// Set the model by passing the value and the upsampling ratio
+	sr.setModel("espcn", 4);
+
+	// Creating a blank Mat for result
+	cv::Mat result;
+
+	// Upscale the input image
+	sr.upsample(img, result);
+
+	// Write the final image
+	cv::imwrite("output.png",result);
+
+  return 0;
+  
+}

@@ -12,6 +12,71 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
+|[Object Tracking and Reidentification with FairMOT](https://learnopencv.com/object-tracking-and-reidentification-with-fairmot/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Object-Tracking-and-Reidentification-with-FairMOT) |
+|[What is Face Detection? – The Ultimate Guide for 2022](https://learnopencv.com/what-is-face-detection-the-ultimate-guide/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Face-Detection-Ultimate-Guide) |
+|[Document Scanner: Custom Semantic Segmentation using PyTorch-DeepLabV3](https://learnopencv.com/custom-document-segmentation-using-deep-learning/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Document-Scanner-Custom-Semantic-Segmentation-using-PyTorch-DeepLabV3)|
+|[Fine Tuning YOLOv7 on Custom Dataset](https://learnopencv.com/fine-tuning-yolov7-on-custom-dataset/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Fine-Tuning-YOLOv7)|
+|[Center Stage for Zoom Calls using MediaPipe](https://learnopencv.com/Center-Stage-for-zoom-call-using-mediapipe/)|[Code](https://github.com/spmallick/learnopencv/tree/master/CenterStage)|
+|[Mean Average Precision (mAP) in Object Detection](https://learnopencv.com/mean-average-precision-map-object-detection-model-evaluation-metric/)||
+|[YOLOv7 Object Detection Paper Explanation and Inference](https://learnopencv.com/yolov7-object-detection-paper-explanation-and-inference/)|[Code](https://github.com/spmallick/learnopencv/tree/master/YOLOv7-Object-Detection-Paper-Explanation-and-Inference)|
+|[Pothole Detection using YOLOv4 and Darknet](https://learnopencv.com/pothole-detection-using-yolov4-and-darknet/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Pothole-Detection-using-YOLOv4-and-Darknet)|
+|[Automatic Document Scanner using OpenCV](https://learnopencv.com/automatic-document-scanner-using-opencv/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Automatic-Document-Scanner)|
+|[Demystifying GPU architectures for deep learning: Part 2](https://learnopencv.com/demystifying-gpu-architectures-for-deep-learning-part-2/)|[Code](https://github.com/spmallick/learnopencv/tree/master/gpu_arch_and_CUDA)|
+|[Demystifying GPU Architectures For Deep Learning](https://learnopencv.com/demystifying-gpu-architectures-for-deep-learning/)|[Code](https://github.com/spmallick/learnopencv/tree/master/gpu_arch_and_CUDA)|
+|[Intersection-over-Union(IoU)-in-Object-Detection-and-Segmentation](https://learnopencv.com/intersection-over-unioniou-in-object-detection-and-segmentation/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Intersection-over-Union-IoU-in-Object-Detection-and-Segmentation)|
+|[Understanding Multiple Object Tracking using DeepSORT](https://learnopencv.com/understanding-multiple-object-tracking-using-deepsort/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Understanding-Multiple-Object-Tracking-using-DeepSORT)|
+|[Optical Character Recognition using PaddleOCR](https://learnopencv.com/optical-character-recognition-using-paddleocr/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Optical-Character-Recognition-using-PaddleOCR)|
+|[Gesture Control in Zoom Call using Mediapipe](https://learnopencv.com/gesture-control-in-zoom-call-using-mediapipe/)|[Code](https://github.com/spmallick/learnopencv/tree/master/zoom-gestures)|
+|[A Deep Dive into Tensorflow Model Optimization](https://learnopencv.com/deep-dive-into-tensorflow-model-optimization-toolkit/)|[Code](https://github.com/spmallick/learnopencv/tree/master/A-Deep-Dive-into-Tensorflow-Model-Optimization)|
+|[Anti-Spoofing Face Recognition System using OAK-D and DepthAI](https://learnopencv.com/anti-spoofing-face-recognition-system-using-oak-d-and-depthai/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Anti-Spoofing-Face-Recognition-with-OAK-D)|
+|[DepthAI Pipeline Overview: Creating a Complex Pipeline](https://learnopencv.com/depthai-pipeline-overview-creating-a-complex-pipeline/)|[Code](https://github.com/spmallick/learnopencv/tree/master/OAK-DepthAi-Pipeline-Overview)|
+|[TensorFlow Lite Model Maker: Create Models for On-Device Machine Learning](https://learnopencv.com/tensorflow-lite-model-maker-create-models-for-on-device-machine-learning/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Tensorflow-Lite-Model-Maker-Create-Models-for-On-Device-ML)|
+|[TensorFlow Lite: Model Optimization for	On Device Machine Learning](https://learnopencv.com/tensorflow-lite-model-optimization-for-on-device-machine-learning)|[Code](https://github.com/spmallick/learnopencv/tree/master/TensorFlow-Lite-Model-Optimization-for-On-Device-MachineLearning)|
+|[Object detection with depth measurement using pre-trained models with OAK-D](https://learnopencv.com/object-detection-with-depth-measurement-with-oak-d/)|[Code](https://github.com/spmallick/learnopencv/tree/master/OAK-Object-Detection-with-Depth)|
+|[Custom Object Detection Training using YOLOv5](https://learnopencv.com/custom-object-detection-training-using-yolov5/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Custom-Object-Detection-Training-using-YOLOv5)|
+|[Object Detection using Yolov5 and OpenCV DNN (C++/Python)](https://learnopencv.com/object-detection-using-yolov5-and-opencv-dnn-in-c-and-python/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Object-Detection-using-YOLOv5-and-OpenCV-DNN-in-CPP-and-Python)|
+|[Create Snapchat/Instagram filters using Mediapipe](https://learnopencv.com/create-snapchat-instagram-filters-using-mediapipe/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Create-AR-filters-using-Mediapipe)|
+|[AUTOSAR C++ compliant deep learning inference with TensorRT](https://learnopencv.com/autosar-c-compliant-deep-learning-inference-with-tensorrt/)|[Code](https://github.com/spmallick/learnopencv/tree/master/industrial_cv_TensorRT_cpp)|
+|[NVIDIA GTC 2022 Day 4 Highlights: Meet the new Jetson Orin](https://learnopencv.com/nvidia-gtc-2022-day-4-highlights-meet-the-new-jetson-orin/)||
+|[NVIDIA GTC 2022 Day 3 Highlights: Deep Dive into Hopper architecture](https://learnopencv.com/nvidia-gtc-2022-day-3-highlights-deep-dive-into-hopper-architecture/)||
+|[NVIDIA GTC 2022 Day 2 Highlights: Jensen’s Keynote](https://learnopencv.com/nvidia-gtc-2022-day-2-highlights/)||
+|[NVIDIA GTC 2022 Day 1 Highlights: Brilliant Start](https://learnopencv.com/gtc-day-1-highlights/)||
+|[Automatic License Plate Recognition using Python](https://learnopencv.com/automatic-license-plate-recognition-using-deep-learning/)|[Code](https://github.com/spmallick/learnopencv/tree/master/ALPR)|
+|[Building a Poor Body Posture Detection and Alert System using MediaPipe](https://learnopencv.com/building-a-body-posture-analysis-system-using-mediapipe/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Posture-analysis-system-using-MediaPipe-Pose)|
+|[Introduction to MediaPipe](https://learnopencv.com/introduction-to-mediapipe/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Introduction-to-MediaPipe)|
+|[Disparity Estimation using Deep Learning](https://learnopencv.com/disparity-estimation-using-deep-learning/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Disparity-Estimation-Using-Deep-Learning)|
+|[How to build Chrome Dino game bot using OpenCV Feature Matching](https://learnopencv.com/how-to-build-chrome-dino-game-bot-using-opencv-feature-matching/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Chrome-Dino-Bot-using-OpenCV-feature-matching)|
+|[Top 10 Sources to Find Computer Vision and AI Models](https://learnopencv.com/top-10-sources-to-find-computer-vision-and-ai-models/)||
+|[Multi-Attribute and Graph-based Object Detection](https://learnopencv.com/multi-attribute-and-graph-based-object-detection/)||
+|[Plastic Waste Detection with Deep Learning](https://learnopencv.com/plastic-waste-detection-with-deep-learning/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Plastic-Waste-Detection-with-Deep-Learning)|
+|[Ensemble Deep Learning-based Defect Classification and Detection in SEM Images](https://learnopencv.com/ensemble-deep-learning-based-defect-classification-and-detection-in-sem-images/)||
+|[Building Industrial embedded deep learning inference pipelines with TensorRT](https://learnopencv.com/building-industrial-embedded-deep-learning-inference-pipelines-with-tensorrt/)|[Code](https://github.com/spmallick/learnopencv/tree/master/industrial_cv_TensorRT_python)|
+|[Transfer Learning for Medical Images](https://learnopencv.com/transfer-learning-for-medical-images/)||
+|[Stereo Vision and Depth Estimation using OpenCV AI Kit](https://learnopencv.com/stereo-vision-and-depth-estimation-using-opencv-ai-kit/)|[Code](https://github.com/spmallick/learnopencv/tree/master/oak-getting-started)|
+|[Introduction to OpenCV AI Kit and DepthAI](https://learnopencv.com/introduction-to-opencv-ai-kit-and-depthai/)|[Code](https://github.com/spmallick/learnopencv/tree/master/oak-getting-started)|
+|[WeChat QR Code Scanner in OpenCV](https://learnopencv.com/wechat-qr-code-scanner-in-opencv)|[Code](https://github.com/spmallick/learnopencv/tree/master/WeChat-QRCode-Scanner-OpenCV)|
+|[AI behind the Diwali 2021 ‘Not just a Cadbury ad’](https://learnopencv.com/ai-behind-the-diwali-2021-not-just-a-cadbury-ad/)| |
+|[Model Selection and Benchmarking with Modelplace.AI](https://learnopencv.com/model-selection-and-benchmarking-with-modelplace-ai/)|[Model Zoo](https://modelplace.ai/)|
+|[Real-time style transfer in a zoom meeting](https://learnopencv.com/real-time-style-transfer-in-a-zoom-meeting/)|[Code](https://github.com/spmallick/learnopencv/tree/master/style-transfer-zoom)|
+| [Introduction to OpenVino Deep Learning Workbench](https://learnopencv.com/introduction-to-openvino-deep-learning-workbench/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Introduction-to-OpenVino-Deep-Learning-Workbench) |
+| [Running OpenVino Models on Intel Integrated GPU](https://learnopencv.com/running-openvino-models-on-intel-integrated-gpu/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Running-OpenVino-Models-on-Intel-Integrated-GPU) |
+|[Post Training Quantization with OpenVino Toolkit](https://learnopencv.com/post-training-quantization-with-openvino-toolkit/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Post-Training-Quantization-with-OpenVino-Toolkit)|
+|[Introduction to Intel OpenVINO Toolkit](https://learnopencv.com/introduction-to-intel-openvino-toolkit/)||
+|[Human Action Recognition using Detectron2 and LSTM](https://learnopencv.com/human-action-recognition-using-detectron2-and-lstm/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Human-Action-Recognition-Using-Detectron2-And-Lstm)|
+|[Pix2Pix:Image-to-Image Translation in PyTorch & TensorFlow](https://learnopencv.com/paired-image-to-image-translation-pix2pix/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Image-to-Image-Translation-with-GAN)|
+|[Conditional GAN (cGAN) in PyTorch and TensorFlow](https://learnopencv.com/conditional-gan-cgan-in-pytorch-and-tensorflow/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Conditional-GAN-PyTorch-TensorFlow)|
+|[Deep Convolutional GAN in PyTorch and TensorFlow](https://learnopencv.com/deep-convolutional-gan-in-pytorch-and-tensorflow/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Deep-Convolutional-GAN)|
+|[Introduction to Generative Adversarial Networks (GANs)](https://learnopencv.com/introduction-to-generative-adversarial-networks/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Intro-to-Generative-Adversarial-Network)|
+|[Human Pose Estimation using Keypoint RCNN in PyTorch](https://learnopencv.com/human-pose-estimation-using-keypoint-rcnn-in-pytorch/)|[Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-Keypoint-RCNN)|
+|[Non Maximum Suppression: Theory and Implementation in PyTorch](https://learnopencv.com/non-maximum-suppression-theory-and-implementation-in-pytorch)|[Code](https://github.com/spmallick/learnopencv/tree/master/Non-Maximum-Suppression)|
+|[MRNet – The Multi-Task Approach](https://learnopencv.com/mrnet-multitask-approach/)| [Code](https://github.com/spmallick/learnopencv/tree/master/MRnet-MultiTask-Approach) |
+|[Generative and Discriminative Models](https://learnopencv.com/generative-and-discriminative-models/)| |
+|[Playing Chrome's T-Rex Game with Facial Gestures](https://learnopencv.com/playing-chromes-t-rex-game-with-facial-gestures/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Playing-Chrome-TRex-Game-with-Facial-Gestures) |
+|[Variational Autoencoder in TensorFlow](https://learnopencv.com/variational-autoencoder-in-tensorflow/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Variational-Autoencoder-TensorFlow) |
+|[Autoencoder in TensorFlow 2: Beginner’s Guide](https://learnopencv.com/autoencoder-in-tensorflow-2-beginners-guide/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Autoencoder-in-TensorFlow) |
+|[Deep Learning with OpenCV DNN Module: A Definitive Guide](https://learnopencv.com/deep-learning-with-opencvs-dnn-module-a-definitive-guide/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Deep-Learning-with-OpenCV-DNN-Module) |
+|[Depth perception using stereo camera (Python/C++)](https://learnopencv.com/depth-perception-using-stereo-camera-python-c/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Depth-Perception-Using-Stereo-Camera) |
+|[Contour Detection using OpenCV (Python/C++)](https://learnopencv.com/contour-detection-using-opencv-python-c/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Contour-Detection-using-OpenCV) |
 |[Super Resolution in OpenCV](https://learnopencv.com/super-resolution-in-opencv/)| [Code](https://github.com/spmallick/learnopencv/blob/master/Super-Resolution-in-OpenCV) |
 |[Improving Illumination in Night Time Images](https://learnopencv.com/improving-illumination-in-night-time-images/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Improving-Illumination-in-Night-Time-Images) |
 |[Video Classification and Human Activity Recognition](https://learnopencv.com/introduction-to-video-classification-and-human-activity-recognition/) | [Code](https://github.com/spmallick/learnopencv/tree/master/video-classification-and-human-activity-recognition) |
@@ -19,7 +84,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 |[How to use OpenCV DNN Module with NVIDIA GPUs](https://learnopencv.com/opencv-dnn-with-gpu-support/) | [Code](https://github.com/spmallick/learnopencv/tree/master/OpenCV-dnn-gpu-support-Linux) |
 |[Code OpenCV in Visual Studio](https://learnopencv.com/code-opencv-in-visual-studio/) | |
 |[Install OpenCV on Windows – C++ / Python](https://learnopencv.com/install-opencv-on-windows/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Install-OpenCV-Windows-exe) |
-|[Face Recognition with ArcFace](https://www.learnopencv.com/face-recognition-with-arcface/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Face-Recognition-with-ArcFace)
+|[Face Recognition with ArcFace](https://www.learnopencv.com/face-recognition-with-arcface/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Face-Recognition-with-ArcFace)|
 |[Background Subtraction with OpenCV and BGS Libraries](https://www.learnopencv.com/background-subtraction-with-opencv-and-bgs-libraries/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Background-Subtraction) |
 |[RAFT: Optical Flow estimation using Deep Learning](https://learnopencv.com/optical-flow-using-deep-learning-raft/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Optical-Flow-Estimation-using-Deep-Learning-RAFT)|
 |[Making A Low-Cost Stereo Camera Using OpenCV](https://www.learnopencv.com/making-a-low-cost-stereo-camera-using-opencv/)|[Code](https://github.com/spmallick/learnopencv/tree/master/stereo-camera)|
@@ -119,7 +184,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 |[Batch Normalization in Deep Networks](https://www.learnopencv.com/batch-normalization-in-deep-networks/) | [Code](https://github.com/spmallick/learnopencv/tree/master/BatchNormalization)|
 |[Deep Learning based Character Classification using Synthetic Dataset](https://www.learnopencv.com/deep-learning-character-classification-using-synthetic-dataset/) | [Code](https://github.com/spmallick/learnopencv/tree/master/CharClassification)|
 |[Image Quality Assessment : BRISQUE](https://www.learnopencv.com/image-quality-assessment-brisque/)| [Code](https://github.com/spmallick/learnopencv/tree/master/ImageMetrics)|
-|[Understanding AlexNet](https://www.learnopencv.com/understanding-alexnet/)|
+|[Understanding AlexNet](https://www.learnopencv.com/understanding-alexnet/)||
 |[Deep Learning based Text Recognition (OCR) using Tesseract and OpenCV](https://www.learnopencv.com/deep-learning-based-text-recognition-ocr-using-tesseract-and-opencv/)| [Code](https://github.com/spmallick/learnopencv/tree/master/OCR)|
 |[Deep Learning based Human Pose Estimation using OpenCV ( C++ / Python )](https://www.learnopencv.com/deep-learning-based-human-pose-estimation-using-opencv-cpp-python/)|[ Code](https://github.com/spmallick/learnopencv/tree/master/OpenPose)|
 |[Number of Parameters and Tensor Sizes in a Convolutional Neural Network (CNN)](https://www.learnopencv.com/number-of-parameters-and-tensor-sizes-in-convolutional-neural-network/)| |

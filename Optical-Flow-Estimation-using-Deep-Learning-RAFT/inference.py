@@ -96,7 +96,7 @@ def inference(args):
             # preprocessing
             frame_2 = frame_preprocess(frame_2, device)
             # predict the flow
-            flow_low, flow_up = model(frame_1, frame_2, iters=20, test_mode=True)
+            flow_low, flow_up = model(frame_1, frame_2, iters=args.iters, test_mode=True)
             # transpose the flow output and convert it into numpy array
             ret = vizualize_flow(frame_1, flow_up, save, counter)
             if not ret:

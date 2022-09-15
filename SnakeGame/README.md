@@ -1,6 +1,8 @@
 # Implementing Snake Game using OpenCV and Python
 
-This folder contains the code for implementing the famous snakes game in Python using OpenCV. The tutorial for this code can be found at [Snake Game with OpenCV Python](https://www.learnopencv.com/snake-game-with-opencv-python/)
+**This repository contains code for [Implementing Snake Game using OpenCV and Python](https://www.learnopencv.com/snake-game-with-opencv-python/) blogpost**.
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/t67rd8o067prtag/AAB5pSRpKfedWZN-WN7jYlVOa?dl=1)
 
 ## USAGE
 

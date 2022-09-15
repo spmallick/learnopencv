@@ -1,5 +1,8 @@
 # Universal Sentence Encoder
-This repository contains the scripts for Universal Sentence Encoder. For more details, refer to [the post](https://www.learnopencv.com/universal-sentence-encoder/).
+
+**This repository contains code for [Universal Sentence Encoder](https://www.learnopencv.com/universal-sentence-encoder/) blog post**.
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/qa21gf9k1z88wlu/AAC2YN02UF4lC8MgHs-22AtDa?dl=1)
 
 ## Instructions
 First install the dependencies.

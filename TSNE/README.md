@@ -1,3 +1,9 @@
+# t-SNE for Feature Visualization
+
+**This repository contains code for [t-SNE for Feature Visualization](https://learnopencv.com/t-sne-for-feature-visualization/) blog post**.
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/h2aib0b9xbibs1e/AAA5VYRtOvSU8TBzf-trbOl5a?dl=1)
+
 # Setup
 
 This code was tested with python 3.7, however, it should work with any python 3.

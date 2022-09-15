@@ -1,0 +1,403 @@
+layer {
+  name: "data"
+  type: "Input"
+  top: "data"
+  input_param {
+    shape {
+      dim: 1
+      dim: 1
+      dim: 224
+      dim: 224
+    }
+  }
+}
+layer {
+  name: "conv0"
+  type: "Convolution"
+  bottom: "data"
+  top: "conv0"
+  param {
+    lr_mult: 1.0
+    decay_mult: 1.0
+  }
+  param {
+    lr_mult: 1.0
+    decay_mult: 0.0
+  }
+  convolution_param {
+    num_output: 32
+    bias_term: true
+    pad: 1
+    kernel_size: 3
+    group: 1
+    stride: 1
+    weight_filler {
+      type: "msra"
+    }
+  }
+}
+layer {
+  name: "conv0/lrelu"
+  type: "ReLU"
+  bottom: "conv0"
+  top: "conv0"
+  relu_param {
+    negative_slope: 0.05000000074505806
+  }
+}
+layer {
+  name: "db1/reduce"
+  type: "Convolution"
+  bottom: "conv0"
+  top: "db1/reduce"
+  param {
+    lr_mult: 1.0
+    decay_mult: 1.0
+  }
+  param {
+    lr_mult: 1.0
+    decay_mult: 0.0
+  }
+  convolution_param {
+    num_output: 8
+    bias_term: true
+    pad: 0
+    kernel_size: 1
+    group: 1
+    stride: 1
+    weight_filler {
+      type: "msra"
+    }
+  }
+}
+layer {
+  name: "db1/reduce/lrelu"
+  type: "ReLU"
+  bottom: "db1/reduce"
+  top: "db1/reduce"
+  relu_param {
+    negative_slope: 0.05000000074505806
+  }
+}
+layer {
+  name: "db1/3x3"
+  type: "Convolution"
+  bottom: "db1/reduce"
+  top: "db1/3x3"
+  param {
+    lr_mult: 1.0
+    decay_mult: 1.0
+  }
+  param {
+    lr_mult: 1.0
+    decay_mult: 0.0
+  }
+  convolution_param {
+    num_output: 8
+    bias_term: true
+    pad: 1
+    kernel_size: 3
+    group: 8
+    stride: 1
+    weight_filler {
+      type: "msra"
+    }
+  }
+}
+layer {
+  name: "db1/3x3/lrelu"
+  type: "ReLU"
+  bottom: "db1/3x3"
+  top: "db1/3x3"
+  relu_param {
+    negative_slope: 0.05000000074505806
+  }
+}
+layer {
+  name: "db1/1x1"
+  type: "Convolution"
+  bottom: "db1/3x3"
+  top: "db1/1x1"
+  param {
+    lr_mult: 1.0
+    decay_mult: 1.0
+  }
+  param {
+    lr_mult: 1.0
+    decay_mult: 0.0
+  }
+  convolution_param {
+    num_output: 32
+    bias_term: true
+    pad: 0
+    kernel_size: 1
+    group: 1
+    stride: 1
+    weight_filler {
+      type: "msra"
+    }
+  }
+}
+layer {
+  name: "db1/1x1/lrelu"
+  type: "ReLU"
+  bottom: "db1/1x1"
+  top: "db1/1x1"
+  relu_param {
+    negative_slope: 0.05000000074505806
+  }
+}
+layer {
+  name: "db1/concat"
+  type: "Concat"
+  bottom: "conv0"
+  bottom: "db1/1x1"
+  top: "db1/concat"
+  concat_param {
+    axis: 1
+  }
+}
+layer {
+  name: "db2/reduce"
+  type: "Convolution"
+  bottom: "db1/concat"
+  top: "db2/reduce"
+  param {
+    lr_mult: 1.0
+    decay_mult: 1.0
+  }
+  param {
+    lr_mult: 1.0
+    decay_mult: 0.0
+  }
+  convolution_param {
+    num_output: 8
+    bias_term: true
+    pad: 0
+    kernel_size: 1
+    group: 1
+    stride: 1
+    weight_filler {
+      type: "msra"
+    }
+  }
+}
+layer {
+  name: "db2/reduce/lrelu"
+  type: "ReLU"
+  bottom: "db2/reduce"
+  top: "db2/reduce"
+  relu_param {
+    negative_slope: 0.05000000074505806
+  }
+}
+layer {
+  name: "db2/3x3"
+  type: "Convolution"
+  bottom: "db2/reduce"
+  top: "db2/3x3"
+  param {
+    lr_mult: 1.0
+    decay_mult: 1.0
+  }
+  param {
+    lr_mult: 1.0
+    decay_mult: 0.0
+  }
+  convolution_param {
+    num_output: 8
+    bias_term: true
+    pad: 1
+    kernel_size: 3
+    group: 8
+    stride: 1
+    weight_filler {
+      type: "msra"
+    }
+  }
+}
+layer {
+  name: "db2/3x3/lrelu"
+  type: "ReLU"
+  bottom: "db2/3x3"
+  top: "db2/3x3"
+  relu_param {
+    negative_slope: 0.05000000074505806
+  }
+}
+layer {
+  name: "db2/1x1"
+  type: "Convolution"
+  bottom: "db2/3x3"
+  top: "db2/1x1"
+  param {
+    lr_mult: 1.0
+    decay_mult: 1.0
+  }
+  param {
+    lr_mult: 1.0
+    decay_mult: 0.0
+  }
+  convolution_param {
+    num_output: 32
+    bias_term: true
+    pad: 0
+    kernel_size: 1
+    group: 1
+    stride: 1
+    weight_filler {
+      type: "msra"
+    }
+  }
+}
+layer {
+  name: "db2/1x1/lrelu"
+  type: "ReLU"
+  bottom: "db2/1x1"
+  top: "db2/1x1"
+  relu_param {
+    negative_slope: 0.05000000074505806
+  }
+}
+layer {
+  name: "db2/concat"
+  type: "Concat"
+  bottom: "db1/concat"
+  bottom: "db2/1x1"
+  top: "db2/concat"
+  concat_param {
+    axis: 1
+  }
+}
+layer {
+  name: "upsample/reduce"
+  type: "Convolution"
+  bottom: "db2/concat"
+  top: "upsample/reduce"
+  param {
+    lr_mult: 1.0
+    decay_mult: 1.0
+  }
+  param {
+    lr_mult: 1.0
+    decay_mult: 0.0
+  }
+  convolution_param {
+    num_output: 32
+    bias_term: true
+    pad: 0
+    kernel_size: 1
+    group: 1
+    stride: 1
+    weight_filler {
+      type: "msra"
+    }
+  }
+}
+layer {
+  name: "upsample/reduce/lrelu"
+  type: "ReLU"
+  bottom: "upsample/reduce"
+  top: "upsample/reduce"
+  relu_param {
+    negative_slope: 0.05000000074505806
+  }
+}
+layer {
+  name: "upsample/deconv"
+  type: "Deconvolution"
+  bottom: "upsample/reduce"
+  top: "upsample/deconv"
+  param {
+    lr_mult: 1.0
+    decay_mult: 1.0
+  }
+  param {
+    lr_mult: 1.0
+    decay_mult: 0.0
+  }
+  convolution_param {
+    num_output: 32
+    bias_term: true
+    pad: 1
+    kernel_size: 3
+    group: 32
+    stride: 2
+    weight_filler {
+      type: "msra"
+    }
+  }
+}
+layer {
+  name: "upsample/lrelu"
+  type: "ReLU"
+  bottom: "upsample/deconv"
+  top: "upsample/deconv"
+  relu_param {
+    negative_slope: 0.05000000074505806
+  }
+}
+layer {
+  name: "upsample/rec"
+  type: "Convolution"
+  bottom: "upsample/deconv"
+  top: "upsample/rec"
+  param {
+    lr_mult: 1.0
+    decay_mult: 1.0
+  }
+  param {
+    lr_mult: 1.0
+    decay_mult: 0.0
+  }
+  convolution_param {
+    num_output: 1
+    bias_term: true
+    pad: 0
+    kernel_size: 1
+    group: 1
+    stride: 1
+    weight_filler {
+      type: "msra"
+    }
+  }
+}
+layer {
+  name: "nearest"
+  type: "Deconvolution"
+  bottom: "data"
+  top: "nearest"
+  param {
+    lr_mult: 0.0
+    decay_mult: 0.0
+  }
+  convolution_param {
+    num_output: 1
+    bias_term: false
+    pad: 0
+    kernel_size: 2
+    group: 1
+    stride: 2
+    weight_filler {
+      type: "constant"
+      value: 1.0
+    }
+  }
+}
+layer {
+  name: "Crop1"
+  type: "Crop"
+  bottom: "nearest"
+  bottom: "upsample/rec"
+  top: "Crop1"
+}
+layer {
+  name: "fc"
+  type: "Eltwise"
+  bottom: "Crop1"
+  bottom: "upsample/rec"
+  top: "fc"
+  eltwise_param {
+    operation: SUM
+  }
+}

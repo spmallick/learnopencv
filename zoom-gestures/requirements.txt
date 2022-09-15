@@ -1,0 +1,16 @@
+absl-py==1.0.0
+attrs==21.4.0
+cycler==0.11.0
+fonttools==4.33.3
+kiwisolver==1.4.2
+matplotlib==3.5.1
+mediapipe==0.8.9.1
+numpy==1.22.3
+opencv-contrib-python==4.5.5.64
+packaging==21.3
+Pillow==9.1.0
+protobuf==3.20.1
+pyparsing==3.0.8
+python-dateutil==2.8.2
+pyvirtualcam==0.9.1
+six==1.16.0

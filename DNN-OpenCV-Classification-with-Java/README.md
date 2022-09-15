@@ -1,10 +1,12 @@
-This contains the code for **Image Classification with OpenCV Java**. For more information - visit [**Image Classification with OpenCV Java**](https://www.learnopencv.com/image-classification-with-opencv-java/)
+## Image Classification with OpenCV Java
 
+**This repository contains the code for [Image Classification with OpenCV Java](https://www.learnopencv.com/image-classification-with-opencv-java/) blogpost**.
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/e9rkrr5zr6wkcye/AACRClaQ6a7a-oAYWf02V0Xka?dl=1)
 
 ## Getting Started
 
-Our code is tested using Python 3.7.5, but it should also work with any other python3.x. If you'd like to check your
-version run:
+Our code is tested using Python 3.7.5, but it should also work with any other python3.x. If you'd like to check your version run:
 
 ```bash
 python3 -V
@@ -12,8 +14,7 @@ python3 -V
 
 ### Virtual Environment
 
-Let's create a new virtual environment. You'll need to install [virtualenv](https://pypi.org/project/virtualenv/)
-package if you don't have it:
+Let's create a new virtual environment. You'll need to install [virtualenv](https://pypi.org/project/virtualenv/) package if you don't have it:
 
 ```bash
 pip install virtualenv
@@ -39,8 +40,9 @@ pip3 install -r requirements.txt
 
 ### OpenCV
 
-In this blog post we are using OpenCV 4.3.0 unavailable via `pip` and OpenCV for Java. That is why, we first need to build the
-OpenCV library. To do so:
+In this blog post we are using OpenCV 4.3.0 unavailable via `pip` and OpenCV for Java. That is why, we first need to build the OpenCV library. 
+
+To do so:
 
 1. Check the list of the below libraries. Install the missed dependencies:
 
@@ -192,3 +194,4 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 <img src="https://www.learnopencv.com/wp-content/uploads/2020/04/AI-Courses-By-OpenCV-Github.png">
 </p>
 </a>
+
