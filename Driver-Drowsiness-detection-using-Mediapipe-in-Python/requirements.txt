@@ -1,0 +1,9 @@
+cryptography==38.0.0
+pyOpenSSL
+aiortc
+numpy
+pydub
+mediapipe
+streamlit==1.13.0
+streamlit_webrtc==0.43.4
+streamlit-nested-layout==0.1.1
