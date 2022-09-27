@@ -12,6 +12,9 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
+|[Driver Drowsiness Detection Using Mediapipe In Python](https://learnopencv.com/driver-drowsiness-detection-using-mediapipe-in-python/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Driver-Drowsiness-detection-using-Mediapipe-in-Python)|
+|[GTC 2022 Big Bang AI announcements: Everything you need to know](https://learnopencv.com/gtc-2022-big-bang-ai-announcements-everything-you-need-to-know/)||
+|[NVIDIA GTC 2022 : The most important AI event this Fall](https://learnopencv.com/nvidia-gtc-2022-the-most-important-ai-event-this-fall/)||
 |[Object Tracking and Reidentification with FairMOT](https://learnopencv.com/object-tracking-and-reidentification-with-fairmot/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Object-Tracking-and-Reidentification-with-FairMOT) |
 |[What is Face Detection? – The Ultimate Guide for 2022](https://learnopencv.com/what-is-face-detection-the-ultimate-guide/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Face-Detection-Ultimate-Guide) |
 |[Document Scanner: Custom Semantic Segmentation using PyTorch-DeepLabV3](https://learnopencv.com/custom-document-segmentation-using-deep-learning/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Document-Scanner-Custom-Semantic-Segmentation-using-PyTorch-DeepLabV3)|
