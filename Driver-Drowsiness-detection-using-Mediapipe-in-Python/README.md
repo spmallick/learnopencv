@@ -1,6 +1,6 @@
-# Guide to Driver Drowsines Detection using Mediapipe in Python
+# Driver Drowsines Detection using Mediapipe in Python
 
-**This repository contains code for blog post: [Guide to Driver Drowsines Detection using Mediapipe in Python](https://learnopencv.com/guide-to-driver-drowsiness-detection-using-mediapipe-in-python/) blog post**.
+**This repository contains code for blog post: [Driver Drowsines Detection using Mediapipe in Python](https://learnopencv.com/driver-drowsiness-detection-using-mediapipe-in-python/) blog post**.
 
 In this post, we will:
 
