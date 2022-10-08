@@ -5,7 +5,7 @@ This repository contains notebooks for Training YOLOX on a custom dataset. Find 
 
 <img src="https://learnopencv.com/wp-content/uploads/2022/10/yolox-object-detector-paper-explanation-and-custom-training-feature-image-768x422.gif" alt="YOLOX Training" width="1000">
 
-[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">]()
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/09euceuiivm4yon/AADK5i85x0dZS-HTZEOaMZWea?dl=1)
 
 ### Colab Notebooks
 
@@ -24,7 +24,7 @@ pip install -v -e .
 
 ### Training
 
-Check out the article for training instructions.
+Check out [the article](https://learnopencv.com/yolox-object-detector-paper-explanation-and-custom-training/) for training instructions.
 
 ### Results
 
