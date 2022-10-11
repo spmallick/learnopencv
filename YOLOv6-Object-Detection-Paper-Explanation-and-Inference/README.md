@@ -14,6 +14,8 @@ The `yolov6_inference.ipynb` notebook contains the code to run inference on imag
 
 **You can run it on your local system or on Colab. All the requirements will be installed automatically.**
 
+[**Open Notebook on Google Colab**](https://colab.research.google.com/github/spmallick/learnopencv/blob/master/YOLOv6-Object-Detection-Paper-Explanation-and-Inference/yolov6_inference.ipynb)
+
 ## AI Courses by OpenCV
 
 Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/courses/) is a great place to start.
