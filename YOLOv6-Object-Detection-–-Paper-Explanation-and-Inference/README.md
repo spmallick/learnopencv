@@ -1,6 +1,6 @@
 # YOLOv6 Object Detection – Paper Explanation and Inference
 
-This repository contains the notebook for the blog post **[YOLOv6 Object Detection – Paper Explanation and Inference](https://learnopencv.com/yolov6-object-detection---paper-explanation-and-inference/)**
+This repository contains the notebook for the blog post **[YOLOv6 Object Detection – Paper Explanation and Inference](https://learnopencv.com/yolov6-object-detection/)**
 
 ![img](readme_images/yolov6-object-detection-demo.gif)
 
