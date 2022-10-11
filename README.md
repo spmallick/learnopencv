@@ -12,7 +12,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
-|[YOLOv6 Object Detection – Paper Explanation and Inference](https://learnopencv.com/yolov6-object-detection/)|[Code](https://github.com/spmallick/learnopencv/tree/master/YOLOv6-Object-Detection-–-Paper-Explanation-and-Inference)|
+|[YOLOv6 Object Detection – Paper Explanation and Inference](https://learnopencv.com/yolov6-object-detection/)|[Code](https://github.com/spmallick/learnopencv/tree/master/YOLOv6-Object-Detection-Paper-Explanation-and-Inference)|
 |[YOLOX Object Detector Paper Explanation and Custom Training](https://learnopencv.com/yolox-object-detector-paper-explanation-and-custom-training/)|[Code](https://github.com/spmallick/learnopencv/tree/master/YOLOX-Object-Detection-Paper-Explanation-and-Custom-Training)|
 |[Driver Drowsiness Detection Using Mediapipe In Python](https://learnopencv.com/driver-drowsiness-detection-using-mediapipe-in-python/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Driver-Drowsiness-detection-using-Mediapipe-in-Python)|
 |[GTC 2022 Big Bang AI announcements: Everything you need to know](https://learnopencv.com/gtc-2022-big-bang-ai-announcements-everything-you-need-to-know/)||
