@@ -4,6 +4,8 @@ This repository contains the notebook for the blog post **[YOLOv6 Object Detecti
 
 ![img](readme_images/yolov6-object-detection-demo.gif)
 
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/rpwvpjuj3sz846t/AAAL77wtWATWtGsCyq2kqd2Na?dl=1)
+
 The `yolov6_inference.ipynb` notebook contains the code to run inference on images using the following YOLO6 models:
 
 * YOLOv6 Nano
