@@ -1,15 +1,15 @@
-# Optical Flow demo
 
-This contains the code for **Optical Flow in OpenCV (C++/Python)** post
-For more information - visit 
-[Optical Flow in OpenCV (C++/Python)](https://www.learnopencv.com/optical-flow-in-opencv)
+## Optical Flow in OpenCV(C++/Python)
+
+**This repository contains the code for [Optical Flow in OpenCV (C++/Python)](https://www.learnopencv.com/optical-flow-in-opencv) blogpost**.
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/sn8cagnd55h358f/AAApmYgtkv-uEaWiqUmnQo1za?dl=1)
 
 ## Python
 
 ### Installation
 
-Before you start the demo of Optical Flow calculation, you need to create a virtual environment in your working
-directory and install the required libraries:
+Before you start the demo of Optical Flow calculation, you need to create a virtual environment in your working directory and install the required libraries:
 
 ```Shell
 virtualenv -p python3.7 venv
@@ -27,8 +27,7 @@ python3 demo.py --algorithm lucaskanade --video_path videos/car.mp4
 
 ### Dense Optical Flow
 
-The wrapper of Dense Optical Flow algorithms `dense_optical_flow.py` can run a couple of OpenCV's algorithm
-implementations:
+The wrapper of Dense Optical Flow algorithms `dense_optical_flow.py` can run a couple of OpenCV's algorithm implementations:
 
 - To start the **Dense Lucas-Kanade** algorithm:
   ```
@@ -65,8 +64,7 @@ There is a demo `lucas_kanade.cpp` script of **Lucas-Kanade** algorithm which ca
 
 ### Dense Optical Flow
 
-The wrapper of Dense Optical Flow algorithms `dense_optical_flow.py` can run a couple of OpenCV's algorithm
-implementations:
+The wrapper of Dense Optical Flow algorithms `dense_optical_flow.py` can run a couple of OpenCV's algorithm implementations:
 
 - To start the **Dense Lucas-Kanade** algorithm:
   ```

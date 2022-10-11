@@ -1,6 +1,8 @@
-This contains the code for **PyTorch for Beginners: Basics**. For more information - visit [**PyTorch for Beginners: Basics**](https://www.learnopencv.com/pytorch-for-beginners-basics/)
+# PyTorch for Beginners: Basics
 
+**This reposiotry contains the code for [PyTorch for Beginners: Basics](https://www.learnopencv.com/pytorch-for-beginners-basics/) blog post**.
 
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/lavs8fac7bn2ncg/AAC0qWOYPAGP1gryEque8M94a?dl=1)
 
 # AI Courses by OpenCV
 

@@ -1,12 +1,14 @@
+
 # Introduction to OpenVino Deep Learning Workbench
 
+**This repository contains code for [Introduction-to-OpenVino-Deep-Learning Workbench](https://learnopencv.com/introduction-to-openvino-deep-learning-workbench/) blogpost**.
 
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/a24l0pv1void1x2/AABTW645rgofOTTlDHlCbOxua?dl=1)
 
-This repository contains:
+And the following as well,
 
 * Python file to create the results JSON file for the COCO validation dataset.
 * Juptyter notebook for calculating the mAP.
-
 
 
 ## Instructions

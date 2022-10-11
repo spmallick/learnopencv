@@ -1,14 +1,15 @@
+# Stanford MRNet Challenge: Classifying Knee MRIs
+
+**This repository contains code for [Stanford MRNet Challenge: Classifying Knee MRIs](https://www.learnopencv.com/stanford-mrnet-challenge-classifying-knee-mris/) blogpost**.
+
 <div align="center">
-<img src="content/logo.jpg" width ="600" height="300"/>
-
-# Classifying Knee MRI images using Deep Learning
-
-**This repo contains code for the post [Stanford MRNet Challenge: Classifying Knee MRIs](https://www.learnopencv.com/stanford-mrnet-challenge-classifying-knee-mris/)**
-
+<img src="https://learnopencv.com/wp-content/uploads/2022/08/MRNet-1.png" width ="1000">
 
 For details about the dataset and the competition, refer to https://stanfordmlgroup.github.io/competitions/mrnet/
 
 </div>
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/0jy7h1b4yj1elgn/AAAnStaGub3S4vJF9Blm8mtta?dl=1)
 
 <!-- # Install dependencies
 1. `pip install git+https://github.com/ncullen93/torchsample`
@@ -26,7 +27,7 @@ Install other dependencies as per requirement -->
 $ conda create -n mrnet python=3.7
 $ conda activate mrnet
 ```   
-Make sure you are always inside the `mrnet` environment while working with this project 
+Make sure you are always inside the `mrnet` environment while working with this project.
 
 3. Install dependencies. (You might want to select your virtual environment first)
 ```Shell
@@ -60,7 +61,7 @@ $ mkdir abnormal meniscus acl
 $ cd ..
 ```      
 
-6. All the hyperparameters are defined in `config.py` file. Feel free to play around those. Especially change the `task` to train on different diseases
+6. All the hyperparameters are defined in `config.py` file. Feel free to play around those. Especially change the `task` to train on different diseases.
 
 7. Now finally run the training using `python train.py`. All the logs for tensorboard will be stored in the `runs` directory at the root of the project.
 
@@ -99,7 +100,7 @@ Plane 2- with 34 slices
 
 Place 3 with 35 slices
 
-Each MRI has to be classisifed against 3 diseases
+Each MRI has to be classisifed against 3 diseases.
 
 Major challenge with while selecting the model structure was the inconsistency in the data. Although the image size remains constant , the number of slices per plane are variable within a single MRI and varies across all MRIs.
 
@@ -115,7 +116,7 @@ We also plan to have 3 separate models for each disease.
 
 </div>
 
-We will be using Alexnet pretrained as a feature extractor. When we would have trained the 3 models on the 3 planes, we will use its feature extractor layer as an input to a `global` model for the final classification
+We will be using Alexnet pretrained as a feature extractor. When we would have trained the 3 models on the 3 planes, we will use its feature extractor layer as an input to a `global` model for the final classification.
 
 # Contributors
 <p > 
@@ -126,7 +127,7 @@ We will be using Alexnet pretrained as a feature extractor. When we would have t
 -- Jatin Prakash <a href = https://github.com/bicycleman15 target='blank'> <img src=https://github.com/edent/SuperTinyIcons/blob/master/images/svg/github.svg height='30' weight='30'/></a>
 
 ***
-This contains the code for **Stanford MRNet Challenge**. For more information - visit [**Stanford MRNet Challenge**](https://www.learnopencv.com/stanford-mrnet-challenge/)
+This contains the code for **Stanford MRNet Challenge**. For more information - visit [**Stanford MRNet Challenge**.](https://www.learnopencv.com/stanford-mrnet-challenge/)
 
 
 # AI Courses by OpenCV

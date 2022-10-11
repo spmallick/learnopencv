@@ -1,7 +1,12 @@
+
 # WeChat QR Code Scanner in OpenCV
 
+**This repository contains code for [WeChat QR Code Scanner in OpenCV](https://learnopencv.com/wechat-qr-code-scanner-in-opencv) blogpost**.
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/d5stf5ug3yba2vc/AAARrEh1DigNB5G5M13rfGppa?dl=1)
+
 ## Models
-WeChat QR Code model files : https://github.com/WeChatCV/opencv_3rdparty/tree/wechat_qrcode
+WeChat QR Code model files : https://github.com/WeChatCV/opencv_3rdparty/tree/wechat_qrcode.
 
 
 ## Run Code

@@ -1,3 +1,9 @@
+# Multi-Label Image Classification with PyTorch: Image Tagging
+
+**This repository contains code for [Multi-Label Image Classification with PyTorch: Image Tagging](https://learnopencv.com/multi-label-image-classification-with-pytorch-image-tagging/) blog post**.
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/fst5b5o43bxh4ye/AAAxEZlXuKeWG9t_Vutj6YAca?dl=1)
+
 # Setup
 Before installation create and activate virtual environment
 ```bash

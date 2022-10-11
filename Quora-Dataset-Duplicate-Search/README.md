@@ -1,4 +1,9 @@
-# Quora Dataset Duplicate Search
+# Duplicate Search on Quora Dataset
+
+**This repository contains the code for [Duplicate Search on Quora Dataset](https://learnopencv.com/duplicate-search-on-quora-dataset/) blog post**.
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/491rn8l2kvauylq/AAAPqUnff5R4l5crqWMnJuSEa?dl=1)
+
 First make sure that the following python modules are installed:
 
 ```

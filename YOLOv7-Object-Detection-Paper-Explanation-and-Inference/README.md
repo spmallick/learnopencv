@@ -1,6 +1,8 @@
 # YOLOv7 Object Detection - Paper Explanation and Inference
 
-This repository contains the code for the LearnOpenCV blog post **YOLOv7 Object Detection - Paper Explanation and Inference**.
+**This repository contains the code for [YOLOv7 Object Detection - Paper Explanation and Inference](https://learnopencv.com/yolov7-object-detection-paper-explanation-and-inference/) blog post**.
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/wzjudk2pem80vp6/AAASXVagcwMsB2DrdLXvwNO1a?dl=1)
 
 In this blog post, we go through a comprehensive explanation of the YOLOv7 paper. This includes:
 

@@ -113,9 +113,9 @@ int main()
   }
 
   // Check if right camera is attached
-  if (!camL.isOpened())
+  if (!camR.isOpened())
   {
-    std::cout << "Could not open camera with index : " << CamL_id << std::endl;
+    std::cout << "Could not open camera with index : " << CamR_id << std::endl;
     return -1;
   }
 

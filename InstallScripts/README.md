@@ -1,3 +1,9 @@
+# Install OpenCV 4 on CentOS 7 (C++ and Python)
+
+**This repository contains the code for [Install OpenCV 4 on CentOS 7 (C++ and Python)](https://learnopencv.com/install-opencv-4-on-centos-7/) blog post**.
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/nmuto59a3eotuim/AAA9c_sOs6kLTiZONdVBa5Hza?dl=1)
+
 1. OpenCV Installation on Windows
 - [Install OpenCV 4.0 on Windows](https://www.learnopencv.com/install-opencv-4-on-windows/) - [Code](https://github.com/spmallick/learnopencv/tree/master/InstallScripts/Windows-4)
 - [Install OpenCV 3.4.x on Windows](https://www.learnopencv.com/install-opencv-3-4-4-on-windows/) - [Code](https://github.com/spmallick/learnopencv/tree/master/InstallScripts/Windows-3)
