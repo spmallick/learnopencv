@@ -12,6 +12,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
+|[YOLOv7 Pose vs MediaPipe in Human Pose Estimation](https://learnopencv.com/yolov7-pose-vs-mediapipe-in-human-pose-estimation/)|[Code](https://github.com/spmallick/learnopencv/tree/master/YOLOv7-Pose-vs-MediaPipe-in-Human-Pose-Estimation)|
 |[YOLOv6 Object Detection – Paper Explanation and Inference](https://learnopencv.com/yolov6-object-detection/)|[Code](https://github.com/spmallick/learnopencv/tree/master/YOLOv6-Object-Detection-Paper-Explanation-and-Inference)|
 |[YOLOX Object Detector Paper Explanation and Custom Training](https://learnopencv.com/yolox-object-detector-paper-explanation-and-custom-training/)|[Code](https://github.com/spmallick/learnopencv/tree/master/YOLOX-Object-Detection-Paper-Explanation-and-Custom-Training)|
 |[Driver Drowsiness Detection Using Mediapipe In Python](https://learnopencv.com/driver-drowsiness-detection-using-mediapipe-in-python/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Driver-Drowsiness-detection-using-Mediapipe-in-Python)|
