@@ -12,6 +12,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
+|[CenterNet: Objects as Points – Anchor-free Object Detection Explained](https://learnopencv.com/centernet-anchor-free-object-detection-explained/)|[Code](https://github.com/spmallick/learnopencv/tree/master/centernet-with-tf-hub)|
 |[YOLOv7 Pose vs MediaPipe in Human Pose Estimation](https://learnopencv.com/yolov7-pose-vs-mediapipe-in-human-pose-estimation/)|[Code](https://github.com/spmallick/learnopencv/tree/master/YOLOv7-Pose-vs-MediaPipe-in-Human-Pose-Estimation)|
 |[YOLOv6 Object Detection – Paper Explanation and Inference](https://learnopencv.com/yolov6-object-detection/)|[Code](https://github.com/spmallick/learnopencv/tree/master/YOLOv6-Object-Detection-Paper-Explanation-and-Inference)|
 |[YOLOX Object Detector Paper Explanation and Custom Training](https://learnopencv.com/yolox-object-detector-paper-explanation-and-custom-training/)|[Code](https://github.com/spmallick/learnopencv/tree/master/YOLOX-Object-Detection-Paper-Explanation-and-Custom-Training)|
@@ -125,7 +126,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 |[Getting Started with PyTorch Lightning](https://www.learnopencv.com/getting-started-with-pytorch-lightning/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Pytorch-Lightning)|
 |[Multi-Label Image Classification with PyTorch: Image Tagging](https://www.learnopencv.com/multi-label-image-classification-with-pytorch-image-tagging/)|[Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-Multi-Label-Image-Classification-Image-Tagging)|
 |[Funny Mirrors Using OpenCV](https://www.learnopencv.com/Funny-Mirrors-Using-OpenCV/)|[code](https://github.com/spmallick/learnopencv/tree/master/FunnyMirrors)|
-|[t-SNE for ResNet feature visualization](https://www.learnopencv.com/t-sne-for-resnet-feature-visualization/)|[Code](https://github.com/spmallick/learnopencv/tree/master/TSNE)|
+|[t-SNE for ResNet feature visualization](https://www.learnopencv.com/t-sne-for-feature-visualization/)|[Code](https://github.com/spmallick/learnopencv/tree/master/TSNE)|
 |[Multi-Label Image Classification with Pytorch](https://www.learnopencv.com/multi-label-image-classification-with-pytorch/)|[Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-Multi-Label-Image-Classification)|
 |[CNN Receptive Field Computation Using Backprop](https://www.learnopencv.com/cnn-receptive-field-computation-using-backprop/)|[Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-Receptive-Field-With-Backprop)|
 |[CNN Receptive Field Computation Using Backprop with TensorFlow](https://www.learnopencv.com/cnn-receptive-field-computation-using-backprop-with-tensorflow/)|[Code](https://github.com/spmallick/learnopencv/tree/master/TensorFlow-Receptive-Field-With-Backprop)|

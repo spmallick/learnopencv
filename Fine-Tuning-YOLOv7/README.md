@@ -8,6 +8,9 @@ We train YOLOv7 and YOLOv7-Tiny models on a custom pothole detection dataset.
 
 ![](media/pothole-gif-1.gif)
 
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/scl/fo/1u40tzk7u3dzh6kesp0pe/h?dl=1&rlkey=5s5cfcyy950ht4a16d97jkae9)
+
+
 - The `jupyter_notebook` directory contains the Jupyter Notebook which will run end-to-end with one click. If you have Ubuntu, you can run it locally. Else, you may also upload it to Colab and run it. The notebook will train four different models for different experiments.
 
 - The four training experiments are:
