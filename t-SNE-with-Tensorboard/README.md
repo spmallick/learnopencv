@@ -7,7 +7,7 @@ t-SNE (t-Distributed Stochastic Neighbor Embedding) is a dimensonality reduction
 
 <img src="https://learnopencv.com/wp-content/uploads/2022/11/tsne.gif" alt="t-SNE" width="900">
 
-[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">]([https://www.dropbox.com/scl/fo/53qp7ghovuf22eidrs93s/h?dl=0&rlkey=n45hy0hqwd89wmtcezjpimpp5](https://www.dropbox.com/scl/fo/53qp7ghovuf22eidrs93s/h?dl=1&rlkey=n45hy0hqwd89wmtcezjpimpp5))
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">]([https://www.dropbox.com/scl/fo/53qp7ghovuf22eidrs93s/h?dl=0&rlkey=n45hy0hqwd89wmtcezjpimpp5](https://www.dropbox.com/scl/fo/3rnopheb0x3b8mcvkyx8c/h?dl=1&rlkey=n0vakhsmehcajsqkdbxwcliy2))
 
 
 # AI Courses by OpenCV
