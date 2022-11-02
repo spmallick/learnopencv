@@ -12,6 +12,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
+|[t-SNE: T-Distributed Stochastic Neighbor Embedding Explained](https://learnopencv.com/t-sne-t-distributed-stochastic-neighbor-embedding-explained/)|[Code](https://github.com/spmallick/learnopencv/tree/master/t-SNE-with-Tensorboard)|
 |[CenterNet: Objects as Points – Anchor-free Object Detection Explained](https://learnopencv.com/centernet-anchor-free-object-detection-explained/)|[Code](https://github.com/spmallick/learnopencv/tree/master/centernet-with-tf-hub)|
 |[YOLOv7 Pose vs MediaPipe in Human Pose Estimation](https://learnopencv.com/yolov7-pose-vs-mediapipe-in-human-pose-estimation/)|[Code](https://github.com/spmallick/learnopencv/tree/master/YOLOv7-Pose-vs-MediaPipe-in-Human-Pose-Estimation)|
 |[YOLOv6 Object Detection – Paper Explanation and Inference](https://learnopencv.com/yolov6-object-detection/)|[Code](https://github.com/spmallick/learnopencv/tree/master/YOLOv6-Object-Detection-Paper-Explanation-and-Inference)|
