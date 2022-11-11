@@ -1,10 +1,17 @@
+# Deep Learning based Object Detection using YOLOv3 with OpenCV
+This repository contains code for the blog post [Deep Learning based Object Detection using YOLOv3 with OpenCV ( Python / C++ )](https://learnopencv.com/deep-learning-based-object-detection-using-yolov3-with-opencv-python-c/).
+
+<img src="https://learnopencv.com/wp-content/uploads/2018/08/nms-threshold-object-detection.gif" alt="YOLOv3 detections" width="900">
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/scl/fo/nkpnbcnm3sb5ng6ndm9jx/h?dl=1&rlkey=0bav8t0u8wygk39fsa9hvg9jh)
+
+
 ### Download the Models
 
 Run the **getModels.sh** file from command line to download the needed model files
 
-	sudo chmod a+x getModels.sh
-	./getModels.sh
-
+  sudo chmod a+x getModels.sh
+  ./getModels.sh
 
 
 ### How to run the code
@@ -37,7 +44,6 @@ Command line usage for object detection using YOLOv3
      python3 object_detection_yolo.py --video=run.mp4 --device 'gpu'
      ```
 
-       
 
 * C++:
 
@@ -70,7 +76,6 @@ Command line usage for object detection using YOLOv3
     ```
 
 
-
 ### Compilation examples
 
 * Using g++
@@ -78,7 +83,6 @@ Command line usage for object detection using YOLOv3
 ```bash
 g++ -ggdb pkg-config --cflags --libs /usr/local/Cellar/opencv3/3.4.2/lib/pkgconfig/opencv.pc object_detection_yolo.cpp -o object_detection_yolo.out
 ```
-
 
 * Using CMake
 
