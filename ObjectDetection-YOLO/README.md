@@ -10,8 +10,10 @@ This repository contains code for the blog post [Deep Learning based Object Dete
 
 Run the **getModels.sh** file from command line to download the needed model files
 
+```bash
   sudo chmod a+x getModels.sh
   ./getModels.sh
+```
 
 
 ### How to run the code
