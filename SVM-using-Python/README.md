@@ -1,5 +1,7 @@
-The blog post for this code is at 
-[SVM using scikit-learn](https://www.learnopencv.com/svm-using-scikit-learn-in-python/)
+# SVM using Scikit-Learn in Python
+The repository contains code for the blog post [SVM using Scikit-Learn in Python](https://learnopencv.com/svm-using-scikit-learn-in-python/).
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/scl/fo/44yq52s9suzi5jk7gou7h/h?dl=1&rlkey=h3pwhy6yc1un65v35it98iisp)
 
 There are **three types** of data:
 

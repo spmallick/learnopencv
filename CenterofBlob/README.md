@@ -1,13 +1,21 @@
-## Center of Blob using Python and C++
+# Center of Blob using Python and CPP
 
-To run the code to find center of a single blob, run the following commands:-
+This repository contains code for the blog post [Find the Center of a Blob using OpenCV (C++/Python)](https://learnopencv.com/find-center-of-blob-centroid-using-opencv-cpp-python/).
 
-For python:-
+<img src="https://learnopencv.com/wp-content/uploads/2018/07/single-blob-image-768x307.png" alt="Centre of Blob" width="900">
+
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/scl/fo/eftkr2kxe0wrm6i386hcs/h?dl=1&rlkey=5iaq04xe7xvprktki6hvcndnx)
+
+
+To run the code to find center of a single blob, run the following commands.
+
+Python
 
 `python3 single_blob.py --ipimage image_name`
 
 
-For C++:-
+C++
 
 1. ``g++ single_blob.cpp `pkg-config opencv --cflags --libs` -o output``
 
@@ -15,11 +23,11 @@ For C++:-
 
 To run the code to find center of multiple blobs, run the following commands:-
 
-For python:-
+Python
 
 `python3 center_of_multiple_blob.py --ipimage image_name`
 
-For C++:-
+C++
 
 1. ``g++ center_of_multiple_blob.cpp `pkg-config opencv --cflags --libs` -o output``
 

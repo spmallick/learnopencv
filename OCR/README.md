@@ -1,6 +1,8 @@
-Please see the following [blog post](https://www.learnopencv.com/deep-learning-based-text-recognition-ocr-using-tesseract-and-opencv/) for more details about this code
+# Deep Learning based Text Recognition (OCR) using Tesseract and OpenCV
 
-[Deep Learning based Text Recognition (OCR) using Tesseract and OpenCV](https://www.learnopencv.com/deep-learning-based-text-recognition-ocr-using-tesseract-and-opencv/)
+The repository contains code for the blog post [Deep Learning based Text Recognition (OCR) using Tesseract and OpenCV](https://www.learnopencv.com/deep-learning-based-text-recognition-ocr-using-tesseract-and-opencv/).
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/scl/fo/ermdpcfv8vi93c7g6t3mx/h?dl=1&rlkey=ytpuhu17dkr9ludye4sgma6dy)
 
 
 # AI Courses by OpenCV

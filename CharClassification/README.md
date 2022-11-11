@@ -1,4 +1,11 @@
-## Character Classification (of Synthetic Dataset) using Keras (modified LeNet)
+# Deep Learning based Character Classification using Synthetic Dataset
+
+This repository contains code for the blog post [Deep Learning based Character Classification using Synthetic Dataset](https://learnopencv.com/deep-learning-character-classification-using-synthetic-dataset/).
+
+<img src="https://learnopencv.com/wp-content/uploads/2019/06/LeNet.png" alt="Character Classification" width="900">
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/scl/fo/pm77bjh1ugopxeb3mfwnt/h?dl=1&rlkey=yh1wy8h1ati0erfmxqplntqtv)
+
 
 **Step 1:**
 

@@ -1,4 +1,9 @@
-# OpenCV GOTURN Tracker Example (Python/C++)
+# GOTURN : Deep Learning based Object Tracking
+This repository contains code for the blog post [GOTURN : Deep Learning based Object Tracking](https://learnopencv.com/goturn-deep-learning-based-object-tracking/).
+
+<img src="https://learnopencv.com/wp-content/uploads/2018/07/goturn-inputs-ouputs-1024x487.jpg" alt="GOTRUN" width="900">
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/scl/fo/9p46v1crmre9tx5kddhks/h?dl=1&rlkey=a29x4yzgolnoiu8owmrd3lhdc)
 
 This example shows how to use GOTURN Tracker in OpenCV in Python and C++. Before running the code, make sure you have the following caffe model files available in the same folder as the codes:
 
@@ -6,7 +11,7 @@ This example shows how to use GOTURN Tracker in OpenCV in Python and C++. Before
 2) `goturn.prototxt` file
 
 ## Download model files ( EASY WAY ) 
-`goturn.caffemodel` and `goturn.prototxt` file can be downloaded from my [Dropbox Link](https://www.dropbox.com/sh/77frbrkmf9ojfm6/AACgY7-wSfj-LIyYcOgUSZ0Ua?dl=0)
+`goturn.caffemodel` and `goturn.prototxt` file can be downloaded from my [Dropbox Link](https://www.dropbox.com/sh/77frbrkmf9ojfm6/AACgY7-wSfj-LIyYcOgUSZ0Ua?dl=1).
 
 ## Download model files ( OFFICIAL DIFFICULT WAY ) 
 `goturn.caffemodel` and `goturn.prototxt` file can be downloaded from [opencv_extra](https://github.com/opencv/opencv_extra/tree/c4219d5eb3105ed8e634278fad312a1a8d2c182d/testdata/tracking).
