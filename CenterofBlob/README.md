@@ -1,4 +1,4 @@
-# Center of Blob using Python and C++
+# Center of Blob using Python and CPP
 
 This repository contains code for the blog post [Find the Center of a Blob using OpenCV (C++/Python)](https://learnopencv.com/find-center-of-blob-centroid-using-opencv-cpp-python/).
 
