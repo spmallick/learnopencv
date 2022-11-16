@@ -6,7 +6,7 @@ We train several YOLOv6 models on real-life and challenging dataset to detect un
 
 [![img](media/yolov6-custom-dataset-training-validation.gif)](https://github.com/sovit-123/learnopencv/blob/master/Fine-Tuning-YOLOv7/media/pothole-gif-1.gif)
 
-[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">]()
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/scl/fo/ppvl9zhiip2oy81b84yzi/h?dl=1&rlkey=wsmw1604zqdcvg8z05pfr2ohd)
 
 - The `notebooks` directory contains the Jupyter Notebook which will run end-to-end with one click. If you have Ubuntu, you can run it locally. Else, you may also upload it to Colab and run it. The notebook will train three different models for different experiments.
 - The three training experiments are:
