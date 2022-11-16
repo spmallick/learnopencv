@@ -12,6 +12,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
+| [YOLOv6 Custom Dataset Training – Underwater Trash Detection](https://learnopencv.com/yolov6-custom-dataset-training/) | [Code](https://github.com/spmallick/learnopencv/tree/master/YOLOv6-Custom-Dataset-Training-Underwater-Trash-Detection) |
 |[What is EXIF Data in Images?](https://www.learnopencv.com/what-is-exif-data-in-images/)|[Code](https://github.com/spmallick/learnopencv/tree/master/What-is-EXIF-Data-in-Images)|
 |[t-SNE: T-Distributed Stochastic Neighbor Embedding Explained](https://learnopencv.com/t-sne-t-distributed-stochastic-neighbor-embedding-explained/)|[Code](https://github.com/spmallick/learnopencv/tree/master/t-SNE-with-Tensorboard)|
 |[CenterNet: Objects as Points – Anchor-free Object Detection Explained](https://learnopencv.com/centernet-anchor-free-object-detection-explained/)|[Code](https://github.com/spmallick/learnopencv/tree/master/centernet-with-tf-hub)|
