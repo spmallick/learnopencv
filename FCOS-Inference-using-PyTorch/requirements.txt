@@ -1,0 +1,6 @@
+matplotlib==3.3.4
+numpy==1.20.1
+opencv_python_headless==4.5.3.56
+requests==2.25.1
+torch==1.9.0
+torchvision==0.10.0
