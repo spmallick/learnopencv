@@ -1,7 +1,10 @@
-Please see the following [blog post](https://www.learnopencv.com/image-classification-using-convolutional-neural-networks-in-keras) for more details about this code
+# Image Classification using Convolutional Neural Networks in Keras
 
-[Image Classification using Convolutional Neural Networks in Keras( Python )](https://www.learnopencv.com/image-classification-using-convolutional-neural-networks-in-keras)
+The repository contains code for the blog post [Image Classification using Convolutional Neural Networks in Keras](https://www.learnopencv.com/image-classification-using-convolutional-neural-networks-in-keras).
 
+<p align="center"><img src="https://learnopencv.com/wp-content/uploads/2017/11/cnn-schema1.jpg" alt="Keras CNN classification" width="880" height="480"></p>
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">]()
 
 # AI Courses by OpenCV
 
