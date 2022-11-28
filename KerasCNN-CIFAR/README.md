@@ -4,7 +4,7 @@ The repository contains code for the blog post [Image Classification using Convo
 
 <p align="center"><img src="https://learnopencv.com/wp-content/uploads/2017/11/cnn-schema1.jpg" alt="Keras CNN classification" width="880" height="480"></p>
 
-[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">]()
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/scl/fo/wkefeui3jholhkkelcn0e/h?dl=1&rlkey=ozv3xa400fjjzb0k7scs7lc61)
 
 # AI Courses by OpenCV
 
