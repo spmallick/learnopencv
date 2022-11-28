@@ -1,7 +1,10 @@
-Please see the following [blog post](https://www.learnopencv.com/image-classification-using-feedforward-neural-network-in-keras/) for more details about this code
+# Image Classification using Feedforward Neural Network in Keras
 
-[Image Classification using Feedforward Neural Network in Keras](https://www.learnopencv.com/image-classification-using-feedforward-neural-network-in-keras/)
+This repository contains code for the blog post [Image Classification using Feedforward Neural Network in Keras](https://www.learnopencv.com/image-classification-using-feedforward-neural-network-in-keras/).
 
+<p align="center"><img src="https://learnopencv.com/wp-content/uploads/2017/10/mlp-mnist-schematic-768x432.jpg" alt="Feedforward Neural Nets" width="700"></p>
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">]()
 
 # AI Courses by OpenCV
 
