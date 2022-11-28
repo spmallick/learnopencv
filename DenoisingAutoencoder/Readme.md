@@ -4,7 +4,7 @@ This repository contains code for the blog post [Understanding Autoencoders usin
 
 <p align="center"><img src="https://learnopencv.com/wp-content/uploads/2017/11/denoising-example.png" alt="Autoencoders using TensorFlow" width="900"></p>
 
-[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">]()
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/scl/fo/adm1dt6wn7h07xx2fbk4x/h?dl=1&rlkey=ic29vhch13pwlez4st89rjk96)
 
 # AI Courses by OpenCV
 
