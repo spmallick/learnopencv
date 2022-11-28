@@ -1,7 +1,10 @@
-Please see the following [blog post](https://www.learnopencv.com/eigenface-using-opencv-c-python/) for more details about this code
+# Eigenface using OpenCV
 
-[Eigenface using OpenCV (C++/Python)](https://www.learnopencv.com/eigenface-using-opencv-c-python/)
+This repository contains code for the blog post [Eigenface using OpenCV](https://www.learnopencv.com/eigenface-using-opencv-c-python/).
 
+<p align="left"><img src="https://learnopencv.com/wp-content/uploads/2018/01/EigenFace.jpg" alt="EigenFaces"></p>
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">]()
 
 # AI Courses by OpenCV
 
