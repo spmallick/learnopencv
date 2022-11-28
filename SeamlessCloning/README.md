@@ -1,7 +1,11 @@
-Please see the following [blog post](https://www.learnopencv.com/seamless-cloning-using-opencv-python-cpp/) for more details about this code
+# Seamless Cloning using OpenCV
 
-[Seamless Cloning using OpenCV ( Python , C++ )](https://www.learnopencv.com/seamless-cloning-using-opencv-python-cpp/)
+The repository contains code for the blog post [Seamless Cloning using OpenCV ( Python , C++ )](https://www.learnopencv.com/seamless-cloning-using-opencv-python-cpp/).
 
+
+<p align="center"><img src="https://learnopencv.com/wp-content/uploads/2015/01/seamless-cloning-example.jpg" alt="Seamless Cloning"></p>
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/scl/fo/ijmzcdi8djyg9kwwqcamg/h?dl=1&rlkey=z4t0nbidnwj5mctxqbyskwp73)
 
 # AI Courses by OpenCV
 
