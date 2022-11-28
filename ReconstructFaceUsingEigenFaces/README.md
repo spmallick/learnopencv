@@ -2,9 +2,9 @@
 
 The repository contains code for the blog post [Face Reconstruction using EigenFaces](https://www.learnopencv.com/face-reconstruction-using-eigenfaces-cpp-python/).
 
-<img src="https://learnopencv.com/wp-content/uploads/2018/01/face-reconstruction-using-eigenfaces.jpg" alt="EigenFaces" width="900">
+<p align="center"><img src="https://learnopencv.com/wp-content/uploads/2018/01/face-reconstruction-using-eigenfaces.jpg" alt="EigenFaces" width="900"></p>
 
-[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">]()
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/scl/fo/dwcfw2tg65dxt1ijbtnje/h?dl=1&rlkey=q3cc6nxe3t6gt76fdutr59trd)
 
 
 ## Steps to Train you own Model
