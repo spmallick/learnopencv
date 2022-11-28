@@ -1,7 +1,10 @@
-Please see the following [blog post](https://www.learnopencv.com/understanding-autoencoders-using-tensorflow-python/) for more details about this code
+# Understanding Autoencoders using Tensorflow (Python)
 
-[Understanding Autoencoders using Tensorflow (Python)](https://www.learnopencv.com/understanding-autoencoders-using-tensorflow-python/)
+This repository contains code for the blog post [Understanding Autoencoders using Tensorflow (Python)](https://www.learnopencv.com/understanding-autoencoders-using-tensorflow-python/).
 
+<p align="center"><img src="https://learnopencv.com/wp-content/uploads/2017/11/denoising-example.png" alt="Autoencoders using TensorFlow" width="900"></p>
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">]()
 
 # AI Courses by OpenCV
 
