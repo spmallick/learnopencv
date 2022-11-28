@@ -1,8 +1,8 @@
-# HDR using oipenCV
+# HDR using OpenCV
 
 The repository contains code for the blog post [High Dynamic Range (HDR) Imaging using OpenCV](https://www.learnopencv.com/high-dynamic-range-hdr-imaging-using-opencv-cpp-python).
 
-<p><img src="https://learnopencv.com/wp-content/uploads/2017/10/hdr-image-sequence.jpg" alt="HDR using OpenCV"></p>
+<p align="center"><img src="https://learnopencv.com/wp-content/uploads/2017/10/hdr-image-sequence.jpg" alt="HDR using OpenCV"></p>
 
 [<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/scl/fo/e40svgflr8acy6owfaupt/h?dl=1&rlkey=o2bzio2kfsrtqh5ikdenh4wrd)
 
