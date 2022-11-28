@@ -1,6 +1,10 @@
-Please see the following [blog post](https://www.learnopencv.com/keras-tutorial-transfer-learning-using-pre-trained-models/) for more details about this code
+# Keras Tutorial: Transfer Learning using pre-trained models
 
-[Keras Tutorial : Transfer Learning using pre-trained models](https://www.learnopencv.com/keras-tutorial-transfer-learning-using-pre-trained-models/)
+This repository contains code for the blog post [Keras Tutorial: Transfer Learning using pre-trained models](https://www.learnopencv.com/keras-tutorial-transfer-learning-using-pre-trained-models/).
+
+<img src="https://learnopencv.com/wp-content/uploads/2017/11/cnn-schema1.jpg" alt="transfer learning Keras" width="900">
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">]()
 
 
 # AI Courses by OpenCV
