@@ -1,7 +1,8 @@
-Please see the following [blog post](https://www.learnopencv.com/minified-opencv-haar-and-lbp-cascades/) for more details about this code
+# Minified OpenCV Haar and LBP Cascades
 
-[Minified OpenCV Haar and LBP Cascades](https://www.learnopencv.com/minified-opencv-haar-and-lbp-cascades/)
+This repository contains code for the blog post [Minified OpenCV Haar and LBP Cascades](https://www.learnopencv.com/minified-opencv-haar-and-lbp-cascades/).
 
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/scl/fo/2hoef4udj5kf3g0a287g2/h?dl=1&rlkey=if6kel51i7pcly9vgwhs1xpa4)
 
 # AI Courses by OpenCV
 

@@ -1,7 +1,10 @@
-Please see the following [blog post](https://www.learnopencv.com/face-morph-using-opencv-cpp-python/) for more details about this code
+# Face Morph Using OpenCV
 
-[Face Morph Using OpenCV — C++ / Python](https://www.learnopencv.com/face-morph-using-opencv-cpp-python/)
+This repository contains code for the blog post [Face Morph Using OpenCV — C++ / Python](https://www.learnopencv.com/face-morph-using-opencv-cpp-python/).
 
+<p align="center"><img src="https://learnopencv.com/wp-content/uploads/2016/03/naive_blend-768x341.jpg" alt="Morph Face"></p>
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/scl/fo/1dfcmcudnptx7szp16xb8/h?dl=1&rlkey=2l9im7xtmlzsjzkx27oq5uy6d)
 
 # AI Courses by OpenCV
 

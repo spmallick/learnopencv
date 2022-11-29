@@ -1,6 +1,10 @@
-Please see the following [blog post](https://www.learnopencv.com/filling-holes-in-an-image-using-opencv-python-c/) for more details about this code
+# Filling holes in an image using OpenCV
 
-[Filling holes in an image using OpenCV ( Python / C++ )](https://www.learnopencv.com/filling-holes-in-an-image-using-opencv-python-c/)
+The repository contains code for the blog post [Filling holes in an image using OpenCV ( Python / C++ )](https://www.learnopencv.com/filling-holes-in-an-image-using-opencv-python-c/).
+
+<p align="center"><img src="https://learnopencv.com/wp-content/uploads/2015/11/imfill.jpg" alt="Fill holes"></p>
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/scl/fo/enlkis5zbldt3wd4yjmqh/h?dl=1&rlkey=i3ogl1p7q5rymceijsrzqh87s)
 
 
 # AI Courses by OpenCV
