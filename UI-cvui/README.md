@@ -1,6 +1,6 @@
-# cvui: A GUI lib Built on Top of OpenCV Drawing Primitives
+# CVUI: A GUI Lib Built on Top of OpenCV Drawing Primitives
 
-The repository contains code for the blog post [CVUI: A GUI lib Built on Top of OpenCV Drawing Primitives](https://www.learnopencv.com/cvui-gui-lib-built-on-top-of-opencv-drawing-primitives/).
+The repository contains code for the blog post [CVUI: A GUI Lib Built on Top of OpenCV Drawing Primitives](https://www.learnopencv.com/cvui-gui-lib-built-on-top-of-opencv-drawing-primitives/).
 
 <p align="center"><img src="https://learnopencv.com/wp-content/uploads/2017/06/cvui.png" alt="CVUI"></p>
 

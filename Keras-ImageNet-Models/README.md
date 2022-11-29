@@ -1,6 +1,6 @@
-# Keras Tutorial : Using Pre-trained Imagenet Models
+# Keras Tutorial : Using Pre-trained ImageNet Models
 
-This repository contains code for the blog post [Keras Tutorial : Using pre-trained Imagenet models](https://www.learnopencv.com/keras-tutorial-using-pre-trained-imagenet-models/).
+This repository contains code for the blog post [Keras Tutorial : Using pre-trained ImageNet models](https://www.learnopencv.com/keras-tutorial-using-pre-trained-imagenet-models/).
 
 <img src="https://learnopencv.com/wp-content/uploads/2020/06/outputs-2.gif" alt="Keras Tutorial using ImageNet Pretrained Models" height="300">
 
