@@ -12,7 +12,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 ## List of Blog Posts
 | Blog Post | |
 | ------------- |:-------------|
-|[Roadmap To an Automated Image Annotation Tool Using Python]()|[Code](https://github.com/spmallick/learnopencv/tree/master/Roadmap-To-an-Automated-Image-Annotation-Tool-Using-Python)|
+|[Roadmap To an Automated Image Annotation Tool Using Python]()|[Code](https://github.com/spmallick/learnopencv/tree/master/automated-image-annotation-tool-using-opencv-python)|
 |[Performance Comparison of YOLO Object Detection Models – An Intensive Study](https://learnopencv.com/performance-comparison-of-yolo-models/)||
 |[FCOS - Anchor Free Object Detection Explained](learnopencv.com/fcos-anchor-free-object-detection-explained/)|[Code](https://github.com/spmallick/learnopencv/tree/master/FCOS-Inference-using-PyTorch)|
 | [YOLOv6 Custom Dataset Training – Underwater Trash Detection](https://learnopencv.com/yolov6-custom-dataset-training/) | [Code](https://github.com/spmallick/learnopencv/tree/master/YOLOv6-Custom-Dataset-Training-Underwater-Trash-Detection) |
