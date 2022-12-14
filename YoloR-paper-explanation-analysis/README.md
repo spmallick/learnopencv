@@ -11,18 +11,22 @@ Folder and file details:
 ```html
 ├───assests
 ├───Local_Setup_and_Run_Instructions.ipynb
+├───YoloR_Inference_Colab.ipynb
 └───updated_yolor_repo_files
 ```
 
 1. assests - Folder which contains single image and video for inference testing
 2. updated_yolor_repo_files - This folder contains files to be used during code setup of YoloR.
 3. Local_Setup_and_Run_Instructions.ipynb - This is the jupyter notebook that contains instructions on how to download and setup YoloR repository for performing inference on images and videos as shown in the blog post.
+4. YoloR_Inference_Colab.ipynb - A ready to use inference notebook that you can run on Google colab without the hassle of local installation.
 
-To run on local machine I would recommend you to consider this folder as the top-level directory and perform all operations as mentioned in the notebook (Local_Setup_and_Run_Instructions.ipynb) using this directory as the starting point.
+---
 
-You can run it on your local system or on Colab. All the requirements will be installed automatically.
+* You can run it on your local system or on Colab. All the requirements will be installed automatically. [Open Notebook on Google Colab](https://colab.research.google.com/github/spmallick/learnopencv/blob/master/YoloR-paper-explanation-analysis/YoloR_Inference_Colab.ipynb)
 
-[Open Notebook on Google Colab](https://colab.research.google.com/github/spmallick/learnopencv/blob/master/YoloR-paper-explanation-analysis/YoloR_Inference_Colab.ipynb)
+* To run on local machine I would recommend you to consider this folder as the top-level directory and perform all operations as mentioned in the notebook (*Local_Setup_and_Run_Instructions.ipynb*) using this directory as the starting point.
+
+---
 
 ## AI Courses by OpenCV
 
