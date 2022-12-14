@@ -4,7 +4,7 @@ This repository contains the files related to the LearnOpenCV blog post: [YOLOR 
 
 ---
 
-[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/scl/fo/nt817nvxxnd5274a3il82/h?dl=1)
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/jn3y8dxahhqt41m/AACGBR7uMWcyUpn-Y3YFweXya?dl=1)
 
 Folder and file details:
 
@@ -18,9 +18,11 @@ Folder and file details:
 2. updated_yolor_repo_files - This folder contains files to be used during code setup of YoloR.
 3. Local_Setup_and_Run_Instructions.ipynb - This is the jupyter notebook that contains instructions on how to download and setup YoloR repository for performing inference on images and videos as shown in the blog post.
 
-I would recommend you to consider this folder as the top-level directory and perform all operations as mentioned in the notebook using this directory as the starting point.
+To run on local machine I would recommend you to consider this folder as the top-level directory and perform all operations as mentioned in the notebook (Local_Setup_and_Run_Instructions.ipynb) using this directory as the starting point.
 
----
+You can run it on your local system or on Colab. All the requirements will be installed automatically.
+
+[Open Notebook on Google Colab](https://colab.research.google.com/github/spmallick/learnopencv/blob/master/YoloR-paper-explanation-analysis/YoloR_Inference_Colab.ipynb)
 
 ## AI Courses by OpenCV
 
