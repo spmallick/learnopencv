@@ -22,8 +22,9 @@ Folder and file details:
 
 ---
 
-* You can run it on your local system or on Colab. All the requirements will be installed automatically. [Open Notebook on Google Colab](https://colab.research.google.com/github/spmallick/learnopencv/blob/master/YoloR-paper-explanation-analysis/YoloR_Inference_Colab.ipynb)
+**You can run it on your local system or on Colab.**
 
+* On Google Colab, all the requirements will be installed automatically. [Open Notebook on Google Colab](https://colab.research.google.com/github/spmallick/learnopencv/blob/master/YoloR-paper-explanation-analysis/YoloR_Inference_Colab.ipynb)
 * To run on local machine I would recommend you to consider this folder as the top-level directory and perform all operations as mentioned in the notebook (*Local_Setup_and_Run_Instructions.ipynb*) using this directory as the starting point.
 
 ---
