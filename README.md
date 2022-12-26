@@ -14,6 +14,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | |
 | ------------- |:-------------|
+|[AI Fitness Trainer using MediaPipe: Squats Analysis](https://learnopencv.com/ai-fitness-trainer-using-mediapipe/)|[Code](https://github.com/spmallick/learnopencv/tree/master/AI-Fitness-Trainer-Using-MediaPipe-Analyzing-Squats)|
 |[YoloR - Paper Explanation & Inference -An In-Depth Analysis](https://learnopencv.com/yolor-paper-explanation-inference-an-in-depth-analysis/)|[Code](https://github.com/spmallick/learnopencv/tree/master/YoloR-paper-explanation-analysis)|
 |[Roadmap To an Automated Image Annotation Tool Using Python](https://learnopencv.com/automated-image-annotation-tool-using-opencv-python/)|[Code](https://github.com/spmallick/learnopencv/tree/master/automated-image-annotation-tool-using-opencv-python)|
 |[Performance Comparison of YOLO Object Detection Models – An Intensive Study](https://learnopencv.com/performance-comparison-of-yolo-models/)||
