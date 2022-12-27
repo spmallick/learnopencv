@@ -14,6 +14,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | |
 | ------------- |:-------------|
+|[AI Fitness Trainer using MediaPipe: Squats Analysis](https://learnopencv.com/ai-fitness-trainer-using-mediapipe/)|[Code](https://github.com/spmallick/learnopencv/tree/master/AI-Fitness-Trainer-Using-MediaPipe-Analyzing-Squats)|
 |[YoloR - Paper Explanation & Inference -An In-Depth Analysis](https://learnopencv.com/yolor-paper-explanation-inference-an-in-depth-analysis/)|[Code](https://github.com/spmallick/learnopencv/tree/master/YoloR-paper-explanation-analysis)|
 |[Roadmap To an Automated Image Annotation Tool Using Python](https://learnopencv.com/automated-image-annotation-tool-using-opencv-python/)|[Code](https://github.com/spmallick/learnopencv/tree/master/automated-image-annotation-tool-using-opencv-python)|
 |[Performance Comparison of YOLO Object Detection Models – An Intensive Study](https://learnopencv.com/performance-comparison-of-yolo-models/)||
@@ -182,6 +183,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 |[Universal Sentence Encoder](https://www.learnopencv.com/universal-sentence-encoder) | [Code](https://github.com/spmallick/learnopencv/blob/master/Universal-Sentence-Encoder) |
 |[Install OpenCV 4 on Raspberry Pi](https://www.learnopencv.com/install-opencv-4-on-raspberry-pi/) | [Code](https://github.com/spmallick/learnopencv/blob/master/InstallScripts/installOpenCV-4-raspberry-pi.sh) |
 |[Install OpenCV 4 on Windows (C++ and Python)](https://www.learnopencv.com/install-opencv-4-on-windows/) | [Code](https://github.com/spmallick/learnopencv/tree/master/InstallScripts/Windows-4) |
+|[Face Detection – Dlib, OpenCV, and Deep Learning ( C++ / Python )](https://learnopencv.com/face-detection-opencv-dlib-and-deep-learning-c-python/)|[Code](https://github.com/spmallick/learnopencv/tree/master/FaceDetectionComparison)|
 |[Hand Keypoint Detection using Deep Learning and OpenCV](https://www.learnopencv.com/hand-keypoint-detection-using-deep-learning-and-opencv/) | [Code](https://github.com/spmallick/learnopencv/tree/master/HandPose)|
 |[Deep learning based Object Detection and Instance Segmentation using Mask R-CNN in OpenCV (Python / C++)](https://www.learnopencv.com/deep-learning-based-object-detection-and-instance-segmentation-using-mask-r-cnn-in-opencv-python-c/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Mask-RCNN) |
 |[Install OpenCV 4 on Ubuntu 18.04 (C++ and Python)](https://www.learnopencv.com/install-opencv-4-on-ubuntu-18-04/) | [Code](https://github.com/spmallick/learnopencv/blob/master/InstallScripts/installOpenCV-4-on-Ubuntu-18-04.sh) |
