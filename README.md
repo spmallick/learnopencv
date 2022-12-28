@@ -14,7 +14,8 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | |
 | ------------- |:-------------|
-|[The Ultimate Guide To DeepLabv3 - With PyTorch Inference](https://learnopencv.com/deeplabv3-ultimate-guide/)|[Code](https://github.com/spmallick/learnopencv/tree/master/The-ultimate-guide-to-deeplabv3)
+| [Getting Started with YOLOv5 Instance Segmentation](https://learnopencv.com/getting-started-with-yolov5-instance-segmentation/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Getting-Started-with-YOLOv5-Instance-Segmentation) |
+|[The Ultimate Guide To DeepLabv3 - With PyTorch Inference](https://learnopencv.com/deeplabv3-ultimate-guide/)|[Code](https://github.com/spmallick/learnopencv/tree/master/The-ultimate-guide-to-deeplabv3)|
 |[AI Fitness Trainer using MediaPipe: Squats Analysis](https://learnopencv.com/ai-fitness-trainer-using-mediapipe/)|[Code](https://github.com/spmallick/learnopencv/tree/master/AI-Fitness-Trainer-Using-MediaPipe-Analyzing-Squats)|
 |[YoloR - Paper Explanation & Inference -An In-Depth Analysis](https://learnopencv.com/yolor-paper-explanation-inference-an-in-depth-analysis/)|[Code](https://github.com/spmallick/learnopencv/tree/master/YoloR-paper-explanation-analysis)|
 |[Roadmap To an Automated Image Annotation Tool Using Python](https://learnopencv.com/automated-image-annotation-tool-using-opencv-python/)|[Code](https://github.com/spmallick/learnopencv/tree/master/automated-image-annotation-tool-using-opencv-python)|
