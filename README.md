@@ -226,11 +226,11 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 |[Understanding Autoencoders using Tensorflow (Python)](https://www.learnopencv.com/understanding-autoencoders-using-tensorflow-python/)      | [Code](https://github.com/spmallick/learnopencv/tree/master/DenoisingAutoencoder)|
 |[Best Project Award : Computer Vision for Faces](https://www.learnopencv.com/best-project-award-computer-vision-for-faces/) | |
 |[Understanding Activation Functions in Deep Learning](https://www.learnopencv.com/understanding-activation-functions-in-deep-learning/)      | |
-|[Image Classification using Feedforward Neural Network in Keras](https://www.learnopencv.com/image-classification-using-feedforward-neural-network-in-keras/)      | [Code](https://github.com/spmallick/learnopencv/tree/master/KerasMLP-MNIST)|
+|[Image Classification using Feedforward Neural Network in Keras](https://www.learnopencv.com/image-classification-using-feedforward-neural-network-in-keras/)      | [Code](https://github.com/kromydas/learnopencv/tree/master/Keras-MLP-MNIST-Classification)|
 |[Exposure Fusion using OpenCV (C++/Python)](https://www.learnopencv.com/exposure-fusion-using-opencv-cpp-python/)      | [Code](https://github.com/spmallick/learnopencv/tree/master/ExposureFusion)|
 |[Understanding Feedforward Neural Networks](https://www.learnopencv.com/understanding-feedforward-neural-networks/)      | |
 |[High Dynamic Range (HDR) Imaging using OpenCV (C++/Python)](http://www.learnopencv.com/high-dynamic-range-hdr-imaging-using-opencv-cpp-python)      | [Code](https://github.com/spmallick/learnopencv/tree/master/hdr)|
-|[Deep learning using Keras – The Basics](http://www.learnopencv.com/deep-learning-using-keras-the-basics)      | [Code](https://github.com/spmallick/learnopencv/tree/master/keras-linear-regression)|
+|[Deep learning using Keras – The Basics](http://www.learnopencv.com/deep-learning-using-keras-the-basics)      | [Code](https://github.com/kromydas/learnopencv/tree/master/Keras-Linear-Regression)|
 |[Selective Search for Object Detection (C++ / Python)](http://www.learnopencv.com/selective-search-for-object-detection-cpp-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/SelectiveSearch) |
 |[Installing Deep Learning Frameworks on Ubuntu with CUDA support](http://www.learnopencv.com/installing-deep-learning-frameworks-on-ubuntu-with-cuda-support/) | |
 |[Parallel Pixel Access in OpenCV using forEach](http://www.learnopencv.com/parallel-pixel-access-in-opencv-using-foreach/) | [Code](https://github.com/spmallick/learnopencv/tree/master/forEach) |
