@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyOpenAnnotate"
+version = "0.4.0"
+description = "Single class automated annotation tool using OpenCV"
+readme = "README.md"
+authors = [{ name = "Kukil Kashyap Borgohain, LearnOpenCV", email = "kukilp213@gmail.com" }]
+license = { file = "LICENSE" }
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Operating System :: OS Independent",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+keywords = ["Annotation", 
+	    "Automated Annotation", 
+	    "OpenCV Annotate",
+	    "Image Annotation Tool",
+	    "Single Class Annotation",
+	    "Simple Annotation",
+	    "Annotation Python",
+	    "Dataset labelling",
+	    "Object detection",
+	    "Industrial annotation",
+	    "openannotate",
+	    "Annotation software",
+	    "Deep Learning",
+	    "Contour Analysis",
+	    "Thresholding OpenCV",
+	    "Color Segmentation",
+	    "segmentation mask",
+	    "Computer Vision",
+	    "Bounding Box Annotation",
+	    ]
+dependencies = [
+    "opencv-python",
+    "natsort",
+]
+requires-python = ">=3.5"
+
+[project.urls]
+Homepage = "https://github.com/bigvisionai/pyOpenAnnotate"
+
+[project.scripts]
+annotate = "annotation.annotate:main"
+showlbls = "tools.visualize:main"
