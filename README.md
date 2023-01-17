@@ -14,8 +14,8 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | |
 | ------------- |:-------------|
-| [Ultralytics YOLOv8: State-of-the-Art YOLO Models](https://learnopencv.com/ultralytics-yolov8/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Ultralytics-YOLOv8-State-of-the-Art-YOLO-Models) |
 | [Building An Automated Image Annotation Tool: PyOpenAnnotate](https://learnopencv.com/building-automated-image-annotation-tool-pyopenannotate/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Building-An-Automated-Image-Annotation-Tool-PyOpenAnnotate/) |
+| [Ultralytics YOLOv8: State-of-the-Art YOLO Models](https://learnopencv.com/ultralytics-yolov8/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Ultralytics-YOLOv8-State-of-the-Art-YOLO-Models) |
 | [Getting Started with YOLOv5 Instance Segmentation](https://learnopencv.com/getting-started-with-yolov5-instance-segmentation/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Getting-Started-with-YOLOv5-Instance-Segmentation) |
 |[The Ultimate Guide To DeepLabv3 - With PyTorch Inference](https://learnopencv.com/deeplabv3-ultimate-guide/)|[Code](https://github.com/spmallick/learnopencv/tree/master/The-ultimate-guide-to-deeplabv3)|
 |[AI Fitness Trainer using MediaPipe: Squats Analysis](https://learnopencv.com/ai-fitness-trainer-using-mediapipe/)|[Code](https://github.com/spmallick/learnopencv/tree/master/AI-Fitness-Trainer-Using-MediaPipe-Analyzing-Squats)|
