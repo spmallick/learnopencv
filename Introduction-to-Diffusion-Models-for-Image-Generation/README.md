@@ -10,6 +10,8 @@ This repository contains the notebooks to run Stable Diffusion 1.4 on 6 GB VRAM 
 
 The notebooks can be executed end-to-end without any other dependencies.
 
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/scl/fo/gyfxmk20irfqvm23gk3zx/h?dl=1&rlkey=9k7mx9cnd2lcpir733kseke4r)
+
 
 
 ## AI Courses by OpenCV
