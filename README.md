@@ -5,6 +5,7 @@ This repo contains code for Computer Vision, Deep learning, and AI articles shar
 Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/courses/) is a great place to start.
 
 <a href="https://opencv.org/courses/">
+
 <p align="center">
 <img src="https://learnopencv.com/wp-content/uploads/2023/01/AI-Courses-By-OpenCV-Github.png">
 </p>
@@ -14,6 +15,8 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | |
 | ------------- |:-------------|
+| [Train YOLOv8 on Custom Dataset – A Complete Tutorial](https://learnopencv.com/train-yolov8-on-custom-dataset/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Train-YOLOv8-on-Custom-Dataset-A-Complete-Tutorial) |
+| [Introduction to Diffusion Models for Image Generation](https://learnopencv.com/image-generation-using-diffusion-models/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Introduction-to-Diffusion-Models-for-Image-Generation) |
 | [Building An Automated Image Annotation Tool: PyOpenAnnotate](https://learnopencv.com/building-automated-image-annotation-tool-pyopenannotate/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Building-An-Automated-Image-Annotation-Tool-PyOpenAnnotate/) |
 | [Ultralytics YOLOv8: State-of-the-Art YOLO Models](https://learnopencv.com/ultralytics-yolov8/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Ultralytics-YOLOv8-State-of-the-Art-YOLO-Models) |
 | [Getting Started with YOLOv5 Instance Segmentation](https://learnopencv.com/getting-started-with-yolov5-instance-segmentation/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Getting-Started-with-YOLOv5-Instance-Segmentation) |
