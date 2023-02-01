@@ -15,7 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | |
 | ------------- |:-------------|
-| [Deploying a Deep Learning Model using Hugging Face Spaces and Gradio](https://learnopencv.com/deploying-a-deep-learning-model/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Deploying-a-Deep-Learning-Model-using-Hugging-Face-Spaces-and-Gradio) |
+| [Deploying a Deep Learning Model using Hugging Face Spaces and Gradio](https://learnopencv.com/deploy-deep-learning-model-huggingface-spaces/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Deploying-a-Deep-Learning-Model-using-Hugging-Face-Spaces-and-Gradio) |
 | [Train YOLOv8 on Custom Dataset – A Complete Tutorial](https://learnopencv.com/train-yolov8-on-custom-dataset/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Train-YOLOv8-on-Custom-Dataset-A-Complete-Tutorial) |
 | [Introduction to Diffusion Models for Image Generation](https://learnopencv.com/image-generation-using-diffusion-models/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Introduction-to-Diffusion-Models-for-Image-Generation) |
 | [Building An Automated Image Annotation Tool: PyOpenAnnotate](https://learnopencv.com/building-automated-image-annotation-tool-pyopenannotate/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Building-An-Automated-Image-Annotation-Tool-PyOpenAnnotate/) |
