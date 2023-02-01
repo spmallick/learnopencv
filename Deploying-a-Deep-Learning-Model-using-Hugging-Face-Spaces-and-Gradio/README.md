@@ -1,6 +1,6 @@
 # README
 
-This repository contains the essential files required for deployment as explained in the blog post - [Deploying a Deep Learning Model using Hugging Face Spaces and Gradio](https://learnopencv.com/deploying-a-deep-learning-model)
+This repository contains the essential files required for deployment as explained in the blog post - [Deploying a Deep Learning Model using Hugging Face Spaces and Gradio](https://learnopencv.com/deploy-deep-learning-model-huggingface-spaces/)
 
 
 
