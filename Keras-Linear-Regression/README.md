@@ -1,5 +1,6 @@
-# Keras Tutorial: Learn How to use Keras for Modeling Linear Rgression
-This repository contains code for the blog post [Keras Tutorial: Transfer Learning using pre-trained models](https://learnopencv.com/learn-how-to-use-keras-for-modeling-linear-regression/).
+# Linear Regression Tutorial using Tensorflow and Keras 
+This repository contains code for the blog post [Linear Regression Tutorial using Tensorflow and Keras](
+https://learnopencv.com/linear-regression-tutorial-tensorflow-keras/).
 
 <img src="https://learnopencv.com/wp-content/uploads/2023/01/keras-linear-regression-model-plot.png" alt="Keras linear regression model plot" width="900">
 
