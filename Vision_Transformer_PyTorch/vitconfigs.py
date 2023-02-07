@@ -1,0 +1,35 @@
+base={
+	'input_size':[224,224,3],
+	'patch_size':16,
+	'embed_dim':768,
+	'salayers':12,
+	'nheads':12,
+	'drop_prob':0.1,
+	'head_dim':64,
+	'mlp_hdim':3072,
+	'nclasses':1000
+}
+
+large={
+	'input_size':[224,224,3],
+	'patch_size':16,
+	'embed_dim':1024,
+	'salayers':24,
+	'nheads':16,
+	'drop_prob':0.1,
+	'head_dim':64,
+	'mlp_hdim':4096,
+	'nclasses':1000
+}
+
+huge={
+	'input_size':[224,224,3],
+	'patch_size':14,
+	'embed_dim':1280,
+	'salayers':32,
+	'nheads':16,
+	'drop_prob':0.1,
+	'head_dim':80,
+	'mlp_hdim':5120,
+	'nclasses':1000
+}
