@@ -1,0 +1,7 @@
+numpy==1.23.5
+opencv-contrib-python==4.6.0.66
+Pillow==9.3.0
+scipy==1.10.0
+six==1.16.0
+ImageHash==4.3.1
+img2pdf==0.4.4
