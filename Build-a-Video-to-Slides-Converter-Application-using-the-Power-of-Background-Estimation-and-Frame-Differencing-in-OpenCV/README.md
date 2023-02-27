@@ -5,7 +5,7 @@
 
 ## Video to Slides Conversion using Frame Differencing and Background Estimation
 
-<br> <br> 
+<br>
 
 [<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/scl/fo/3ln9cx3ddrmfiapa9atr5/h?dl=1&rlkey=j61webbj820sfwuggo58fgsd5)
 
