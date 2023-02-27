@@ -31,7 +31,7 @@ def find_similar_images(base_dir, hash_size=8):
 
 def remove_duplicates(base_dir):
 
-    _, duplicates = find_similar_images(base_dir, hash_size=10)
+    _, duplicates = find_similar_images(base_dir, hash_size=12)
 
     if not len(duplicates):
         print('No duplicates found!')
