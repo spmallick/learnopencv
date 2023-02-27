@@ -4,7 +4,7 @@ This repository contains the notebooks to create and train Denoising Diffusion P
 
 The two notebooks are part of the blog post - [An In-Depth Guide to Denoising Diffusion Probabilistic Models - From Theory to Implementation](https://learnopencv.com/denoising-diffusion-probabilistic-models/).
 
-![](images\flowers.gif)
+![](images\flower_inference_1.png)
 
 The notebooks can be executed end-to-end without any other dependencies.
 
