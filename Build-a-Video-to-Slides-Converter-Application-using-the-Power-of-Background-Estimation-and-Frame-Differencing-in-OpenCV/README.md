@@ -29,10 +29,10 @@ The command line flags are as follows:
 * `convert_to_pdf`: flag to specify whether to convert the image set into a single PDF file.
 
 
-An example use case can be:
+An example usage can be:
 
 ```
-python video_2_slides.py -v ./samples/vid_test.mp4 -o output_results --type GMG --convert_to_pdf
+python video_2_slides.py -v ./sample_vids/Neural_Networks_Overview.mp4 -o output_results --type GMG --convert_to_pdf
 ```
 
 # AI Courses by OpenCV
