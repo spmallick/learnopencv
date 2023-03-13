@@ -15,6 +15,8 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | |
 | ------------- |:-------------|
+| [Stable Diffusion - A New Paradigm in Generative AI](https://learnopencv.com/stable-diffusion-generative-ai/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Stable-Diffusion-A-New-Paradigm-in-Generative-AI) |
+| [OpenCV Face Recognition – Does Face Recognition Work on AI-Generated Images?](https://learnopencv.com/opencv-face-recognition-api/) | |
 |[An In-Depth Guide to Denoising Diffusion Probabilistic Models – From Theory to Implementation](https://learnopencv.com/denoising-diffusion-probabilistic-models/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Guide-to-training-DDPMs-from-Scratch)|
 |[From Pixels to Paintings: The Rise of Midjourney AI Art](https://learnopencv.com/rise-of-midjourney-ai-art/)| |
 |[Mastering DALL·E 2: A Breakthrough in AI Art Generation](https://learnopencv.com/mastering-dall-e-2/)| |
