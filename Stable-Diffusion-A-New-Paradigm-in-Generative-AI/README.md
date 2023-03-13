@@ -2,6 +2,8 @@
 
 This repository contains a Jupyter Notebook to run Stable Diffusion 1.4 and its variations using the Hugging Face `diffusers` library. It is part of the blog post - [Stable Diffusion - A New Paradigm in Generative AI](https://learnopencv.com/stable-diffusion-generative-ai/)
 
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/scl/fo/6noae0ifdkw9k1mfuq3du/h?dl=1&rlkey=4azo5zzl1tbgcqft94kw1olto)
+
 
 
 ![img](images/Stable_Diffusion_Feature_GIF.gif)
