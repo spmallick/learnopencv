@@ -15,7 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | |
 | ------------- |:-------------|
-| [InstructPix2Pix - Edit Images With Prompts](learnopencv.com/instructpix2pix/) | [Code](https://github.com/spmallick/learnopencv/tree/master/InstructPix2Pix-Edit-Images-With-Prompts) |
+| [InstructPix2Pix - Edit Images With Prompts](https://learnopencv.com/instructpix2pix/) | [Code](https://github.com/spmallick/learnopencv/tree/master/InstructPix2Pix-Edit-Images-With-Prompts) |
 | [NVIDIA Spring GTC 2023 Day 4: Ending on a High Note with Top Moments from the Finale!](https://learnopencv.com/nvidia-spring-gtc-2023-day-4/) | |
 | [NVIDIA Spring GTC 2023 Day 3: Digging deeper into Deep Learning, Semiconductors & more!](https://learnopencv.com/nvidia-spring-gtc-2023-day-3-digging-deeper-into-deep-learning-semiconductors-more/) | |
 | [NVIDIA Spring GTC 2023 Day 2: Jensen’s keynote & the iPhone moment of AI is here!](https://learnopencv.com/nvidia-spring-gtc-2023-day-2-jensens-keynote-the-iphone-moment-of-ai-is-here/) | |
