@@ -15,6 +15,12 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | |
 | ------------- |:-------------|
+| [InstructPix2Pix - Edit Images With Prompts](learnopencv.com/instructpix2pix/) | [Code](https://github.com/spmallick/learnopencv/tree/master/InstructPix2Pix-Edit-Images-With-Prompts) |
+| [NVIDIA Spring GTC 2023 Day 4: Ending on a High Note with Top Moments from the Finale!](https://learnopencv.com/nvidia-spring-gtc-2023-day-4/) | |
+| [NVIDIA Spring GTC 2023 Day 3: Digging deeper into Deep Learning, Semiconductors & more!](https://learnopencv.com/nvidia-spring-gtc-2023-day-3-digging-deeper-into-deep-learning-semiconductors-more/) | |
+| [NVIDIA Spring GTC 2023 Day 2: Jensen’s keynote & the iPhone moment of AI is here!](https://learnopencv.com/nvidia-spring-gtc-2023-day-2-jensens-keynote-the-iphone-moment-of-ai-is-here/) | |
+| [NVIDIA Spring GTC 2023 Day 1: Welcome to the future!](https://learnopencv.com/nvidia-spring-gtc-2023-day-1-highlights-welcome-to-the-future/) | |
+| [NVIDIA GTC Spring 2023 Curtain Raiser](https://learnopencv.com/nvidia-gtc-spring-2023-curtain-raiser/) | |
 | [Stable Diffusion - A New Paradigm in Generative AI](https://learnopencv.com/stable-diffusion-generative-ai/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Stable-Diffusion-A-New-Paradigm-in-Generative-AI) |
 | [OpenCV Face Recognition – Does Face Recognition Work on AI-Generated Images?](https://learnopencv.com/opencv-face-recognition-api/) | |
 |[An In-Depth Guide to Denoising Diffusion Probabilistic Models – From Theory to Implementation](https://learnopencv.com/denoising-diffusion-probabilistic-models/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Guide-to-training-DDPMs-from-Scratch)|
