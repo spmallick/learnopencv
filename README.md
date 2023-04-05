@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | |
 | ------------- |:-------------|
+| [ControlNet - Achieving Superior Image Generation Results](https://learnopencv.com/controlnet/) | [Code](https://github.com/spmallick/learnopencv/tree/master/ControlNet-Achieving-Superior-Image-Generation-Results) |
 | [InstructPix2Pix - Edit Images With Prompts](https://learnopencv.com/instructpix2pix/) | [Code](https://github.com/spmallick/learnopencv/tree/master/InstructPix2Pix-Edit-Images-With-Prompts) |
 | [NVIDIA Spring GTC 2023 Day 4: Ending on a High Note with Top Moments from the Finale!](https://learnopencv.com/nvidia-spring-gtc-2023-day-4/) | |
 | [NVIDIA Spring GTC 2023 Day 3: Digging deeper into Deep Learning, Semiconductors & more!](https://learnopencv.com/nvidia-spring-gtc-2023-day-3-digging-deeper-into-deep-learning-semiconductors-more/) | |
