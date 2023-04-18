@@ -9,8 +9,6 @@ movies_data = read_from_csv(movie_csv)
 
 movie, movie_info = get_movie_info(movies_data)
 
-print(movie)
-
 hints,labels = select_hints(movie_info)
 
 img = get_canvas(canvas)
