@@ -16,7 +16,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 | Blog Post | |
 | ------------- |:-------------|
 |[Build a Video to Slides Converter Application using the Power of Background Estimation and Frame Differencing in OpenCV](https://learnopencv.com/video-to-slides-converter-using-background-subtraction/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Build-a-Video-to-Slides-Converter-Application-using-the-Power-of-Background-Estimation-and-Frame-Differencing-in-OpenCV)|
-|[A Closer Look at CVAT: Perfecting Your Annotations](https://learnopencv.com/a-closer-look-at-cvat-perfecting-your-annotations/)|[YouTube](https://www.youtube.com/watch?v=yxX_0-zr-2U&list=PLfYPZalDvZDLvFhjuflhrxk_lLplXUqqB)|
+|[A Closer Look at CVAT: Perfecting Your Annotations](https://learnopencv.com/a-closer-look-at-cvat-perfecting-your-annotations/)|[Video](https://www.youtube.com/watch?v=yxX_0-zr-2U&list=PLfYPZalDvZDLvFhjuflhrxk_lLplXUqqB)|
 | [ControlNet - Achieving Superior Image Generation Results](https://learnopencv.com/controlnet/) | [Code](https://github.com/spmallick/learnopencv/tree/master/ControlNet-Achieving-Superior-Image-Generation-Results) |
 | [InstructPix2Pix - Edit Images With Prompts](https://learnopencv.com/instructpix2pix/) | [Code](https://github.com/spmallick/learnopencv/tree/master/InstructPix2Pix-Edit-Images-With-Prompts) |
 | [NVIDIA Spring GTC 2023 Day 4: Ending on a High Note with Top Moments from the Finale!](https://learnopencv.com/nvidia-spring-gtc-2023-day-4/) | |
