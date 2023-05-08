@@ -1,6 +1,6 @@
 # README
 
-This repository contains the notebooks and trained weights for the experiments shown in the blog post - [Train YOLOv8 on Custom Dataset - A Complete Tutorial]().
+This repository contains the notebooks and trained weights for the experiments shown in the blog post - [Train YOLOv8 on Custom Dataset - A Complete Tutorial](https://learnopencv.com/train-yolov8-on-custom-dataset).
 
 [<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/scl/fo/9zvvsjtyeqhgeg401bngu/h?dl=1&rlkey=7vyj1ttmfvqq74k6w3ogjaekd)
 
