@@ -15,7 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | |
 | ------------- |:-------------|
-| [Train YOLOv8 Instance Segmentation on Custom Data](https://learnopencv.com/train-yolov8-instance-segmentation/) | [Code](ttps://github.com/spmallick/learnopencv/tree/master/Train-YOLOv8-Instance-Segmentation-on-Custom-Data) |
+| [Train YOLOv8 Instance Segmentation on Custom Data](https://learnopencv.com/train-yolov8-instance-segmentation/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Train-YOLOv8-Instance-Segmentation-on-Custom-Data) |
 | [YOLO-NAS: New Object Detection Model Beats YOLOv6 & YOLOv8](https://learnopencv.com/yolo-nas/) | [Code](https://github.com/spmallick/learnopencv/tree/master/YOLO-NAS_Introduction) |
 | [Segment Anything – A Foundation Model for Image Segmentation](https://learnopencv.com/segment-anything/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Segment-Anything-A-Foundation-Model-for-Image-Segmentation) |
 |[Build a Video to Slides Converter Application using the Power of Background Estimation and Frame Differencing in OpenCV](https://learnopencv.com/video-to-slides-converter-using-background-subtraction/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Build-a-Video-to-Slides-Converter-Application-using-the-Power-of-Background-Estimation-and-Frame-Differencing-in-OpenCV)|
