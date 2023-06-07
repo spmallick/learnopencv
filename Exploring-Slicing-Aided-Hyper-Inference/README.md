@@ -8,9 +8,9 @@ There is one notebook in this folder:
 
 Addionally, there is a folder called `test_images`. It contains few example input images that have been used for experimentation.
 
-[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/scl/fo/okn4ny7ut8ha16g2gyd41/h?dl=1&rlkey=9vs5d8od0kg2663cipms25g00)
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/scl/fo/cw71v6zq19aqzg2boqqck/h?dl=1&rlkey=w3q8xwlkdy4utevpidgujrozg)
 
-![](readme_images/feature_gif.gif)
+![](readme_images/v2.gif)
 
 
 
