@@ -15,6 +15,9 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | |
 | ------------- |:-------------|
+| [Drone Programming With Computer Vision A Beginners Guide](https://learnopencv.com/drone-programming-with-computer-vision/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Drone-Programming-With-Computer-Vision-A-Beginners-Guide) |
+| [How to Build a Pip Installable Package & Upload to PyPi](https://learnopencv.com/building-pip-installable-package-pypi/) | |
+| [IoU Loss Functions for Faster & More Accurate Object Detection](https://learnopencv.com/iou-loss-functions-object-detection/) | |
 | [Exploring Slicing Aided Hyper Inference for Small Object Detection](https://learnopencv.com/slicing-aided-hyper-inference/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Exploring-Slicing-Aided-Hyper-Inference) |
 | [Advancements in Face Recognition Models, Toolkit and Datasets](https://learnopencv.com/face-recognition-models/) | |
 | [Train YOLO NAS on Custom Dataset](https://learnopencv.com/train-yolo-nas-on-custom-dataset/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Train-YOLO-NAS-on-Custom-Dataset) |
