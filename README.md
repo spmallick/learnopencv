@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | |
 | ------------- |:-------------|
+| [Getting Started with PaddlePaddle: Exploring Object Detection, Segmentation, and Keypoints](https://learnopencv.com/paddlepaddle/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Introduction-to-PaddlePaddle) |
 | [Drone Programming With Computer Vision A Beginners Guide](https://learnopencv.com/drone-programming-with-computer-vision/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Drone-Programming-With-Computer-Vision-A-Beginners-Guide) |
 | [How to Build a Pip Installable Package & Upload to PyPi](https://learnopencv.com/building-pip-installable-package-pypi/) | |
 | [IoU Loss Functions for Faster & More Accurate Object Detection](https://learnopencv.com/iou-loss-functions-object-detection/) | |
