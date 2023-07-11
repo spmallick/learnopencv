@@ -27,7 +27,7 @@ You can also check/access and download the following files:
 
 From here --> <a href="https://huggingface.co/spaces/veb-101/Medical_MultiLabel_Image_Classification/tree/main" target="_blank">Gradio App Files</a>
 
-**You can run it on your local system or on Colab.** [![Click to open notebook on Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/spmallick/learnopencv/blob/master/Medical_Multi-label_Classification_with_PyTorch_&_Lightning/HPA_PT_lightning_Colab.ipynb)
+**You can run it on your local system or on Colab.** [![Click to open notebook on Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/spmallick/learnopencv/blob/master/Medical_Multi-label_Classification_with_PyTorch_&_Lightning/HPA_PT_lightning_colab.ipynb)
 
 ---
 
