@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | |
 | ------------- |:-------------|
+| [Medical Multi-label Classification with PyTorch & Lightning](https://learnopencv.com/medical-multi-label/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Medical_Multi-label_Classification_with_PyTorch_&_Lightning) |
 | [Getting Started with PaddlePaddle: Exploring Object Detection, Segmentation, and Keypoints](https://learnopencv.com/paddlepaddle/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Introduction-to-PaddlePaddle) |
 | [Drone Programming With Computer Vision A Beginners Guide](https://learnopencv.com/drone-programming-with-computer-vision/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Drone-Programming-With-Computer-Vision-A-Beginners-Guide) |
 | [How to Build a Pip Installable Package & Upload to PyPi](https://learnopencv.com/building-pip-installable-package-pypi/) | |
