@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | |
 | ------------- |:-------------|
+| [Facial Emotion Recognition](learnopencv.com/facial-emotion-recognition/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Facial-Emotion-Recognition) |
 | [Exploring Slicing Aided Hyper Inference for Small Object Detection](https://learnopencv.com/slicing-aided-hyper-inference/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Exploring-Slicing-Aided-Hyper-Inference) |
 | [Advancements in Face Recognition Models, Toolkit and Datasets](https://learnopencv.com/face-recognition-models/) | |
 | [Train YOLO NAS on Custom Dataset](https://learnopencv.com/train-yolo-nas-on-custom-dataset/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Train-YOLO-NAS-on-Custom-Dataset) |
