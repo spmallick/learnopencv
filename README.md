@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | |
 | ------------- |:-------------|
+| [Facial Emotion Recognition](learnopencv.com/facial-emotion-recognition/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Facial-Emotion-Recognition) |
 | [Object Keypoint Similarity in Keypoint Detection](https://learnopencv.com/object-keypoint-similarity/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Object-Keypoint-Similarity-in-Keypoint-Detection) |
 | [Real Time Deep SORT with Torchvision Detectors](https://learnopencv.com/real-time-deep-sort-with-torchvision-detectors/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Real_Time_Deep_SORT_using_Torchvision_Detectors) |
 | [Top 5 AI papers of July 2023](learnopencv.com/top-5-ai-papers-of-july-2023/) | |
