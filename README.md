@@ -16,6 +16,16 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 | Blog Post | |
 | ------------- |:-------------|
 | [Facial Emotion Recognition](learnopencv.com/facial-emotion-recognition/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Facial-Emotion-Recognition) |
+| [Object Keypoint Similarity in Keypoint Detection](https://learnopencv.com/object-keypoint-similarity/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Object-Keypoint-Similarity-in-Keypoint-Detection) |
+| [Real Time Deep SORT with Torchvision Detectors](https://learnopencv.com/real-time-deep-sort-with-torchvision-detectors/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Real_Time_Deep_SORT_using_Torchvision_Detectors) |
+| [Top 5 AI papers of July 2023](learnopencv.com/top-5-ai-papers-of-july-2023/) | |
+| [Medical Image Segmentation](https://learnopencv.com/medical-image-segmentation/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Medical-Image-Segmentation-Using-HuggingFace-&-PyTorch) |
+| [Weighted Boxes Fusion in Object Detection: A Comparison with Non-Maximum Suppression](https://learnopencv.com/weighted-boxes-fusion/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Weighted-Boxes-Fusion-in-Object-Detection) |
+| [Medical Multi-label Classification with PyTorch & Lightning](https://learnopencv.com/medical-multi-label/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Medical_Multi-label_Classification_with_PyTorch_&_Lightning) |
+| [Getting Started with PaddlePaddle: Exploring Object Detection, Segmentation, and Keypoints](https://learnopencv.com/paddlepaddle/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Introduction-to-PaddlePaddle) |
+| [Drone Programming With Computer Vision A Beginners Guide](https://learnopencv.com/drone-programming-with-computer-vision/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Drone-Programming-With-Computer-Vision-A-Beginners-Guide) |
+| [How to Build a Pip Installable Package & Upload to PyPi](https://learnopencv.com/building-pip-installable-package-pypi/) | |
+| [IoU Loss Functions for Faster & More Accurate Object Detection](https://learnopencv.com/iou-loss-functions-object-detection/) | |
 | [Exploring Slicing Aided Hyper Inference for Small Object Detection](https://learnopencv.com/slicing-aided-hyper-inference/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Exploring-Slicing-Aided-Hyper-Inference) |
 | [Advancements in Face Recognition Models, Toolkit and Datasets](https://learnopencv.com/face-recognition-models/) | |
 | [Train YOLO NAS on Custom Dataset](https://learnopencv.com/train-yolo-nas-on-custom-dataset/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Train-YOLO-NAS-on-Custom-Dataset) |
