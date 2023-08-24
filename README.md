@@ -15,10 +15,10 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | |
 | ------------- |:-------------|
-| [Facial Emotion Recognition](learnopencv.com/facial-emotion-recognition/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Facial-Emotion-Recognition) |
+| [Facial Emotion Recognition](https://learnopencv.com/facial-emotion-recognition/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Facial-Emotion-Recognition) |
 | [Object Keypoint Similarity in Keypoint Detection](https://learnopencv.com/object-keypoint-similarity/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Object-Keypoint-Similarity-in-Keypoint-Detection) |
 | [Real Time Deep SORT with Torchvision Detectors](https://learnopencv.com/real-time-deep-sort-with-torchvision-detectors/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Real_Time_Deep_SORT_using_Torchvision_Detectors) |
-| [Top 5 AI papers of July 2023](learnopencv.com/top-5-ai-papers-of-july-2023/) | |
+| [Top 5 AI papers of July 2023](https://learnopencv.com/top-5-ai-papers-of-july-2023/) | |
 | [Medical Image Segmentation](https://learnopencv.com/medical-image-segmentation/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Medical-Image-Segmentation-Using-HuggingFace-&-PyTorch) |
 | [Weighted Boxes Fusion in Object Detection: A Comparison with Non-Maximum Suppression](https://learnopencv.com/weighted-boxes-fusion/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Weighted-Boxes-Fusion-in-Object-Detection) |
 | [Medical Multi-label Classification with PyTorch & Lightning](https://learnopencv.com/medical-multi-label/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Medical_Multi-label_Classification_with_PyTorch_&_Lightning) |
@@ -60,7 +60,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 |[YoloR - Paper Explanation & Inference -An In-Depth Analysis](https://learnopencv.com/yolor-paper-explanation-inference-an-in-depth-analysis/)|[Code](https://github.com/spmallick/learnopencv/tree/master/YoloR-paper-explanation-analysis)|
 |[Roadmap To an Automated Image Annotation Tool Using Python](https://learnopencv.com/automated-image-annotation-tool-using-opencv-python/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Roadmap-To-an-Automated-Image-Annotation-Tool-Using-Python)|
 |[Performance Comparison of YOLO Object Detection Models – An Intensive Study](https://learnopencv.com/performance-comparison-of-yolo-models/)||
-|[FCOS - Anchor Free Object Detection Explained](learnopencv.com/fcos-anchor-free-object-detection-explained/)|[Code](https://github.com/spmallick/learnopencv/tree/master/FCOS-Inference-using-PyTorch)|
+|[FCOS - Anchor Free Object Detection Explained](https://learnopencv.com/fcos-anchor-free-object-detection-explained/)|[Code](https://github.com/spmallick/learnopencv/tree/master/FCOS-Inference-using-PyTorch)|
 | [YOLOv6 Custom Dataset Training – Underwater Trash Detection](https://learnopencv.com/yolov6-custom-dataset-training/) | [Code](https://github.com/spmallick/learnopencv/tree/master/YOLOv6-Custom-Dataset-Training-Underwater-Trash-Detection) |
 |[What is EXIF Data in Images?](https://www.learnopencv.com/what-is-exif-data-in-images/)|[Code](https://github.com/spmallick/learnopencv/tree/master/What-is-EXIF-Data-in-Images)|
 |[t-SNE: T-Distributed Stochastic Neighbor Embedding Explained](https://learnopencv.com/t-sne-t-distributed-stochastic-neighbor-embedding-explained/)|[Code](https://github.com/spmallick/learnopencv/tree/master/t-SNE-with-Tensorboard)|
