@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | |
 | ------------- |:-------------|
+| [Top 5 AI papers of August 2023](https://learnopencv.com/top-5-ai-papers-of-august-2023/) | |
 | [Fine Tuning TrOCR - Training TrOCR to Recognize Curved Text](https://learnopencv.com/fine-tuning-trocr-training-trocr-to-recognize-curved-text/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Fine-Tuning-TrOCR) |
 | [TrOCR - Getting Started with Transformer Based OCR](https://learnopencv.com/trocr-getting-started-with-transformer-based-ocr/) | [Code](https://github.com/spmallick/learnopencv/tree/master/TrOCR-Getting-Started-with-Transformer-Based-OCR) |
 | [Facial Emotion Recognition](https://learnopencv.com/facial-emotion-recognition/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Facial-Emotion-Recognition) |
