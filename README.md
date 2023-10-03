@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | |
 | ------------- |:-------------|
+| [Semantic Segmentation using KerasCV DeepLabv3+](https://learnopencv.com/kerascv-deeplabv3-plus-semantic-segmentation/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Semantic-Segmentation-using-KerasCV-with-DeepLabv3-Plus) |
 | [Object Detection using KerasCV YOLOv8](https://learnopencv.com/object-detection-using-kerascv-yolov8/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Object-Detection-using-KerasCV-YOLOv8) |
 | [Fine-tuning YOLOv8 Pose Models for Animal Pose Estimation](https://learnopencv.com/animal-pose-estimation/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Fine-tuning-YOLOv8-Pose-Models-for-Animal-Pose-Estimation) |
 | [Top 5 AI papers of August 2023](https://learnopencv.com/top-5-ai-papers-of-august-2023/) | |
