@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | |
 | ------------- |:-------------|
+| [Top 5 AI papers of September 2023](https://learnopencv.com/top-5-ai-papers-of-september-2023/) | |
 | [Empowering Drivers: The Rise and Role of Advanced Driver Assistance Systems](https://learnopencv.com/advanced-driver-assistance-systems/) | |
 | [Semantic Segmentation using KerasCV DeepLabv3+](https://learnopencv.com/kerascv-deeplabv3-plus-semantic-segmentation/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Semantic-Segmentation-using-KerasCV-with-DeepLabv3-Plus) |
 | [Object Detection using KerasCV YOLOv8](https://learnopencv.com/object-detection-using-kerascv-yolov8/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Object-Detection-using-KerasCV-YOLOv8) |
