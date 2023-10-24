@@ -1,4 +1,4 @@
-# Fine-tuning YOLOv8 Pose Models for Animal Pose Estimation
+# Semantic Segmentation using KerasCV DeepLabv3+
 
 **This repository contains code for [Semantic Segmentation using KerasCV DeepLabv3+](https://learnopencv.com/kerascv-deeplabv3-plus-semantic-segmentation/) blogpost**.
 
