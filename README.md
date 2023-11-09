@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | |
 | ------------- |:-------------|
+| [Fine-Tuning BERT using Hugging Face Transformers](https://learnopencv.com/fine-tuning-bert) | [Code](https://github.com/spmallick/learnopencv/tree/master/Fine-Tuning-BERT-using-Hugging-Face-Transformers) |
 | [YOLO-NAS Pose](https://learnopencv.com/yolo-nas-pose) | [Code](https://github.com/spmallick/learnopencv/tree/master/YOLO-NAS-Pose) |
 | [BERT: Bidirectional Encoder Representations from Transformers](https://learnopencv.com/bert-bidirectional-encoder-representations-from-transformers/) | [Code](https://github.com/spmallick/learnopencv/tree/master/BERT-Bidirectional-Encoder-Representations-from-Transformers) |
 | [Comparing KerasCV YOLOv8 Models on the Global Wheat Data 2020](https://learnopencv.com/comparing-kerascv-yolov8-models/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Comparing-KerasCV-YOLOv8-Models-on-the-Global-Wheat-Data-2020) |
