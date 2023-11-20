@@ -7,6 +7,8 @@
 
 ## Installation
 
+### Running code locally
+
 1. To run the demo, firstly you need to clone the [RAFT repo](https://github.com/princeton-vl/RAFT) being in our directory:
 
    ```Shell
@@ -52,6 +54,11 @@
    ```
    python3 inference.py --model=./models/raft-small.pth --video ./videos/crowd.mp4 --small
    ```
+
+### Running using Docker
+
+Follow the instructions [here](https://github.com/SarvagyaVaish/raft-example-in-docker) to quickly run the RAFT example code using a pre-configured Docker image.
+
 ## Troubleshooting
 
 If you have two GPUs and there is a User Warning like:
