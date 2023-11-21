@@ -2,7 +2,7 @@
 
 This repository contains the Jupyter Notebook for fine-tuning and inference using the SegFormer-b2 model on the Berkeley Deep Drive (BDD100K) dataset. This is part of the LearnOpenCV blog post - [SegFormer 🤗 : Fine-Tuning for Improved Lane Detection in Autonomous Vehicles](https://learnopencv.com/segformer-fine-tuning-for-lane-detection/).
 
-[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://www.dropbox.com/scl/fi/40onxgztkbtqxvsg2d6fk/deep_drive_10K.zip?rlkey=8h098tbe9dry81jidtte1d9j5&dl=1)
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://www.dropbox.com/scl/fi/2j2hdlgpaoeo438xpvg6k/Fine-Tuning-SegFormer-Lane-Detection.zip?rlkey=4u36m4r47g83lsrtpg4poa7ij&dl=1)
 
 ![](readme_images/fine-tuning-segformer.gif)
 
