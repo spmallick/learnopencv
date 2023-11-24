@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | |
 | ------------- |:-------------|
+| [Fine Tuning T5: Text2Text Transfer Transformer for Building a Stack Overflow Tag Generator](https://learnopencv.com/fine-tuning-t5/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Fine-Tuning-T5-Text2Text-Transformer-for-Strack-Overflow-Tag-Generation) |
 | [SegFormer 🤗 : Fine-Tuning for Improved Lane Detection in Autonomous Vehicles](https://learnopencv.com/segformer-fine-tuning-for-lane-detection) | [Code](https://github.com/spmallick/learnopencv/tree/master/Fine-Tuning-SegFormer-For-Lane-Detection) |
 | [Fine-Tuning BERT using Hugging Face Transformers](https://learnopencv.com/fine-tuning-bert) | [Code](https://github.com/spmallick/learnopencv/tree/master/Fine-Tuning-BERT-using-Hugging-Face-Transformers) |
 | [YOLO-NAS Pose](https://learnopencv.com/yolo-nas-pose) | [Code](https://github.com/spmallick/learnopencv/tree/master/YOLO-NAS-Pose) |
