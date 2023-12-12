@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | |
 | ------------- |:-------------|
+| [Text Summarization using T5: Fine-Tuning and Building Gradio App](https://learnopencv.com/text-summarization-using-t5/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Text-Summarization-using-T5-Fine-Tuning-and-Building-Gradio-App) |
 | [3D LiDAR Visualization using Open3D: A Case Study on 2D KITTI Depth Frames for Autonomous Driving](https://learnopencv.com/3d-lidar-visualization/) | [Code](https://github.com/spmallick/learnopencv/tree/master/3D-LiDAR-Perception) |
 | [Fine Tuning T5: Text2Text Transfer Transformer for Building a Stack Overflow Tag Generator](https://learnopencv.com/fine-tuning-t5/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Fine-Tuning-T5-Text2Text-Transformer-for-Strack-Overflow-Tag-Generation) |
 | [SegFormer 🤗 : Fine-Tuning for Improved Lane Detection in Autonomous Vehicles](https://learnopencv.com/segformer-fine-tuning-for-lane-detection) | [Code](https://github.com/spmallick/learnopencv/tree/master/Fine-Tuning-SegFormer-For-Lane-Detection) |
