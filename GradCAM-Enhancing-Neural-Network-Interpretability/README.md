@@ -1,6 +1,6 @@
 # GradCAM: Enhancing Neural Network Interpretability
 
-**This repository contains code for [GradCAM: Enhancing Neural Network Interpretability in the Realm of Explainable AI]([https://learnopencv.com/intro-to-gradcam/(opens in a new tab)](https://learnopencv.com/?p=52432)) blogpost**.
+**This repository contains code for [GradCAM: Enhancing Neural Network Interpretability in the Realm of Explainable AI](https://learnopencv.com/intro-to-gradcam/) blogpost**.
 
 ---
 
