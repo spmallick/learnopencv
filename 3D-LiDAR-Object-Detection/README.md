@@ -6,7 +6,7 @@ It is part of the LearnOpenCV blog post - [Integrating ADAS with Keypoint Featur
 
 [<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://www.dropbox.com/scl/fi/3n1s68jtfkjmw2f5e5ctv/3D-LiDAR-Object-Detection.zip?rlkey=d8q6xvlxis4oxso4qki87omvc&dl=1)
 
-![](readme_images/fine-tuning-segformer.gif)
+![](readme_images/3D-LiDAR-Object-Detection.gif)
 
 ### Environment Setup
 
