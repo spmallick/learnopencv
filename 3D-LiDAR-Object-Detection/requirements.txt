@@ -1,0 +1,11 @@
+torch==1.13.0
+torchvision==0.14.0
+easydict==1.9
+opencv-python==4.5.5.64
+numpy==1.23.0
+torchsummary==1.5.1
+tensorboard==2.10.0
+scikit-learn==1.1.1
+wget==3.2
+tqdm==4.64.0
+matplotlib==3.5.1
