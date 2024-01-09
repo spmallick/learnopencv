@@ -13,55 +13,22 @@ It is part of the LearnOpenCV blog post - [Moving Object Detection with OpenCV](
 Run the following commands on a new terminal window to create a new environment with the required packages: 
 
 ```shell script
-cd SFA3D
 pip install -r requirements.txt
 ```
 
-### Dataset Visualization
-To visualize 3D point clouds with 3-dimensional bounding boxes, run the following commends: 
+### Run The Main Code
+To run the main code pipeline to get the Inference in your local, use this command: 
 
 ```shell script
-cd sfa/data_process
-python kitti_dataset.py
+python main.py
 ```
 
-### Inference
-There is an instance of a pre-trained model in this repository. You can use it to run inference: 
+### Run Rhe Gradio App
+To run the web app in your local browser, use this command: 
 
 ```shell script
-python test.py --gpu_idx 0 --peak_thresh 0.2
+python app.py
 ```
-
-### Video Demonstration
-Similarly, inference can be run on a video stream: 
-
-```shell script
-python demo_2_sides.py --gpu_idx 0 --peak_thresh 0.2
-```
-### Training Pipeline
-
-##### Single Machine w/ Single GPU
-
-```shell script
-python train.py --gpu_idx 0
-```
-
-##### Single Machine w/ Multiple GPUs
-
-```shell script
-python train.py --multiprocessing-distributed --world-size 1 --rank 0 --batch_size 64 --num_workers 8
-```
-
-### Evaluation Metrics - TensorBoard
-To track the training progress, go to `logs/` folder and run: 
-
-```shell script
-cd logs/<saved_fn>/tensorboard/
-tensorboard --logdir=./
-```
-
-Then, just go to [http://localhost:6006/](http://localhost:6006/)
-
 
 ## AI Courses by OpenCV
 
