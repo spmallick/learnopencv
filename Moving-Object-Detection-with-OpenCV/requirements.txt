@@ -1,0 +1,3 @@
+opencv-contrib-python
+numpy
+gradio
