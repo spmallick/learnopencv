@@ -2,7 +2,7 @@
 
 This repository contains the Python scripts to run the main code and the Gradio app for moving object detection.   
 
-It is part of the LearnOpenCV blog post - [Integrating ADAS with Keypoint Feature Pyramid Network for 3D LiDAR Object Detection](https://learnopencv.com/moving-object-detection-with-opencv/).
+It is part of the LearnOpenCV blog post - [Moving Object Detection with OpenCV](https://learnopencv.com/moving-object-detection-with-opencv/).
 
 [<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://www.dropbox.com/scl/fo/fnxrdjctloul64f7e0fxk/h?rlkey=xzebb1idzoxp49uz5ymo6s56t&dl=1)
 
@@ -10,7 +10,7 @@ It is part of the LearnOpenCV blog post - [Integrating ADAS with Keypoint Featur
 
 ### Environment Setup
 
-Run the following commands on a new terminal window for creating a new environment with the required packages: 
+Run the following commands on a new terminal window to create a new environment with the required packages: 
 
 ```shell script
 cd SFA3D
