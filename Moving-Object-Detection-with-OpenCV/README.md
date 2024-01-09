@@ -1,12 +1,12 @@
-# Integrating ADAS with Keypoint Feature Pyramid Network for 3D LiDAR Object Detection
+# Moving Object Detection with OpenCV
 
-This repository contains the training scripts for Keypoint Feature Pyramid Network, specifically for 3D LiDAR Object Detection. In this case, the KITTI 360 Vision dataset has been used to train the detection model.   
+This repository contains the Python scripts to run the main code and the Gradio app for moving object detection.   
 
-It is part of the LearnOpenCV blog post - [Integrating ADAS with Keypoint Feature Pyramid Network for 3D LiDAR Object Detection](https://learnopencv.com/3d-lidar-object-detection/).
+It is part of the LearnOpenCV blog post - [Integrating ADAS with Keypoint Feature Pyramid Network for 3D LiDAR Object Detection](https://learnopencv.com/moving-object-detection-with-opencv/).
 
-[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://www.dropbox.com/scl/fi/3n1s68jtfkjmw2f5e5ctv/3D-LiDAR-Object-Detection.zip?rlkey=d8q6xvlxis4oxso4qki87omvc&dl=1)
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://www.dropbox.com/scl/fo/fnxrdjctloul64f7e0fxk/h?rlkey=xzebb1idzoxp49uz5ymo6s56t&dl=1)
 
-![](readme_images/3D-LiDAR-Object-Detection.gif)
+![](readme_images/)
 
 ### Environment Setup
 
