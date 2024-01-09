@@ -6,7 +6,7 @@ It is part of the LearnOpenCV blog post - [Moving Object Detection with OpenCV](
 
 [<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://www.dropbox.com/scl/fo/t1x1odum2i1bw62261b1e/h?rlkey=1hxu3bv09wfemwvlzrcdlwu9x&dl=1)
 
-![](readme_images/)
+![](readme_images/gradio_gif.gif)
 
 ### Environment Setup
 
@@ -23,7 +23,7 @@ To run the main code pipeline to get the Inference in your local, use this comma
 python main.py
 ```
 
-### Run Rhe Gradio App
+### Run The Gradio App
 To run the web app in your local browser, use this command: 
 
 ```shell script
