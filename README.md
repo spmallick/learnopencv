@@ -13,9 +13,9 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 ## List of Blog Posts
 
-| Blog Post | |
+| Blog Post | Code|
 | ------------- |:-------------|
-
+| [YOLO Loss Function Part 1: SIoU and Focal Loss](https://learnopencv.com/yolo-loss-function-siou-focal-loss/) | [Code](https://github.com/spmallick/learnopencv/tree/master/YOLO-Loss-Functions-Part1) |
 | [Moving Object Detection with OpenCV](https://learnopencv.com/moving-object-detection-with-opencv/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Moving-Object-Detection-with-OpenCV) |
 | [Integrating ADAS with Keypoint Feature Pyramid Network for 3D LiDAR Object Detection](https://learnopencv.com/3d-lidar-object-detection/) | [Code](https://www.dropbox.com/scl/fi/3n1s68jtfkjmw2f5e5ctv/3D-LiDAR-Object-Detection.zip?rlkey=d8q6xvlxis4oxso4qki87omvc&dl=1) |
 | [Mastering All YOLO Models from YOLOv1 to YOLO-NAS: Papers Explained (2024)](https://learnopencv.com/mastering-all-yolo-models) | |
