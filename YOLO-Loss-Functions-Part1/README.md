@@ -1,12 +1,12 @@
 # README
 
-This folder contains the notebooks to YOLOv8 Instance Segmentation model on the custom dataset. It is part of the [Train YOLOv8 Instance Segmentation on Custom Data](https://learnopencv.com/train-yolov8-instance-segmentation/) blog post.
+This folder contains the notebooks to YOLO Loss Function Part 1: SIoU and Focal Loss. It is part of the [YOLO Loss Function Part 1: SIoU and Focal Loss](https://learnopencv.com/yolo-loss-function-siou-focal-loss/) blog post.
 
-[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/scl/fo/cjj6w4q3679w1n03211zr/h?dl=1&rlkey=z16lunmbuwsn98we968psulse)
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/scl/fo/imwul0361x2q5hvxx6i6v/h?rlkey=wk2sekuwrqz006wajhr66yqkk&dl=1)
 
-![](readme_images/yolov8-instance-segmentation-manything-trimmed.gif)
+![](readme_images/featured_gif.gif)
 
-The `Trashcan_YOLOV8_Material.ipynb` is end-to-end runnable. Downloading the code using the above button will download the notebook as well as the trained weights.
+The notebook named `siou-loss.ipynb`has the code for SIoU loss function and the `focal-loss.ipynb` has the Focal Loss code.
 
 # AI Courses by OpenCV
 
