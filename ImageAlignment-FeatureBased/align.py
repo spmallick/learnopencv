@@ -20,7 +20,7 @@ def alignImages(im1, im2):
   
   # Match features.
   matcher = cv2.DescriptorMatcher_create(cv2.DESCRIPTOR_MATCHER_BRUTEFORCE_HAMMING)
-  matches = matcher.match(descriptors1, descriptors2, None)
+  matches = list(matcher.match(descriptors1, descriptors2, None))
   
   # Sort matches by score
   matches.sort(key=lambda x: x.distance, reverse=False)
