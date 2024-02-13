@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Deciphering LLMs: From Transformers to Quantization](https://learnopencv.com/deciphering-llms/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Deciphering-LLMs) |
 | [YOLO Loss Function Part 2: GFL and VFL Loss](https://learnopencv.com/yolo-loss-function-gfl-vfl-loss/) | [Code](https://github.com/spmallick/learnopencv/tree/master/YOLO-Loss-Functions-Part2) |
 | [YOLOv8-Object-Tracking-and-Counting-with-OpenCV](https://learnopencv.com/yolov8-object-tracking-and-counting-with-opencv/) | [Code](https://github.com/spmallick/learnopencv/tree/master/YOLOv8-Object-Tracking-and-Counting-with-OpenCV) |
 | [Stereo Vision in ADAS: Pioneering Depth Perception Beyond LiDAR](https://learnopencv.com/adas-stereo-vision/) | [Code](https://github.com/spmallick/learnopencv/tree/master/ADAS-Stereo-Vision) |
