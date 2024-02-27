@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Fine-Tuning LLMs using PEFT](https://learnopencv.com/fine-tuning-llms-using-peft/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Fine-Tuning-LLMs-using-PEFT) |
 | [Depth Anything: Accelerating Monocular Depth Perception](https://learnopencv.com/deciphering-llms/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Depth-Anything) |
 | [Deciphering LLMs: From Transformers to Quantization](https://learnopencv.com/deciphering-llms/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Deciphering-LLMs) |
 | [YOLO Loss Function Part 2: GFL and VFL Loss](https://learnopencv.com/yolo-loss-function-gfl-vfl-loss/) | [Code](https://github.com/spmallick/learnopencv/tree/master/YOLO-Loss-Functions-Part2) |
