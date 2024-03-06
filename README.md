@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Introduction to Ultralytics Explorer API](https://learnopencv.com/ultralytics-explorer-api/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Introduction-to-Ultralytics-Explorer-API) |
 | [YOLOv9: Advancing the YOLO Legacy](https://learnopencv.com/yolov9-advancing-the-yolo-legacy/) | [Code](https://github.com/spmallick/learnopencv/tree/master/YOLOv9-Advancing-the-YOLO-Legacy) |
 | [Fine-Tuning LLMs using PEFT](https://learnopencv.com/fine-tuning-llms-using-peft/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Fine-Tuning-LLMs-using-PEFT) |
 | [Depth Anything: Accelerating Monocular Depth Perception](https://learnopencv.com/deciphering-llms/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Depth-Anything) |
