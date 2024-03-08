@@ -26,7 +26,7 @@ sudo apt -y install git gfortran
 sudo apt -y install libjpeg8-dev libpng-dev
  
 sudo apt -y install software-properties-common
-sudo add-apt-repository "deb http://security.ubuntu.com/ubuntu xenial-security main"
+sudo add-apt-repository "deb http://security.ubuntu.com/ubuntu bionic-security main"
 sudo apt -y update
  
 sudo apt -y install libjasper1
