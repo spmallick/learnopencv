@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Dreambooth using Diffusers](https://learnopencv.com/dreambooth-using-diffusers/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Dreambooth_using_Diffusers) |
 | [Introduction to Hugging Face Diffusers](https://learnopencv.com/hugging-face-diffusers/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Introduction_to_Diffusers) |
 | [Introduction to Ultralytics Explorer API](https://learnopencv.com/ultralytics-explorer-api/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Introduction-to-Ultralytics-Explorer-API) |
 | [YOLOv9: Advancing the YOLO Legacy](https://learnopencv.com/yolov9-advancing-the-yolo-legacy/) | [Code](https://github.com/spmallick/learnopencv/tree/master/YOLOv9-Advancing-the-YOLO-Legacy) |
