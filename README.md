@@ -1,6 +1,6 @@
 # LearnOpenCV
 
-This repo contains code for Computer Vision, Deep learning, and AI articles shared on our blog [LearnOpenCV.com](https://www.LearnOpenCV.com).
+This repository contains code for Computer Vision, Deep learning, and AI research articles shared on our blog [LearnOpenCV.com](https://www.LearnOpenCV.com).
 
 Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/courses/) is a great place to start.
 
@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Fine-Tuning YOLOv9 on Custom Dataset](https://learnopencv.com/fine-tuning-yolov9/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Fine-Tuning-YOLOv9-Models-Custom-Dataset) |
 | [Dreambooth using Diffusers](https://learnopencv.com/dreambooth-using-diffusers/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Dreambooth_using_Diffusers) |
 | [Introduction to Hugging Face Diffusers](https://learnopencv.com/hugging-face-diffusers/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Introduction_to_Diffusers) |
 | [Introduction to Ultralytics Explorer API](https://learnopencv.com/ultralytics-explorer-api/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Introduction-to-Ultralytics-Explorer-API) |
