@@ -4,8 +4,7 @@
 
 ---
 
-<img src = "https://learnopencv.com/wp-content/uploads/2023/09/Animal-Pose-Estimation-using-YOLOv8-feature.gif" width=900>
-
+![](media/feature_image.gif)
 
 
 [<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/scl/fi/tueyhu7opjsmwxn2sateb/Fine-Tuning-YOLOv9-Custom-Dataset.zip?rlkey=nyie13ub3vlsop24speju0vsq&dl=1)
