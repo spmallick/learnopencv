@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [A Comprehensive Guide to Robotics](https://learnopencv.com/a-comprehensive-guide-to-robotics/) | |
 | [Integrating Gradio with OpenCV DNN](https://learnopencv.com/integrating-gradio-with-opencv-dnn/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Integrating-Gradio-with-OpenCV-DNN) |
 | [Fine-Tuning YOLOv9 on Custom Dataset](https://learnopencv.com/fine-tuning-yolov9/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Fine-Tuning-YOLOv9-Models-Custom-Dataset) |
 | [Dreambooth using Diffusers](https://learnopencv.com/dreambooth-using-diffusers/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Dreambooth_using_Diffusers) |
