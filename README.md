@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [YOLOv9 Instance Segmentation on Medical Dataset](https://learnopencv.com/yolov9-instance-segmentation-on-medical-dataset/) | [Code](https://github.com/spmallick/learnopencv/tree/master/YOLOv9-Instance-Segmentation-on-Medical-Dataset) |
 | [A Comprehensive Guide to Robotics](https://learnopencv.com/a-comprehensive-guide-to-robotics/) | |
 | [Integrating Gradio with OpenCV DNN](https://learnopencv.com/integrating-gradio-with-opencv-dnn/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Integrating-Gradio-with-OpenCV-DNN) |
 | [Fine-Tuning YOLOv9 on Custom Dataset](https://learnopencv.com/fine-tuning-yolov9/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Fine-Tuning-YOLOv9-Models-Custom-Dataset) |
