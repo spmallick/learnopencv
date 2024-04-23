@@ -1,11 +1,10 @@
 # Fine-Tuning YOLOv9 Models on Custom Dataset
 
-**This repository contains code for [Fine-Tuning YOLOv9 Models on Custom Dataset](https://learnopencv.com/animal-pose-estimation/) blogpost**.
+**This repository contains code for [Fine-Tuning YOLOv9 Models on Custom Dataset](https://learnopencv.com/fine-tuning-yolov9/) blogpost**.
 
 ---
 
 ![](media/feature_image.gif)
-
 
 [<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/scl/fi/tueyhu7opjsmwxn2sateb/Fine-Tuning-YOLOv9-Custom-Dataset.zip?rlkey=nyie13ub3vlsop24speju0vsq&dl=1)
 
