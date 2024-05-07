@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Building MobileViT Image Classification Model from Scratch In Keras 3](https://learnopencv.com/mobilevit-keras-3/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Building-MobileViT-from-Scratch-in-Keras-3) |
 | [SDXL Inpainting: Fusing Image Inpainting with Stable Diffusion](https://learnopencv.com/sdxl-inpainting/) | [Code](https://github.com/spmallick/learnopencv/tree/master/SDXL-inpainting) |
 | [YOLOv9 Instance Segmentation on Medical Dataset](https://learnopencv.com/yolov9-instance-segmentation-on-medical-dataset/) | [Code](https://github.com/spmallick/learnopencv/tree/master/YOLOv9-Instance-Segmentation-on-Medical-Dataset) |
 | [A Comprehensive Guide to Robotics](https://learnopencv.com/a-comprehensive-guide-to-robotics/) | |
