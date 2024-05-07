@@ -11,7 +11,7 @@ This repository contains the files related to the LearnOpenCV blog post: [Buildi
 
 ---
 
-**You can run it on your local system or on Colab.** [![Click to open notebook on Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/spmallick/learnopencv/tree/master/Building-MobileViT-from-Scratch-in-Keras-3/Keras3_MobileVIT_v1.ipynb)
+**You can run it on your local system or on Colab.** [![Click to open notebook on Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/spmallick/learnopencv/tree/master/Building%20MobileViT%20from%20Scratch%20in%20Keras%203/Keras3_MobileVIT_v1.ipynb)
 
 ## AI Courses by OpenCV
 
