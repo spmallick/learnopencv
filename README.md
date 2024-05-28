@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Mastering Recommendation System: A Complete Guide](https://learnopencv.com/recommendation-system/) | |
 | [Automatic Speech Recognition with Diarization : Speech-to-Text](https://learnopencv.com/automatic-speech-recognition/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Automatic-Speech-Recognition-with-Diarization-Speech-to-Text) |
 | [Building MobileViT Image Classification Model from Scratch In Keras 3](https://learnopencv.com/mobilevit-keras-3/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Building%20MobileViT%20from%20Scratch%20in%20Keras%203) |
 | [SDXL Inpainting: Fusing Image Inpainting with Stable Diffusion](https://learnopencv.com/sdxl-inpainting/) | [Code](https://github.com/spmallick/learnopencv/tree/master/SDXL-inpainting) |
