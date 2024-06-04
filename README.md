@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [YOLOv10: The Dual-Head OG of YOLO Series](https://learnopencv.com/yolov10/) | [Code](https://github.com/spmallick/learnopencv/tree/master/YOLOv10) |
 | [Fine-tuning Faster R-CNN on Sea Rescue Dataset](https://learnopencv.com/fine-tuning-faster-r-cnn/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Fine-tuning-Faster-R-CNN-on-SeaRescue-Dataset) |
 | [Mastering Recommendation System: A Complete Guide](https://learnopencv.com/recommendation-system/) | |
 | [Automatic Speech Recognition with Diarization : Speech-to-Text](https://learnopencv.com/automatic-speech-recognition/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Automatic-Speech-Recognition-with-Diarization-Speech-to-Text) |
