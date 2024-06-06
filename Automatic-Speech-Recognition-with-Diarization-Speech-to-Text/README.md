@@ -4,7 +4,7 @@
 
 ---
 
-![](readme_images/ASR Feature gif- Automatic Speech Recognition.gif)
+![](readme_images/Feature.gif)
 
 [<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/scl/fo/ik5hydugqmav60j8a8hsb/AFomthBz4u44fxo8zSTYFrI?rlkey=2nchg6izodramy03fhgiecslj&st=9t2t2wep&dl=1)
 
