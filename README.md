@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Understanding Visual SLAM for Robotics Perception: Building Monocular SLAM from Scratch in Python](https://learnopencv.com/monocular-slam-in-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Monocular-SLAM-for-Robotics-implementation-in-python) |
 | [Enhancing Image Segmentation using U2-Net: An Approach to Efficient Background Removal](https://learnopencv.com/u2-net-image-segmentation/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Efficient-Background-Removal-using-U2-Net) |
 | [YOLOv10: The Dual-Head OG of YOLO Series](https://learnopencv.com/yolov10/) | [Code](https://github.com/spmallick/learnopencv/tree/master/YOLOv10) |
 | [Fine-tuning Faster R-CNN on Sea Rescue Dataset](https://learnopencv.com/fine-tuning-faster-r-cnn/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Fine-tuning-Faster-R-CNN-on-SeaRescue-Dataset) |
