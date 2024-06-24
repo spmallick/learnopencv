@@ -5,7 +5,7 @@ import cv2
 class Display(object):
     def __init__(self, W, H):
         sdl2.ext.init()
-        self.window = sdl2.ext.Window("Tim Slam", size=(W, H))
+        self.window = sdl2.ext.Window("SLAM", size=(W, H))
         self.window.show()
         self.W, self.H = W, H
 
