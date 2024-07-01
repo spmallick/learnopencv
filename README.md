@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Object Detection on Edge Device - OAK-D-Lite](https://learnopencv.com/object-detection-on-edge-device) | [Code](https://github.com/spmallick/learnopencv/tree/master/Object-Detection-on-Edge-Devices) |
 | [Fine-Tuning YOLOv10 Models on Custom Dataset](https://learnopencv.com/fine-tuning-yolov10/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Fine-Tuning-YOLOv10-Models-Custom-Dataset) |
 | [ROS2 and Carla Setup Guide for Ubuntu 22.04](https://learnopencv.com/ros2-and-carla-setup-guide/) |  |
 | [Understanding Visual SLAM for Robotics Perception: Building Monocular SLAM from Scratch in Python](https://learnopencv.com/monocular-slam-in-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Monocular%20SLAM%20for%20Robotics%20implementation%20in%20python) |
