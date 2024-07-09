@@ -1,32 +1,16 @@
 import cv2
 import numpy as np
 import sys
+import os
 
-
-def readImagesAndTimes():
+def readImagesAndTimes(dir_path):
   
-  filenames = [
-               "images/memorial0061.jpg",
-               "images/memorial0062.jpg",
-               "images/memorial0063.jpg",
-               "images/memorial0064.jpg",
-               "images/memorial0065.jpg",
-               "images/memorial0066.jpg",
-               "images/memorial0067.jpg",
-               "images/memorial0068.jpg",
-               "images/memorial0069.jpg",
-               "images/memorial0070.jpg",
-               "images/memorial0071.jpg",
-               "images/memorial0072.jpg",
-               "images/memorial0073.jpg",
-               "images/memorial0074.jpg",
-               "images/memorial0075.jpg",
-               "images/memorial0076.jpg"
-               ]
-
+  #load images with os
+  filenames = [os.path.join(dir_path, f) for f in os.listdir(dir_path) if f.endswith('.jpg')]
   images = []
   for filename in filenames:
     im = cv2.imread(filename)
+    im = cv2.resize(im, (500, 500))
     images.append(im)
   
   return images
@@ -35,6 +19,8 @@ if __name__ == '__main__':
   
   # Read images
   print("Reading images ... ")
+  
+  dir_path = '' #path to images
   
   if len(sys.argv) > 1:
     # Read images from the command line
@@ -45,7 +31,7 @@ if __name__ == '__main__':
     needsAlignment = False
   else :
     # Read example images
-    images = readImagesAndTimes()
+    images = readImagesAndTimes(dir_path=dir_path)
     needsAlignment = False
   
   # Align input images
