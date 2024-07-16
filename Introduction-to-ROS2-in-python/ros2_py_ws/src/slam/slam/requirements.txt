@@ -1,0 +1,5 @@
+PyOpenGl==3.1.7
+open3d==0.18.0
+opencv-python==4.9.0.80
+scikit-image==0.23.2
+PySDL2==0.9.16
