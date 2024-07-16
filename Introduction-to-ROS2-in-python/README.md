@@ -13,6 +13,10 @@ ROS is a very common component in robotics and has many technical tutorials and 
 
 
 ## How to Run:
+
+Donwload the test video from [this link](https://www.dropbox.com/scl/fi/qsck7st5h85e3sniw0daq/test_ohio.mp4?rlkey=h8n5mf4aue0hocj44d4rzocbf&st=t3vdoc5a&dl=1) and place it inside `src/slam/resource/videos/`.
+
+
 ```bash
 $ cd ../../ # come to the workspace home directory
 $ colcon build # this will build all the packages inside src
