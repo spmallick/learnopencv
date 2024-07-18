@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Introduction to ROS2 (Robot Operating System 2): Tutorial on ROS2 Working, DDS, ROS1 RMW, Topics, Nodes, Publisher, Subscriber in Python](https://learnopencv.com/robot-operating-system-introduction) | [Code](https://github.com/spmallick/learnopencv/tree/master/Introduction-to-ROS2-in-python) |
 | [CVPR 2024 Research Papers - Part- 2](https://learnopencv.com/cvpr-2024-research-papers) | [Code](https://github.com/spmallick/learnopencv/tree/master/cvpr-2024-research-papers-part2) |
 | [CVPR 2024: An Overview and Key Papers](https://learnopencv.com/cvpr2024/) | [Code](https://github.com/spmallick/learnopencv/tree/master/CVPR-2024) |
 | [Object Detection on Edge Device - OAK-D-Lite](https://learnopencv.com/object-detection-on-edge-device) | [Code](https://github.com/spmallick/learnopencv/tree/master/Object-Detection-on-Edge-Devices) |
