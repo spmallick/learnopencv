@@ -10,9 +10,17 @@ It is part of the LearnOpenCV blog post - [Introduction to Feature Matching Usin
 
 ### Run Inference
 
-Follow the Environment setup process described in article.
+##### Clone the Image Matching WebUI repository into your local directory:
+```bash
+git clone https://github.com/0xSynapse/image-matching-webui.git
+cd image-matching-webui/
+```
+##### Follow the Environment setup process described in article.
 
-Run the ``app.py`` file in your python environment.
+##### Run the ``app.py`` file in your python environment:
+```bash
+python app.py
+```
 
 ## AI Courses by OpenCV
 
