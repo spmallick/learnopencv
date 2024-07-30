@@ -1,1 +1,26 @@
 .DS_Store
+
+# C++
+.clangd
+build
+compile_commands.json
+
+# Python
+__pycache__/
+
+# Jupyter notebook
+.ipynb_checkpoints
+
+# venv
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
