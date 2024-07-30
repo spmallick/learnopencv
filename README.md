@@ -16,6 +16,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 | Blog Post | Code|
 | ------------- |:-------------|
 | [Fine Tuning Whisper on Custom Dataset](https://learnopencv.com/fine-tuning-whisper-on-custom-dataset/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Fine-Tuning-Whisper-on-Custom-Dataset) |
+| [SAM 2 – Promptable Segmentation for Images and Videos](https://learnopencv.com/sam-2/) | [Code](https://github.com/spmallick/learnopencv/tree/master/SAM_2_Segment_Anything_Model_2) |
 | [Introduction to Feature Matching Using Neural Networks](https://learnopencv.com/feature-matching/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Feature-Matching-Using-Neural-Networks) |
 | [Introduction to ROS2 (Robot Operating System 2): Tutorial on ROS2 Working, DDS, ROS1 RMW, Topics, Nodes, Publisher, Subscriber in Python](https://learnopencv.com/robot-operating-system-introduction) | [Code](https://github.com/spmallick/learnopencv/tree/master/Introduction-to-ROS2-in-python) |
 | [CVPR 2024 Research Papers - Part- 2](https://learnopencv.com/cvpr-2024-research-papers) | [Code](https://github.com/spmallick/learnopencv/tree/master/cvpr-2024-research-papers-part2) |
