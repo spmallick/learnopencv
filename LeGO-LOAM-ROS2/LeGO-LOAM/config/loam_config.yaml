@@ -1,0 +1,44 @@
+# VLP-16
+image_projection:
+  ros__parameters:
+    laser:
+      num_vertical_scans: 16
+      num_horizontal_scans: 1800
+      vertical_angle_bottom: -15.0          # degrees
+      vertical_angle_top: 15.0              # degrees
+      sensor_mount_angle: 0.0               # degrees
+      ground_scan_index: 7
+
+    image_projection:
+      segment_valid_point_num: 5
+      segment_valid_line_num: 3
+      segment_theta: 60.0                   # decrese this value may improve accuracy
+
+map_optimization:
+  ros__parameters:
+    mapping:
+      enable_loop_closure: true
+
+      surrounding_keyframe_search_radius: 50.0   # key frame that is within n meters from current pose will be considered for scan-to-map optimization (when loop closure disabled)
+      surrounding_keyframe_search_num: 50        # submap size (when loop closure enabled)
+
+      history_keyframe_search_radius: 7.0        # key frame that is within n meters from current pose will be considerd for loop closure
+      history_keyframe_search_num: 25            # 2n+1 number of history key frames will be fused into a submap for loop closure
+      history_keyframe_fitness_score: 0.3        # the smaller the better alignment
+
+      global_map_visualization_search_radius: 500.0 # key frames with in n meters will be visualized
+
+feature_association:
+  ros__parameters:
+    laser:
+      num_vertical_scans: 16
+      num_horizontal_scans: 1800
+      scan_period: 0.1                      # seconds
+
+    mapping:
+      mapping_frequency_divider: 5
+
+    featureAssociation:
+      edge_threshold: 0.1
+      surf_threshold: 0.1
+      nearest_feature_search_distance: 5.0

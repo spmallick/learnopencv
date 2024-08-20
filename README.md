@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Introduction to LiDAR SLAM: LOAM and LeGO-LOAM Paper and Code Explanation with ROS 2 Implementation](https://learnopencv.com/lidar-slam-with-ros2) | [Code](https://github.com/spmallick/learnopencv/tree/master/LeGO-LOAM-ROS2) |
 | [Recommendation System using Vector Search](https://learnopencv.com/recommendation-system-using-vector-search) | [Code](https://github.com/spmallick/learnopencv/tree/master/Recommendation-System-using-Vector-Search) |
 | [Fine Tuning Whisper on Custom Dataset](https://learnopencv.com/fine-tuning-whisper-on-custom-dataset/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Fine-Tuning-Whisper-on-Custom-Dataset) |
 | [SAM 2 – Promptable Segmentation for Images and Videos](https://learnopencv.com/sam-2/) | [Code](https://github.com/spmallick/learnopencv/tree/master/SAM_2_Segment_Anything_Model_2) |

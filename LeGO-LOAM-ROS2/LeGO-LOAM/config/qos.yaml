@@ -1,0 +1,4 @@
+topics:
+  /tf_static:
+    reliability: reliable
+    durability: transient_local
