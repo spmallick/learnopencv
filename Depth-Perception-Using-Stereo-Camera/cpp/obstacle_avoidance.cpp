@@ -154,7 +154,7 @@ int main()
 
   cv::VideoCapture camL(CamL_id), camR(CamR_id);
 
-  // Check if left camera is attched
+  // Check if left camera is attached
   if (!camL.isOpened())
   {
     std::cout << "Could not open camera with index : " << CamL_id << std::endl;
