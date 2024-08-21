@@ -12,7 +12,17 @@ It is part of the LearnOpenCV blog post - [Recommendation System using Vector Se
 
 Follow the Environment setup process described in article.
 
-Run the ``main.py`` file in your python environment.
+####  main.py
+Run the ``rms.py`` file in your python environment to do the recommendation in your terminal
+```
+python rms.py
+```
+
+####  app.py
+Run the ``app.py`` to use the Streamlit app 
+```
+streamlit run app.py
+```
 
 ## AI Courses by OpenCV
 
