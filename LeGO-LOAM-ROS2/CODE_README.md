@@ -15,8 +15,9 @@ The system takes in point cloud from a Velodyne VLP-16 Lidar (palced horizontal)
 <!--
 [![Watch the video](/LeGO-LOAM/launch/demo.gif)](https://www.youtube.com/watch?v=O3tz_ftHV48)
 -->
+
 <p align='center'>
-    <img src="/LeGO-LOAM/launch/demo.gif" alt="drawing" width="800"/>
+    <img src="LeGO-LOAM/launch/demo.gif" alt="drawing" width="800"/>
 </p>
 
 ## 2. Dependencies
@@ -57,13 +58,13 @@ LeGO-LOAM is speficifally optimized for a horizontally placed lidar on a ground 
 The package performs segmentation before feature extraction.
 
 <p align='center'>
-    <img src="/LeGO-LOAM/launch/seg-total.jpg" alt="drawing" width="400"/>
+    <img src="LeGO-LOAM/launch/seg-total.jpg" alt="drawing" width="400"/>
 </p>
 
 Lidar odometry performs two-step Levenberg Marquardt optimization to get 6D transformation.
 
 <p align='center'>
-    <img src="/LeGO-LOAM/launch/odometry.jpg" alt="drawing" width="400"/>
+    <img src="LeGO-LOAM/launch/odometry.jpg" alt="drawing" width="400"/>
 </p>
 
 ## 5. New sensor and configuration
@@ -119,10 +120,10 @@ To use this dataset to test LeGO-LOAM-ROS2, only topic /velodyne_points should b
 
 
 <p align='center'>
-    <img src="/LeGO-LOAM/launch/dataset-demo.gif" alt="drawing" width="600"/>
+    <img src="LeGO-LOAM/launch/dataset-demo.gif" alt="drawing" width="600"/>
 </p>
 <p align='center'>
-    <img src="/LeGO-LOAM/launch/google-earth.png" alt="drawing" width="600"/>  
+    <img src="LeGO-LOAM/launch/google-earth.png" alt="drawing" width="600"/>  
 </p>
 
 ## 7. Cite *LeGO-LOAM*

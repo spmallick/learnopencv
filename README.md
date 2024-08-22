@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Training CLIP from Sratch for Image Retrieval](https://learnopencv.com/clip-model) | [Code](https://github.com/spmallick/learnopencv/tree/master/Training-CLIP-from-Scratch-for-Image-Retrieval) |
 | [Introduction to LiDAR SLAM: LOAM and LeGO-LOAM Paper and Code Explanation with ROS 2 Implementation](https://learnopencv.com/lidar-slam-with-ros2) | [Code](https://github.com/spmallick/learnopencv/tree/master/LeGO-LOAM-ROS2) |
 | [Recommendation System using Vector Search](https://learnopencv.com/recommendation-system-using-vector-search) | [Code](https://github.com/spmallick/learnopencv/tree/master/Recommendation-System-using-Vector-Search) |
 | [Fine Tuning Whisper on Custom Dataset](https://learnopencv.com/fine-tuning-whisper-on-custom-dataset/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Fine-Tuning-Whisper-on-Custom-Dataset) |
