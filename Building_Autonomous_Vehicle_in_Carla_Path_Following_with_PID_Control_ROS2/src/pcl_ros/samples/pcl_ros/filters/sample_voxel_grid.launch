@@ -1,0 +1,44 @@
+<launch>
+
+  <arg name="gui" default="true" />
+  <arg name="test" default="true" />
+
+  <arg name="leaf_size" default="0.05" />
+
+  <node name="pcd_to_pointcloud"
+        pkg="pcl_ros" type="pcd_to_pointcloud"
+        args="$(find pcl_ros)/samples/data/table_scene_lms400.pcd 0.033">
+    <remap from="cloud_pcd" to="points" />
+  </node>
+
+  <node name="voxel_grid"
+        pkg="nodelet" type="nodelet"
+        args="standalone pcl/VoxelGrid">
+    <remap from="~input" to="points" />
+    <rosparam subst_value="true">
+      filter_field_name: ''
+      leaf_size: $(arg leaf_size)
+    </rosparam>
+  </node>
+
+  <group if="$(arg test)">
+    <test test-name="test_voxel_grid"
+          name="test_voxel_grid"
+          pkg="rostest" type="hztest">
+      <rosparam>
+        topic: /voxel_grid/output
+        hz: 20
+        hzerror: 15
+        test_duration: 5.0
+      </rosparam>
+    </test>
+  </group>
+
+  <group if="$(arg gui)">
+    <node name="rviz"
+          pkg="rviz" type="rviz"
+          args="-d $(find pcl_ros)/samples/pcl_ros/filters/config/voxel_grid.rviz">
+    </node>
+  </group>
+
+</launch>

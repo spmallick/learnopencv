@@ -1,0 +1,30 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/somusan/OpencvUni/opencvblog/robotics-series/carla_av_project/opencv_av_ws/install/pcl_ros/include/**",
+        "/home/somusan/OpencvUni/opencvblog/robotics-series/carla_av_project/opencv_av_ws/install/pcl_conversions/include/**",
+        "/home/somusan/OpencvUni/opencvblog/robotics-series/carla_av_project/opencv_av_ws/install/carla_msgs/include/**",
+        "/home/somusan/carla-ros-bridge/colcon_ws/install/carla_waypoint_types/include/**",
+        "/home/somusan/carla-ros-bridge/colcon_ws/install/carla_ros_scenario_runner_types/include/**",
+        "/home/somusan/carla-ros-bridge/colcon_ws/install/carla_ackermann_msgs/include/**",
+        "/home/somusan/carla-ros-bridge/colcon_ws/install/carla_msgs/include/**",
+        "/opt/ros/humble/include/**",
+        "/home/somusan/OpencvUni/opencvblog/robotics-series/carla_av_project/blogcode/opencv_av_ws/src/pcl_conversions/include/**",
+        "/home/somusan/OpencvUni/opencvblog/robotics-series/carla_av_project/blogcode/opencv_av_ws/src/pcl_ros/include/**",
+        "/home/somusan/OpencvUni/opencvblog/robotics-series/carla_av_project/blogcode/opencv_av_ws/src/spawn_car/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

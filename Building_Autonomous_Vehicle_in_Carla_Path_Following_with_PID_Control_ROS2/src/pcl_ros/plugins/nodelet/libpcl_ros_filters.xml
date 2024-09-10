@@ -1,0 +1,43 @@
+<!-- PCL Filters library component -->
+<library path="lib/libpcl_ros_filters">
+  <class name="pcl/PassThrough" type="PassThrough" base_class_type="nodelet::Nodelet">
+    <description>
+      PassThrough is a filter that uses the basic Filter class mechanisms for passing data around.
+    </description>
+  </class>
+
+  <class name="pcl/VoxelGrid" type="VoxelGrid" base_class_type="nodelet::Nodelet">
+    <description>
+      VoxelGrid assembles a local 3D grid over a given PointCloud, and uses that to downsample the data.
+    </description>
+  </class>
+
+  <class name="pcl/ProjectInliers" type="ProjectInliers" base_class_type="nodelet::Nodelet">
+    <description>
+      ProjectInliers uses a model and a set of inlier indices from a PointCloud to project them into a separate PointCloud.
+    </description>
+  </class>
+
+  <class name="pcl/ExtractIndices" type="ExtractIndices" base_class_type="nodelet::Nodelet">
+    <description>
+      ExtractIndices extracts a set of indices from a PointCloud as a separate PointCloud.
+    </description>
+  </class>
+
+  <class name="pcl/StatisticalOutlierRemoval" type="StatisticalOutlierRemoval" base_class_type="nodelet::Nodelet">
+    <description>
+      StatisticalOutlierRemoval uses point neighborhood statistics to filter outlier data.
+    </description>
+  </class>
+  <class name="pcl/RadiusOutlierRemoval" type="RadiusOutlierRemoval" base_class_type="nodelet::Nodelet">
+    <description>
+      RadiusOutlierRemoval uses point neighborhood statistics to filter outlier data.
+    </description>
+  </class>
+
+  <class name="pcl/CropBox" type="CropBox" base_class_type="nodelet::Nodelet">
+    <description>
+      CropBox is a filter that allows the user to filter all the data inside of a given box.
+    </description>
+  </class>
+</library>

@@ -1,0 +1,49 @@
+<!-- PCL IO library component -->
+<library path="lib/libpcl_ros_io">
+  <class name="pcl/NodeletMUX" type="NodeletMUX" base_class_type="nodelet::Nodelet">
+    <description>
+      NodeletMUX represent a mux nodelet for PointCloud topics: it takes N (up
+      to 8) input topics, and publishes all of them on one output topic.
+    </description>
+  </class>
+
+  <class name="pcl/NodeletDEMUX" type="NodeletDEMUX" base_class_type="nodelet::Nodelet">
+    <description>
+      NodeletDEMUX represent a demux nodelet for PointCloud topics: it
+      publishes 1 input topic to N output topics.
+    </description>
+  </class>
+
+  <class name="pcl/PCDReader" type="PCDReader" base_class_type="nodelet::Nodelet">
+    <description>
+      PCDReader reads in a PCD (Point Cloud Data) v.5 file from disk and converts it to a PointCloud message.
+    </description>
+  </class>
+
+  <class name="pcl/BAGReader" type="BAGReader" base_class_type="nodelet::Nodelet">
+    <description>
+      BAGReader reads in sensor_msgs/PointCloud2 messages from BAG files.
+    </description>
+  </class>
+
+  <class name="pcl/PCDWriter" type="PCDWriter" base_class_type="nodelet::Nodelet">
+    <description>
+      PCDWriter writes a PointCloud message to disk in a PCD (Point Cloud Data) v.5 file format.
+    </description>
+  </class>
+
+  <class name="pcl/PointCloudConcatenateFieldsSynchronizer" type="PointCloudConcatenateFieldsSynchronizer" base_class_type="nodelet::Nodelet">
+    <description>
+      PointCloudConcatenateFieldsSynchronizer is a special form of data synchronizer: it listens for a set of input PointCloud messages on the
+      same topic, checks their timestamps, and concatenates their fields together into a single PointCloud output message.
+    </description>
+  </class>
+  <class name="pcl/PointCloudConcatenateDataSynchronizer" type="PointCloudConcatenateDataSynchronizer" base_class_type="nodelet::Nodelet">
+    <description>
+      PointCloudConcatenateDataSynchronizer is a special form of data
+      synchronizer: it listens for a set of input PointCloud messages on
+      different topics, and concatenates them together into a single PointCloud
+      output message.  
+    </description>
+  </class>
+</library>

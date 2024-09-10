@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>pcl_ros</name>
+  <version>2.6.1</version>
+  <description>
+
+  PCL (Point Cloud Library) ROS interface stack. PCL-ROS is the preferred
+  bridge for 3D applications involving n-D Point Clouds and 3D geometry
+  processing in ROS.
+
+  </description>
+
+  <maintainer email="paul@bovbel.com">Paul Bovbel</maintainer>
+  <maintainer email="stevenmacenski@gmail.com">Steve Macenski</maintainer>
+  <maintainer email="www.kentaro.wada@gmail.com">Kentaro Wada</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">http://ros.org/wiki/perception_pcl</url>
+  <url type="bugtracker">https://github.com/ros-perception/perception_pcl/issues</url>
+  <url type="repository">https://github.com/ros-perception/perception_pcl</url>
+
+  <author>Open Perception</author>
+  <author email="julius@kammerl.de">Julius Kammerl</author>
+  <author email="william@osrfoundation.org">William Woodall</author>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <build_depend>libpcl-all-dev</build_depend>
+
+  <build_export_depend>libpcl-all-dev</build_export_depend>
+
+  <depend>eigen</depend>
+  <depend>pcl_conversions</depend>
+  <depend>rclcpp</depend>
+  <depend>rclcpp_components</depend>
+  <depend>sensor_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>tf2</depend>
+  <depend>tf2_geometry_msgs</depend>
+  <depend>tf2_eigen</depend>
+  <depend>tf2_ros</depend>
+
+  <exec_depend>libpcl-common</exec_depend>
+  <exec_depend>libpcl-features</exec_depend>
+  <exec_depend>libpcl-filters</exec_depend>
+  <exec_depend>libpcl-io</exec_depend>
+  <exec_depend>libpcl-segmentation</exec_depend>
+  <exec_depend>libpcl-surface</exec_depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+  <test_depend>ament_cmake_gtest</test_depend>
+  <test_depend>ament_cmake_pytest</test_depend>
+  <test_depend>launch</test_depend>
+  <test_depend>launch_ros</test_depend>
+  <test_depend>launch_testing</test_depend>
+  <test_depend>launch_testing_ros</test_depend>
+  <test_depend>sensor_msgs</test_depend>
+
+    <!--
+    <export>
+    <nodelet plugin="${prefix}/plugins/nodelet/libpcl_ros_features.xml"/>
+    <nodelet plugin="${prefix}/plugins/nodelet/libpcl_ros_filters.xml"/>
+    <nodelet plugin="${prefix}/plugins/nodelet/libpcl_ros_io.xml"/>
+    <nodelet plugin="${prefix}/plugins/nodelet/libpcl_ros_segmentation.xml"/>
+    <nodelet plugin="${prefix}/plugins/nodelet/libpcl_ros_surface.xml"/>
+    </export>
+    -->
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+
+</package>

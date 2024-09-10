@@ -1,0 +1,37 @@
+<!-- PCL Segmentation library component -->
+<library path="lib/libpcl_ros_segmentation">
+  <class name="pcl/ExtractPolygonalPrismData" type="ExtractPolygonalPrismData" base_class_type="nodelet::Nodelet">
+    <description>
+      ExtractPolygonalPrismData uses a set of point indices that represent a planar model, and together with a given
+      height, generates a 3D polygonal prism. The polygonal prism is then used to segment all points lying inside it.
+    </description>
+  </class>
+
+   <class name="pcl/EuclideanClusterExtraction" type="EuclideanClusterExtraction" base_class_type="nodelet::Nodelet">
+     <description>
+       EuclideanClusterExtraction represents a segmentation class for cluster extraction in an Euclidean sense.
+    </description>
+  </class>
+
+  <class name="pcl/SACSegmentationFromNormals" type="SACSegmentationFromNormals" base_class_type="nodelet::Nodelet">
+    <description>
+      SACSegmentation represents the Nodelet segmentation class for Sample Consensus methods and models, in the sense that
+      it just creates a Nodelet wrapper for generic-purpose SAC-based segmentation.
+    </description>
+  </class>
+
+  <class name="pcl/SACSegmentation" type="SACSegmentation" base_class_type="nodelet::Nodelet">
+    <description>
+      SACSegmentation represents the Nodelet segmentation class for Sample Consensus methods and models, in the sense that
+      it just creates a Nodelet wrapper for generic-purpose SAC-based segmentation.
+    </description>
+  </class>
+
+  <class name="pcl/SegmentDifferences" type="SegmentDifferences" base_class_type="nodelet::Nodelet">
+     <description>
+       SegmentDifferences obtains the difference between two spatially aligned point clouds and returns the
+       difference between them for a maximum given distance threshold.
+    </description>
+  </class>
+
+</library>

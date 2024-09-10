@@ -1,0 +1,40 @@
+<launch>
+
+  <arg name="gui" default="true" />
+
+  <!-- use voxel_grid for small cpu load in filtering -->
+  <include file="$(find pcl_ros)/samples/pcl_ros/filters/sample_voxel_grid.launch">
+    <arg name="gui" value="false" />
+    <arg name="test" value="false" />
+    <arg name="leaf_size" value="0.02" />
+  </include>
+
+  <node name="convex_hull"
+        pkg="nodelet" type="nodelet"
+        args="standalone pcl/ConvexHull2D">
+    <remap from="~input" to="voxel_grid/output" />
+    <rosparam>
+    </rosparam>
+  </node>
+
+  <test test-name="test_convex_hull"
+    name="test_convex_hull"
+    pkg="rostest" type="hztest">
+    <rosparam>
+      topic: /convex_hull/output
+      hz: 10
+      hzerror: 8
+      test_duration: 5.0
+    </rosparam>
+  </test>
+
+  <!-- TODO(wkentaro): Add sample visualization
+  <group if="$(arg gui)">
+    <node name="rviz"
+          pkg="rviz" type="rviz"
+          args="-d $(find pcl_ros)/samples/pcl_ros/surface/config/convex_hull.rviz">
+    </node>
+  </group>
+  -->
+
+</launch>
