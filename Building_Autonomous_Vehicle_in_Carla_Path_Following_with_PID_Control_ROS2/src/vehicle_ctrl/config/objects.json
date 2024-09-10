@@ -1,0 +1,79 @@
+{   
+    "objects": 
+    [
+        {
+            "type": "sensor.pseudo.traffic_lights",
+            "id": "traffic_lights"
+        },
+        {
+            "type": "sensor.pseudo.objects",
+            "id": "objects"
+        },
+        {
+            "type": "sensor.pseudo.actor_list",
+            "id": "actor_list"
+        },
+        {
+            "type": "sensor.pseudo.markers",
+            "id": "markers"
+        },
+        {
+            "type": "sensor.pseudo.opendrive_map",
+            "id": "map"
+        },
+        {
+            "type": "vehicle.tesla.model3",
+            "id": "ego_vehicle",
+            "sensors": 
+            [
+                {
+                    "type": "sensor.camera.rgb",
+                    "id": "rgb_front",
+                    "spawn_point": {"x": 2.0, "y": 0.0, "z": 2.0, "roll": 0.0, "pitch": 0.0, "yaw": 0.0},
+                    "image_size_x": 800,
+                    "image_size_y": 600,
+                    "fov": 90.0
+                },
+                {
+                    "type": "sensor.lidar.ray_cast",
+                    "id": "lidar",
+                    "spawn_point": {"x": 0.0, "y": 0.0, "z": 2.4, "roll": 0.0, "pitch": 0.0, "yaw": 0.0},
+                    "range": 50,
+                    "channels": 32,
+                    "points_per_second": 320000,
+                    "upper_fov": 2.0,
+                    "lower_fov": -26.8,
+                    "rotation_frequency": 20,
+                    "noise_stddev": 0.0
+                },
+                {
+                    "type": "sensor.other.gnss",
+                    "id": "gnss",
+                    "spawn_point": {"x": 1.0, "y": 0.0, "z": 2.0},
+                    "noise_alt_stddev": 0.0, "noise_lat_stddev": 0.0, "noise_lon_stddev": 0.0,
+                    "noise_alt_bias": 0.0, "noise_lat_bias": 0.0, "noise_lon_bias": 0.0
+                },
+                {
+                    "type": "sensor.pseudo.tf",
+                    "id": "tf"
+                },
+                {
+                    "type": "sensor.pseudo.objects",
+                    "id": "objects"
+                },
+                {
+                    "type": "sensor.pseudo.odom",
+                    "id": "odometry"
+                },
+                {
+                    "type": "sensor.pseudo.speedometer",
+                    "id": "speedometer"
+                },
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        }
+    ]
+}

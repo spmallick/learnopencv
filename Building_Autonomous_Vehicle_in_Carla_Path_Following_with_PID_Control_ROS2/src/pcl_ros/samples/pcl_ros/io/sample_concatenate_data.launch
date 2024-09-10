@@ -1,0 +1,43 @@
+<launch>
+
+  <arg name="gui" default="true" />
+
+  <!-- use voxel_grid for small cpu load in filtering -->
+  <include file="$(find pcl_ros)/samples/pcl_ros/filters/sample_voxel_grid.launch">
+    <arg name="gui" value="false" />
+    <arg name="test" value="false" />
+    <arg name="leaf_size" value="0.02" />
+  </include>
+
+  <node name="concatenate_data"
+        pkg="nodelet" type="nodelet"
+        args="standalone pcl/PointCloudConcatenateDataSynchronizer">
+    <rosparam>
+      output_frame: /base_link
+      input_topics:
+        - /voxel_grid/output
+        - /voxel_grid/output
+    </rosparam>
+  </node>
+
+  <test test-name="test_concatenate_data"
+        name="test_concatenate_data"
+        pkg="rostest" type="hztest">
+    <rosparam>
+      topic: /concatenate_data/output
+      hz: 10
+      hzerror: 8
+      test_duration: 5.0
+    </rosparam>
+  </test>
+
+  <!-- TODO(wkentaro): Add sample visualization
+  <group if="$(arg gui)">
+    <node name="rviz"
+          pkg="rviz" type="rviz"
+          args="-d $(find pcl_ros)/samples/pcl_ros/io/config/concatenate_data.rviz">
+    </node>
+  </group>
+  -->
+
+</launch>

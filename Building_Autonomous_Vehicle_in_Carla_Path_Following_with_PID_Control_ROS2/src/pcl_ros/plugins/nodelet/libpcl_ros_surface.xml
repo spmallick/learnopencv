@@ -1,0 +1,13 @@
+<!-- PCL Surface reconstruction library component -->
+<library path="lib/libpcl_ros_surface">
+  <class name="pcl/MovingLeastSquares" type="MovingLeastSquares" base_class_type="nodelet::Nodelet">
+    <description>
+      MovingLeastSquares is an implementation of the MLS algorithm for data reconstruction through bivariate polynomial fitting.
+    </description>
+  </class>
+  <class name="pcl/ConvexHull2D" type="ConvexHull2D" base_class_type="nodelet::Nodelet">
+    <description>
+      ConvexHull2D represents a 2D ConvexHull implementation.
+    </description>
+  </class>
+</library>

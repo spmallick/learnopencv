@@ -1,0 +1,85 @@
+<!-- PCL Features library component -->
+<library path="lib/libpcl_ros_features">
+  <class name="pcl/BoundaryEstimation" type="BoundaryEstimation" base_class_type="nodelet::Nodelet">
+    <description>
+      BoundaryEstimation estimates whether a set of points is lying on surface boundaries using an angle criterion. The
+      code makes use of the estimated surface normals at each point in the input data set.
+    </description>
+  </class>
+
+  <class name="pcl/FPFHEstimation" type="FPFHEstimation" base_class_type="nodelet::Nodelet">
+    <description>
+      FPFHEstimation estimates the Fast Point Feature Histogram (FPFH) descriptor for a given point cloud dataset
+      containing points and normals.
+    </description>
+  </class>
+
+  <class name="pcl/FPFHEstimationOMP" type="FPFHEstimationOMP" base_class_type="nodelet::Nodelet">
+    <description>
+      FPFHEstimationOMP estimates the Fast Point Feature Histogram (FPFH) descriptor for a given point cloud dataset
+      containing points and normals, in parallel, using the OpenMP standard.
+    </description>
+  </class>
+
+  <class name="pcl/SHOTEstimation" type="SHOTEstimation" base_class_type="nodelet::Nodelet">
+    <description>
+      SHOTEstimation estimates SHOT descriptor for a given point cloud dataset
+      containing points and normals.
+    </description>
+  </class>
+
+  <class name="pcl/SHOTEstimationOMP" type="SHOTEstimationOMP" base_class_type="nodelet::Nodelet">
+    <description>
+      SHOTEstimationOMP estimates SHOT descriptor for a given point cloud dataset
+      containing points and normals, in parallel, using the OpenMP standard.
+    </description>
+  </class>
+  
+  <class name="pcl/MomentInvariantsEstimation" type="MomentInvariantsEstimation" base_class_type="nodelet::Nodelet">
+    <description>
+      MomentInvariantsEstimation estimates the 3 moment invariants (j1, j2, j3) at each 3D point.
+    </description>
+  </class>
+
+  <class name="pcl/NormalEstimationOMP" type="NormalEstimationOMP" base_class_type="nodelet::Nodelet">
+    <description>
+      NormalEstimationOMP estimates local surface properties at each 3D point, such as surface normals and curvatures,
+      in parallel, using the OpenMP standard.
+    </description>
+  </class>
+
+  <class name="pcl/NormalEstimationTBB" type="NormalEstimationTBB" base_class_type="nodelet::Nodelet">
+    <description>
+      NormalEstimationTBB estimates local surface properties at each 3D point, such as surface normals and curvatures, in
+      parallel, using Intel's Threading Building Blocks library.
+    </description>
+  </class>
+
+  <class name="pcl/NormalEstimation" type="NormalEstimation" base_class_type="nodelet::Nodelet">
+    <description>
+      NormalEstimation estimates local surface properties at each 3D point, such as surface normals and curvatures.
+    </description>
+  </class>
+
+  <class name="pcl/PFHEstimation" type="PFHEstimation" base_class_type="nodelet::Nodelet">
+    <description>
+      PFHEstimation estimates the Point Feature Histogram (PFH) descriptor for a given point cloud dataset containing
+      points and normals.
+    </description>
+  </class>
+
+  <class name="pcl/PrincipalCurvaturesEstimation" type="PrincipalCurvaturesEstimation" base_class_type="nodelet::Nodelet">
+    <description>
+      PrincipalCurvaturesEstimation estimates the directions (eigenvectors) and magnitudes (eigenvalues) of principal surface 
+      curvatures for a given point cloud dataset containing points and normals.
+    </description>
+  </class>
+
+  <class name="pcl/VFHEstimation" type="VFHEstimation" base_class_type="nodelet::Nodelet">
+    <description>
+      VFHEstimation estimates the Viewpoint Feature Histogram (VFH) global descriptor for a given point cloud cluster dataset
+      containing points and normals.
+    </description>
+  </class>
+
+</library>
