@@ -4,7 +4,7 @@
 
 [<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://www.dropbox.com/scl/fo/eei4i0o54bbitk0osghz0/AJD8YUm0Xa3T7x8uBp1WK90?rlkey=361nknck5qmm6kspydbn1hv50&st=kwbsypz0&dl=1)
 
-![](/home/jaykumaran/Office/Training-CLIP-from-Scratch-for-Image-Retrieval/readme_images/CLIP.gif)
+![](readme_images/CLIP.gif)
 
 
 
