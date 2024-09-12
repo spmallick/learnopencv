@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Multimodal RAG with ColPali and Gemini](https://learnopencv.com/multimodal-rag-with-colpali) | [Code](https://github.com/spmallick/learnopencv/tree/master/Multimodal-RAG-with-ColPali-Gemini) |
 | [Building Autonomous Vehicle in Carla: Path Following with PID Control & ROS 2](https://learnopencv.com/pid-controller-ros-2-carla/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Building_Autonomous_Vehicle_in_Carla_Path_Following_with_PID_Control_ROS2) |
 | [Handwritten Text Recognition using OCR](https://learnopencv.com/handwritten-text-recognition-using-ocr/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Handwritten_Text_Recognition_using_OCR) |
 | [Training CLIP from Sratch for Image Retrieval](https://learnopencv.com/clip-model) | [Code](https://github.com/spmallick/learnopencv/tree/master/Training-CLIP-from-Scratch-for-Image-Retrieval) |
