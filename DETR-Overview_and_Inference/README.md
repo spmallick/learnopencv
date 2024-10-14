@@ -2,7 +2,7 @@
 
 This repository contains the Python notebook to run the Inference for DETR
 
-It is part of the LearnOpenCV blog post - [DETR: Overiew and Inference](https://learnopencv.com/).
+It is part of the LearnOpenCV blog post - [DETR: Overiew and Inference](https://learnopencv.com/detr-overview-and-inference/).
 
 [<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://www.dropbox.com/scl/fo/c1bk02b3rycjyqhy2kpcr/AN1MeO0eoczP9TNM5H6n91c?rlkey=g14vfri9ohahfhmrxg4em3vs0&st=dmim9sdg&dl=1)
 

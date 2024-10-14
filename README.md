@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [DETR: Overview and Inference](https://learnopencv.com/detr-overview-and-inference/) | [Code](https://github.com/spmallick/learnopencv/tree/master/DETR-Overview_and_Inference) |
 | [YOLO11: Faster Than You Can Imagine!](https://learnopencv.com/yolo11/) | [Code](https://github.com/spmallick/learnopencv/tree/master/YOLO11) |
 | [Exploring DINO: Self-Supervised Transformers for Road Segmentation with ResNet50 and U-Net](https://learnopencv.com/fine-tune-dino-self-supervised-learning-segmentation/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Exploring-DINO-dino-road-segmentation) |
 | [Sapiens: Foundation for Human Vision Models by Meta](https://learnopencv.com/sapiens-human-vision-models) | [Code](https://github.com/spmallick/learnopencv/tree/master/Sapiens-Human-Vision-Model-Meta) |
