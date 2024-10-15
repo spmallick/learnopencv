@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Training 3D U-Net for Brain Tumor Segmentation (BraTS-GLI)](https://learnopencv.com/3d-u-net-brats/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Training_3D_U-Net_Brain_Tumor_Seg) |
 | [DETR: Overview and Inference](https://learnopencv.com/detr-overview-and-inference/) | [Code](https://github.com/spmallick/learnopencv/tree/master/DETR-Overview_and_Inference) |
 | [YOLO11: Faster Than You Can Imagine!](https://learnopencv.com/yolo11/) | [Code](https://github.com/spmallick/learnopencv/tree/master/YOLO11) |
 | [Exploring DINO: Self-Supervised Transformers for Road Segmentation with ResNet50 and U-Net](https://learnopencv.com/fine-tune-dino-self-supervised-learning-segmentation/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Exploring-DINO-dino-road-segmentation) |
