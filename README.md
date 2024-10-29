@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Introduction to Speech to Speech: Most Efficient Form of NLP](https://learnopencv.com/speech-to-speech/) | [Code](https://github.com/spmallick/learnopencv/tree/master/speech-to-speech) |
 | [Training 3D U-Net for Brain Tumor Segmentation (BraTS-GLI)](https://learnopencv.com/3d-u-net-brats/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Training_3D_U-Net_Brain_Tumor_Seg) |
 | [DETR: Overview and Inference](https://learnopencv.com/detr-overview-and-inference/) | [Code](https://github.com/spmallick/learnopencv/tree/master/DETR-Overview_and_Inference) |
 | [YOLO11: Faster Than You Can Imagine!](https://learnopencv.com/yolo11/) | [Code](https://github.com/spmallick/learnopencv/tree/master/YOLO11) |
