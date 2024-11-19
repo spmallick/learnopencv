@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Stable Diffusion 3 and 3.5: Paper Explanation and Inference](https://learnopencv.com/stable-diffusion-3/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Stable-Diffusion-3) |
 | [LightRAG - Legal Document Analysis](https://learnopencv.com/lightrag/) | [Code](https://github.com/spmallick/learnopencv/tree/master/LightRAG-Legal) |
 | [NVIDIA AI Summit 2024 – India Overview](https://learnopencv.com/nvidia-ai-summit-2024-india-overview/) | |
 | [Introduction to Speech to Speech: Most Efficient Form of NLP](https://learnopencv.com/speech-to-speech/) | [Code](https://github.com/spmallick/learnopencv/tree/master/speech-to-speech) |
