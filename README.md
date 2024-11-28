@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [The Annotated NeRF : Training on Custom Dataset from Scratch in Pytorch](https://learnopencv.com/annotated-nerf-pytorch/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Annotated-NeRF) |
 | [Stable Diffusion 3 and 3.5: Paper Explanation and Inference](https://learnopencv.com/stable-diffusion-3/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Stable-Diffusion-3) |
 | [LightRAG - Legal Document Analysis](https://learnopencv.com/lightrag/) | [Code](https://github.com/spmallick/learnopencv/tree/master/LightRAG-Legal) |
 | [NVIDIA AI Summit 2024 – India Overview](https://learnopencv.com/nvidia-ai-summit-2024-india-overview/) | |
