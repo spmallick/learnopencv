@@ -8,7 +8,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from tqdm import tqdm, trange
-import wandb
+# please uncomment the code starts with `wandb` to add your wandb project tracking
+# import wandb
 
 import matplotlib.pyplot as plt
 
@@ -211,6 +212,7 @@ def create_nerf(args):
     # Create optimizer
     optimizer = torch.optim.Adam(params=grad_vars, lr=args.lrate, betas=(0.9, 0.999))
     # capture a dictionary of hyperparameters with config
+    # please uncomment the code starts with `wandb` to add your wandb project tracking
     # wandb.config = {"learning_rate": args.lrate, "iterations": args.training_iterations, 
     #                 "batch_size": 1024}
 
@@ -892,6 +894,7 @@ def train():
             cv2.imwrite(os.path.join(infer_path, f"infer_disp_rgb{i}.png"), colored_disps_8bit[0])
             print("infer result saved")
 
+            # please uncomment the code starts with `wandb` to add your wandb project tracking
             # Log images to W&B
             # wandb.log({
             #     f"Infer RGB (iter {i})": wandb.Image(infer_rgb, caption=f"Infer RGB Iter {i}"),
@@ -924,6 +927,8 @@ def train():
             imageio.mimwrite(moviebase + 'rgb.mp4', to8b(rgbs), fps=30, quality=8)
             imageio.mimwrite(moviebase + 'disp.mp4', to8b(disps / np.max(disps)), fps=30, quality=8)
             logging.info("Video saved at %s", moviebase)
+            
+            # please uncomment the code starts with `wandb` to add your wandb project tracking
             # if args.use_viewdirs:
             #     render_kwargs_test['c2w_staticcam'] = render_poses[0][:3,:4]
             #     with torch.no_grad():
@@ -945,6 +950,7 @@ def train():
             log_message = f"[TRAIN] Iter: {i} Loss: {loss.item()}  PSNR: {psnr.item()}"
             tqdm.write(log_message)
             logging.info(log_message)
+            # please uncomment the code starts with `wandb` to add your wandb project tracking
             # wandb.log({"epoch": i, "loss": loss.item(), "PSNR": psnr.item()}, step=N_iters)
 
         global_step += 1
@@ -952,6 +958,7 @@ def train():
 
 if __name__=='__main__':
     torch.set_default_tensor_type('torch.cuda.FloatTensor')
+    # please uncomment the code starts with `wandb` to add your wandb project tracking
     # wandb.init(project="nerf_pytorch_dv")
 
 

@@ -5,11 +5,12 @@ This folder contains the Jupyter Notebooks and scripts for the LearnOpenCV artic
 <img src="media/NeRF_featured_gif.gif">
 
 
+
 ## Run on Google Colab
 <a href="https://colab.research.google.com/drive/146xc4HcoiVCD_JTsefi9GYk5kXvjR4Cs?usp=sharing">
         <img alt="colab" src="https://raw.githubusercontent.com/nerfstudio-project/nerfstudio/main/docs/_static/imgs/readme_colab.png" width="150"></a>
 
-## Download datafrom here:
+## Download Dataset:
 - [DSLR dataset](https://www.dropbox.com/scl/fi/ijhlr5n5gevf14ujijc2k/images_fps2.zip?rlkey=ruqy7op8olvfab6lrbodk5kxs&st=77qz1fsl&dl=1)
 
 - [Dataset Link](https://www.dropbox.com/scl/fo/5tm5p4ftky14pr1amzidq/AEK-tyOrtvc3a_ydfOgbreI?rlkey=fjdxfphoaods07ame271rc6kh&st=x1glssoj&dl=1)
@@ -43,3 +44,7 @@ $ python run_nerf.py --config configs/<dataset_name>.txt --render_only
 ```
 
 After the end of training the model weights will be stored in the <expname>/logs folder. To do inference and extract mesh from the model, use the extract_mesh.ipynb notebook.
+
+
+## Acknowledgment:
+- The base code is adupted from the [nerf-pytorch](https://github.com/yenchenlin/nerf-pytorch) repository. 
