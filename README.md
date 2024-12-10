@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [FLUX Image Generation: Experimenting with the Parameters](https://learnopencv.com/flux-ai-image-generator/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Flux-Image-Generation) |
 | [Contrastive-Learning-SimCLR-and-BYOL(With Code Example)](https://learnopencv.com/contrastive-learning-simclr-and-byol-with-code-example/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Contrastive-Learning-SimCLR-and-BYOL) |
 | [The Annotated NeRF : Training on Custom Dataset from Scratch in Pytorch](https://learnopencv.com/annotated-nerf-pytorch/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Annotated-NeRF) |
 | [Stable Diffusion 3 and 3.5: Paper Explanation and Inference](https://learnopencv.com/stable-diffusion-3/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Stable-Diffusion-3) |
