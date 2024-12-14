@@ -1,0 +1,22 @@
+# assume torch is already installed
+
+# pycolmap for data parsing
+git+https://github.com/rmbrualla/pycolmap@cc7ea4b7301720ac29287dbe450952511b32125e
+# (optional) nerfacc for torch version rasterization 
+# git+https://github.com/nerfstudio-project/nerfacc
+
+viser
+nerfview==0.0.2
+imageio[ffmpeg]
+numpy<2.0.0
+scikit-learn
+tqdm
+torchmetrics[image]
+opencv-python
+tyro>=0.8.8
+Pillow
+tensorboard
+tensorly
+pyyaml
+matplotlib
+git+https://github.com/rahul-goel/fused-ssim@1272e21a282342e89537159e4bad508b19b34157

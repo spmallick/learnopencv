@@ -1,0 +1,67 @@
+<a class="sidebar-brand{% if logo %} centered{% endif %}" href="{{ pathto(master_doc) }}">
+    {% block brand_content %} {%- if logo_url %}
+    <div class="sidebar-logo-container">
+        <img class="sidebar-logo" src="{{ logo_url }}" alt="Logo" />
+    </div>
+    {%- endif %} {%- if theme_light_logo and theme_dark_logo %}
+    <div class="sidebar-logo-container" style="margin: .5rem auto .5rem auto">
+        <img class="sidebar-logo only-light" src="{{ pathto('_static/' + theme_light_logo, 1) }}" alt="Light Logo" />
+        <img class="sidebar-logo only-dark" src="{{ pathto('_static/' + theme_dark_logo, 1) }}" alt="Dark Logo" />
+    </div>
+    {%- endif %} {% if not theme_sidebar_hide_name %}
+    <span class="sidebar-brand-text">{{ docstitle if docstitle else project }}</span>
+    {%- endif %} {% endblock brand_content %}
+</a>
+
+<!-- Dropdown for different versions of the docs. Slightly hacky. -->
+<div style="padding: 0 1em;">
+    <script>
+      var DocsVersionsPopulated = false;
+
+      async function getVersionList() {
+        // This index.txt file is written by the docs.yml GitHub action.
+        // https://github.com/nerfstudio-project/gsplat/blob/main/.github/workflows/doc.yml
+        const response = await fetch(
+          "https://docs.gsplat.studio/versions/index.txt",
+          { cache: "no-cache" }
+        );
+        return await response.text();
+      }
+      async function DocsPopulateVersionDropDown () {
+        // Load the version list lazily...
+        if (DocsVersionsPopulated) {
+          return;
+        }
+        DocsVersionsPopulated = true;
+
+        console.log("Populating docs version list!")
+        const versions = (await getVersionList()).trim().split("\n").reverse();
+        console.log(versions);
+        let htmlString = "<ul style='margin: 0.5rem 0 0 0'>";
+        htmlString += `<li><a href="https://docs.gsplat.studio/main">main</a></li>`;
+        for (let version of versions) {
+          htmlString += `<li><a href="https://docs.gsplat.studio/versions/${version}">${version}</a></li>`;
+        }
+
+        htmlString += "</ul>";
+        document.getElementById("version-dropdown").innerHTML = htmlString;
+      }
+    </script>
+    <details
+        style="padding: 0.5rem; background: var(--color-background-primary); border-radius: 0.5rem; border: 1px solid var(--color-sidebar-background-border);"
+        ontoggle="DocsPopulateVersionDropDown()"
+    >
+    <summary style="cursor: pointer;"><strong>Version:</strong> <em>{{ version }}</em></summary>
+      <div id="version-dropdown"></div>
+    </details>
+    <!-- End dropdown -->
+</div>
+
+<div style="text-align: left; padding: 1em">
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <a class="github-button" href="https://github.com/nerfstudio-project/gsplat"
+        data-color-scheme="no-preference: light; light: light; dark: light;" data-size="large" data-show-count="true"
+        aria-label="Download buttons/github-buttons on GitHub">
+        Github
+    </a>
+</div>

@@ -1,0 +1,42 @@
+# A workflow that creates a minimal archive with only the glm/ headers and copying.txt.
+
+name: Make light release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  make_zip:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Install dependencies
+      run: sudo apt-get update -y && sudo apt-get install -y zip p7zip
+      
+    - name: Check out repository code
+      uses: actions/checkout@v4
+      
+    - name: Set env
+      run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+      
+#    - name: Prepare layout
+#      run: mv copying.txt glm
+      
+    - name: Create zip archive
+      run: zip -r glm-${{ env.RELEASE_VERSION }}.zip .
+      
+    - name: Create 7z archive
+      run: 7z a glm-${{ env.RELEASE_VERSION }}.7z .
+      
+    - uses: actions/upload-artifact@v4
+      with:
+        name: glm-${{ env.RELEASE_VERSION }}
+        path: glm-${{ env.RELEASE_VERSION }}.*
+        
+    - name: Add to Release
+      uses: softprops/action-gh-release@v2
+      with:
+        files: |
+          glm-${{ env.RELEASE_VERSION }}.zip
+          glm-${{ env.RELEASE_VERSION }}.7z
