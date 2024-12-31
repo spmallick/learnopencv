@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Molmo VLM: Paper Explanation and Demo](https://learnopencv.com/molmo-vlm) | [Code](https://github.com/spmallick/learnopencv/tree/master/Molmo-VLM-SAM2) |
 | [3D Gaussian Splatting Paper Explanation: Training Custom Datasets with NeRF-Studio Gsplats](https://learnopencv.com/3d-gaussian-splatting/) | [Code](https://github.com/spmallick/learnopencv/tree/master/3D-Gaussian-Splatting-Code) |
 | [FLUX Image Generation: Experimenting with the Parameters](https://learnopencv.com/flux-ai-image-generator/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Flux-Image-Generation) |
 | [Contrastive-Learning-SimCLR-and-BYOL(With Code Example)](https://learnopencv.com/contrastive-learning-simclr-and-byol-with-code-example/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Contrastive-Learning-SimCLR-and-BYOL) |
