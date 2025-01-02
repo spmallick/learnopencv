@@ -1,0 +1,23 @@
+# requirements.txt
+
+# Core deep learning libraries
+torch>=1.9.0
+torchvision>=0.10.0
+torchaudio>=0.9.0
+
+# For displaying training progress in the command line
+tqdm>=4.62.0
+
+# Gradio for the web-based inference UI
+gradio>=3.0.0
+
+# Image handling
+Pillow>=8.0.0
+pickle
+
+# (Optional) if you want to store vocabulary or other metadata in Pickle/JSON, but typically included with Python
+# pickle5>=0.0.11
+
+# If you need other libraries (e.g., for advanced tokenization), add them here.
+# spacy>=3.0.0
+# nltk>=3.6.0
