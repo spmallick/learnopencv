@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [SimSiam: Streamlining SSL with Stop-Gradient Mechanism](https://learnopencv.com/simsiam/) | [Code](https://github.com/spmallick/learnopencv/tree/master/SimSiam-Streamlining-SSL-with-Stop-Gradient-Mechanism) |
 | [Image Captioning using ResNet and LSTM](https://learnopencv.com/image-captioning/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Image-Captioning-using-ResNet-and-LSTM) |
 | [Molmo VLM: Paper Explanation and Demo](https://learnopencv.com/molmo-vlm) | [Code](https://github.com/spmallick/learnopencv/tree/master/Molmo-VLM-SAM2) |
 | [3D Gaussian Splatting Paper Explanation: Training Custom Datasets with NeRF-Studio Gsplats](https://learnopencv.com/3d-gaussian-splatting/) | [Code](https://github.com/spmallick/learnopencv/tree/master/3D-Gaussian-Splatting-Code) |
