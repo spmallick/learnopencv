@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Fine-tuning-Stable-Diffusion-3_5-UI-images](https://learnopencv.com/fine-tuning-stable-diffusion-3-5m/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Fine-tuning-Stable-Diffusion-3_5-UI-images) |
 | [SimSiam: Streamlining SSL with Stop-Gradient Mechanism](https://learnopencv.com/simsiam/) | [Code](https://github.com/spmallick/learnopencv/tree/master/SimSiam-Streamlining-SSL-with-Stop-Gradient-Mechanism) |
 | [Image Captioning using ResNet and LSTM](https://learnopencv.com/image-captioning/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Image-Captioning-using-ResNet-and-LSTM) |
 | [Molmo VLM: Paper Explanation and Demo](https://learnopencv.com/molmo-vlm) | [Code](https://github.com/spmallick/learnopencv/tree/master/Molmo-VLM-SAM2) |
