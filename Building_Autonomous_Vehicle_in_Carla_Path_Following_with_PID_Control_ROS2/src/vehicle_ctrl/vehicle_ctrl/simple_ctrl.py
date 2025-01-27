@@ -40,7 +40,7 @@ class CarlaVehicleControl(Node):
         )
         self.goal_pose_sub = self.create_subscription(
             PoseStamped,
-            '/goal_pose',
+            '',
             self.goal_pose_callback,
             10
         )
