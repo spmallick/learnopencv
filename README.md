@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Object Insertion in Gaussian Splatting: Paper Explained and Training Code for MCMC and Bilateral Grid](https://learnopencv.com/object-insertion-in-gaussian-splatting/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Object-Insertion-in-Gaussian-Splatting) |
 | [Depth Pro: Sharp Monocular Metric Depth](https://learnopencv.com/depth-pro-monocular-metric-depth) | [Code](https://github.com/spmallick/learnopencv/tree/master/DepthPro-Monocular-Metric-Depth) |
 | [Fine-tuning-Stable-Diffusion-3_5-UI-images](https://learnopencv.com/fine-tuning-stable-diffusion-3-5m/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Fine-tuning-Stable-Diffusion-3_5-UI-images) |
 | [SimSiam: Streamlining SSL with Stop-Gradient Mechanism](https://learnopencv.com/simsiam/) | [Code](https://github.com/spmallick/learnopencv/tree/master/SimSiam-Streamlining-SSL-with-Stop-Gradient-Mechanism) |
