@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Video Generation: A Diffusion based approach](https://learnopencv.com/video-generation-models/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Video-Generation-A-Diffusion-based-approach) |
 | [Agentic AI: A Comprehensive Introduction](https://learnopencv.com/agentic-ai/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Agentic-AI-A-Comprehensive-Introduction) |
 | [Finetuning SAM2 for Leaf Disease Segmentation](https://learnopencv.com/finetuning-sam2/) | [Code](https://github.com/spmallick/learnopencv/tree/master/finetuning-sam2) |
 | [Object Insertion in Gaussian Splatting: Paper Explained and Training Code for MCMC and Bilateral Grid](https://learnopencv.com/object-insertion-in-gaussian-splatting/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Object-Insertion-in-Gaussian-Splatting) |
