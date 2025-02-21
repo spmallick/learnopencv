@@ -1,6 +1,6 @@
 # Video Generation: A Diffusion based approach
 
-This repository contains the script to perform inferencing on YOLOv12 object detection model. This is a part of the LearnOpenCV blog post - [YOLOv12](https://learnopencv.com/yolov12).
+This repository contains the script to perform inferencing on YOLOv12 object detection model. This is a part of the LearnOpenCV blog post - [YOLOv12: Attention Meets Speed](https://learnopencv.com/yolov12).
 
 [<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://www.dropbox.com/scl/fi/vlr99zrrbj6vx8aerdpni/YOLOv12_inf.ipynb?rlkey=edxvaa08mb3hqn3inh5izpsus&st=znuovn8o&dl=1)
 
