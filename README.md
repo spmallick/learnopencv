@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [YOLOv12: Attention Meets Speed](https://learnopencv.com/yolov12) | [Code](https://github.com/spmallick/learnopencv/tree/master/YOLOv12) |
 | [Video Generation: A Diffusion based approach](https://learnopencv.com/video-generation-models/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Video-Generation-A-Diffusion-based-approach) |
 | [Agentic AI: A Comprehensive Introduction](https://learnopencv.com/agentic-ai/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Agentic-AI-A-Comprehensive-Introduction) |
 | [Finetuning SAM2 for Leaf Disease Segmentation](https://learnopencv.com/finetuning-sam2/) | [Code](https://github.com/spmallick/learnopencv/tree/master/finetuning-sam2) |
