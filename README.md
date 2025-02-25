@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [DUSt3R: Geometric 3D Vision Made Easy :  Explanation and Results](https://learnopencv.com/dust3r-geometric-3d-vision/) | [Code](https://github.com/spmallick/learnopencv/tree/master/DUSt3R-Dense-3D-Reconstruction) |
 | [YOLOv12: Attention Meets Speed](https://learnopencv.com/yolov12) | [Code](https://github.com/spmallick/learnopencv/tree/master/YOLOv12) |
 | [Video Generation: A Diffusion based approach](https://learnopencv.com/video-generation-models/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Video-Generation-A-Diffusion-based-approach) |
 | [Agentic AI: A Comprehensive Introduction](https://learnopencv.com/agentic-ai/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Agentic-AI-A-Comprehensive-Introduction) |
