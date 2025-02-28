@@ -8,7 +8,7 @@ namespace bv
 
 	CV_EXPORTS_W void fillHoles(Mat &mat);
 
-	class CV_EXPORTS_W Filters 
+	class CV_EXPORTS_W Filters
 	{
 	public:
 		CV_WRAP Filters();
