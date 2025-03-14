@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [GraphRAG: For Medical Document Analysis](https://learnopencv.com/graphrag-explained-knowledge-graphs-medical/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Graphrag-Medical-Document-Analysis) |
 | [OmniParser: Vision Based GUI Agent](https://learnopencv.com/omniparser-vision-based-gui-agent/) | |
 | [Fine-Tuning-YOLOv12-Comparison-With-YOLOv11-And-YOLOv7-Based-Darknet](https://learnopencv.com/fine-tuning-yolov12/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Fine-Tuning-YOLOv12-Comparison-With-YOLOv11-And-YOLOv7-Based-Darknet) |
 | [FineTuning RetinaNet for Wildlife Detection with PyTorch: A Step-by-Step Tutorial](https://learnopencv.com/finetuning-retinanet) | [Code](https://github.com/spmallick/learnopencv/tree/master/finetuning-retinanet) |

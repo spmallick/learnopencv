@@ -4,7 +4,7 @@ This folder contains the Jupyter Notebooks and Scripts for the LearnOpenCV artic
 
 <img src="readme_images/feature.gif">
 
-### subsetsTo run:
+### To run:
 
 Visit DUSt3R Repository : [Link](https://github.com/naver/dust3r)
 
