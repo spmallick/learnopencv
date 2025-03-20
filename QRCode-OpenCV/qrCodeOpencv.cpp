@@ -1,4 +1,3 @@
-// #include <opencv2/opencv.hpp>
 #include <opencv2/objdetect.hpp>
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/highgui/highgui.hpp>
@@ -10,10 +9,20 @@ using namespace std;
 
 void display(Mat &im, Mat &bbox)
 {
-  int n = bbox.rows;
-  for(int i = 0 ; i < n ; i++)
-  {
-    line(im, Point2i(bbox.at<float>(i,0),bbox.at<float>(i,1)), Point2i(bbox.at<float>((i+1) % n,0), bbox.at<float>((i+1) % n,1)), Scalar(255,0,0), 3);
+  int index = 0;
+  int max_index = (bbox.cols*2);
+  for(int l = 0 ; l < bbox.cols; l++) {
+    line(
+        im,
+        Point(
+          bbox.at<float>(0, index),
+          bbox.at<float>(0, index+1)),
+        Point(
+          bbox.at<float>(0, (index+2) % max_index),
+          bbox.at<float>(0, (index+3) % max_index)),
+        Scalar(0,255,0),
+        2);
+    index+=2;
   }
   imshow("Result", im);
 }
