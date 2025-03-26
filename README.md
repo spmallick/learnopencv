@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [MASt3R and MASt3R-SfM Explanation: Image Matching and 3D Reconstruction](https://learnopencv.com/mast3r-sfm-grounding-image-matching-3d/) | [Code](https://github.com/spmallick/learnopencv/tree/master/MASt3R-SfM-3D-Reconstruction-Image-Matching) |
 | [MatAnyone Explained: Consistent Memory for Better Video Matting](https://learnopencv.com/matanyone-for-better-video-matting/) | [Code](https://github.com/spmallick/learnopencv/tree/master/MatAnyone-Explained-Consistent-Memory-for-Better-Video-Matting) |
 | [GraphRAG: For Medical Document Analysis](https://learnopencv.com/graphrag-explained-knowledge-graphs-medical/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Graphrag-Medical-Document-Analysis) |
 | [OmniParser: Vision Based GUI Agent](https://learnopencv.com/omniparser-vision-based-gui-agent/) | |
