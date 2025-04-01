@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [YOLO11 on Raspberry Pi: Optimizing Object Detection for Edge Devices](https://learnopencv.com/yolo11-on-raspberry-pi/) | [Code](https://github.com/spmallick/learnopencv/tree/master/yolo11-on-raspberry-pi) |
 | [VGGT: Visual Geometry Grounded Transformer – For Dense 3D Reconstruction](https://learnopencv.com/vggt-visual-geometry-grounded-transformer-3d-reconstruction/) | |
 | [DDIM: The Faster, Improved Version of DDPM for Efficient AI Image Generation](https://learnopencv.com/understanding-ddim/) | [Code](https://github.com/spmallick/learnopencv/tree/master/DDIM-The-Faster-Improved-Version-of-DDPM-for-Efficient-AI-Image-Generation) |
 | [Introduction to Model Context Protocol (MCP)](https://learnopencv.com/introduction-to-model-context-protocol/) | |
