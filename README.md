@@ -15,8 +15,9 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Gemma-3: A Comprehensive Introduction](https://learnopencv.com/gemma-3/) | |
 | [YOLO11 on Raspberry Pi: Optimizing Object Detection for Edge Devices](https://learnopencv.com/yolo11-on-raspberry-pi/) | [Code](https://github.com/spmallick/learnopencv/tree/master/yolo11-on-raspberry-pi) |
-| [VGGT: Visual Geometry Grounded Transformer – For Dense 3D Reconstruction](https://learnopencv.com/vggt-visual-geometry-grounded-transformer-3d-reconstruction/) | |
+| [VGGT: Visual Geometry Grounded Transformer – For Dense 3D Reconstruction](https://learnopencv.com/vggt-visual-geometry-grounded-transformer-3d-reconstruction/) | [Code](https://github.com/spmallick/learnopencv/tree/master/VGGT-3D-Reconstruction) |
 | [DDIM: The Faster, Improved Version of DDPM for Efficient AI Image Generation](https://learnopencv.com/understanding-ddim/) | [Code](https://github.com/spmallick/learnopencv/tree/master/DDIM-The-Faster-Improved-Version-of-DDPM-for-Efficient-AI-Image-Generation) |
 | [Introduction to Model Context Protocol (MCP)](https://learnopencv.com/introduction-to-model-context-protocol/) | |
 | [MASt3R and MASt3R-SfM Explanation: Image Matching and 3D Reconstruction](https://learnopencv.com/mast3r-sfm-grounding-image-matching-3d/) | [Code](https://github.com/spmallick/learnopencv/tree/master/MASt3R-SfM-3D-Reconstruction-Image-Matching) |
