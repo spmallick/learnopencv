@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [ComfyUI](https://learnopencv.com/introduction-to-comfyui-for-stable-diffusion/) | [Code](https://github.com/spmallick/learnopencv/tree/master/ComfyUI) |
 | [Gemma-3: A Comprehensive Introduction](https://learnopencv.com/gemma-3/) | |
 | [YOLO11 on Raspberry Pi: Optimizing Object Detection for Edge Devices](https://learnopencv.com/yolo11-on-raspberry-pi/) | [Code](https://github.com/spmallick/learnopencv/tree/master/yolo11-on-raspberry-pi) |
 | [VGGT: Visual Geometry Grounded Transformer – For Dense 3D Reconstruction](https://learnopencv.com/vggt-visual-geometry-grounded-transformer-3d-reconstruction/) | [Code](https://github.com/spmallick/learnopencv/tree/master/VGGT-3D-Reconstruction) |
