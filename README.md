@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Fine-Tuning Gemma 3 VLM using QLoRA for LaTeX-OCR Dataset](https://learnopencv.com/fine-tuning-gemma-3/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Fine-Tuning-Gemma-3-VLM-using-QLoRA-for-LaTeX-OCR-Dataset) |
 | [ComfyUI](https://learnopencv.com/introduction-to-comfyui-for-stable-diffusion/) | [Code](https://github.com/spmallick/learnopencv/tree/master/ComfyUI) |
 | [Gemma-3: A Comprehensive Introduction](https://learnopencv.com/gemma-3/) | |
 | [YOLO11 on Raspberry Pi: Optimizing Object Detection for Edge Devices](https://learnopencv.com/yolo11-on-raspberry-pi/) | [Code](https://github.com/spmallick/learnopencv/tree/master/yolo11-on-raspberry-pi) |
