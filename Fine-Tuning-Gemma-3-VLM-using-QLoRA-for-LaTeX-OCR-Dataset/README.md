@@ -9,7 +9,7 @@ It is part of the LearnOpenCV blog post - [Fine-Tuning Gemma 3 VLM using QLoRA f
 
 [<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://www.dropbox.com/scl/fo/3rif02nrr5waoihwx95rr/AH2kPYJqhS7sP-lGWy9jfnI?rlkey=uy65pfjip0c4402w43vyop05y&st=vbnz6424&dl=1)
 
-![](./Fine-Tuning-Gemma-3-VLM-using-QLoRA-for-LaTeX-OCR-Dataset.jpg)
+![](https://learnopencv.com/wp-content/uploads/2025/04/Fine-Tuning-Gemma-3-VLM-using-QLoRA-for-LaTeX-OCR-Dataset.gif)
 
 
 ## AI Courses by OpenCV
