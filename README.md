@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Qwen2.5-Omni: A Real-Time Multimodal AI](https://learnopencv.com/qwen2.5-omni/) | |
 | [Vision Language Action Models: Robotic Control](https://learnopencv.com/vision-language-action-models-lerobot-policy/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Vision-Language-Action-Models) |
 | [Fine-Tuning Gemma 3 VLM using QLoRA for LaTeX-OCR Dataset](https://learnopencv.com/fine-tuning-gemma-3/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Fine-Tuning-Gemma-3-VLM-using-QLoRA-for-LaTeX-OCR-Dataset) |
 | [ComfyUI](https://learnopencv.com/introduction-to-comfyui-for-stable-diffusion/) | [Code](https://github.com/spmallick/learnopencv/tree/master/ComfyUI) |
