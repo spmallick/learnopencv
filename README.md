@@ -15,6 +15,9 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [MASt3R-SLAM: Real-Time Dense SLAM with 3D Reconstruction Priors](https://learnopencv.com/mast3r-slam-realtime-dense-slam-explained/) | [Code](https://github.com/spmallick/learnopencv/blob/master/MASt3R-SLAM) |
+| [Google's A2A Protocol](https://learnopencv.com/googles-a2a-protocol-heres-what-you-need-to-know/) | |
+| [Nvidia SANA : Faster Image Generation](https://learnopencv.com/nvidia-sana-image-generation-model/) | |
 | [Fine-tuning RF-DETR](https://learnopencv.com/rf-detr-object-detection/) | [Code](https://github.com/spmallick/learnopencv/blob/master/Fine-tuning-RF-DETR) |
 | [Qwen2.5-Omni: A Real-Time Multimodal AI](https://learnopencv.com/qwen2.5-omni/) | |
 | [Vision Language Action Models: Robotic Control](https://learnopencv.com/vision-language-action-models-lerobot-policy/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Vision-Language-Action-Models) |
