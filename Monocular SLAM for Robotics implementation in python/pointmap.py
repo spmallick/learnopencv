@@ -12,6 +12,7 @@ class Map(object):
         self.state = None # variable to hold current state of the map and cam pose
         self.q = None # A queue for inter-process communication. | q for visualization process
         self.q_image = None
+        
     def create_viewer(self):
         # Parallel Execution: The main purpose of creating this process is to run 
         # the `viewer_thread` method in parallel with the main program. 
@@ -49,16 +50,23 @@ class Map(object):
 
         # Sets up the camera with a projection matrix and a model-view matrix
         self.scam = pangolin.OpenGlRenderState(
-            # `ProjectionMatrix` The parameters specify the width and height of the viewport (w, h), the focal lengths in the x and y directions (420, 420), the principal point coordinates (w//2, h//2), and the near and far clipping planes (0.2, 10000). The focal lengths determine the field of view, 
-            # the principal point indicates the center of the projection, and the clipping planes define the range of distances from the camera within which objects are rendered, with objects closer than 0.2 units or farther than 10000 units being clipped out of the scene. 
+            # `ProjectionMatrix` The parameters specify the width and height of the viewport (w, h), the focal lengths in the x and y directions (420, 420),
+            # the principal point coordinates (w//2, h//2), and the near and far clipping planes (0.2, 10000). The focal lengths determine the field of view, 
+            # the principal point indicates the center of the projection, and the clipping planes define the range of distances from the camera within which
+            # objects are rendered, with objects closer than 0.2 units or farther than 10000 units being clipped out of the scene. 
             pangolin.ProjectionMatrix(w, h, 420, 420, w//2, h//2, 0.2, 10000),
-            # pangolin.ModelViewLookAt(0, -10, -8, 0, 0, 0, 0, -1, 0) sets up the camera view matrix, which defines the position and orientation of the camera in the 3D scene. The first three parameters (0, -10, -8) specify the position of the camera in the world coordinates, indicating that the camera is located at coordinates (0, -10, -8). The next three parameters (0, 0, 0) 
-            # define the point in space the camera is looking at, which is the origin in this case. The last three parameters (0, -1, 0) represent the up direction vector, indicating which direction is considered 'up' for the camera, here pointing along the negative y-axis. This setup effectively positions the camera 10 units down and 8 units back from the origin, looking towards the origin with the 'up' direction being downwards in the y-axis, which is unconventional and might be used to achieve a specific orientation or perspective in the rendered scene.
+            # pangolin.ModelViewLookAt(0, -10, -8, 0, 0, 0, 0, -1, 0) sets up the camera view matrix, which defines the position and orientation of the camera in the 3D scene.
+            # The first three parameters (0, -10, -8) specify the position of the camera in the world coordinates, indicating that the camera is located at coordinates (0, -10, -8). 
+            # The next three parameters (0, 0, 0) 
+            # define the point in space the camera is looking at, which is the origin in this case. 
+            # The last three parameters (0, -1, 0) represent the up direction vector, indicating which direction is considered 'up' for the camera, 
+            # here pointing along the negative y-axis. This setup effectively positions the camera 10 units down and 8 units back from the origin, 
+            # looking towards the origin with the 'up' direction being downwards in the y-axis, which is unconventional and might be used to achieve a 
+            # specific orientation or perspective in the rendered scene.
             pangolin.ModelViewLookAt(0, -10, -8, 0, 0, 0, 0, -1, 0))
+        
         # Creates a handler for 3D interaction.
         self.handler = pangolin.Handler3D(self.scam)
-        
-
  
         # Creates a display context.
         self.dcam = pangolin.CreateDisplay()
