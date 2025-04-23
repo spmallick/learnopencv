@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Beginner's Guide to Embedding Models](https://learnopencv.com/embedding-models-explained/) | |
 | [MASt3R-SLAM: Real-Time Dense SLAM with 3D Reconstruction Priors](https://learnopencv.com/mast3r-slam-realtime-dense-slam-explained/) | [Code](https://github.com/spmallick/learnopencv/blob/master/MASt3R-SLAM) |
 | [Google's A2A Protocol](https://learnopencv.com/googles-a2a-protocol-heres-what-you-need-to-know/) | |
 | [Nvidia SANA : Faster Image Generation](https://learnopencv.com/nvidia-sana-image-generation-model/) | |
