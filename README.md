@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [MedSAM2 Explained: One Prompt to Segment Anything in Medical Imaging](https://learnopencv.com/medsam2-explained/) | [Code](https://github.com/spmallick/learnopencv/blob/master/medsam2-explained) |
 | [Batch Normalization and Dropout as Regularizers](https://learnopencv.com/batch-normalization-and-dropout-as-regularizers/) | |
 | [DINOv2_by_Meta_A_Self-Supervised_foundational_vision_model](https://learnopencv.com/dinov2-self-supervised-vision-transformer/) | [Code](https://github.com/spmallick/learnopencv/blob/master/DINOv2_by_Meta_A_Self-Supervised_foundational_vision_model) |
 | [Beginner's Guide to Embedding Models](https://learnopencv.com/embedding-models-explained/) | |
