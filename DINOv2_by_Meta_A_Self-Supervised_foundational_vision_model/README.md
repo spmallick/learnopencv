@@ -4,7 +4,7 @@ This repository contains the script to perform inferencing with pretrained DINOv
 
 [<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://www.dropbox.com/scl/fi/inqmkq2fvb6ufx3xcbruk/inferencing_with_pretrained_dinov2_base.ipynb?rlkey=y6swe2rxyuqfoiwidrpjnd1eb&st=7gpmo4nm&dl=1)
 
-![](./dinov2_featured_image)
+![](dinov2_featured_image.gif)
 
 ## AI Courses by OpenCV
 
