@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Unsloth: A Guide from Basics to Fine-Tuning Vision Models](https://learnopencv.com/unsloth-guide-efficient-llm-fine-tuning/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Unsloth_A_Guide_From_Basics_to_Fine_Tuning_Vision_Models) |
 | [Iterative Closest Point (ICP) Algorithm Explained](https://learnopencv.com/iterative-closest-point-icp-explained/) | [Code](https://github.com/spmallick/learnopencv/blob/master/Iterative-Closest-Point-ICP) |
 | [MedSAM2 Explained: One Prompt to Segment Anything in Medical Imaging](https://learnopencv.com/medsam2-explained/) | [Code](https://github.com/spmallick/learnopencv/blob/master/medsam2-explained) |
 | [Batch Normalization and Dropout as Regularizers](https://learnopencv.com/batch-normalization-and-dropout-as-regularizers/) | |
