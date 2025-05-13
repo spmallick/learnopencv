@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [FramePack-Video-Diffusion-but-feels-like-Image-Diffusion](https://learnopencv.com/framepack-video-diffusion/) | [Code](https://github.com/spmallick/learnopencv/tree/master/FramePack-Video-Diffusion-but-feels-like-Image-Diffusion) |
 | [Model Weights File Formats in Machine Learning](https://learnopencv.com/model-weights-file-formats-in-machine-learning/) | |
 | [Unsloth: A Guide from Basics to Fine-Tuning Vision Models](https://learnopencv.com/unsloth-guide-efficient-llm-fine-tuning/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Unsloth_A_Guide_From_Basics_to_Fine_Tuning_Vision_Models) |
 | [Iterative Closest Point (ICP) Algorithm Explained](https://learnopencv.com/iterative-closest-point-icp-explained/) | [Code](https://github.com/spmallick/learnopencv/blob/master/Iterative-Closest-Point-ICP) |
