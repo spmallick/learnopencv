@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Inside the GPU: A Comprehensive Guide to Modern Graphics Architecture](https://learnopencv.com/inside-the-gpu-a-comprehensive-guide-to-modern-graphics-architecture/) | |
 | [Distributed Parallel Training: PyTorch](https://learnopencv.com/distributed-parallel-training-pytorch-multi-gpu-setup/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Distributed-Training-PyTorch) |
 | [MONAI: The Definitive Framework for Medical Imaging Powered by PyTorch](https://learnopencv.com/monai-medical-imaging-pytorch/) | |
 | [SANA-Sprint: The One-Step Revolution in High-Quality AI Image Synthesis](https://learnopencv.com/sana-sprint-the-one-step-revolution-in-high-quality-ai-image-synthesis/) | |
