@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Getting Started with Qwen3 – The Thinking Expert](https://learnopencv.com/qwen3/) | [Code](https://github.com/spmallick/learnopencv/tree/master/qwen3) |
 | [Inside the GPU: A Comprehensive Guide to Modern Graphics Architecture](https://learnopencv.com/modern-gpu-architecture-explained/) | |
 | [Distributed Parallel Training: PyTorch](https://learnopencv.com/distributed-parallel-training-pytorch-multi-gpu-setup/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Distributed-Training-PyTorch) |
 | [MONAI: The Definitive Framework for Medical Imaging Powered by PyTorch](https://learnopencv.com/monai-medical-imaging-pytorch/) | |
