@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Fine-Tuning Grounding DINO: Open-Vocabulary Object Detection](https://learnopencv.com/fine-tuning-grounding-dino/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Fine-Tuning-Grounding-DINO-Open-Vocabulary-Object-Detection) |
 | [Getting Started with Qwen3 – The Thinking Expert](https://learnopencv.com/qwen3/) | [Code](https://github.com/spmallick/learnopencv/tree/master/qwen3) |
 | [Inside the GPU: A Comprehensive Guide to Modern Graphics Architecture](https://learnopencv.com/modern-gpu-architecture-explained/) | |
 | [Distributed Parallel Training: PyTorch](https://learnopencv.com/distributed-parallel-training-pytorch-multi-gpu-setup/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Distributed-Training-PyTorch) |
