@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [SmolVLA: Affordable & Efficient VLA Robotics on Consumer GPUs](https://learnopencv.com/smolvla-lerobot-vision-language-action-model/) | [Code](https://github.com/spmallick/learnopencv/tree/master/smolvla) |
 | [Fine-Tuning Grounding DINO: Open-Vocabulary Object Detection](https://learnopencv.com/fine-tuning-grounding-dino/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Fine-Tuning-Grounding-DINO-Open-Vocabulary-Object-Detection) |
 | [Getting Started with Qwen3 – The Thinking Expert](https://learnopencv.com/qwen3/) | [Code](https://github.com/spmallick/learnopencv/tree/master/qwen3) |
 | [Inside the GPU: A Comprehensive Guide to Modern Graphics Architecture](https://learnopencv.com/modern-gpu-architecture-explained/) | |
