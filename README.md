@@ -15,6 +15,8 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [NVIDIA Cosmos Reason1: Video Understanding](https://learnopencv.com/cosmos-reason-vlm-video-vqa/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Cosmos-Reason1-Video-Understanding) |
+| [GR00T N1.5 Explained](https://learnopencv.com/gr00t-n1_5-explained/) |  |
 | [LLaVA](https://learnopencv.com/llava-training-a-visual-assistant/) | [Code](https://github.com/spmallick/learnopencv/tree/master/LLaVA) |
 | [SmolVLA: Affordable & Efficient VLA Robotics on Consumer GPUs](https://learnopencv.com/smolvla-lerobot-vision-language-action-model/) | [Code](https://github.com/spmallick/learnopencv/tree/master/smolvla) |
 | [Fine-Tuning Grounding DINO: Open-Vocabulary Object Detection](https://learnopencv.com/fine-tuning-grounding-dino/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Fine-Tuning-Grounding-DINO-Open-Vocabulary-Object-Detection) |
