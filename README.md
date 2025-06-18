@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [V-JEPA 2: Meta’s Breakthrough in AI for the Physical World](https://learnopencv.com/?p=73731&preview_id=73731&preview_nonce=beb70ccf8e&preview=true#heading-7) | [Code](https://github.com/spmallick/learnopencv/tree/master/V-JEPA-2) |
 | [NVIDIA Cosmos Reason1: Video Understanding](https://learnopencv.com/cosmos-reason-vlm-video-vqa/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Cosmos-Reason1-Video-Understanding) |
 | [GR00T N1.5 Explained](https://learnopencv.com/gr00t-n1_5-explained/) |  |
 | [LLaVA](https://learnopencv.com/llava-training-a-visual-assistant/) | [Code](https://github.com/spmallick/learnopencv/tree/master/LLaVA) |
