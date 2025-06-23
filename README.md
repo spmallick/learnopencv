@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Nanonets-OCR-s: Enabling Rich, Structured Markdown for Document Understanding](https://learnopencv.com/nanonets-ocr-s/) | |
 | [Optimizing VJEPA-2: Tackling Latency & Context in Real-Time Video Classification Scripts](https://learnopencv.com/optimizing-vjepa-2-in-real-time-video-classification/) | [Code](https://github.com/spmallick/learnopencv/tree/master/VJEPA-2-Video-Classification) |
 | [V-JEPA 2: Meta’s Breakthrough in AI for the Physical World](https://learnopencv.com/?p=73731&preview_id=73731&preview_nonce=beb70ccf8e&preview=true#heading-7) | [Code](https://github.com/spmallick/learnopencv/tree/master/V-JEPA-2) |
 | [NVIDIA Cosmos Reason1: Video Understanding](https://learnopencv.com/cosmos-reason-vlm-video-vqa/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Cosmos-Reason1-Video-Understanding) |
