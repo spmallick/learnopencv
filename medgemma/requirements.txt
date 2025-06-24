@@ -1,0 +1,6 @@
+transformers
+Pillow
+spaces
+torch
+accelerate
+bitsandbytes
