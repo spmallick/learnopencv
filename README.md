@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [SigLIP 2: DeepMind’s Multilingual Vision-Language Model](https://learnopencv.com/siglip-2-deepminds-multilingual-vision-language-model/) | |
 | [MedGemma: Google’s Medico VLM for Clinical QA, Imaging, and More](https://learnopencv.com/medgemma-explained/) | [Code](https://github.com/spmallick/learnopencv/tree/master/medgemma) |
 | [Nanonets-OCR-s: Enabling Rich, Structured Markdown for Document Understanding](https://learnopencv.com/nanonets-ocr-s/) | |
 | [Optimizing VJEPA-2: Tackling Latency & Context in Real-Time Video Classification Scripts](https://learnopencv.com/optimizing-vjepa-2-in-real-time-video-classification/) | [Code](https://github.com/spmallick/learnopencv/tree/master/VJEPA-2-Video-Classification) |
