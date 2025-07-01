@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Fine-Tuning AnomalyCLIP: Class-Agnostic Zero-Shot Anomaly Detection](https://learnopencv.com/fine-tuning-anomalyclip-medical-anomaly-clip/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Fine-Tuning-AnomalyCLIP) |
 | [SigLIP 2: DeepMind’s Multilingual Vision-Language Model](https://learnopencv.com/siglip-2-deepminds-multilingual-vision-language-model/) | |
 | [MedGemma: Google’s Medico VLM for Clinical QA, Imaging, and More](https://learnopencv.com/medgemma-explained/) | [Code](https://github.com/spmallick/learnopencv/tree/master/medgemma) |
 | [Nanonets-OCR-s: Enabling Rich, Structured Markdown for Document Understanding](https://learnopencv.com/nanonets-ocr-s/) | |

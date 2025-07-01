@@ -1,0 +1,10 @@
+scikit-image
+scikit-learn
+scipy
+seaborn
+timm
+torch
+# torchsummary==1.5.1
+torchvision
+tqdm==4.65.0
+dash-table
