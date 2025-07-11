@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [SmolLM3 Blueprint: SOTA 3B-Parameter LLM](https://learnopencv.com/smollm3-explained/) | |
 | [LangGraph-A-Visual-Automation-and-Summarization-Pipeline](https://learnopencv.com/langgraph-building-a-visual-web-browser-agent/) | [Code](https://github.com/spmallick/learnopencv/tree/master/LangGraph-A-Visual-Automation-and-Summarization-Pipeline) |
 | [Fine-Tuning AnomalyCLIP: Class-Agnostic Zero-Shot Anomaly Detection](https://learnopencv.com/fine-tuning-anomalyclip-medical-anomaly-clip/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Fine-Tuning-AnomalyCLIP) |
 | [SigLIP 2: DeepMind’s Multilingual Vision-Language Model](https://learnopencv.com/siglip-2-deepminds-multilingual-vision-language-model/) | |
