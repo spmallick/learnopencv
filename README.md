@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Inside Sinusoidal Position Embeddings: A Sense of Order](https://learnopencv.com/sinusoidal-position-embeddings/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Sinusoidal_Position_Embeddings) |
 | [Inside RoPE: Rotary Magic into Position Embeddings](https://learnopencv.com/rope-position-embeddings/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Inside_RoPE_Position_Embeddings) |
 | [SimLingo-Vision-Language-Action-Model-for-Autonomous-Driving](https://learnopencv.com/simlingo-vision-language-action-model-for-autonomous-driving/) | [Code](https://github.com/spmallick/learnopencv/tree/master/SimLingo-Vision-Language-Action-Model-for-Autonomous-Driving) |
 | [FineTuning Gemma 3n for Medical VQA on ROCOv2](https://learnopencv.com/finetuning-gemma-3n-medical-vqa/) | [Code](https://github.com/spmallick/learnopencv/tree/master/finetuning-gemma3n) |
