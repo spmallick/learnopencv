@@ -1,0 +1,11 @@
+torch
+transformers
+datasets
+bitsandbytes
+Pillow
+gradio
+accelerate
+qwen-vl-utils
+torchvision
+matplotlib
+supervision
