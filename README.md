@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [AI_for_Video_Understanding_From_Content_Moderation_to_Summarization](https://learnopencv.com/ai-for-video-understanding/) | [Code](https://github.com/spmallick/learnopencv/tree/master/AI_for_Video_Understanding_From_Content_Moderation_to_Summarization) |
 | [Video-RAG: Training-Free Retrieval for Long-Video LVLMs](https://learnopencv.com/video-rag-for-long-videos/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Video-RAG_Training_Free_Retrieval_for_Long_Video_LVLMs) |
 | [Object Detection and Spatial Understanding with VLMs ft. Qwen2.5-VL](https://learnopencv.com/object-detection-with-vlms-ft-qwen2-5-vl/) | [Code](https://github.com/spmallick/learnopencv/tree/master/object-detection-with-vlms) |
 | [LangGraph: Building Self-Correcting RAG Agent for Code Generation](https://learnopencv.com/langgraph-self-correcting-agent-code-generation/) | [Code](https://github.com/spmallick/learnopencv/tree/master/LangGraph_Building_Self_Correcting_RAG_Agent_for_Code_Generation) |
