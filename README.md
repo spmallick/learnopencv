@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [VLM on Edge: Worth the Hype or Just a Novelty?](https://learnopencv.com/vlm-on-edge-devices/) | [Code](https://github.com/spmallick/learnopencv/tree/master/VLM-on-Edge-Worth-the-Hype-or-Just-a-Novelty) |
 | [AnomalyCLIP : Harnessing CLIP for Weakly-Supervised Video Anomaly Recognition](https://learnopencv.com/anomalyclip-video-anomaly-recognition/) | [Code](https://github.com/spmallick/learnopencv/tree/master/AnomalyCLIP_Harnessing_CLIP_for_Weakly_Supervised_Video_Anomaly_Recognition) |
 | [AI_for_Video_Understanding_From_Content_Moderation_to_Summarization](https://learnopencv.com/ai-for-video-understanding/) | [Code](https://github.com/spmallick/learnopencv/tree/master/AI_for_Video_Understanding_From_Content_Moderation_to_Summarization) |
 | [Video-RAG: Training-Free Retrieval for Long-Video LVLMs](https://learnopencv.com/video-rag-for-long-videos/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Video-RAG_Training_Free_Retrieval_for_Long_Video_LVLMs) |
