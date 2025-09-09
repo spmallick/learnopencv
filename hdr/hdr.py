@@ -1,26 +1,25 @@
 import cv2
 import numpy as np
+import os
 
-
-def readImagesAndTimes():
+def readImagesAndTimes(dir_path):
   
-  times = np.array([ 1/30.0, 0.25, 2.5, 15.0 ], dtype=np.float32)
-  
-  filenames = ["img_0.033.jpg", "img_0.25.jpg", "img_2.5.jpg", "img_15.jpg"]
-
+  #load images with os
+  filenames = [os.path.join(dir_path, f) for f in os.listdir(dir_path) if f.endswith('.jpg')]
   images = []
   for filename in filenames:
     im = cv2.imread(filename)
+    im = cv2.resize(im, (500, 500))
     images.append(im)
   
-  return images, times
+  return images
 
 if __name__ == '__main__':
   # Read images and exposure times
   print("Reading images ... ")
 
-  images, times = readImagesAndTimes()
-  
+  dir_path = '' #path to images
+  images, times = readImagesAndTimes(dir_path=dir_path)
   
   # Align input images
   print("Aligning images ... ")
