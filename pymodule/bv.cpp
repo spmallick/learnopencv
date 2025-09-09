@@ -20,7 +20,7 @@
 
 #define INCLUDE_FILE(xxff) INCLUDE_FILE_J(MODULE_PREFIX ## xxff)
 #define INCLUDE_FILE_I(xxff) INCLUDE_FILE_J(xxff)
-#define INCLUDE_FILE_J(xxff) QUOTEME(build/xxff.h)
+#define INCLUDE_FILE_J(xxff) QUOTEME(xxff.h)
 
 #if PY_MAJOR_VERSION >= 3
 #define MKTYPE2(NAME) MKTYPE2_I(NAME)
@@ -42,7 +42,7 @@
 #  define CV_PYTHON_TYPE_HEAD_INIT() PyObject_HEAD_INIT(&PyType_Type) 0,
 #endif
 
-#include QUOTEME(build/pybv_generated_include.h)
+#include QUOTEME(pybv_generated_include.h)
 
 #include "opencv2/core/types_c.h"
 #include <opencv2/core/ocl.hpp>
@@ -184,7 +184,7 @@ public:
         return u;
     }
 
-    UMatData* allocate(int dims0, const int* sizes, int type, void* data, size_t* step, int flags, UMatUsageFlags usageFlags) const
+    UMatData* allocate(int dims0, const int* sizes, int type, void* data, size_t* step, AccessFlag flags, UMatUsageFlags usageFlags) const
     {
         if( data != 0 )
         {
@@ -213,7 +213,7 @@ public:
         return allocate(o, dims0, sizes, type, step);
     }
 
-    bool allocate(UMatData* u, int accessFlags, UMatUsageFlags usageFlags) const
+    bool allocate(UMatData* u, AccessFlag accessFlags, UMatUsageFlags usageFlags) const
     {
         return stdAllocator->allocate(u, accessFlags, usageFlags);
     }
@@ -586,7 +586,7 @@ static PyObject * UMatWrapper_get(cv2_UMatWrapperObject* self)
 static PyObject * UMatWrapper_handle(cv2_UMatWrapperObject* self, PyObject *args, PyObject *kwds)
 {
     const char *kwlist[] = {"accessFlags", NULL};
-    int accessFlags;
+    AccessFlag accessFlags;
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i", (char**) kwlist, &accessFlags))
         return 0;
     return PyLong_FromVoidPtr(self->um->handle(accessFlags));
@@ -1698,9 +1698,9 @@ static int convert_to_char(PyObject *o, char *dst, const char *name = "no_name")
 #  pragma GCC diagnostic ignored "-Wmissing-field-initializers"
 #endif
 
-#include QUOTEME(build/pybv_generated_types.h)
+#include QUOTEME(pybv_generated_types.h)
 
-#include QUOTEME(build/pybv_generated_funcs.h)
+#include QUOTEME(pybv_generated_funcs.h)
 
 static PyMethodDef special_methods[] = {
 #ifdef HAVE_OPENCV_HIGHGUI
@@ -1761,7 +1761,7 @@ static void init_submodule(PyObject * root, const char * name, PyMethodDef * met
 
 }
 
-#include QUOTEME(build/pybv_generated_ns_reg.h)
+#include QUOTEME(pybv_generated_ns_reg.h)
 
 static int to_ok(PyTypeObject *to)
 {
@@ -1797,14 +1797,14 @@ void initcv2()
 {
   import_array();
 
-#include QUOTEME(build/pybv_generated_type_reg.h)
+#include QUOTEME(pybv_generated_type_reg.h)
 
 #if PY_MAJOR_VERSION >= 3
   PyObject* m = PyModule_Create(&MODULE_DEF_NAME(MODULE_STR));
 #else
   PyObject* m = Py_InitModule(MODULESTR, special_methods);
 #endif
-  
+
   init_submodules(m); // from "pyopencv_generated_ns_reg.h"
 
   PyObject* d = PyModule_GetDict(m);
@@ -1835,7 +1835,7 @@ void initcv2()
 
   PUBLISH_OBJECT("UMat", cv2_UMatWrapperType);
 
-#include QUOTEME(build/pybv_generated_type_publish.h)
+#include QUOTEME(pybv_generated_type_publish.h)
 
 #define PUBLISH(I) PyDict_SetItemString(d, #I, PyInt_FromLong(I))
 //#define PUBLISHU(I) PyDict_SetItemString(d, #I, PyLong_FromUnsignedLong(I))
