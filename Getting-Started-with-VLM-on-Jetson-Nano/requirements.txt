@@ -1,0 +1,6 @@
+huggingface_hub
+transformers
+accelerate
+pyvips
+timm
+einops
