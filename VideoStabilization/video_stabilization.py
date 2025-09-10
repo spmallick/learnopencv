@@ -91,7 +91,11 @@ for i in range(n_frames-2):
   curr_pts = curr_pts[idx]
 
   #Find transformation matrix
-  m = cv2.estimateRigidTransform(prev_pts, curr_pts, fullAffine=False) #will only work with OpenCV-3 or less
+  if int((cv2.__version__).split('.')[0]) <= 3:
+     m = cv2.estimateRigidTransform(prev_pts, curr_pts, fullAffine=False) #will only work with OpenCV-3 or less
+   
+  else:
+    m,_ = cv2.estimateAffine2D(prev_pts, curr_pts)# will work with OpenCV>3.0
    
   # Extract traslation
   dx = m[0,2]
