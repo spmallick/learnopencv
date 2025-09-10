@@ -1,6 +1,6 @@
 ## Vision Language Models on Jetson Nano
 This repository contains code for the blog post [Getting Started with VLM on Jetson Nano](https://learnopencv.com/vlm-on-jetson-nano/).
-Checkout our new custom build Raspberry Pi and Jetson Nano cluster for testing various Vision Language Models including LiquidAI, SmolVLM2, FastVLM, Moondream2 etc.
+Checkout our new custom built Raspberry Pi and Jetson Nano cluster for testing various Vision Language Models including LiquidAI, SmolVLM2, FastVLM, Moondream2 etc.
 
 ![Vision Language Models on Edge Devices](https://learnopencv.com/wp-content/uploads/2025/09/vlm-on-jetson-orin-nano-1.gif)
 
