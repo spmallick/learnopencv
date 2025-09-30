@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [AI Agent in Action: Automating Desktop Tasks with VLMs](https://learnopencv.com/ai-agents-from-vlm/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Local-VLM-Agents-in-Action-GUI-Automation-with-Moondream3-and-Gemini) |
 | [Top VLM Evaluation Metrics for Optimal Performance Analysis](https://learnopencv.com/vlm-evaluation-metrics/) | [Code](https://github.com/spmallick/learnopencv/tree/master/VLM_Evaluation_Metrics) |
 |[Getting Started with VLM on Jetson Nano](https://learnopencv.com/vlm-on-jetson-nano/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Getting-Started-with-VLM-on-Jetson-Nano)|
 | [VLM on Edge: Worth the Hype or Just a Novelty?](https://learnopencv.com/vlm-on-edge-devices/) | [Code](https://github.com/spmallick/learnopencv/tree/master/VLM-on-Edge-Worth-the-Hype-or-Just-a-Novelty) |
