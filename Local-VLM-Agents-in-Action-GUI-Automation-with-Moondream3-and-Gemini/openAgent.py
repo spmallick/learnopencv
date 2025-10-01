@@ -283,15 +283,15 @@ if __name__ == "__main__":
 
     client = genai.Client()
 
-    # # Load model
-    # model_name = "moondream/moondream3-preview"
-    # moondream = AutoModelForCausalLM.from_pretrained(
-    #     model_name,
-    #     trust_remote_code=True,
-    #     dtype=torch.bfloat16,
-    #     device_map={"": "cuda"}
-    # )
-    # moondream.compile()
+    # Load model
+    model_name = "moondream/moondream3-preview"
+    moondream = AutoModelForCausalLM.from_pretrained(
+        model_name,
+        trust_remote_code=True,
+        dtype=torch.bfloat16,
+        device_map={"": "cuda"}
+    )
+    moondream.compile()
 
     # Get action plan from Gemini
     print("📝 Generating action plan ...")
