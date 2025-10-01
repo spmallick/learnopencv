@@ -15,7 +15,6 @@ predefined_paths = {
     "sublime text": "C:/Program Files/Sublime Text 3/sublime_text.exe"
 }
 
-
 def scroll(amount):
     pyautogui.scroll(amount)
 

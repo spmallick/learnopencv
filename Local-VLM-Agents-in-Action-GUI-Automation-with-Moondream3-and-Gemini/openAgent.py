@@ -1,17 +1,10 @@
-import io
-import os
-import re
-import time
-import json
-import tqdm
-import torch
-import argparse
-import pyautogui
-import threading
 from actions import *
+from tqdm import tqdm
 from google import genai
+import pyautogui, threading
 from PIL import Image, ImageGrab
 from collections import defaultdict
+import io, os, re, time, json, torch, argparse
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 
@@ -31,23 +24,33 @@ predefined_paths = {
 
 
 def read_text_from_image_gemini(client, query):
+    # Capture screen
     screen_capture = ImageGrab.grab() 
+
     # Convert to bytes
     img_bytes_io = io.BytesIO()
     screen_capture.save(img_bytes_io, format="PNG") 
     img_bytes = img_bytes_io.getvalue()
 
-    # Progress bar in a separate thread
-    stop_flag = {"running": True}
-    def progress_task():
-        with tqdm(total=0, bar_format="⏳ Waiting for Gemini 2.5 Flash...") as pbar:
-            while stop_flag["running"]:
-                time.sleep(0.1)
+    # Event to stop the progress bar
+    stop_event = threading.Event()
 
-    thread = threading.Thread(target=progress_task, daemon=True)
+    # Progress bar function
+    def progress_task(stop_event):
+        with tqdm(total=100, bar_format="⏳ Waiting for Gemini 2.5 Flash... {bar} {elapsed}") as pbar:
+            while not stop_event.is_set():
+                time.sleep(0.1)  # simulate waiting
+                pbar.update(1)
+                if pbar.n >= pbar.total:  # loop the bar
+                    pbar.n = 0
+                    pbar.last_print_n = 0
+            pbar.close()
+
+    # Start progress bar in a daemon thread
+    thread = threading.Thread(target=progress_task, args=(stop_event,), daemon=True)
     thread.start()
 
-    # Send request
+    # Send request to Gemini
     try:
         response = client.models.generate_content(
             model="gemini-2.5-flash",
@@ -62,7 +65,8 @@ def read_text_from_image_gemini(client, query):
             ],
         )
     finally:
-        stop_flag["running"] = False
+        # Stop progress bar
+        stop_event.set()
         thread.join()
 
     return response.text
