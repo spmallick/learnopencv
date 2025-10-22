@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [TRM: Tiny Recursive Models](https://learnopencv.com/trm-tiny-ai-models-outsmarting-giants-on-complex-puzzles/) | [Code](https://github.com/spmallick/learnopencv/tree/master/TRM) |
 |[Deploying ML Models on Arduino: From Blink to Think]()|[Code](https://github.com/spmallick/learnopencv/tree/master/Deploying-ML-Models-on-Arduino-From-Blink-to-Think)|
 | [VideoRAG: Redefining Long-Context Video Comprehension](https://learnopencv.com/videorag-long-context-video-comprehension/) | |
 | [AI Agent in Action: Automating Desktop Tasks with VLMs](https://learnopencv.com/build-ai-agents-using-vlm/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Local-VLM-Agents-in-Action-GUI-Automation-with-Moondream3-and-Gemini) |
