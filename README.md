@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [2D Gaussian Splatting: Geometrically Accurate Radiance Field Reconstruction](https://learnopencv.com/2d-gaussian-splatting-2dgs/) | [Code](https://github.com/spmallick/learnopencv/tree/master/2D_Gaussian_Splatting_Geometrically_Accurate_Radiance_Field_Reconstruction) |
 | [TRM: Tiny Recursive Models](https://learnopencv.com/trm-tiny-ai-models-outsmarting-giants-on-complex-puzzles/) | [Code](https://github.com/spmallick/learnopencv/tree/master/TRM) |
 |[Deploying ML Models on Arduino: From Blink to Think]()|[Code](https://github.com/spmallick/learnopencv/tree/master/Deploying-ML-Models-on-Arduino-From-Blink-to-Think)|
 | [VideoRAG: Redefining Long-Context Video Comprehension](https://learnopencv.com/videorag-long-context-video-comprehension/) | |
