@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Ultimate Guide to Vector Databases and RAG Pipeline](https://learnopencv.com/vector-db-and-rag-pipeline-for-document-rag/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Ultimate_Guide_to_Vector_Databases_and_RAG_pipeline) |
 |[What Makes DeepSeek OCR So Powerful](https://learnopencv.com/what-makes-deepseek-ocr-so-powerful/)|[Code](https://github.com/spmallick/learnopencv/tree/master/What-Makes-DeepSeek-OCR-So-Powerful)|
 | [2D Gaussian Splatting: Geometrically Accurate Radiance Field Reconstruction](https://learnopencv.com/2d-gaussian-splatting-2dgs/) | [Code](https://github.com/spmallick/learnopencv/tree/master/2D_Gaussian_Splatting_Geometrically_Accurate_Radiance_Field_Reconstruction) |
 | [TRM: Tiny Recursive Models](https://learnopencv.com/trm-tiny-ai-models-outsmarting-giants-on-complex-puzzles/) | [Code](https://github.com/spmallick/learnopencv/tree/master/TRM) |
