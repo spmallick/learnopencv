@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Image-GS: Adaptive Image Reconstruction using 2D Gaussians](https://learnopencv.com/image-gs-image-reconstruction-using-2d-gaussians/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Image_GS_Adaptive_Image_Reconstruction_using_2D_Gaussians) |
 | [Ultimate Guide to Vector Databases and RAG Pipeline](https://learnopencv.com/vector-db-and-rag-pipeline-for-document-rag/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Ultimate_Guide_to_Vector_Databases_and_RAG_pipeline) |
 |[What Makes DeepSeek OCR So Powerful](https://learnopencv.com/what-makes-deepseek-ocr-so-powerful/)|[Code](https://github.com/spmallick/learnopencv/tree/master/What-Makes-DeepSeek-OCR-So-Powerful)|
 | [2D Gaussian Splatting: Geometrically Accurate Radiance Field Reconstruction](https://learnopencv.com/2d-gaussian-splatting-2dgs/) | [Code](https://github.com/spmallick/learnopencv/tree/master/2D_Gaussian_Splatting_Geometrically_Accurate_Radiance_Field_Reconstruction) |
