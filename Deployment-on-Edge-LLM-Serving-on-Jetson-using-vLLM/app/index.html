@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Chat UI</title>
+    <style>
+        /* ===== BASE / MOBILE-FIRST STYLES ===== */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        /* Page layout - mobile first (stacked) */
+        .page {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+            max-width: 100%;
+            margin-top: 16px;
+            padding: 0 12px 24px 12px;
+            align-items: stretch;
+        }
+
+        .container {
+            width: 100%;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #aaa;
+            padding: 16px;
+        }
+
+        .sidebar {
+            width: 100%;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #aaa;
+            padding: 16px;
+            font-size: 14px;
+            color: #333;
+            min-height: 120px;
+        }
+
+        .sidebar h3 { margin-top: 0; }
+        .feature-list { list-style: none; padding: 0; margin: 8px 0 0 0; }
+        .feature-list li { margin: 8px 0; padding: 8px; background: #f8f9fb; border-radius: 6px; border: 1px solid #eee; font-size: 13px; }
+
+        /* Header row - responsive */
+        .header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .header-row h2 {
+            margin: 0;
+            font-size: 1.25rem;
+        }
+
+        /* Controls row - responsive */
+        .controls-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .model-selector {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .model-selector label {
+            font-size: 12px;
+            color: #555;
+        }
+
+        .model-selector select {
+            padding: 6px 8px;
+            font-size: 14px;
+            max-width: 180px;
+        }
+
+        #modelCaps {
+            font-size: 11px;
+            color: #777;
+        }
+
+        /* Toggles row - responsive wrap */
+        .toggles-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 10px;
+            padding: 8px 0;
+            border-top: 1px solid #eee;
+            flex-wrap: wrap;
+        }
+
+        .toggle-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+
+        .toggle-item input[type="checkbox"] {
+            cursor: pointer;
+            width: 16px;
+            height: 16px;
+        }
+
+        .toggle-item label {
+            font-size: 12px;
+            color: #555;
+            cursor: pointer;
+        }
+
+        /* ===== TABLET BREAKPOINT (600px+) ===== */
+        @media (min-width: 600px) {
+            .page {
+                margin-top: 24px;
+                padding: 0 16px 24px 16px;
+                gap: 20px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            .header-row h2 {
+                font-size: 1.5rem;
+            }
+
+            .model-selector select {
+                max-width: 220px;
+            }
+
+            .feature-list li {
+                font-size: 14px;
+            }
+
+            .toggles-row {
+                gap: 16px;
+            }
+        }
+
+        /* ===== DESKTOP BREAKPOINT (900px+) ===== */
+        @media (min-width: 900px) {
+            .page {
+                flex-direction: row;
+                max-width: 980px;
+                margin-top: 40px;
+                align-items: flex-start;
+                justify-content: center;
+            }
+
+            .container {
+                flex: 1 1 640px;
+                max-width: 640px;
+            }
+
+            .sidebar {
+                width: 280px;
+                flex-shrink: 0;
+            }
+        }
+
+        /* ===== LARGE DESKTOP (1200px+) ===== */
+        @media (min-width: 1200px) {
+            .page {
+                max-width: 1100px;
+            }
+
+            .container {
+                max-width: 720px;
+            }
+
+            .sidebar {
+                width: 320px;
+            }
+        }
+
+        /* Messages area - responsive height */
+        #messages {
+            height: 280px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 6px;
+            background: #fafafa;
+            margin-bottom: 10px;
+        }
+
+        @media (min-width: 600px) {
+            #messages {
+                height: 350px;
+            }
+        }
+
+        @media (min-width: 900px) {
+            #messages {
+                height: 400px;
+            }
+        }
+
+        #stats {
+            font-size: 12px;
+            color: #666;
+            margin: 6px 0 12px 0;
+            min-height: 16px;
+        }
+
+        .bubble {
+            padding: 8px 12px;
+            margin: 6px 0;
+            border-radius: 10px;
+            display: inline-block;
+            max-width: 95%;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        @media (min-width: 600px) {
+            .bubble {
+                max-width: 90%;
+            }
+        }
+
+        .user {
+            background: #d1e7ff;
+            align-self: flex-end;
+        }
+
+        .assistant {
+            background: #e7ffe7;
+            align-self: flex-start;
+        }
+
+        /* Ensure images fit within bubbles */
+        .bubble img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+        }
+
+        .code-copy-btn {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            padding: 4px 8px;
+            font-size: 12px;
+            background: #eee;
+            color: #333;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .code-copy-btn:hover { background: #e0e0e0; }
+
+        /* Input row - responsive */
+        .input-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        #inputText {
+            flex: 1 1 100%;
+            min-width: 0;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        @media (min-width: 480px) {
+            .input-row {
+                flex-wrap: nowrap;
+                gap: 10px;
+            }
+
+            #inputText {
+                flex: 1 1 auto;
+            }
+        }
+
+        /* Buttons - touch-friendly sizing */
+        #sendBtn {
+            padding: 12px 16px;
+            font-size: 16px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            min-width: 70px;
+            touch-action: manipulation;
+        }
+
+        #sendBtn:hover {
+            background: #0056b3;
+        }
+
+        #sendBtn:active {
+            background: #004494;
+        }
+
+        #resetBtn {
+            padding: 10px 12px;
+            font-size: 14px;
+            background: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            touch-action: manipulation;
+        }
+
+        #resetBtn:hover {
+            background: #5a6268;
+        }
+
+        #attachBtn {
+            padding: 12px;
+            font-size: 14px;
+            background: #17a2b8;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            touch-action: manipulation;
+            min-width: 44px;
+        }
+
+        /* Hide attach text on very small screens */
+        #attachBtn .attach-text {
+            display: none;
+        }
+
+        @media (min-width: 480px) {
+            #attachBtn .attach-text {
+                display: inline;
+            }
+        }
+
+        #attachBtn:hover {
+            background: #138496;
+        }
+
+        #fileList {
+            font-size: 12px;
+            color: #555;
+            margin-top: 6px;
+            max-height: 60px;
+            overflow-y: auto;
+            white-space: pre-line;
+        }
+
+        /* Code block styling - responsive */
+        .bubble pre {
+            background: #f0f3f7;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 10px;
+            overflow-x: auto;
+            max-width: 100%;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .bubble code {
+            font-family: Consolas, Monaco, 'Courier New', monospace;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        @media (min-width: 600px) {
+            .bubble code {
+                font-size: 13px;
+            }
+        }
+
+        /* RAG section responsive */
+        .rag-section {
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .rag-section h3 {
+            margin: 0 0 8px 0;
+        }
+
+        .rag-section p {
+            margin: 0 0 8px 0;
+            color: #555;
+            font-size: 12px;
+        }
+
+        #ragDocList {
+            font-size: 12px;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        /* Utility classes for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition: none !important;
+                animation: none !important;
+            }
+        }
+
+        /* Focus states for accessibility */
+        button:focus-visible,
+        input:focus-visible,
+        select:focus-visible {
+            outline: 2px solid #007bff;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="container">
+            <div class="header-row">
+                <h2>Chat with Your Model</h2>
+                <a href="https://opencv.org/university/courses/?utm_source=opcv&utm_medium=menu" target="_blank" rel="noopener noreferrer" title="OpenCV University Courses">
+                    <img src="https://learnopencv.com/wp-content/uploads/2025/12/OpenCV_logo_no_text_.webp" alt="OpenCV" width="48" height="48" style="display:block;" />
+                </a>
+            </div>
+            <div class="controls-row">
+                <!-- Left: model selector -->
+                <div class="model-selector">
+                    <label for="modelSelect">Model</label>
+                    <select id="modelSelect">
+                        <option value="">Loading…</option>
+                    </select>
+                    <span id="modelCaps"></span>
+                </div>
+                <!-- Right: reset button -->
+                <div>
+                    <button id="resetBtn" title="Clear this conversation">Reset</button>
+                </div>
+            </div>
+            <div id="messages"></div>
+            <div id="stats"></div>
+
+            <div class="input-row">
+                <input id="inputText" placeholder="Type your message..." />
+                <button id="attachBtn" title="Attach files (1 image only)">
+                    <!-- paperclip icon -->
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M16.5 6.5L7.5 15.5C6.12 16.88 6.12 19.12 7.5 20.5C8.88 21.88 11.12 21.88 12.5 20.5L21 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M18 9L10 17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="attach-text">Attach</span>
+                </button>
+                <button id="sendBtn">Send</button>
+            </div>
+            <input id="fileInput" type="file" style="display:none" multiple accept=".txt,.md,.markdown,.pdf,image/*" />
+            <div id="fileList"></div>
+            
+            <!-- Toggles row below input -->
+            <div class="toggles-row">
+                <div class="toggle-item">
+                    <input type="checkbox" id="visionToggle" title="Override vision capability detection" />
+                    <label for="visionToggle">Force Vision</label>
+                </div>
+                <div class="toggle-item">
+                    <input type="checkbox" id="webSearchToggle" title="Enable web search to augment responses with real-time information" />
+                    <label for="webSearchToggle">🔍 Web Search</label>
+                </div>
+                <div class="toggle-item">
+                    <input type="checkbox" id="ragToggle" title="Enable RAG to search your uploaded PDF documents" />
+                    <label for="ragToggle">📚 RAG</label>
+                </div>
+                <div id="ragDocCount" style="font-size:11px; color:#888;"></div>
+            </div>
+        </div>
+
+        <aside class="sidebar">
+            <!-- RAG Documents Status -->
+            <div class="rag-section">
+                <h3>📚 RAG Documents</h3>
+                <p>Attach PDFs via the 📎 button to index for RAG</p>
+                <div id="ragDocList">
+                    <em style="color:#888;">No documents indexed</em>
+                </div>
+            </div>
+
+            <h3>Upcoming features</h3>
+            <p style="margin:6px 0 8px 0; color:#555; font-size:13px;">Planned additions to the app - roadmap items and prototypes.</p>
+            <ul class="feature-list">
+                <li><strong>1.</strong> ✅Large media handling & fallback strategies (avoid context limit issue)</li>
+                <li><strong>2.</strong> ✅MCP (Model Context Protocol) integration</li>
+                <li><strong>3.</strong> ✅RAG enabled for large Document Processing</li>
+                <li><strong>4.</strong> ✅Vector DB Added</li>
+                <li><strong>5.</strong> Export chat (JSON / text / PDF)</li>
+                <li><strong>6.</strong> Show currently running device (GPU/CPU/Edge)</li>
+                <li><strong>7.</strong> On-device ML support (local inference)</li>
+                <li><strong>8.</strong>User management - login + history backed by a database</strong></li>
+                <li><strong>9.</strong> Dynamic error handling for models that does not support system prompt</li>
+            </ul>
+        </aside>
+    </div>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github-dark-dimmed.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/common.min.js"></script>
+    <script src="/static/render.js"></script>
+    <script src="/static/network.js"></script>
+    <script src="/static/attachments.js"></script>
+    <script src="/static/app.js"></script>
+
+
+</body>
+
+</html>

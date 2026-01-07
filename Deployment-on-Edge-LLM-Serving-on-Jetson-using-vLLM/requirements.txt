@@ -1,0 +1,29 @@
+# Core Web Framework
+fastapi>=0.100.0
+uvicorn>=0.23.0
+python-multipart>=0.0.6
+
+# OpenAI Client
+openai>=1.0.0
+
+# Image Processing
+Pillow>=10.0.0
+
+# Environment Variables
+python-dotenv>=1.0.0
+
+# Web Search (Tavily)
+tavily-python>=0.3.0
+
+# RAG - PDF Processing
+PyMuPDF>=1.23.0
+
+# RAG - Embeddings
+sentence-transformers>=2.2.0
+
+# RAG - Vector Database
+qdrant-client>=1.7.0
+
+# HTTP Client
+requests>=2.31.0
+httpx>=0.25.0
