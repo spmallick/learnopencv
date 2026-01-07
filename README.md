@@ -15,7 +15,9 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
-| [How to Build a GitHub Code-Analyser Agent for Developer Productivity](https://learnopencv.com/how-to-build-a-github-code-analyser-agent/) | [Code](https://github.com/spmallick/learnopencv/tree/master/) |
+|[Deployment on Edge: LLM Serving on Jetson using vLLM](https://learnopencv.com/deployment-on-edge-vllm-on-jetson/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Deployment-on-Edge-LLM-Serving-on-Jetson-using-vLLM)|
+|[Nested Learning: Is Deep Learning Architecture an Illusion?](https://learnopencv.com/nested-learning/)||
+| [How to Build a GitHub Code-Analyser Agent for Developer Productivity](https://learnopencv.com/how-to-build-a-github-code-analyser-agent/) | [Code](https://github.com/spmallick/learnopencv/tree/master/How_to_Build_a_GitHub_Code_Analyser_Agent_for_Developer_Productivity) |
 | [SAM 3D: Foundation Model for Single-Image 3D Reconstruction](https://learnopencv.com/sam-3d/) | |
 | [SAM-3: What’s New, How It Works, and Why It Matters](https://learnopencv.com/sam-3-whats-new/) | [Code](https://github.com/spmallick/learnopencv/tree/master/SAM-3) |
 | [Image-GS: Adaptive Image Reconstruction using 2D Gaussians](https://learnopencv.com/image-gs-image-reconstruction-using-2d-gaussians/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Image_GS_Adaptive_Image_Reconstruction_using_2D_Gaussians) |
