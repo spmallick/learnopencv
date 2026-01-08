@@ -1,0 +1,7 @@
+numpy==1.21.0
+tensorflow==2.5.0
+keras==2.6.0
+opencv-python==4.5.3.56
+mtcnn==0.1.1
+matplotlib==3.4.2
+scikit-image==0.18.3
