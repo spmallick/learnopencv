@@ -23,7 +23,7 @@ int main()
   cv_file["Right_Stereo_Map_y"] >> Right_Stereo_Map2;
   cv_file.release();
 
-  // Check if left camera is attched
+  // Check if left camera is attached
   if (!camL.isOpened())
   {
     std::cout << "Could not open camera with index : " << CamL_id << std::endl;
