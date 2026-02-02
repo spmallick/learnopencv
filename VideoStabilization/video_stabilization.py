@@ -2,6 +2,7 @@
 import numpy as np
 import cv2
 
+OPENCV_MAJOR = int(cv2.__version__.split('.')[0])
 
 def movingAverage(curve, radius): 
   window_size = 2 * radius + 1
@@ -90,13 +91,17 @@ for i in range(n_frames-2):
   prev_pts = prev_pts[idx]
   curr_pts = curr_pts[idx]
 
-  #Find transformation matrix
-  if int((cv2.__version__).split('.')[0]) <= 3:
-     m = cv2.estimateRigidTransform(prev_pts, curr_pts, fullAffine=False) #will only work with OpenCV-3 or less
-   
+  # Find transformation matrix
+  if OPENCV_MAJOR >= 4:
+    m, _ = cv2.estimateAffinePartial2D(prev_pts, curr_pts)
   else:
-    m,_ = cv2.estimateAffine2D(prev_pts, curr_pts)# will work with OpenCV>3.0
-   
+    m = cv2.estimateRigidTransform(prev_pts, curr_pts, fullAffine=False) # will only work with OpenCV-3 or less
+  
+  if m is None:
+    # Fall back to identity transform when matching fails
+    m = np.array([[1, 0, 0],
+                  [0, 1, 0]], dtype=np.float32)
+  
   # Extract traslation
   dx = m[0,2]
   dy = m[1,2]
