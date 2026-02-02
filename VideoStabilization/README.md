@@ -8,24 +8,26 @@
 Please download input video from [here](https://drive.google.com/file/d/1l-dFUMD4Q9CzCbRuqYp0DIMjdFICJQT0/view?usp=sharing). Please make sure it is present in the directory from which the code is run.
 
 # Run Code 
-The code requires OpenCV 3.x. 
+The code supports OpenCV 3.x and 4.x. 
 
 ## Python 
-The code is tested on Python 3 only, but should work with Python 2 with minor modifications. 
+The code is tested on Python 3 only. 
 
 ```
 python3 video_stabilization.py
 ```
+By default it writes `video_out.mp4`.
 
 ## C++ 
 Compile using the following
 ```
-g++ -O3 -std=c++11 `pkg-config --cflags --libs opencv` video_stabilization.py -o video_stabilization
+g++ -O3 -std=c++11 `pkg-config --cflags --libs opencv` video_stabilization.cpp -o video_stabilization
 ```
 Run using the following command 
 ```
 ./video_stabilization
 ```
+By default it writes `video_out.mp4`.
 The code can also be compiled using **cmake** as follows:
 
 ```
@@ -42,12 +44,10 @@ The executable file generated can be run using the following command
 ```
 
 
-# AI Courses by OpenCV
+# Computer Vision & AI Consulting
 
-Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/courses/) is a great place to start. 
+If you need help implementing your computer vision or AI project, we provide consulting services at [BigVision.AI](https://bigvision.ai). 
 
-<a href="https://opencv.org/courses/">
-<p align="center"> 
-<img src="https://learnopencv.com/wp-content/uploads/2023/01/AI-Courses-By-OpenCV-Github.png">
-</p>
-</a>
+Contact us at [contact@bigvision.ai](mailto:contact@bigvision.ai).
+
+[![BigVision.AI](https://bigvision.ai/wp-content/uploads/2022/01/logo.png)](https://bigvision.ai)

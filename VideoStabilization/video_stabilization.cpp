@@ -1,5 +1,7 @@
 /*
 Copyright (c) 2014, Nghia Ho
+Copyright (c) 2019, Big Vision LLC (Satya Mallick)
+https://bigvision.ai  contact@bigvision.ai
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -12,13 +14,12 @@ Redistribution and use in source and binary forms, with or without modification,
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-Modified by Satya Mallick, Big Vision LLC (Jan 2019)
-
 */
 
 
  
 #include <opencv2/opencv.hpp>
+#include <opencv2/core/version.hpp>
 #include <iostream>
 #include <cassert>
 #include <cmath>
@@ -146,7 +147,19 @@ int main(int argc, char **argv)
   double fps = cap.get(cv::CAP_PROP_FPS);
 
   // Set up output video
-  VideoWriter out("video_out.avi", cv::VideoWriter::fourcc('M','J','P','G'), fps, Size(2 * w, h));
+  int out_w = 2 * w;
+  int out_h = h;
+  if(out_w > 1920)
+  {
+    out_w /= 2;
+    out_h /= 2;
+  }
+  VideoWriter out("video_out.mp4", cv::VideoWriter::fourcc('m','p','4','v'), fps, Size(out_w, out_h));
+  if(!out.isOpened())
+  {
+    cerr << "Failed to open video writer. Check codec and output path." << endl;
+    return 1;
+  }
   
   // Define variable for storing frames
   Mat curr, curr_gray;
@@ -203,11 +216,28 @@ int main(int argc, char **argv)
 
     
     // Find transformation matrix
-    Mat T = estimateRigidTransform(prev_pts, curr_pts, false); 
+    // Partial affine matches legacy rigid transform (no shear).
+    Mat T;
+#if CV_VERSION_MAJOR >= 4
+    Mat inliers;
+    T = estimateAffinePartial2D(prev_pts, curr_pts, inliers);
+#else
+    T = estimateRigidTransform(prev_pts, curr_pts, false); 
+#endif
 
     // In rare cases no transform is found. 
     // We'll just use the last known good transform.
-    if(T.data == NULL) last_T.copyTo(T);
+    if(T.data == NULL)
+    {
+      if(last_T.data == NULL)
+      {
+        T = (Mat_<double>(2,3) << 1, 0, 0, 0, 1, 0);
+      }
+      else
+      {
+        last_T.copyTo(T);
+      }
+    }
     T.copyTo(last_T);
 
     // Extract traslation
@@ -272,22 +302,21 @@ int main(int argc, char **argv)
     // Now draw the original and stablised side by side for coolness
     hconcat(frame, frame_stabilized, frame_out);
 
-    // If the image is too big, resize it.
-    if(frame_out.cols > 1920) 
+    if(frame_out.cols != out_w || frame_out.rows != out_h)
     {
-        resize(frame_out, frame_out, Size(frame_out.cols/2, frame_out.rows/2));
+        resize(frame_out, frame_out, Size(out_w, out_h));
     }
 
-    imshow("Before and After", frame_out);
+    // imshow("Before and After", frame_out);
     out.write(frame_out);
-    waitKey(10);
+    // waitKey(10);
   }
 
   // Release video
   cap.release();
   out.release();
   // Close windows
-  destroyAllWindows();
+  // destroyAllWindows();
 
   return 0;
 }
