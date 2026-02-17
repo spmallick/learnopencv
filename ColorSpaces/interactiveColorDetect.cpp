@@ -9,7 +9,7 @@ Mat img, placeholder;
 // Callback function for any event on he mouse
 void onMouse( int event, int x, int y, int flags, void* userdata )
 {   
-    if( event == EVENT_MOUSEMOVE )
+    if( event == EVENT_MOUSEMOVE and (x<img.rows and y<img.cols))
 	{
 
      	Vec3b bgrPixel(img.at<Vec3b>(y, x));
