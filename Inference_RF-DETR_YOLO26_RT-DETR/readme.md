@@ -7,7 +7,7 @@ This repository contains the benchmarking suite to evaluate and compare three st
 * **RF-DETR (Large)**
 
 ![Visual Comparison](detected_objects.png)
-
+Qualitative comparison of RT-DETR, YOLO26, and RF-DETR (Large).
 
 The included notebook tests **Latency (ms)** and **Throughput (img/s)** across different batch sizes and precision modes (FP32 vs. FP16). It is designed to help computer vision engineers navigate the CNN vs. Transformer divide and choose the right architecture for deployment on constrained edge hardware.
 
