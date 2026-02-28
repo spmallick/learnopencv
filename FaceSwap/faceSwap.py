@@ -1,5 +1,22 @@
 #! /usr/bin/env python
 
+"""
+Copyright (c) 2019, Big Vision LLC (Satya Mallick)
+https://bigvision.ai  contact@bigvision.ai
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+"""
+
 import sys
 import numpy as np
 import cv2
@@ -71,8 +88,8 @@ def calculateDelaunayTriangles(rect, points):
         if rectContains(rect, pt1) and rectContains(rect, pt2) and rectContains(rect, pt3):
             ind = []
             #Get face-points (from 68 face detector) by coordinates
-            for j in xrange(0, 3):
-                for k in xrange(0, len(points)):                    
+            for j in range(0, 3):
+                for k in range(0, len(points)):
                     if(abs(pt[j][0] - points[k][0]) < 1.0 and abs(pt[j][1] - points[k][1]) < 1.0):
                         ind.append(k)    
             # Three points form a triangle. Triangle array corresponds to the file tri.txt in FaceMorph 
@@ -97,7 +114,7 @@ def warpTriangle(img1, img2, t1, t2) :
     t2Rect = []
     t2RectInt = []
 
-    for i in xrange(0, 3):
+    for i in range(0, 3):
         t1Rect.append(((t1[i][0] - r1[0]),(t1[i][1] - r1[1])))
         t2Rect.append(((t2[i][0] - r2[0]),(t2[i][1] - r2[1])))
         t2RectInt.append(((t2[i][0] - r2[0]),(t2[i][1] - r2[1])))
@@ -128,16 +145,16 @@ if __name__ == '__main__' :
     # Make sure OpenCV is version 3.0 or above
     (major_ver, minor_ver, subminor_ver) = (cv2.__version__).split('.')
 
-    if int(major_ver) < 3 :
-        print >>sys.stderr, 'ERROR: Script needs OpenCV 3.0 or higher'
+    if int(major_ver) < 3:
+        print('ERROR: Script needs OpenCV 3.0 or higher', file=sys.stderr)
         sys.exit(1)
 
     # Read images
     filename1 = 'ted_cruz.jpg'
     filename2 = 'donald_trump.jpg'
     
-    img1 = cv2.imread(filename1);
-    img2 = cv2.imread(filename2);
+    img1 = cv2.imread(filename1)
+    img2 = cv2.imread(filename2)
     img1Warped = np.copy(img2);    
     
     # Read array of corresponding points
@@ -150,9 +167,10 @@ if __name__ == '__main__' :
 
     hullIndex = cv2.convexHull(np.array(points2), returnPoints = False)
           
-    for i in xrange(0, len(hullIndex)):
-        hull1.append(points1[int(hullIndex[i])])
-        hull2.append(points2[int(hullIndex[i])])
+    for i in range(0, len(hullIndex)):
+        idx = int(hullIndex[i][0])
+        hull1.append(points1[idx])
+        hull2.append(points2[idx])
     
     
     # Find delanauy traingulation for convex hull points
@@ -165,12 +183,12 @@ if __name__ == '__main__' :
         quit()
     
     # Apply affine transformation to Delaunay triangles
-    for i in xrange(0, len(dt)):
+    for i in range(0, len(dt)):
         t1 = []
         t2 = []
         
         #get points for img1, img2 corresponding to the triangles
-        for j in xrange(0, 3):
+        for j in range(0, 3):
             t1.append(hull1[dt[i][j]])
             t2.append(hull2[dt[i][j]])
         
@@ -179,7 +197,7 @@ if __name__ == '__main__' :
             
     # Calculate Mask
     hull8U = []
-    for i in xrange(0, len(hull2)):
+    for i in range(0, len(hull2)):
         hull8U.append((hull2[i][0], hull2[i][1]))
     
     mask = np.zeros(img2.shape, dtype = img2.dtype)  

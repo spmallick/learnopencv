@@ -1,0 +1,8 @@
+# Model weights
+*.onnx
+
+# Python cache
+__pycache__/
+
+# Local compiled binary
+yunet_webcam_face_blur
