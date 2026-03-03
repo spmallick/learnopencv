@@ -4,7 +4,7 @@
 This repository contains the benchmarking suite to evaluate and compare three state-of-the-art (SOTA) real-time object detection models:
 * **RF-DETR (Medium)**
 * **YOLO26 (Large)**
-* **RT-DETR (Large)**
+* **RT-DETR (Extra Large)**
 
 
 ![Visual Comparison](detected_objects.png)
