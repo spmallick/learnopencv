@@ -2,13 +2,13 @@
 
 ## 📌 Overview
 This repository contains the benchmarking suite to evaluate and compare three state-of-the-art (SOTA) real-time object detection models:
-* **RF-DETR (Large)**
+* **RF-DETR (Medium)**
 * **YOLO26 (Large)**
-* **RT-DETR (Large)**
+* **RT-DETR (Extra Large)**
 
 
 ![Visual Comparison](detected_objects.png)
-Qualitative comparison of RT-DETR, YOLO26, and RF-DETR (Large).
+Qualitative comparison of RF-DETR, YOLO26, and RT-DETR (Large).
 
 The included notebook tests **Latency (ms)** and **Throughput (img/s)** across different batch sizes and precision modes (FP32 vs. FP16). It is designed to help computer vision engineers navigate the CNN vs. Transformer divide and choose the right architecture for deployment on constrained edge hardware.
 
