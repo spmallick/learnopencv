@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-
+import random
 
 def readImagesAndTimes():
   
@@ -9,9 +9,8 @@ def readImagesAndTimes():
   filenames = ["img_0.033.jpg", "img_0.25.jpg", "img_2.5.jpg", "img_15.jpg"]
 
   images = []
-  for filename in filenames:
-    im = cv2.imread(filename)
-    images.append(im)
+  im = cv2.imread(filenames[random.randint(0, len(filenames))])
+  images.append(im)
   
   return images, times
 
