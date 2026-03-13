@@ -19,11 +19,10 @@ namespace bv
 
     // Combine the two images to fill holes
     im = (im_th | im_floodfill_inv);
-
   }
 
 
-  void Filters::edge(InputArray im, OutputArray imedge) 
+  void Filters::edge(InputArray im, OutputArray imedge)
   {
     // Perform canny edge detection
     Canny(im,imedge,100,200); 
