@@ -16,9 +16,15 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 | Blog Post | Code|
 | ------------- |:-------------|
 | [Multi-Object Tracking with Roboflow Trackers and OpenCV](https://learnopencv.com/multi-object-tracking-with-roboflow-trackers-and-opencv/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Roboflow_Trackers_Demo) |
+| [Real-Time Face Blur and Pixelation with OpenCV YuNet](https://learnopencv.com/face-blur-pixelation-opencv-yunet/) | [Code](https://github.com/spmallick/learnopencv/tree/master/FaceBlurPixelate) |
+| [Breaking the Bottleneck: Achieving Native NMS-Free Inference with YOLO26](https://learnopencv.com/yolo26-nms-free-inference/) | [Code](https://github.com/spmallick/learnopencv/tree/master/YOLO26-NMS-Free-Demo) |
+| [YOLOv26: An Object Detector Built for Real-Time Deployment](https://learnopencv.com/yolov26-real-time-deployment/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Inference_RF-DETR_YOLO26_RT-DETR) |
+| [Beyond Transformers: A Deep Dive into HOPE](https://learnopencv.com/hope-beyond-transformers/) | |
+| [Serving SGLang: Launch a Production-Style Server](https://learnopencv.com/sglang-a-production-server/) | |
 |[Deployment on Edge: LLM Serving on Jetson using vLLM](https://learnopencv.com/deployment-on-edge-vllm-on-jetson/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Deployment-on-Edge-LLM-Serving-on-Jetson-using-vLLM)|
 |[Nested Learning: Is Deep Learning Architecture an Illusion?](https://learnopencv.com/nested-learning/)||
 | [How to Build a GitHub Code-Analyser Agent for Developer Productivity](https://learnopencv.com/how-to-build-a-github-code-analyser-agent/) | [Code](https://github.com/spmallick/learnopencv/tree/master/How_to_Build_a_GitHub_Code_Analyser_Agent_for_Developer_Productivity) |
+| [The Existential Problems in LLM Serving](https://learnopencv.com/the-existential-problems-in-llm-serving/) | |
 | [SAM 3D: Foundation Model for Single-Image 3D Reconstruction](https://learnopencv.com/sam-3d/) | |
 | [SAM-3: What’s New, How It Works, and Why It Matters](https://learnopencv.com/sam-3-whats-new/) | [Code](https://github.com/spmallick/learnopencv/tree/master/SAM-3) |
 | [Image-GS: Adaptive Image Reconstruction using 2D Gaussians](https://learnopencv.com/image-gs-image-reconstruction-using-2d-gaussians/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Image_GS_Adaptive_Image_Reconstruction_using_2D_Gaussians) |
