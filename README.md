@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Multi-Object Tracking with Roboflow Trackers and OpenCV](https://learnopencv.com/multi-object-tracking-with-roboflow-trackers-and-opencv/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Roboflow_Trackers_Demo) |
 |[Deployment on Edge: LLM Serving on Jetson using vLLM](https://learnopencv.com/deployment-on-edge-vllm-on-jetson/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Deployment-on-Edge-LLM-Serving-on-Jetson-using-vLLM)|
 |[Nested Learning: Is Deep Learning Architecture an Illusion?](https://learnopencv.com/nested-learning/)||
 | [How to Build a GitHub Code-Analyser Agent for Developer Productivity](https://learnopencv.com/how-to-build-a-github-code-analyser-agent/) | [Code](https://github.com/spmallick/learnopencv/tree/master/How_to_Build_a_GitHub_Code_Analyser_Agent_for_Developer_Productivity) |
