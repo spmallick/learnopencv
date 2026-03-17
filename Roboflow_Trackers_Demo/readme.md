@@ -59,8 +59,7 @@ This implementation is designed primarily for **Google Colab**.
 ## 📝 Blog
 
 Read the full explanation here:
-👉 Soon!
-
+👉 [Multi-Object Tracking with Roboflow Trackers and OpenCV](https://learnopencv.com/multi-object-tracking-with-roboflow-trackers-and-opencv/)
 
 ---
 
