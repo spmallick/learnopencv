@@ -12,16 +12,16 @@ The implementation is designed to be **straightforward**, making it ideal for be
 
 ---
 
-## 🎥 Sample Videos
+## 🎥 Sample Videos (Release Assets)
 
-The repository includes multiple demo videos:
+To keep this repository lightweight, large media files are not stored in the repository history. The demo videos are hosted as GitHub Release Assets and will be **automatically downloaded** when you run the notebook. 
 
+The downloaded assets include:
 * 🐦 Birds Flying → `Sample_1_Birds_Flying.mp4`
 * 🏃 Sports Activity → `Sample_2_Sport.mp4`
 * 🏃 Running Scene → `Sample_3_Run.mp4`
 * 🐦 Birds Scene → `Sample_4_Birds.mp4`
 * 🏂 Snowboarding → `Sample_5_Snowboarding.mp4`
-* 🎬 Additional Sample → `Sample_6.mp4`
 
 ---
 
@@ -31,11 +31,14 @@ The repository includes multiple demo videos:
 
 ---
 
-### ▶️ How to Run
+### ▶️ How to Run (Colab-First)
 
-1. Open in Jupyter Notebook or Google Colab
-2. Run all cells
-3. Outputs will be generated automatically
+This implementation is designed primarily for **Google Colab**. 
+
+1. Open `Roboflow_Trackers.ipynb` in Google Colab.
+2. Run the first setup cell. This will automatically download the demo videos into a local `videos/` folder.
+3. Run the remaining cells to generate the tracked outputs.
+
 
 ---
 
@@ -46,9 +49,9 @@ The repository includes multiple demo videos:
 
 ## ✨ Features
 
-* 🎯 Easy-to-run notebook (no heavy setup)
+* 🎯 Easy-to-run notebook (Colab optimized)
 * ⚡ Real-time object tracking
-* 🎥 Multiple sample videos included
+* 📦 Automated video asset downloading
 * 🧠 Beginner-friendly implementation
 
 ---
