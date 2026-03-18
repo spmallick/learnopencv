@@ -14,10 +14,25 @@ This repository contains notebooks for Training YOLOX on a custom dataset. Find 
 
 ### Installation on Local
 
+Current YOLOX upstream still has a VOC evaluation bug that can crash custom training during validation with a broadcasting error. Apply the small patch below after cloning the repo.
+
 ```
 git clone https://github.com/Megvii-BaseDetection/YOLOX.git
 
 cd YOLOX
+
+python3 - <<'PY'
+from pathlib import Path
+
+voc_file = Path("yolox/data/datasets/voc.py")
+source = voc_file.read_text()
+old = "                if dets == []:\n"
+new = "                if len(dets) == 0:\n"
+if old not in source and new not in source:
+    raise RuntimeError("Could not find YOLOX VOC evaluation guard to patch.")
+voc_file.write_text(source.replace(old, new))
+print("Patched YOLOX VOC evaluator empty-detection check.")
+PY
 
 pip install -v -e .
 ```
@@ -39,4 +54,3 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 <img src="https://learnopencv.com/wp-content/uploads/2023/01/AI-Courses-By-OpenCV-Github.png">
 </p>
 </a>
-
