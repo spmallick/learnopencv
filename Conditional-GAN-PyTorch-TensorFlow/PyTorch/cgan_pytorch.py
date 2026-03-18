@@ -20,7 +20,19 @@ from matplotlib import gridspec
 
 torch.manual_seed(1)
 
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+def resolve_device():
+    if not torch.cuda.is_available():
+        return torch.device("cpu")
+    try:
+        torch.zeros(1, device="cuda")
+        return torch.device("cuda")
+    except Exception as exc:
+        print(f"CUDA is unavailable or unsupported, falling back to CPU: {exc}")
+        return torch.device("cpu")
+
+
+device = resolve_device()
 batch_size = 128
 
 train_transform = transforms.Compose([

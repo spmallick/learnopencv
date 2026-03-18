@@ -10,11 +10,14 @@ It is part of the LearnOpenCV blog post - [Integrating ADAS with Keypoint Featur
 
 ### Environment Setup
 
-Run the following commands on a new terminal window for creating a new environment with the required packages: 
+Tested with Python 3.12.x. Create a fresh virtual environment and install the validated dependencies before running the project:
 
 ```shell script
-cd SFA3D
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -U pip
 pip install -r requirements.txt
+cd sfa
 ```
 
 ### Dataset Visualization

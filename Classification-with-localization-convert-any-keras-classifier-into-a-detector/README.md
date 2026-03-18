@@ -6,6 +6,19 @@
 
 You can also use this ready to run [Colab Notebook](https://colab.research.google.com/drive/1naVE8yU_ryVGvLRxHE_QPR5rjmaVb4ne#scrollTo=wNgVViF5Tz19).
 
+## Local Setup
+
+Tested with Python 3.12.x.
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -U pip
+pip install -r requirements.txt
+```
+
+The bundled notebook now uses `tensorflow.keras` imports that are compatible with the current TensorFlow / Keras stack.
+
 # AI Courses by OpenCV
 
 Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/courses/) is a great place to start.

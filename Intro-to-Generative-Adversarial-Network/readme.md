@@ -6,16 +6,16 @@
 [<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/ov4evajodhe3sxk/AAD8HAVFHBRhZ27AOwjZV41ua?dl=1)
 ## Package Dependencies
 
-The repository trains the Generative Adversarial Network in both Pytorch and Tensorflow on Fashion-MNIST dataset. It is tested with:
+The repository trains the Generative Adversarial Network in both PyTorch and TensorFlow on the Fashion-MNIST dataset. The current requirements have been validated with Python 3.12.x.
 
-- `Cuda-11.1`
-- `Cudnn-8.0`
+```
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -U pip
+pip install -r requirements.txt
+```
 
-The Pytorch and Tensorflow scripts require [numpy](https://numpy.org/), [tensorflow](https://www.tensorflow.org/install), [torch](https://pypi.org/project/torch/). 
-To get the versions of these packages you need for the program, use pip: (Make sure pip is upgraded: ` python3 -m pip install -U pip`)
-```
-pip3 install -r requirements.txt 
-```
+The PyTorch script now falls back to CPU automatically when the installed CUDA build does not support the available GPU.
 
 ## Instructions
 

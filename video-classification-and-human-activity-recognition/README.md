@@ -13,6 +13,17 @@
 
 [<img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" width="200">](https://colab.research.google.com/drive/1Yxsyc7qTr7KjTyz8qa6mJqb3TagthWK-?usp=sharing)
 
+## Local Setup
+
+Tested with Python 3.12.x.
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -U pip
+pip install -r requirements.txt
+```
+
 # AI Courses by OpenCV
 
 Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/courses/) is a great place to start.

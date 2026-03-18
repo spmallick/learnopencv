@@ -4,5 +4,6 @@ tensorflow==2.16.1
 torch==2.8.0
 torchsummary==1.5.1
 torchvision==0.23.0
+tqdm==4.67.1
 matplotlib
 ipython

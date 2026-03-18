@@ -36,7 +36,12 @@ class ImageLoader:
                 return path
             else:
                 # folder with images
-                paths = [os.path.join(path, image) for image in os.listdir(path)]
+                paths = [
+                    os.path.join(path, image)
+                    for image in sorted(os.listdir(path))
+                    if os.path.isfile(os.path.join(path, image))
+                    and image.lower().endswith(self.extensions)
+                ]
                 return paths
 
     def __iter__(self):
@@ -56,6 +61,8 @@ class CV2Loader(ImageLoader):
         start = timer()
         path = self.dataset[self.sample_idx]  # get image path by index from the dataset
         image = cv2.imread(path)  # read the image
+        if image is None:
+            raise FileNotFoundError(f"Failed to read image: {path}")
         full_time = timer() - start
         if self.mode == "RGB":
             start = timer()

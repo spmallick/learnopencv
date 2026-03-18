@@ -9,16 +9,13 @@
 
 This repository also trains the Autoencoder in Tensorflow framework on Fashion-MNIST and Cartoon dataset. The cartoon dataset can be downloaded from [here](https://google.github.io/cartoonset/).
 
-The code is tested with:
-
-- `Cuda-11.1`
-- `Cudnn-8.0`
-
-The Tensorflow notebook requires [numpy](https://numpy.org/), [tf-nightly-gpu](https://pypi.org/project/tf-nightly-gpu/), [opencv](https://pypi.org/project/opencv-python/), [sklearn](https://pypi.org/project/scikit-learn/). 
-To get the versions of these packages you need for the program, use pip: (Make sure pip is upgraded: ` python3 -m pip install -U pip`)
+The current requirements have been validated with Python 3.12.x. Create a fresh virtual environment and install the pinned dependencies before running the notebook locally.
 
 ```python
-pip3 install -r requirements.txt 
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install -U pip
+pip install -r requirements.txt
 ```
 
 ## Add Virtualenv as Python Kernel in Jupyterlab

@@ -44,7 +44,19 @@ os.makedirs('diff-run/images', exist_ok=True)
 
 writer = SummaryWriter('diff-run/py-gan')
 
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+def resolve_device():
+    if not torch.cuda.is_available():
+        return torch.device("cpu")
+    try:
+        torch.zeros(1, device="cuda")
+        return torch.device("cuda")
+    except Exception as exc:
+        print(f"CUDA is unavailable or unsupported, falling back to CPU: {exc}")
+        return torch.device("cpu")
+
+
+device = resolve_device()
 
 train_transform = transforms.Compose([
     transforms.ToTensor(),
@@ -102,9 +114,9 @@ discriminator = Discriminator().to(device)
 # for layer in generator.children():
 #     print(layer.type)
 
-summary(generator, (100,))
+summary(generator, (100,), device=device.type)
 
-summary(discriminator, (1,28,28))
+summary(discriminator, (1,28,28), device=device.type)
 
 adversarial_loss = nn.BCELoss()
 

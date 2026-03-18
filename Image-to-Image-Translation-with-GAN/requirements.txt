@@ -4,5 +4,7 @@ tensorflow==2.16.1
 torch==2.8.0
 torchsummary==1.5.1
 torchvision==0.23.0
+opencv-python==4.11.0.86
+scikit-image==0.24.0
 matplotlib
 ipython

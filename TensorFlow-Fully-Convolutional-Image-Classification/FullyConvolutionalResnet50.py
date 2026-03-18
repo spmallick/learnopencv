@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 import tensorflow as tf
-from tensorflow.keras import Input
+from tensorflow.keras import Input, Model
 from tensorflow.keras.applications import ResNet50
 from tensorflow.keras.applications.resnet import preprocess_input
 from tensorflow.keras.layers import (
@@ -12,8 +12,7 @@ from tensorflow.keras.layers import (
     MaxPooling2D,
     ZeroPadding2D,
 )
-from tensorflow.python.keras.engine import training
-from tensorflow.python.keras.utils import data_utils
+from tensorflow.keras.utils import get_file
 
 from utils import (
     BASE_WEIGHTS_PATH,
@@ -65,7 +64,7 @@ def fully_convolutional_resnet50(
     )(x)
 
     # configure fully convolutional ResNet50 model
-    model = training.Model(img_input, x)
+    model = Model(img_input, x)
 
     # load model weights
     if pretrained_resnet:
@@ -73,8 +72,8 @@ def fully_convolutional_resnet50(
         # configure full file name
         file_name = model_name + "_weights_tf_dim_ordering_tf_kernels_notop.h5"
         # get the file hash from TF WEIGHTS_HASHES
-        file_hash = WEIGHTS_HASHES[model_name][1]
-        weights_path = data_utils.get_file(
+        file_hash = WEIGHTS_HASHES[model_name]
+        weights_path = get_file(
             file_name,
             BASE_WEIGHTS_PATH + file_name,
             cache_subdir="models",
@@ -84,7 +83,7 @@ def fully_convolutional_resnet50(
         model.load_weights(weights_path)
 
     # form final model
-    model = training.Model(inputs=model.input, outputs=[conv_layer_final])
+    model = Model(inputs=model.input, outputs=[conv_layer_final])
 
     if pretrained_resnet:
         # get model with the dense layer for further FC weights extraction

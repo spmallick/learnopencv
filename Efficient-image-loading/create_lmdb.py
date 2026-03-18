@@ -11,6 +11,7 @@ from tools import get_images_paths
 def store_many_lmdb(images_list, save_path):
 
     num_images = len(images_list)  # number of images in our folder
+    os.makedirs(save_path, exist_ok=True)
 
     file_sizes = [os.path.getsize(item) for item in images_list]  # all file sizes
     max_size_index = np.argmax(file_sizes)  # the maximum file size index

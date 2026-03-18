@@ -1,3 +1,5 @@
 # Requires Python 3.12.x
 tensorflow==2.16.1
-tensorflow-model-optimization
+tensorflow-datasets==4.9.9
+tensorflow-model-optimization==0.8.0
+tf-keras==2.16.0

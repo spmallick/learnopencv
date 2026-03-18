@@ -1,5 +1,8 @@
 # Requires Python 3.12.x
 wheel
-numpy
+numpy==1.26.4
 tensorflow==2.16.1
+tensorflow-datasets==4.9.9
+tensorflow-model-optimization==0.8.0
+tf-keras==2.16.0
 jupyter

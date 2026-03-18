@@ -1,8 +1,9 @@
 # Requires Python 3.12.x
-lmdb==0.98
+lmdb==1.6.2
 numpy==1.26.4
 opencv-python==4.11.0.86
 Pillow==12.1.1
 prettytable==0.7.2
 PyTurboJPEG==1.4.0
 tensorflow==2.16.1
+cffi==1.17.1

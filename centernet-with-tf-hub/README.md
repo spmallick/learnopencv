@@ -11,8 +11,13 @@ Use readily available Google Colab notebook [<img src="https://colab.research.go
 
 ## Requirements
 ```
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -U pip
 pip install -r requirements.txt
 ```
+
+Tested with Python 3.12.x.
 
 
 

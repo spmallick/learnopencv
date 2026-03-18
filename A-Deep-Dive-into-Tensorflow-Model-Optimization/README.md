@@ -9,8 +9,13 @@ The repository contains a notebook comparing different model optimization techni
 ## Requirements
 
 ```
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -U pip
 pip install -r requirements.txt
 ```
+
+Tested with Python 3.12.x. The notebook now enables `TF_USE_LEGACY_KERAS=1` before importing TensorFlow so that `tensorflow-model-optimization==0.8.0` works correctly with TensorFlow 2.16. If you run the code outside the notebook, set that environment variable before importing TensorFlow.
 
 # AI Courses by OpenCV
 

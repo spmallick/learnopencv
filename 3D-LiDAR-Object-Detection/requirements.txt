@@ -9,4 +9,4 @@ tensorboard==2.10.0
 scikit-learn==1.5.0
 wget==3.2
 tqdm==4.67.1
-matplotlib==3.5.1
+matplotlib==3.9.2

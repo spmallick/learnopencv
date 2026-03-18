@@ -3,8 +3,9 @@ tensorflow==2.16.1
 numpy==1.26.4
 opencv-contrib-python==4.11.0.86
 scikit-learn==1.5.0
-matplotlib==3.2.2
+matplotlib==3.9.2
 urllib3==2.5.0
 pafy==0.5.5
-moviepy==0.2.3.5
+moviepy==1.0.3
+imageio-ffmpeg==0.6.0
 youtube_dl

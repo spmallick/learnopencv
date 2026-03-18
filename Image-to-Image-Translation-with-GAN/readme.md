@@ -6,16 +6,16 @@
 
 ## Package Dependencies
 
-The repository trains the Pix2Pix GAN in both Pytorch and Tensorflow on the Edges2Shoes dataset. It is tested with:
-
-- `Cuda-11.1`
-- `Cudnn-8.0`
-
-The Pytorch and Tensorflow scripts require [numpy](https://numpy.org/), [tensorflow](https://www.tensorflow.org/install), [torch](https://pypi.org/project/torch/). To get the versions of these packages you need for the program, use pip: (Make sure pip is upgraded: `python3 -m pip install -U pip`)
+The repository trains the Pix2Pix GAN in both PyTorch and TensorFlow on the Edges2Shoes dataset. The current requirements have been validated with Python 3.12.x.
 
 ```
-pip3 install -r requirements.txt 
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -U pip
+pip install -r requirements.txt
 ```
+
+The PyTorch script now falls back to CPU automatically when the installed CUDA build does not support the available GPU.
 
 ## Directory Structure
 
@@ -38,11 +38,11 @@ pip3 install -r requirements.txt
 
 ### PyTorch
 
-To train the Pix2Pix GAN with Pytorch, please go into the `PyTorch` folder and execute the Jupyter Notebook.
+To train the Pix2Pix GAN with PyTorch, go into the `PyTorch` folder and execute either the Python script or the notebook.
 
 ### TensorFlow
 
-To train the Pix2Pix GAN with TensorFlow, please go into the `TensorFlow` folder and execute the Jupyter Notebook.
+To train the Pix2Pix GAN with TensorFlow, go into the `TensorFlow` folder and execute the notebook or script.
 
 # AI Courses by OpenCV
 

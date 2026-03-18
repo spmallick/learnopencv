@@ -16,7 +16,19 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 
 torch.manual_seed(1)
 
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+def resolve_device():
+    if not torch.cuda.is_available():
+        return torch.device("cpu")
+    try:
+        torch.zeros(1, device="cuda")
+        return torch.device("cuda")
+    except Exception as exc:
+        print(f"CUDA is unavailable or unsupported, falling back to CPU: {exc}")
+        return torch.device("cpu")
+
+
+device = resolve_device()
 batch_size = 128
 
 train_transform = transforms.Compose([transforms.Resize((64, 64)),
@@ -77,7 +89,7 @@ class Generator(nn.Module):
 generator = Generator().to(device)
 generator.apply(weights_init)
 
-summary(generator, (100,1,1))
+summary(generator, (100,1,1), device=device.type)
 
 # Discriminator Model Class Definition
 class Discriminator(nn.Module):
@@ -114,7 +126,7 @@ discriminator = Discriminator().to(device)
 discriminator.apply(weights_init)
 print(discriminator)
 
-summary(discriminator, (3,64,64))
+summary(discriminator, (3,64,64), device=device.type)
 
 adversarial_loss = nn.BCELoss() 
 

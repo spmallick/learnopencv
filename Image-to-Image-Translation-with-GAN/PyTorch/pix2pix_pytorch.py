@@ -27,42 +27,42 @@ IMG_WIDTH = 256
 IMG_HEIGHT = 256
 
 '''Data Preprocessing'''
-    
+
 def read_image(image):
-        
+
         image = np.array(image)
         width = image.shape[1]
         width_half = width // 2
-       
+
         input_image = image[:, :width_half, :]
         target_image = image[:, width_half:, :]
-    
+
         input_image = input_image.astype(np.float32)
         target_image = target_image.astype(np.float32)
-    
+
         return input_image, target_image
 
 def random_crop(image, dim):
     height, width, _ = dim
     rand_crop = np.random.uniform(low=0,high=256)
-    x, y = np.random.uniform(low=0,high=int(height-256)), np.random.uniform(low=0,high=int(width-256))  
+    x, y = np.random.uniform(low=0,high=int(height-256)), np.random.uniform(low=0,high=int(width-256))
     #return print(image.shape)
     return image[:, int(x):int(x)+256, int(y):int(y)+256]
 
-    
+
 
 def random_jittering_mirroring(input_image, target_image, height=286, width=286):
-    
+
     #resizing to 286x286
     input_image = cv2.resize(input_image, (height, width) ,interpolation=cv2.INTER_NEAREST)
     target_image = cv2.resize(target_image, (height, width),
                                interpolation=cv2.INTER_NEAREST)
-    
+
     #print(input_image.shape)
     #cropping (random jittering) to 256x256
     stacked_image = np.stack([input_image, target_image], axis=0)
     cropped_image = random_crop(stacked_image, dim=[IMG_HEIGHT, IMG_WIDTH, 3])
-    
+
     input_image, target_image = cropped_image[0], cropped_image[1]
     #print(input_image.shape)
     if torch.rand(()) > 0.5:
@@ -70,12 +70,12 @@ def random_jittering_mirroring(input_image, target_image, height=286, width=286)
         input_image = np.fliplr(input_image)
         target_image = np.fliplr(target_image)
     return input_image, target_image
-        
+
 def normalize(inp, tar):
     input_image = (inp / 127.5) - 1
     target_image = (tar / 127.5) - 1
     return input_image, target_image
-        
+
 class Train_Normalize(object):
     def __call__(self, image):
         inp, tar = read_image(image)
@@ -83,8 +83,8 @@ class Train_Normalize(object):
         inp, tar = normalize(inp, tar)
         image_a = torch.from_numpy(inp.copy().transpose((2,0,1)))
         image_b = torch.from_numpy(tar.copy().transpose((2,0,1)))
-        return image_a, image_b    
-    
+        return image_a, image_b
+
 class Val_Normalize(object):
     def __call__(self, image):
         inp, tar = read_image(image)
@@ -118,15 +118,15 @@ def imshow(inputs, target, figsize=(10, 5)):
     title = ['Input Image', 'Ground Truth']
     display_list = [inp, tar]
     plt.figure(figsize=figsize)
-  
+
     for i in range(2):
         plt.subplot(1, 3, i+1)
         plt.title(title[i])
         plt.axis('off')
         plt.imshow(display_list[i])
     plt.axis('off')
- 
-    #plt.imshow(image)    
+
+    #plt.imshow(image)
 
 def show_batch(dl):
     j=0
@@ -138,7 +138,7 @@ def show_batch(dl):
 
 show_batch(train_dl)
 
-# custom weights initialization called on generator and discriminator        
+# custom weights initialization called on generator and discriminator
 def weights_init(net, init_type='normal', scaling=0.02):
     """Initialize network weights.
     Parameters:
@@ -187,12 +187,12 @@ class UnetGenerator(nn.Module):
         super(UnetGenerator, self).__init__()
         # construct unet structure
         unet_block = UnetSkipConnectionBlock(nf * 8, nf * 8, input_nc=None, submodule=None, norm_layer=norm_layer, innermost=True)  # add the innermost layer
-        
+
         # add intermediate layers with ngf * 8 filters
         unet_block = UnetSkipConnectionBlock(nf * 8, nf * 8, input_nc=None, submodule=unet_block, norm_layer=norm_layer, use_dropout=use_dropout)
         unet_block = UnetSkipConnectionBlock(nf * 8, nf * 8, input_nc=None, submodule=unet_block, norm_layer=norm_layer, use_dropout=use_dropout)
         unet_block = UnetSkipConnectionBlock(nf * 8, nf * 8, input_nc=None, submodule=unet_block, norm_layer=norm_layer, use_dropout=use_dropout)
-        
+
         # gradually reduce the number of filters from nf * 8 to nf
         unet_block = UnetSkipConnectionBlock(nf * 4, nf * 8, input_nc=None, submodule=unet_block, norm_layer=norm_layer)
         unet_block = UnetSkipConnectionBlock(nf * 2, nf * 4, input_nc=None, submodule=unet_block, norm_layer=norm_layer)
@@ -267,24 +267,32 @@ class UnetSkipConnectionBlock(nn.Module):
         else:   # add skip connections
             return torch.cat([x, self.model(x)], 1)
 
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-torch.cuda.device_count()
+def resolve_device():
+    if not torch.cuda.is_available():
+        return torch.device("cpu")
+    try:
+        torch.zeros(1, device="cuda")
+        return torch.device("cuda")
+    except Exception as exc:
+        print(f"CUDA is unavailable or unsupported, falling back to CPU: {exc}")
+        return torch.device("cpu")
+
+
+device = resolve_device()
 
 norm_layer = get_norm_layer()
 
 generator = UnetGenerator(3, 3, 64, norm_layer=norm_layer, use_dropout=False)#.cuda().float()
 generator.apply(weights_init)
 
-generator = torch.nn.DataParallel(generator)  # multi-GPUs
+if device.type == "cuda" and torch.cuda.device_count() > 1:
+    generator = torch.nn.DataParallel(generator)  # multi-GPUs
 
-inp = torch.ones(1, 3,256,256)
-#gen = generator(inp)
-device = 'cuda'
-inp = inp.to(device)
+inp = torch.ones(1, 3,256,256, device=device)
 generator = generator.to(device)
 
-print(summary(generator,(3,256,256)))
+print(summary(generator, (3,256,256), device=device.type))
 
 class Discriminator(nn.Module):
     """Defines a PatchGAN discriminator"""
@@ -329,17 +337,16 @@ class Discriminator(nn.Module):
 
 discriminator = Discriminator(6, 64, n_layers=3, norm_layer=norm_layer)#.cuda().float()
 discriminator.apply(weights_init)
-discriminator = torch.nn.DataParallel(discriminator)  # multi-GPUs
+if device.type == "cuda" and torch.cuda.device_count() > 1:
+    discriminator = torch.nn.DataParallel(discriminator)  # multi-GPUs
 
-inp = torch.ones(1,6,256,256)
+inp = torch.ones(1,6,256,256, device=device)
+discriminator = discriminator.to(device)
 disc = discriminator(inp)
-# device = 'cuda'
-# inp = inp.to(device)
-# discriminator = discriminator.to(device)
 
-summary(discriminator,(6,256,256))
+summary(discriminator, (6,256,256), device=device.type)
 
-adversarial_loss = nn.BCELoss() 
+adversarial_loss = nn.BCELoss()
 l1_loss = nn.L1Loss()
 
 def generator_loss(generated_image, target_img, G, real_target):
@@ -353,83 +360,83 @@ def discriminator_loss(output, label):
     disc_loss = adversarial_loss(output, label)
     return disc_loss
 
-learning_rate = 2e-4 
+learning_rate = 2e-4
 G_optimizer = optim.Adam(generator.parameters(), lr = learning_rate, betas=(0.5, 0.999))
 D_optimizer = optim.Adam(discriminator.parameters(), lr = learning_rate, betas=(0.5, 0.999))
 
 num_epochs = 1
 D_loss_plot, G_loss_plot = [], []
-for epoch in range(1, num_epochs+1): 
-  
+for epoch in range(1, num_epochs+1):
+
 
     D_loss_list, G_loss_list = [], []
-   
+
     for (input_img, target_img), _ in train_dl:
-       
+
         D_optimizer.zero_grad()
         input_img = input_img.to(device)
         target_img = target_img.to(device)
-        
+
 #         print("Inp:",input_img.shape)
 #         print("Tar:", target_img.shape)
-        
+
         generated_image = generator(input_img)
-        
+
         disc_inp_fake = torch.cat((input_img, generated_image), 1)
-       
-        
-        
+
+
+
         real_target = Variable(torch.ones(input_img.size(0), 1, 30, 30).to(device))
         fake_target = Variable(torch.zeros(input_img.size(0), 1, 30, 30).to(device))
-        
+
 #         print("Fake_targ:",fake_target.shape)
         D_fake = discriminator(disc_inp_fake.detach())
-        
+
 #         print("D_fake:",D_fake.shape)
         D_fake_loss   =  discriminator_loss(D_fake, fake_target)
         # print(discriminator(real_images))
         #D_real_loss.backward()
-    
+
         disc_inp_real = torch.cat((input_img, target_img), 1)
-        
-                                         
+
+
         output = discriminator(disc_inp_real)
         D_real_loss = discriminator_loss(output,  real_target)
 
-    
+
         # train with fake
         #D_fake_loss.backward()
-      
+
         D_total_loss = (D_real_loss + D_fake_loss) / 2
         D_loss_list.append(D_total_loss)
-      
+
         D_total_loss.backward()
         D_optimizer.step()
-        
-        
+
+
         # Train generator with real labels
         G_optimizer.zero_grad()
         fake_gen = torch.cat((input_img, generated_image), 1)
 #         print('fake_gen:', fake_gen)
         G = discriminator(fake_gen)
-        G_loss = generator_loss(generated_image, target_img, G, real_target)                                 
+        G_loss = generator_loss(generated_image, target_img, G, real_target)
         G_loss_list.append(G_loss)
 
         G_loss.backward()
         G_optimizer.step()
-        
+
     print('Epoch: [%d/%d]: D_loss: %.3f, G_loss: %.3f' % (
             (epoch), num_epochs, torch.mean(torch.FloatTensor(D_loss_list)),\
              torch.mean(torch.FloatTensor(G_loss_list))))
-    
+
     D_loss_plot.append(torch.mean(torch.FloatTensor(D_loss_list)))
     G_loss_plot.append(torch.mean(torch.FloatTensor(G_loss_list)))
-     
+
     torch.save(generator.state_dict(), 'torch/training_weights/generator_epoch_%d.pth' % (epoch))
     torch.save(discriminator.state_dict(), 'torch/training_weights/discriminator_epoch_%d.pth' % (epoch))
-    
+
     for (inputs, targets), _ in val_dl:
         inputs = inputs.to(device)
         generated_output = generator(inputs)
         save_image(generated_output.data[:10], 'torch/images/sample_%d'%epoch + '.png', nrow=5, normalize=True)
-  
+

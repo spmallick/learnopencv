@@ -7,15 +7,16 @@
 
 ## Package Dependencies
 
-The repository also trains the Deep Convolutional GAN in both Pytorch and Tensorflow on [Anime-Faces dataset](https://github.com/bchao1/Anime-Face-Dataset). It is tested with the following CUDA versions.
+The repository trains the Deep Convolutional GAN in both PyTorch and TensorFlow on the [Anime Faces dataset](https://github.com/bchao1/Anime-Face-Dataset). The current requirements have been validated with Python 3.12.x.
 
-- `Cuda-11.1`
-- `Cudnn-8.0`
+```
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -U pip
+pip install -r requirements.txt
+```
 
-The Pytorch and Tensorflow scripts require [numpy](https://numpy.org/), [tensorflow](https://www.tensorflow.org/install), [torch](https://pypi.org/project/torch/).  To get the versions of these packages you need for the program, use pip: (Make sure pip is upgraded. ` python3 -m pip install -U pip`)
-```
-pip3 install -r requirements.txt 
-```
+The PyTorch script now falls back to CPU automatically when the installed CUDA build does not support the available GPU.
 
 ## Directory Structure
 
@@ -35,11 +36,11 @@ pip3 install -r requirements.txt
 
 ### PyTorch
 
-To train the Deep Convolutional GAN with Pytorch, please go into the `Pytorch` folder and execute the Jupyter Notebook.
+To train the Deep Convolutional GAN with PyTorch, go into the `PyTorch` folder and execute either the Python script or the notebook.
 
 ### TensorFlow
 
-To train the Deep Convolutional GAN with TensorFlow, please go into the `Tensorflow` folder and execute the Jupyter Notebook.
+To train the Deep Convolutional GAN with TensorFlow, go into the `TensorFlow` folder and execute the notebook or script.
 
 
 # AI Courses by OpenCV
