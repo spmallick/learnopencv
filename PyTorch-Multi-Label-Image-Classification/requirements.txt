@@ -1,5 +1,6 @@
 matplotlib
 numpy
+onnx
 pillow
 scikit-learn
 torch
