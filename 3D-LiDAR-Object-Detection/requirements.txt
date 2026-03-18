@@ -1,11 +1,12 @@
-torch==1.13.0
-torchvision==0.14.0
+# Requires Python 3.12.x
+torch==2.8.0
+torchvision==0.23.0
 easydict==1.9
-opencv-python==4.5.5.64
-numpy==1.23.0
+opencv-python==4.11.0.86
+numpy==1.26.4
 torchsummary==1.5.1
 tensorboard==2.10.0
-scikit-learn==1.1.1
+scikit-learn==1.5.0
 wget==3.2
-tqdm==4.64.0
+tqdm==4.67.1
 matplotlib==3.5.1

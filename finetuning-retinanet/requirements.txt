@@ -1,5 +1,6 @@
+# Requires Python 3.12.x
 opencv-python==4.11.0.86
-torch==2.6.0
-torchvision==0.21.0
-torchaudio==2.6.0
-gradio==5.18.0
+torch==2.8.0
+torchvision==0.23.0
+torchaudio==2.8.0
+gradio==6.7.0

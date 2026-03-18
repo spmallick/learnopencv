@@ -1,2 +1,3 @@
-opencv-python>=3.4.1.15
-tensorflow==2.1.0
+# Requires Python 3.12.x
+opencv-python==4.11.0.86
+tensorflow==2.16.1

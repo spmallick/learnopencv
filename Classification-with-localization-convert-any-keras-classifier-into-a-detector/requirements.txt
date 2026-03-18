@@ -1,13 +1,12 @@
-tensorflow==2.3.0
-imgaug==0.2.9
-numpy==1.18.5
-pandas==1.1.3
-opencv-contrib-python==4.1.2.30
-opencv-python==4.1.2.30
-sklearn==0.0
-sklearn-pandas==1.8.0
-scikit-image==0.16.2
-scikit-learn==0.22.2.post1
-scipy==1.4.1
-matplotlib==3.2.2
-urllib3==1.24.3
+# Requires Python 3.12.x
+tensorflow==2.16.1
+imgaug==0.4.0
+numpy==1.26.4
+pandas==2.2.3
+opencv-contrib-python==4.11.0.86
+opencv-python==4.11.0.86
+scikit-image==0.24.0
+scikit-learn==1.5.0
+scipy==1.13.1
+matplotlib==3.9.2
+urllib3==2.5.0

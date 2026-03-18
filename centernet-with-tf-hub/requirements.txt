@@ -1,2 +1,3 @@
+# Requires Python 3.12.x
 opencv-python
-tensorflow==2.9.2
+tensorflow==2.16.1

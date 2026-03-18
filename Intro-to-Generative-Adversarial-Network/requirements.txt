@@ -1,7 +1,8 @@
-numpy==1.19.2
-tensorflow==2.4
-torch==1.7.0
+# Requires Python 3.12.x
+numpy==1.26.4
+tensorflow==2.16.1
+torch==2.8.0
 torchsummary==1.5.1
-torchvision==0.8.1
+torchvision==0.23.0
 matplotlib
 ipython

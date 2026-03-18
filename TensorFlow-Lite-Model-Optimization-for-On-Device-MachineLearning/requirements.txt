@@ -1,4 +1,5 @@
+# Requires Python 3.12.x
 wheel
 numpy
-tensorflow==2.8.0
+tensorflow==2.16.1
 jupyter
