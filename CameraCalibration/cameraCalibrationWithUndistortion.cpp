@@ -80,7 +80,7 @@ int main()
    * and corresponding pixel coordinates of the 
    * detected corners (imgpoints)
   */
-  cv::calibrateCamera(objpoints, imgpoints,cv::Size(gray.rows,gray.cols),cameraMatrix,distCoeffs,R,T);
+  cv::calibrateCamera(objpoints, imgpoints,cv::Size(gray.cols,gray.rows),cameraMatrix,distCoeffs,R,T);
 
   std::cout << "cameraMatrix : " << cameraMatrix << std::endl;
   std::cout << "distCoeffs : " << distCoeffs << std::endl;
