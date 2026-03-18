@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
-from torch.hub import load_state_dict_from_url
 from torchvision import models
+from torchvision.models import ResNet18_Weights
 
 
 # Define the architecture by modifying resnet.
@@ -19,9 +19,8 @@ class FullyConvolutionalResnet18(models.ResNet):
             **kwargs,
         )
         if pretrained:
-            state_dict = load_state_dict_from_url(
-                models.resnet.model_urls["resnet18"], progress=True,
-            )
+            weights = ResNet18_Weights.DEFAULT
+            state_dict = weights.get_state_dict(progress=True, check_hash=True)
             self.load_state_dict(state_dict)
 
         # Replace AdaptiveAvgPool2d with standard AvgPool2d
