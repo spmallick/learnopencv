@@ -7,7 +7,9 @@ This repository contains code for the blog post [Convolutional Neural Network, C
 
 ## Usage
 
-Run the getModels.sh file from command line to download the needed model files
+The small support files (`pts_in_hull.npy` and `models/colorization_deploy_v2.prototxt`) are now stored directly in this repo. Run `getModels.sh` only to download the large `colorization_release_v2.caffemodel` from the repository release assets.
+
+Attribution for the vendored support files and the mirrored model asset is documented in [ASSET_ATTRIBUTION.md](./ASSET_ATTRIBUTION.md).
 
 	sudo chmod a+x getModels.sh
 	./getModels.sh
