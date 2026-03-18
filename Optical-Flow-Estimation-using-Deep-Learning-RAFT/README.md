@@ -28,7 +28,7 @@
 2. To run the demo, you need to create a virtual environment your working directory:
 
    ```Shell
-   virtualenv -p python3.7 venv
+   python3.12 -m venv venv
    source venv/bin/activate
    ```
 

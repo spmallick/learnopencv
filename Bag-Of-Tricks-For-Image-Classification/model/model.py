@@ -10,6 +10,7 @@ import pytorch_lightning as pl
 import torch
 from torch import nn
 from torch.utils.data import DataLoader
+from torchmetrics.classification import MulticlassAccuracy
 from torchvision.datasets import ImageFolder
 
 from .augmentations import (
@@ -31,7 +32,7 @@ class LitFood101(pl.LightningModule):
         # We need to specify a number of classes there to avoid the RuntimeError
         # See https://github.com/PyTorchLightning/pytorch-lightning/issues/3006
         # However, we will get another warning and it should be handled in forward steps
-        self.metric = pl.metrics.Accuracy(num_classes=self.args.num_classes)
+        self.metric = MulticlassAccuracy(num_classes=self.args.num_classes)
         dim_feats = self.model.fc.in_features  # =2048
         nb_classes = self.args.num_classes
         self.model.fc = nn.Linear(dim_feats, nb_classes)

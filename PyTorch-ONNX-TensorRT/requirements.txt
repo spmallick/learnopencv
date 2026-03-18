@@ -1,6 +1,6 @@
-torch==1.2.0
-torchvision==0.4.0
-albumentations==0.4.5
-onnx==1.4.1
-opencv-python==4.2.0.34
-
+# Requires Python 3.12.x
+albumentations>=1.4,<2
+onnx>=1.17,<2
+opencv-python>=4.10.0.84,<5
+torch>=2.6,<2.9
+torchvision>=0.21,<0.24

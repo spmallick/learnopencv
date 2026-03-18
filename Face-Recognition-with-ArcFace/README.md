@@ -14,7 +14,7 @@ Some parts of the code and trained face identification model are from [face.evoL
 Use your Python virtual environment such as [virtualenv](https://virtualenv.pypa.io/en/latest/) to isolate project.
 
 ```
-virtualenv -p python3.7 face-recognition
+python3.12 -m venv face-recognition
 source face-recognition/bin/activate
 ```
 

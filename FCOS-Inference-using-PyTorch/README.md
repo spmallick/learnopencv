@@ -8,6 +8,14 @@
 
 [<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/scl/fo/ixyn3c0iuswoqrfrxzvxh/h?dl=1&rlkey=fjl3ah2c3a1310h5anx7t5u0i)
 
+## Local setup
+
+```bash
+python3.12 -m venv venv
+source venv/bin/activate
+python3 -m pip install -r requirements.txt
+```
+
 
 # AI Courses by OpenCV
 

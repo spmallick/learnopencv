@@ -29,7 +29,7 @@ def main():
         args,
         deterministic=True,
         benchmark=False,
-        checkpoint_callback=checkpoint_callback,
+        callbacks=[checkpoint_callback],
         precision=16 if args.amp_level != "O0" else 32,
     )
 

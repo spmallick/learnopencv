@@ -1,6 +1,6 @@
 import torch
 from torchvision import models
-from torch.hub import load_state_dict_from_url
+from torchvision.models import ResNet101_Weights
 
 
 # Define the architecture by modifying resnet.
@@ -12,8 +12,8 @@ class ResNet101(models.ResNet):
         # https://github.com/pytorch/vision/blob/b2e95657cd5f389e3973212ba7ddbdcc751a7878/torchvision/models/resnet.py
         super().__init__(block=models.resnet.Bottleneck, layers=[3, 4, 23, 3], num_classes=num_classes, **kwargs)
         if pretrained:
-            state_dict = load_state_dict_from_url(models.resnet.model_urls['resnet101'], progress=True)
-            self.load_state_dict(state_dict)
+            weights = ResNet101_Weights.DEFAULT
+            self.load_state_dict(weights.get_state_dict(progress=True, check_hash=True))
 
     # Reimplementing forward pass.
     # Replacing the following code

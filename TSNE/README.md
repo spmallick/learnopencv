@@ -6,12 +6,12 @@
 
 # Setup
 
-This code was tested with python 3.7, however, it should work with any python 3.
+This code was validated with Python 3.12.x.
 
 1. Create and activate virtual environment for experiments with t-SNE.
 
 ```bash
-python3 -m venv venv
+python3.12 -m venv venv
 source venv/bin/activate
 ```
 

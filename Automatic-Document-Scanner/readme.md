@@ -15,8 +15,12 @@ In this post, you will learn the following,
 
 ## Install requirements
 ```
+python3.12 -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
 ```
+
+This project was validated with Python 3.12.x.
 
 ### Input
 

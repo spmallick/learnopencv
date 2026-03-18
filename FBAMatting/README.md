@@ -9,7 +9,7 @@
 Please, follow the instruction to launch the demonstration script:
 
 - Download model weights from [there](https://drive.google.com/uc?id=1T_oiKDE_biWf2kqexMEN7ObWqtXAzbB1);
-- Install the requirements with `pip3 install -r requirements.txt`;
+- Create a Python 3.12 virtual environment and install the requirements with `python3.12 -m venv venv && source venv/bin/activate && pip3 install -r requirements.txt`;
 - Launch `python3 demo.py` to use default arguments. Use `python3 demo.py -h` for details.
 
 The results will be saved into `./examples/predictions` by default.

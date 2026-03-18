@@ -3,6 +3,10 @@ import argparse
 import torch
 import numpy as np
 from torchvision import transforms
+from torchvision.models.segmentation import (
+    DeepLabV3_ResNet101_Weights,
+    deeplabv3_resnet101,
+)
 import cv2
 
 IMG_EXT = ('.png', '.jpg', '.jpeg', '.JPG', '.JPEG')
@@ -67,7 +71,7 @@ def parse_args():
 
 
 def main(input_dir, target_class, show, conf_threshold):
-    model = torch.hub.load('pytorch/vision:v0.6.0', 'deeplabv3_resnet101', pretrained=True)
+    model = deeplabv3_resnet101(weights=DeepLabV3_ResNet101_Weights.DEFAULT)
     model.eval()
 
     trimaps_path = os.path.join(input_dir, "trimaps")

@@ -1,8 +1,11 @@
-albumentations==0.4.6
-numpy==1.19.1
-opencv-python==4.3.0.36
-Pillow==6.2.0
-pytorch-lightning==0.9.0
-tensorboard==2.2.0
-torchvision==0.6.1
-tqdm==4.48.1
+# Requires Python 3.12.x
+albumentations>=1.4,<2
+numpy>=1.26.4,<2
+opencv-python>=4.10.0.84,<5
+Pillow>=10.4.0
+pytorch-lightning>=1.9.5,<2
+setuptools<81
+tensorboard>=2.17,<2.19
+torch>=2.6,<2.9
+torchvision>=0.21,<0.24
+tqdm>=4.66.5

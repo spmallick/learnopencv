@@ -13,6 +13,8 @@ source zoom-gestures/bin/activate
 pip3 install -r requirements.txt
 ```
 
+This project was validated with Python 3.12.x.
+
 ### Virtual Camera Setup
 
 Install [v4l2loopback](https://github.com/umlaeute/v4l2loopback.git)
@@ -39,4 +41,3 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 <img src="https://learnopencv.com/wp-content/uploads/2023/01/AI-Courses-By-OpenCV-Github.png">
 </p>
 </a>
-

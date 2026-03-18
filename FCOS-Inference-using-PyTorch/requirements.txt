@@ -1,6 +1,7 @@
-matplotlib==3.3.4
-numpy==1.20.1
-opencv_python_headless==4.5.3.56
-requests==2.25.1
-torch==1.9.0
-torchvision==0.10.0
+# Requires Python 3.12.x
+matplotlib>=3.8,<3.11
+numpy>=1.26.4,<2
+opencv-python-headless>=4.10.0.84,<5
+requests>=2.32.3
+torch>=2.6,<2.9
+torchvision>=0.21,<0.24

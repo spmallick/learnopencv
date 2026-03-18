@@ -137,7 +137,9 @@ class ActionClassificationLSTM(pl.LightningModule):
         # get the index of the max probability
         pred = prob.data.max(dim=1)[1]
         # calculate accuracy
-        acc = torchmetrics.functional.accuracy(pred, y)
+        acc = torchmetrics.functional.accuracy(
+            pred, y, task="multiclass", num_classes=TOT_ACTION_CLASSES,
+        )
         dic = {
             'batch_train_loss': loss,
             'batch_train_acc': acc
@@ -173,7 +175,9 @@ class ActionClassificationLSTM(pl.LightningModule):
         # get the index of the max probability
         pred = prob.data.max(dim=1)[1]
         # calculate accuracy
-        acc = torchmetrics.functional.accuracy(pred, y)
+        acc = torchmetrics.functional.accuracy(
+            pred, y, task="multiclass", num_classes=TOT_ACTION_CLASSES,
+        )
         dic = {
             'batch_val_loss': loss,
             'batch_val_acc': acc

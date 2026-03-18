@@ -1,7 +1,0 @@
-numpy==1.19.2
-tf-nightly-gpu
-torch==1.7.0
-torchsummary==1.5.1
-torchvision==0.8.1
-matplotlib
-ipython

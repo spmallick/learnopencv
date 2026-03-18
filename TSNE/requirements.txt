@@ -1,9 +1,10 @@
-opencv-python>=3.4.1.15
-numpy>=1.18.1
-matplotlib>=3.2.0
-tqdm==4.45.0
-Pillow==7.0.0
-scikit-learn==0.22.2.post1
-scipy==1.4.1
-torch==1.4.0
-torchvision==0.5.0
+# Requires Python 3.12.x
+matplotlib>=3.8,<3.11
+numpy>=1.26.4,<2
+opencv-python>=4.10.0.84,<5
+Pillow>=10.4.0
+scikit-learn>=1.5,<1.7
+scipy>=1.13,<1.16
+torch>=2.6,<2.9
+torchvision>=0.21,<0.24
+tqdm>=4.66.5
