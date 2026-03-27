@@ -44,7 +44,7 @@ YOLO26 brings this capability to **real-time performance**.
 - Exporting for edge deployment (ONNX, TensorRT)
 
 ---
-👉 Want to learn more? Check out the full blog for detailed explanations and code.
+👉 Want to learn more? Check out the [full blog post here](https://learnopencv.com/yolo26-instance-segmentation-pixel-perfect-ai-at-real-time-speed/) for detailed explanations and code.
 ---
 
 ## 🚀 AI Courses by OpenCV
