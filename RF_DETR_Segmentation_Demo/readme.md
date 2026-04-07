@@ -72,14 +72,10 @@ pip install "rfdetr[plus]"
 
 3. The notebook will automatically download sample images and videos from the [GitHub Release assets](https://github.com/spmallick/learnopencv/releases/tag/RF_DETR_Segmentation).
 
-## Sample Results
+## Sample Result
 
 <p align="center">
   <img src="city.png" alt="Sample Segmentation Result" width="800">
-</p>
-
-<p align="center">
-  <video src="dogs.mp4" width="800" controls autoplay loop muted></video>
 </p>
 
 📖 **Read the full blog post here:** [RF-DETR Segmentation Guide](https://learnopencv.com/)
