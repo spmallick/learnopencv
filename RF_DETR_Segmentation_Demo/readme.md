@@ -1,6 +1,10 @@
 # RF-DETR Segmentation: Complete Guide to Real-Time Instance Segmentation
 
-This repository contains a comprehensive Jupyter notebook demonstrating **RF-DETR-Seg** — a state-of-the-art real-time instance segmentation model by [Roboflow](https://roboflow.com/), published at **ICLR 2026**.
+This repository contains a comprehensive Jupyter notebook demonstrating **RF-DETR-Seg** — a state-of-the-art real-time instance segmentation model by [Roboflow](https://roboflow.com/).
+
+<p align="center">
+  <img src="image.png" alt="RF-DETR Segmentation" width="800">
+</p>
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue)
 ![License](https://img.shields.io/badge/License-Apache%202.0-green)
@@ -68,12 +72,22 @@ pip install "rfdetr[plus]"
 
 3. The notebook will automatically download sample images and videos from the [GitHub Release assets](https://github.com/spmallick/learnopencv/releases/tag/RF_DETR_Segmentation).
 
-
 ## Sample Results
 
-The notebook processes 5 sample images and 5 sample videos:
+<p align="center">
+  <img src="city.png" alt="Sample Segmentation Result" width="800">
+</p>
 
-**Images:** `Animals_1.png`, `Animals_2.png`, `City.png`, `Home.png`, `Street.png`
+<p align="center">
+  <video src="dogs.mp4" width="800" controls autoplay loop muted></video>
+</p>
 
-**Videos:** `BasketBall.mp4`, `Football.mp4`, `Horses.mp4`, `Kids_Playing.mp4`, `Street.mp4`
+📖 **Read the full blog post here:** [RF-DETR Segmentation Guide](https://learnopencv.com/)
 
+## Useful Links
+
+| Resource | Link |
+|----------|------|
+| RF-DETR GitHub | [roboflow/rf-detr](https://github.com/roboflow/rf-detr) |
+| Documentation | [rfdetr.roboflow.com](https://rfdetr.roboflow.com/) |
+| LearnOpenCV | [learnopencv.com](https://www.learnopencv.com/) |
