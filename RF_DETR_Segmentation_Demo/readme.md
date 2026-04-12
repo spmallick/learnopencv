@@ -78,7 +78,7 @@ pip install "rfdetr[plus]"
   <img src="city.png" alt="Sample Segmentation Result" width="800">
 </p>
 
-📖 **Read the full blog post here:** [RF-DETR Segmentation Guide](https://learnopencv.com/)
+📖 **Read the full blog post here:** [RF-DETR Segmentation Guide](https://learnopencv.com/rf-detr-segmentation-real-time-detection-instance-segmentation-guide/)
 
 ## Useful Links
 
