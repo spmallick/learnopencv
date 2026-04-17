@@ -1,7 +1,8 @@
 # YOLO26 Keypoint Estimation: Real-Time Pose Estimation with Ultralytics
 
 **This repository contains the code for [YOLO26 Keypoint Estimation: Real-Time Pose Estimation with Ultralytics](https://learnopencv.com/) blog post.**
-![YOLO26 Keypoint Estimation](https://learnopencv.com/wp-content/uploads/2026/04/yolo26-keypoint-hero.jpg)
+
+![YOLO26 Keypoint Estimation](https://learnopencv.s3.us-west-2.amazonaws.com/wp-content/uploads/2026/04/16114728/play.png)
 ---
 
 ## Overview
@@ -39,7 +40,6 @@ The notebook walks through pose estimation on **8 images** and **6 videos** span
 
 ### Option 1 — Google Colab (recommended)
 
-Click the **Open in Colab** badge above and run the cells top-to-bottom. Input images and videos are downloaded automatically from a public GitHub release, so no Google Drive or authentication is required.
 
 ### Option 2 — Local Jupyter
 
