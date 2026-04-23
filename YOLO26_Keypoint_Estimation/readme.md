@@ -1,6 +1,6 @@
 # YOLO26 Keypoint Estimation: Real-Time Pose Estimation with Ultralytics
 
-**This repository contains the code for [YOLO26 Keypoint Estimation: Real-Time Pose Estimation with Ultralytics](https://learnopencv.com/) blog post.**
+**This repository contains the code for [YOLO26 Keypoint Estimation: Real-Time Pose Estimation with Ultralytics](https://learnopencv.com/yolo26-pose-estimation-tutorial/) blog post.**
 
 ![YOLO26 Keypoint Estimation](https://learnopencv.s3.us-west-2.amazonaws.com/wp-content/uploads/2026/04/16114728/play.png)
 ---
