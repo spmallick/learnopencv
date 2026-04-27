@@ -118,7 +118,7 @@ def show_tranformed_image(train_loader):
                 labels = targets[i]["labels"].cpu().numpy().astype(np.int32)
                 sample = images[i].permute(1, 2, 0).cpu().numpy()
                 sample = cv2.cvtColor(sample, cv2.COLOR_RGB2BGR)
-
+                sample = (sample * 255).astype(np.uint8)
                 for box_num, box in enumerate(boxes):
                     cv2.rectangle(sample, (box[0], box[1]), (box[2], box[3]), (0, 0, 255), 2)
                     cv2.putText(
