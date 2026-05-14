@@ -1,6 +1,8 @@
-# YOLOE: Real-Time Seeing Anything with Open-Vocabulary Detection and Segmentation
+# How to Master YOLOE: Real-Time Open-Vocabulary Detection Made Easy
 
-This notebook is the code companion to the LearnOpenCV blog post **[YOLOE: Real-Time Seeing Anything with Open-Vocabulary Detection and Segmentation](https://learnopencv.com/yoloe-real-time-seeing-anything/)**.
+![YOLOE Real-Time Seeing Anything](YOLOE.jpg)
+
+This notebook is the code companion to the LearnOpenCV blog post **[How to Master YOLOE: Real-Time Open-Vocabulary Detection Made Easy](https://learnopencv.com/yoloe-tutorial-real-time-open-vocabulary-detection/)**.
 
 YOLOE is an open-vocabulary detection and instance segmentation model from Tsinghua University that brings text-prompted, visual-prompted, and prompt-free inference into the real-time YOLO efficiency regime. The notebook walks through every prompting mode end-to-end on images and videos, with the latest YOLOE-26 backbone as the primary model.
 
@@ -17,7 +19,7 @@ YOLOE is an open-vocabulary detection and instance segmentation model from Tsing
 5. **Raw data access** — boxes, masks, class IDs, and confidences for downstream pipelines
 6. **Text-prompted inference on video** — multiple scenes covering color attributes, size attributes, long-tail vocabulary, kitchen utensils, industrial scenes, and aerial small objects
 7. **Object tracking** — persistent IDs across video frames using ByteTrack
-8. **Backbone comparison** — same prompts on YOLOE-26, YOLOE-11, and YOLOE-v8
+8. **Backbone swap** — same prompts on YOLOE-26, YOLOE-11, and YOLOE-v8
 
 ---
 
@@ -35,17 +37,8 @@ If you prefer to run locally, open the notebook in Jupyter and run cells top to 
 |---|---|
 | `yoloe-26l-seg.pt` | Primary model — text and visual prompts |
 | `yoloe-26l-seg-pf.pt` | Prompt-free open-world labeling |
-| `yoloe-11l-seg.pt`, `yoloe-v8l-seg.pt` | Backbone comparison |
+| `yoloe-11l-seg.pt`, `yoloe-v8l-seg.pt` | Alternative backbones |
 
 All checkpoints are auto-downloaded by the Ultralytics package on first use.
-
----
-
-## Resources
-
-- **Blog post:** [LearnOpenCV — YOLOE: Real-Time Seeing Anything](https://learnopencv.com/yoloe-real-time-seeing-anything/)
-- **Paper:** [arXiv:2503.07465](https://arxiv.org/abs/2503.07465)
-- **Official repository:** [THU-MIG/yoloe](https://github.com/THU-MIG/yoloe)
-- **Ultralytics YOLOE docs:** [docs.ultralytics.com/models/yoloe](https://docs.ultralytics.com/models/yoloe/)
 
 ---
