@@ -15,6 +15,9 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [How to Master Qwen3-VL Embedding and Reranker for Multimodal Search](https://learnopencv.com/how-to-master-qwen3-vl-embedding-and-reranker-for-multimodal-search/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Qwen3-VL-Embedding-Reranker) |
+| [How to Master YOLOE: Real-Time Open-Vocabulary Detection Made Easy](https://learnopencv.com/yoloe-tutorial-real-time-open-vocabulary-detection/) | [Code](https://github.com/spmallick/learnopencv/tree/master/YOLOE-Real-Time-Seeing-Anything) |
+| [Vision Banana: How Image Generators Are Becoming Powerful Vision Models](https://learnopencv.com/vision-banana-explained/) | |
 | [YOLO26 Keypoint Estimation: Real-Time Pose Estimation with Ultralytics](https://learnopencv.com/yolo26-pose-estimation-tutorial/) | [Code](https://github.com/Sudip-329/learnopencv/tree/master/YOLO26_Keypoint_Estimation) |
 | [RF-DETR Segmentation: Real-Time Detection & Instance Segmentation Guide](https://learnopencv.com/rf-detr-segmentation-real-time-detection-instance-segmentation-guide/) | [Code](https://github.com/spmallick/learnopencv/tree/master/RF_DETR_Segmentation_Demo) |
 | [YOLO26 Instance Segmentation: Pixel-Perfect AI at Real-Time Speed](https://learnopencv.com/yolo26-instance-segmentation-pixel-perfect-ai-at-real-time-speed/) | [Code](YOLO26-instance-segmentation/) |
