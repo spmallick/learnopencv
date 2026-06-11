@@ -15,6 +15,8 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [How to Unlock 5 Vision Skills with the Moondream Cloud API](https://learnopencv.com/moondream-cloud-api-one-image-five-grounded-vision-skills/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Moondream-Cloud-API) |
+| [JEE Advanced 2026: We Tested AI on the Toughest Exam](https://learnopencv.com/jee-advanced-2026-we-tested-ai-on-the-toughest-exam/) | |
 | [How to Master Qwen3-VL Embedding and Reranker for Multimodal Search](https://learnopencv.com/how-to-master-qwen3-vl-embedding-and-reranker-for-multimodal-search/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Qwen3-VL-Embedding-Reranker) |
 | [How to Master YOLOE: Real-Time Open-Vocabulary Detection Made Easy](https://learnopencv.com/yoloe-tutorial-real-time-open-vocabulary-detection/) | [Code](https://github.com/spmallick/learnopencv/tree/master/YOLOE-Real-Time-Seeing-Anything) |
 | [Vision Banana: How Image Generators Are Becoming Powerful Vision Models](https://learnopencv.com/vision-banana-explained/) | |
