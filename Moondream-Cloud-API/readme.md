@@ -1,8 +1,8 @@
 # Moondream Cloud API: One Image, Five Grounded Vision Skills
 
-**This folder contains the Jupyter Notebook for the LearnOpenCV blog post [How to Unlock 5 Vision Skills with the Moondream Cloud API](<BLOG_POST_URL>).**
+**This folder contains the Jupyter Notebook for the LearnOpenCV blog post [How to Unlock 5 Vision Skills with the Moondream Cloud API](https://learnopencv.com/moondream-cloud-api-one-image-five-grounded-vision-skills/).**
 
-[<img src="Moondream_Thumbnail.jpg" alt="Moondream Cloud API thumbnail" width="900">](<BLOG_POST_URL>)
+[<img src="Moondream_Thumbnail.jpg" alt="Moondream Cloud API thumbnail" width="900">](https://learnopencv.com/moondream-cloud-api-one-image-five-grounded-vision-skills/)
 
 In `Moondream3.ipynb`, we run all five Moondream Cloud skills on a single image of three children in costume:
 
