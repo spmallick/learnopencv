@@ -15,6 +15,7 @@ Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/course
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [How to Fine-Tune YOLO26 for Safety Gear and Sign Language Detection](https://learnopencv.com/how-to-fine-tune-yolo26-for-safety-gear-and-sign-language-detection/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Fine-Tuning-YOLO26-Models-Custom-Dataset) |
 | [How to Unlock 5 Vision Skills with the Moondream Cloud API](https://learnopencv.com/moondream-cloud-api-one-image-five-grounded-vision-skills/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Moondream-Cloud-API) |
 | [JEE Advanced 2026: We Tested AI on the Toughest Exam](https://learnopencv.com/jee-advanced-2026-we-tested-ai-on-the-toughest-exam/) | |
 | [How to Master Qwen3-VL Embedding and Reranker for Multimodal Search](https://learnopencv.com/how-to-master-qwen3-vl-embedding-and-reranker-for-multimodal-search/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Qwen3-VL-Embedding-Reranker) |
