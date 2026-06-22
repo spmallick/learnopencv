@@ -46,7 +46,7 @@ def display():
   
   # Display board
   cv2.imshow("Snake Game", np.uint8(board.repeat(CELL_SIZE, 0).repeat(CELL_SIZE, 1)))
-  key = cv2.waitKey(int(1000/SPEED))
+  key = cv2.waitKeyEx(int(1000/SPEED))
   
   # Return the key pressed. It is -1 if no key is pressed. 
   return key
@@ -123,13 +123,13 @@ if __name__ == '__main__' :
 
     if key == 8 or key == 27:
       break
-    elif key == ord("d") :
+    elif key == ord("d") or key == 2555904:
       head.direction = 0
-    elif key == ord("s") :
+    elif key == ord("s") or key == 2621440:
       head.direction = 1
-    elif key == ord("a") :
+    elif key == ord("a") or key == 2424832:
       head.direction = 2
-    elif key == ord("w") :
+    elif key == ord("w") or key == 2490368 :
       head.direction = 3
 
     # Moving the snake
