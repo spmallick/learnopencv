@@ -26,6 +26,7 @@ if __name__ == '__main__':
     parser.add_argument('--attributes_file', type=str, default='./fashion-product-images/styles.csv',
                         help="Path to the file with attributes")
     parser.add_argument('--device', type=str, default='cuda', help="Device: 'cuda' or 'cpu'")
+    parser.add_argument('--lr', type=float, default=0.001, help="Learning rate for the optimizer")
     args = parser.parse_args()
 
     start_epoch = 1
@@ -64,7 +65,7 @@ if __name__ == '__main__':
                              n_article_classes=attributes.num_articles)\
                             .to(device)
 
-    optimizer = torch.optim.Adam(model.parameters())
+    optimizer = torch.optim.Adam(model.parameters(), lr=args.lr)
 
     logdir = os.path.join('./logs/', get_cur_time())
     savedir = os.path.join('./checkpoints/', get_cur_time())
