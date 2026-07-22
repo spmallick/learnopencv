@@ -1,73 +1,165 @@
-#include<opencv2/opencv.hpp>
+#include <opencv2/core.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgcodecs.hpp>
+#include <opencv2/imgproc.hpp>
+
+#include <filesystem>
 #include <iostream>
+#include <stdexcept>
+#include <string>
+#include <vector>
 
-using namespace std;
-using namespace cv;
+#ifndef TUTORIAL_INPUT_DIR
+#define TUTORIAL_INPUT_DIR "../../input"
+#endif
 
-int main() {
-    // read the image
-    Mat image = imread("../../input/image_1.jpg");
-    // convert the image to grayscale format
-    Mat img_gray;
-    cvtColor(image, img_gray, COLOR_BGR2GRAY);
-    // apply binary thresholding
-    Mat thresh;
-    threshold(img_gray, thresh, 150, 255, THRESH_BINARY);
-    imshow("Binary mage", thresh);
-    waitKey(0);
-    imwrite("image_thres1.jpg", thresh);
-    destroyAllWindows();
+namespace fs = std::filesystem;
 
-    // detect the contours on the binary image using cv2.CHAIN_APPROX_NONE
-    vector<vector<Point>> contours;
-    vector<Vec4i> hierarchy;
-    findContours(thresh, contours, hierarchy, RETR_TREE, CHAIN_APPROX_NONE);
-    // draw contours on the original image
-    Mat image_copy = image.clone();
-    drawContours(image_copy, contours, -1, Scalar(0, 255, 0), 2);
-    imshow("None approximation", image_copy);
-    waitKey(0);
-    imwrite("contours_none_image1.jpg", image_copy);
-    destroyAllWindows();
+struct Options {
+    fs::path image1 = fs::path(TUTORIAL_INPUT_DIR) / "image_1.jpg";
+    fs::path image2 = fs::path(TUTORIAL_INPUT_DIR) / "image_2.jpg";
+    fs::path output_dir = fs::current_path();
+    bool display = true;
+    bool validate = false;
+};
 
-
-    // Now let's try with CHAIN_APPROX_SIMPLE`
-    // detect the contours on the binary image using cv2.CHAIN_APPROX_NONE
-    vector<vector<Point>> contours1;
-    vector<Vec4i> hierarchy1;
-    findContours(thresh, contours1, hierarchy1, RETR_TREE, CHAIN_APPROX_SIMPLE);
-    // draw contours on the original image
-    Mat image_copy1 = image.clone();
-    drawContours(image_copy1, contours1, -1, Scalar(0, 255, 0), 2);
-    imshow("Simple approximation", image_copy1);
-    waitKey(0);
-    imwrite("contours_simple_image1.jpg", image_copy1);
-    destroyAllWindows();
-
-    // using a proper image for visualizing CHAIN_APPROX_SIMPLE
-    Mat image1 = imread("../../input/image_2.jpg");
-    Mat img_gray1;
-    cvtColor(image1, img_gray1, COLOR_BGR2GRAY);
-    Mat thresh1;
-    threshold(img_gray1, thresh1, 150, 255, THRESH_BINARY);
-    vector<vector<Point>> contours2;
-    vector<Vec4i> hierarchy2;
-    findContours(thresh1, contours2, hierarchy2, RETR_TREE, CHAIN_APPROX_NONE);
-    Mat image_copy2 = image1.clone();
-    drawContours(image_copy2, contours2, -1, Scalar(0, 255, 0), 2);
-    imshow("None approximation", image_copy2);
-    waitKey(0);
-    imwrite("contours_none_image1.jpg", image_copy2);
-    destroyAllWindows();
-    Mat image_copy3 = image1.clone();
-    for(int i=0; i<contours2.size(); i=i+1){
-        for (int j=0; j<contours2[i].size(); j=j+1){
-            circle(image_copy3, (contours2[i][0], contours2[i][1]), 2, 
-            Scalar(0, 255, 0), 2);
+Options parse_options(int argc, char** argv) {
+    Options options;
+    for (int i = 1; i < argc; ++i) {
+        const std::string argument = argv[i];
+        if ((argument == "--image1" || argument == "--image2" ||
+             argument == "--output-dir") && i + 1 >= argc) {
+            throw std::invalid_argument(argument + " requires a path");
+        }
+        if (argument == "--image1") {
+            options.image1 = argv[++i];
+        } else if (argument == "--image2") {
+            options.image2 = argv[++i];
+        } else if (argument == "--output-dir") {
+            options.output_dir = argv[++i];
+        } else if (argument == "--no-display") {
+            options.display = false;
+        } else if (argument == "--validate") {
+            options.validate = true;
+        } else {
+            throw std::invalid_argument("Unknown argument: " + argument);
         }
     }
-    imshow("CHAIN_APPROX_SIMPLE Point only", image_copy3);
-    waitKey(0);
-    imwrite("contour_point_simple.jpg", image_copy3);
-    destroyAllWindows();
+    return options;
+}
+
+cv::Mat read_image(const fs::path& path) {
+    cv::Mat image = cv::imread(path.string());
+    if (image.empty()) {
+        throw std::runtime_error("Could not read input image: " + path.string());
+    }
+    return image;
+}
+
+void show_image(const std::string& title, const cv::Mat& image, bool display) {
+    if (display) {
+        cv::imshow(title, image);
+        cv::waitKey(0);
+        cv::destroyAllWindows();
+    }
+}
+
+void write_image(const fs::path& path, const cv::Mat& image) {
+    if (!cv::imwrite(path.string(), image)) {
+        throw std::runtime_error("Could not write output image: " + path.string());
+    }
+}
+
+std::vector<std::vector<cv::Point>> find_binary_contours(
+    const cv::Mat& image, int method, cv::Mat* threshold_output = nullptr
+) {
+    cv::Mat gray;
+    cv::cvtColor(image, gray, cv::COLOR_BGR2GRAY);
+    cv::Mat threshold_image;
+    cv::threshold(gray, threshold_image, 150, 255, cv::THRESH_BINARY);
+    std::vector<std::vector<cv::Point>> contours;
+    std::vector<cv::Vec4i> hierarchy;
+    cv::findContours(threshold_image.clone(), contours, hierarchy, cv::RETR_TREE, method);
+    if (threshold_output != nullptr) {
+        *threshold_output = threshold_image;
+    }
+    return contours;
+}
+
+std::size_t point_count(const std::vector<std::vector<cv::Point>>& contours) {
+    std::size_t total = 0;
+    for (const auto& contour : contours) {
+        total += contour.size();
+    }
+    return total;
+}
+
+int main(int argc, char** argv) {
+    try {
+        const Options options = parse_options(argc, argv);
+        fs::create_directories(options.output_dir);
+
+        const cv::Mat image1 = read_image(options.image1);
+        cv::Mat threshold_image;
+        const auto contours_none =
+            find_binary_contours(image1, cv::CHAIN_APPROX_NONE, &threshold_image);
+        const auto contours_simple = find_binary_contours(image1, cv::CHAIN_APPROX_SIMPLE);
+
+        show_image("Binary image", threshold_image, options.display);
+        write_image(options.output_dir / "image_thres1.jpg", threshold_image);
+
+        cv::Mat none_rendered = image1.clone();
+        cv::drawContours(
+            none_rendered, contours_none, -1, cv::Scalar(0, 255, 0), 2, cv::LINE_AA
+        );
+        show_image("None approximation", none_rendered, options.display);
+        write_image(options.output_dir / "contours_none_image1.jpg", none_rendered);
+
+        cv::Mat simple_rendered = image1.clone();
+        cv::drawContours(
+            simple_rendered, contours_simple, -1, cv::Scalar(0, 255, 0), 2, cv::LINE_AA
+        );
+        show_image("Simple approximation", simple_rendered, options.display);
+        write_image(options.output_dir / "contours_simple_image1.jpg", simple_rendered);
+
+        const cv::Mat image2 = read_image(options.image2);
+        const auto image2_contours = find_binary_contours(image2, cv::CHAIN_APPROX_SIMPLE);
+        cv::Mat image2_rendered = image2.clone();
+        cv::drawContours(
+            image2_rendered, image2_contours, -1, cv::Scalar(0, 255, 0), 2,
+            cv::LINE_AA
+        );
+        show_image("SIMPLE approximation contours", image2_rendered, options.display);
+        write_image(options.output_dir / "contours_simple_image2.jpg", image2_rendered);
+
+        cv::Mat points_only = image2.clone();
+        for (const auto& contour : image2_contours) {
+            for (const cv::Point& point : contour) {
+                cv::circle(points_only, point, 2, cv::Scalar(0, 255, 0), 2, cv::LINE_AA);
+            }
+        }
+        show_image("CHAIN_APPROX_SIMPLE points", points_only, options.display);
+        write_image(options.output_dir / "contour_point_simple.jpg", points_only);
+
+        const std::size_t none_points = point_count(contours_none);
+        const std::size_t simple_points = point_count(contours_simple);
+        std::cout << "none_contours=" << contours_none.size()
+                  << ", none_points=" << none_points
+                  << ", simple_contours=" << contours_simple.size()
+                  << ", simple_points=" << simple_points
+                  << ", image2_simple_contours=" << image2_contours.size()
+                  << ", image2_simple_points=" << point_count(image2_contours) << '\n';
+
+        if (options.validate) {
+            if (contours_none.size() != contours_simple.size() ||
+                simple_points >= none_points || image2_contours.empty()) {
+                throw std::runtime_error("Contour approximation validation failed");
+            }
+            std::cout << "Validation passed\n";
+        }
+        return 0;
+    } catch (const std::exception& error) {
+        std::cerr << "Error: " << error.what() << '\n';
+        return 1;
+    }
 }

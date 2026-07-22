@@ -1,20 +1,30 @@
-cmake_minimum_required(VERSION 3.0.0)
-project(channel_experiments VERSION 0.1.0)
+cmake_minimum_required(VERSION 3.16)
+project(channel_experiments LANGUAGES CXX)
 
-include(CTest)
-enable_testing()
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
-find_package(OpenCV REQUIRED)
-find_package(Threads REQUIRED)
+find_package(OpenCV REQUIRED COMPONENTS core highgui imgcodecs imgproc)
+if(OpenCV_VERSION VERSION_LESS 4 OR OpenCV_VERSION VERSION_GREATER_EQUAL 6)
+  message(FATAL_ERROR "This example supports OpenCV 4.x and 5.x, not ${OpenCV_VERSION}")
+endif()
 
 add_executable(channel_experiments channel_experiments.cpp)
+target_include_directories(channel_experiments PRIVATE ${OpenCV_INCLUDE_DIRS})
+target_link_libraries(channel_experiments PRIVATE ${OpenCV_LIBS})
+target_compile_definitions(
+  channel_experiments PRIVATE TUTORIAL_INPUT_DIR="${CMAKE_CURRENT_SOURCE_DIR}/../../input"
+)
 
-set(CPACK_PROJECT_NAME ${PROJECT_NAME})
-set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
-include(CPack)
-
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX__STANDARD_REQUIRED ON)
-
-include_directories(${OpenCV_INCLUDE_DIRS})
-target_link_libraries(channel_experiments ${OpenCV_LIBS} ${CMAKE_THREAD_LIBS_INIT})
+include(CTest)
+if(BUILD_TESTING)
+  add_test(
+    NAME channel_experiments_regression
+    COMMAND channel_experiments --no-display --validate
+            --output-dir "${CMAKE_CURRENT_BINARY_DIR}/test-output"
+  )
+  set_tests_properties(
+    channel_experiments_regression PROPERTIES PASS_REGULAR_EXPRESSION "Validation passed"
+  )
+endif()
