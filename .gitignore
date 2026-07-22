@@ -1,1 +1,79 @@
+# Operating system metadata
 .DS_Store
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Local tooling artifacts
+/.codex-artifacts/
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.ruff_cache/
+.hypothesis/
+.coverage
+.coverage.*
+htmlcov/
+
+# Python packaging and environments
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+.tox/
+.nox/
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+!.env.*.example
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+__pypackages__/
+
+# Jupyter
+.ipynb_checkpoints/
+.virtual_documents/
+*.nbconvert.ipynb
+
+# C/C++ and CMake build artifacts
+build/
+_build/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+CTestTestfile.cmake
+CMakeUserPresets.json
+compile_commands.json
+build.ninja
+.ninja_deps
+.ninja_log
+*.o
+*.dSYM/
+**/.cache/clangd/
+
+# Node.js dependencies and debug logs
+node_modules/
+.npm/
+.pnpm-store/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor temporary files
+*.swp
+*.swo
+*~
