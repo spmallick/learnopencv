@@ -6,5 +6,5 @@ timm
 torch
 # torchsummary==1.5.1
 torchvision
-tqdm==4.65.0
+tqdm==4.66.3
 dash-table

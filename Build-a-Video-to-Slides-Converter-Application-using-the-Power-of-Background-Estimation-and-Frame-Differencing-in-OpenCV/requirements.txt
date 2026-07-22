@@ -1,6 +1,6 @@
 numpy==1.23.5
-opencv-contrib-python==4.6.0.66
-Pillow==9.3.0
+opencv-contrib-python==4.8.1.78
+Pillow==12.2.0
 scipy==1.10.0
 six==1.16.0
 ImageHash==4.3.1

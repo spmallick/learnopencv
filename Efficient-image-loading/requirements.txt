@@ -2,7 +2,7 @@
 lmdb==1.6.2
 numpy==1.26.4
 opencv-python==4.11.0.86
-Pillow==12.1.1
+Pillow==12.3.0
 prettytable==0.7.2
 PyTurboJPEG==1.4.0
 tensorflow==2.16.1
