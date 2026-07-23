@@ -2,7 +2,7 @@
 
 **This repository contains code for [Contour Detection using OpenCV](https://learnopencv.com/contour-detection-using-opencv-python-c/) blogpost**.
 
-[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/lylz9lzqzs2nt2q/AAC5SfEV7_ex0imh1uip9-U6a?dl=1)
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://github.com/spmallick/learnopencv/releases/download/contour-detection-opencv-2026.07.22/Contour-Detection-using-OpenCV-2026.07.22.zip)
 
 ## Directory Structure
 
