@@ -30,6 +30,7 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Feature-Based Image Alignment with OpenCV 4 and 5 (C++ and Python)](https://learnopencv.com/image-alignment-feature-based-using-opencv-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/ImageAlignment-FeatureBased) |
 | [Contour Detection using OpenCV (Python/C++)](https://learnopencv.com/contour-detection-using-opencv-python-c/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Contour-Detection-using-OpenCV) |
 | [Install OpenCV 5 on Linux](https://learnopencv.com/install-opencv-5-linux/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Install-OpenCV-5-on-Linux) |
 | [Decoding Virat Kohli's Flick Shot: AI-Based 3D Motion Reconstruction](https://learnopencv.com/decoding-virat-kohlis-flick-shot-ai-based-3d-motion-reconstruction/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Decoding-Virats-Flick-Shot) |
@@ -438,7 +439,6 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 |[How to convert your OpenCV C++ code into a Python module](https://www.learnopencv.com/how-to-convert-your-opencv-c-code-into-a-python-module/)|[Code](https://github.com/spmallick/learnopencv/tree/master/pymodule)|
 |[CV4Faces : Best Project Award 2018](https://www.learnopencv.com/cv4faces-best-project-award-2018/)| |
 |[Facemark : Facial Landmark Detection using OpenCV](https://www.learnopencv.com/facemark-facial-landmark-detection-using-opencv/)|[Code](https://github.com/spmallick/learnopencv/tree/master/FacialLandmarkDetection)|
-|[Image Alignment (Feature Based) using OpenCV (C++/Python)](https://www.learnopencv.com/image-alignment-feature-based-using-opencv-c-python/)| [Code](https://github.com/spmallick/learnopencv/tree/master/ImageAlignment-FeatureBased)|
 |[Barcode and QR code Scanner using ZBar and OpenCV](https://www.learnopencv.com/barcode-and-qr-code-scanner-using-zbar-and-opencv/)| [Code](https://github.com/spmallick/learnopencv/tree/master/barcode-QRcodeScanner)|
 |[Keras Tutorial : Fine-tuning using pre-trained models](https://www.learnopencv.com/keras-tutorial-fine-tuning-using-pre-trained-models/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Keras-Fine-Tuning)|
 |[OpenCV Transparent API](https://www.learnopencv.com/opencv-transparent-api/)| |
