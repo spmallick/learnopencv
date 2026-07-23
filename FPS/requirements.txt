@@ -1,0 +1,4 @@
+# NumPy creates deterministic frames for the generated regression video.
+numpy>=1.23,<3
+# The examples support the modern Python bindings from both OpenCV major versions.
+opencv-python>=4.8,<6
