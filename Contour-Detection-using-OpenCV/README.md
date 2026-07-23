@@ -47,9 +47,9 @@ newer. The C++ examples use C++17 and CMake 3.16 or newer.
 
 ### Python
 
-Install a supported OpenCV version and run each example from the repository
-directory. Input paths are resolved from the script location, so the commands
-also work from another current directory.
+Install a supported OpenCV version and run the commands below from the project
+directory. The examples resolve their bundled input images from the script
+location, so absolute script paths also work from another current directory.
 
 ```shell
 python3 -m pip install -r python/requirements.txt
