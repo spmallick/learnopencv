@@ -11,6 +11,24 @@ The compatibility target is:
 
 The examples use APIs shared by OpenCV 4.x and 5.x, and CMake rejects major versions other than 4 and 5. The automated acceptance matrix is run against the exact OpenCV 4.14.0 and 5.0.0 releases.
 
+## Download the standalone project
+
+Download the immutable, versioned [FPS.zip](https://github.com/spmallick/learnopencv/releases/download/fps-opencv-2026.07.23/FPS.zip) bundle and its [SHA-256 checksum](https://github.com/spmallick/learnopencv/releases/download/fps-opencv-2026.07.23/FPS.zip.sha256). The ZIP contains exactly one top-level `FPS/` directory with the eight files shown in the directory layout below.
+
+On macOS or Linux, download and verify both files before extracting the project:
+
+```bash
+curl --fail --location --remote-name \
+  https://github.com/spmallick/learnopencv/releases/download/fps-opencv-2026.07.23/FPS.zip
+curl --fail --location --remote-name \
+  https://github.com/spmallick/learnopencv/releases/download/fps-opencv-2026.07.23/FPS.zip.sha256
+shasum -a 256 -c FPS.zip.sha256
+unzip FPS.zip
+cd FPS
+```
+
+The expected SHA-256 digest for `FPS.zip` is `12e1e6fd48c4fdc00907c970d73616d1cbc1ef85fb9a353843299ebbab311bbf`.
+
 ## What the example measures
 
 The examples report two different values:
