@@ -30,6 +30,7 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [How to find frame rate or frames per second (fps) in OpenCV ( Python / C++ ) ?](http://www.learnopencv.com/how-to-find-frame-rate-or-frames-per-second-fps-in-opencv-python-cpp/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/FPS) |
 | [Feature Based Image Alignment using OpenCV (C++/Python)](https://learnopencv.com/image-alignment-feature-based-using-opencv-c-python/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/ImageAlignment-FeatureBased) |
 | [Contour Detection using OpenCV (Python/C++)](https://learnopencv.com/contour-detection-using-opencv-python-c/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Contour-Detection-using-OpenCV) |
 | [Install OpenCV 5 on Linux](https://learnopencv.com/install-opencv-5-linux/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Install-OpenCV-5-on-Linux) |
@@ -501,7 +502,6 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 |[NVIDIA DIGITS 3 on EC2](http://www.learnopencv.com/nvidia-digits-3-on-ec2/) | |
 |[Homography Examples using OpenCV ( Python / C ++ )](http://www.learnopencv.com/homography-examples-using-opencv-python-c/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Homography) |
 |[Filling holes in an image using OpenCV ( Python / C++ )](http://www.learnopencv.com/filling-holes-in-an-image-using-opencv-python-c/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Holes) |
-|[How to find frame rate or frames per second (fps) in OpenCV ( Python / C++ ) ?](http://www.learnopencv.com/how-to-find-frame-rate-or-frames-per-second-fps-in-opencv-python-cpp/) | [Code](https://github.com/spmallick/learnopencv/tree/master/FPS) |
 |[Delaunay Triangulation and Voronoi Diagram using OpenCV ( C++ / Python)](http://www.learnopencv.com/delaunay-triangulation-and-voronoi-diagram-using-opencv-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Delaunay) |
 |[OpenCV (C++ vs Python) vs MATLAB for Computer Vision](http://www.learnopencv.com/opencv-c-vs-python-vs-matlab-for-computer-vision/) | |
 |[Facial Landmark Detection](http://www.learnopencv.com/facial-landmark-detection/) | |
