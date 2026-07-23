@@ -6,37 +6,38 @@
 
 ## Directory Structure
 
-**All the code files and folders follow the following structure.**
+The release archive contains one top-level project folder:
 
+```text
+Contour-Detection-using-OpenCV/
+├── README.md
+├── cpp/
+│   ├── .vscode/
+│   │   └── settings.json
+│   ├── channel_experiments/
+│   │   ├── CMakeLists.txt
+│   │   └── channel_experiments.cpp
+│   ├── contour_approximations/
+│   │   ├── CMakeLists.txt
+│   │   └── contour_approx.cpp
+│   └── contour_extraction/
+│       ├── CMakeLists.txt
+│       └── contour_extraction.cpp
+├── input/
+│   ├── custom_colors.jpg
+│   ├── image_1.jpg
+│   └── image_2.jpg
+└── python/
+    ├── channel_experiments/
+    │   └── channel_experiments.py
+    ├── contour_approximations/
+    │   └── contour_approx.py
+    ├── contour_extraction/
+    │   └── contour_extraction.py
+    ├── requirements.txt
+    └── tests/
+        └── test_examples.py
 ```
-├── cpp
-│   ├── channel_experiments
-│   │   ├── channel_experiments.cpp
-│   │   └── CMakeLists.txt
-│   ├── contour_approximations
-│   │   ├── CMakeLists.txt
-│   │   └── contour_approx.cpp
-│   └── contour_extraction
-│       ├── CMakeLists.txt
-│       └── contour_extraction.cpp
-├── input
-│   ├── custom_colors.jpg
-│   ├── image_1.jpg
-│   └── image_2.jpg
-├── python
-│   ├── channel_experiments
-│   │   └── channel_experiments.py
-│   ├── contour_approximations
-│   │   └── contour_approx.py
-│   ├── contour_extraction
-│   │   └── contour_extraction.py
-│   ├── tests
-│   │   └── test_examples.py
-│   └── requirements.txt
-└── README.md
-```
-
-
 
 ## Requirements
 
