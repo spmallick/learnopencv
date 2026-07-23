@@ -30,7 +30,7 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 
 | Blog Post | Code|
 | ------------- |:-------------|
-| [Feature-Based Image Alignment with OpenCV 4 and 5 (C++ and Python)](https://learnopencv.com/image-alignment-feature-based-using-opencv-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/ImageAlignment-FeatureBased) |
+| [Feature Based Image Alignment using OpenCV (C++/Python)](https://learnopencv.com/image-alignment-feature-based-using-opencv-c-python/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/ImageAlignment-FeatureBased) |
 | [Contour Detection using OpenCV (Python/C++)](https://learnopencv.com/contour-detection-using-opencv-python-c/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Contour-Detection-using-OpenCV) |
 | [Install OpenCV 5 on Linux](https://learnopencv.com/install-opencv-5-linux/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Install-OpenCV-5-on-Linux) |
 | [Decoding Virat Kohli's Flick Shot: AI-Based 3D Motion Reconstruction](https://learnopencv.com/decoding-virat-kohlis-flick-shot-ai-based-3d-motion-reconstruction/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Decoding-Virats-Flick-Shot) |
