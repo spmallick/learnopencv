@@ -113,6 +113,41 @@ The configure helper intentionally accepts one CUDA compute capability per build
 
 The wheel verifier is designed around the official 5.0.0.93 wheel contracts. The source profiles reproduce and validate the exact Ubuntu 24.04 x86-64 builds documented in the article. Path discovery accepts both `lib` and `lib64`, but that alone does not make the Ubuntu dependency recipe portable to every distribution. The `headless-cuda` verifier requires a working `nvidia-smi` query and is not Jetson-compatible without adaptation; WSL's limited `nvidia-smi` may also require the article's manual checks. WSL2, Jetson, Alpine, ARM, and non-Ubuntu readers should first follow the article's platform router and then adapt only the relevant source profile.
 
+## Download the standalone companion bundle
+
+Download the immutable, versioned companion bundle and its checksum:
+
+- [Install-OpenCV-5-on-Linux.zip](https://github.com/spmallick/learnopencv/releases/download/install-opencv-5-linux-2026.07.23/Install-OpenCV-5-on-Linux.zip)
+- [Install-OpenCV-5-on-Linux.zip.sha256](https://github.com/spmallick/learnopencv/releases/download/install-opencv-5-linux-2026.07.23/Install-OpenCV-5-on-Linux.zip.sha256)
+
+On Linux, download, verify, and extract it with:
+
+```bash
+release_url="https://github.com/spmallick/learnopencv/releases/download/install-opencv-5-linux-2026.07.23"
+
+curl --fail --location --remote-name \
+  "${release_url}/Install-OpenCV-5-on-Linux.zip"
+curl --fail --location --remote-name \
+  "${release_url}/Install-OpenCV-5-on-Linux.zip.sha256"
+
+sha256sum --check Install-OpenCV-5-on-Linux.zip.sha256
+unzip Install-OpenCV-5-on-Linux.zip
+cd Install-OpenCV-5-on-Linux
+```
+
+The archive contains one top-level project folder and these six tracked files:
+
+```text
+Install-OpenCV-5-on-Linux/
+├── README.md
+├── configure-opencv5.sh
+├── cpp-smoke/
+│   ├── CMakeLists.txt
+│   └── main.cpp
+├── verify-opencv5.sh
+└── verify_python.py
+```
+
 ---
 
 <p align="center">
