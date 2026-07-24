@@ -1,2 +1,4 @@
-video.mp4
 build/
+output/
+video_out.mp4
+__pycache__/

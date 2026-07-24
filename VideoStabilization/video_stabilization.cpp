@@ -1,322 +1,370 @@
 /*
 Copyright (c) 2014, Nghia Ho
 Copyright (c) 2019, Big Vision LLC (Satya Mallick)
-https://bigvision.ai  contact@bigvision.ai
 All rights reserved.
 
-Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-
-1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-
-2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-
-3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the conditions in the original LearnOpenCV example
+are met. THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
 */
 
+#include <opencv2/calib3d.hpp>
+#include <opencv2/core.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgproc.hpp>
+#include <opencv2/video/tracking.hpp>
+#include <opencv2/videoio.hpp>
 
- 
-#include <opencv2/opencv.hpp>
-#include <opencv2/core/version.hpp>
-#include <iostream>
-#include <cassert>
+#include <algorithm>
 #include <cmath>
-#include <fstream>
+#include <cstddef>
+#include <filesystem>
+#include <iostream>
+#include <numeric>
+#include <stdexcept>
+#include <string>
+#include <vector>
 
-using namespace std;
-using namespace cv;
+namespace {
 
+constexpr int kDefaultSmoothingRadius = 50;
 
-const int SMOOTHING_RADIUS = 50; // In frames. The larger the more stable the video, but less reactive to sudden panning
-
-struct TransformParam
-{
-  TransformParam() {}
-  TransformParam(double _dx, double _dy, double _da) 
-  {
-      dx = _dx;
-      dy = _dy;
-      da = _da;
-  }
-
-  double dx;
-  double dy;
-  double da; // angle
-
-  void getTransform(Mat &T)
-  {
-    // Reconstruct transformation matrix accordingly to new values
-    T.at<double>(0,0) = cos(da);
-    T.at<double>(0,1) = -sin(da);
-    T.at<double>(1,0) = sin(da);
-    T.at<double>(1,1) = cos(da);
-
-    T.at<double>(0,2) = dx;
-    T.at<double>(1,2) = dy;
-  }
+struct Options {
+  std::filesystem::path input =
+      std::filesystem::path(VIDEO_STABILIZATION_SOURCE_DIR) / "video.mp4";
+  std::filesystem::path output_dir =
+      std::filesystem::path(VIDEO_STABILIZATION_SOURCE_DIR) / "output";
+  std::string output_name = "video_out.mp4";
+  int smoothing_radius = kDefaultSmoothingRadius;
+  bool display = true;
+  bool validate = false;
 };
 
-struct Trajectory
-{
-    Trajectory() {}
-    Trajectory(double _x, double _y, double _a) {
-        x = _x;
-        y = _y;
-        a = _a;
+struct Transform {
+  double dx = 0.0;
+  double dy = 0.0;
+  double angle = 0.0;
+};
+
+struct Trajectory {
+  double x = 0.0;
+  double y = 0.0;
+  double angle = 0.0;
+};
+
+void print_usage(const char* program) {
+  std::cout
+      << "Usage: " << program << " [options]\n"
+      << "  --input PATH             Input video (default: bundled video.mp4)\n"
+      << "  --output-dir PATH        Output directory (default: output)\n"
+      << "  --output-name NAME       Output filename (default: video_out.mp4)\n"
+      << "  --smoothing-radius N     Moving-average radius (default: 50)\n"
+      << "  --no-display             Disable the preview window\n"
+      << "  --validate               Validate the generated video\n"
+      << "  --help                   Show this help\n";
+}
+
+Options parse_options(int argc, char** argv) {
+  Options options;
+  for (int index = 1; index < argc; ++index) {
+    const std::string argument = argv[index];
+    const auto require_value = [&](const std::string& name) -> std::string {
+      if (index + 1 >= argc) {
+        throw std::invalid_argument(name + " requires a value.");
+      }
+      return argv[++index];
+    };
+
+    if (argument == "--input") {
+      options.input = require_value(argument);
+    } else if (argument == "--output-dir") {
+      options.output_dir = require_value(argument);
+    } else if (argument == "--output-name") {
+      options.output_name = require_value(argument);
+    } else if (argument == "--smoothing-radius") {
+      const std::string value = require_value(argument);
+      std::size_t consumed = 0;
+      options.smoothing_radius = std::stoi(value, &consumed);
+      if (consumed != value.size() || options.smoothing_radius < 0) {
+        throw std::invalid_argument(
+            "The smoothing radius must be a non-negative integer.");
+      }
+    } else if (argument == "--no-display") {
+      options.display = false;
+    } else if (argument == "--validate") {
+      options.validate = true;
+    } else if (argument == "--help") {
+      print_usage(argv[0]);
+      std::exit(0);
+    } else {
+      throw std::invalid_argument("Unknown option: " + argument);
+    }
+  }
+  return options;
+}
+
+cv::Mat identity_transform() {
+  return (cv::Mat_<double>(2, 3) << 1.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+}
+
+std::vector<Transform> estimate_transforms(
+    cv::VideoCapture& capture, std::vector<std::size_t>& tracked_counts) {
+  cv::Mat previous;
+  if (!capture.read(previous) || previous.empty()) {
+    throw std::runtime_error(
+        "The input video does not contain a readable frame.");
+  }
+
+  cv::Mat previous_gray;
+  cv::cvtColor(previous, previous_gray, cv::COLOR_BGR2GRAY);
+  cv::Mat last_transform = identity_transform();
+  std::vector<Transform> transforms;
+
+  while (true) {
+    cv::Mat current;
+    if (!capture.read(current) || current.empty()) {
+      break;
     }
 
-    double x;
-    double y;
-    double a; // angle
-};
+    cv::Mat current_gray;
+    cv::cvtColor(current, current_gray, cv::COLOR_BGR2GRAY);
+    std::vector<cv::Point2f> previous_points;
+    cv::goodFeaturesToTrack(
+        previous_gray, previous_points, 200, 0.01, 30.0, cv::noArray(), 3);
 
+    cv::Mat transform;
+    std::size_t tracked_count = 0;
+    if (previous_points.size() >= 3U) {
+      std::vector<cv::Point2f> current_points;
+      std::vector<unsigned char> status;
+      std::vector<float> errors;
+      cv::calcOpticalFlowPyrLK(
+          previous_gray, current_gray, previous_points, current_points, status,
+          errors);
 
-vector<Trajectory> cumsum(vector<TransformParam> &transforms)
-{
-  vector <Trajectory> trajectory; // trajectory at all frames
-  // Accumulated frame to frame transform
-  double a = 0;
-  double x = 0;
-  double y = 0;
-
-  for(size_t i=0; i < transforms.size(); i++) 
-  {
-      x += transforms[i].dx;
-      y += transforms[i].dy;
-      a += transforms[i].da;
-
-      trajectory.push_back(Trajectory(x,y,a));
-
-  }
-
-  return trajectory; 
-}
-
-vector <Trajectory> smooth(vector <Trajectory>& trajectory, int radius)
-{
-  vector <Trajectory> smoothed_trajectory; 
-  for(size_t i=0; i < trajectory.size(); i++) {
-      double sum_x = 0;
-      double sum_y = 0;
-      double sum_a = 0;
-      int count = 0;
-
-      for(int j=-radius; j <= radius; j++) {
-          if(i+j >= 0 && i+j < trajectory.size()) {
-              sum_x += trajectory[i+j].x;
-              sum_y += trajectory[i+j].y;
-              sum_a += trajectory[i+j].a;
-
-              count++;
-          }
+      std::vector<cv::Point2f> valid_previous;
+      std::vector<cv::Point2f> valid_current;
+      valid_previous.reserve(status.size());
+      valid_current.reserve(status.size());
+      for (std::size_t index = 0; index < status.size(); ++index) {
+        if (status[index] != 0U) {
+          valid_previous.push_back(previous_points[index]);
+          valid_current.push_back(current_points[index]);
+        }
       }
+      tracked_count = valid_previous.size();
+      if (tracked_count >= 3U) {
+        // This shared OpenCV 4/5 API models translation, rotation, and uniform
+        // scale without introducing the shear of a full affine transform.
+        transform =
+            cv::estimateAffinePartial2D(valid_previous, valid_current);
+      }
+    }
 
-      double avg_a = sum_a / count;
-      double avg_x = sum_x / count;
-      double avg_y = sum_y / count;
+    // Blurred or textureless frame pairs may not have three usable matches.
+    // Reuse the most recent motion estimate to prevent a discontinuous jump.
+    if (transform.empty() || !cv::checkRange(transform)) {
+      transform = last_transform.clone();
+    } else {
+      transform.convertTo(transform, CV_64F);
+      last_transform = transform.clone();
+    }
 
-      smoothed_trajectory.push_back(Trajectory(avg_x, avg_y, avg_a));
+    transforms.push_back(
+        {transform.at<double>(0, 2), transform.at<double>(1, 2),
+         std::atan2(transform.at<double>(1, 0),
+                    transform.at<double>(0, 0))});
+    tracked_counts.push_back(tracked_count);
+    previous_gray = current_gray;
   }
 
-  return smoothed_trajectory; 
-}
-
-void fixBorder(Mat &frame_stabilized)
-{
-  Mat T = getRotationMatrix2D(Point2f(frame_stabilized.cols/2, frame_stabilized.rows/2), 0, 1.04); 
-  warpAffine(frame_stabilized, frame_stabilized, T, frame_stabilized.size()); 
-}
-
-
-
-int main(int argc, char **argv)
-{
-  // Read input video
-  VideoCapture cap("video.mp4");
-
-  // Get frame count
-  int n_frames = int(cap.get(CAP_PROP_FRAME_COUNT)); 
-
-  // Get width and height of video stream
-  int w = int(cap.get(CAP_PROP_FRAME_WIDTH)); 
-  int h = int(cap.get(CAP_PROP_FRAME_HEIGHT));
-
-  // Get frames per second (fps)
-  double fps = cap.get(cv::CAP_PROP_FPS);
-
-  // Set up output video
-  int out_w = 2 * w;
-  int out_h = h;
-  if(out_w > 1920)
-  {
-    out_w /= 2;
-    out_h /= 2;
+  if (transforms.empty()) {
+    throw std::runtime_error(
+        "The input video must contain at least two frames.");
   }
-  VideoWriter out("video_out.mp4", cv::VideoWriter::fourcc('m','p','4','v'), fps, Size(out_w, out_h));
-  if(!out.isOpened())
-  {
-    cerr << "Failed to open video writer. Check codec and output path." << endl;
+  return transforms;
+}
+
+std::vector<Trajectory> cumulative_trajectory(
+    const std::vector<Transform>& transforms) {
+  std::vector<Trajectory> trajectory;
+  trajectory.reserve(transforms.size());
+  Trajectory accumulated;
+  for (const Transform& transform : transforms) {
+    accumulated.x += transform.dx;
+    accumulated.y += transform.dy;
+    accumulated.angle += transform.angle;
+    trajectory.push_back(accumulated);
+  }
+  return trajectory;
+}
+
+std::vector<Trajectory> smooth_trajectory(
+    const std::vector<Trajectory>& trajectory, int radius) {
+  std::vector<Trajectory> smoothed;
+  smoothed.reserve(trajectory.size());
+  for (std::size_t index = 0; index < trajectory.size(); ++index) {
+    Trajectory sum;
+    for (int offset = -radius; offset <= radius; ++offset) {
+      const auto unbounded =
+          static_cast<long long>(index) + static_cast<long long>(offset);
+      // Clamp out-of-range samples to the nearest endpoint. This matches the
+      // edge-padded NumPy filter and keeps a fixed-width window at every frame.
+      const auto candidate = std::clamp(
+          unbounded, 0LL,
+          static_cast<long long>(trajectory.size()) - 1LL);
+      const Trajectory& value =
+          trajectory[static_cast<std::size_t>(candidate)];
+      sum.x += value.x;
+      sum.y += value.y;
+      sum.angle += value.angle;
+    }
+    const double count = static_cast<double>(2 * radius + 1);
+    smoothed.push_back(
+        {sum.x / count, sum.y / count, sum.angle / count});
+  }
+  return smoothed;
+}
+
+cv::Mat transform_matrix(const Transform& transform) {
+  const double cosine = std::cos(transform.angle);
+  const double sine = std::sin(transform.angle);
+  return (cv::Mat_<double>(2, 3) << cosine, -sine, transform.dx, sine,
+          cosine, transform.dy);
+}
+
+void fix_border(cv::Mat& frame) {
+  const cv::Point2f center(
+      static_cast<float>(frame.cols) / 2.0F,
+      static_cast<float>(frame.rows) / 2.0F);
+  const cv::Mat transform = cv::getRotationMatrix2D(center, 0.0, 1.04);
+  cv::warpAffine(frame, frame, transform, frame.size());
+}
+
+int run(const Options& options) {
+  cv::VideoCapture capture(options.input.string());
+  if (!capture.isOpened()) {
+    throw std::runtime_error(
+        "Could not open input video: " + options.input.string());
+  }
+
+  const int width =
+      static_cast<int>(capture.get(cv::CAP_PROP_FRAME_WIDTH));
+  const int height =
+      static_cast<int>(capture.get(cv::CAP_PROP_FRAME_HEIGHT));
+  const double fps = capture.get(cv::CAP_PROP_FPS);
+  if (width <= 0 || height <= 0 || !std::isfinite(fps) || fps <= 0.0) {
+    throw std::runtime_error(
+        "The input video has invalid dimensions or frame rate.");
+  }
+
+  std::vector<std::size_t> tracked_counts;
+  const std::vector<Transform> transforms =
+      estimate_transforms(capture, tracked_counts);
+  const std::vector<Trajectory> trajectory =
+      cumulative_trajectory(transforms);
+  const std::vector<Trajectory> smoothed =
+      smooth_trajectory(trajectory, options.smoothing_radius);
+
+  std::vector<Transform> corrected;
+  corrected.reserve(transforms.size());
+  for (std::size_t index = 0; index < transforms.size(); ++index) {
+    corrected.push_back(
+        {transforms[index].dx + smoothed[index].x - trajectory[index].x,
+         transforms[index].dy + smoothed[index].y - trajectory[index].y,
+         transforms[index].angle + smoothed[index].angle -
+             trajectory[index].angle});
+  }
+
+  std::filesystem::create_directories(options.output_dir);
+  const std::filesystem::path output_path =
+      options.output_dir / options.output_name;
+  int output_width = 2 * width;
+  int output_height = height;
+  if (output_width > 1920) {
+    output_width /= 2;
+    output_height /= 2;
+  }
+  cv::VideoWriter writer(
+      output_path.string(), cv::VideoWriter::fourcc('m', 'p', '4', 'v'), fps,
+      cv::Size(output_width, output_height));
+  if (!writer.isOpened()) {
+    throw std::runtime_error(
+        "Could not open output video: " + output_path.string());
+  }
+
+  capture.set(cv::CAP_PROP_POS_FRAMES, 0.0);
+  std::size_t written_frames = 0;
+  for (const Transform& transform : corrected) {
+    cv::Mat frame;
+    if (!capture.read(frame) || frame.empty()) {
+      break;
+    }
+
+    cv::Mat stabilized;
+    cv::warpAffine(
+        frame, stabilized, transform_matrix(transform), frame.size());
+    fix_border(stabilized);
+
+    cv::Mat comparison;
+    cv::hconcat(frame, stabilized, comparison);
+    if (comparison.cols != output_width ||
+        comparison.rows != output_height) {
+      cv::resize(
+          comparison, comparison, cv::Size(output_width, output_height));
+    }
+    writer.write(comparison);
+    ++written_frames;
+
+    if (options.display) {
+      cv::imshow("Before and After", comparison);
+      if ((cv::waitKey(1) & 0xFF) == 27) {
+        break;
+      }
+    }
+  }
+  capture.release();
+  writer.release();
+  cv::destroyAllWindows();
+
+  if (options.validate) {
+    if (written_frames != transforms.size()) {
+      throw std::runtime_error(
+          "The number of output frames did not match the transforms.");
+    }
+    if (!std::filesystem::is_regular_file(output_path) ||
+        std::filesystem::file_size(output_path) == 0U) {
+      throw std::runtime_error("The output video is missing or empty.");
+    }
+    cv::VideoCapture check(output_path.string());
+    cv::Mat first_output_frame;
+    if (!check.read(first_output_frame) || first_output_frame.empty()) {
+      throw std::runtime_error(
+          "OpenCV could not decode the generated video.");
+    }
+    if (first_output_frame.cols != output_width ||
+        first_output_frame.rows != output_height) {
+      throw std::runtime_error(
+          "The generated video has unexpected dimensions.");
+    }
+    const double tracked_sum = std::accumulate(
+        tracked_counts.begin(), tracked_counts.end(), 0.0);
+    const double tracked_mean =
+        tracked_sum / static_cast<double>(tracked_counts.size());
+    std::cout << "VALIDATION PASSED: " << written_frames << " frames, "
+              << output_width << 'x' << output_height
+              << ", mean tracked points " << tracked_mean << '\n';
+  }
+  return 0;
+}
+
+}  // namespace
+
+int main(int argc, char** argv) {
+  try {
+    return run(parse_options(argc, argv));
+  } catch (const std::exception& error) {
+    std::cerr << "ERROR: " << error.what() << '\n';
     return 1;
   }
-  
-  // Define variable for storing frames
-  Mat curr, curr_gray;
-  Mat prev, prev_gray;
-
-  // Read first frame
-  cap >> prev;
-
-  // Convert frame to grayscale
-  cvtColor(prev, prev_gray, COLOR_BGR2GRAY);
-
-  // Pre-define transformation-store array
-  vector <TransformParam> transforms; 
-
-  // 
-  Mat last_T;
-
-  for(int i = 1; i < n_frames-1; i++)
-  {
-    // Vector from previous and current feature points
-    vector <Point2f> prev_pts, curr_pts;
-
-    // Detect features in previous frame
-    goodFeaturesToTrack(prev_gray, prev_pts, 200, 0.01, 30);
-
-    // Read next frame 
-    bool success = cap.read(curr);
-    if(!success) break; 
-    
-    // Convert to grayscale
-    cvtColor(curr, curr_gray, COLOR_BGR2GRAY);
-
-    // Calculate optical flow (i.e. track feature points)
-    vector <uchar> status;
-    vector <float> err;
-    calcOpticalFlowPyrLK(prev_gray, curr_gray, prev_pts, curr_pts, status, err);
-
-    // Filter only valid points
-    auto prev_it = prev_pts.begin(); 
-    auto curr_it = curr_pts.begin(); 
-    for(size_t k = 0; k < status.size(); k++) 
-    {
-        if(status[k]) 
-        {
-          prev_it++; 
-          curr_it++; 
-        }
-        else 
-        {
-          prev_it = prev_pts.erase(prev_it);
-          curr_it = curr_pts.erase(curr_it);
-        }
-    }
-
-    
-    // Find transformation matrix
-    // Partial affine matches legacy rigid transform (no shear).
-    Mat T;
-#if CV_VERSION_MAJOR >= 4
-    Mat inliers;
-    T = estimateAffinePartial2D(prev_pts, curr_pts, inliers);
-#else
-    T = estimateRigidTransform(prev_pts, curr_pts, false); 
-#endif
-
-    // In rare cases no transform is found. 
-    // We'll just use the last known good transform.
-    if(T.data == NULL)
-    {
-      if(last_T.data == NULL)
-      {
-        T = (Mat_<double>(2,3) << 1, 0, 0, 0, 1, 0);
-      }
-      else
-      {
-        last_T.copyTo(T);
-      }
-    }
-    T.copyTo(last_T);
-
-    // Extract traslation
-    double dx = T.at<double>(0,2);
-    double dy = T.at<double>(1,2);
-    
-    // Extract rotation angle
-    double da = atan2(T.at<double>(1,0), T.at<double>(0,0));
-
-    // Store transformation 
-    transforms.push_back(TransformParam(dx, dy, da));
-
-    // Move to next frame
-    curr_gray.copyTo(prev_gray);
-
-    cout << "Frame: " << i << "/" << n_frames << " -  Tracked points : " << prev_pts.size() << endl;
-  }
-
-  // Compute trajectory using cumulative sum of transformations
-  vector <Trajectory> trajectory = cumsum(transforms);
-
-
-  // Smooth trajectory using moving average filter
-  vector <Trajectory> smoothed_trajectory = smooth(trajectory, SMOOTHING_RADIUS); 
-
-  vector <TransformParam> transforms_smooth;
-  
-  for(size_t i=0; i < transforms.size(); i++)
-  {
-    // Calculate difference in smoothed_trajectory and trajectory
-    double diff_x = smoothed_trajectory[i].x - trajectory[i].x;
-    double diff_y = smoothed_trajectory[i].y - trajectory[i].y;
-    double diff_a = smoothed_trajectory[i].a - trajectory[i].a;
-
-    // Calculate newer transformation array
-    double dx = transforms[i].dx + diff_x;
-    double dy = transforms[i].dy + diff_y;
-    double da = transforms[i].da + diff_a;
-
-    transforms_smooth.push_back(TransformParam(dx, dy, da));
-  }
-
-  cap.set(cv::CAP_PROP_POS_FRAMES, 0);
-  Mat T(2,3,CV_64F);
-  Mat frame, frame_stabilized, frame_out; 
-
-  
-  for( int i = 0; i < n_frames-1; i++) 
-  { 
-    bool success = cap.read(frame);
-    if(!success) break;
-    
-    // Extract transform from translation and rotation angle. 
-    transforms_smooth[i].getTransform(T); 
-
-    // Apply affine wrapping to the given frame
-    warpAffine(frame, frame_stabilized, T, frame.size());
-
-    // Scale image to remove black border artifact
-    fixBorder(frame_stabilized); 
-
-    // Now draw the original and stablised side by side for coolness
-    hconcat(frame, frame_stabilized, frame_out);
-
-    if(frame_out.cols != out_w || frame_out.rows != out_h)
-    {
-        resize(frame_out, frame_out, Size(out_w, out_h));
-    }
-
-    // imshow("Before and After", frame_out);
-    out.write(frame_out);
-    // waitKey(10);
-  }
-
-  // Release video
-  cap.release();
-  out.release();
-  // Close windows
-  // destroyAllWindows();
-
-  return 0;
 }

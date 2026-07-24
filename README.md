@@ -30,6 +30,7 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Video Stabilization Using Point Feature Matching in OpenCV](https://learnopencv.com/video-stabilization-using-point-feature-matching-in-opencv/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/VideoStabilization) |
 |[Camera Calibration using OpenCV](https://www.learnopencv.com/camera-calibration-using-opencv/) [Updated] |[Code](https://github.com/spmallick/learnopencv/tree/master/CameraCalibration)|
 |[Find the Center of a Blob (Centroid) using OpenCV (C++/Python)](https://www.learnopencv.com/find-center-of-blob-centroid-using-opencv-cpp-python/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/CenterofBlob)|
 | [How to find frame rate or frames per second (fps) in OpenCV ( Python / C++ ) ?](http://www.learnopencv.com/how-to-find-frame-rate-or-frames-per-second-fps-in-opencv-python-cpp/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/FPS) |
@@ -397,7 +398,6 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 |[Invisibility Cloak using Color Detection and Segmentation with OpenCV](https://www.learnopencv.com/invisibility-cloak-using-color-detection-and-segmentation-with-opencv/) | [Code](https://github.com/spmallick/learnopencv/tree/master/InvisibilityCloak) |
 |[Fast Image Downloader for Open Images V4 (Python)](https://www.learnopencv.com/fast-image-downloader-for-open-images-v4/) | [Code](https://github.com/spmallick/learnopencv/tree/master/downloadOpenImages) |
 |[Deep Learning based Text Detection Using OpenCV (C++/Python)](https://www.learnopencv.com/deep-learning-based-text-detection-using-opencv-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/TextDetectionEAST) |
-|[Video Stabilization Using Point Feature Matching in OpenCV](https://www.learnopencv.com/video-stabilization-using-point-feature-matching-in-opencv/) | [Code](https://github.com/spmallick/learnopencv/tree/master/VideoStabilization) |
 |[Training YOLOv3 : Deep Learning based Custom Object Detector](https://www.learnopencv.com/training-yolov3-deep-learning-based-custom-object-detector/) | [Code](https://github.com/spmallick/learnopencv/tree/master/YOLOv3-Training-Snowman-Detector ) |
 |[Using OpenVINO with OpenCV](https://www.learnopencv.com/using-openvino-with-opencv/) | [Code](https://github.com/spmallick/learnopencv/tree/master/OpenVINO-OpenCV) |
 |[Duplicate Search on Quora Dataset](https://www.learnopencv.com/duplicate-search-on-quora-dataset/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Quora-Dataset-Duplicate-Search) |
