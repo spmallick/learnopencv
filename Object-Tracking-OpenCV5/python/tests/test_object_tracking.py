@@ -21,6 +21,7 @@ import sys
 import tempfile
 # unittest is the framework mandated by the project conventions.
 import unittest
+from unittest import mock
 
 # Import the application module for constants and synthetic-video generation;
 # every tracker behavior test still goes through the real subprocess CLI.
@@ -46,6 +47,46 @@ MODEL_FILES = {
     ),
     "vittrack": ("object_tracking_vittrack_2023sep.onnx",),
 }
+
+
+class VitTrackConfiguration(unittest.TestCase):
+    """VitTrack must keep the documented backend and confidence policy."""
+
+    def test_factory_pins_backend_target_and_threshold(self):
+        class Params:
+            net = ""
+            backend = -1
+            target = -1
+            tracking_score_threshold = -1.0
+
+        captured = {}
+
+        def creator(params):
+            captured["params"] = params
+            return object()
+
+        with tempfile.TemporaryDirectory() as workdir:
+            models_dir = Path(workdir)
+            (models_dir / "object_tracking_vittrack_2023sep.onnx").touch()
+            with mock.patch.object(
+                object_tracking, "_resolve_creator", return_value=creator
+            ):
+                with mock.patch.object(
+                    object_tracking, "_params_for", return_value=Params()
+                ):
+                    self.assertIsNotNone(
+                        object_tracking.make_vittrack(models_dir)
+                    )
+
+        params = captured["params"]
+        self.assertEqual(
+            params.backend, object_tracking.cv2.dnn.DNN_BACKEND_OPENCV
+        )
+        self.assertEqual(params.target, object_tracking.cv2.dnn.DNN_TARGET_CPU)
+        self.assertEqual(
+            params.tracking_score_threshold,
+            object_tracking.VITTRACK_SCORE_THRESHOLD,
+        )
 
 
 def run_cli(arguments, cwd):

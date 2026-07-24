@@ -143,6 +143,13 @@ Python uses `--list-trackers`; C++ uses `--list`. Invalid options, malformed or
 out-of-frame boxes, missing inputs, and output failures return a clean nonzero
 exit.
 
+VitTrack is configured explicitly with `DNN_BACKEND_OPENCV`,
+`DNN_TARGET_CPU`, and a tracking-score threshold of `0.30`, matching OpenCV's
+DNN object-tracker sample. Its annotated output also shows
+`getTrackingScore()` on every updated frame. When the score falls below the
+threshold, the application reports a tracking failure and does not draw a
+potentially misleading box.
+
 Validation generates an 80-frame, 640×360 clip containing a textured square on
 a seeded noisy background. It initializes from frame zero and passes only when
 the 79 subsequent updates have mean IoU ≥ 0.45 and at least 90% exceed 0.30
@@ -152,7 +159,7 @@ JSON, then prints `VALIDATION PASSED` or `VALIDATION FAILED`.
 ## Test
 
 ```shell
-# Python: 23 tests, including all six tracker entry points.
+# Python: 24 tests, including all six tracker entry points.
 python3 -m unittest discover -s python/tests -v
 
 # C++: 17 tests with contrib and all downloaded models.
@@ -183,7 +190,8 @@ directory.
   in Python and C++. Tracker scores can differ across OpenCV versions; passing
   semantics and artifact contracts—not four-decimal score equality—are the
   compatibility guarantee.
-- OpenCV 5's new DNN graph engine prints `setPreferableTarget` warnings when the DNN trackers load; they are harmless and do not affect results.
+- VitTrack explicitly selects OpenCV's CPU DNN backend, so its result does not
+  depend on which backend a particular OpenCV build chooses by default.
 - The C++ and Python synthetic clips share the same geometry, trajectory, and thresholds, but use different random generators, so their pixels (and exact IoU values) differ slightly across languages by design.
 - Output videos preserve the input frame rate when the backend reports one and
   otherwise use a 30 FPS fallback.
