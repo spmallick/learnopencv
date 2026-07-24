@@ -15,10 +15,9 @@ original and stabilized views side by side.
 - CMake 3.16 or newer
 - A C++17 compiler
 
-OpenCV 4.14 is still identified as `4.14.0-pre` in the upstream development
-documentation at the time of this update. The code targets its current API and
-will be retested against the final `4.14.0` packages when they are published.
-OpenCV 5 validation uses the released `5.0.0` packages.
+The compatibility matrix is tested against the exact OpenCV `4.14.0` and
+`5.0.0` release tags. The Python and C++ examples use the APIs shared by both
+versions.
 
 The checked-in dependency ranges admit both supported OpenCV majors:
 
@@ -27,10 +26,12 @@ numpy>=1.23,<3
 opencv-python>=4.8,<6
 ```
 
-The dependency range intentionally remains broad enough to install on systems
-where the final OpenCV 4.14 Python wheel is not published yet. The examples use
+The broad range lets `pip` select an available compatible OpenCV 4 or 5 wheel.
+The acceptance matrix builds the OpenCV 4.14 Python binding and both C++
+libraries from the exact `4.14.0` and `5.0.0` source tags; the OpenCV 5 Python
+run uses the exact `5.0.0` wheel. The examples use
 `estimateAffinePartial2D` and the modern two-value Python return contract, which
-are shared by OpenCV 4.14 and 5.0. The removed OpenCV 3-only
+are shared by both releases. The removed OpenCV 3-only
 `estimateRigidTransform` compatibility branch is no longer needed.
 
 ## Input and output
@@ -41,8 +42,11 @@ directory. Use `--input PATH` to process another video.
 
 Output defaults to `output/video_out.mp4`. The output directory is created
 automatically. Use `--output-dir PATH` and `--output-name NAME` to change it.
+The program rejects an output path, symlink, or hard link that resolves to the
+input video, preventing accidental source truncation.
 The video contains the original frame on the left and stabilized frame on the
-right. For wide input, the comparison is resized to at most 1920 pixels wide.
+right. When the side-by-side result is wider than 1920 pixels, both dimensions
+are halved to keep the preview and output manageable.
 
 Useful options shared by both implementations:
 
@@ -54,42 +58,44 @@ Useful options shared by both implementations:
 - `--validate`: check the output frame count, dimensions, and readability, then
   print `VALIDATION PASSED`.
 
-Press Escape to stop an interactive preview early.
+Press Escape to stop an interactive preview early when `--validate` is not in
+use. Validation requires processing the complete readable clip.
 
 ## Run the Python example
 
 From `VideoStabilization`:
 
 ```shell
-/Users/spmallick/.venv/codex/bin/python -m pip install -r requirements.txt
-/Users/spmallick/.venv/codex/bin/python video_stabilization.py
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+python video_stabilization.py
 ```
 
 For a repeatable headless run:
 
 ```shell
-/Users/spmallick/.venv/codex/bin/python video_stabilization.py \
+python video_stabilization.py \
   --no-display --validate
 ```
 
 The script can also be launched from any directory:
 
 ```shell
-/Users/spmallick/.venv/codex/bin/python \
-  /absolute/path/to/VideoStabilization/video_stabilization.py \
+python /absolute/path/to/VideoStabilization/video_stabilization.py \
   --output-dir /tmp/video-stabilization --no-display --validate
 ```
 
 Run the Python regression tests from the repository root:
 
 ```shell
-/Users/spmallick/.venv/codex/bin/python \
-  -m unittest discover -s VideoStabilization/tests -v
+python -m unittest discover -s VideoStabilization/tests -v
 ```
 
-The tests exercise the real command-line entry point from an unrelated
-directory, validate a generated synthetic video, check smoothing behavior, and
-verify the missing-input error.
+The six tests exercise the real command-line entry point from unrelated
+directories, validate the bundled and generated synthetic videos, count every
+output frame, check smoothing and tracked-point behavior, verify concise input
+and output errors, and prove that a path collision cannot overwrite the source.
 
 ## Build and run the C++ example
 
@@ -118,14 +124,20 @@ Run the C++ regression from any directory:
   --no-display --validate
 ```
 
-Or run the registered CTest:
+Or run the registered CTests:
 
 ```shell
 ctest --test-dir build --output-on-failure
 ```
 
-The build requests only the OpenCV modules used by the example, rejects
+CTest covers the complete bundled-video regression and a safe input/output
+collision check that operates on a build-directory copy. The build requests
+only the OpenCV modules used by the example, rejects
 unsupported major versions, and compiles with warnings treated as errors.
+OpenCV 5 moved `estimateAffinePartial2D` from `calib3d` to the new `geometry`
+module and `goodFeaturesToTrack` from `imgproc` to the new `features` module.
+The CMake configuration and version-gated includes select the correct modules
+while the source keeps the same algorithm and public API calls in both releases.
 
 ## Project files
 
@@ -136,6 +148,7 @@ VideoStabilization/
 ├── README.md
 ├── requirements.txt
 ├── tests/
+│   ├── check_collision_guard.cmake
 │   └── test_video_stabilization.py
 ├── video.mp4
 ├── video_stabilization.cpp

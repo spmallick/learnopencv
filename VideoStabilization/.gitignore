@@ -1,4 +1,6 @@
 build/
+build-*/
 output/
 video_out.mp4
 __pycache__/
+.venv/
