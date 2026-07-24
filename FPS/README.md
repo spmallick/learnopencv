@@ -13,7 +13,9 @@ The examples use APIs shared by OpenCV 4.x and 5.x, and CMake rejects major vers
 
 ## Download the standalone project
 
-Download the immutable, versioned [FPS.zip](https://github.com/spmallick/learnopencv/releases/download/fps-opencv-2026.07.23/FPS.zip) bundle and its [SHA-256 checksum](https://github.com/spmallick/learnopencv/releases/download/fps-opencv-2026.07.23/FPS.zip.sha256). The ZIP contains exactly one top-level `FPS/` directory with the eight files shown in the directory layout below.
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://github.com/spmallick/learnopencv/releases/download/fps-opencv-2026.07.23/FPS.zip)
+
+The immutable, versioned bundle has a published [SHA-256 checksum](https://github.com/spmallick/learnopencv/releases/download/fps-opencv-2026.07.23/FPS.zip.sha256). The ZIP contains exactly one top-level `FPS/` directory with the eight files shown in the directory layout below.
 
 On macOS or Linux, download and verify both files before extracting the project:
 

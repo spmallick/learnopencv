@@ -2,9 +2,9 @@
 
 **This repository contains the code for [Camera Calibration Using Opencv](https://learnopencv.com/camera-calibration-using-opencv/) blog post**.
 
-Download the immutable, versioned
-[CameraCalibration.zip](https://github.com/spmallick/learnopencv/releases/download/camera-calibration-opencv-2026.07.23/CameraCalibration.zip)
-bundle and its
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://github.com/spmallick/learnopencv/releases/download/camera-calibration-opencv-2026.07.23/CameraCalibration.zip)
+
+The immutable, versioned bundle has a published
 [SHA-256 checksum](https://github.com/spmallick/learnopencv/releases/download/camera-calibration-opencv-2026.07.23/CameraCalibration.zip.sha256).
 The ZIP contains exactly one top-level `CameraCalibration/` directory with the
 files shown in the directory layout below.

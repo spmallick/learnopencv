@@ -2,9 +2,9 @@
 
 This directory contains the Python and C++ examples for [Find the Center of a Blob using OpenCV](https://learnopencv.com/find-center-of-blob-centroid-using-opencv-cpp-python/).
 
-Download the immutable, versioned
-[CenterofBlob.zip](https://github.com/spmallick/learnopencv/releases/download/center-of-blob-opencv-2026.07.23/CenterofBlob.zip)
-bundle and its
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://github.com/spmallick/learnopencv/releases/download/center-of-blob-opencv-2026.07.23/CenterofBlob.zip)
+
+The immutable, versioned bundle has a published
 [SHA-256 checksum](https://github.com/spmallick/learnopencv/releases/download/center-of-blob-opencv-2026.07.23/CenterofBlob.zip.sha256).
 The ZIP contains exactly one top-level `CenterofBlob/` directory with the files
 shown in the directory layout below.
