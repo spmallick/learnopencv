@@ -1,5 +1,7 @@
 # Video Stabilization Using Point Feature Matching in OpenCV
 
+[![Video Stabilization Using Point Feature Matching in OpenCV](video-stabilization-opencv-4-14-5.jpg)](https://learnopencv.com/video-stabilization-using-point-feature-matching-in-opencv/)
+
 This folder contains the Python and C++ examples for the
 [Video Stabilization Using Point Feature Matching in OpenCV](https://learnopencv.com/video-stabilization-using-point-feature-matching-in-opencv/)
 tutorial. Both examples track point features between adjacent frames, estimate
@@ -153,14 +155,31 @@ VideoStabilization/
 │   ├── check_collision_guard.cmake
 │   └── test_video_stabilization.py
 ├── video.mp4
+├── video-stabilization-opencv-4-14-5.jpg
 ├── video_stabilization.cpp
 └── video_stabilization.py
 ```
 
-# Computer Vision & AI Consulting
+---
 
-If you need help implementing your computer vision or AI project, we provide consulting services at [BigVision.AI](https://bigvision.ai). 
+<p align="center">
+  <a href="https://bigvision.ai/">
+    <img src="https://bigvision.ai/logos/logo.png" alt="BigVision.AI" width="300">
+  </a>
+</p>
 
-Contact us at [contact@bigvision.ai](mailto:contact@bigvision.ai).
+<h2 align="center">Build Production-Ready Computer Vision &amp; AI Solutions</h2>
 
-[![BigVision.AI](https://bigvision.ai/wp-content/uploads/2022/01/logo.png)](https://bigvision.ai)
+<p align="center">
+  LearnOpenCV is maintained by <a href="https://bigvision.ai/"><strong>BigVision.AI</strong></a>, a computer vision and AI consulting company. We help organizations design, build, optimize, and deploy production-ready AI solutions. Our team has deep expertise in computer vision, deep learning, multimodal AI, and edge deployment, with experience solving complex technical challenges across industries.
+</p>
+
+<p align="center">
+  Have a project in mind? Talk with our expert AI solution builders.
+</p>
+
+<p align="center">
+  <a href="https://bigvision.ai/expert-ai-solution-builders?utm_source=locv-github">
+    <img src="https://img.shields.io/badge/Get%20in%20Touch-087EA4?style=for-the-badge" alt="Get in Touch with BigVision.AI">
+  </a>
+</p>
