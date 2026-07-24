@@ -1,0 +1,4 @@
+# NumPy supplies compact arrays used by the regression tests.
+numpy>=1.23,<3
+# The examples are tested with exact 4.14.0 and 5.0.0 environments.
+opencv-python>=4.14,<6

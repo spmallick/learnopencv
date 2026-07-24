@@ -1,88 +1,129 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
+"""Calibrate a camera and compare two OpenCV undistortion workflows."""
 
-import cv2
-import numpy as np
-import os
-import glob
+from __future__ import annotations
 
-# Defining the dimensions of checkerboard
-CHECKERBOARD = (6,9)
-criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 30, 0.001)
+# argparse documents the inputs, outputs, headless mode, and validation mode.
+import argparse
+# sys supplies standard error and the final process status.
+import sys
+# Path makes input and output locations explicit and platform independent.
+from pathlib import Path
+# Sequence permits direct testing without modifying process-global arguments.
+from typing import Sequence
 
-# Creating vector to store vectors of 3D points for each checkerboard image
-objpoints = []
-# Creating vector to store vectors of 2D points for each checkerboard image
-imgpoints = [] 
+# Shared calibration logic prevents the two lessons from drifting apart.
+from calibration_utils import (
+    calibrate_images,
+    print_calibration,
+    undistort_sample,
+    validate_calibration,
+)
 
 
-# Defining the world coordinates for 3D points
-objp = np.zeros((1, CHECKERBOARD[0]*CHECKERBOARD[1], 3), np.float32)
-objp[0,:,:2] = np.mgrid[0:CHECKERBOARD[0], 0:CHECKERBOARD[1]].T.reshape(-1, 2)
-prev_img_shape = None
+# Locate bundled data relative to the source file, not the current directory.
+PROJECT_DIR = Path(__file__).resolve().parent
+# The wildcard selects all 41 tracked checkerboard images.
+DEFAULT_IMAGE_PATTERN = str(PROJECT_DIR / "images" / "*.jpg")
+# The two documented methods should remain below one mean intensity level; the
+# tighter 0.1 threshold passed on both exact reference versions.
+MAXIMUM_METHOD_DIFFERENCE = 0.1
 
-# Extracting path of individual image stored in a given directory
-images = glob.glob('./images/*.jpg')
-for fname in images:
-    img = cv2.imread(fname)
-    gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
-    # Find the chess board corners
-    # If desired number of corners are found in the image then ret = true
-    ret, corners = cv2.findChessboardCorners(gray, CHECKERBOARD, cv2.CALIB_CB_ADAPTIVE_THRESH+
-    	cv2.CALIB_CB_FAST_CHECK+cv2.CALIB_CB_NORMALIZE_IMAGE)
-    
-    """
-    If desired number of corner are detected,
-    we refine the pixel coordinates and display 
-    them on the images of checker board
-    """
-    if ret == True:
-        objpoints.append(objp)
-        # refining pixel coordinates for given 2d points.
-        corners2 = cv2.cornerSubPix(gray,corners,(11,11),(-1,-1),criteria)
-        
-        imgpoints.append(corners2)
 
-        # Draw and display the corners
-        img = cv2.drawChessboardCorners(img, CHECKERBOARD, corners2,ret)
-    
-    cv2.imshow('img',img)
-    cv2.waitKey(0)
+def parse_args(arguments: Sequence[str] | None = None) -> argparse.Namespace:
+    """Parse command-line options, optionally from a test-provided sequence."""
 
-cv2.destroyAllWindows()
+    # Use the module documentation as the command's concise help text.
+    parser = argparse.ArgumentParser(description=__doc__)
+    # A quoted glob can select an alternate same-sized calibration dataset.
+    parser.add_argument(
+        "--images",
+        default=DEFAULT_IMAGE_PATTERN,
+        help="Calibration image glob (default: bundled images)",
+    )
+    # By default the first sorted calibration image demonstrates undistortion.
+    parser.add_argument(
+        "--sample",
+        type=Path,
+        help="Image to undistort (default: first calibration image)",
+    )
+    # Keep generated files out of the source tree during normal validation.
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        default=Path.cwd(),
+        help="Output directory (default: current directory)",
+    )
+    # Headless mode avoids imshow and waitKey on servers and in CI.
+    parser.add_argument(
+        "--no-display",
+        action="store_true",
+        help="Skip interactive checkerboard and undistortion windows",
+    )
+    # Validation checks both calibration quality and method agreement.
+    parser.add_argument(
+        "--validate",
+        action="store_true",
+        help="Check calibration and undistortion invariants",
+    )
+    # argparse reads sys.argv when arguments is None.
+    return parser.parse_args(arguments)
 
-h,w = img.shape[:2]
 
-"""
-Performing camera calibration by 
-passing the value of known 3D points (objpoints)
-and corresponding pixel coordinates of the 
-detected corners (imgpoints)
-"""
-ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, gray.shape[::-1],None,None)
+def run(options: argparse.Namespace) -> None:
+    """Execute calibration and both undistortion methods."""
 
-print("Camera matrix : \n")
-print(mtx)
-print("dist : \n")
-print(dist)
-print("rvecs : \n")
-print(rvecs)
-print("tvecs : \n")
-print(tvecs)
+    # Calibrate from the complete selected checkerboard set.
+    calibration = calibrate_images(
+        options.images,
+        display=not options.no_display,
+    )
+    # Report the same reusable camera parameters as the calibration-only lesson.
+    print_calibration(calibration)
+    # A user-supplied sample wins; otherwise sorting makes the first match stable.
+    sample_path = options.sample or calibration.image_paths[0]
+    # Produce one image with direct undistortion and one with precomputed maps.
+    _, _, method_difference = undistort_sample(
+        calibration,
+        sample_path,
+        options.output_dir,
+        display=not options.no_display,
+    )
+    # Print enough precision to expose the version-specific interpolation change.
+    print(
+        "Undistortion method mean absolute difference: "
+        f"{method_difference:.9f}"
+    )
 
-# Using the derived camera parameters to undistort the image
+    # Custom exploratory runs need not meet the bundled fixture's validation.
+    if options.validate:
+        # Check the calibration result before trusting it for rectification.
+        validate_calibration(calibration)
+        # The two documented workflows should remain visually equivalent.
+        if method_difference >= MAXIMUM_METHOD_DIFFERENCE:
+            raise RuntimeError(
+                "Direct undistortion and remapping differ by more than expected"
+            )
+        # Tests require an unambiguous marker after every check succeeds.
+        print("Validation passed")
 
-img = cv2.imread(images[0])
-# Refining the camera matrix using parameters obtained by calibration
-newcameramtx, roi = cv2.getOptimalNewCameraMatrix(mtx, dist, (w,h), 1, (w,h))
 
-# Method 1 to undistort the image
-dst = cv2.undistort(img, mtx, dist, None, newcameramtx)
+def main(arguments: Sequence[str] | None = None) -> int:
+    """Run the CLI and convert operational failures into a clean exit status."""
 
-# Method 2 to undistort the image
-mapx,mapy=cv2.initUndistortRectifyMap(mtx,dist,None,newcameramtx,(w,h),5)
+    try:
+        # Let argparse keep its standard help and malformed-option behavior.
+        options = parse_args(arguments)
+        # Exercise the same run function used by direct imports and tests.
+        run(options)
+    except Exception as error:
+        # imread, imwrite, OpenCV, and validation failures share one clear format.
+        print(f"Error: {error}", file=sys.stderr)
+        return 1
+    # Zero communicates successful image generation and optional validation.
+    return 0
 
-dst = cv2.remap(img,mapx,mapy,cv2.INTER_LINEAR)
 
-# Displaying the undistorted image
-cv2.imshow("undistorted image",dst)
-cv2.waitKey(0)
+if __name__ == "__main__":
+    # SystemExit exposes main's status to shells, CTest, and subprocess tests.
+    raise SystemExit(main())

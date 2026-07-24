@@ -1,70 +1,88 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
+"""Calibrate a camera from checkerboard images with OpenCV 4.14 or 5.0."""
 
-import cv2
-import numpy as np
-import os
-import glob
+from __future__ import annotations
 
-# Defining the dimensions of checkerboard
-CHECKERBOARD = (6,9)
-criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 30, 0.001)
+# argparse gives the teaching script discoverable command-line options.
+import argparse
+# sys supplies the process argument list and standard error stream.
+import sys
+# Path anchors bundled assets to this file instead of the caller's directory.
+from pathlib import Path
+# Sequence describes either a real or test-provided argument list.
+from typing import Sequence
 
-# Creating vector to store vectors of 3D points for each checkerboard image
-objpoints = []
-# Creating vector to store vectors of 2D points for each checkerboard image
-imgpoints = [] 
+# Shared helpers keep both tutorial entry points numerically identical.
+from calibration_utils import calibrate_images, print_calibration, validate_calibration
 
 
-# Defining the world coordinates for 3D points
-objp = np.zeros((1, CHECKERBOARD[0]*CHECKERBOARD[1], 3), np.float32)
-objp[0,:,:2] = np.mgrid[0:CHECKERBOARD[0], 0:CHECKERBOARD[1]].T.reshape(-1, 2)
-prev_img_shape = None
+# Resolve the 41 bundled images even when the script starts elsewhere.
+PROJECT_DIR = Path(__file__).resolve().parent
+# Quote this wildcard at a shell when overriding it so Python, not the shell,
+# controls the complete input set.
+DEFAULT_IMAGE_PATTERN = str(PROJECT_DIR / "images" / "*.jpg")
 
-# Extracting path of individual image stored in a given directory
-images = glob.glob('./images/*.jpg')
-for fname in images:
-    img = cv2.imread(fname)
-    gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
-    # Find the chess board corners
-    # If desired number of corners are found in the image then ret = true
-    ret, corners = cv2.findChessboardCorners(gray, CHECKERBOARD, cv2.CALIB_CB_ADAPTIVE_THRESH+
-    	cv2.CALIB_CB_FAST_CHECK+cv2.CALIB_CB_NORMALIZE_IMAGE)
-    
-    """
-    If desired number of corner are detected,
-    we refine the pixel coordinates and display 
-    them on the images of checker board
-    """
-    if ret == True:
-        objpoints.append(objp)
-        # refining pixel coordinates for given 2d points.
-        corners2 = cv2.cornerSubPix(gray,corners,(11,11),(-1,-1),criteria)
-        
-        imgpoints.append(corners2)
 
-        # Draw and display the corners
-        img = cv2.drawChessboardCorners(img, CHECKERBOARD, corners2,ret)
-    
-    cv2.imshow('img',img)
-    cv2.waitKey(0)
+def parse_args(arguments: Sequence[str] | None = None) -> argparse.Namespace:
+    """Parse command-line options, optionally from a test-provided sequence."""
 
-cv2.destroyAllWindows()
+    # Use the module documentation as the command's short help description.
+    parser = argparse.ArgumentParser(description=__doc__)
+    # A custom glob lets readers calibrate their own same-sized checkerboards.
+    parser.add_argument(
+        "--images",
+        default=DEFAULT_IMAGE_PATTERN,
+        help="Calibration image glob (default: bundled images)",
+    )
+    # Headless mode avoids all window-system calls on servers and in CI.
+    parser.add_argument(
+        "--no-display",
+        action="store_true",
+        help="Skip the interactive checkerboard preview",
+    )
+    # Validation turns silent numeric assumptions into explicit failures.
+    parser.add_argument(
+        "--validate",
+        action="store_true",
+        help="Check version-independent calibration invariants",
+    )
+    # argparse uses sys.argv when arguments is None.
+    return parser.parse_args(arguments)
 
-h,w = img.shape[:2]
 
-"""
-Performing camera calibration by 
-passing the value of known 3D points (objpoints)
-and corresponding pixel coordinates of the 
-detected corners (imgpoints)
-"""
-ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, gray.shape[::-1],None,None)
+def run(options: argparse.Namespace) -> None:
+    """Execute calibration with already parsed options."""
 
-print("Camera matrix : \n")
-print(mtx)
-print("dist : \n")
-print(dist)
-print("rvecs : \n")
-print(rvecs)
-print("tvecs : \n")
-print(tvecs)
+    # The helper detects corners, refines them, and estimates camera parameters.
+    calibration = calibrate_images(
+        options.images,
+        display=not options.no_display,
+    )
+    # Print coverage, errors, intrinsics, and distortion for the lesson.
+    print_calibration(calibration)
+    # Keep validation opt-in for custom datasets with different quality.
+    if options.validate:
+        validate_calibration(calibration)
+        # Tests require an unambiguous marker after every check succeeds.
+        print("Validation passed")
+
+
+def main(arguments: Sequence[str] | None = None) -> int:
+    """Run the CLI and convert operational failures into a clean exit status."""
+
+    try:
+        # Parse first so argparse can retain its conventional exit code and help.
+        options = parse_args(arguments)
+        # Execute the real tutorial path rather than a test-only implementation.
+        run(options)
+    except Exception as error:
+        # OpenCV and filesystem errors become a concise command-line diagnostic.
+        print(f"Error: {error}", file=sys.stderr)
+        return 1
+    # Zero tells shells and CTest that all requested work completed.
+    return 0
+
+
+if __name__ == "__main__":
+    # SystemExit propagates main's explicit success or failure status.
+    raise SystemExit(main())

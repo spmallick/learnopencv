@@ -1,91 +1,106 @@
-#include <opencv2/opencv.hpp>
-#include <opencv2/calib3d/calib3d.hpp>
-#include <opencv2/highgui/highgui.hpp>
-#include <opencv2/imgproc/imgproc.hpp>
-#include <stdio.h>
+// Shared OpenCV 4.14/5.0 calibration logic lives in one teaching-oriented header.
+#include "calibration_utils.hpp"
+
+// Filesystem joins the compiled asset directory and wildcard portably.
+#include <filesystem>
+// The CLI prints help, calibration values, validation markers, and errors.
 #include <iostream>
+// Invalid options become readable command-line failures.
+#include <stdexcept>
+// Strings store option names and the selected image pattern.
+#include <string>
 
-// Defining the dimensions of checkerboard
-int CHECKERBOARD[2]{6,9}; 
+// Keep path expressions concise in the small option structure.
+namespace fs = std::filesystem;
 
-int main()
-{
-  // Creating vector to store vectors of 3D points for each checkerboard image
-  std::vector<std::vector<cv::Point3f> > objpoints;
+// Hold command-line choices separately from camera-calibration results.
+struct Options {
+    // CMake embeds the source image directory so any working directory succeeds.
+    std::string images =
+        (fs::path(TUTORIAL_IMAGE_DIR) / "*.jpg").string();
+    // Preserve the original interactive corner preview by default.
+    bool display = true;
+    // Make regression checks opt-in for normal tutorial exploration.
+    bool validate = false;
+    // Help exits before loading any image.
+    bool show_help = false;
+};
 
-  // Creating vector to store vectors of 2D points for each checkerboard image
-  std::vector<std::vector<cv::Point2f> > imgpoints;
+// Print the exact interface accepted by this executable.
+void print_usage(const char* executable) {
+    std::cout
+        << "Usage: " << executable
+        << " [--images GLOB] [--no-display] [--validate]\n"
+        << "\n"
+        << "Options:\n"
+        << "  --images GLOB  Calibration image pattern (default: bundled images)\n"
+        << "  --no-display   Skip interactive checkerboard windows\n"
+        << "  --validate     Check calibration invariants\n"
+        << "  -h, --help     Show this help text\n";
+}
 
-  // Defining the world coordinates for 3D points
-  std::vector<cv::Point3f> objp;
-  for(int i{0}; i<CHECKERBOARD[1]; i++)
-  {
-    for(int j{0}; j<CHECKERBOARD[0]; j++)
-      objp.push_back(cv::Point3f(j,i,0));
-  }
-
-
-  // Extracting path of individual image stored in a given directory
-  std::vector<cv::String> images;
-  // Path of the folder containing checkerboard images
-  std::string path = "./images/*.jpg";
-
-  cv::glob(path, images);
-
-  cv::Mat frame, gray;
-  // vector to store the pixel coordinates of detected checker board corners 
-  std::vector<cv::Point2f> corner_pts;
-  bool success;
-
-  // Looping over all the images in the directory
-  for(int i{0}; i<images.size(); i++)
-  {
-    frame = cv::imread(images[i]);
-    cv::cvtColor(frame,gray,cv::COLOR_BGR2GRAY);
-
-    // Finding checker board corners
-    // If desired number of corners are found in the image then success = true  
-    success = cv::findChessboardCorners(gray,cv::Size(CHECKERBOARD[0],CHECKERBOARD[1]), corner_pts, cv::CALIB_CB_ADAPTIVE_THRESH | cv::CALIB_CB_FAST_CHECK | cv::CALIB_CB_NORMALIZE_IMAGE);
-
-    /*
-     * If desired number of corner are detected,
-     * we refine the pixel coordinates and display 
-     * them on the images of checker board
-    */
-    if(success)
-    {
-      cv::TermCriteria criteria(cv::TermCriteria::EPS | cv::TermCriteria::MAX_ITER, 30, 0.001);
-
-      // refining pixel coordinates for given 2d points.
-      cv::cornerSubPix(gray,corner_pts,cv::Size(11,11), cv::Size(-1,-1),criteria);
-
-      // Displaying the detected corner points on the checker board
-      cv::drawChessboardCorners(frame, cv::Size(CHECKERBOARD[0],CHECKERBOARD[1]), corner_pts,success);
-
-      objpoints.push_back(objp);
-      imgpoints.push_back(corner_pts);
+// Convert process arguments into a validated Options value.
+Options parse_options(const int argc, char** argv) {
+    // Begin with bundled images, display enabled, and validation disabled.
+    Options options;
+    // argv[0] is the executable name, so option parsing starts at index one.
+    for (int index = 1; index < argc; ++index) {
+        // Copy the current token so comparisons remain clear and safe.
+        const std::string argument = argv[index];
+        // The image option must consume exactly one following glob string.
+        if (argument == "--images") {
+            if (index + 1 >= argc) {
+                throw std::invalid_argument(
+                    "--images requires a glob pattern"
+                );
+            }
+            // Increment before reading so the value is not parsed as an option.
+            options.images = argv[++index];
+        } else if (argument == "--no-display") {
+            // Headless mode prevents all HighGUI calls in the shared helper.
+            options.display = false;
+        } else if (argument == "--validate") {
+            // Validation checks the result after it has been printed.
+            options.validate = true;
+        } else if (argument == "-h" || argument == "--help") {
+            // Record help instead of exiting inside the parser.
+            options.show_help = true;
+        } else {
+            // Reject typos instead of silently ignoring an intended option.
+            throw std::invalid_argument("Unknown argument: " + argument);
+        }
     }
+    // Return one complete configuration to main.
+    return options;
+}
 
-    cv::imshow("Image",frame);
-    cv::waitKey(0);
-  }
+// Run the public tutorial entry point.
+int main(const int argc, char** argv) {
+    try {
+        // Validate the command line before accessing files or OpenCV.
+        const Options options = parse_options(argc, argv);
+        // Help is a successful, side-effect-free request.
+        if (options.show_help) {
+            print_usage(argv[0]);
+            return 0;
+        }
 
-  cv::destroyAllWindows();
-
-  cv::Mat cameraMatrix,distCoeffs,R,T;
-
-  /*
-   * Performing camera calibration by 
-   * passing the value of known 3D points (objpoints)
-   * and corresponding pixel coordinates of the 
-   * detected corners (imgpoints)
-  */
-  cv::calibrateCamera(objpoints, imgpoints,cv::Size(gray.cols,gray.rows),cameraMatrix,distCoeffs,R,T);
-
-  std::cout << "cameraMatrix : " << cameraMatrix << std::endl;
-  std::cout << "distCoeffs : " << distCoeffs << std::endl;
-  std::cout << "Rotation vector : " << R << std::endl;
-  std::cout << "Translation vector : " << T << std::endl;
-
-  return 0;
+        // Detect corners and estimate one camera model from the selected images.
+        const tutorial::CalibrationResult calibration =
+            tutorial::calibrate_images(options.images, options.display);
+        // Print coverage, errors, intrinsics, and distortion coefficients.
+        tutorial::print_calibration(calibration);
+        // Keep regression checks optional for custom experimental datasets.
+        if (options.validate) {
+            tutorial::validate_calibration(calibration);
+            // CTest requires this marker only after every check succeeds.
+            std::cout << "Validation passed\n";
+        }
+        // Zero signals that all requested work completed successfully.
+        return 0;
+    } catch (const std::exception& error) {
+        // Convert OpenCV, filesystem, option, and validation failures uniformly.
+        std::cerr << "Error: " << error.what() << '\n';
+        return 1;
+    }
 }

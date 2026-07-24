@@ -1,114 +1,148 @@
-#include <opencv2/opencv.hpp>
-#include <opencv2/calib3d/calib3d.hpp>
-#include <opencv2/highgui/highgui.hpp>
-#include <opencv2/imgproc/imgproc.hpp>
-#include <stdio.h>
+// Shared helpers keep both tutorial executables numerically identical.
+#include "calibration_utils.hpp"
+
+// Filesystem resolves the bundled wildcard and explicit output directory.
+#include <filesystem>
+// The CLI prints help, results, validation markers, and errors.
 #include <iostream>
+// Invalid options and failed invariants use standard exceptions.
+#include <stdexcept>
+// Strings store option tokens and the calibration image pattern.
+#include <string>
 
-// Defining the dimensions of checkerboard
-int CHECKERBOARD[2]{6,9}; 
+// Keep path-heavy option handling concise.
+namespace fs = std::filesystem;
 
-int main()
-{
-  // Creating vector to store vectors of 3D points for each checkerboard image
-  std::vector<std::vector<cv::Point3f> > objpoints;
+// Both exact reference versions remain below this mean intensity difference.
+constexpr double kMaximumMethodDifference = 0.1;
 
-  // Creating vector to store vectors of 2D points for each checkerboard image
-  std::vector<std::vector<cv::Point2f> > imgpoints;
+// Hold command-line choices separately from calibration and image results.
+struct Options {
+    // CMake supplies an absolute bundled-asset directory at compile time.
+    std::string images =
+        (fs::path(TUTORIAL_IMAGE_DIR) / "*.jpg").string();
+    // An empty sample means "use the first sorted calibration image."
+    fs::path sample;
+    // Generated images go to the caller's current directory by default.
+    fs::path output_dir = fs::current_path();
+    // Preserve the original interactive lesson unless headless mode is selected.
+    bool display = true;
+    // Validation remains optional for custom datasets.
+    bool validate = false;
+    // Help exits without reading images or creating output.
+    bool show_help = false;
+};
 
-  // Defining the world coordinates for 3D points
-  std::vector<cv::Point3f> objp;
-  for(int i{0}; i<CHECKERBOARD[1]; i++)
-  {
-    for(int j{0}; j<CHECKERBOARD[0]; j++)
-      objp.push_back(cv::Point3f(j,i,0));
-  }
+// Print the exact interface accepted by this executable.
+void print_usage(const char* executable) {
+    std::cout
+        << "Usage: " << executable
+        << " [--images GLOB] [--sample IMAGE] [--output-dir PATH]\n"
+        << "       [--no-display] [--validate]\n"
+        << "\n"
+        << "Options:\n"
+        << "  --images GLOB     Calibration image pattern (default: bundled images)\n"
+        << "  --sample IMAGE    Image to undistort (default: first calibration image)\n"
+        << "  --output-dir PATH Output directory (default: current directory)\n"
+        << "  --no-display      Skip all interactive windows\n"
+        << "  --validate        Check calibration and undistortion invariants\n"
+        << "  -h, --help        Show this help text\n";
+}
 
+// Convert process arguments into a validated Options value.
+Options parse_options(const int argc, char** argv) {
+    // Begin with safe, documented defaults.
+    Options options;
+    // argv[0] names the executable, so start parsing at index one.
+    for (int index = 1; index < argc; ++index) {
+        // Copy the token before comparing it with supported option names.
+        const std::string argument = argv[index];
+        // All three path options require exactly one following value.
+        if ((argument == "--images" ||
+             argument == "--sample" ||
+             argument == "--output-dir") &&
+            index + 1 >= argc) {
+            throw std::invalid_argument(argument + " requires a value");
+        }
 
-  // Extracting path of individual image stored in a given directory
-  std::vector<cv::String> images;
-  // Path of the folder containing checkerboard images
-  std::string path = "./images/*.jpg";
-
-  cv::glob(path, images);
-
-  cv::Mat frame, gray;
-  // vector to store the pixel coordinates of detected checker board corners 
-  std::vector<cv::Point2f> corner_pts;
-  bool success;
-
-  // Looping over all the images in the directory
-  for(int i{0}; i<images.size(); i++)
-  {
-    frame = cv::imread(images[i]);
-    cv::cvtColor(frame,gray,cv::COLOR_BGR2GRAY);
-
-    // Finding checker board corners
-    // If desired number of corners are found in the image then success = true  
-    success = cv::findChessboardCorners(gray,cv::Size(CHECKERBOARD[0],CHECKERBOARD[1]), corner_pts, cv::CALIB_CB_ADAPTIVE_THRESH | cv::CALIB_CB_FAST_CHECK | cv::CALIB_CB_NORMALIZE_IMAGE);
-
-    /*
-     * If desired number of corner are detected,
-     * we refine the pixel coordinates and display 
-     * them on the images of checker board
-    */
-    if(success)
-    {
-      cv::TermCriteria criteria(cv::TermCriteria::EPS | cv::TermCriteria::MAX_ITER, 30, 0.001);
-
-      // refining pixel coordinates for given 2d points.
-      cv::cornerSubPix(gray,corner_pts,cv::Size(11,11), cv::Size(-1,-1),criteria);
-
-      // Displaying the detected corner points on the checker board
-      cv::drawChessboardCorners(frame, cv::Size(CHECKERBOARD[0],CHECKERBOARD[1]), corner_pts,success);
-
-      objpoints.push_back(objp);
-      imgpoints.push_back(corner_pts);
+        if (argument == "--images") {
+            // Increment first so the wildcard is not parsed again as an option.
+            options.images = argv[++index];
+        } else if (argument == "--sample") {
+            // The sample must have the calibration image resolution.
+            options.sample = argv[++index];
+        } else if (argument == "--output-dir") {
+            // Nested output directories are created by the shared helper.
+            options.output_dir = argv[++index];
+        } else if (argument == "--no-display") {
+            // Headless mode prevents every HighGUI call.
+            options.display = false;
+        } else if (argument == "--validate") {
+            // Validate the camera model and agreement between both methods.
+            options.validate = true;
+        } else if (argument == "-h" || argument == "--help") {
+            // Defer the successful exit until main can print usage.
+            options.show_help = true;
+        } else {
+            // Reject option typos instead of silently running with defaults.
+            throw std::invalid_argument("Unknown argument: " + argument);
+        }
     }
+    // Return one complete configuration to main.
+    return options;
+}
 
-    cv::imshow("Image",frame);
-    cv::waitKey(0);
-  }
+// Run the calibration-plus-undistortion lesson.
+int main(const int argc, char** argv) {
+    try {
+        // Resolve and validate all requested behavior before touching files.
+        Options options = parse_options(argc, argv);
+        // Help is successful and deliberately side-effect free.
+        if (options.show_help) {
+            print_usage(argv[0]);
+            return 0;
+        }
 
-  cv::destroyAllWindows();
+        // Estimate intrinsics, distortion, and checkerboard poses.
+        const tutorial::CalibrationResult calibration =
+            tutorial::calibrate_images(options.images, options.display);
+        // Report the same camera values as the calibration-only lesson.
+        tutorial::print_calibration(calibration);
 
-  cv::Mat cameraMatrix,distCoeffs,R,T;
+        // Sorting makes the first calibration image a deterministic default.
+        if (options.sample.empty()) {
+            options.sample = calibration.image_paths.front();
+        }
+        // Generate direct and precomputed-map undistortion results.
+        const tutorial::UndistortionResult undistortion =
+            tutorial::undistort_sample(
+                calibration,
+                options.sample,
+                options.output_dir,
+                options.display
+            );
+        // Print enough precision to expose the OpenCV 5 interpolation difference.
+        std::cout
+            << "Undistortion method mean absolute difference: "
+            << undistortion.mean_absolute_difference << '\n';
 
-  /*
-   * Performing camera calibration by 
-   * passing the value of known 3D points (objpoints)
-   * and corresponding pixel coordinates of the 
-   * detected corners (imgpoints)
-  */
-  cv::calibrateCamera(objpoints, imgpoints,cv::Size(gray.cols,gray.rows),cameraMatrix,distCoeffs,R,T);
-
-  std::cout << "cameraMatrix : " << cameraMatrix << std::endl;
-  std::cout << "distCoeffs : " << distCoeffs << std::endl;
-  std::cout << "Rotation vector : " << R << std::endl;
-  std::cout << "Translation vector : " << T << std::endl;
-
-
-  // Trying to undistort the image using the camera parameters obtained from calibration
-  
-  cv::Mat image;
-  image = cv::imread(images[0]);
-  cv::Mat dst, map1, map2,new_camera_matrix;
-  cv::Size imageSize(cv::Size(image.cols,image.rows));
-
-  // Refining the camera matrix using parameters obtained by calibration
-  new_camera_matrix = cv::getOptimalNewCameraMatrix(cameraMatrix, distCoeffs, imageSize, 1, imageSize, 0);
-
-  // Method 1 to undistort the image
-  cv::undistort( frame, dst, new_camera_matrix, distCoeffs, new_camera_matrix );
-
-  // Method 2 to undistort the image
-  cv::initUndistortRectifyMap(cameraMatrix, distCoeffs, cv::Mat(),cv::getOptimalNewCameraMatrix(cameraMatrix, distCoeffs,   imageSize, 1, imageSize, 0),imageSize, CV_16SC2, map1, map2);
-
-  cv::remap(frame, dst, map1, map2, cv::INTER_LINEAR);
-
-  //Displaying the undistorted image
-  cv::imshow("undistorted image",dst);
-  cv::waitKey(0);
-
-  return 0;
+        // Custom exploratory runs need not meet the bundled validation contract.
+        if (options.validate) {
+            // Reject malformed or poor-quality camera parameters first.
+            tutorial::validate_calibration(calibration);
+            // Check matrices, method agreement, and both decoded output files.
+            tutorial::validate_undistortion(
+                undistortion,
+                kMaximumMethodDifference
+            );
+            // CTest requires this marker only after every check succeeds.
+            std::cout << "Validation passed\n";
+        }
+        // Zero signals that calibration, output, and requested checks succeeded.
+        return 0;
+    } catch (const std::exception& error) {
+        // Convert option, image, OpenCV, filesystem, and validation failures.
+        std::cerr << "Error: " << error.what() << '\n';
+        return 1;
+    }
 }
