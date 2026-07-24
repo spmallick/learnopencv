@@ -51,9 +51,10 @@ VALIDATE_MEAN_IOU = 0.45     # required mean IoU over the whole clip
 VALIDATE_SUCCESS_IOU = 0.30  # per-frame IoU counted as "still on target"
 VALIDATE_SUCCESS_RATE = 0.90 # required fraction of frames on target
 
-# OpenCV's official DNN tracker sample uses 0.30 as the acceptance threshold.
-# The lower TrackerVit default (0.20) is intended only to reject nearly black
-# inputs and can accept weak predictions that later produce severe scale drift.
+# Promote the official demo's 0.30 visualization cutoff into this
+# application's acceptance policy. The lower TrackerVit default (0.20) is
+# intended only to reject nearly black inputs and can accept weak predictions
+# that later produce severe scale drift.
 VITTRACK_SCORE_THRESHOLD = 0.30
 
 
@@ -151,11 +152,14 @@ def make_vittrack(models_dir):
         return None
     # A single ONNX file holds the whole model; it is under 1 MB.
     params.net = str(net)
-    # Pin the portable CPU implementation and use the official sample's
-    # confidence policy instead of relying on version-dependent defaults.
+    # Pin the portable CPU implementation and use the official demo's
+    # visualization cutoff as this application's confidence policy.
     params.backend = cv2.dnn.DNN_BACKEND_OPENCV
     params.target = cv2.dnn.DNN_TARGET_CPU
-    params.tracking_score_threshold = VITTRACK_SCORE_THRESHOLD
+    # OpenCV 4.9/4.10 expose getTrackingScore() but not this Params field.
+    # track() applies the same visible cutoff after update() on those versions.
+    if hasattr(params, "tracking_score_threshold"):
+        params.tracking_score_threshold = VITTRACK_SCORE_THRESHOLD
     return creator(params)
 
 
@@ -382,14 +386,18 @@ def track(tracker, capture, init_box, args, ground_truth=None):
             break  # end of stream
         # Time exactly the tracker update, not drawing or I/O.
         meter.start()
-        found, box = tracker.update(frame)
+        located, box = tracker.update(frame)
         meter.stop()
-        # The boolean already reflects TrackerVit's configured threshold; the
-        # raw score explains marginal losses and should be logged or displayed
-        # instead of treating every returned box as equally trustworthy.
+        # The raw score lets the application enforce one visible policy across
+        # supported versions and explains marginal losses instead of treating
+        # every returned box as equally trustworthy.
         score = (
             float(tracker.getTrackingScore())
             if args.tracker == "vittrack" else None
+        )
+        found = (
+            located
+            and (score is None or score >= VITTRACK_SCORE_THRESHOLD)
         )
         if found:
             # Draw the tracked box; integer coordinates for the raster calls.

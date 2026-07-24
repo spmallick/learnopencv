@@ -88,6 +88,34 @@ class VitTrackConfiguration(unittest.TestCase):
             object_tracking.VITTRACK_SCORE_THRESHOLD,
         )
 
+    def test_factory_supports_legacy_params_without_threshold_field(self):
+        class LegacyParams:
+            __slots__ = ("net", "backend", "target")
+
+            def __init__(self):
+                self.net = ""
+                self.backend = -1
+                self.target = -1
+
+        with tempfile.TemporaryDirectory() as workdir:
+            models_dir = Path(workdir)
+            (models_dir / "object_tracking_vittrack_2023sep.onnx").touch()
+            with mock.patch.object(
+                object_tracking, "_resolve_creator",
+                return_value=lambda params: params,
+            ):
+                with mock.patch.object(
+                    object_tracking, "_params_for",
+                    return_value=LegacyParams(),
+                ):
+                    tracker = object_tracking.make_vittrack(models_dir)
+
+        self.assertIsInstance(tracker, LegacyParams)
+        self.assertEqual(
+            tracker.backend, object_tracking.cv2.dnn.DNN_BACKEND_OPENCV
+        )
+        self.assertEqual(tracker.target, object_tracking.cv2.dnn.DNN_TARGET_CPU)
+
 
 def run_cli(arguments, cwd):
     """Run the application CLI in a subprocess and capture its output."""
