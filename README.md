@@ -30,6 +30,8 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 
 | Blog Post | Code|
 | ------------- |:-------------|
+|[Camera Calibration using OpenCV](https://www.learnopencv.com/camera-calibration-using-opencv/) [Updated] |[Code](https://github.com/spmallick/learnopencv/tree/master/CameraCalibration)|
+|[Find the Center of a Blob (Centroid) using OpenCV (C++/Python)](https://www.learnopencv.com/find-center-of-blob-centroid-using-opencv-cpp-python/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/CenterofBlob)|
 | [How to find frame rate or frames per second (fps) in OpenCV ( Python / C++ ) ?](http://www.learnopencv.com/how-to-find-frame-rate-or-frames-per-second-fps-in-opencv-python-cpp/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/FPS) |
 | [Feature Based Image Alignment using OpenCV (C++/Python)](https://learnopencv.com/image-alignment-feature-based-using-opencv-c-python/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/ImageAlignment-FeatureBased) |
 | [Contour Detection using OpenCV (Python/C++)](https://learnopencv.com/contour-detection-using-opencv-python-c/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Contour-Detection-using-OpenCV) |
@@ -374,7 +376,6 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 |[CNN Receptive Field Computation Using Backprop with TensorFlow](https://www.learnopencv.com/cnn-receptive-field-computation-using-backprop-with-tensorflow/)|[Code](https://github.com/spmallick/learnopencv/tree/master/TensorFlow-Receptive-Field-With-Backprop)|
 |[Augmented Reality using AruCo Markers in OpenCV(C++ and Python)](https://www.learnopencv.com/augmented-reality-using-aruco-markers-in-opencv-(c++-python)/) |[Code](https://github.com/spmallick/learnopencv/tree/master/AugmentedRealityWithArucoMarkers)|
 |[Fully Convolutional Image Classification on Arbitrary Sized Image](https://www.learnopencv.com/fully-convolutional-image-classification-on-arbitrary-sized-image/)|[Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-Fully-Convolutional-Image-Classification)|
-|[Camera Calibration using OpenCV](https://www.learnopencv.com/camera-calibration-using-opencv/) |[Code](https://github.com/spmallick/learnopencv/tree/master/CameraCalibration)|
 |[Geometry of Image Formation](https://www.learnopencv.com/geometry-of-image-formation/) ||
 |[Ensuring Training Reproducibility in Pytorch](https://www.learnopencv.com/ensuring-training-reproducibility-in-pytorch) ||
 |[Gaze Tracking](https://www.learnopencv.com/gaze-tracking/) ||
@@ -428,7 +429,6 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 |[Convolutional Neural Network based Image Colorization using OpenCV](https://www.learnopencv.com/convolutional-neural-network-based-image-colorization-using-opencv/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Colorization)|
 |[SVM using scikit-learn](https://www.learnopencv.com/svm-using-scikit-learn-in-python/)|[Code](https://github.com/spmallick/learnopencv/tree/master/SVM-using-Python)|
 |[GOTURN: Deep Learning based Object Tracking](https://www.learnopencv.com/goturn-deep-learning-based-object-tracking/) | [Code](https://github.com/spmallick/learnopencv/tree/master/GOTURN)|
-|[Find the Center of a Blob (Centroid) using OpenCV (C++/Python)](https://www.learnopencv.com/find-center-of-blob-centroid-using-opencv-cpp-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/CenterofBlob)|
 |[Support Vector Machines (SVM)](https://www.learnopencv.com/support-vector-machines-svm/)|[Code](https://github.com/spmallick/learnopencv/tree/master/SVM-using-Python)|
 |[Batch Normalization in Deep Networks](https://www.learnopencv.com/batch-normalization-in-deep-networks/) | [Code](https://github.com/spmallick/learnopencv/tree/master/BatchNormalization)|
 |[Deep Learning based Character Classification using Synthetic Dataset](https://www.learnopencv.com/deep-learning-character-classification-using-synthetic-dataset/) | [Code](https://github.com/spmallick/learnopencv/tree/master/CharClassification)|
