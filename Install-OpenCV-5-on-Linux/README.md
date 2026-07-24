@@ -115,10 +115,10 @@ The wheel verifier is designed around the official 5.0.0.93 wheel contracts. The
 
 ## Download the standalone companion bundle
 
-Download the immutable, versioned companion bundle and its checksum:
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://github.com/spmallick/learnopencv/releases/download/install-opencv-5-linux-2026.07.23/Install-OpenCV-5-on-Linux.zip)
 
-- [Install-OpenCV-5-on-Linux.zip](https://github.com/spmallick/learnopencv/releases/download/install-opencv-5-linux-2026.07.23/Install-OpenCV-5-on-Linux.zip)
-- [Install-OpenCV-5-on-Linux.zip.sha256](https://github.com/spmallick/learnopencv/releases/download/install-opencv-5-linux-2026.07.23/Install-OpenCV-5-on-Linux.zip.sha256)
+The immutable, versioned companion bundle has a published
+[SHA-256 checksum](https://github.com/spmallick/learnopencv/releases/download/install-opencv-5-linux-2026.07.23/Install-OpenCV-5-on-Linux.zip.sha256).
 
 On Linux, download, verify, and extract it with:
 
