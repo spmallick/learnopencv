@@ -6,6 +6,8 @@ tutorial. Both examples track point features between adjacent frames, estimate
 partial-affine camera motion, smooth the resulting trajectory, and write the
 original and stabilized views side by side.
 
+Download the immutable, versioned [VideoStabilization.zip](https://github.com/spmallick/learnopencv/releases/download/video-stabilization-opencv-2026.07.24/VideoStabilization.zip) bundle.
+
 ## Compatibility contract
 
 - OpenCV 4.14.0
