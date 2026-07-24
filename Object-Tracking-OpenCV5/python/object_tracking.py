@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Single-object tracking with every tracker that ships with OpenCV 5.
+"""Single-object tracking with OpenCV 5's six modern, non-legacy trackers.
 
 One command-line application drives all six trackers:
 
@@ -58,7 +58,7 @@ def _resolve_creator(class_name):
     OpenCV's Python bindings historically exposed two spellings:
     ``cv2.TrackerMIL_create()`` (flat, older) and ``cv2.TrackerMIL.create()``
     (class static method, current). Checking both keeps the script working
-    across every 4.8+ and 5.x build.
+    across every supported 4.9+ and 5.x build.
     """
     # Prefer the flat function when present because it exists on both APIs.
     flat = getattr(cv2, f"{class_name}_create", None)
@@ -208,7 +208,8 @@ def iou(box_a, box_b):
     return inter / union if union > 0 else 0.0
 
 
-def make_synthetic_video(path, size=SYNTH_SIZE, frames=SYNTH_FRAMES):
+def make_synthetic_video(
+        path, size=SYNTH_SIZE, frames=SYNTH_FRAMES, fps=30.0):
     """Write a deterministic clip of a textured square on a noisy background.
 
     Returns the list of ground-truth (x, y, w, h) boxes, one per frame. Both
@@ -230,15 +231,14 @@ def make_synthetic_video(path, size=SYNTH_SIZE, frames=SYNTH_FRAMES):
     ])
     # Target: an 8x8 grid of random bright colors gives strong, unique
     # texture that every tracker family can latch onto.
-    cell = SYNTH_TARGET // 8
     target = rng.randint(64, 255, (8, 8, 3), dtype=np.uint8)
     target = cv2.resize(target, (SYNTH_TARGET, SYNTH_TARGET),
                         interpolation=cv2.INTER_NEAREST)
-    _ = cell  # cell size folded into the resize above
-    # MJPG in an AVI container is built into every OpenCV binary, so the
-    # writer never depends on an external codec being installed.
+    # MJPG in an AVI container is widely available in desktop OpenCV builds.
+    # The explicit isOpened() check below reports a clear error on builds that
+    # were configured without a compatible writer backend.
     writer = cv2.VideoWriter(str(path), cv2.VideoWriter_fourcc(*"MJPG"),
-                             30.0, (width, height))
+                             float(fps), (width, height))
     if not writer.isOpened():
         raise RuntimeError(f"Cannot open video writer for {path}")
     boxes = []
@@ -270,6 +270,40 @@ def open_capture(source):
     return capture
 
 
+def parse_bbox(text):
+    """Parse an exact ``x,y,w,h`` box and reject malformed dimensions."""
+    # Splitting first prevents partial parses such as "10,20,30,40junk".
+    fields = text.split(",")
+    if len(fields) != 4:
+        raise RuntimeError(
+            f"Cannot parse --bbox={text!r}; expected exactly x,y,w,h"
+        )
+    try:
+        box = tuple(int(field) for field in fields)
+    except ValueError as error:
+        raise RuntimeError(
+            f"Cannot parse --bbox={text!r}; every value must be an integer"
+        ) from error
+    # A tracker cannot initialize from an empty or inverted rectangle.
+    if box[2] <= 0 or box[3] <= 0:
+        raise RuntimeError("--bbox width and height must both be positive")
+    return box
+
+
+def _validate_bbox_in_frame(box, frame):
+    """Return an integer box after proving that it lies inside ``frame``."""
+    # Convert selector-provided numeric values as well as CLI values uniformly.
+    x, y, width, height = (int(value) for value in box)
+    frame_height, frame_width = frame.shape[:2]
+    if (x < 0 or y < 0 or width <= 0 or height <= 0
+            or x + width > frame_width or y + height > frame_height):
+        raise RuntimeError(
+            "--bbox must have positive size and lie fully inside the first "
+            f"frame ({frame_width}x{frame_height})"
+        )
+    return x, y, width, height
+
+
 def track(tracker, capture, init_box, args, ground_truth=None):
     """Core loop shared by normal runs and validation.
 
@@ -286,8 +320,12 @@ def track(tracker, capture, init_box, args, ground_truth=None):
             raise RuntimeError("--bbox is required when --no-display is set")
         init_box = cv2.selectROI("Select object", frame, showCrosshair=True)
         cv2.destroyWindow("Select object")
+    # Validate both CLI boxes and interactively selected boxes before asking
+    # the tracker to consume them; this replaces opaque OpenCV assertions with
+    # an actionable message.
+    init_box = _validate_bbox_in_frame(init_box, frame)
     # init() learns the appearance model from the first frame and box.
-    tracker.init(frame, tuple(int(v) for v in init_box))
+    tracker.init(frame, init_box)
     # Prepare the optional annotated-video writer in the output directory.
     writer = None
     if args.output_dir is not None:
@@ -295,9 +333,15 @@ def track(tracker, capture, init_box, args, ground_truth=None):
         # Create the directory explicitly instead of failing on write.
         output_dir.mkdir(parents=True, exist_ok=True)
         height, width = frame.shape[:2]
+        # Preserve the source playback rate. Camera backends and a few unusual
+        # containers report zero or NaN, in which case 30 FPS is a safe
+        # documented fallback for the output container.
+        source_fps = float(capture.get(cv2.CAP_PROP_FPS))
+        if not np.isfinite(source_fps) or source_fps <= 0:
+            source_fps = 30.0
         writer = cv2.VideoWriter(
             str(output_dir / f"tracked_{args.tracker}.avi"),
-            cv2.VideoWriter_fourcc(*"MJPG"), 30.0, (width, height))
+            cv2.VideoWriter_fourcc(*"MJPG"), source_fps, (width, height))
         if not writer.isOpened():
             raise RuntimeError(f"Cannot write output video in {output_dir}")
     # TickMeter gives portable, monotonic per-frame timing for the FPS overlay.
@@ -305,6 +349,20 @@ def track(tracker, capture, init_box, args, ground_truth=None):
     ious = []            # per-frame IoU against ground truth, if provided
     frames_done = 1      # the init frame counts toward the total
     lost_frames = 0      # frames where update() reported failure
+    if writer is not None:
+        # Include the initialized frame so the annotated output has exactly
+        # the same number of processed frames reported in the metrics. Draw on
+        # a copy because the tracker has already learned from the clean frame.
+        first_output = frame.copy()
+        x, y, width, height = init_box
+        cv2.rectangle(
+            first_output, (x, y), (x + width, y + height), (0, 255, 0), 2
+        )
+        cv2.putText(
+            first_output, f"{args.tracker}    0.0 FPS", (20, 30),
+            cv2.FONT_HERSHEY_SIMPLEX, 0.8, (50, 170, 50), 2
+        )
+        writer.write(first_output)
     while True:
         # Stop early when a frame budget was requested (useful for tests).
         if args.max_frames and frames_done >= args.max_frames:
@@ -335,12 +393,14 @@ def track(tracker, capture, init_box, args, ground_truth=None):
                     cv2.FONT_HERSHEY_SIMPLEX, 0.8, (50, 170, 50), 2)
         if writer is not None:
             writer.write(frame)
+        # Count the frame before a possible interactive ESC exit because it
+        # has already been read, tracked, scored, drawn, and written.
+        frames_done += 1
         # Display unless the caller runs headless; ESC quits interactively.
         if not args.no_display:
             cv2.imshow("Tracking", frame)
             if cv2.waitKey(1) & 0xFF == 27:
                 break
-        frames_done += 1
     # Release resources deterministically; important on Windows file locks.
     capture.release()
     if writer is not None:
@@ -354,9 +414,12 @@ def track(tracker, capture, init_box, args, ground_truth=None):
         "frames": frames_done,
         "lost_frames": lost_frames,
         "mean_fps": round(meter.getFPS(), 2),
-        "mean_iou": round(float(np.mean(ious)), 4) if ious else None,
+        # Keep full precision for validation. Rounding before comparing a value
+        # with its threshold can make Python disagree with the C++ example at
+        # the boundary.
+        "mean_iou": float(np.mean(ious)) if ious else None,
         "success_rate": (
-            round(float(np.mean([v > VALIDATE_SUCCESS_IOU for v in ious])), 4)
+            float(np.mean([v > VALIDATE_SUCCESS_IOU for v in ious]))
             if ious else None),
     }
 
@@ -367,8 +430,7 @@ def run(args):
     tracker = create_tracker(args.tracker, models_dir)
     capture = open_capture(args.input)
     # Parse "x,y,w,h" once here so track() receives a ready-to-use tuple.
-    init_box = (tuple(int(v) for v in args.bbox.split(","))
-                if args.bbox else None)
+    init_box = parse_bbox(args.bbox) if args.bbox else None
     metrics = track(tracker, capture, init_box, args)
     _write_metrics(metrics, args)
     print(json.dumps(metrics, indent=2))
@@ -393,7 +455,10 @@ def validate(args):
     _write_metrics(metrics, args)
     print(json.dumps(metrics, indent=2))
     # Apply the pass criteria and print an unambiguous marker for CI greps.
-    passed = (metrics["mean_iou"] is not None
+    # A short high-quality prefix is not a complete regression. Require all
+    # generated frames in addition to the tracking-quality thresholds.
+    passed = (metrics["frames"] == len(ground_truth)
+              and metrics["mean_iou"] is not None
               and metrics["mean_iou"] >= VALIDATE_MEAN_IOU
               and metrics["success_rate"] >= VALIDATE_SUCCESS_RATE)
     print("VALIDATION PASSED" if passed else "VALIDATION FAILED")
@@ -404,7 +469,12 @@ def _write_metrics(metrics, args):
     """Persist metrics as JSON next to the annotated video when requested."""
     if args.output_dir is not None:
         metrics_path = Path(args.output_dir) / f"metrics_{args.tracker}.json"
-        metrics_path.write_text(json.dumps(metrics, indent=2))
+        try:
+            metrics_path.write_text(json.dumps(metrics, indent=2), encoding="utf-8")
+        except OSError as error:
+            raise RuntimeError(
+                f"Cannot write metrics file {metrics_path}: {error}"
+            ) from error
 
 
 def parse_args(argv=None):
@@ -430,7 +500,10 @@ def parse_args(argv=None):
                         help="run the synthetic-clip regression check")
     parser.add_argument("--list-trackers", action="store_true",
                         help="report tracker availability and exit")
-    return parser.parse_args(argv)
+    arguments = parser.parse_args(argv)
+    if arguments.max_frames < 0:
+        parser.error("--max-frames must be zero or a positive integer")
+    return arguments
 
 
 def main(argv=None):
@@ -441,7 +514,7 @@ def main(argv=None):
         return 0
     try:
         return validate(args) if args.validate else run(args)
-    except (RuntimeError, cv2.error) as error:
+    except (RuntimeError, OSError, cv2.error) as error:
         # A readable one-line error beats a traceback for tutorial code.
         print(f"error: {error}", file=sys.stderr)
         return 1

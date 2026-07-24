@@ -9,6 +9,7 @@ Python and C++ examples expect to find it.
 Usage:
     python3 download_models.py            # download everything that is missing
     python3 download_models.py --force    # re-download even if present
+    python3 download_models.py --models-dir /tmp/tracker-models
 """
 
 # argparse builds the small command-line interface for this script.
@@ -19,6 +20,10 @@ import hashlib
 from pathlib import Path
 # sys provides the exit code used to signal success or failure to callers.
 import sys
+# tempfile creates same-directory partial files for atomic replacement.
+import tempfile
+# urllib.error supplies the download-specific exception classes.
+import urllib.error
 # urllib.request performs the actual HTTP downloads using only the standard library.
 import urllib.request
 
@@ -26,42 +31,67 @@ import urllib.request
 # current working directory, so the script works from anywhere.
 MODELS_DIR = Path(__file__).resolve().parent / "models"
 
-# Each entry: destination filename -> (download URL, expected SHA-256 or None).
-# A None checksum means the upstream host does not publish one; the script
-# prints the computed hash so it can be pinned after a verified download.
+# Bound each network read and stream in modest chunks so a stalled or malicious
+# response cannot hang indefinitely or consume model-sized memory.
+DOWNLOAD_TIMEOUT_SECONDS = 60
+DOWNLOAD_CHUNK_BYTES = 1024 * 1024
+
+# Each entry maps the local filename to an immutable upstream URL and its
+# expected SHA-256 and byte size. A download never replaces a model until both
+# pinned properties match.
 MODELS = {
     # --- TrackerNano (NanoTrack v2): a ~2 MB two-file siamese tracker. ---
     "nanotrack_backbone_sim.onnx": (
-        "https://raw.githubusercontent.com/HonglinChu/SiamTrackers/master/"
+        "https://raw.githubusercontent.com/HonglinChu/SiamTrackers/"
+        "248663fde6bf7c40190cf10ee396d5662919ecd3/"
         "NanoTrack/models/nanotrackv2/nanotrack_backbone_sim.onnx",
         "530bdd0cd00f19afab79a863e71ba71e3312395a5dc9151af675082bdaaa2fc4",
+        1056849,
     ),
     "nanotrack_head_sim.onnx": (
-        "https://raw.githubusercontent.com/HonglinChu/SiamTrackers/master/"
+        "https://raw.githubusercontent.com/HonglinChu/SiamTrackers/"
+        "248663fde6bf7c40190cf10ee396d5662919ecd3/"
         "NanoTrack/models/nanotrackv2/nanotrack_head_sim.onnx",
         "0d8c0637be849f092cc7236cae02e55c8b9455ebe37ba50601d6115db4247cd9",
+        726198,
     ),
     # --- TrackerVit: the transformer tracker from the OpenCV model zoo. ---
     # The zoo stores the file in Git LFS, so we fetch through the media
-    # endpoint which serves the real payload instead of the LFS pointer.
+    # endpoint at an immutable commit, which serves the real payload instead
+    # of the LFS pointer.
     "object_tracking_vittrack_2023sep.onnx": (
-        "https://media.githubusercontent.com/media/opencv/opencv_zoo/main/"
+        "https://media.githubusercontent.com/media/opencv/opencv_zoo/"
+        "47534e27c9851bb1128ccc0102f1145e27f23f98/"
         "models/object_tracking_vittrack/object_tracking_vittrack_2023sep.onnx",
         "2990f0b7cd44d92afa48cd97db6de7be113fc1d9594fddb74e2725c10478e91d",
+        714726,
     ),
-    # --- TrackerDaSiamRPN: three files hosted at the URLs documented in the
-    # official OpenCV sample (samples/python/tracker.py). ---
+    # --- TrackerDaSiamRPN: three files from the immutable OpenCV Zoo revision
+    # documented by OpenCV 5's samples/dnn/models.yml. The local names retain
+    # the defaults expected by cv::TrackerDaSiamRPN and the Python binding. ---
     "dasiamrpn_model.onnx": (
-        "https://www.dropbox.com/s/rr1lk9355vzolqv/dasiamrpn_model.onnx?dl=1",
-        None,
+        "https://media.githubusercontent.com/media/opencv/opencv_zoo/"
+        "fef72f8fa7c52eaf116d3df358d24e6e959ada0e/"
+        "models/object_tracking_dasiamrpn/"
+        "object_tracking_dasiamrpn_model_2021nov.onnx",
+        "e88370b85cbad914a5eb414d9d9e0820f87fd0cd89b65205a766174206c35719",
+        91040894,
     ),
     "dasiamrpn_kernel_r1.onnx": (
-        "https://www.dropbox.com/s/999cqx5zrfi7w4p/dasiamrpn_kernel_r1.onnx?dl=1",
-        None,
+        "https://media.githubusercontent.com/media/opencv/opencv_zoo/"
+        "fef72f8fa7c52eaf116d3df358d24e6e959ada0e/"
+        "models/object_tracking_dasiamrpn/"
+        "object_tracking_dasiamrpn_kernel_r1_2021nov.onnx",
+        "082c85d231b88b97a1b2a50e73b640a332c5d98d7c1d80b5da9ab534fa7a9e5b",
+        47206788,
     ),
     "dasiamrpn_kernel_cls1.onnx": (
-        "https://www.dropbox.com/s/qvmtszx5h339a0w/dasiamrpn_kernel_cls1.onnx?dl=1",
-        None,
+        "https://media.githubusercontent.com/media/opencv/opencv_zoo/"
+        "fef72f8fa7c52eaf116d3df358d24e6e959ada0e/"
+        "models/object_tracking_dasiamrpn/"
+        "object_tracking_dasiamrpn_kernel_cls1_2021nov.onnx",
+        "d85b03e2aeded6cc9be945dfdc3ed6b8f4151f101e485037b6c5d5b36a6c4204",
+        23603598,
     ),
 }
 
@@ -76,33 +106,93 @@ def sha256_of(path: Path) -> str:
     return digest.hexdigest()
 
 
-def download_one(name: str, url: str, expected_sha: str, force: bool) -> bool:
-    """Download a single model file and verify it. Returns True on success."""
-    destination = MODELS_DIR / name
+def download_one(
+        name: str, url: str, expected_sha: str, expected_size: int,
+        force: bool, models_dir: Path) -> bool:
+    """Atomically download and verify one model. Return True on success."""
+    destination = models_dir / name
     # Skip files that already exist and pass verification unless forced.
     if destination.exists() and not force:
-        if expected_sha is None or sha256_of(destination) == expected_sha:
-            print(f"[skip] {name} already present")
-            return True
-        print(f"[warn] {name} exists but fails checksum; re-downloading")
+        try:
+            existing_size = destination.stat().st_size
+            existing_sha = (
+                sha256_of(destination)
+                if existing_size == expected_size else None
+            )
+        except OSError as error:
+            print(f"[warn] cannot verify existing {name}: {error}")
+        else:
+            if existing_size == expected_size and existing_sha == expected_sha:
+                print(f"[skip] {name} already present")
+                return True
+            print(f"[warn] {name} exists but fails checksum; re-downloading")
     print(f"[get ] {name}")
+    temporary_path = None
     try:
-        # A plain urlretrieve is enough; every host serves over HTTPS.
-        urllib.request.urlretrieve(url, destination)
-    except OSError as error:
-        # Report the failure but let the caller decide whether it is fatal;
-        # the examples degrade gracefully when a model is missing.
+        # A unique partial file in the destination directory makes concurrent
+        # runs safe and lets replacement stay atomic on one filesystem.
+        with tempfile.NamedTemporaryFile(
+                dir=models_dir, prefix=f".{name}.", suffix=".part",
+                delete=False) as temporary:
+            temporary_path = Path(temporary.name)
+        # Download into the partial path with a socket timeout. Streamed writes
+        # and an exact byte ceiling prevent an oversized response from filling
+        # memory or disk before the checksum can reject it.
+        with urllib.request.urlopen(
+                url, timeout=DOWNLOAD_TIMEOUT_SECONDS) as response:
+            content_length = response.headers.get("Content-Length")
+            if content_length is not None:
+                try:
+                    advertised_size = int(content_length)
+                except ValueError:
+                    advertised_size = None
+                if (advertised_size is not None
+                        and advertised_size > expected_size):
+                    print(
+                        f"[fail] {name}: server advertised "
+                        f"{advertised_size} bytes; expected {expected_size}"
+                    )
+                    return False
+            downloaded_size = 0
+            with temporary_path.open("wb") as output:
+                while True:
+                    chunk = response.read(DOWNLOAD_CHUNK_BYTES)
+                    if not chunk:
+                        break
+                    downloaded_size += len(chunk)
+                    if downloaded_size > expected_size:
+                        print(
+                            f"[fail] {name}: response exceeded "
+                            f"{expected_size} bytes"
+                        )
+                        return False
+                    output.write(chunk)
+        if downloaded_size != expected_size:
+            print(
+                f"[fail] {name}: received {downloaded_size} bytes; "
+                f"expected {expected_size}"
+            )
+            return False
+        actual_sha = sha256_of(temporary_path)
+        if actual_sha != expected_sha:
+            print(f"[fail] {name}: checksum mismatch ({actual_sha})")
+            return False
+        # Path.replace is an atomic rename when both paths share a filesystem.
+        temporary_path.replace(destination)
+    except (OSError, urllib.error.URLError) as error:
         print(f"[fail] {name}: {error}")
         return False
-    # Verify the payload before declaring success.
-    actual_sha = sha256_of(destination)
-    if expected_sha is not None and actual_sha != expected_sha:
-        # Remove the corrupt file so a later run does not trust it.
-        destination.unlink()
-        print(f"[fail] {name}: checksum mismatch ({actual_sha})")
-        return False
-    # Print the hash either way so unpinned entries can be pinned later.
-    print(f"[ ok ] {name} sha256={actual_sha}")
+    finally:
+        # If the rename succeeded this path no longer exists; otherwise remove
+        # only this run's partial file, never a previously verified model.
+        if temporary_path is not None:
+            try:
+                temporary_path.unlink(missing_ok=True)
+            except OSError as error:
+                # Cleanup trouble should be visible but must not hide the
+                # original download or checksum result.
+                print(f"[warn] cannot remove partial file {temporary_path}: {error}")
+    print(f"[ ok ] {name} sha256={expected_sha}")
     return True
 
 
@@ -113,13 +203,23 @@ def main() -> int:
         "--force", action="store_true",
         help="re-download files even when they already exist",
     )
+    parser.add_argument(
+        "--models-dir", type=Path, default=MODELS_DIR,
+        help=f"destination directory (default: {MODELS_DIR})",
+    )
     arguments = parser.parse_args()
     # Create the models directory on first use.
-    MODELS_DIR.mkdir(parents=True, exist_ok=True)
+    try:
+        arguments.models_dir.mkdir(parents=True, exist_ok=True)
+    except OSError as error:
+        print(f"[fail] cannot create {arguments.models_dir}: {error}")
+        return 1
     # Download each model, tracking whether anything failed.
     results = [
-        download_one(name, url, sha, arguments.force)
-        for name, (url, sha) in MODELS.items()
+        download_one(
+            name, url, sha, size, arguments.force, arguments.models_dir
+        )
+        for name, (url, sha, size) in MODELS.items()
     ]
     # Non-zero exit signals at least one failed download to shell callers.
     return 0 if all(results) else 1

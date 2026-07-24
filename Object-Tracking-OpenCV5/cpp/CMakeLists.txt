@@ -1,6 +1,6 @@
 # Build configuration for the C++ tracking example.
 #
-# Supports OpenCV 4.x (4.8+) and OpenCV 5.x. Select a specific installation
+# Supports OpenCV 4.x (4.9+) and OpenCV 5.x. Select a specific installation
 # with -DOpenCV_DIR=/path/to/opencv/lib/cmake/opencv5 (or .../opencv4).
 
 # 3.16 is the oldest CMake providing everything used below.
@@ -12,11 +12,13 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-# Request only the components this example actually uses. The contrib
-# "tracking" module (KCF, CSRT) is optional: the source detects its absence
-# through opencv_modules.hpp and compiles without those two trackers.
+# Request every component used by the tracker implementations. DNN is required
+# because the deep trackers load and execute ONNX networks even though this
+# source does not call cv::dnn APIs directly. The contrib "tracking" module
+# (KCF, CSRT) remains optional: the source detects its absence through
+# opencv_modules.hpp and compiles without those two trackers.
 find_package(OpenCV REQUIRED
-             COMPONENTS core imgproc videoio highgui video
+             COMPONENTS core dnn imgproc videoio highgui video
              OPTIONAL_COMPONENTS tracking)
 
 # Reject unsupported versions early with a clear message. 4.9 is the floor
@@ -46,18 +48,26 @@ else()
 endif()
 
 # ---------------------------------------------------------------------------
-# CTest regressions: run the validation mode headlessly into a build-local
-# output directory and require the explicit success marker.
+# CTest regressions use CMake wrappers rather than relying only on a process
+# exit code. Each wrapper checks the success marker, the exact output manifest,
+# nonempty artifacts, JSON fields, and the readability of both generated AVIs.
 # ---------------------------------------------------------------------------
 enable_testing()
 
 # Helper: register one validation test for a tracker name.
 function(add_tracker_test name)
   add_test(NAME validate_${name}
-           COMMAND object_tracking --tracker=${name} --validate --no-display
-                   --output-dir=${CMAKE_CURRENT_BINARY_DIR}/test_out_${name})
+    COMMAND ${CMAKE_COMMAND}
+      -DEXECUTABLE=$<TARGET_FILE:object_tracking>
+      -DTRACKER=${name}
+      -DOUTPUT_DIR=${CMAKE_CURRENT_BINARY_DIR}/test_out_${name}
+      -P ${CMAKE_CURRENT_SOURCE_DIR}/cmake/RunTrackerValidation.cmake)
   set_tests_properties(validate_${name} PROPERTIES
-    PASS_REGULAR_EXPRESSION "VALIDATION PASSED")
+    # DNN inference can become pathologically slow when multiple trackers
+    # compete for the same CPU. Keep validation deterministic even under
+    # ctest -j or CTEST_PARALLEL_LEVEL, while retaining a bounded timeout.
+    RUN_SERIAL TRUE
+    TIMEOUT 300)
 endfunction()
 
 # MIL ships with every supported OpenCV build: always test it.
@@ -85,10 +95,69 @@ if(EXISTS "${_models_dir}/dasiamrpn_model.onnx" AND
   add_tracker_test(dasiamrpn)
 endif()
 
-# The error-handling contract is part of the example: a missing input file
-# must fail with a clean nonzero exit and a readable message.
-add_test(NAME missing_input_fails
-         COMMAND object_tracking --tracker=mil --input=no_such_file.mp4
-                 --bbox=10,10,40,40 --no-display)
-set_tests_properties(missing_input_fails PROPERTIES
-  PASS_REGULAR_EXPRESSION "Cannot open input")
+# Helper: register a command expected to fail. The wrapper requires both a
+# normal numeric nonzero exit and the case-specific diagnostic text.
+function(add_failure_test name arguments expected_pattern)
+  add_test(NAME ${name}
+    COMMAND ${CMAKE_COMMAND}
+      -DEXECUTABLE=$<TARGET_FILE:object_tracking>
+      "-DTEST_ARGUMENTS=${arguments}"
+      "-DEXPECTED_PATTERN=${expected_pattern}"
+      -P ${CMAKE_CURRENT_SOURCE_DIR}/cmake/RunExpectedFailure.cmake)
+endfunction()
+
+# Missing media, unknown options, and invalid typed values exercise distinct
+# clean-error paths before any validation-generated input is needed.
+add_failure_test(
+  missing_input_fails
+  "--tracker=mil|--input=no_such_file.mp4|--bbox=10,10,40,40|--no-display"
+  "error: Cannot open input")
+add_failure_test(
+  unknown_option_fails
+  "--not-an-option=1"
+  "Unknown option")
+add_failure_test(
+  invalid_max_frames_fails
+  "--max-frames=not-an-integer"
+  "can not convert")
+add_failure_test(
+  negative_max_frames_fails
+  "--max-frames=-1"
+  "--max-frames must be zero or positive")
+add_failure_test(
+  unknown_tracker_fails
+  "--tracker=goturn"
+  "unknown tracker name")
+add_failure_test(
+  output_path_fails
+  "--tracker=mil|--validate|--no-display|--output-dir=${CMAKE_CURRENT_BINARY_DIR}/CMakeCache.txt"
+  "error:")
+add_failure_test(
+  truncated_validation_fails
+  "--tracker=mil|--validate|--no-display|--max-frames=2|--output-dir=${CMAKE_CURRENT_BINARY_DIR}/test_out_truncated"
+  "VALIDATION FAILED")
+
+# Bounding-box syntax and geometry checks need a real frame. Depend on the MIL
+# validation test, which deterministically creates this 640x360 input clip.
+set(_mil_test_clip
+    "${CMAKE_CURRENT_BINARY_DIR}/test_out_mil/synthetic_clip.avi")
+add_failure_test(
+  bbox_trailing_junk_fails
+  "--tracker=mil|--input=${_mil_test_clip}|--bbox=20,148,64,64junk|--no-display"
+  "expected exactly x,y,w,h integers")
+add_failure_test(
+  bbox_nonpositive_size_fails
+  "--tracker=mil|--input=${_mil_test_clip}|--bbox=20,148,0,64|--no-display"
+  "width and height must be positive")
+add_failure_test(
+  bbox_outside_frame_fails
+  "--tracker=mil|--input=${_mil_test_clip}|--bbox=620,340,40,40|--no-display"
+  "rectangle must lie inside the first frame")
+add_failure_test(
+  headless_without_bbox_fails
+  "--tracker=mil|--input=${_mil_test_clip}|--no-display"
+  "--bbox is required when --no-display is set")
+set_tests_properties(
+  bbox_trailing_junk_fails bbox_nonpositive_size_fails bbox_outside_frame_fails
+  headless_without_bbox_fails
+  PROPERTIES DEPENDS validate_mil)

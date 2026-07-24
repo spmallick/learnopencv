@@ -1,2 +1,5 @@
 models/
 __pycache__/
+.venv/
+cpp/build*/
+outputs/

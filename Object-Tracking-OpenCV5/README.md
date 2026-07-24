@@ -1,8 +1,10 @@
 # OpenCV 5 Object Trackers: A Complete Guide (C++/Python)
 
-**This repository contains code for the [OpenCV 5 Object Trackers: A Complete Guide (C++/Python)](https://learnopencv.com/opencv5-object-trackers/) blogpost**.
+This is the companion code for LearnOpenCV's **OpenCV 5 Object Trackers:
+A Complete Guide (C++/Python)**.
 
-One command-line application — implemented twice, in Python and in C++ — runs every single-object tracker that ships with OpenCV 5:
+One command-line application—implemented in both Python and C++—runs the six
+single-object trackers in OpenCV 5's modern, non-legacy `cv::Tracker` API:
 
 | Tracker | Type | Module | Model files |
 | --- | --- | --- | --- |
@@ -13,68 +15,100 @@ One command-line application — implemented twice, in Python and in C++ — run
 | NanoTrack v2 | deep learning | main (`video`) | 2 ONNX files |
 | VitTrack | deep learning | main (`video`) | 1 ONNX file |
 
-GOTURN is intentionally absent: OpenCV 5 removed its Caffe DNN importer, and with it the GOTURN tracker. The article covers the migration path.
+Older Boosting, MedianFlow, TLD, and MOSSE implementations remain under the
+separate `cv::legacy`/`cv2.legacy` API and are outside this example's scope.
+GOTURN is intentionally absent: OpenCV 5 removed its Caffe DNN importer, and
+with it the GOTURN tracker. The article covers the migration path.
 
-## Supported versions
+## Supported and tested versions
 
-- OpenCV **4.9.0 – 5.x** (verified: Python on the **4.13.0.92** and **5.0.0.93** `opencv-contrib-python` wheels; C++ against an **OpenCV 5.0.0 + contrib** source build). The 4.9 floor exists because TrackerVit first shipped in OpenCV 4.9.0.
-- Python 3.9+ with `opencv-contrib-python>=4.9,<6` and `numpy>=1.23,<3`.
-- C++17, CMake 3.16+. KCF and CSRT require an OpenCV build that includes the opencv_contrib `tracking` module; without it the C++ example still builds and the two trackers report themselves unavailable.
+- Acceptance-tested OpenCV versions: **4.14.0** and **5.0.0**, each with
+  `opencv_contrib`.
+- Python 3.9+ with NumPy 1.23–2.x. The dependency range is
+  `opencv-contrib-python>=4.9,<6` and `numpy>=1.23,<3`; TrackerVit establishes
+  the OpenCV 4.9 API floor, while 4.14.0 and 5.0.0 are the exact validation
+  targets.
+- C++17 and CMake 3.16+. OpenCV's `core`, `dnn`, `imgproc`, `videoio`,
+  `highgui`, and `video` modules are required. The contrib `tracking` module
+  enables KCF and CSRT; without it, the other four trackers still build and the
+  unavailable trackers are reported explicitly.
 
-## Directory Structure
+The full matrix was run on macOS arm64 with Python 3.14.3, CMake 3.29.3, and
+AppleClang 21.0.0. Python used source-built OpenCV 4.14.0 plus contrib and the
+`opencv-contrib-python` 5.0.0.93 wheel. C++ used fresh Release source builds for
+both exact OpenCV versions.
+
+## Directory structure
 
 ```text
 Object-Tracking-OpenCV5/
+├── .gitignore
 ├── README.md
 ├── download_models.py
 ├── cpp/
 │   ├── CMakeLists.txt
+│   ├── cmake/
+│   │   ├── RunExpectedFailure.cmake
+│   │   └── RunTrackerValidation.cmake
 │   └── object_tracking.cpp
 └── python/
-    ├── requirements.txt
     ├── object_tracking.py
+    ├── requirements.txt
     └── tests/
+        ├── test_download_models.py
         └── test_object_tracking.py
 ```
 
-The `models/` directory is created next to `download_models.py` on first download; model files are not committed to the repository.
+The generated `models/` directory is deliberately absent from the tracked
+tree. `download_models.py` creates it next to the script.
 
 ## Setup
 
-Download the ONNX models for the three deep-learning trackers (the classical trackers need no files):
+Start in the project root:
+
+```shell
+cd /path/to/learnopencv/Object-Tracking-OpenCV5
+```
+
+Download the six ONNX files used by the three deep-learning trackers:
 
 ```shell
 python3 download_models.py
 ```
 
-The script verifies SHA-256 checksums where the upstream host publishes stable files and prints the computed hash for every download.
+The downloader uses immutable upstream revisions, bounded streaming reads, and
+pinned byte sizes and SHA-256 checksums. It atomically replaces the destination
+only after verification. Use `--models-dir PATH` to choose another destination
+or `--force` to refresh already verified files.
 
 ### Python
 
 ```shell
-cd python
-python3 -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install -r python/requirements.txt
 ```
 
 ### C++
 
 ```shell
-cd cpp
-cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
-cmake --build build -j
+cmake -S cpp -B cpp/build -DCMAKE_BUILD_TYPE=Release
+cmake --build cpp/build -j
 ```
 
-To build against a specific OpenCV installation, point CMake at it:
+Point `OpenCV_DIR` at the exact installation to select a version:
 
 ```shell
-cmake -S . -B build -DCMAKE_BUILD_TYPE=Release \
+cmake -S cpp -B cpp/build-5.0.0 -DCMAKE_BUILD_TYPE=Release \
       -DOpenCV_DIR=/opt/opencv-5.0.0/lib/cmake/opencv5
+cmake --build cpp/build-5.0.0 -j
 ```
 
 ## Run
 
-Both implementations expose the same controls. Inputs may be a video path or a numeric camera index; bundled assets are resolved relative to the source location, so any current working directory works.
+Run these commands from the project root. Absolute script, executable, input,
+model, and output paths also work from an unrelated current directory. A
+numeric input selects a camera; any other input is treated as a video path.
 
 ```shell
 # Python
@@ -87,31 +121,74 @@ python3 python/object_tracking.py --tracker nanotrack --input video.mp4 \
 # C++
 ./cpp/build/object_tracking --list
 ./cpp/build/object_tracking --tracker=vittrack --input=video.mp4
-./cpp/build/object_tracking --tracker=mil --validate --no-display
+./cpp/build/object_tracking --tracker=mil --validate --no-display \
+        --output-dir=outputs
 ```
 
-Options common to both: `--bbox x,y,w,h` (initial box; drawn interactively when omitted), `--models-dir PATH`, `--output-dir PATH` (writes `tracked_<name>.avi` and `metrics_<name>.json`), `--max-frames N`, `--no-display` (headless; requires `--bbox` in normal mode), and `--validate`.
+Both implementations support the options below. Python accepts
+`--option value` or `--option=value`; C++ uses `--option=value`.
 
-`--validate` generates a deterministic synthetic clip (textured square on a noisy background, seeded), initializes the tracker from the ground-truth box of frame zero, and passes only when mean IoU ≥ 0.45 and at least 90% of frames stay above 0.30 IoU. It prints `VALIDATION PASSED` or `VALIDATION FAILED` and exits accordingly.
+- `--tracker`: `mil`, `kcf`, `csrt`, `dasiamrpn`, `nanotrack`, or `vittrack`.
+- `--input`: a video path or numeric camera index.
+- `--bbox x,y,w,h`: an initial rectangle; omit it for interactive selection.
+- `--models-dir PATH`: override the source-relative `models/` directory.
+- `--output-dir PATH`: write `tracked_<name>.avi` and
+  `metrics_<name>.json`.
+- `--max-frames N`: stop after at most `N` processed frames; zero means
+  continue until end-of-stream or an interactive stop.
+- `--no-display`: disable windows; normal mode then requires `--bbox`.
+- `--validate`: generate and track a deterministic synthetic clip.
 
-## Tests
+Python uses `--list-trackers`; C++ uses `--list`. Invalid options, malformed or
+out-of-frame boxes, missing inputs, and output failures return a clean nonzero
+exit.
+
+Validation generates an 80-frame, 640×360 clip containing a textured square on
+a seeded noisy background. It initializes from frame zero and passes only when
+the 79 subsequent updates have mean IoU ≥ 0.45 and at least 90% exceed 0.30
+IoU. It writes the synthetic clip, an 80-frame annotated clip, and metrics
+JSON, then prints `VALIDATION PASSED` or `VALIDATION FAILED`.
+
+## Test
 
 ```shell
-# Python: runs the real CLI in subprocesses, headless, from temp directories.
+# Python: 23 tests, including all six tracker entry points.
 python3 -m unittest discover -s python/tests -v
 
-# C++: one CTest regression per available tracker plus error-handling checks.
-cd cpp/build && ctest --output-on-failure
+# C++: 17 tests with contrib and all downloaded models.
+ctest --test-dir cpp/build --output-on-failure
 ```
 
-Trackers that are unavailable in the current build (no contrib) or whose models are not downloaded are skipped with an explicit reason. CTest registers the DNN-tracker tests only when the model files exist at configure time.
+The Python suite runs the real CLI headlessly from temporary working
+directories. Missing DNN model files are explicit skips, while missing APIs,
+corrupt models, and construction failures fail the suite. Each tracker test
+checks the exact artifact set, nonempty files, readable 640×360 videos, 80
+frames, metrics fields, thresholds, and zero lost frames.
+
+CTest uses portable CMake wrappers to check the pass marker, exact artifact
+manifest, nonempty files, readable 80-frame AVIs, metrics keys, frame/loss
+contract, and clean failures for malformed options, values, bounding boxes,
+missing input, and incomplete validation.
+Download models before configuring CMake because DNN tracker tests are
+registered only when their files exist at configure time.
+
+For the acceptance matrix, run both commands with exact OpenCV 4.14.0 and
+5.0.0 environments, use fresh CMake build directories, and also invoke every
+tracker's `--validate --no-display` entry point from an unrelated working
+directory.
 
 ## Compatibility notes
 
-- The same sources run unchanged on OpenCV 4.9+ and 5.x. On the reference synthetic clip, per-tracker mean IoU agreed to four decimal places between OpenCV 4.x and 5.0 in the Python matrix.
+- All six trackers passed the same thresholds on exact OpenCV 4.14.0 and 5.0.0
+  in Python and C++. Tracker scores can differ across OpenCV versions; passing
+  semantics and artifact contracts—not four-decimal score equality—are the
+  compatibility guarantee.
 - OpenCV 5's new DNN graph engine prints `setPreferableTarget` warnings when the DNN trackers load; they are harmless and do not affect results.
 - The C++ and Python synthetic clips share the same geometry, trajectory, and thresholds, but use different random generators, so their pixels (and exact IoU values) differ slightly across languages by design.
-- Performance is platform- and workload-specific; the FPS overlay measures tracker updates only.
+- Output videos preserve the input frame rate when the backend reports one and
+  otherwise use a 30 FPS fallback.
+- Performance is platform- and workload-specific; the FPS overlay measures
+  tracker updates only.
 
 ---
 
