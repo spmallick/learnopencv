@@ -30,12 +30,12 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Contour Detection using OpenCV (Python/C++)](https://learnopencv.com/contour-detection-using-opencv-python-c/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/Contour-Detection-using-OpenCV) |
 | [Feature Based Image Alignment using OpenCV (C++/Python)](https://learnopencv.com/image-alignment-feature-based-using-opencv-c-python/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/ImageAlignment-FeatureBased) |
 | [Video Stabilization Using Point Feature Matching in OpenCV](https://learnopencv.com/video-stabilization-using-point-feature-matching-in-opencv/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/VideoStabilization) |
 |[Camera Calibration using OpenCV](https://learnopencv.com/camera-calibration-using-opencv/) [Updated] |[Code](https://github.com/spmallick/learnopencv/tree/master/CameraCalibration)|
 |[Find the Center of a Blob (Centroid) using OpenCV (C++/Python)](https://learnopencv.com/find-center-of-blob-centroid-using-opencv-cpp-python/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/CenterofBlob)|
 | [How to find frame rate or frames per second (fps) in OpenCV ( Python / C++ ) ?](https://learnopencv.com/how-to-find-frame-rate-or-frames-per-second-fps-in-opencv-python-cpp/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/FPS) |
-| [Contour Detection using OpenCV (Python/C++)](https://learnopencv.com/contour-detection-using-opencv-python-c/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Contour-Detection-using-OpenCV) |
 | [Install OpenCV 5 on Linux](https://learnopencv.com/install-opencv-5-linux/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Install-OpenCV-5-on-Linux) |
 | [Decoding Virat Kohli's Flick Shot: AI-Based 3D Motion Reconstruction](https://learnopencv.com/decoding-virat-kohlis-flick-shot-ai-based-3d-motion-reconstruction/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Decoding-Virats-Flick-Shot) |
 | [How to Run Object Detection with OpenCV 5](https://learnopencv.com/how-to-run-object-detection-with-opencv-5/) |  |
