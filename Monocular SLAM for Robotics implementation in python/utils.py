@@ -1,33 +1,33 @@
+"""Calibration-file helpers for KITTI-style monocular sequences."""
+
+from __future__ import annotations
+
+from pathlib import Path
+
 import numpy as np
 
-def read_calibration_file(calib_file_path):
-    with open(calib_file_path, 'r') as f:
-        lines = f.readlines()
-    return lines
 
-def extract_intrinsic_matrix(calib_lines, camera_id='P0'):
-    # Find the line corresponding to the camera_id
-    for line in calib_lines:
-        if line.startswith(camera_id):
-            # Split the line and convert to float
-            values = line.strip().split()[1:]
-            values = [float(val) for val in values]
-            # Reshape to 3x4 matrix (the last column is for extrinsics, we need the 3x3 part)
-            P = np.array(values).reshape(3, 4)
-            K = P[:3, :3]
-            return K
+def read_calibration_file(path: Path) -> list[str]:
+    """Read a small UTF-8 calibration file without assuming a working directory."""
+
+    return path.read_text(encoding="utf-8").splitlines()
+
+
+def extract_intrinsic_matrix(
+    calibration_lines: list[str],
+    camera_id: str = "P0",
+) -> np.ndarray | None:
+    """Extract the left 3×3 block of one KITTI 3×4 projection matrix."""
+
+    for line in calibration_lines:
+        if not line.startswith(f"{camera_id}:"):
+            continue
+        values = [float(value) for value in line.split()[1:]]
+        if len(values) != 12:
+            raise ValueError(
+                f"{camera_id} must contain 12 projection values, got "
+                f"{len(values)}"
+            )
+        projection = np.asarray(values, dtype=np.float64).reshape(3, 4)
+        return projection[:, :3]
     return None
-
-def main():
-    calib_file_path = "../data/data_odometry_gray/dataset/sequences/00/calib.txt"
-    calib_lines = read_calibration_file(calib_file_path)
-    intrinsic_matrix = extract_intrinsic_matrix(calib_lines, camera_id='P0')
-    
-    if intrinsic_matrix is not None:
-        print("Intrinsic Matrix (K):")
-        print(intrinsic_matrix)
-    else:
-        print("Intrinsic matrix not found for the specified camera ID.")
-
-if __name__ == "__main__":
-    main()
