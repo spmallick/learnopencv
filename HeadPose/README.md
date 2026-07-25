@@ -1,10 +1,57 @@
-# Head Pose Estimation using OpenCV and Dlib
+# Head Pose Estimation with OpenCV
 
-The repository contains code for the blog post [Head Pose Estimation using OpenCV and Dlib](https://www.learnopencv.com/head-pose-estimation-using-opencv-and-dlib/).
+Companion code for [Head Pose Estimation with OpenCV](https://learnopencv.com/head-pose-estimation-using-opencv-and-dlib/).
 
-<p align="center"><img src="https://learnopencv.com/wp-content/uploads/2016/09/head-pose-example-768x432.jpg" alt="HeadPose"></p>
+<p align="center">
+  <img src="readme-images/head-pose-estimation-opencv-2026.jpg" alt="Head pose estimation with facial landmarks, a 3D pose axis, and a camera model" width="100%">
+</p>
 
-[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/scl/fo/zvhgqg84ob7av45gji23s/h?dl=1&rlkey=0telcgg95ufkspetq0tseacmu)
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://github.com/spmallick/learnopencv/releases/download/head-pose-opencv-2026.07.25/head-pose-opencv-2026.07.25.zip)
+
+## What this example does
+
+The Python and C++ programs estimate a six-point 3D head pose with `solvePnP`, project a direction line from the nose, save the annotated result, and report reprojection error. The bundled image uses fixed landmark coordinates so the example stays focused on pose estimation; use a face-landmark detector when adapting it to new images.
+
+## Requirements
+
+- Python 3.10+ with NumPy and OpenCV 4.10+ or OpenCV 5.x
+- CMake 3.16+ and a C++17 compiler for the C++ example
+
+## Run the Python example
+
+```bash
+python -m pip install -r requirements.txt
+python headPose.py --no-display --validate
+```
+
+Outputs are written to `output/head-pose-result.jpg` and `output/head-pose-metrics.json`.
+
+## Build and run the C++ example
+
+```bash
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build --parallel
+./build/head_pose --input headPose.jpg --no-display --validate
+```
+
+Use `--help` to see the input, output, focal-length, display, and validation options.
+
+## Compatibility
+
+The example is tested with OpenCV 4.x and OpenCV 5.0. It uses C++17, Python 3, explicit input checks, reproducible saved outputs, and a headless validation mode suitable for CI.
+
+## Files
+
+```text
+HeadPose/
+├── CMakeLists.txt
+├── headPose.cpp
+├── headPose.py
+├── headPose.jpg
+├── requirements.txt
+├── test_head_pose.py
+└── readme-images/
+```
 
 ---
 
