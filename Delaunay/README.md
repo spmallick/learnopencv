@@ -5,7 +5,35 @@ This folder contains the Python and C++ examples for the LearnOpenCV article
 The examples insert facial landmarks into `Subdiv2D`, render the Delaunay
 triangulation, and render its dual Voronoi diagram.
 
-<p align="center"><img src="https://learnopencv.com/wp-content/uploads/2015/11/opencv-delaunay-vornoi-subdiv-example.jpg" alt="Delaunay triangulation and Voronoi diagram"></p>
+<p align="center">
+  <a href="https://learnopencv.com/delaunay-triangulation-and-voronoi-diagram-using-opencv-c-python/">
+    <img src="https://cdn.learnopencv.com/wp-content/uploads/2026/07/25000838/delaunay-voronoi-opencv-featured-2026.jpg" alt="Delaunay triangulation and Voronoi diagrams with OpenCV" width="900">
+  </a>
+</p>
+
+## Download the standalone project
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://github.com/spmallick/learnopencv/releases/download/delaunay-opencv-2026.07.24/Delaunay.zip)
+
+The immutable, versioned bundle has a published
+[SHA-256 checksum](https://github.com/spmallick/learnopencv/releases/download/delaunay-opencv-2026.07.24/Delaunay.zip.sha256).
+The ZIP contains exactly one top-level `Delaunay/` directory with the eleven
+files shown in the project layout below.
+
+On macOS or Linux, download and verify both files before extracting the project:
+
+```bash
+curl --fail --location --remote-name \
+  https://github.com/spmallick/learnopencv/releases/download/delaunay-opencv-2026.07.24/Delaunay.zip
+curl --fail --location --remote-name \
+  https://github.com/spmallick/learnopencv/releases/download/delaunay-opencv-2026.07.24/Delaunay.zip.sha256
+shasum -a 256 -c Delaunay.zip.sha256
+unzip Delaunay.zip
+cd Delaunay
+```
+
+The expected SHA-256 digest for `Delaunay.zip` is
+`50a00efbe8b864db47a054d22ab2ffd2b9dcd0fa59a4e0d94e80ec8cfa617c8e`.
 
 ## OpenCV 4.14 and OpenCV 5 compatibility
 
