@@ -2,6 +2,8 @@
 
 [![Snake Game with OpenCV and Python](readme-images/snake-game-opencv-featured-2026.jpg)](https://learnopencv.com/snake-game-with-opencv-python/)
 
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://github.com/spmallick/learnopencv/releases/download/snake-game-opencv-2026.07.25/snake-game-opencv-2026.07.25.zip)
+
 This folder accompanies
 [Snake Game with OpenCV and Python](https://learnopencv.com/snake-game-with-opencv-python/).
 The game engine is now separate from OpenCV rendering, so movement, growth,

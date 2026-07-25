@@ -2,6 +2,8 @@
 
 [![Optical Flow in OpenCV](readme-images/optical-flow-opencv-featured-2026.jpg)](https://learnopencv.com/optical-flow-in-opencv/)
 
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://github.com/spmallick/learnopencv/releases/download/optical-flow-opencv-2026.07.25/optical-flow-opencv-2026.07.25.zip)
+
 This folder accompanies
 [Optical Flow in OpenCV](https://learnopencv.com/optical-flow-in-opencv/).
 The Python and C++ demos share four algorithm names and support interactive or
