@@ -1,71 +1,151 @@
-/**
- * OpenCV Image Alignment  Example
- *
- * Copyright 2015 by Satya Mallick <spmallick@learnopencv.com>
- *
- */
+#include <opencv2/core.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgcodecs.hpp>
+#include <opencv2/imgproc.hpp>
+#include <opencv2/video/tracking.hpp>
 
-#include "opencv2/opencv.hpp"
+#include <cmath>
+#include <filesystem>
+#include <iostream>
+#include <map>
+#include <stdexcept>
+#include <string>
 
-using namespace cv;
-using namespace std;
+namespace fs = std::filesystem;
 
-int main(void)
-{
-    // Read the images to be aligned
-    Mat im1 = imread("images/image1.jpg");
-    Mat im2 = imread("images/image2.jpg");
-    
-    // Convert images to gray scale;
-    Mat im1_gray, im2_gray;
-    cvtColor(im1, im1_gray, cv::COLOR_BGR2GRAY);
-    cvtColor(im2, im2_gray, cv::COLOR_BGR2GRAY);
+struct Options {
+    fs::path template_path = "images/image1.jpg";
+    fs::path moving_path = "images/image2.jpg";
+    fs::path output = "output/image2-aligned.jpg";
+    std::string motion = "euclidean";
+    int iterations = 5000;
+    double epsilon = 1e-7;
+    bool display = true;
+    bool validate = false;
+};
 
-    // Define the motion model
-    const int warp_mode = MOTION_EUCLIDEAN;
+Options parseOptions(int argc, char** argv) {
+    Options options;
+    for (int i = 1; i < argc; ++i) {
+        const std::string argument = argv[i];
+        if (argument == "--template" && i + 1 < argc) {
+            options.template_path = argv[++i];
+        } else if (argument == "--moving" && i + 1 < argc) {
+            options.moving_path = argv[++i];
+        } else if (argument == "--output" && i + 1 < argc) {
+            options.output = argv[++i];
+        } else if (argument == "--motion" && i + 1 < argc) {
+            options.motion = argv[++i];
+        } else if (argument == "--iterations" && i + 1 < argc) {
+            options.iterations = std::stoi(argv[++i]);
+        } else if (argument == "--epsilon" && i + 1 < argc) {
+            options.epsilon = std::stod(argv[++i]);
+        } else if (argument == "--no-display") {
+            options.display = false;
+        } else if (argument == "--validate") {
+            options.validate = true;
+        } else if (argument == "--help") {
+            std::cout
+                << "Usage: image_alignment_simple [--template FILE] "
+                   "[--moving FILE] [--motion translation|euclidean|affine|homography] "
+                   "[--output FILE] [--no-display] [--validate]\n";
+            std::exit(0);
+        } else {
+            throw std::invalid_argument("Unknown or incomplete argument: " + argument);
+        }
+    }
+    return options;
+}
 
-    // Set a 2x3 or 3x3 warp matrix depending on the motion model.
-    Mat warp_matrix;
-    
-    // Initialize the matrix to identity
-    if ( warp_mode == MOTION_HOMOGRAPHY )
-        warp_matrix = Mat::eye(3, 3, CV_32F);
-    else
-        warp_matrix = Mat::eye(2, 3, CV_32F);
+double meanAbsoluteError(const cv::Mat& first, const cv::Mat& second) {
+    cv::Mat difference;
+    cv::absdiff(first, second, difference);
+    return cv::mean(difference)[0] + cv::mean(difference)[1] +
+           cv::mean(difference)[2];
+}
 
-    // Specify the number of iterations.
-    int number_of_iterations = 5000;
-    
-    // Specify the threshold of the increment
-    // in the correlation coefficient between two iterations
-    double termination_eps = 1e-10;
-    
-    // Define termination criteria
-    TermCriteria criteria (TermCriteria::COUNT+TermCriteria::EPS, number_of_iterations, termination_eps);
+int main(int argc, char** argv) {
+    try {
+        const Options options = parseOptions(argc, argv);
+        const std::map<std::string, int> motion_models = {
+            {"translation", cv::MOTION_TRANSLATION},
+            {"euclidean", cv::MOTION_EUCLIDEAN},
+            {"affine", cv::MOTION_AFFINE},
+            {"homography", cv::MOTION_HOMOGRAPHY},
+        };
+        const auto motion_iterator = motion_models.find(options.motion);
+        if (motion_iterator == motion_models.end()) {
+            throw std::invalid_argument("Unknown motion model: " + options.motion);
+        }
+        const int motion_model = motion_iterator->second;
 
-    // Run the ECC algorithm. The results are stored in warp_matrix.
-    findTransformECC(
-                     im1_gray,
-                     im2_gray,
-                     warp_matrix,
-                     warp_mode,
-                     criteria
-                 );
+        const cv::Mat template_image = cv::imread(options.template_path.string());
+        cv::Mat moving_image = cv::imread(options.moving_path.string());
+        if (template_image.empty() || moving_image.empty()) {
+            throw std::runtime_error("Could not read one or both input images");
+        }
+        if (template_image.size() != moving_image.size()) {
+            cv::resize(moving_image, moving_image, template_image.size(), 0.0, 0.0,
+                       cv::INTER_AREA);
+        }
+        cv::Mat template_gray;
+        cv::Mat moving_gray;
+        cv::cvtColor(template_image, template_gray, cv::COLOR_BGR2GRAY);
+        cv::cvtColor(moving_image, moving_gray, cv::COLOR_BGR2GRAY);
+        template_gray.convertTo(template_gray, CV_32F);
+        moving_gray.convertTo(moving_gray, CV_32F);
 
-    // Storage for warped image.
-    Mat im2_aligned;
+        cv::Mat warp = motion_model == cv::MOTION_HOMOGRAPHY
+                           ? cv::Mat::eye(3, 3, CV_32F)
+                           : cv::Mat::eye(2, 3, CV_32F);
+        const cv::TermCriteria criteria(
+            cv::TermCriteria::COUNT | cv::TermCriteria::EPS, options.iterations,
+            options.epsilon);
+        const double correlation =
+            cv::findTransformECC(template_gray, moving_gray, warp, motion_model,
+                                 criteria);
 
-    if (warp_mode != MOTION_HOMOGRAPHY)
-        // Use warpAffine for Translation, Euclidean and Affine
-        warpAffine(im2, im2_aligned, warp_matrix, im1.size(), INTER_LINEAR + WARP_INVERSE_MAP);
-    else
-        // Use warpPerspective for Homography
-        warpPerspective (im2, im2_aligned, warp_matrix, im1.size(),INTER_LINEAR + WARP_INVERSE_MAP);
+        cv::Mat aligned;
+        const int flags = cv::INTER_LINEAR | cv::WARP_INVERSE_MAP;
+        if (motion_model == cv::MOTION_HOMOGRAPHY) {
+            cv::warpPerspective(moving_image, aligned, warp, template_image.size(),
+                                flags);
+        } else {
+            cv::warpAffine(moving_image, aligned, warp, template_image.size(),
+                           flags);
+        }
+        const double before = meanAbsoluteError(template_image, moving_image);
+        const double after = meanAbsoluteError(template_image, aligned);
+        if (!options.output.parent_path().empty()) {
+            fs::create_directories(options.output.parent_path());
+        }
+        if (!cv::imwrite(options.output.string(), aligned)) {
+            throw std::runtime_error("Could not write aligned image");
+        }
 
-    // Show final result
-    imshow("Image 1", im1);
-    imshow("Image 2", im2);
-    imshow("Image 2 Aligned", im2_aligned);
-    waitKey(0);
+        std::cout << "OpenCV: " << CV_VERSION << "\n"
+                  << "Motion model: " << options.motion << "\n"
+                  << "ECC correlation: " << correlation << "\n"
+                  << "Warp matrix:\n" << warp << "\n"
+                  << "Mean absolute error: " << before << " -> " << after << "\n"
+                  << "Saved: " << options.output << "\n";
 
+        if (options.validate) {
+            if (!cv::checkRange(warp) || !std::isfinite(correlation) ||
+                correlation <= 0.0 || after >= before) {
+                throw std::runtime_error("ECC pair-alignment validation failed");
+            }
+            std::cout << "Validation: PASS\n";
+        }
+        if (options.display) {
+            cv::imshow("Template", template_image);
+            cv::imshow("Moving", moving_image);
+            cv::imshow("Aligned", aligned);
+            cv::waitKey(0);
+        }
+        return 0;
+    } catch (const std::exception& error) {
+        std::cerr << "Error: " << error.what() << "\n";
+        return 1;
+    }
 }

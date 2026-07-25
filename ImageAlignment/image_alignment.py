@@ -1,77 +1,116 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
+"""Reconstruct a color image by ECC-aligning stacked monochrome channels."""
 
-'''
-    OpenCV Image Alignment  Example
-    
-    Copyright 2015 by Satya Mallick <spmallick@learnopencv.com>
-    
-'''
+from __future__ import annotations
+
+import argparse
+from pathlib import Path
 
 import cv2
 import numpy as np
 
-def get_gradient(im) :
-    # Calculate the x and y gradients using Sobel operator
-    grad_x = cv2.Sobel(im,cv2.CV_32F,1,0,ksize=3)
-    grad_y = cv2.Sobel(im,cv2.CV_32F,0,1,ksize=3)
-    # Combine the two gradients
-    grad = cv2.addWeighted(np.absolute(grad_x), 0.5, np.absolute(grad_y), 0.5, 0)
-    return grad
+from ecc_utils import MOTION_MODELS, align_image
 
 
-if __name__ == '__main__':
-    
-    
-    # Read 8-bit color image.
-    # This is an image in which the three channels are
-    # concatenated vertically.
-    
-    im =  cv2.imread("images/emir.jpg", cv2.IMREAD_GRAYSCALE);
+SCRIPT_DIR = Path(__file__).resolve().parent
 
-    # Find the width and height of the color image
-    sz = im.shape
-    print sz
-    height = int(sz[0] / 3);
-    width = sz[1]
 
-    # Extract the three channels from the gray scale image
-    # and merge the three channels into one color image
-    im_color = np.zeros((height,width,3), dtype=np.uint8 )
-    for i in xrange(0,3) :
-        im_color[:,:,i] = im[ i * height:(i+1) * height,:]
+def split_stacked_channels(image: np.ndarray) -> list[np.ndarray]:
+    """Split a vertically stacked B/G/R plate into equal-size channels."""
+    height = image.shape[0] // 3
+    if height < 1:
+        raise ValueError("Input is too short to contain three stacked channels")
+    cropped = image[: height * 3]
+    return [cropped[index * height : (index + 1) * height] for index in range(3)]
 
-    # Allocate space for aligned image
-    im_aligned = np.zeros((height,width,3), dtype=np.uint8 )
 
-    # The blue and green channels will be aligned to the red channel.
-    # So copy the red channel
-    im_aligned[:,:,2] = im_color[:,:,2]
+def align_stacked_channels(
+    image: np.ndarray,
+    motion_model: int = cv2.MOTION_HOMOGRAPHY,
+    iterations: int = 5000,
+    epsilon: float = 1e-7,
+) -> tuple[np.ndarray, np.ndarray, list[float], list[np.ndarray]]:
+    """Align the blue and green plates to red, returning before/after composites."""
+    channels = split_stacked_channels(image)
+    unaligned = cv2.merge(channels)
+    aligned_channels: list[np.ndarray] = []
+    correlations: list[float] = []
+    warps: list[np.ndarray] = []
+    for index in range(2):
+        correlation, warp, aligned = align_image(
+            channels[2],
+            channels[index],
+            motion_model,
+            iterations,
+            epsilon,
+            use_gradient=True,
+        )
+        aligned_channels.append(aligned)
+        correlations.append(correlation)
+        warps.append(warp)
+    aligned_channels.append(channels[2].copy())
+    return unaligned, cv2.merge(aligned_channels), correlations, warps
 
-    # Define motion model
-    warp_mode = cv2.MOTION_HOMOGRAPHY
 
-    # Set the warp matrix to identity.
-    if warp_mode == cv2.MOTION_HOMOGRAPHY :
-            warp_matrix = np.eye(3, 3, dtype=np.float32)
-    else :
-            warp_matrix = np.eye(2, 3, dtype=np.float32)
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--input", type=Path, default=SCRIPT_DIR / "images" / "emir.jpg")
+    parser.add_argument(
+        "--motion", choices=sorted(MOTION_MODELS), default="homography"
+    )
+    parser.add_argument("--iterations", type=int, default=5000)
+    parser.add_argument("--epsilon", type=float, default=1e-7)
+    parser.add_argument("--output-dir", type=Path, default=SCRIPT_DIR / "output")
+    parser.add_argument("--no-display", action="store_true")
+    parser.add_argument("--validate", action="store_true")
+    return parser.parse_args()
 
-    # Set the stopping criteria for the algorithm.
-    criteria = (cv2.TERM_CRITERIA_EPS | cv2.TERM_CRITERIA_COUNT, 5000,  1e-10)
 
-    # Warp the blue and green channels to the red channel
-    for i in xrange(0,2) :
-        (cc, warp_matrix) = cv2.findTransformECC (get_gradient(im_color[:,:,2]), get_gradient(im_color[:,:,i]),warp_matrix, warp_mode, criteria)
-    
-        if warp_mode == cv2.MOTION_HOMOGRAPHY :
-            # Use Perspective warp when the transformation is a Homography
-            im_aligned[:,:,i] = cv2.warpPerspective (im_color[:,:,i], warp_matrix, (width,height), flags=cv2.INTER_LINEAR + cv2.WARP_INVERSE_MAP)
-        else :
-            # Use Affine warp when the transformation is not a Homography
-            im_aligned[:,:,i] = cv2.warpAffine(im_color[:,:,i], warp_matrix, (width, height), flags=cv2.INTER_LINEAR + cv2.WARP_INVERSE_MAP);
-        print warp_matrix
+def main() -> int:
+    args = parse_args()
+    image = cv2.imread(str(args.input), cv2.IMREAD_GRAYSCALE)
+    if image is None:
+        raise FileNotFoundError(f"Could not read stacked image: {args.input}")
+    unaligned, aligned, correlations, warps = align_stacked_channels(
+        image,
+        MOTION_MODELS[args.motion],
+        args.iterations,
+        args.epsilon,
+    )
 
-    # Show final output
-    cv2.imshow("Color Image", im_color)
-    cv2.imshow("Aligned Image", im_aligned)
-    cv2.waitKey(0)
+    args.output_dir.mkdir(parents=True, exist_ok=True)
+    before_path = args.output_dir / "stacked-color-unaligned.jpg"
+    after_path = args.output_dir / "stacked-color-aligned.jpg"
+    if not cv2.imwrite(str(before_path), unaligned) or not cv2.imwrite(
+        str(after_path), aligned
+    ):
+        raise RuntimeError("Could not write color reconstruction outputs")
+
+    print(f"OpenCV: {cv2.__version__}")
+    print(f"Motion model: {args.motion}")
+    for index, (correlation, warp) in enumerate(zip(correlations, warps)):
+        channel = "blue" if index == 0 else "green"
+        print(f"{channel} ECC correlation: {correlation:.8f}")
+        print(f"{channel} warp:\n{warp}")
+    print(f"Saved: {after_path}")
+
+    if args.validate:
+        if (
+            not all(np.isfinite(correlations))
+            or min(correlations) <= 0.0
+            or not all(np.isfinite(warp).all() for warp in warps)
+            or float(aligned.std()) < 10.0
+        ):
+            raise RuntimeError("Stacked-channel ECC validation failed")
+        print("Validation: PASS")
+
+    if not args.no_display:
+        cv2.imshow("Unaligned color", unaligned)
+        cv2.imshow("ECC-aligned color", aligned)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

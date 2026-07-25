@@ -30,6 +30,9 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Head Pose Estimation with OpenCV](https://learnopencv.com/head-pose-estimation-using-opencv-and-dlib/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/HeadPose) |
+| [Average Face with OpenCV: C++ and Python Tutorial](https://learnopencv.com/average-face-opencv-c-python-tutorial/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/FaceAverage) |
+| [Image Alignment with ECC in OpenCV: C++ and Python](https://learnopencv.com/image-alignment-ecc-in-opencv-c-python/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/ImageAlignment) |
 | [Monocular SLAM in Python with OpenCV](https://learnopencv.com/monocular-slam-in-python/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/Monocular%20SLAM%20for%20Robotics%20implementation%20in%20python) |
 | [OpenCV QR Code Scanner in C++ and Python](https://learnopencv.com/opencv-qr-code-scanner-c-and-python/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/QRCode-OpenCV) |
 | [Optical Flow in OpenCV: Sparse and Dense Methods](https://learnopencv.com/optical-flow-in-opencv/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/Optical-Flow-in-OpenCV) |
@@ -489,14 +492,12 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 |[Deep Learning Book Gift](http://www.learnopencv.com/deep-learning-book-gift/) | |
 |[Histogram of Oriented Gradients](http://www.learnopencv.com/histogram-of-oriented-gradients/) | |
 |[Image Recognition and Object Detection : Part 1](http://www.learnopencv.com/image-recognition-and-object-detection-part1/) | |
-|[Head Pose Estimation using OpenCV and Dlib](http://www.learnopencv.com/head-pose-estimation-using-opencv-and-dlib/) | [Code](https://github.com/spmallick/learnopencv/tree/master/HeadPose) |
 |[Live CV : A Computer Vision Coding Application](http://www.learnopencv.com/live-cv/) | |
 |[Approximate Focal Length for Webcams and Cell Phone Cameras](http://www.learnopencv.com/approximate-focal-length-for-webcams-and-cell-phone-cameras/) | |
 |[Configuring Qt for OpenCV on OSX](http://www.learnopencv.com/configuring-qt-for-opencv-on-osx/) | [Code](https://github.com/spmallick/learnopencv/tree/master/qt-test) |
 |[Rotation Matrix To Euler Angles](http://www.learnopencv.com/rotation-matrix-to-euler-angles/) | [Code](https://github.com/spmallick/learnopencv/tree/master/RotationMatrixToEulerAngles) |
 |[Speeding up Dlib’s Facial Landmark Detector](http://www.learnopencv.com/speeding-up-dlib-facial-landmark-detector/) | |
 |[Warp one triangle to another using OpenCV ( C++ / Python )](http://www.learnopencv.com/warp-one-triangle-to-another-using-opencv-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/WarpTriangle) |
-|[Average Face : OpenCV ( C++ / Python ) Tutorial](http://www.learnopencv.com/average-face-opencv-c-python-tutorial/) | [Code](https://github.com/spmallick/learnopencv/tree/master/FaceAverage) |
 |[Face Swap using OpenCV ( C++ / Python )](http://www.learnopencv.com/face-swap-using-opencv-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/FaceSwap) |
 |[Face Morph Using OpenCV — C++ / Python](http://www.learnopencv.com/face-morph-using-opencv-cpp-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/FaceMorph) |
 |[Deep Learning Example using NVIDIA DIGITS 3 on EC2](http://www.learnopencv.com/deep-learning-example-using-nvidia-digits-3-on-ec2/) | |
@@ -508,7 +509,6 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 |[Why does OpenCV use BGR color format ?](http://www.learnopencv.com/why-does-opencv-use-bgr-color-format/) | |
 |[Computer Vision for Predicting Facial Attractiveness](http://www.learnopencv.com/computer-vision-for-predicting-facial-attractiveness/) | [Code](https://github.com/spmallick/learnopencv/tree/master/FacialAttractiveness) |
 |[applyColorMap for pseudocoloring in OpenCV ( C++ / Python )](http://www.learnopencv.com/applycolormap-for-pseudocoloring-in-opencv-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Colormap) |
-|[Image Alignment (ECC) in OpenCV ( C++ / Python )](http://www.learnopencv.com/image-alignment-ecc-in-opencv-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/ImageAlignment) |
 |[How to find OpenCV version in Python and C++ ?](http://www.learnopencv.com/how-to-find-opencv-version-python-cpp/) | |
 |[Baidu banned from ILSVRC 2015](http://www.learnopencv.com/baidu-banned-from-ilsvrc-2015/) | |
 |[OpenCV Transparent API](http://www.learnopencv.com/opencv-transparent-api/) | |

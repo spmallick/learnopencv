@@ -1,10 +1,65 @@
-# Image Alignment (ECC) in OpenCV
+# Image Alignment with ECC in OpenCV
 
-The repository contains code for the blog post [Image Alignment (ECC) in OpenCV ( C++ / Python )](https://www.learnopencv.com/image-alignment-ecc-in-opencv-c-python/).
+Companion code for [Image Alignment with ECC in OpenCV: C++ and Python](https://learnopencv.com/image-alignment-ecc-in-opencv-c-python/).
 
-<p align="center"><img src="https://learnopencv.com/wp-content/uploads/2015/07/image-alignment-example-opencv-1024x545.jpg" alt="Image alignment"></p>
+<p align="center">
+  <img src="readme-images/image-alignment-ecc-opencv-2026.jpg" alt="Offset architectural images converging through ECC registration" width="100%">
+</p>
 
-[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/scl/fo/i55dfy6ks8wxv7no6vczf/h?dl=1&rlkey=d2yizp2rnu4tfpkbp3gzz7c7s)
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://github.com/spmallick/learnopencv/releases/download/image-alignment-ecc-opencv-2026.07.25/image-alignment-ecc-opencv-2026.07.25.zip)
+
+## What these examples do
+
+- `image_alignment_simple_example.py/.cpp` aligns a moving image to a template and reports the ECC correlation, warp matrix, and before/after error.
+- `image_alignment.py/.cpp` reconstructs a color image from vertically stacked monochrome plates by aligning the blue and green channels to red.
+
+Both paths support translation, Euclidean, affine, and homography motion models.
+
+## Requirements
+
+- Python 3.10+ with NumPy and OpenCV 4.10+ or OpenCV 5.x
+- CMake 3.16+ and a C++17 compiler for the C++ examples
+
+## Run the Python examples
+
+```bash
+python -m pip install -r requirements.txt
+python image_alignment_simple_example.py --no-display --validate
+python image_alignment.py --no-display --validate
+```
+
+Outputs are written to `output/`.
+
+## Build and run the C++ examples
+
+```bash
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build --parallel
+./build/image_alignment_simple --no-display --validate
+./build/image_alignment --no-display --validate
+```
+
+Use `--help` to see the input, motion-model, convergence, output, display, and validation options.
+
+## Compatibility
+
+The update removes Python 2 syntax, fixes the missing C++ sample-image path, initializes each channel warp independently, and adds robust size handling plus saved outputs. Both Python and C++ paths are tested with OpenCV 4.x and OpenCV 5.0.
+
+## Files
+
+```text
+ImageAlignment/
+├── CMakeLists.txt
+├── ecc_utils.py
+├── image_alignment.cpp
+├── image_alignment.py
+├── image_alignment_simple_example.cpp
+├── image_alignment_simple_example.py
+├── images/
+├── requirements.txt
+├── test_ecc.py
+└── readme-images/
+```
 
 ---
 
