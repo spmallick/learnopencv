@@ -2,6 +2,8 @@
 
 [![OpenCV QR Code Scanner](readme-images/qr-code-scanner-opencv-featured-2026.jpg)](https://learnopencv.com/opencv-qr-code-scanner-c-and-python/)
 
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://github.com/spmallick/learnopencv/releases/download/qr-code-scanner-opencv-2026.07.25/qr-code-scanner-opencv-2026.07.25.zip)
+
 This folder accompanies
 [OpenCV QR Code Scanner in C++ and Python](https://learnopencv.com/opencv-qr-code-scanner-c-and-python/).
 Both implementations use `cv::QRCodeDetector` / `cv2.QRCodeDetector` to

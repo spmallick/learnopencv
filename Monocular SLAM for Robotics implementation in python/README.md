@@ -2,6 +2,8 @@
 
 [![Monocular SLAM in Python with OpenCV](readme-images/monocular-slam-opencv-featured-2026.jpg)](https://learnopencv.com/monocular-slam-in-python/)
 
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://github.com/spmallick/learnopencv/releases/download/monocular-slam-opencv-2026.07.25/monocular-slam-opencv-2026.07.25.zip)
+
 This is the companion implementation for
 [Monocular SLAM in Python](https://learnopencv.com/monocular-slam-in-python/).
 It is an educational monocular visual-odometry front end: ORB descriptors,

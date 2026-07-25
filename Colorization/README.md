@@ -2,6 +2,8 @@
 
 [![CNN Image Colorization with OpenCV](readme-images/cnn-colorization-opencv-featured-2026.jpg)](https://learnopencv.com/convolutional-neural-network-based-image-colorization-using-opencv/)
 
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://github.com/spmallick/learnopencv/releases/download/colorization-opencv-2026.07.25/colorization-opencv-2026.07.25.zip)
+
 This folder accompanies
 [CNN-Based Image Colorization with OpenCV](https://learnopencv.com/convolutional-neural-network-based-image-colorization-using-opencv/).
 The refreshed C++ and Python implementations use one verified ONNX export of
