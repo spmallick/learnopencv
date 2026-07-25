@@ -1,40 +1,68 @@
+# OpenCV QR Code Scanner in C++ and Python
 
-# OpenCV QR Code Scanner ( C++ and Python )
+[![OpenCV QR Code Scanner](readme-images/qr-code-scanner-opencv-featured-2026.jpg)](https://learnopencv.com/opencv-qr-code-scanner-c-and-python/)
 
-**This repository contains the code for [OpenCV QR Code Scanner ( C++ and Python )](https://learnopencv.com/opencv-qr-code-scanner-c-and-python/) blog post**.
+This folder accompanies
+[OpenCV QR Code Scanner in C++ and Python](https://learnopencv.com/opencv-qr-code-scanner-c-and-python/).
+Both implementations use `cv::QRCodeDetector` / `cv2.QRCodeDetector` to
+detect, decode, draw the four corners, and save the rectified code.
 
-[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/195xuwdmt1nbpor/AAAucMK_7Khcch9U9HrLX3iqa?dl=1)
+## Compatibility
 
-This code requires **OpenCV 3.4.4 or above** or later. 
+| Path | Requirements |
+|---|---|
+| Python | Python 3.10+, OpenCV 4.14.0 or 5.0.0 |
+| C++ | CMake 3.16+, C++17, OpenCV 4.14.0 or 5.0.0 |
 
-# For C++
+## Python
 
-## How to compile the code
-
-Specify the **OpenCV_DIR** in CMake option
-
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+python qrCodeOpencv.py --no-display --validate
 ```
-cmake -D OpenCV_DIR=<path to opencv install directory>/lib/cmake/opencv4/ .
-make
+
+The bundled QR image is the default. Use `--input path/to/code.png` for another
+image and `--output-dir results` to change the output directory.
+
+The optional ZBar comparison is isolated because `pyzbar` also needs the native
+ZBar library:
+
+```bash
+python -m pip install -r requirements-zbar.txt
+python zbar-opencv-comparison.py --input qrcode-learnopencv.jpg
 ```
 
-OR First Specify the **OpenCV_DIR** in CMakeLists.txt file. Then,
+## C++
 
+```bash
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build --parallel
+./build/qrCodeOpencv --no-display --validate
 ```
-cmake .
-make
-```
-# How to Run the code
 
-## C++ ##
+For a nonstandard OpenCV installation, add
+`-DOpenCV_DIR=/path/to/lib/cmake/opencv4` (OpenCV 4.14) or the corresponding
+OpenCV 5 package directory.
+
+## Outputs and validation
+
+- `outputs/qr-code-annotated.png`: detected quadrilateral
+- `outputs/qr-code-rectified.png`: straightened binary code
+
+`--validate` checks the known payload, exactly four corners, and a non-empty
+rectified image.
+
+```bash
+python -m pytest -q tests
+ctest --test-dir build --output-on-failure
 ```
-./qrCodeOpencv <filename>
-```
-## Python ##
-```
-python qrCodeOpencv.py <filename>
-```
-**Note** : If you dont give any filename, it will use the default image provided.
+
+## Versioned download
+
+The `qr-code-scanner-opencv-2026.07.25` GitHub Release contains the tested
+project archive and its `SHA256SUMS.txt` checksum manifest.
 
 
 ---
