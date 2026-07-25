@@ -1,65 +1,98 @@
-### Implementation of Monocular Visual SLAM in Python:
+# Monocular SLAM in Python with OpenCV
 
+[![Monocular SLAM in Python with OpenCV](readme-images/monocular-slam-opencv-featured-2026.jpg)](https://learnopencv.com/monocular-slam-in-python/)
 
-## Setup pangolin for python:
+This is the companion implementation for
+[Monocular SLAM in Python](https://learnopencv.com/monocular-slam-in-python/).
+It is an educational monocular visual-odometry front end: ORB descriptors,
+two-view pose recovery, sparse triangulation, a top-down trajectory, and a PLY
+point cloud.
 
-#### Install pangolin python:
-The [original library](https://github.com/stevenlovegrove/Pangolin) is written in c++, but there is [python binding](https://github.com/uoip/pangolin) available. 
+The 2026 refresh removes the old Pangolin, OpenGL, `g2o`, and `scikit-image`
+runtime requirements. Pose estimation and triangulation now use OpenCV
+directly, and every run can be validated without a display.
 
-- **Install dependency:** For Ubuntu/Debian execute the below commands to install library dependencies,   
+## Compatibility
 
-```
-sudo apt-get install libglew-dev
-sudo apt-get install cmake
-sudo apt-get install ffmpeg libavcodec-dev libavutil-dev libavformat-dev libswscale-dev
-sudo apt-get install libdc1394-22-dev libraw1394-dev
-sudo apt-get install libjpeg-dev libpng-dev libtiff5-dev libopenexr-dev
-```
+| Component | Supported versions |
+|---|---|
+| Python | 3.10+ |
+| OpenCV | 4.14.0 and 5.0.0 |
+| NumPy | 1.26–2.x |
 
-- Don't need to follow the [Very Optional Dependencies](https://github.com/uoip/pangolin?tab=readme-ov-file#very-optional-dependencies) from the repository.
+## Setup
 
-- **Install the Library:** Execute the below commands to install *pangolin*,
-```
-git clone https://github.com/uoip/pangolin.git
-cd pangolin
-mkdir build
-cd build
-cmake ..
-make -j8
-cd ..
-python setup.py install
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
 ```
 
-In the `make -j8` you might get some error, just follow the comment mentioned in this [github issue](https://github.com/uoip/pangolin/issues/33#issuecomment-717655495). Running the `python setup.py install` might throw an silly error, use this [comment](https://github.com/uoip/pangolin/issues/20#issuecomment-498211997) from the exact issue to solve this. 
+## Run
 
-- Other dependencies are pip installable.
+The bundled driving clip is used when `--input` is omitted.
 
- 
-## How to run?
+```bash
+python main.py \
+  --max-frames 60 \
+  --output-dir outputs \
+  --no-display \
+  --validate
+```
+
+An interactive run is simply:
 
 ```bash
 python main.py
 ```
 
-## Code structure:
-```bash
-├── display.py
-├── extractor.py
-├── pointmap.py
-├── main.py
-├── notebooks
-│   ├── bundle_adjustment.ipynb
-│   ├── mapping.ipynb
-│   └── SLAM_pipeline_step_by_step.ipynb
+Useful options:
 
+- `--input`: source video
+- `--width`: processing width; default `960`
+- `--focal-length`: pinhole focal length in pixels; default `450`
+- `--max-frames`: limit processing; `0` means the whole video
+- `--no-display`: headless execution
+- `--validate`: check pose, map, and output invariants
+
+## Outputs
+
+- `outputs/slam-trajectory.png`: top-down camera trajectory
+- `outputs/slam-feature-tracks.png`: inlier feature motion
+- `outputs/slam-map.ply`: sparse triangulated point cloud
+
+## Tests
+
+```bash
+python -m pytest -q tests
 ```
 
-In the notebook section we have shown how to run all the components of a monocular slam,
-- `SLAM_pipeline_step_by_step.ipynb` Describes the entire pipeline
-- `mapping.ipynb` is another resource for mapping [source](https://github.com/SiddhantNadkarni/Parallel_SFM)
--  `bundle_adjustment.ipynb` another great resource to understand g2o and bundle adjustment. [source](https://github.com/maxcrous/multiview_notebooks)
+The regression test checks a real multi-frame run, finite homogeneous camera
+poses, successful pose updates, a non-empty point cloud, and readable output
+images.
 
-1st notebook uses the kitti dataset (grayscale, 22 GB), [download it from here](https://www.cvlibs.net/datasets/kitti/eval_odometry.php).
+## Project structure
+
+```text
+├── display.py
+├── extractor.py
+├── main.py
+├── pointmap.py
+├── requirements.txt
+├── tests/
+│   └── test_slam.py
+├── videos/
+└── notebooks/
+```
+
+The notebooks remain historical learning resources. The supported application
+path is `main.py`; it no longer needs the legacy visualization or bundle
+adjustment stack.
+
+## Versioned download
+
+The `monocular-slam-opencv-2026.07.25` GitHub Release contains the tested
+project archive and its `SHA256SUMS.txt` checksum manifest.
 
 ---
 

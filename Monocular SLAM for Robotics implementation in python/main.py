@@ -1,121 +1,290 @@
+"""Educational monocular visual odometry and sparse mapping with OpenCV."""
+
+from __future__ import annotations
+
+import argparse
+from dataclasses import dataclass
+from pathlib import Path
+
 import cv2
-import glob
-from display import Display
-from extractor import Frame, denormalize, match_frames, add_ones
 import numpy as np
-from pointmap import Map, Point
-from utils import read_calibration_file, extract_intrinsic_matrix
 
-# calib_file_path = "../data/data_odometry_gray/dataset/sequences/00/calib.txt"
-# calib_lines = read_calibration_file(calib_file_path)
-# K = extract_intrinsic_matrix(calib_lines, camera_id='P0')
-
-# Camera intrinsics
-W, H = 1920 // 2,  1080 // 2
-# F = 270
-F = 450
-K = np.array([[F, 0, W // 2], [0, F, H // 2], [0, 0, 1]])
+from display import Display
+from extractor import Frame, MatchResult, denormalize_point, match_frames
+from pointmap import Map
 
 
-Kinv = np.linalg.inv(K)
-
-# display = Display(1920, 1080)
-mapp = Map()
-mapp.create_viewer()
-
-def triangulate(pose1, pose2, pts1, pts2):
-    ret = np.zeros((pts1.shape[0], 4))
-    pose1 = np.linalg.inv(pose1)
-    pose2 = np.linalg.inv(pose2)
-    for i, p in enumerate(zip(add_ones(pts1), add_ones(pts2))):
-        A = np.zeros((4, 4))
-        A[0] = p[0][0] * pose1[2] - pose1[0]
-        A[1] = p[0][1] * pose1[2] - pose1[1]
-        A[2] = p[1][0] * pose2[2] - pose2[0]
-        A[3] = p[1][1] * pose2[2] - pose2[1]
-        _, _, vt = np.linalg.svd(A)
-        ret[i] = vt[3]
-
-    return ret
-
-def process_frame(img):
-
-    img = cv2.resize(img, (W, H))
-    frame = Frame(mapp, img, K)
-    if frame.id == 0:
-        return
-
-    # previous frame f2 to the current frame f1.
-    f1 = mapp.frames[-1]
-    f2 = mapp.frames[-2]
-
-    
-    
-    idx1, idx2, Rt = match_frames(f1, f2)
-    print(f"=------------Rt {Rt}")
-    # f2.pose represents the transformation from the world coordinate system to the coordinate system of the previous frame f2.
-    # Rt represents the transformation from the coordinate system of f2 to the coordinate system of f1.
-    # By multiplying Rt with f2.pose, you get a new transformation that directly maps the world coordinate system to the coordinate system of f1.
-    f1.pose = np.dot(Rt, f2.pose)
+PROJECT_DIR = Path(__file__).resolve().parent
+DEFAULT_VIDEO = PROJECT_DIR / "videos" / "car.mp4"
 
 
-    # The output is a matrix where each row is a 3D point in homogeneous coordinates [𝑋, 𝑌, 𝑍, 𝑊]
-    pts4d = triangulate(f1.pose, f2.pose, f1.pts[idx1], f2.pts[idx2])
-    
-    # This line normalizes the 3D points by dividing each row by its fourth coordinate W
-    # The homogeneous coordinates [𝑋, 𝑌, 𝑍, 𝑊] are converted to Euclidean coordinates
-    pts4d /= pts4d[:, 3:]
+@dataclass(frozen=True)
+class RunSummary:
+    """Stable output metrics used by documentation and regression tests."""
+
+    frames_processed: int
+    pose_updates: int
+    triangulated_points: int
+    trajectory_path: Path
+    frame_path: Path
+    point_cloud_path: Path
 
 
-    # Reject points without enough "Parallax" and points behind the camera
-    # checks if the absolute value of the fourth coordinate W is greater than 0.005.
-    # checks if the z-coordinate of the points is positive.
-    # returns, A boolean array indicating which points satisfy both criteria.
-    good_pts4d = (np.abs(pts4d[:, 3]) > 0.005) & (pts4d[:, 2] > 0)
+def camera_matrix(width: int, height: int, focal_length: float) -> np.ndarray:
+    """Construct a centered pinhole-camera intrinsic matrix."""
 
-    for i, p in enumerate(pts4d):
-        #  If the point is not good (i.e., good_pts4d[i] is False), the loop skips the current iteration and moves to the next point.
-        if not good_pts4d[i]:
+    return np.array(
+        [
+            [focal_length, 0.0, width / 2.0],
+            [0.0, focal_length, height / 2.0],
+            [0.0, 0.0, 1.0],
+        ],
+        dtype=np.float64,
+    )
+
+
+def triangulate(
+    current_pose: np.ndarray,
+    previous_pose: np.ndarray,
+    current_points: np.ndarray,
+    previous_points: np.ndarray,
+) -> np.ndarray:
+    """Triangulate normalized correspondences and keep points in front of both cameras."""
+
+    homogeneous = cv2.triangulatePoints(
+        current_pose[:3],
+        previous_pose[:3],
+        current_points.T,
+        previous_points.T,
+    ).T
+    valid_scale = np.abs(homogeneous[:, 3]) > 1e-8
+    homogeneous = homogeneous[valid_scale]
+    homogeneous /= homogeneous[:, 3:4]
+
+    current_depth = (current_pose @ homogeneous.T).T[:, 2]
+    previous_depth = (previous_pose @ homogeneous.T).T[:, 2]
+    finite = np.all(np.isfinite(homogeneous), axis=1)
+    in_front = (current_depth > 0.0) & (previous_depth > 0.0)
+    return homogeneous[finite & in_front, :3]
+
+
+def draw_matches(
+    image: np.ndarray,
+    intrinsics: np.ndarray,
+    current: Frame,
+    previous: Frame,
+    matches: MatchResult,
+) -> np.ndarray:
+    """Overlay inlier feature motion on a copy of the current frame."""
+
+    annotated = image.copy()
+    for current_point, previous_point in zip(
+        current.points[matches.current_indices],
+        previous.points[matches.previous_indices],
+    ):
+        current_pixel = denormalize_point(intrinsics, current_point)
+        previous_pixel = denormalize_point(intrinsics, previous_point)
+        cv2.line(
+            annotated,
+            current_pixel,
+            previous_pixel,
+            (255, 80, 0),
+            1,
+            cv2.LINE_AA,
+        )
+        cv2.circle(
+            annotated,
+            current_pixel,
+            2,
+            (0, 220, 255),
+            -1,
+            cv2.LINE_AA,
+        )
+    return annotated
+
+
+def validate_map(
+    map_state: Map,
+    frames_processed: int,
+    pose_updates: int,
+) -> None:
+    """Check stable geometric and numerical facts without overfitting exact poses."""
+
+    if frames_processed < 2 or pose_updates < 1:
+        raise RuntimeError("At least one two-view pose update is required")
+    if len(map_state.points) < 8:
+        raise RuntimeError(
+            f"Expected at least eight triangulated points, got "
+            f"{len(map_state.points)}"
+        )
+    for frame in map_state.frames:
+        if frame.pose.shape != (4, 4) or not np.all(np.isfinite(frame.pose)):
+            raise RuntimeError("Every camera pose must be a finite 4x4 matrix")
+        if not np.allclose(frame.pose[3], [0.0, 0.0, 0.0, 1.0]):
+            raise RuntimeError("Camera poses must remain homogeneous transforms")
+
+
+def run(
+    *,
+    video_path: Path,
+    output_dir: Path,
+    max_frames: int,
+    output_width: int,
+    focal_length: float,
+    show_windows: bool,
+    validate: bool,
+) -> RunSummary:
+    """Run the visual-odometry front end and save its reproducible outputs."""
+
+    capture = cv2.VideoCapture(str(video_path))
+    if not capture.isOpened():
+        raise FileNotFoundError(f"Unable to open input video: {video_path}")
+
+    map_state = Map()
+    display = Display(960, 540) if show_windows else None
+    frames_processed = 0
+    pose_updates = 0
+    last_annotated = None
+    intrinsics = None
+
+    while max_frames == 0 or frames_processed < max_frames:
+        has_frame, source_frame = capture.read()
+        if not has_frame or source_frame is None:
+            break
+
+        scale = output_width / source_frame.shape[1]
+        output_height = max(1, round(source_frame.shape[0] * scale))
+        image = cv2.resize(source_frame, (output_width, output_height))
+        if intrinsics is None:
+            intrinsics = camera_matrix(output_width, output_height, focal_length)
+
+        frame = Frame(frames_processed, image, intrinsics)
+        map_state.add_frame(frame)
+        frames_processed += 1
+
+        if len(map_state.frames) == 1:
+            last_annotated = image.copy()
             continue
-        pt = Point(mapp, p)
-        pt.add_observation(f1, i)
-        pt.add_observation(f2, i)
 
-    for pt1, pt2 in zip(f1.pts[idx1], f2.pts[idx2]):
-        u1, v1 = denormalize(K, pt1)
-        u2, v2 = denormalize(K, pt2)
+        previous = map_state.frames[-2]
+        try:
+            matches = match_frames(frame, previous)
+        except RuntimeError as error:
+            print(f"Frame {frame.frame_id}: skipped pose update ({error})")
+            last_annotated = image.copy()
+            continue
 
-        # cv2.circle(img, (u1,v1), 3, (0,255,0), 2)
-        cv2.circle(img, (u1,v1), 2, (77, 243, 255))
+        frame.pose = matches.relative_pose @ previous.pose
+        world_points = triangulate(
+            frame.pose,
+            previous.pose,
+            frame.points[matches.current_indices],
+            previous.points[matches.previous_indices],
+        )
+        map_state.add_points(world_points)
+        pose_updates += 1
+        last_annotated = draw_matches(
+            image,
+            intrinsics,
+            frame,
+            previous,
+            matches,
+        )
 
-        cv2.line(img, (u1,v1), (u2, v2), (255,0,0))
-        cv2.circle(img, (u2, v2), 2, (204, 77, 255))
-    
-    
-    # 2-D display
-    # img = cv2.resize(img, ( 320, 180))
-    # display.paint(img)
+        if display is not None:
+            key = display.show(last_annotated, delay_milliseconds=1)
+            if key in (27, ord("q")):
+                break
 
-    # 3-D display
-    mapp.display()
-    mapp.display_image(img)
+    capture.release()
+    if display is not None:
+        display.close()
+
+    if last_annotated is None or frames_processed == 0:
+        raise RuntimeError(f"Input video has no readable frames: {video_path}")
+    if validate:
+        validate_map(map_state, frames_processed, pose_updates)
+
+    output_dir.mkdir(parents=True, exist_ok=True)
+    trajectory_path = output_dir / "slam-trajectory.png"
+    frame_path = output_dir / "slam-feature-tracks.png"
+    point_cloud_path = output_dir / "slam-map.ply"
+
+    trajectory = map_state.render_top_down()
+    if not cv2.imwrite(str(trajectory_path), trajectory):
+        raise OSError(f"Unable to write trajectory image: {trajectory_path}")
+    if not cv2.imwrite(str(frame_path), last_annotated):
+        raise OSError(f"Unable to write feature-track image: {frame_path}")
+    map_state.save_ply(point_cloud_path)
+
+    if validate:
+        for image_path in (trajectory_path, frame_path):
+            if cv2.imread(str(image_path), cv2.IMREAD_COLOR) is None:
+                raise RuntimeError(f"Saved output is unreadable: {image_path}")
+        if point_cloud_path.stat().st_size == 0:
+            raise RuntimeError("Saved PLY point cloud is empty")
+
+    return RunSummary(
+        frames_processed,
+        pose_updates,
+        len(map_state.points),
+        trajectory_path,
+        frame_path,
+        point_cloud_path,
+    )
 
 
-if __name__== "__main__":
-    cap = cv2.VideoCapture("videos/car.mp4")
+def parse_args() -> argparse.Namespace:
+    """Parse video, camera, output, and automation options."""
 
-    while cap.isOpened():
-        ret, frame = cap.read()
-        # print("frame shape: ", frame.shape)
-        print("\n#################  [NEW FRAME]  #################\n")
-        if ret == True:
-            process_frame(frame)
-        else:
-            break
-        
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
-    
-    # Release the capture and close any OpenCV windows
-    cap.release()
-    cv2.destroyAllWindows()
+    parser = argparse.ArgumentParser(
+        description="Build a sparse map and monocular camera trajectory."
+    )
+    parser.add_argument("--input", type=Path, default=DEFAULT_VIDEO)
+    parser.add_argument("--output-dir", type=Path, default=Path("outputs"))
+    parser.add_argument("--max-frames", type=int, default=0)
+    parser.add_argument("--width", type=int, default=960)
+    parser.add_argument("--focal-length", type=float, default=450.0)
+    parser.add_argument("--no-display", action="store_true")
+    parser.add_argument("--validate", action="store_true")
+    return parser.parse_args()
+
+
+def main() -> int:
+    """Run the tutorial application and provide clear command-line errors."""
+
+    args = parse_args()
+    try:
+        if args.max_frames < 0:
+            raise ValueError("max-frames cannot be negative")
+        if args.width < 64:
+            raise ValueError("width must be at least 64 pixels")
+        if args.focal_length <= 0:
+            raise ValueError("focal-length must be positive")
+
+        summary = run(
+            video_path=args.input.resolve(),
+            output_dir=args.output_dir.resolve(),
+            max_frames=args.max_frames,
+            output_width=args.width,
+            focal_length=args.focal_length,
+            show_windows=not args.no_display,
+            validate=args.validate,
+        )
+        print(f"OpenCV version: {cv2.__version__}")
+        print(f"Frames processed: {summary.frames_processed}")
+        print(f"Pose updates: {summary.pose_updates}")
+        print(f"Triangulated points: {summary.triangulated_points}")
+        print(f"Trajectory image: {summary.trajectory_path}")
+        print(f"Feature tracks: {summary.frame_path}")
+        print(f"Point cloud: {summary.point_cloud_path}")
+        if args.validate:
+            print("VALIDATION PASSED: poses, map points, and outputs")
+        return 0
+    except (FileNotFoundError, OSError, RuntimeError, ValueError) as error:
+        print(f"ERROR: {error}")
+        return 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

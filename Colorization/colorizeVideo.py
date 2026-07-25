@@ -1,99 +1,118 @@
-# This code is written by Sunita Nayak at BigVision LLC. It is based on the OpenCV project.
-# It is subject to the license terms in the LICENSE file found in this distribution and at http://opencv.org/license.html
+#!/usr/bin/env python3
+"""Colorize a video with OpenCV DNN and an ONNX model."""
 
-# Usage example: python3 colorizeVideo.py --input greyscaleVideo.mp4
+from __future__ import annotations
 
-import numpy as np
-import cv2 as cv
 import argparse
-import os.path
 import time
+from pathlib import Path
 
-parser = argparse.ArgumentParser(description='Colorize GreyScale Video')
-parser.add_argument('--input', help='Path to video file.')
-parser.add_argument("--device", default="cpu", help="Device to inference on")
-args = parser.parse_args()
+import cv2 as cv
 
-if args.input is None:
-    print('Please give the input greyscale video file.')
-    print('Usage example: python3 colorizeVideo.py --input greyscaleVideo.mp4')
-    exit()
+from colorization import DEFAULT_MODEL, colorize_frame, load_network, validate_output
 
-if not os.path.isfile(args.input):
-    print('Input file does not exist')
-    exit()
 
-print("Input video file: ", args.input)
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Colorize a video frame by frame with OpenCV DNN."
+    )
+    parser.add_argument(
+        "--input",
+        type=Path,
+        default=Path(__file__).resolve().parent / "greyscaleVideo.mp4",
+        help="Input video (default: the bundled sample).",
+    )
+    parser.add_argument(
+        "--model",
+        type=Path,
+        default=DEFAULT_MODEL,
+        help="Path to colorization_eccv16.onnx.",
+    )
+    parser.add_argument(
+        "--output",
+        type=Path,
+        default=Path("colorized-video.avi"),
+        help="Destination video.",
+    )
+    parser.add_argument(
+        "--max-frames",
+        type=int,
+        default=0,
+        help="Stop after this many frames; 0 processes the entire video.",
+    )
+    parser.add_argument(
+        "--no-display",
+        action="store_true",
+        help="Do not open an OpenCV preview window.",
+    )
+    parser.add_argument(
+        "--validate",
+        action="store_true",
+        help="Validate each generated frame and the final frame count.",
+    )
+    return parser.parse_args()
 
-# Read the input video
-cap = cv.VideoCapture(args.input)
-hasFrame, frame = cap.read()
 
-outputFile = args.input[:-4] + '_colorized.avi'
-vid_writer = cv.VideoWriter(outputFile, cv.VideoWriter_fourcc('M','J','P','G'), 60, (frame.shape[1],frame.shape[0]))
+def main() -> int:
+    args = parse_args()
+    capture = cv.VideoCapture(str(args.input))
+    if not capture.isOpened():
+        raise FileNotFoundError(f"Could not open input video: {args.input}")
 
-# Specify the paths for the 2 model files
-protoFile = "./models/colorization_deploy_v2.prototxt"
-weightsFile = "./models/colorization_release_v2.caffemodel"
+    width = int(capture.get(cv.CAP_PROP_FRAME_WIDTH))
+    height = int(capture.get(cv.CAP_PROP_FRAME_HEIGHT))
+    fps = capture.get(cv.CAP_PROP_FPS)
+    if not fps or not 1.0 <= fps <= 240.0:
+        fps = 30.0
 
-# Load the cluster centers
-pts_in_hull = np.load('./pts_in_hull.npy')
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    writer = cv.VideoWriter(
+        str(args.output),
+        cv.VideoWriter_fourcc(*"MJPG"),
+        fps,
+        (width, height),
+    )
+    if not writer.isOpened():
+        capture.release()
+        raise RuntimeError(f"Could not open output video: {args.output}")
 
-# Read the network into Memory
-net = cv.dnn.readNetFromCaffe(protoFile, weightsFile)
+    network = load_network(args.model)
+    processed = 0
+    inference_seconds = 0.0
+    try:
+        while True:
+            ok, frame = capture.read()
+            if not ok:
+                break
 
-if args.device == "cpu":
-    net.setPreferableBackend(cv.dnn.DNN_TARGET_CPU)
-    print("Using CPU device")
-elif args.device == "gpu":
-    net.setPreferableBackend(cv.dnn.DNN_BACKEND_CUDA)
-    net.setPreferableTarget(cv.dnn.DNN_TARGET_CUDA)
-    print("Using GPU device")
+            start = time.perf_counter()
+            output, chroma_score = colorize_frame(frame, network)
+            inference_seconds += time.perf_counter() - start
+            if args.validate:
+                validate_output(frame, output, chroma_score)
 
-# populate cluster centers as 1x1 convolution kernel
-pts_in_hull = pts_in_hull.transpose().reshape(2, 313, 1, 1)
-net.getLayer(net.getLayerId('class8_ab')).blobs = [pts_in_hull.astype(np.float32)]
-net.getLayer(net.getLayerId('conv8_313_rh')).blobs = [np.full([1, 313], 2.606, np.float32)]
+            writer.write(output)
+            processed += 1
+            if not args.no_display:
+                cv.imshow("Colorized video", output)
+                if cv.waitKey(1) & 0xFF == 27:
+                    break
+            if args.max_frames and processed >= args.max_frames:
+                break
+    finally:
+        capture.release()
+        writer.release()
+        if not args.no_display:
+            cv.destroyAllWindows()
 
-# from opencv sample
-W_in = 224
-H_in = 224
+    if args.validate and processed == 0:
+        raise RuntimeError("No frames were processed.")
 
-timer = []
+    average = inference_seconds / processed if processed else 0.0
+    print(f"Saved {processed} frames to {args.output}")
+    print(f"Average inference time: {average:.3f} seconds per frame")
+    return 0
 
-while cv.waitKey(1):
 
-    hasFrame, frame = cap.read()
-    frameCopy = np.copy(frame)
-    if not hasFrame:
-        break
-
-    start = time.time()
-
-    img_rgb = (frame[:, :, [2, 1, 0]] * 1.0 / 255).astype(np.float32)
-    img_lab = cv.cvtColor(img_rgb, cv.COLOR_RGB2Lab)
-    img_l = img_lab[:, :, 0]  # pull out L channel
-
-    # resize lightness channel to network input size
-    img_l_rs = cv.resize(img_l, (W_in, H_in))
-    img_l_rs -= 50  # subtract 50 for mean-centering
-
-    net.setInput(cv.dnn.blobFromImage(img_l_rs))
-    ab_dec = net.forward()[0, :, :, :].transpose((1, 2, 0))  # this is our result
-
-    (H_orig,W_orig) = img_rgb.shape[:2]  # original image size
-    ab_dec_us = cv.resize(ab_dec, (W_orig, H_orig))
-    img_lab_out = np.concatenate((img_l[:, :, np.newaxis], ab_dec_us), axis=2)  # concatenate with original L channel
-    img_bgr_out = np.clip(cv.cvtColor(img_lab_out, cv.COLOR_Lab2BGR), 0, 1)
-
-    end = time.time()
-    timer.append(end - start)
-
-    vid_writer.write((img_bgr_out * 255).astype(np.uint8))
-
-vid_writer.release()
-
-print("Time taken : {:0.5f} secs".format(sum(timer)))
-print('Colorized video saved as ' + outputFile)
-print('Done !!!')
-
+if __name__ == "__main__":
+    raise SystemExit(main())

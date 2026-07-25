@@ -1,3 +1,2 @@
-numpy==1.18.3
-opencv-python==4.2.0.34
-opencv-contrib-python==4.2.0.34
+numpy>=1.26,<3
+opencv-contrib-python>=4.14,<6
