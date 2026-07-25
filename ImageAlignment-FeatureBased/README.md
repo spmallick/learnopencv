@@ -4,7 +4,25 @@ This repository contains code for the blog post [Feature Based Image Alignment u
 
 <img src="https://learnopencv.com/wp-content/uploads/2018/03/image-alignment-using-opencv.jpg" alt="Image Alignment" width="900">
 
-[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/scl/fo/7actm7m3yu4rg01mhve9b/h?dl=1&rlkey=7irdzdwlwniboxv6n0nyh4puh)
+## Download the standalone project
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://github.com/spmallick/learnopencv/releases/download/image-alignment-feature-based-opencv-2026.07.24/ImageAlignment-FeatureBased.zip)
+
+The immutable, versioned bundle has a published
+[SHA-256 checksum](https://github.com/spmallick/learnopencv/releases/download/image-alignment-feature-based-opencv-2026.07.24/ImageAlignment-FeatureBased.zip.sha256).
+The ZIP contains exactly one top-level `ImageAlignment-FeatureBased/` directory
+with the nine files shown in the project layout below.
+
+On macOS or Linux, download and verify both files before extracting the project:
+
+```bash
+curl -LO \
+  https://github.com/spmallick/learnopencv/releases/download/image-alignment-feature-based-opencv-2026.07.24/ImageAlignment-FeatureBased.zip
+curl -LO \
+  https://github.com/spmallick/learnopencv/releases/download/image-alignment-feature-based-opencv-2026.07.24/ImageAlignment-FeatureBased.zip.sha256
+shasum -a 256 -c ImageAlignment-FeatureBased.zip.sha256
+unzip ImageAlignment-FeatureBased.zip
+```
 
 ## OpenCV compatibility
 

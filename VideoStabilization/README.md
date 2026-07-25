@@ -10,6 +10,14 @@ original and stabilized views side by side.
 
 [<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://github.com/spmallick/learnopencv/releases/download/video-stabilization-opencv-2026.07.24/VideoStabilization.zip)
 
+The immutable, versioned bundle has a published
+[SHA-256 checksum](https://github.com/spmallick/learnopencv/releases/download/video-stabilization-opencv-2026.07.24/VideoStabilization.zip.sha256).
+It contains exactly one top-level `VideoStabilization/` directory and the nine
+files shown in the standalone ZIP layout below. The repository also carries the
+article preview image `video-stabilization-opencv-4-14-5.jpg`; that
+documentation-only image was added after the tagged standalone release and is
+not required to build, run, or test the downloaded project.
+
 ## Compatibility contract
 
 - OpenCV 4.14.0
@@ -143,7 +151,7 @@ module and `goodFeaturesToTrack` from `imgproc` to the new `features` module.
 The CMake configuration and version-gated includes select the correct modules
 while the source keeps the same algorithm and public API calls in both releases.
 
-## Project files
+## Project files in the repository
 
 ```text
 VideoStabilization/
@@ -156,6 +164,22 @@ VideoStabilization/
 │   └── test_video_stabilization.py
 ├── video.mp4
 ├── video-stabilization-opencv-4-14-5.jpg
+├── video_stabilization.cpp
+└── video_stabilization.py
+```
+
+## Standalone ZIP layout
+
+```text
+VideoStabilization/
+├── .gitignore
+├── CMakeLists.txt
+├── README.md
+├── requirements.txt
+├── tests/
+│   ├── check_collision_guard.cmake
+│   └── test_video_stabilization.py
+├── video.mp4
 ├── video_stabilization.cpp
 └── video_stabilization.py
 ```
