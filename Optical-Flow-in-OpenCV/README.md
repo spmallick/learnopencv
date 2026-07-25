@@ -1,83 +1,82 @@
+# Optical Flow in OpenCV: Sparse and Dense Methods
 
-## Optical Flow in OpenCV(C++/Python)
+[![Optical Flow in OpenCV](readme-images/optical-flow-opencv-featured-2026.jpg)](https://learnopencv.com/optical-flow-in-opencv/)
 
-**This repository contains the code for [Optical Flow in OpenCV (C++/Python)](https://www.learnopencv.com/optical-flow-in-opencv) blogpost**.
+This folder accompanies
+[Optical Flow in OpenCV](https://learnopencv.com/optical-flow-in-opencv/).
+The Python and C++ demos share four algorithm names and support interactive or
+headless execution.
 
-[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/sn8cagnd55h358f/AAApmYgtkv-uEaWiqUmnQo1za?dl=1)
+| Name | Method | Output |
+|---|---|---|
+| `lucaskanade` | Sparse pyramidal Lucas–Kanade | Feature tracks |
+| `lucaskanade_dense` | Dense grid of Lucas–Kanade tracks | HSV flow view |
+| `farneback` | Dense Farnebäck flow | HSV flow view |
+| `rlof` | Dense RLOF from OpenCV contrib | HSV flow view |
+
+## Compatibility
+
+| Path | Requirements |
+|---|---|
+| Python | Python 3.10+, `opencv-contrib-python` 4.14.0 or 5.0.0 |
+| C++ | CMake 3.16+, C++17, OpenCV + contrib 4.14.0 or 5.0.0 |
 
 ## Python
 
-### Installation
-
-Before you start the demo of Optical Flow calculation, you need to create a virtual environment in your working directory and install the required libraries:
-
-```Shell
-virtualenv -p python3.7 venv
-source venv/bin/activate
-pip install -r reqirements.txt
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
 ```
 
-### Sparse Optical Flow
+Run one validated headless example:
 
-There is a demo `lucas_kanade.py` script of **Lucas-Kanade** algorithm which can be run with this command:
-
+```bash
+python demo.py \
+  --algorithm farneback \
+  --video videos/people.mp4 \
+  --max-frames 12 \
+  --output-dir outputs \
+  --no-display \
+  --validate
 ```
-python3 demo.py --algorithm lucaskanade --video_path videos/car.mp4
-```
 
-### Dense Optical Flow
-
-The wrapper of Dense Optical Flow algorithms `dense_optical_flow.py` can run a couple of OpenCV's algorithm implementations:
-
-- To start the **Dense Lucas-Kanade** algorithm:
-  ```
-  python3 demo.py --algorithm lucaskanade_dense --video_path videos/people.mp4
-  ```
-- To start the **Farneback** algorithm:
-  ```
-  python3 demo.py --algorithm farneback --video_path videos/people.mp4
-  ```
-- To start the **RLOF** algorithm:
-  ```
-  python3 demo.py --algorithm rlof --video_path videos/people.mp4
-  ```
+Replace `farneback` with any name from the table. `--video_path` remains an
+alias for older commands.
 
 ## C++
 
-### Installation
-
-Before you start the demo of Optical Flow calculation, you need to build the project:
-
-```Shell
-cd algorithms
-cmake .
-make
+```bash
+cmake -S algorithms -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build --parallel
+./build/OpticalFlow \
+  --algorithm farneback \
+  --video videos/people.mp4 \
+  --max-frames 12 \
+  --output-dir outputs \
+  --no-display \
+  --validate
 ```
 
-### Sparse Optical Flow
+For a nonstandard OpenCV install, pass its package directory with
+`-DOpenCV_DIR=...`.
 
-There is a demo `lucas_kanade.cpp` script of **Lucas-Kanade** algorithm which can be run with this command:
+## Outputs and tests
 
+Each run saves the final visualization as
+`outputs/<algorithm>-optical-flow.png`. Validation checks that at least one
+frame pair was processed, motion is finite and nonzero, and the saved output is
+readable.
+
+```bash
+python -m pytest -q tests
+ctest --test-dir build --output-on-failure
 ```
-./OpticalFlow ../videos/car.mp4 lucaskanade
-```
 
-### Dense Optical Flow
+## Versioned download
 
-The wrapper of Dense Optical Flow algorithms `dense_optical_flow.py` can run a couple of OpenCV's algorithm implementations:
-
-- To start the **Dense Lucas-Kanade** algorithm:
-  ```
-  ./OpticalFlow ../videos/car.mp4 lucaskanade_dense
-  ```
-- To start the **Farneback** algorithm:
-  ```
-  ./OpticalFlow ../videos/car.mp4 farneback
-  ```
-- To start the **RLOF** algorithm:
-  ```
-  ./OpticalFlow ../videos/car.mp4 rlof
-  ```
+The `optical-flow-opencv-2026.07.25` GitHub Release contains the tested project
+archive and its `SHA256SUMS.txt` checksum manifest.
 
 
 ---
