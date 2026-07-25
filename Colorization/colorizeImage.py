@@ -1,83 +1,80 @@
-# This code is written by Sunita Nayak at BigVision LLC. It is based on the OpenCV project.
-# It is subject to the license terms in the LICENSE file found in this distribution and at http://opencv.org/license.html
+#!/usr/bin/env python3
+"""Colorize a still image with OpenCV DNN and an ONNX model."""
 
-# Usage example: python3 colorizeImage.py --input greyscaleImage.png
+from __future__ import annotations
 
-import numpy as np
-import cv2 as cv
 import argparse
-import os.path
 import time
+from pathlib import Path
 
-parser = argparse.ArgumentParser(description='Colorize GreyScale Image')
-parser.add_argument('--input', help='Path to image.')
-parser.add_argument("--device", default="cpu", help="Device to inference on")
-args = parser.parse_args()
+import cv2 as cv
 
-if args.input is None:
-    print('Please give the input greyscale image name.')
-    print('Usage example: python3 colorizeImage.py --input greyscaleImage.png')
-    exit()
+from colorization import DEFAULT_MODEL, colorize_frame, load_network, validate_output
 
-if not os.path.isfile(args.input):
-    print('Input file does not exist')
-    exit()
 
-print("Input image file: ", args.input)
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Colorize a grayscale or desaturated image with OpenCV DNN."
+    )
+    parser.add_argument(
+        "--input",
+        type=Path,
+        default=Path(__file__).resolve().parent / "greyscaleImage.png",
+        help="Input image (default: the bundled sample).",
+    )
+    parser.add_argument(
+        "--model",
+        type=Path,
+        default=DEFAULT_MODEL,
+        help="Path to colorization_eccv16.onnx.",
+    )
+    parser.add_argument(
+        "--output",
+        type=Path,
+        default=Path("colorized-image.png"),
+        help="Destination image.",
+    )
+    parser.add_argument(
+        "--no-display",
+        action="store_true",
+        help="Do not open an OpenCV preview window.",
+    )
+    parser.add_argument(
+        "--validate",
+        action="store_true",
+        help="Check the output dimensions, type, and predicted chroma.",
+    )
+    return parser.parse_args()
 
-# Read the input image
-frame = cv.imread(args.input)
 
-# Specify the paths for the 2 model files
-protoFile = "./models/colorization_deploy_v2.prototxt"
-weightsFile = "./models/colorization_release_v2.caffemodel"
+def main() -> int:
+    args = parse_args()
+    image = cv.imread(str(args.input), cv.IMREAD_COLOR)
+    if image is None:
+        raise FileNotFoundError(f"Could not read input image: {args.input}")
 
-# Load the cluster centers
-pts_in_hull = np.load('./pts_in_hull.npy')
+    network = load_network(args.model)
+    start = time.perf_counter()
+    output, chroma_score = colorize_frame(image, network)
+    elapsed = time.perf_counter() - start
 
-# Read the network into Memory
-net = cv.dnn.readNetFromCaffe(protoFile, weightsFile)
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    if not cv.imwrite(str(args.output), output):
+        raise RuntimeError(f"Could not write output image: {args.output}")
+    if args.validate:
+        validate_output(image, output, chroma_score)
 
-if args.device == "cpu":
-    net.setPreferableBackend(cv.dnn.DNN_TARGET_CPU)
-    print("Using CPU device")
-elif args.device == "gpu":
-    net.setPreferableBackend(cv.dnn.DNN_BACKEND_CUDA)
-    net.setPreferableTarget(cv.dnn.DNN_TARGET_CUDA)
-    print("Using GPU device")
+    print(f"Saved {args.output}")
+    print(f"Inference time: {elapsed:.3f} seconds")
+    print(f"Mean predicted chroma: {chroma_score:.3f}")
 
-# populate cluster centers as 1x1 convolution kernel
-pts_in_hull = pts_in_hull.transpose().reshape(2, 313, 1, 1)
-net.getLayer(net.getLayerId('class8_ab')).blobs = [pts_in_hull.astype(np.float32)]
-net.getLayer(net.getLayerId('conv8_313_rh')).blobs = [np.full([1, 313], 2.606, np.float32)]
+    if not args.no_display:
+        comparison = cv.hconcat([image, output])
+        cv.imshow("Input | Colorized", comparison)
+        cv.waitKey(0)
+        cv.destroyAllWindows()
+    return 0
 
-# from opencv sample
-W_in = 224
-H_in = 224
 
-start = time.time()
-
-img_rgb = (frame[:, :, [2, 1, 0]] * 1.0 / 255).astype(np.float32)
-img_lab = cv.cvtColor(img_rgb, cv.COLOR_RGB2Lab)
-img_l = img_lab[:, :, 0]  # pull out L channel
-
-# resize lightness channel to network input size
-img_l_rs = cv.resize(img_l, (W_in, H_in))
-img_l_rs -= 50  # subtract 50 for mean-centering
-
-net.setInput(cv.dnn.blobFromImage(img_l_rs))
-ab_dec = net.forward()[0, :, :, :].transpose((1, 2, 0))  # this is our result
-
-(H_orig, W_orig) = img_rgb.shape[:2]  # original image size
-ab_dec_us = cv.resize(ab_dec, (W_orig, H_orig))
-img_lab_out = np.concatenate((img_l[:, :, np.newaxis],ab_dec_us), axis=2)  # concatenate with original image L
-img_bgr_out = np.clip(cv.cvtColor(img_lab_out, cv.COLOR_Lab2BGR), 0, 1)
-
-end = time.time()
-print("Time taken : {:0.5f} secs".format(end - start))
-
-outputFile = args.input[:-4] + '_colorized.png'
-cv.imwrite(outputFile, (img_bgr_out * 255).astype(np.uint8))
-print('Colorized image saved as ' + outputFile)
-print('Done !!!')
-
+if __name__ == "__main__":
+    raise SystemExit(main())
