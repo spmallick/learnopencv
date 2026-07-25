@@ -1,14 +1,59 @@
-# Implementing Snake Game using OpenCV and Python
+# Snake Game with OpenCV and Python
 
-**This repository contains code for [Implementing Snake Game using OpenCV and Python](https://www.learnopencv.com/snake-game-with-opencv-python/) blogpost**.
+[![Snake Game with OpenCV and Python](readme-images/snake-game-opencv-featured-2026.jpg)](https://learnopencv.com/snake-game-with-opencv-python/)
 
-[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/t67rd8o067prtag/AAB5pSRpKfedWZN-WN7jYlVOa?dl=1)
+This folder accompanies
+[Snake Game with OpenCV and Python](https://learnopencv.com/snake-game-with-opencv-python/).
+The game engine is now separate from OpenCV rendering, so movement, growth,
+apple placement, collision handling, and score logic can be tested without a
+display.
 
-## USAGE
+## Compatibility
 
+- Python 3.10+
+- OpenCV 4.14.0 or 5.0.0
+- NumPy 1.26–2.x
+
+## Setup
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
 ```
+
+## Play
+
+```bash
 python snake.py
 ```
+
+Use W/A/S/D or the arrow keys. Press Esc or Q to quit.
+
+Useful controls include `--board-size`, `--cell-size`, `--speed`, `--growth`,
+and `--seed`.
+
+## Headless validation
+
+```bash
+python snake.py \
+  --no-display \
+  --max-steps 24 \
+  --output outputs/snake-final-board.png \
+  --validate
+```
+
+This deterministic path exercises eating, growth, new-apple placement, wall
+collision, and rendering before saving the final board.
+
+```bash
+python -m pytest -q tests
+```
+
+## Versioned download
+
+The `snake-game-opencv-2026.07.25` GitHub Release contains the tested project
+archive and its `SHA256SUMS.txt` checksum manifest.
 
 ---
 
