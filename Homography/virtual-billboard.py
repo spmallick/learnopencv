@@ -1,49 +1,72 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
+"""Place a source image onto a four-corner region in another image."""
 
-import cv2
-import numpy as np
-from utils import mouse_handler
-from utils import get_four_points
-import sys
+from __future__ import annotations
+
+import argparse
+from pathlib import Path
+
+from utils import (
+    composite_on_quad,
+    get_four_points,
+    parse_points,
+    read_image,
+    show_images,
+    write_image,
+)
 
 
-if __name__ == '__main__' :
+ASSET_DIR = Path(__file__).resolve().parent
 
-    # Read source image.
-    im_src = cv2.imread('first-image.jpg');
-    size = im_src.shape
-   
-    # Create a vector of source points.
-    pts_src = np.array(
-                       [
-                        [0,0],
-                        [size[1] - 1, 0],
-                        [size[1] - 1, size[0] -1],
-                        [0, size[0] - 1 ]
-                        ],dtype=float
-                       );
 
-    
-    # Read destination image
-    im_dst = cv2.imread('times-square.jpg');
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--source", type=Path, default=ASSET_DIR / "first-image.jpg"
+    )
+    parser.add_argument(
+        "--destination", type=Path, default=ASSET_DIR / "times-square.jpg"
+    )
+    parser.add_argument(
+        "--output", type=Path, default=Path("virtual-billboard.jpg")
+    )
+    parser.add_argument(
+        "--points",
+        type=parse_points,
+        help="Destination quad as x,y;x,y;x,y;x,y in clockwise order.",
+    )
+    parser.add_argument("--display", action="store_true")
+    return parser
 
-    # Get four corners of the billboard
-    print 'Click on four corners of a billboard and then press ENTER'
-    pts_dst = get_four_points(im_dst)
-    
-    # Calculate Homography between source and destination points
-    h, status = cv2.findHomography(pts_src, pts_dst);
-    
-    # Warp source image
-    im_temp = cv2.warpPerspective(im_src, h, (im_dst.shape[1],im_dst.shape[0]))
 
-    # Black out polygonal area in destination image.
-    cv2.fillConvexPoly(im_dst, pts_dst.astype(int), 0, 16);
-    
-    # Add warped source image to destination image.
-    im_dst = im_dst + im_temp;
-    
-    # Display image.
-    cv2.imshow("Image", im_dst);
-    cv2.waitKey(0);
+def main() -> int:
+    args = build_parser().parse_args()
+    source = read_image(args.source)
+    destination = read_image(args.destination)
+    destination_points = args.points
+    if destination_points is None:
+        print(
+            "Click the billboard corners in clockwise order, starting at "
+            "the top-left. Press Enter after the fourth point."
+        )
+        destination_points = get_four_points(destination)
 
+    result, _ = composite_on_quad(
+        source, destination, destination_points
+    )
+    write_image(args.output, result)
+    print(f"Saved billboard composite to {args.output.resolve()}")
+
+    if args.display:
+        show_images(
+            {
+                "Source": source,
+                "Destination": destination,
+                "Composite": result,
+            }
+        )
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

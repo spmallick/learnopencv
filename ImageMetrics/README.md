@@ -1,44 +1,105 @@
-# Image Quality Assessment : BRISQUE
-The repository contains code for the blog post [Image Quality Assessment : BRISQUE](https://learnopencv.com/image-quality-assessment-brisque/).
+# [Image Quality Assessment With BRISQUE in OpenCV](https://learnopencv.com/image-quality-assessment-brisque/)
 
-<img src="https://learnopencv.com/wp-content/uploads/2018/06/workflow-brisque-iqa.png" alt="BRISQUE" width="900">
+[<img src="https://cdn.learnopencv.com/wp-content/uploads/2018/06/04095951/brisque-iqa-feature-nr-e1529032216542.png" alt="BRISQUE no-reference image quality assessment" width="651">](https://learnopencv.com/image-quality-assessment-brisque/)
 
-[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/scl/fo/n19a8fzvboq1nwhnbeh3y/h?dl=1&rlkey=za90lmxl5pq49i2qlyuv07t00)
+This directory contains current Python and C++ examples for no-reference image
+quality assessment with OpenCV's maintained
+[`QualityBRISQUE`](https://docs.opencv.org/4.x/d8/d99/classcv_1_1quality_1_1QualityBRISQUE.html)
+implementation. Lower scores generally indicate fewer natural-image
+distortions.
 
-## Installation Instructions
-**Python 2.x LIBSVM Installation**
-`sudo apt-get install python-libsvm`
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download code" width="200">](https://github.com/spmallick/learnopencv/releases/download/brisque-v2026.07.26/ImageMetrics-2026.07.26.zip)
 
-**Python 3.x LIVSVM Installation and C++ LIBSVM Installation**
+## What changed
 
-For C++ :
+The examples now call OpenCV's quality module directly. They no longer require
+Python 2, SciPy, a separately compiled LIBSVM library, or checked-in platform
+binaries. The pretrained model and feature ranges are the files distributed
+with OpenCV Contrib 5.0.0; their source and checksums are recorded in
+[`models/README.md`](models/README.md).
 
-1. `cd C++/libsvm/`
-2. `cmake .`
-3. `make`
+## Requirements
 
-For Python 3.x :
+- Python 3.10–3.14
+- NumPy 1.26–2.x
+- OpenCV Contrib 4.8–5.x with the `quality` module
+- CMake 3.16 or newer and a C++17 compiler for the C++ example
 
-1. `cd Python/libsvm/`
-2. `make`
-3. `cd python`
-4. `make`
+The examples were verified with Python 3.14, OpenCV 4.12, 4.13, and 5.0.0,
+NumPy 2.4, CMake 3.29, and Apple Clang 21. The declared Python requirements
+also passed all four tests in an isolated environment containing only
+`opencv-contrib-python` 5.0.0.93 (not the standard wheel).
 
-## Usage 
+The standard `opencv-python` wheel does not include the quality module. For
+Python, install `opencv-contrib-python` as shown below.
 
-**Python 2.x**
+## Python
 
-1. `python2 brisquequality.py <image_path>`
+Install the dependencies:
 
-**Python 3.x** 
+```bash
+python -m pip install -r ImageMetrics/Python/requirements.txt
+```
 
-1. `cd Python/libsvm/python/`
-2. `python3 brisquequality.py <image_path>`
+Score the included sample image from the repository root:
 
-**C++**
+```bash
+python ImageMetrics/Python/brisquequality.py \
+  ImageMetrics/Images/original-scaled-image.jpg
+```
 
-1. `cd C++/`
-2. `./brisquequality <image_path>`
+Expected output with OpenCV 4.13:
+
+```text
+BRISQUE score: 20.2789
+```
+
+The script resolves the default model and range files relative to its own
+location, so it works from any current directory. Use `--model` and `--range`
+to evaluate with another compatible OpenCV BRISQUE model.
+
+## C++
+
+The C++ OpenCV installation must include the `quality` module from
+OpenCV Contrib. Configure an out-of-source build:
+
+```bash
+cmake -S ImageMetrics/C++ -B ImageMetrics/C++/build
+cmake --build ImageMetrics/C++/build --parallel
+```
+
+Run the sample:
+
+```bash
+./ImageMetrics/C++/build/brisquequality \
+  ImageMetrics/Images/original-scaled-image.jpg
+```
+
+If CMake cannot locate OpenCV, pass its package directory explicitly:
+
+```bash
+cmake -S ImageMetrics/C++ -B ImageMetrics/C++/build \
+  -DOpenCV_DIR=/path/to/opencv/lib/cmake/opencv4
+```
+
+## Tests
+
+Run the Python regression tests:
+
+```bash
+python -m pip install -r ImageMetrics/Python/requirements-dev.txt
+python -m pytest ImageMetrics/tests
+```
+
+Run the C++ sample-score regression:
+
+```bash
+ctest --test-dir ImageMetrics/C++/build --output-on-failure
+```
+
+The tests check the pinned sample score, confirm that strong blur receives a
+worse score, validate missing-file handling, and exercise the default model
+lookup from a different working directory.
 
 
 ---
