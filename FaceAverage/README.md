@@ -1,9 +1,11 @@
-# Average Face with OpenCV
+# [Average Face with OpenCV](https://learnopencv.com/average-face-opencv-c-python-tutorial/)
 
 Companion code for [Average Face with OpenCV: C++ and Python Tutorial](https://learnopencv.com/average-face-opencv-c-python-tutorial/).
 
 <p align="center">
-  <img src="readme-images/average-face-opencv-2026.jpg" alt="Several aligned faces merging into an average face with a landmark mesh" width="100%">
+  <a href="https://learnopencv.com/average-face-opencv-c-python-tutorial/">
+    <img src="readme-images/average-face-opencv-2026.jpg" alt="Several aligned faces merging into an average face with a landmark mesh" width="100%">
+  </a>
 </p>
 
 [<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://github.com/spmallick/learnopencv/releases/download/average-face-opencv-2026.07.25/average-face-opencv-2026.07.25.zip)

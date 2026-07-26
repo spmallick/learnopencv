@@ -1,9 +1,11 @@
-# Head Pose Estimation with OpenCV
+# [Head Pose Estimation with OpenCV](https://learnopencv.com/head-pose-estimation-using-opencv-and-dlib/)
 
 Companion code for [Head Pose Estimation with OpenCV](https://learnopencv.com/head-pose-estimation-using-opencv-and-dlib/).
 
 <p align="center">
-  <img src="readme-images/head-pose-estimation-opencv-2026.jpg" alt="Head pose estimation with facial landmarks, a 3D pose axis, and a camera model" width="100%">
+  <a href="https://learnopencv.com/head-pose-estimation-using-opencv-and-dlib/">
+    <img src="readme-images/head-pose-estimation-opencv-2026.jpg" alt="Head pose estimation with facial landmarks, a 3D pose axis, and a camera model" width="100%">
+  </a>
 </p>
 
 [<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://github.com/spmallick/learnopencv/releases/download/head-pose-opencv-2026.07.25/head-pose-opencv-2026.07.25.zip)
