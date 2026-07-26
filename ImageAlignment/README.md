@@ -1,9 +1,11 @@
-# Image Alignment with ECC in OpenCV
+# [Image Alignment with ECC in OpenCV](https://learnopencv.com/image-alignment-ecc-in-opencv-c-python/)
 
 Companion code for [Image Alignment with ECC in OpenCV: C++ and Python](https://learnopencv.com/image-alignment-ecc-in-opencv-c-python/).
 
 <p align="center">
-  <img src="readme-images/image-alignment-ecc-opencv-2026.jpg" alt="Offset architectural images converging through ECC registration" width="100%">
+  <a href="https://learnopencv.com/image-alignment-ecc-in-opencv-c-python/">
+    <img src="readme-images/image-alignment-ecc-opencv-2026.jpg" alt="Offset architectural images converging through ECC registration" width="100%">
+  </a>
 </p>
 
 [<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://github.com/spmallick/learnopencv/releases/download/image-alignment-ecc-opencv-2026.07.25/image-alignment-ecc-opencv-2026.07.25.zip)
