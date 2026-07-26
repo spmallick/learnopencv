@@ -1,48 +1,72 @@
-import cv2
-import numpy as np
-import sys
+#!/usr/bin/env python3
+"""Warp one image into a selected quadrilateral in another image."""
 
-def mouseHandler(event,x,y,flags,param):
-    global im_temp, pts_dst
+from __future__ import annotations
 
-    if event == cv2.EVENT_LBUTTONDOWN:
-        cv2.circle(im_temp,(x,y),3,(0,255,255),5,cv2.LINE_AA)
-        cv2.imshow("Image", im_temp)
-        if len(pts_dst) < 4:
-        	pts_dst = np.append(pts_dst,[(x,y)],axis=0)
+import argparse
+from pathlib import Path
 
-
-# Read in the image.
-im_src = cv2.imread(sys.argv[1])
-height, width = im_src.shape[:2]
-
-# Create a list of points.
-pts_src = np.empty((0,2),dtype=np.int32)
-pts_src = np.append(pts_src, [(0,0)], axis=0)
-pts_src = np.append(pts_src, [(width-1,0)], axis=0)
-pts_src = np.append(pts_src, [(width-1,height-1)], axis=0)
-pts_src = np.append(pts_src, [(0,height-1)], axis=0)
-
-# Destination image
-im_dst = cv2.imread(sys.argv[2])
-
-# Create a window
-cv2.namedWindow("Image", 1)
-
-im_temp = im_dst
-pts_dst = np.empty((0,2),dtype=np.int32)
-
-cv2.setMouseCallback("Image",mouseHandler)
+from utils import (
+    composite_on_quad,
+    get_four_points,
+    parse_points,
+    read_image,
+    show_images,
+    write_image,
+)
 
 
-cv2.imshow("Image", im_temp)
-cv2.waitKey(0)
+ASSET_DIR = Path(__file__).resolve().parent
 
-tform, status = cv2.findHomography(pts_src, pts_dst)
-im_temp = cv2.warpPerspective(im_src, tform,(width,height))
 
-cv2.fillConvexPoly(im_dst, pts_dst, 0, cv2.LINE_AA)
-im_dst = im_dst + im_temp
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--source", type=Path, default=ASSET_DIR / "first-image.jpg"
+    )
+    parser.add_argument(
+        "--destination", type=Path, default=ASSET_DIR / "times-square.jpg"
+    )
+    parser.add_argument(
+        "--output", type=Path, default=Path("homography-composite.jpg")
+    )
+    parser.add_argument(
+        "--points",
+        type=parse_points,
+        help="Destination quad as x,y;x,y;x,y;x,y in clockwise order.",
+    )
+    parser.add_argument("--display", action="store_true")
+    return parser
 
-cv2.imshow("Image", im_dst)
-cv2.waitKey(0)
+
+def main() -> int:
+    args = build_parser().parse_args()
+    source = read_image(args.source)
+    destination = read_image(args.destination)
+    destination_points = args.points
+    if destination_points is None:
+        print(
+            "Click four destination corners in clockwise order, starting at "
+            "the top-left. Press Enter after the fourth point."
+        )
+        destination_points = get_four_points(destination)
+
+    result, _ = composite_on_quad(
+        source, destination, destination_points
+    )
+    write_image(args.output, result)
+    print(f"Saved composite image to {args.output.resolve()}")
+
+    if args.display:
+        show_images(
+            {
+                "Source": source,
+                "Destination": destination,
+                "Composite": result,
+            }
+        )
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

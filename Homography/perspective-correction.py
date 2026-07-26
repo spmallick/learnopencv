@@ -1,48 +1,67 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
+"""Correct perspective by mapping four image points to a rectangle."""
 
-import cv2
-import numpy as np
-from utils import get_four_points
+from __future__ import annotations
+
+import argparse
+from pathlib import Path
+
+from utils import (
+    get_four_points,
+    parse_points,
+    read_image,
+    rectify_image,
+    show_images,
+    write_image,
+)
 
 
-if __name__ == '__main__' :
+ASSET_DIR = Path(__file__).resolve().parent
 
-    # Read in the image.
-    im_src = cv2.imread("book1.jpg")
 
-    # Destination image
-    size = (300,400,3)
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--input", type=Path, default=ASSET_DIR / "book1.jpg"
+    )
+    parser.add_argument(
+        "--output",
+        type=Path,
+        default=Path("perspective-corrected.jpg"),
+    )
+    parser.add_argument(
+        "--points",
+        type=parse_points,
+        help="Source quad as x,y;x,y;x,y;x,y in clockwise order.",
+    )
+    parser.add_argument("--width", type=int, default=300)
+    parser.add_argument("--height", type=int, default=400)
+    parser.add_argument("--display", action="store_true")
+    return parser
 
-    im_dst = np.zeros(size, np.uint8)
 
-    
-    pts_dst = np.array(
-                       [
-                        [0,0],
-                        [size[0] - 1, 0],
-                        [size[0] - 1, size[1] -1],
-                        [0, size[1] - 1 ]
-                        ], dtype=float
-                       )
-    
-    
-    print '''
-        Click on the four corners of the book -- top left first and
-        bottom left last -- and then hit ENTER
-        '''
-    
-    # Show image and wait for 4 clicks.
-    cv2.imshow("Image", im_src)
-    pts_src = get_four_points(im_src);
-    
-    # Calculate the homography
-    h, status = cv2.findHomography(pts_src, pts_dst)
+def main() -> int:
+    args = build_parser().parse_args()
+    source = read_image(args.input)
+    source_points = args.points
+    if source_points is None:
+        print(
+            "Click the book corners in clockwise order, starting at the "
+            "top-left. Press Enter after the fourth point."
+        )
+        source_points = get_four_points(source)
 
-    # Warp source image to destination
-    im_dst = cv2.warpPerspective(im_src, h, size[0:2])
+    corrected, _ = rectify_image(
+        source, source_points, args.width, args.height
+    )
+    write_image(args.output, corrected)
+    print(f"Saved {args.width}x{args.height} rectified image to {args.output.resolve()}")
 
-    # Show output
-    cv2.imshow("Image", im_dst)
-    cv2.waitKey(0)
+    if args.display:
+        show_images({"Source": source, "Perspective corrected": corrected})
+    return 0
 
+
+if __name__ == "__main__":
+    raise SystemExit(main())
 

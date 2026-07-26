@@ -1,3 +1,0 @@
-/data/kushashwa/learnopencv/ImageMetrics/C++/CMakeFiles/edit_cache.dir
-/data/kushashwa/learnopencv/ImageMetrics/C++/CMakeFiles/rebuild_cache.dir
-/data/kushashwa/learnopencv/ImageMetrics/C++/CMakeFiles/brisquequality.dir

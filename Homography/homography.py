@@ -1,45 +1,64 @@
-import cv2
-import numpy as np
+#!/usr/bin/env python3
+"""Interactive or headless four-point homography rectification example."""
 
-def mouseHandler(event,x,y,flags,param):
-    global im_temp, pts_src
+from __future__ import annotations
 
-    if event == cv2.EVENT_LBUTTONDOWN:
-        cv2.circle(im_temp,(x,y),3,(0,255,255),5,cv2.LINE_AA)
-        cv2.imshow("Image", im_temp)
-        if len(pts_src) < 4:
-        	pts_src = np.append(pts_src,[(x,y)],axis=0)
+import argparse
+from pathlib import Path
 
-
-# Read in the image.
-im_src = cv2.imread("book.jpg")
-
-# Destination image
-height, width = 400, 300
-im_dst = np.zeros((height,width,3),dtype=np.uint8)
+from utils import (
+    get_four_points,
+    parse_points,
+    read_image,
+    rectify_image,
+    show_images,
+    write_image,
+)
 
 
-# Create a list of points.
-pts_dst = np.empty((0,2))
-pts_dst = np.append(pts_dst, [(0,0)], axis=0)
-pts_dst = np.append(pts_dst, [(width-1,0)], axis=0)
-pts_dst = np.append(pts_dst, [(width-1,height-1)], axis=0)
-pts_dst = np.append(pts_dst, [(0,height-1)], axis=0)
-
-# Create a window
-cv2.namedWindow("Image", 1)
-
-im_temp = im_src
-pts_src = np.empty((0,2))
-
-cv2.setMouseCallback("Image",mouseHandler)
+ASSET_DIR = Path(__file__).resolve().parent
 
 
-cv2.imshow("Image", im_temp)
-cv2.waitKey(0)
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--input", type=Path, default=ASSET_DIR / "book1.jpg"
+    )
+    parser.add_argument(
+        "--output", type=Path, default=Path("homography-rectified.jpg")
+    )
+    parser.add_argument(
+        "--points",
+        type=parse_points,
+        help="Source quad as x,y;x,y;x,y;x,y in clockwise order.",
+    )
+    parser.add_argument("--width", type=int, default=300)
+    parser.add_argument("--height", type=int, default=400)
+    parser.add_argument("--display", action="store_true")
+    return parser
 
-tform, status = cv2.findHomography(pts_src, pts_dst)
-im_dst = cv2.warpPerspective(im_src, tform,(width,height))
 
-cv2.imshow("Image", im_dst)
-cv2.waitKey(0)
+def main() -> int:
+    args = build_parser().parse_args()
+    source = read_image(args.input)
+    source_points = args.points
+    if source_points is None:
+        print(
+            "Click four corners in clockwise order, starting at the top-left. "
+            "Press Enter after the fourth point."
+        )
+        source_points = get_four_points(source)
+
+    result, _ = rectify_image(
+        source, source_points, args.width, args.height
+    )
+    write_image(args.output, result)
+    print(f"Saved rectified image to {args.output.resolve()}")
+
+    if args.display:
+        show_images({"Source": source, "Rectified": result})
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

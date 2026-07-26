@@ -1,44 +1,95 @@
-# Shape Matching using Hu Moments (C++/Python)
+# [Shape Matching Using Hu Moments in OpenCV](https://learnopencv.com/shape-matching-using-hu-moments-c-python/)
 
-**This repository contains the code for [Shape Matching using Hu Moments (C++/Python)](https://learnopencv.com/shape-matching-using-hu-moments-c-python/) blog post**.
+[<img src="https://cdn.learnopencv.com/wp-content/uploads/2018/12/04095653/Hu-Moments.jpg" alt="Shape matching using Hu Moments in OpenCV" width="650">](https://learnopencv.com/shape-matching-using-hu-moments-c-python/)
 
-[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/b6idgsj9uu078il/AAB-sNX6J0MBf0Wwizjo17VPa?dl=1)
+This directory contains tested Python and C++ examples for calculating the
+seven Hu moment invariants and comparing binary shapes with
+[`matchShapes`](https://docs.opencv.org/5.0/main_modules/geometry_shape.html).
 
-This directory also contains code for using Hu Moments to match shapes.
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download code" width="200">](https://github.com/spmallick/learnopencv/releases/download/hu-moments-v2026.07.26/HuMoments-2026.07.26.zip)
 
-# For C++
+## Requirements
 
-## How to compile the code
-If you don't have OpenCV installed globally, then Specify the **OpenCV_DIR** in CMakeLists.txt file. Then,
+- Python 3.10–3.14
+- OpenCV 4.8–5.x
+- NumPy 1.26–2.x
+- CMake 3.16 or newer and a C++17 compiler for the C++ examples
 
-```
-cmake .
-make
-```
-# How to Run the code
+The examples were verified with Python 3.14, OpenCV 4.12, 4.13, and 5.0.0,
+NumPy 2.4, CMake 3.29, and Apple Clang 21. The C++ build automatically links
+the `geometry` module introduced by OpenCV 5.
 
-## C++ ##
-## Find Hu Moments
-```
-./HuMoments images/*
-```
+## Python
 
-## Match shapes
-```
-./shapeMatcher
-```
+Install the Python dependencies:
 
-
-## Python ##
-## Find Hu Moments
-```
-python HuMoments.py images/*
+```bash
+python -m pip install -r HuMoments/requirements.txt
 ```
 
-## Match shapes
+From the repository root, calculate signed log-transformed Hu moments:
+
+```bash
+python HuMoments/HuMoments.py HuMoments/images/*.png
 ```
-python shapeMatcher.py
+
+Print the untransformed values with `--raw`, or change the binary threshold
+with `--threshold`.
+
+Compare the provided `S` shape with another letter and a transformed `S`:
+
+```bash
+python HuMoments/shapeMatcher.py
 ```
+
+The script resolves its sample images relative to its own location, so the
+default command works from any current directory. It also accepts three
+explicit image paths:
+
+```bash
+python HuMoments/shapeMatcher.py REFERENCE DIFFERENT TRANSFORMED
+```
+
+## C++
+
+Configure an out-of-source build:
+
+```bash
+cmake -S HuMoments -B HuMoments/build
+cmake --build HuMoments/build --parallel
+```
+
+Run the examples:
+
+```bash
+./HuMoments/build/HuMoments HuMoments/images/*.png
+./HuMoments/build/shapeMatcher
+```
+
+If CMake cannot locate OpenCV, pass its package directory explicitly:
+
+```bash
+cmake -S HuMoments -B HuMoments/build -DOpenCV_DIR=/path/to/opencv/lib/cmake/opencv4
+```
+
+## Tests
+
+Run the Python regression tests:
+
+```bash
+python -m pip install -r HuMoments/requirements-dev.txt
+python -m pytest HuMoments/tests
+```
+
+Run the C++ smoke and numeric-regression tests:
+
+```bash
+ctest --test-dir HuMoments/build --output-on-failure
+```
+
+The tests verify the known `K0` Hu moments, the zero-safe log transform, and
+that the transformed `S4` image is closer to `S0` than the different `K0`
+shape.
 
 
 ---

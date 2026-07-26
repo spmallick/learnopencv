@@ -1,72 +1,120 @@
-#include "opencv2/highgui/highgui.hpp"
-#include "opencv2/imgproc/imgproc.hpp"
-#include <iostream>
-#include <cstdlib>
+#include <opencv2/core/utility.hpp>
+#include <opencv2/core/version.hpp>
+#if CV_VERSION_MAJOR >= 5
+#include <opencv2/geometry/2d.hpp>
+#endif
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgcodecs.hpp>
+#include <opencv2/imgproc.hpp>
 
-using namespace cv;
-using namespace std;
+#include <filesystem>
+#include <iostream>
+#include <string>
+#include <vector>
+
+namespace fs = std::filesystem;
+
+const char* kKeys =
+    "{help h usage ? |      | Show this message }"
+    "{input i        |sample.jpg| Input image }"
+    "{output o       |convex-hull-output.jpg| Output visualization }"
+    "{threshold t    |200   | Binary threshold from 0 to 255 }"
+    "{display        |false | Show GUI windows }";
 
 int main(int argc, char** argv) {
-  string image_path; // image path for input image
+    cv::CommandLineParser parser(argc, argv, kKeys);
+    parser.about("OpenCV convex-hull example");
+    if (parser.has("help")) {
+        parser.printMessage();
+        return 0;
+    }
+    if (!parser.check()) {
+        parser.printErrors();
+        return 2;
+    }
 
-  if(argc < 2)
-    image_path = "sample.jpg";
-  else 
-    image_path = argv[1];
+    const std::string image_path = parser.get<std::string>("input");
+    const fs::path output_path = parser.get<std::string>("output");
+    const int threshold_value = parser.get<int>("threshold");
+    const bool display = parser.get<bool>("display");
+    if (threshold_value < 0 || threshold_value > 255) {
+        std::cerr << "Error: --threshold must be between 0 and 255.\n";
+        return 2;
+    }
 
-  // declare images 
-  Mat src, gray, blur_image, threshold_output;
+    const cv::Mat source = cv::imread(image_path, cv::IMREAD_COLOR);
+    if (source.empty()) {
+        std::cerr << "Error: input image not found or unreadable: "
+                  << image_path << '\n';
+        return 2;
+    }
 
-  // take input image
-  src = imread(image_path, 1);
-  
- // convert to grayscale 
-  cvtColor(src, gray, COLOR_BGR2GRAY);
-  
-  // add blurring to the input image
-  blur(gray, blur_image, Size(3, 3));
-  
-  // binary threshold the input image
-  threshold(gray, threshold_output, 200, 255, THRESH_BINARY);
-  
-  // show source image
-  namedWindow("Source", WINDOW_AUTOSIZE);
-  imshow("Source", src);
+    cv::Mat gray;
+    cv::cvtColor(source, gray, cv::COLOR_BGR2GRAY);
+    cv::Mat blurred;
+    cv::blur(gray, blurred, cv::Size(3, 3));
+    cv::Mat binary;
+    cv::threshold(
+        blurred, binary, threshold_value, 255, cv::THRESH_BINARY
+    );
 
-  // Convex Hull implementation
-  Mat src_copy = src.clone();
-  
-  // contours vector  
-  vector< vector<Point> > contours;
-  vector<Vec4i> hierarchy;
-  
-  // find contours for the thresholded image
-  findContours(threshold_output, contours, hierarchy, RETR_TREE, 
-      CHAIN_APPROX_SIMPLE, Point(0, 0));
-  
-  // create convex hull vector
-  vector< vector<Point> > hull(contours.size());
+    std::vector<std::vector<cv::Point>> contours;
+    std::vector<cv::Vec4i> hierarchy;
+    cv::findContours(
+        binary,
+        contours,
+        hierarchy,
+        cv::RETR_TREE,
+        cv::CHAIN_APPROX_SIMPLE
+    );
 
-  // find convex hull for each contour
-  for(int i = 0; i < contours.size(); i++)
-    convexHull(Mat(contours[i]), hull[i], false);
-  
-  // create empty black image
-  Mat drawing = Mat::zeros(threshold_output.size(), CV_8UC3);
-  
-  // draw contours and convex hull on the empty black image 
-  for(int i = 0; i < contours.size(); i++) {
-    Scalar color_contours = Scalar(0, 255, 0); // color for contours : blue
-    Scalar color = Scalar(255, 255, 255); // color for convex hull : white
-    // draw contours
-    drawContours(drawing, contours, i, color_contours, 2, 8, vector<Vec4i>(), 0, Point());
-    // draw convex hull
-    drawContours(drawing, hull, i, color, 2, 8, vector<Vec4i>(), 0, Point());
-  }
+    std::vector<std::vector<cv::Point>> hulls(contours.size());
+    for (std::size_t index = 0; index < contours.size(); ++index) {
+        cv::convexHull(contours[index], hulls[index], false);
+    }
 
-  namedWindow("Output", WINDOW_AUTOSIZE);
-  imshow("Output", drawing);
+    cv::Mat drawing = cv::Mat::zeros(binary.size(), CV_8UC3);
+    for (std::size_t index = 0; index < contours.size(); ++index) {
+        const int contour_index = static_cast<int>(index);
+        cv::drawContours(
+            drawing,
+            contours,
+            contour_index,
+            cv::Scalar(0, 255, 0),
+            2,
+            cv::LINE_8,
+            hierarchy
+        );
+        cv::drawContours(
+            drawing,
+            hulls,
+            contour_index,
+            cv::Scalar(255, 255, 255),
+            2,
+            cv::LINE_8
+        );
+    }
 
-  waitKey(0);
-  return 0;
+    try {
+        if (output_path.has_parent_path()) {
+            fs::create_directories(output_path.parent_path());
+        }
+    } catch (const fs::filesystem_error& error) {
+        std::cerr << "Filesystem error: " << error.what() << '\n';
+        return 3;
+    }
+    if (!cv::imwrite(output_path.string(), drawing)) {
+        std::cerr << "Error: OpenCV could not write: " << output_path << '\n';
+        return 3;
+    }
+    std::cout << "Detected " << contours.size() << " contours and wrote "
+              << output_path << '\n';
+
+    if (display) {
+        cv::imshow("Source", source);
+        cv::imshow("Contours and convex hulls", drawing);
+        cv::waitKey(0);
+        cv::destroyAllWindows();
+    }
+    return 0;
 }

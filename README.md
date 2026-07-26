@@ -30,6 +30,13 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Blob Detection Using OpenCV (Python, C++)](https://learnopencv.com/blob-detection-using-opencv-python-c/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/BlobDetector) |
+| [Homography Examples Using OpenCV (Python and C++)](https://learnopencv.com/homography-examples-using-opencv-python-c/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/Homography) |
+| [Convex Hull Using OpenCV in Python and C++](https://learnopencv.com/convex-hull-using-opencv-in-python-and-c/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/ConvexHull) |
+| [Hu Moments for Shape Matching with OpenCV (Python and C++)](https://learnopencv.com/shape-matching-using-hu-moments-c-python/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/HuMoments) |
+| [BRISQUE Image Quality Assessment with OpenCV](https://learnopencv.com/image-quality-assessment-brisque/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/ImageMetrics) |
+| [Super Resolution in OpenCV](https://learnopencv.com/super-resolution-in-opencv/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/Super-Resolution-in-OpenCV) |
+| [Augmented Reality Using ArUco Markers in OpenCV](https://learnopencv.com/augmented-reality-using-aruco-markers-in-opencv-c-python/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/AugmentedRealityWithArucoMarkers) |
 | [Head Pose Estimation with OpenCV](https://learnopencv.com/head-pose-estimation-using-opencv-and-dlib/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/HeadPose) |
 | [Average Face with OpenCV: C++ and Python Tutorial](https://learnopencv.com/average-face-opencv-c-python-tutorial/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/FaceAverage) |
 | [Image Alignment with ECC in OpenCV: C++ and Python](https://learnopencv.com/image-alignment-ecc-in-opencv-c-python/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/ImageAlignment) |
@@ -336,7 +343,6 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 |[Autoencoder in TensorFlow 2: Beginner’s Guide](https://learnopencv.com/autoencoder-in-tensorflow-2-beginners-guide/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Autoencoder-in-TensorFlow) |
 |[Deep Learning with OpenCV DNN Module: A Definitive Guide](https://learnopencv.com/deep-learning-with-opencvs-dnn-module-a-definitive-guide/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Deep-Learning-with-OpenCV-DNN-Module) |
 |[Depth perception using stereo camera (Python/C++)](https://learnopencv.com/depth-perception-using-stereo-camera-python-c/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Depth-Perception-Using-Stereo-Camera) |
-|[Super Resolution in OpenCV](https://learnopencv.com/super-resolution-in-opencv/)| [Code](https://github.com/spmallick/learnopencv/blob/master/Super-Resolution-in-OpenCV) |
 |[Improving Illumination in Night Time Images](https://learnopencv.com/improving-illumination-in-night-time-images/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Improving-Illumination-in-Night-Time-Images) |
 |[Video Classification and Human Activity Recognition](https://learnopencv.com/introduction-to-video-classification-and-human-activity-recognition/) | [Code](https://github.com/spmallick/learnopencv/tree/master/video-classification-and-human-activity-recognition) |
 |[How to use OpenCV DNN Module with Nvidia GPU on Windows](https://learnopencv.com/how-to-use-opencv-dnn-module-with-nvidia-gpu-on-windows) | [Code](https://github.com/spmallick/learnopencv/tree/master/OpenCV-dnn-gpu-support-Windows) |
@@ -381,7 +387,6 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 |[Multi-Label Image Classification with Pytorch](https://www.learnopencv.com/multi-label-image-classification-with-pytorch/)|[Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-Multi-Label-Image-Classification)|
 |[CNN Receptive Field Computation Using Backprop](https://www.learnopencv.com/cnn-receptive-field-computation-using-backprop/)|[Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-Receptive-Field-With-Backprop)|
 |[CNN Receptive Field Computation Using Backprop with TensorFlow](https://www.learnopencv.com/cnn-receptive-field-computation-using-backprop-with-tensorflow/)|[Code](https://github.com/spmallick/learnopencv/tree/master/TensorFlow-Receptive-Field-With-Backprop)|
-|[Augmented Reality using AruCo Markers in OpenCV(C++ and Python)](https://www.learnopencv.com/augmented-reality-using-aruco-markers-in-opencv-(c++-python)/) |[Code](https://github.com/spmallick/learnopencv/tree/master/AugmentedRealityWithArucoMarkers)|
 |[Fully Convolutional Image Classification on Arbitrary Sized Image](https://www.learnopencv.com/fully-convolutional-image-classification-on-arbitrary-sized-image/)|[Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-Fully-Convolutional-Image-Classification)|
 |[Geometry of Image Formation](https://www.learnopencv.com/geometry-of-image-formation/) ||
 |[Ensuring Training Reproducibility in Pytorch](https://www.learnopencv.com/ensuring-training-reproducibility-in-pytorch) ||
@@ -407,7 +412,6 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 |[Training YOLOv3 : Deep Learning based Custom Object Detector](https://www.learnopencv.com/training-yolov3-deep-learning-based-custom-object-detector/) | [Code](https://github.com/spmallick/learnopencv/tree/master/YOLOv3-Training-Snowman-Detector ) |
 |[Using OpenVINO with OpenCV](https://www.learnopencv.com/using-openvino-with-opencv/) | [Code](https://github.com/spmallick/learnopencv/tree/master/OpenVINO-OpenCV) |
 |[Duplicate Search on Quora Dataset](https://www.learnopencv.com/duplicate-search-on-quora-dataset/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Quora-Dataset-Duplicate-Search) |
-|[Shape Matching using Hu Moments (C++/Python)](https://www.learnopencv.com/shape-matching-using-hu-moments-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/HuMoments) |
 |[Install OpenCV 4 on CentOS (C++ and Python)](https://www.learnopencv.com/install-opencv-4-on-centos-7/) | [Code](https://github.com/spmallick/learnopencv/blob/master/InstallScripts/installOpenCV-3-on-centos.sh) |
 |[Install OpenCV 3.4.4 on CentOS (C++ and Python)](https://www.learnopencv.com/install-opencv-3-4-4-on-centos-7/) | [Code](https://github.com/spmallick/learnopencv/blob/master/InstallScripts/installOpenCV-3-on-centos.sh) |
 |[Install OpenCV 3.4.4 on Red Hat (C++ and Python)](https://www.learnopencv.com/install-opencv-3-4-4-on-red-hat/) | [Code](https://github.com/spmallick/learnopencv/blob/master/InstallScripts/installOpenCV-3-on-red-hat.sh) |
@@ -429,14 +433,12 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 |[Multi-Person Pose Estimation in OpenCV using OpenPose](https://www.learnopencv.com/multi-person-pose-estimation-in-opencv-using-openpose/) | [Code](https://github.com/spmallick/learnopencv/tree/master/OpenPose-Multi-Person) |
 |[Heatmap for Logo Detection using OpenCV (Python)](https://www.learnopencv.com/heatmap-for-logo-detection-using-opencv-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/heatmap)|
 |[Deep Learning based Object Detection using YOLOv3 with OpenCV ( Python / C++ )](https://www.learnopencv.com/deep-learning-based-object-detection-using-yolov3-with-opencv-python-c/) | [Code](https://github.com/spmallick/learnopencv/tree/master/ObjectDetection-YOLO)|
-|[Convex Hull using OpenCV in Python and C++](https://www.learnopencv.com/convex-hull-using-opencv-in-python-and-c/) | [Code](https://github.com/spmallick/learnopencv/tree/master/ConvexHull)|
 |[MultiTracker : Multiple Object Tracking using OpenCV (C++/Python)](https://www.learnopencv.com/multitracker-multiple-object-tracking-using-opencv-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/MultiObjectTracker) |
 |[SVM using scikit-learn](https://www.learnopencv.com/svm-using-scikit-learn-in-python/)|[Code](https://github.com/spmallick/learnopencv/tree/master/SVM-using-Python)|
 |[GOTURN: Deep Learning based Object Tracking](https://www.learnopencv.com/goturn-deep-learning-based-object-tracking/) | [Code](https://github.com/spmallick/learnopencv/tree/master/GOTURN)|
 |[Support Vector Machines (SVM)](https://www.learnopencv.com/support-vector-machines-svm/)|[Code](https://github.com/spmallick/learnopencv/tree/master/SVM-using-Python)|
 |[Batch Normalization in Deep Networks](https://www.learnopencv.com/batch-normalization-in-deep-networks/) | [Code](https://github.com/spmallick/learnopencv/tree/master/BatchNormalization)|
 |[Deep Learning based Character Classification using Synthetic Dataset](https://www.learnopencv.com/deep-learning-character-classification-using-synthetic-dataset/) | [Code](https://github.com/spmallick/learnopencv/tree/master/CharClassification)|
-|[Image Quality Assessment : BRISQUE](https://www.learnopencv.com/image-quality-assessment-brisque/)| [Code](https://github.com/spmallick/learnopencv/tree/master/ImageMetrics)|
 |[Understanding AlexNet](https://www.learnopencv.com/understanding-alexnet/)||
 |[Deep Learning based Text Recognition (OCR) using Tesseract and OpenCV](https://www.learnopencv.com/deep-learning-based-text-recognition-ocr-using-tesseract-and-opencv/)| [Code](https://github.com/spmallick/learnopencv/tree/master/OCR)|
 |[Deep Learning based Human Pose Estimation using OpenCV ( C++ / Python )](https://www.learnopencv.com/deep-learning-based-human-pose-estimation-using-opencv-cpp-python/)|[Code](https://github.com/spmallick/learnopencv/tree/master/OpenPose)|
@@ -502,7 +504,6 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 |[Face Morph Using OpenCV — C++ / Python](http://www.learnopencv.com/face-morph-using-opencv-cpp-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/FaceMorph) |
 |[Deep Learning Example using NVIDIA DIGITS 3 on EC2](http://www.learnopencv.com/deep-learning-example-using-nvidia-digits-3-on-ec2/) | |
 |[NVIDIA DIGITS 3 on EC2](http://www.learnopencv.com/nvidia-digits-3-on-ec2/) | |
-|[Homography Examples using OpenCV ( Python / C ++ )](http://www.learnopencv.com/homography-examples-using-opencv-python-c/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Homography) |
 |[Filling holes in an image using OpenCV ( Python / C++ )](http://www.learnopencv.com/filling-holes-in-an-image-using-opencv-python-c/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Holes) |
 |[OpenCV (C++ vs Python) vs MATLAB for Computer Vision](http://www.learnopencv.com/opencv-c-vs-python-vs-matlab-for-computer-vision/) | |
 |[Facial Landmark Detection](http://www.learnopencv.com/facial-landmark-detection/) | |
@@ -518,7 +519,6 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 |[Non-Photorealistic Rendering using OpenCV ( Python, C++ )](http://www.learnopencv.com/non-photorealistic-rendering-using-opencv-python-c/) | [Code](https://github.com/spmallick/learnopencv/tree/master/NonPhotorealisticRendering) |
 |[Seamless Cloning using OpenCV ( Python , C++ )](http://www.learnopencv.com/seamless-cloning-using-opencv-python-cpp/) | [Code](https://github.com/spmallick/learnopencv/tree/master/SeamlessCloning) |
 |[OpenCV Threshold ( Python , C++ )](http://www.learnopencv.com/opencv-threshold-python-cpp/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Threshold) |
-|[Blob Detection Using OpenCV ( Python, C++ )](http://www.learnopencv.com/blob-detection-using-opencv-python-c/) | [Code](https://github.com/spmallick/learnopencv/tree/master/BlobDetector) |
 |[Turn your OpenCV Code into a Web API in under 10 minutes — Part 1](http://www.learnopencv.com/turn-your-opencv-Code-into-a-web-api-in-under-10-minutes-part-1/) | |
 |[How to compile OpenCV sample Code ?](http://www.learnopencv.com/how-to-compile-opencv-sample-Code/) | |
 |[Install OpenCV 3 on Yosemite ( OSX 10.10.x )](http://www.learnopencv.com/install-opencv-3-on-yosemite-osx-10-10-x/) | |
