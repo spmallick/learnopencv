@@ -1,10 +1,139 @@
-# Color Spaces in OpenCV C++ and Python
+# [Color Spaces in OpenCV with Python and C++](https://learnopencv.com/color-spaces-in-opencv-cpp-python/)
 
-The repository contains code for the blog post [Color Spaces in OpenCV C++ and Python](https://www.learnopencv.com/color-spaces-in-opencv-cpp-python/).
+[<img src="https://cdn.learnopencv.com/wp-content/uploads/2017/05/04104101/color-change-illumination.gif" alt="Rubik's Cube colors under changing illumination" width="640">](https://learnopencv.com/color-spaces-in-opencv-cpp-python/)
 
-<p align="center"><img src="https://learnopencv.com/wp-content/uploads/2017/05/color-change-illumination.gif" alt="OpenCV Color Spaces"></p>
+This companion project explores BGR, HSV, YCrCb, and Lab encodings and uses
+them for color segmentation under changing illumination. It includes:
 
-[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/scl/fo/q7kiq1o8xco4b9407d3yo/h?dl=1&rlkey=gs2vchtmmawz3ltaem99lojxy)
+- a pixel inspector in Python and C++;
+- a headless or visual segmentation program in Python and C++;
+- a vectorized density-plot analysis for the bundled Rubik's Cube samples;
+- deterministic Python tests and CTest validation.
+
+OpenCV reads ordinary color images in **BGR channel order**. For 8-bit HSV,
+hue is encoded from 0 through 179; the segmentation helpers support wrapped hue
+ranges such as 170-179 plus 0-10 for red.
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://github.com/spmallick/learnopencv/releases/download/color-spaces-opencv-2026.07.26/ColorSpaces-2026.07.26.zip)
+
+## Requirements
+
+- Python 3.10 or newer
+- NumPy 1.23 or newer
+- OpenCV 4.x or OpenCV 5.x
+- Matplotlib 3.7 or newer for the density plots
+- CMake 3.16 or newer and a C++17 compiler for C++
+
+```bash
+python3 -m pip install -r requirements.txt
+```
+
+## Python examples
+
+Inspect the center pixel and save an annotated image without opening a window:
+
+```bash
+python3 interactiveColorDetect.py \
+  --no-display \
+  --output outputs/color-values.png
+```
+
+Segment yellow cube pieces in HSV while keeping the visualization in BGR:
+
+```bash
+python3 interactiveColorSegment.py \
+  --space HSV \
+  --lower 20 80 40 \
+  --upper 45 255 255 \
+  --no-display \
+  --output-dir outputs
+```
+
+Generate a density comparison for all yellow samples:
+
+```bash
+python3 dataAnalysis.py \
+  --color yellow \
+  --zoom \
+  --output outputs/yellow-density.png
+```
+
+Omit `--no-display` from the first two commands to use their desktop windows.
+Both programs accept `--input /path/to/image`; bundled defaults are resolved
+from the script directory, not the caller's working directory.
+
+## C++ build and examples
+
+```bash
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build --config Release
+
+./build/interactiveColorDetect \
+  --no-display \
+  --output outputs/color-values-cpp.png
+
+./build/interactiveColorSegment \
+  --space HSV \
+  --lower 20 80 40 \
+  --upper 45 255 255 \
+  --no-display \
+  --output-dir outputs
+```
+
+Use `-DOpenCV_DIR=/path/to/lib/cmake/opencv4` or the corresponding OpenCV 5
+configuration directory to select a specific installation.
+
+## Validation and tests
+
+The stable one-pixel conversion regression is:
+
+| Encoding | Values |
+|---|---|
+| BGR | `[40, 158, 16]` |
+| HSV | `[65, 229, 158]` |
+| YCrCb | `[102, 67, 93]` |
+| Lab | `[145, 71, 177]` |
+
+The test suite also checks all 10 cube images and 56 cropped piece images,
+HSV hue wrapping, headless output files, malformed inputs, and execution from
+an unrelated working directory.
+
+```bash
+python3 -m unittest discover -s tests -v
+ctest --test-dir build --output-on-failure
+```
+
+The direct validation commands are:
+
+```bash
+python3 interactiveColorDetect.py --validate --no-display
+python3 interactiveColorSegment.py --validate --no-display
+python3 dataAnalysis.py --validate
+./build/interactiveColorDetect --validate --no-display
+./build/interactiveColorSegment --validate --no-display
+```
+
+## Project layout
+
+```text
+ColorSpaces/
+├── CMakeLists.txt
+├── README.md
+├── color_spaces.hpp
+├── color_spaces.py
+├── dataAnalysis.py
+├── interactiveColorDetect.cpp
+├── interactiveColorDetect.py
+├── interactiveColorSegment.cpp
+├── interactiveColorSegment.py
+├── requirements.txt
+├── images/
+│   └── rub00.jpg ... rub09.jpg
+├── pieces/
+│   └── 56 cropped color samples
+└── tests/
+    └── test_color_spaces.py
+```
 
 ---
 

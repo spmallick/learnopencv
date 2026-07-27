@@ -1,355 +1,461 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <stdlib.h>
+#include "face_detection.hpp"
 
-#include <opencv2/core.hpp>
-#include <opencv2/core/version.hpp>
-#include <opencv2/imgproc.hpp>
 #include <opencv2/highgui.hpp>
-#include <opencv2/objdetect.hpp>
+#include <opencv2/imgcodecs.hpp>
 #include <opencv2/videoio.hpp>
 
-#if(CV_MAJOR_VERSION >= 3)
-# include <opencv2/dnn.hpp>
+#include <algorithm>
+#include <cctype>
+#include <cmath>
+#include <filesystem>
+#include <iostream>
+#include <memory>
+#include <set>
+#include <sstream>
+#include <stdexcept>
+#include <string>
+#include <vector>
 
-using namespace cv::dnn;
+#ifndef FACE_SOURCE_DIR
+#define FACE_SOURCE_DIR "."
 #endif
 
-#if(CV_MAJOR_VERSION < 3)
-# include <dlib/opencv.h>
-# include <dlib/image_processing.h>
-# include <dlib/dnn.h>
-# include <dlib/data_io.h>
-# include <dlib/image_processing/frontal_face_detector.h>
+namespace {
 
-using namespace dlib;
-#endif
+struct Options {
+    std::filesystem::path input =
+        std::filesystem::path(FACE_SOURCE_DIR) / "videos" / "baby.mp4";
+    std::filesystem::path model =
+        std::filesystem::path(FACE_SOURCE_DIR) /
+        "models" /
+        "face_detection_yunet_2026may.onnx";
+    std::filesystem::path cascade =
+        std::filesystem::path(FACE_SOURCE_DIR) /
+        "models" /
+        "haarcascade_frontalface_default.xml";
+    std::filesystem::path output_dir =
+        std::filesystem::path(FACE_SOURCE_DIR) / "output-comparison";
+    std::string mode = "auto";
+    std::string detectors = "yunet";
+    std::string device = "cpu";
+    float score_threshold = 0.7F;
+    float nms_threshold = 0.3F;
+    int top_k = 5000;
+    int max_frames = 0;
+    bool display = false;
+    bool validate = false;
+    bool help = false;
+};
 
-#include <boost/algorithm/string.hpp>
-
-using namespace cv;
-using namespace std;
-
-/** Global variables */
-String faceCascadePath;
-CascadeClassifier faceCascade;
-
-void detectFaceOpenCVHaar(CascadeClassifier faceCascade, Mat &frameOpenCVHaar, int inHeight=300, int inWidth=0)
-{
-    int frameHeight = frameOpenCVHaar.rows;
-    int frameWidth = frameOpenCVHaar.cols;
-    if (!inWidth)
-        inWidth = (int)((frameWidth / (float)frameHeight) * inHeight);
-
-    float scaleHeight = frameHeight / (float)inHeight;
-    float scaleWidth = frameWidth / (float)inWidth;
-
-    Mat frameOpenCVHaarSmall, frameGray;
-    resize(frameOpenCVHaar, frameOpenCVHaarSmall, Size(inWidth, inHeight));
-    cvtColor(frameOpenCVHaarSmall, frameGray, COLOR_BGR2GRAY);
-
-    std::vector<Rect> faces;
-    faceCascade.detectMultiScale(frameGray, faces);
-
-    for ( size_t i = 0; i < faces.size(); i++ )
-    {
-        int x1 = (int)(faces[i].x * scaleWidth);
-        int y1 = (int)(faces[i].y * scaleHeight);
-        int x2 = (int)((faces[i].x + faces[i].width) * scaleWidth);
-        int y2 = (int)((faces[i].y + faces[i].height) * scaleHeight);
-        cv::rectangle(frameOpenCVHaar, Point(x1, y1), Point(x2, y2), Scalar(0,255,0), (int)(frameHeight/150.0), 4);
+std::string requireValue(int& index, int argc, char** argv) {
+    if (index + 1 >= argc) {
+        throw std::invalid_argument(
+            "Missing value after " + std::string(argv[index]));
     }
+    ++index;
+    return argv[index];
 }
 
-#if(CV_MAJOR_VERSION >= 3)
-const size_t inWidth = 300;
-const size_t inHeight = 300;
-const double inScaleFactor = 1.0;
-const float confidenceThreshold = 0.7;
-const cv::Scalar meanVal(104.0, 177.0, 123.0);
-
-
-const std::string caffeConfigFile = "models/deploy.prototxt";
-const std::string caffeWeightFile = "models/res10_300x300_ssd_iter_140000_fp16.caffemodel";
-
-const std::string tensorflowConfigFile = "models/opencv_face_detector.pbtxt";
-const std::string tensorflowWeightFile = "models/opencv_face_detector_uint8.pb";
-
-void detectFaceOpenCVDNN(Net net, Mat &frameOpenCVDNN, string framework="caffe")
-{
-    int frameHeight = frameOpenCVDNN.rows;
-    int frameWidth = frameOpenCVDNN.cols;
-    cv::Mat inputBlob;
-    if (framework == "caffe")
-        inputBlob = cv::dnn::blobFromImage(frameOpenCVDNN, inScaleFactor, cv::Size(inWidth, inHeight), meanVal, false, false);
-    else
-        inputBlob = cv::dnn::blobFromImage(frameOpenCVDNN, inScaleFactor, cv::Size(inWidth, inHeight), meanVal, true, false);
-
-    net.setInput(inputBlob, "data");
-    cv::Mat detection = net.forward("detection_out");
-
-    cv::Mat detectionMat(detection.size[2], detection.size[3], CV_32F, detection.ptr<float>());
-
-    for(int i = 0; i < detectionMat.rows; i++)
-    {
-        float confidence = detectionMat.at<float>(i, 2);
-
-        if(confidence > confidenceThreshold)
-        {
-            int x1 = static_cast<int>(detectionMat.at<float>(i, 3) * frameWidth);
-            int y1 = static_cast<int>(detectionMat.at<float>(i, 4) * frameHeight);
-            int x2 = static_cast<int>(detectionMat.at<float>(i, 5) * frameWidth);
-            int y2 = static_cast<int>(detectionMat.at<float>(i, 6) * frameHeight);
-
-            cv::rectangle(frameOpenCVDNN, cv::Point(x1, y1), cv::Point(x2, y2), cv::Scalar(0, 255, 0),(int)(frameHeight/150.0), 4);
+Options parseOptions(int argc, char** argv) {
+    Options options;
+    for (int index = 1; index < argc; ++index) {
+        const std::string argument = argv[index];
+        if (argument == "--help" || argument == "-h") {
+            options.help = true;
+        } else if (argument == "--input") {
+            options.input = requireValue(index, argc, argv);
+        } else if (argument == "--model") {
+            options.model = requireValue(index, argc, argv);
+        } else if (argument == "--cascade") {
+            options.cascade = requireValue(index, argc, argv);
+        } else if (argument == "--output-dir") {
+            options.output_dir = requireValue(index, argc, argv);
+        } else if (argument == "--mode") {
+            options.mode = requireValue(index, argc, argv);
+        } else if (argument == "--detectors") {
+            options.detectors = requireValue(index, argc, argv);
+        } else if (argument == "--device") {
+            options.device = requireValue(index, argc, argv);
+        } else if (argument == "--score-threshold") {
+            options.score_threshold =
+                std::stof(requireValue(index, argc, argv));
+        } else if (argument == "--nms-threshold") {
+            options.nms_threshold =
+                std::stof(requireValue(index, argc, argv));
+        } else if (argument == "--top-k") {
+            options.top_k =
+                std::stoi(requireValue(index, argc, argv));
+        } else if (argument == "--max-frames") {
+            options.max_frames =
+                std::stoi(requireValue(index, argc, argv));
+        } else if (argument == "--display") {
+            options.display = true;
+        } else if (argument == "--no-display") {
+            options.display = false;
+        } else if (argument == "--validate") {
+            options.validate = true;
+        } else {
+            throw std::invalid_argument("Unknown argument: " + argument);
         }
     }
-}
-#endif
-
-#if(CV_MAJOR_VERSION < 3)
-void detectFaceDlibHog(frontal_face_detector hogFaceDetector, Mat &frameDlibHog, int inHeight=300, int inWidth=0)
-{
-
-    int frameHeight = frameDlibHog.rows;
-    int frameWidth = frameDlibHog.cols;
-    if (!inWidth)
-        inWidth = (int)((frameWidth / (float)frameHeight) * inHeight);
-
-    float scaleHeight = frameHeight / (float)inHeight;
-    float scaleWidth = frameWidth / (float)inWidth;
-
-    Mat frameDlibHogSmall;
-    resize(frameDlibHog, frameDlibHogSmall, Size(inWidth, inHeight));
-
-    // Convert OpenCV image format to Dlib's image format
-    cv_image<bgr_pixel> dlibIm(frameDlibHogSmall);
-
-    // Detect faces in the image
-    std::vector<dlib::rectangle> faceRects = hogFaceDetector(dlibIm);
-
-    for ( size_t i = 0; i < faceRects.size(); i++ )
-    {
-        int x1 = (int)(faceRects[i].left() * scaleWidth);
-        int y1 = (int)(faceRects[i].top() * scaleHeight);
-        int x2 = (int)(faceRects[i].right() * scaleWidth);
-        int y2 = (int)(faceRects[i].bottom() * scaleHeight);
-        cv::rectangle(frameDlibHog, Point(x1, y1), Point(x2, y2), Scalar(0,255,0), (int)(frameHeight/150.0), 4);
+    if (options.mode != "auto" &&
+        options.mode != "image" &&
+        options.mode != "video") {
+        throw std::invalid_argument(
+            "--mode must be auto, image, or video.");
     }
+    if (options.max_frames < 0) {
+        throw std::invalid_argument("--max-frames cannot be negative.");
+    }
+    return options;
 }
 
-// Network Definition
-/////////////////////////////////////////////////////////////////////////////////////////////////////
-template <long num_filters, typename SUBNET> using con5d = con<num_filters,5,5,2,2,SUBNET>;
-template <long num_filters, typename SUBNET> using con5  = con<num_filters,5,5,1,1,SUBNET>;
+void printHelp(const char* executable) {
+    std::cout
+        << "Usage: " << executable << " [options]\n"
+        << "  --input PATH             Input image or video\n"
+        << "  --mode auto|image|video  Input type (default: auto)\n"
+        << "  --model PATH             Dynamic YuNet ONNX model\n"
+        << "  --cascade PATH           Optional Haar XML\n"
+        << "  --detectors LIST         Comma-separated yunet,haar,hog\n"
+        << "  --output-dir PATH        Comparison output directory\n"
+        << "  --device cpu|cuda        YuNet DNN device\n"
+        << "  --score-threshold VALUE  YuNet score threshold\n"
+        << "  --nms-threshold VALUE    YuNet NMS threshold\n"
+        << "  --top-k N                YuNet boxes before NMS\n"
+        << "  --max-frames N           Video only; zero means complete\n"
+        << "  --display                Open an interactive window\n"
+        << "  --no-display             Run headlessly (default)\n"
+        << "  --validate               Check stable output invariants\n";
+}
 
-template <typename SUBNET> using downsampler  = relu<affine<con5d<32, relu<affine<con5d<32, relu<affine<con5d<16,SUBNET>>>>>>>>>;
-template <typename SUBNET> using rcon5  = relu<affine<con5<45,SUBNET>>>;
+std::string trim(std::string value) {
+    const auto not_space = [](unsigned char character) {
+        return !std::isspace(character);
+    };
+    value.erase(
+        value.begin(),
+        std::find_if(value.begin(), value.end(), not_space));
+    value.erase(
+        std::find_if(value.rbegin(), value.rend(), not_space).base(),
+        value.end());
+    return value;
+}
 
-using net_type = loss_mmod<con<1,9,9,1,1,rcon5<rcon5<rcon5<downsampler<input_rgb_image_pyramid<pyramid_down<6>>>>>>>>;
-/////////////////////////////////////////////////////////////////////////////////////////////////////
+std::string lower(std::string value) {
+    std::transform(
+        value.begin(),
+        value.end(),
+        value.begin(),
+        [](unsigned char character) {
+            return static_cast<char>(std::tolower(character));
+        });
+    return value;
+}
 
-void detectFaceDlibMMOD(net_type mmodFaceDetector, Mat &frameDlibMmod, int inHeight=300, int inWidth=0)
-{
+std::vector<std::string> splitDetectorNames(const std::string& list) {
+    std::vector<std::string> names;
+    std::set<std::string> seen;
+    std::istringstream stream(list);
+    std::string item;
+    while (std::getline(stream, item, ',')) {
+        const std::string name = lower(trim(item));
+        if (name.empty()) {
+            continue;
+        }
+        if (!seen.insert(name).second) {
+            throw std::invalid_argument(
+                "--detectors cannot contain duplicates.");
+        }
+        names.push_back(name);
+    }
+    if (names.empty()) {
+        throw std::invalid_argument(
+            "--detectors must name at least one detector.");
+    }
+    return names;
+}
 
-    int frameHeight = frameDlibMmod.rows;
-    int frameWidth = frameDlibMmod.cols;
-    if (!inWidth)
-        inWidth = (int)((frameWidth / (float)frameHeight) * inHeight);
+std::vector<std::unique_ptr<learnopencv::face::Detector>> buildDetectors(
+    const Options& options) {
+    std::vector<std::unique_ptr<learnopencv::face::Detector>> detectors;
+    for (const std::string& name : splitDetectorNames(options.detectors)) {
+        if (name == "yunet") {
+            detectors.push_back(
+                std::make_unique<learnopencv::face::YuNetDetector>(
+                    options.model,
+                    options.score_threshold,
+                    options.nms_threshold,
+                    options.top_k,
+                    options.device));
+            continue;
+        }
+        if (name == "haar") {
+#if CV_VERSION_MAJOR < 5
+            detectors.push_back(
+                std::make_unique<learnopencv::face::HaarDetector>(
+                    options.cascade));
+            continue;
+#else
+            throw std::runtime_error(
+                "Haar is optional and unavailable in this OpenCV 5 build.");
+#endif
+        }
+        if (name == "hog" || name == "dlib" || name == "dlib-hog") {
+#ifdef FACE_WITH_DLIB
+            detectors.push_back(
+                std::make_unique<learnopencv::face::DlibHogDetector>());
+            continue;
+#else
+            throw std::runtime_error(
+                "dlib was not found when this target was configured.");
+#endif
+        }
+        throw std::invalid_argument(
+            "Unknown detector '" + name +
+            "'. Choose yunet, haar, or hog.");
+    }
+    return detectors;
+}
 
-    float scaleHeight = frameHeight / (float)inHeight;
-    float scaleWidth = frameWidth / (float)inWidth;
+std::string inferMode(
+    const std::filesystem::path& input,
+    const std::string& requested) {
+    if (requested != "auto") {
+        return requested;
+    }
+    const std::string extension = lower(input.extension().string());
+    if (extension == ".bmp" ||
+        extension == ".jpeg" ||
+        extension == ".jpg" ||
+        extension == ".png" ||
+        extension == ".tif" ||
+        extension == ".tiff" ||
+        extension == ".webp") {
+        return "image";
+    }
+    return "video";
+}
 
-    Mat frameDlibMmodSmall;
-    resize(frameDlibMmod, frameDlibMmodSmall, Size(inWidth, inHeight));
+std::pair<cv::Mat, std::vector<int>> compareFrame(
+    const cv::Mat& frame,
+    std::vector<std::unique_ptr<learnopencv::face::Detector>>& detectors,
+    bool should_validate) {
+    std::vector<cv::Mat> panels;
+    std::vector<int> counts;
+    panels.reserve(detectors.size());
+    counts.reserve(detectors.size());
+    for (const auto& detector : detectors) {
+        const std::vector<learnopencv::face::Detection> detections =
+            detector->detect(frame);
+        if (should_validate) {
+            learnopencv::face::validate(frame, detections);
+        }
+        panels.push_back(
+            learnopencv::face::draw(frame, detections, detector->name()));
+        counts.push_back(static_cast<int>(detections.size()));
+    }
+    cv::Mat comparison = learnopencv::face::joinPanels(panels);
+    const cv::Size expected_size{
+        frame.cols * static_cast<int>(detectors.size()),
+        frame.rows,
+    };
+    if (comparison.size() != expected_size) {
+        throw std::runtime_error(
+            "Comparison panel dimensions are incorrect.");
+    }
+    return {comparison, counts};
+}
 
-    // Convert OpenCV image format to Dlib's image format
-    cv_image<bgr_pixel> dlibIm(frameDlibMmodSmall);
-    matrix<rgb_pixel> dlibMatrix;
-    assign_image(dlibMatrix, dlibIm);
+void printCounts(
+    const std::string& prefix,
+    const std::vector<std::unique_ptr<learnopencv::face::Detector>>& detectors,
+    const std::vector<long long>& counts) {
+    std::cout << prefix;
+    for (std::size_t index = 0; index < detectors.size(); ++index) {
+        std::cout
+            << ' ' << detectors[index]->name()
+            << '=' << counts[index];
+    }
+    std::cout << '\n';
+}
 
-    // Detect faces in the image
-    std::vector<dlib::mmod_rect> faceRects = mmodFaceDetector(dlibMatrix);
-
-    for ( size_t i = 0; i < faceRects.size(); i++ )
-    {
-        int x1 = (int)(faceRects[i].rect.left() * scaleWidth);
-        int y1 = (int)(faceRects[i].rect.top() * scaleHeight);
-        int x2 = (int)(faceRects[i].rect.right() * scaleWidth);
-        int y2 = (int)(faceRects[i].rect.bottom() * scaleHeight);
-        cv::rectangle(frameDlibMmod, Point(x1, y1), Point(x2, y2), Scalar(0,255,0), (int)(frameHeight/150.0), 4);
+void validateWrittenVideo(
+    const std::filesystem::path& output_path,
+    const cv::Size& expected_size,
+    int expected_frames) {
+    cv::VideoCapture capture(output_path.string());
+    if (!capture.isOpened()) {
+        throw std::runtime_error(
+            "Could not reopen output video: " + output_path.string());
+    }
+    const cv::Size actual_size{
+        cvRound(capture.get(cv::CAP_PROP_FRAME_WIDTH)),
+        cvRound(capture.get(cv::CAP_PROP_FRAME_HEIGHT)),
+    };
+    const int actual_frames =
+        cvRound(capture.get(cv::CAP_PROP_FRAME_COUNT));
+    capture.release();
+    if (actual_size != expected_size || actual_frames != expected_frames) {
+        throw std::runtime_error(
+            "Saved comparison video has unexpected geometry or frame count.");
     }
 }
-#endif
 
-int main( int argc, const char** argv )
-{
-    faceCascadePath = "models/haarcascade_frontalface_default.xml";
+void runImage(
+    const Options& options,
+    std::vector<std::unique_ptr<learnopencv::face::Detector>>& detectors) {
+    const cv::Mat frame =
+        cv::imread(options.input.string(), cv::IMREAD_COLOR);
+    if (frame.empty()) {
+        throw std::runtime_error(
+            "Could not read input image: " + options.input.string());
+    }
+    auto [comparison, counts] =
+        compareFrame(frame, detectors, options.validate);
 
-    if(!faceCascade.load(faceCascadePath))
-    {
-        printf("--(!)Error loading face cascade\n");
-        return -1;
+    std::filesystem::create_directories(options.output_dir);
+    const std::filesystem::path output_path =
+        options.output_dir / "comparison-image.jpg";
+    if (!cv::imwrite(output_path.string(), comparison)) {
+        throw std::runtime_error(
+            "Could not write output image: " + output_path.string());
+    }
+    if (options.validate) {
+        const cv::Mat saved =
+            cv::imread(output_path.string(), cv::IMREAD_COLOR);
+        if (saved.empty() || saved.size() != comparison.size()) {
+            throw std::runtime_error(
+                "Saved comparison image is unreadable or resized.");
+        }
+        std::cout
+            << "VALIDATION PASSED: mode=image panels="
+            << detectors.size()
+            << " size=" << comparison.cols
+            << 'x' << comparison.rows << '\n';
+    }
+    if (options.display) {
+        cv::imshow("Face Detection Comparison", comparison);
+        cv::waitKey(0);
+        cv::destroyAllWindows();
     }
 
-#if(CV_MAJOR_VERSION < 3)
-    frontal_face_detector hogFaceDetector = get_frontal_face_detector();
-    String mmodModelPath = "models/mmod_human_face_detector.dat";
-    net_type mmodFaceDetector;
-    deserialize(mmodModelPath) >> mmodFaceDetector;
-#endif
+    std::vector<long long> totals(
+        counts.begin(), counts.end());
+    printCounts("COMPARISON RESULT:", detectors, totals);
+    std::cout << "Saved output: " << output_path << '\n';
+}
 
-    string videoFileName;
-    string device;
-    string framework;
-    // Take arguments from command line
-    if (argc == 4)
-    {
-        videoFileName = argv[1];
-        device = argv[2];
-        framework = argv[3];
+void runVideo(
+    const Options& options,
+    std::vector<std::unique_ptr<learnopencv::face::Detector>>& detectors) {
+    cv::VideoCapture capture(options.input.string());
+    if (!capture.isOpened()) {
+        throw std::runtime_error(
+            "Could not open input video: " + options.input.string());
     }
-    else if (argc == 3)
-    {
-        videoFileName = argv[1];
-        device = argv[2];
-        framework = "caffe";
+    const cv::Size input_size{
+        cvRound(capture.get(cv::CAP_PROP_FRAME_WIDTH)),
+        cvRound(capture.get(cv::CAP_PROP_FRAME_HEIGHT)),
+    };
+    if (input_size.width <= 0 || input_size.height <= 0) {
+        throw std::runtime_error("Input video has invalid dimensions.");
     }
-    else if (argc == 2)
-    {
-        videoFileName = argv[1];
-        device = "cpu";
-        framework = "caffe";
-    }
-    else
-    {
-        videoFileName = "";
-        device = "gpu";
-        framework = "caffe";
+    const cv::Size output_size{
+        input_size.width * static_cast<int>(detectors.size()),
+        input_size.height,
+    };
+    double fps = capture.get(cv::CAP_PROP_FPS);
+    if (!std::isfinite(fps) || fps <= 0.0) {
+        fps = 25.0;
     }
 
-    boost::to_upper(device);
-    cout << "OpenCV DNN Configuration:" << endl;
-    cout << "Device - "<< device << endl;
-    if (framework == "caffe")
-        cout << "Framework - Caffe" << endl;
-    else
-        cout << "Framework - TensorFlow" << endl;
-    if (videoFileName == "")
-        cout << "No video found, using camera stream" << endl;
-    else
-        cout << "Video file - " << videoFileName << endl;
-
-    Net net;
-
-    if (framework == "caffe")
-        net = cv::dnn::readNetFromCaffe(caffeConfigFile, caffeWeightFile);
-    else
-        net = cv::dnn::readNetFromTensorflow(tensorflowWeightFile, tensorflowConfigFile);
-
-#if (CV_MAJOR_VERSION >= 4)
-    if (device == "CPU")
-    {
-        net.setPreferableBackend(DNN_TARGET_CPU);
-        cout << "Device - "<< device << endl;
+    std::filesystem::create_directories(options.output_dir);
+    const std::filesystem::path output_path =
+        options.output_dir / "comparison-video.avi";
+    cv::VideoWriter writer(
+        output_path.string(),
+        cv::VideoWriter::fourcc('M', 'J', 'P', 'G'),
+        fps,
+        output_size);
+    if (!writer.isOpened()) {
+        throw std::runtime_error(
+            "Could not create output video: " + output_path.string());
     }
-    else
-    {
-        net.setPreferableBackend(DNN_BACKEND_CUDA);
-        net.setPreferableTarget(DNN_TARGET_CUDA);
-        cout << "Device - "<< device << endl;
-    }
-#elif(CV_MAJOR_VERSION == 3)
-    // OpenCV 3.4.x does not support GPU backend
-    net.setPreferableBackend(DNN_BACKEND_DEFAULT);
-    device = "cpu";
-    cout << "Device - "<< device << endl;
-#endif
 
-    cv::VideoCapture source;
-    if (videoFileName != "")
-        source.open(videoFileName);
-    else
-        source.open(0, CAP_V4L);
+    int processed = 0;
+    std::vector<long long> totals(detectors.size(), 0);
+    cv::Mat frame;
+    while (capture.read(frame)) {
+        if (frame.empty()) {
+            throw std::runtime_error(
+                "Decoded an empty frame at index " +
+                std::to_string(processed) + ".");
+        }
+        auto [comparison, counts] =
+            compareFrame(frame, detectors, options.validate);
+        writer.write(comparison);
+        ++processed;
+        for (std::size_t index = 0; index < totals.size(); ++index) {
+            totals[index] += counts[index];
+        }
 
-    Mat frame;
-
-    int frame_count = 0;
-    double tt_opencvHaar = 0;
-    double tt_opencvDNN = 0;
-    double tt_dlibHog = 0;
-    double tt_dlibMmod = 0;
-
-    namedWindow("Face Detection Comparison", WINDOW_NORMAL);
-    double t = 0;
-    while (true)
-    {
-        source >> frame;
-        if(frame.empty())
+        if (options.display) {
+            cv::imshow("Face Detection Comparison", comparison);
+            if (cv::waitKey(1) == 27) {
+                break;
+            }
+        }
+        if (options.max_frames > 0 &&
+            processed >= options.max_frames) {
             break;
-
-        frame_count++;
-
-        t = cv::getTickCount();
-        Mat frameOpenCVHaar = frame.clone();
-        detectFaceOpenCVHaar ( faceCascade, frameOpenCVHaar );
-        tt_opencvHaar += ((double)cv::getTickCount() - t)/cv::getTickFrequency();
-        double fpsOpencvHaar = frame_count/tt_opencvHaar;
-        putText(frameOpenCVHaar, format("OpenCV HAAR; FPS = %.2f",fpsOpencvHaar), Point(10, 50), FONT_HERSHEY_SIMPLEX, 1.3, Scalar(0, 0, 255), 4);
-
-        Mat frameOpenCVDNN = frame.clone();
-#if(CV_MAJOR_VERSION >= 3)
-        t = cv::getTickCount();
-        detectFaceOpenCVDNN (net, frameOpenCVDNN, framework);
-        tt_opencvDNN += ((double)cv::getTickCount() - t)/cv::getTickFrequency();
-        double fpsOpencvDNN = frame_count/tt_opencvDNN;
-        putText(frameOpenCVDNN, format("OpenCV DNN %s FPS = %.2f", device.c_str(), fpsOpencvDNN), Point(10, 50), FONT_HERSHEY_SIMPLEX, 1.3, Scalar(0, 0, 255), 4);
-#else
-        putText(frameOpenCVDNN, "OpenCV DNN NOT SUPPORTED", Point(10, 50), FONT_HERSHEY_SIMPLEX, 1.3, Scalar(0, 0, 255), 4);
-#endif
-
-#if(CV_MAJOR_VERSION < 3)
-        t = cv::getTickCount();
-        Mat frameDlibHog = frame.clone();
-        detectFaceDlibHog ( hogFaceDetector, frameDlibHog );
-        tt_dlibHog += ((double)cv::getTickCount() - t)/cv::getTickFrequency();
-        double fpsDlibHog = frame_count/tt_dlibHog;
-        putText(frameDlibHog, format("DLIB HoG; FPS = %.2f",fpsDlibHog), Point(10, 50), FONT_HERSHEY_SIMPLEX, 1.3, Scalar(0, 0, 255), 4);
-
-        t = cv::getTickCount();
-        Mat frameDlibMmod = frame.clone();
-        detectFaceDlibMMOD ( mmodFaceDetector, frameDlibMmod );
-        tt_dlibMmod += ((double)cv::getTickCount() - t)/cv::getTickFrequency();
-        double fpsDlibMmod = frame_count/tt_dlibMmod;
-        putText(frameDlibMmod, format("DLIB MMOD; FPS = %.2f",fpsDlibMmod), Point(10, 50), FONT_HERSHEY_SIMPLEX, 1.3, Scalar(0, 0, 255), 4);
-#endif
-
-        Mat top, bottom, combined;
-        hconcat(frameOpenCVHaar, frameOpenCVDNN, top);
-#if(CV_MAJOR_VERSION < 3)
-        hconcat(frameDlibHog, frameDlibMmod, bottom);
-        vconcat(top, bottom, combined);
-#else
-        combined = top;
-#endif
-
-        cv::resize(combined, combined, Size(), .5, .5);
-        imshow("Face Detection Comparison", combined);
-
-        int k = waitKey(5);
-        if(k == 27)
-        {
-          destroyAllWindows();
-          break;
         }
+    }
+    capture.release();
+    writer.release();
+    if (options.display) {
+        cv::destroyAllWindows();
+    }
+    if (processed == 0) {
+        throw std::runtime_error("No frames were decoded.");
+    }
+    if (options.validate) {
+        validateWrittenVideo(output_path, output_size, processed);
+        std::cout
+            << "VALIDATION PASSED: mode=video panels="
+            << detectors.size()
+            << " frames=" << processed
+            << " size=" << output_size.width
+            << 'x' << output_size.height << '\n';
+    }
+    printCounts(
+        "COMPARISON VIDEO RESULT: frames=" +
+            std::to_string(processed),
+        detectors,
+        totals);
+    std::cout << "Saved output: " << output_path << '\n';
+}
 
-        if(frame_count == 1)
-        {
-            tt_opencvHaar = 0;
-            tt_opencvDNN = 0;
-            tt_dlibHog = 0;
-            tt_dlibMmod = 0;
+}  // namespace
+
+int main(int argc, char** argv) {
+    try {
+        const Options options = parseOptions(argc, argv);
+        if (options.help) {
+            printHelp(argv[0]);
+            return 0;
         }
+        auto detectors = buildDetectors(options);
+        const std::string mode = inferMode(options.input, options.mode);
+        if (mode == "image") {
+            runImage(options, detectors);
+        } else {
+            runVideo(options, detectors);
+        }
+        std::cout << "OpenCV version: " << CV_VERSION << '\n';
+        return 0;
+    } catch (const std::exception& error) {
+        std::cerr << "ERROR: " << error.what() << '\n';
+        return 2;
     }
 }

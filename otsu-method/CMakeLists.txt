@@ -1,34 +1,26 @@
-#SPECIFY THE MINIMUM VERSION OF CMAKE REQUIRED
-cmake_minimum_required(VERSION 2.8.12)
+cmake_minimum_required(VERSION 3.16)
 
-#SPECIFY YOUR PROJECT NAME
-PROJECT(Project_Name)
+project(otsu_thresholding LANGUAGES CXX)
 
-#SET PATH TO OPENCV CMAKE CONFIG FILES
-#SET(OpenCV_DIR C:\\Users\\Administrator\\opencv-4.1.0\\Installation\\x64\\vc15\\staticlib)
+include(CTest)
 
-#ENABLE C++11
-SET(CMAKE_CXX_STANDARD 11)
-SET(CMAKE_CXX_STANDARD_REQUIRED TRUE)
+find_package(OpenCV REQUIRED COMPONENTS core imgproc imgcodecs)
 
-#SET CMAKE CXX FLAGS
-SET(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MT")
-SET(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /MTd")
+add_library(otsu_options INTERFACE)
+target_compile_features(otsu_options INTERFACE cxx_std_17)
+target_include_directories(otsu_options INTERFACE "${CMAKE_CURRENT_SOURCE_DIR}")
+target_compile_definitions(
+    otsu_options
+    INTERFACE OTSU_SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}"
+)
 
+foreach(target_name IN ITEMS otsu_implementation otsu_method)
+    add_executable("${target_name}" "${target_name}.cpp")
+    target_link_libraries("${target_name}" PRIVATE otsu_options ${OpenCV_LIBS})
+endforeach()
 
-#MAKE SURE OPENCV IS INSTALLED CORRECTLY
-find_package( OpenCV REQUIRED )
-
-#INCLUDE OPENCV DIRECTORIES
-include_directories( ${OpenCV_INCLUDE_DIRS})
-
-#MACRO TO COMPILE CPP FILES
-MACRO(add_example name)
-  ADD_EXECUTABLE(${name} ${name}.cpp)
-  TARGET_LINK_LIBRARIES(${name} ${OpenCV_LIBS} )
-ENDMACRO()
-
-#COMPILE CPP FILES USING THIS LINE
-add_example(otsu_implementation)
-add_example(otsu_method)
-#add_example(sampleCode2) and so on
+if(BUILD_TESTING)
+    add_executable(test_otsu tests/test_otsu.cpp)
+    target_link_libraries(test_otsu PRIVATE otsu_options ${OpenCV_LIBS})
+    add_test(NAME otsu_cpp_regression COMMAND test_otsu)
+endif()

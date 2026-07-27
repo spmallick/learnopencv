@@ -1,104 +1,78 @@
+#include <filesystem>
 #include <iostream>
-#include <opencv2/opencv.hpp>
+#include <stdexcept>
+#include <string>
+
+#include <opencv2/imgcodecs.hpp>
 #include <opencv2/imgproc.hpp>
 
-using namespace std;
-using namespace cv;
+#include "otsu_threshold.hpp"
 
-int main(){
-	
-	// read the image in BGR format
-	Mat testImage = imread("boat.jpg", 0);
-	int bins_num = 256;
-	
-	// Get the histogram
-	long double histogram[256];
- 
-    // initialize all intensity values to 0
-    for(int i = 0; i < 256; i++)
-    {
-        histogram[i] = 0;
+namespace {
+
+struct Options {
+    std::filesystem::path input =
+        std::filesystem::path(OTSU_SOURCE_DIR) / "boat.jpg";
+    std::filesystem::path output =
+        std::filesystem::path(OTSU_SOURCE_DIR) / "outputs" /
+        "otsu-custom-cpp.png";
+    bool blur = false;
+};
+
+Options parseOptions(int argc, char** argv) {
+    Options options;
+    for (int index = 1; index < argc; ++index) {
+        const std::string argument = argv[index];
+        if (argument == "--input" && index + 1 < argc) {
+            options.input = argv[++index];
+        } else if (argument == "--output" && index + 1 < argc) {
+            options.output = argv[++index];
+        } else if (argument == "--blur") {
+            options.blur = true;
+        } else {
+            throw std::invalid_argument(
+                "Usage: otsu_implementation [--input IMAGE] "
+                "[--output IMAGE] [--blur]");
+        }
     }
- 
-    // calculate the no of pixels for each intensity values
-    for(int y = 0; y < testImage.rows; y++)
-        for(int x = 0; x < testImage.cols; x++)
-            histogram[(int)testImage.at<uchar>(y,x)]++;
-		
-	// Calculate the bin_edges
-	long double bin_edges[256];
-	bin_edges[0] = 0.0;
-	long double increment = 0.99609375;
-	for(int i = 1; i < 256; i++){
-		bin_edges[i] = bin_edges[i-1] + increment;
-	}
-	
-	// Calculate bin_mids
-	long double bin_mids[256];
-	for(int i = 0; i < 256; i++){
-		bin_mids[i] = (bin_edges[i] + bin_edges[(uchar)(i+1)])/2;
-	}
-	
-	// Calculate weight 1 and weight 2
-	long double weight1[256];
-	weight1[0] = histogram[0];
-	for(int i = 1; i < 256; i++){
-		weight1[i] = histogram[i] + weight1[i-1];
-	}
-	int total_sum=0;
-	for(int i = 0; i < 256; i++){
-		total_sum = total_sum + histogram[i];
-	}
-	long double weight2[256];
-	weight2[0] = total_sum;
-	for(int i = 1; i < 256; i++){
-		weight2[i] = weight2[i-1] - histogram[i - 1];
-	}
-	
-	// Calculate mean 1 and mean 2
-	long double histogram_bin_mids[256];
-	for(int i = 0; i < 256; i++){
-		histogram_bin_mids[i] = histogram[i] * bin_mids[i];
-	}
-	long double cumsum_mean1[256];
-	cumsum_mean1[0] = histogram_bin_mids[0];
-	for(int i = 1; i < 256; i++){
-		cumsum_mean1[i] = cumsum_mean1[i-1] + histogram_bin_mids[i];
-	}
-	long double cumsum_mean2[256];
-	cumsum_mean2[0] = histogram_bin_mids[255];
-	for(int i = 1, j=254; i < 256 && j>=0; i++, j--){
-		cumsum_mean2[i] = cumsum_mean2[i-1] + histogram_bin_mids[j];
-	}
-	long double mean1[256];
-	for(int i = 0; i < 256; i++){
-		mean1[i] = cumsum_mean1[i] / weight1[i];
-	}
-	long double mean2[256];
-	for(int i = 0, j = 255; i < 256 && j >= 0; i++, j--){
-		mean2[j] = cumsum_mean2[i] / weight2[j];
-	}
+    return options;
+}
 
+}  // namespace
 
-	// Calculate Inter_class_variance
-	long double Inter_class_variance[255];
-	long double dnum = 10000000000;
-	for(int i = 0; i < 255; i++){
-		Inter_class_variance[i] = ((weight1[i] * weight2[i] * (mean1[i] - mean2[i+1])) / dnum) * (mean1[i] - mean2[i+1]);
-	}
+int main(int argc, char** argv) {
+    try {
+        const auto options = parseOptions(argc, argv);
+        cv::Mat image =
+            cv::imread(options.input.string(), cv::IMREAD_GRAYSCALE);
+        if (image.empty()) {
+            throw std::runtime_error(
+                "Could not read grayscale image: " + options.input.string());
+        }
 
-	// Get the maximum value
-	long double maxi = 0;
-	int getmax = 0;
-	for(int i = 0;i < 255; i++){
-		if(maxi < Inter_class_variance[i]){
-			maxi = Inter_class_variance[i];
-			getmax = i;
-		}
-	}
-	
-	cout << "Otsu's algorithm implementation thresholding result: " << bin_mids[getmax];
+        cv::Mat processed = image;
+        if (options.blur) {
+            cv::GaussianBlur(image, processed, cv::Size(5, 5), 0.0);
+        }
 
-	
-	return 0;
+        const int selectedThreshold =
+            learnopencv::otsu::threshold(processed);
+        const cv::Mat binary =
+            learnopencv::otsu::apply(processed, selectedThreshold);
+
+        if (!options.output.parent_path().empty()) {
+            std::filesystem::create_directories(options.output.parent_path());
+        }
+        if (!cv::imwrite(options.output.string(), binary)) {
+            throw std::runtime_error(
+                "Could not write output image: " + options.output.string());
+        }
+
+        std::cout << "Custom Otsu threshold: " << selectedThreshold << '\n'
+                  << "Saved binary image: " << options.output << '\n';
+        return 0;
+    } catch (const std::exception& error) {
+        std::cerr << "Error: " << error.what() << '\n';
+        return 1;
+    }
 }

@@ -1,3 +1,8 @@
+// LEGACY 2018 dlib MMOD example.
+//
+// This source is retained as historical tutorial material. CMake does not
+// compile it, and the current YuNet workflow does not load its model.
+
 #include <iostream>
 #include <string>
 #include <vector>
