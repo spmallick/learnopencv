@@ -1,61 +1,140 @@
+#!/usr/bin/env python3
+"""Detect circles with OpenCV's gradient Hough transform."""
+
+from __future__ import annotations
+
+import argparse
+from collections.abc import Sequence
+from pathlib import Path
+
 import cv2
 import numpy as np
-import sys
 
-def onTrackbarChange(max_slider):
-    cimg = np.copy(img)
+from hough_utils import (
+    circle_output_paths,
+    detect_circles,
+    draw_circles,
+    read_bgr,
+    resolve_input,
+    write_image,
+)
 
-    p1 = max_slider
-    p2 = max_slider * 0.4
 
-    # Detect circles using HoughCircles transform
-    circles = cv2.HoughCircles(gray, cv2.HOUGH_GRADIENT, 1, cimg.shape[0]/64, param1=p1, param2=p2, minRadius=25, maxRadius=50)
+def run_validation(output_dir: str | Path | None = None) -> dict[str, int]:
+    """Validate a known synthetic circle plus the bundled eye image."""
 
-    # If at least 1 circle is detected
-    if circles is not None:
-        cir_len = circles.shape[1] # store length of circles found
-        circles = np.uint16(np.around(circles))
-        for i in circles[0, :]:
-            # Draw the outer circle
-            cv2.circle(cimg, (i[0], i[1]), i[2], (0, 255, 0), 2)
-            # Draw the center of the circle
-            cv2.circle(cimg, (i[0], i[1]), 2, (0, 0, 255), 3)
-    else:
-        cir_len = 0 # no circles detected
-    
-    # Display output image
-    cv2.imshow('Image', cimg)    
+    synthetic = np.zeros((256, 256, 3), dtype=np.uint8)
+    cv2.circle(synthetic, (128, 128), 60, (255, 255, 255), 3, cv2.LINE_AA)
+    _, synthetic_circles = detect_circles(
+        synthetic,
+        dp=1.2,
+        min_distance=40,
+        param1=120,
+        param2=30,
+        min_radius=50,
+        max_radius=70,
+    )
+    if synthetic_circles.size == 0:
+        raise AssertionError("synthetic circle was not detected")
+    distances = np.hypot(
+        synthetic_circles[:, 0] - 128.0,
+        synthetic_circles[:, 1] - 128.0,
+    )
+    radius_errors = np.abs(synthetic_circles[:, 2] - 60.0)
+    if not np.any((distances <= 4.0) & (radius_errors <= 4.0)):
+        raise AssertionError(f"synthetic circle geometry was inaccurate: {synthetic_circles}")
 
-    # Edge image for debugging
-    edges = cv2.Canny(gray, p1, p2)
-    cv2.imshow('Edges', edges)
+    input_path = resolve_input(None, "brown-eyes.jpg")
+    image = read_bgr(input_path)
+    blurred, circles = detect_circles(
+        image,
+        dp=1.2,
+        min_distance=image.shape[0] / 4.0,
+        param1=120,
+        param2=30,
+        min_radius=25,
+        max_radius=55,
+    )
+    if circles.size == 0:
+        raise AssertionError("no circles were detected in brown-eyes.jpg")
+    annotated = draw_circles(image, circles)
 
-    
+    if output_dir is not None:
+        blur_path, result_path = circle_output_paths(output_dir, input_path.stem)
+        write_image(blur_path, blurred)
+        write_image(result_path, annotated)
 
-    
+    result = {
+        "circle_count": int(circles.shape[0]),
+        "synthetic_circle_count": int(synthetic_circles.shape[0]),
+    }
+    print(
+        "VALIDATION PASSED: "
+        f"circles={result['circle_count']}, "
+        f"synthetic_circles={result['synthetic_circle_count']}"
+    )
+    return result
+
+
+def _build_parser() -> argparse.ArgumentParser:
+    """Create the circle-detector CLI parser."""
+
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "input", nargs="?", type=Path, help="input image; defaults to brown-eyes.jpg"
+    )
+    parser.add_argument("--output-dir", type=Path, help="directory for blurred/result images")
+    parser.add_argument("--dp", type=float, default=1.2)
+    parser.add_argument("--min-distance", type=float)
+    parser.add_argument("--param1", type=float, default=120.0)
+    parser.add_argument("--param2", type=float, default=30.0)
+    parser.add_argument("--min-radius", type=int, default=25)
+    parser.add_argument("--max-radius", type=int, default=55)
+    parser.add_argument("--no-display", action="store_true", help="do not open GUI windows")
+    parser.add_argument("--validate", action="store_true", help="run deterministic checks")
+    return parser
+
+
+def main(argv: Sequence[str] | None = None) -> int:
+    """Detect circles, report metrics, and optionally save/display outputs."""
+
+    arguments = _build_parser().parse_args(argv)
+    if arguments.validate:
+        run_validation(arguments.output_dir)
+        return 0
+
+    input_path = resolve_input(arguments.input, "brown-eyes.jpg")
+    image = read_bgr(input_path)
+    min_distance = arguments.min_distance or image.shape[0] / 4.0
+    blurred, circles = detect_circles(
+        image,
+        dp=arguments.dp,
+        min_distance=min_distance,
+        param1=arguments.param1,
+        param2=arguments.param2,
+        min_radius=arguments.min_radius,
+        max_radius=arguments.max_radius,
+    )
+    annotated = draw_circles(image, circles)
+    print(f"Input: {input_path}")
+    print(f"Circles: {circles.shape[0]}")
+
+    if arguments.output_dir is not None:
+        blur_path, result_path = circle_output_paths(
+            arguments.output_dir, input_path.stem
+        )
+        write_image(blur_path, blurred)
+        write_image(result_path, annotated)
+        print(f"Wrote: {blur_path}")
+        print(f"Wrote: {result_path}")
+
+    if not arguments.no_display:
+        cv2.imshow("Median-blurred grayscale", blurred)
+        cv2.imshow("Hough circles", annotated)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
+    return 0
+
+
 if __name__ == "__main__":
-    # Read image
-    img = cv2.imread(sys.argv[1], 1)
-
-    # Convert to gray-scale
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-
-    # Create display windows
-    cv2.namedWindow("Edges")
-    cv2.namedWindow("Image")
-    
-
-    # Trackbar will be used for changing threshold for edge 
-    initThresh = 105 
-    maxThresh = 200 
-
-    # Create trackbar
-    cv2.createTrackbar("Threshold", "Image", initThresh, maxThresh, onTrackbarChange)
-    onTrackbarChange(initThresh)
-    
-    while True:
-        key = cv2.waitKey(1)
-        if key == 27:
-            break
-
-    cv2.destroyAllWindows()
+    raise SystemExit(main())

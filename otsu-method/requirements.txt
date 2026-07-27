@@ -1,0 +1,4 @@
+matplotlib>=3.9,<4
+numpy>=2.0,<3
+opencv-python>=4.13,<6
+pytest>=8.3,<10

@@ -1,171 +1,153 @@
-import cv2,time,argparse,glob
+#!/usr/bin/env python3
+"""Segment a BGR image with thresholds defined in a chosen color space."""
+
+from __future__ import annotations
+
+import argparse
+from collections.abc import Sequence
+from pathlib import Path
+
+import cv2
 import numpy as np
 
-#global variable to keep track of 
-show = False
+from color_spaces import (
+    COLOR_CONVERSIONS,
+    apply_mask,
+    read_bgr,
+    resolve_input_path,
+    run_core_validation,
+    threshold_mask,
+    write_image,
+)
 
-def onTrackbarActivity(x):
-    global show
-    show = True
-    pass
+
+def segment_image(
+    image: np.ndarray,
+    color_space: str,
+    lower: Sequence[int],
+    upper: Sequence[int],
+) -> tuple[np.ndarray, np.ndarray]:
+    """Return a one-channel mask and a BGR visualization."""
+
+    mask = threshold_mask(image, color_space, lower, upper)
+    return mask, apply_mask(image, mask)
 
 
-if __name__ == '__main__' :
+def output_paths(output_dir: str | Path, stem: str, color_space: str) -> tuple[Path, Path]:
+    """Return deterministic mask and visualization output paths."""
 
-    # Get the filename from the command line 
-    files = glob.glob('images/rub*.jpg')
-    files.sort()
-    # load the image 
-    original = cv2.imread(files[0])
-    #Resize the image
-    rsize = 250
-    original = cv2.resize(original,(rsize,rsize))
+    directory = Path(output_dir).expanduser().resolve()
+    normalized_space = color_space.lower()
+    return (
+        directory / f"{stem}-{normalized_space}-mask.png",
+        directory / f"{stem}-{normalized_space}-result.png",
+    )
 
-    #position on the screen where the windows start
-    initialX = 50
-    initialY = 50
 
-    #creating windows to display images
-    cv2.namedWindow('P-> Previous, N-> Next',cv2.WINDOW_AUTOSIZE)
-    cv2.namedWindow('SelectBGR',cv2.WINDOW_AUTOSIZE)
-    cv2.namedWindow('SelectHSV',cv2.WINDOW_AUTOSIZE)
-    cv2.namedWindow('SelectYCB',cv2.WINDOW_AUTOSIZE)
-    cv2.namedWindow('SelectLAB',cv2.WINDOW_AUTOSIZE)
+def run_validation(output_dir: str | Path | None = None) -> dict[str, int]:
+    """Validate the default yellow segmentation on a bundled image."""
 
-    #moving the windows to stack them horizontally
-    cv2.moveWindow('P-> Previous, N-> Next',initialX,initialY)
-    cv2.moveWindow('SelectBGR',initialX + (rsize + 5),initialY)
-    cv2.moveWindow('SelectHSV',initialX + 2*(rsize + 5),initialY)
-    cv2.moveWindow('SelectYCB',initialX + 3*(rsize + 5),initialY)
-    cv2.moveWindow('SelectLAB',initialX + 4*(rsize + 5),initialY)
+    metrics = run_core_validation()
+    input_path = resolve_input_path(None)
+    image = read_bgr(input_path)
+    mask, result = segment_image(image, "HSV", (20, 80, 40), (45, 255, 255))
+    foreground_pixels = int(cv2.countNonZero(mask))
+    if foreground_pixels <= 0 or foreground_pixels >= mask.size:
+        raise AssertionError(f"unexpected foreground pixel count: {foreground_pixels}")
+    if result.shape != image.shape:
+        raise AssertionError("segmentation result shape differs from input")
 
-    #creating trackbars to get values for YCrCb
-    cv2.createTrackbar('CrMin','SelectYCB',0,255,onTrackbarActivity)
-    cv2.createTrackbar('CrMax','SelectYCB',0,255,onTrackbarActivity)
-    cv2.createTrackbar('CbMin','SelectYCB',0,255,onTrackbarActivity)
-    cv2.createTrackbar('CbMax','SelectYCB',0,255,onTrackbarActivity)
-    cv2.createTrackbar('YMin','SelectYCB',0,255,onTrackbarActivity)
-    cv2.createTrackbar('YMax','SelectYCB',0,255,onTrackbarActivity)
+    if output_dir is not None:
+        mask_path, result_path = output_paths(output_dir, input_path.stem, "HSV")
+        write_image(mask_path, mask)
+        write_image(result_path, result)
 
-    #creating trackbars to get values for HSV
-    cv2.createTrackbar('HMin','SelectHSV',0,180,onTrackbarActivity)
-    cv2.createTrackbar('HMax','SelectHSV',0,180,onTrackbarActivity)
-    cv2.createTrackbar('SMin','SelectHSV',0,255,onTrackbarActivity)
-    cv2.createTrackbar('SMax','SelectHSV',0,255,onTrackbarActivity)
-    cv2.createTrackbar('VMin','SelectHSV',0,255,onTrackbarActivity)
-    cv2.createTrackbar('VMax','SelectHSV',0,255,onTrackbarActivity)
+    print(
+        "VALIDATION PASSED: "
+        f"foreground_pixels={foreground_pixels}, "
+        f"image={image.shape[1]}x{image.shape[0]}"
+    )
+    return {**metrics, "foreground_pixels": foreground_pixels}
 
-    #creating trackbars to get values for BGR
-    cv2.createTrackbar('BGRBMin','SelectBGR',0,255,onTrackbarActivity)
-    cv2.createTrackbar('BGRBMax','SelectBGR',0,255,onTrackbarActivity)
-    cv2.createTrackbar('BGRGMin','SelectBGR',0,255,onTrackbarActivity)
-    cv2.createTrackbar('BGRGMax','SelectBGR',0,255,onTrackbarActivity)
-    cv2.createTrackbar('BGRRMin','SelectBGR',0,255,onTrackbarActivity)
-    cv2.createTrackbar('BGRRMax','SelectBGR',0,255,onTrackbarActivity)
 
-    #creating trackbars to get values for LAB
-    cv2.createTrackbar('LABLMin','SelectLAB',0,255,onTrackbarActivity)
-    cv2.createTrackbar('LABLMax','SelectLAB',0,255,onTrackbarActivity)
-    cv2.createTrackbar('LABAMin','SelectLAB',0,255,onTrackbarActivity)
-    cv2.createTrackbar('LABAMax','SelectLAB',0,255,onTrackbarActivity)
-    cv2.createTrackbar('LABBMin','SelectLAB',0,255,onTrackbarActivity)
-    cv2.createTrackbar('LABBMax','SelectLAB',0,255,onTrackbarActivity)
+def _triplet(values: list[str]) -> tuple[int, int, int]:
+    """Parse three integer threshold values for argparse."""
 
-    # show all images initially
-    cv2.imshow('SelectHSV',original)
-    cv2.imshow('SelectYCB',original)
-    cv2.imshow('SelectLAB',original)
-    cv2.imshow('SelectBGR',original)
-    i = 0
-    while(1):
+    try:
+        parsed = tuple(int(value) for value in values)
+    except ValueError as error:
+        raise argparse.ArgumentTypeError("thresholds must be integers") from error
+    if len(parsed) != 3:
+        raise argparse.ArgumentTypeError("thresholds require three values")
+    return parsed  # type: ignore[return-value]
 
-        cv2.imshow('P-> Previous, N-> Next',original)  
-        k = cv2.waitKey(1) & 0xFF
 
-        # check next image in folder    
-        if k == ord('n'):
-            i += 1
-            original = cv2.imread(files[i%len(files)])
-            original = cv2.resize(original,(rsize,rsize))
-            show = True
- 
-        # check previous image in folder    
-        elif k == ord('p'):
-            i -= 1
-            original = cv2.imread(files[i%len(files)])
-            original = cv2.resize(original,(rsize,rsize))
-            show = True
-        # Close all windows when 'esc' key is pressed
-        elif k == 27:
-            break
-        
-        if show: # If there is any event on the trackbar
-            show = False
+def _build_parser() -> argparse.ArgumentParser:
+    """Create the command-line parser."""
 
-            # Get values from the BGR trackbar
-            BMin = cv2.getTrackbarPos('BGRBMin','SelectBGR')
-            GMin = cv2.getTrackbarPos('BGRGMin','SelectBGR')
-            RMin = cv2.getTrackbarPos('BGRRMin','SelectBGR')
-            BMax = cv2.getTrackbarPos('BGRBMax','SelectBGR')
-            GMax = cv2.getTrackbarPos('BGRGMax','SelectBGR')
-            RMax = cv2.getTrackbarPos('BGRRMax','SelectBGR')
-            minBGR = np.array([BMin, GMin, RMin])
-            maxBGR = np.array([BMax, GMax, RMax])
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--input", type=Path, help="input image; defaults to images/rub00.jpg")
+    parser.add_argument(
+        "--space",
+        choices=tuple(COLOR_CONVERSIONS),
+        default="HSV",
+        help="color space in which thresholds are interpreted",
+    )
+    parser.add_argument(
+        "--lower",
+        nargs=3,
+        default=("20", "80", "40"),
+        metavar=("C0", "C1", "C2"),
+        help="inclusive lower threshold",
+    )
+    parser.add_argument(
+        "--upper",
+        nargs=3,
+        default=("45", "255", "255"),
+        metavar=("C0", "C1", "C2"),
+        help="inclusive upper threshold",
+    )
+    parser.add_argument("--output-dir", type=Path, help="directory for mask and result PNGs")
+    parser.add_argument("--no-display", action="store_true", help="do not open GUI windows")
+    parser.add_argument("--validate", action="store_true", help="run deterministic checks")
+    return parser
 
-            # Get values from the HSV trackbar
-            HMin = cv2.getTrackbarPos('HMin','SelectHSV')
-            SMin = cv2.getTrackbarPos('SMin','SelectHSV')
-            VMin = cv2.getTrackbarPos('VMin','SelectHSV')
-            HMax = cv2.getTrackbarPos('HMax','SelectHSV')
-            SMax = cv2.getTrackbarPos('SMax','SelectHSV')
-            VMax = cv2.getTrackbarPos('VMax','SelectHSV')
-            minHSV = np.array([HMin, SMin, VMin])
-            maxHSV = np.array([HMax, SMax, VMax])
 
-            # Get values from the LAB trackbar
-            LMin = cv2.getTrackbarPos('LABLMin','SelectLAB')
-            AMin = cv2.getTrackbarPos('LABAMin','SelectLAB')
-            BMin = cv2.getTrackbarPos('LABBMin','SelectLAB')
-            LMax = cv2.getTrackbarPos('LABLMax','SelectLAB')
-            AMax = cv2.getTrackbarPos('LABAMax','SelectLAB')
-            BMax = cv2.getTrackbarPos('LABBMax','SelectLAB')
-            minLAB = np.array([LMin, AMin, BMin])
-            maxLAB = np.array([LMax, AMax, BMax])
+def main(argv: Sequence[str] | None = None) -> int:
+    """Run segmentation and save reproducible outputs."""
 
-            # Get values from the YCrCb trackbar
-            YMin = cv2.getTrackbarPos('YMin','SelectYCB')
-            CrMin = cv2.getTrackbarPos('CrMin','SelectYCB')
-            CbMin = cv2.getTrackbarPos('CbMin','SelectYCB')
-            YMax = cv2.getTrackbarPos('YMax','SelectYCB')
-            CrMax = cv2.getTrackbarPos('CrMax','SelectYCB')
-            CbMax = cv2.getTrackbarPos('CbMax','SelectYCB')
-            minYCB = np.array([YMin, CrMin, CbMin])
-            maxYCB = np.array([YMax, CrMax, CbMax])
-            
-            # Convert the BGR image to other color spaces
-            imageBGR = np.copy(original)
-            imageHSV = cv2.cvtColor(original,cv2.COLOR_BGR2HSV)
-            imageYCB = cv2.cvtColor(original,cv2.COLOR_BGR2YCrCb)
-            imageLAB = cv2.cvtColor(original,cv2.COLOR_BGR2LAB)
+    arguments = _build_parser().parse_args(argv)
+    if arguments.validate:
+        run_validation(arguments.output_dir)
+        return 0
 
-            # Create the mask using the min and max values obtained from trackbar and apply bitwise and operation to get the results         
-            maskBGR = cv2.inRange(imageBGR,minBGR,maxBGR)
-            resultBGR = cv2.bitwise_and(original, original, mask = maskBGR)         
-            
-            maskHSV = cv2.inRange(imageHSV,minHSV,maxHSV)
-            resultHSV = cv2.bitwise_and(original, original, mask = maskHSV)
-            
-            maskYCB = cv2.inRange(imageYCB,minYCB,maxYCB)
-            resultYCB = cv2.bitwise_and(original, original, mask = maskYCB)         
-        
-            maskLAB = cv2.inRange(imageLAB,minLAB,maxLAB)
-            resultLAB = cv2.bitwise_and(original, original, mask = maskLAB)         
-            
-            # Show the results
-            cv2.imshow('SelectBGR',resultBGR)
-            cv2.imshow('SelectYCB',resultYCB)
-            cv2.imshow('SelectLAB',resultLAB)
-            cv2.imshow('SelectHSV',resultHSV)
+    lower = _triplet(arguments.lower)
+    upper = _triplet(arguments.upper)
+    input_path = resolve_input_path(arguments.input)
+    image = read_bgr(input_path)
+    mask, result = segment_image(image, arguments.space, lower, upper)
+    foreground_pixels = int(cv2.countNonZero(mask))
+    print(f"Input: {input_path}")
+    print(f"Color space: {arguments.space}")
+    print(f"Foreground pixels: {foreground_pixels}/{mask.size}")
 
-    cv2.destroyAllWindows()
+    if arguments.output_dir is not None:
+        mask_path, result_path = output_paths(
+            arguments.output_dir, input_path.stem, arguments.space
+        )
+        write_image(mask_path, mask)
+        write_image(result_path, result)
+        print(f"Wrote: {mask_path}")
+        print(f"Wrote: {result_path}")
 
+    if not arguments.no_display:
+        cv2.imshow("Input", image)
+        cv2.imshow("Mask", mask)
+        cv2.imshow(f"{arguments.space} segmentation", result)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

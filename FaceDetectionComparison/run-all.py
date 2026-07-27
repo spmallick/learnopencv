@@ -1,325 +1,284 @@
+#!/usr/bin/env python3
+"""Compare YuNet with optional Haar and dlib HOG face-detector baselines."""
+
+from __future__ import annotations
+
 import argparse
-import os
-import time
+from pathlib import Path
+import sys
 
 import cv2
-import dlib
 import numpy as np
 
-# Model files
-# OpenCV HAAR
-faceCascade = cv2.CascadeClassifier("models/haarcascade_frontalface_default.xml")
-
-# DLIB HOG
-hogFaceDetector = dlib.get_frontal_face_detector()
-
-# DLIB MMOD
-dnnFaceDetector = dlib.cnn_face_detection_model_v1(
-    "models/mmod_human_face_detector.dat",
+from face_detection import (
+    DEFAULT_YUNET_MODEL,
+    PROJECT_DIR,
+    Detector,
+    create_detector,
+    draw_detections,
+    validate_detections,
+    write_image,
 )
+from face_detection_opencv_dnn import infer_mode
 
 
-def detectFaceOpenCVHaar(faceCascade, frame, inHeight=300, inWidth=0):
-    frameOpenCVHaar = frame.copy()
-    frameHeight = frameOpenCVHaar.shape[0]
-    frameWidth = frameOpenCVHaar.shape[1]
-    if not inWidth:
-        inWidth = int((frameWidth / frameHeight) * inHeight)
-
-    scaleHeight = frameHeight / inHeight
-    scaleWidth = frameWidth / inWidth
-
-    frameOpenCVHaarSmall = cv2.resize(frameOpenCVHaar, (inWidth, inHeight))
-    frameGray = cv2.cvtColor(frameOpenCVHaarSmall, cv2.COLOR_BGR2GRAY)
-
-    faces = faceCascade.detectMultiScale(frameGray)
-    bboxes = []
-    for (x, y, w, h) in faces:
-        x1 = x
-        y1 = y
-        x2 = x + w
-        y2 = y + h
-        cvRect = [
-            int(x1 * scaleWidth),
-            int(y1 * scaleHeight),
-            int(x2 * scaleWidth),
-            int(y2 * scaleHeight),
-        ]
-        bboxes.append(cvRect)
-        cv2.rectangle(
-            frameOpenCVHaar,
-            (cvRect[0], cvRect[1]),
-            (cvRect[2], cvRect[3]),
-            (0, 255, 0),
-            int(round(frameHeight / 150)),
-            4,
-        )
-    return frameOpenCVHaar, bboxes
+DEFAULT_INPUT = PROJECT_DIR / "videos" / "baby.mp4"
 
 
-def detectFaceOpenCVDnn(net, frame, conf_threshold=0.7):
-    frameOpencvDnn = frame.copy()
-    frameHeight = frameOpencvDnn.shape[0]
-    frameWidth = frameOpencvDnn.shape[1]
-    blob = cv2.dnn.blobFromImage(
-        frameOpencvDnn, 1.0, (300, 300), [104, 117, 123], False, False,
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
+    """Parse a comparison list while keeping YuNet-only defaults dependency-free."""
+
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--input",
+        "--video",
+        dest="input",
+        type=Path,
+        default=DEFAULT_INPUT,
     )
+    parser.add_argument("--mode", choices=("auto", "image", "video"), default="auto")
+    parser.add_argument("--model", type=Path, default=DEFAULT_YUNET_MODEL)
+    parser.add_argument(
+        "--detectors",
+        default="yunet",
+        help="Comma-separated subset of yunet,haar,hog (default: yunet).",
+    )
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        default=PROJECT_DIR / "output-comparison",
+    )
+    parser.add_argument("--device", choices=("cpu", "cuda"), default="cpu")
+    parser.add_argument("--score-threshold", type=float, default=0.7)
+    parser.add_argument("--nms-threshold", type=float, default=0.3)
+    parser.add_argument("--top-k", type=int, default=5000)
+    parser.add_argument("--max-frames", type=int, default=0)
+    display_group = parser.add_mutually_exclusive_group()
+    display_group.add_argument("--display", action="store_true")
+    display_group.add_argument("--no-display", action="store_true")
+    parser.add_argument("--validate", action="store_true")
+    return parser.parse_args(argv)
 
-    net.setInput(blob)
-    detections = net.forward()
-    bboxes = []
-    for i in range(detections.shape[2]):
-        confidence = detections[0, 0, i, 2]
-        if confidence > conf_threshold:
-            x1 = int(detections[0, 0, i, 3] * frameWidth)
-            y1 = int(detections[0, 0, i, 4] * frameHeight)
-            x2 = int(detections[0, 0, i, 5] * frameWidth)
-            y2 = int(detections[0, 0, i, 6] * frameHeight)
-            bboxes.append([x1, y1, x2, y2])
-            cv2.rectangle(
-                frameOpencvDnn,
-                (x1, y1),
-                (x2, y2),
-                (0, 255, 0),
-                int(round(frameHeight / 150)),
-                8,
-            )
-    return frameOpencvDnn, bboxes
 
+def build_detectors(args: argparse.Namespace) -> list[Detector]:
+    """Instantiate only explicitly requested optional dependencies."""
 
-def detectFaceDlibHog(detector, frame, inHeight=300, inWidth=0):
-    frameDlibHog = frame.copy()
-    frameHeight = frameDlibHog.shape[0]
-    frameWidth = frameDlibHog.shape[1]
-    if not inWidth:
-        inWidth = int((frameWidth / frameHeight) * inHeight)
-
-    scaleHeight = frameHeight / inHeight
-    scaleWidth = frameWidth / inWidth
-
-    frameDlibHogSmall = cv2.resize(frameDlibHog, (inWidth, inHeight))
-
-    frameDlibHogSmall = cv2.cvtColor(frameDlibHogSmall, cv2.COLOR_BGR2RGB)
-    faceRects = detector(frameDlibHogSmall, 0)
-    bboxes = []
-    for faceRect in faceRects:
-
-        cvRect = [
-            int(faceRect.left() * scaleWidth),
-            int(faceRect.top() * scaleHeight),
-            int(faceRect.right() * scaleWidth),
-            int(faceRect.bottom() * scaleHeight),
-        ]
-        bboxes.append(cvRect)
-        cv2.rectangle(
-            frameDlibHog,
-            (cvRect[0], cvRect[1]),
-            (cvRect[2], cvRect[3]),
-            (0, 255, 0),
-            int(round(frameHeight / 150)),
-            4,
+    names = [name.strip() for name in args.detectors.split(",") if name.strip()]
+    if not names:
+        raise ValueError("--detectors must name at least one detector.")
+    normalized = [name.lower() for name in names]
+    if len(set(normalized)) != len(normalized):
+        raise ValueError("--detectors cannot contain duplicates.")
+    return [
+        create_detector(
+            name,
+            model_path=args.model,
+            score_threshold=args.score_threshold,
+            nms_threshold=args.nms_threshold,
+            top_k=args.top_k,
+            device=args.device,
         )
-    return frameDlibHog, bboxes
+        for name in names
+    ]
 
 
-def detectFaceDlibMMOD(detector, frame, inHeight=300, inWidth=0):
-    frameDlibMMOD = frame.copy()
-    frameHeight = frameDlibMMOD.shape[0]
-    frameWidth = frameDlibMMOD.shape[1]
-    if not inWidth:
-        inWidth = int((frameWidth / frameHeight) * inHeight)
+def compare_frame(
+    frame: np.ndarray,
+    detectors: list[Detector],
+    validate: bool,
+) -> tuple[np.ndarray, list[int]]:
+    """Run each detector on the same pixels and join same-size panels horizontally."""
 
-    scaleHeight = frameHeight / inHeight
-    scaleWidth = frameWidth / inWidth
-
-    frameDlibMMODSmall = cv2.resize(frameDlibMMOD, (inWidth, inHeight))
-
-    frameDlibMMODSmall = cv2.cvtColor(frameDlibMMODSmall, cv2.COLOR_BGR2RGB)
-    faceRects = detector(frameDlibMMODSmall, 0)
-
-    bboxes = []
-    for faceRect in faceRects:
-        cvRect = [
-            int(faceRect.rect.left() * scaleWidth),
-            int(faceRect.rect.top() * scaleHeight),
-            int(faceRect.rect.right() * scaleWidth),
-            int(faceRect.rect.bottom() * scaleHeight),
-        ]
-        bboxes.append(cvRect)
-        cv2.rectangle(
-            frameDlibMMOD,
-            (cvRect[0], cvRect[1]),
-            (cvRect[2], cvRect[3]),
-            (0, 255, 0),
-            int(round(frameHeight / 150)),
-            4,
+    panels: list[np.ndarray] = []
+    counts: list[int] = []
+    for detector in detectors:
+        detections = detector.detect(frame)
+        if validate:
+            validate_detections(frame, detections)
+        panels.append(draw_detections(frame, detections, detector.name))
+        counts.append(len(detections))
+    comparison = cv2.hconcat(panels)
+    expected_shape = (frame.shape[0], frame.shape[1] * len(detectors), 3)
+    if comparison.shape != expected_shape:
+        raise RuntimeError(
+            f"Comparison shape {comparison.shape} does not match {expected_shape}."
         )
-    return frameDlibMMOD, bboxes
+    return comparison, counts
+
+
+def _validate_written_video(
+    output_path: Path,
+    expected_size: tuple[int, int],
+    expected_frames: int,
+) -> None:
+    """Reopen the comparison video and verify writer geometry and frame count."""
+
+    capture = cv2.VideoCapture(str(output_path))
+    if not capture.isOpened():
+        raise RuntimeError(f"Could not reopen output video: {output_path}")
+    actual_size = (
+        int(round(capture.get(cv2.CAP_PROP_FRAME_WIDTH))),
+        int(round(capture.get(cv2.CAP_PROP_FRAME_HEIGHT))),
+    )
+    actual_frames = int(round(capture.get(cv2.CAP_PROP_FRAME_COUNT)))
+    capture.release()
+    if actual_size != expected_size or actual_frames != expected_frames:
+        raise RuntimeError(
+            "Saved comparison video has unexpected dimensions or frame count."
+        )
+
+
+def run_image(
+    args: argparse.Namespace,
+    detectors: list[Detector],
+    input_path: Path,
+) -> dict[str, object]:
+    """Save one horizontal comparison image."""
+
+    frame = cv2.imread(str(input_path), cv2.IMREAD_COLOR)
+    if frame is None or frame.size == 0:
+        raise FileNotFoundError(f"Could not read input image: {input_path}")
+    comparison, counts = compare_frame(frame, detectors, args.validate)
+    output_path = args.output_dir.expanduser().resolve() / "comparison-image.jpg"
+    write_image(output_path, comparison)
+
+    if args.validate:
+        saved = cv2.imread(str(output_path), cv2.IMREAD_COLOR)
+        if saved is None or saved.shape != comparison.shape:
+            raise RuntimeError("Saved comparison image is unreadable or resized.")
+        print(
+            "VALIDATION PASSED: "
+            f"mode=image panels={len(detectors)} size="
+            f"{comparison.shape[1]}x{comparison.shape[0]}"
+        )
+    if args.display and not args.no_display:
+        cv2.imshow("Face Detection Comparison", comparison)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
+
+    print(
+        "COMPARISON RESULT: "
+        + " ".join(
+            f"{detector.name}={count}"
+            for detector, count in zip(detectors, counts)
+        )
+    )
+    print(f"Saved output: {output_path}")
+    return {"output": output_path, "counts": counts, "shape": comparison.shape}
+
+
+def run_video(
+    args: argparse.Namespace,
+    detectors: list[Detector],
+    input_path: Path,
+) -> dict[str, object]:
+    """Save a correctly sized horizontal comparison video."""
+
+    if args.max_frames < 0:
+        raise ValueError("--max-frames cannot be negative.")
+    capture = cv2.VideoCapture(str(input_path))
+    if not capture.isOpened():
+        raise FileNotFoundError(f"Could not open input video: {input_path}")
+    width = int(round(capture.get(cv2.CAP_PROP_FRAME_WIDTH)))
+    height = int(round(capture.get(cv2.CAP_PROP_FRAME_HEIGHT)))
+    fps = float(capture.get(cv2.CAP_PROP_FPS))
+    if width <= 0 or height <= 0:
+        capture.release()
+        raise RuntimeError("Input video has invalid dimensions.")
+    if not fps or fps <= 0.0:
+        fps = 25.0
+
+    output_dir = args.output_dir.expanduser().resolve()
+    output_dir.mkdir(parents=True, exist_ok=True)
+    output_path = output_dir / "comparison-video.avi"
+    output_size = (width * len(detectors), height)
+    writer = cv2.VideoWriter(
+        str(output_path),
+        cv2.VideoWriter_fourcc(*"MJPG"),
+        fps,
+        output_size,
+    )
+    if not writer.isOpened():
+        capture.release()
+        raise RuntimeError(f"Could not create output video: {output_path}")
+
+    processed = 0
+    totals = [0 for _ in detectors]
+    try:
+        while True:
+            has_frame, frame = capture.read()
+            if not has_frame:
+                break
+            if frame is None or frame.size == 0:
+                raise RuntimeError(f"Decoded an empty frame at index {processed}.")
+            comparison, counts = compare_frame(frame, detectors, args.validate)
+            writer.write(comparison)
+            processed += 1
+            totals = [total + count for total, count in zip(totals, counts)]
+
+            if args.display and not args.no_display:
+                cv2.imshow("Face Detection Comparison", comparison)
+                if cv2.waitKey(1) == 27:
+                    break
+            if args.max_frames and processed >= args.max_frames:
+                break
+    finally:
+        capture.release()
+        writer.release()
+        if args.display:
+            cv2.destroyAllWindows()
+
+    if processed == 0:
+        raise RuntimeError(f"No frames were decoded from input video: {input_path}")
+    if args.validate:
+        _validate_written_video(output_path, output_size, processed)
+        print(
+            "VALIDATION PASSED: "
+            f"mode=video panels={len(detectors)} frames={processed} "
+            f"size={output_size[0]}x{output_size[1]}"
+        )
+    print(
+        "COMPARISON VIDEO RESULT: "
+        f"frames={processed} "
+        + " ".join(
+            f"{detector.name}={total}"
+            for detector, total in zip(detectors, totals)
+        )
+    )
+    print(f"Saved output: {output_path}")
+    return {
+        "output": output_path,
+        "frames": processed,
+        "totals": totals,
+        "size": output_size,
+    }
+
+
+def run(args: argparse.Namespace) -> dict[str, object]:
+    """Build selected detectors and dispatch based on the input type."""
+
+    input_path = args.input.expanduser().resolve()
+    detectors = build_detectors(args)
+    mode = infer_mode(input_path, args.mode)
+    result = (
+        run_image(args, detectors, input_path)
+        if mode == "image"
+        else run_video(args, detectors, input_path)
+    )
+    print(f"OpenCV version: {cv2.__version__}")
+    return result
+
+
+def main(argv: list[str] | None = None) -> int:
+    """Convert dependency, input, output, and detector errors to exit code 2."""
+
+    try:
+        run(parse_args(argv))
+    except (FileNotFoundError, RuntimeError, ValueError, cv2.error) as error:
+        print(f"ERROR: {error}", file=sys.stderr)
+        return 2
+    return 0
 
 
 if __name__ == "__main__":
-
-    parser = argparse.ArgumentParser(description="Face detection")
-    parser.add_argument("--video", type=str, help="Path to video file")
-    parser.add_argument(
-        "--device",
-        type=str,
-        default="gpu",
-        choices=["cpu", "gpu"],
-        help="Device to use",
-    )
-    parser.add_argument(
-        "--net_type",
-        type=str,
-        default="caffe",
-        choices=["caffe", "tf"],
-        help="Type of network to run",
-    )
-    args = parser.parse_args()
-
-    net_type = args.net_type
-    source = args.video
-    device = args.device
-
-    # OpenCV DNN supports 2 networks.
-    # 1. FP16 version of the original Caffe implementation ( 5.4 MB )
-    # 2. 8 bit Quantized version using TensorFlow ( 2.7 MB )
-
-    if net_type == "caffe":
-        modelFile = "models/res10_300x300_ssd_iter_140000_fp16.caffemodel"
-        configFile = "models/deploy.prototxt"
-        net = cv2.dnn.readNetFromCaffe(configFile, modelFile)
-    else:
-        modelFile = "models/opencv_face_detector_uint8.pb"
-        configFile = "models/opencv_face_detector.pbtxt"
-        net = cv2.dnn.readNetFromTensorflow(modelFile, configFile)
-
-    if device == "cpu":
-        net.setPreferableBackend(cv2.dnn.DNN_TARGET_CPU)
-    else:
-        net.setPreferableBackend(cv2.dnn.DNN_BACKEND_CUDA)
-        net.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA)
-
-    if source:
-        cap = cv2.VideoCapture(source)
-    else:
-        cap = cv2.VideoCapture(0, cv2.CAP_V4L)
-
-    hasFrame, frame = cap.read()
-
-    outputFolder = "output-dnn-videos"
-    if source:
-        outputFile = os.path.basename(source)[:-4] + ".avi"
-    else:
-        outputFile = "grabbed_from_camera.avi"
-
-    if not os.path.exists(outputFolder):
-        os.makedirs(outputFolder)
-
-    vid_writer = cv2.VideoWriter(
-        os.path.join(outputFolder, outputFile),
-        cv2.VideoWriter_fourcc("M", "J", "P", "G"),
-        25,
-        (frame.shape[1], frame.shape[0]),
-    )
-
-    frame_count = 0
-    tt_opencvHaar = 0
-    tt_opencvDnn = 0
-    tt_dlibHog = 0
-    tt_dlibMmod = 0
-
-    while True:
-        hasFrame, frame = cap.read()
-        if not hasFrame:
-            break
-
-        frame_count += 1
-
-        t = time.time()
-        outOpencvHaar, bboxes = detectFaceOpenCVHaar(faceCascade, frame)
-        tt_opencvHaar += time.time() - t
-        fpsOpencvHaar = frame_count / tt_opencvHaar
-
-        label = "OpenCV Haar; FPS : {:.2f}".format(fpsOpencvHaar)
-        cv2.putText(
-            outOpencvHaar,
-            label,
-            (10, 50),
-            cv2.FONT_HERSHEY_SIMPLEX,
-            1.3,
-            (0, 0, 255),
-            3,
-            cv2.LINE_AA,
-        )
-
-        t = time.time()
-        outOpencvDnn, bboxes = detectFaceOpenCVDnn(net, frame)
-        tt_opencvDnn += time.time() - t
-        fpsOpencvDnn = frame_count / tt_opencvDnn
-
-        label = "OpenCV DNN {} FPS : {:.2f}".format(device.upper(), fpsOpencvDnn)
-        cv2.putText(
-            outOpencvDnn,
-            label,
-            (10, 50),
-            cv2.FONT_HERSHEY_SIMPLEX,
-            1.3,
-            (0, 0, 255),
-            3,
-            cv2.LINE_AA,
-        )
-
-        t = time.time()
-        outDlibHog, bboxes = detectFaceDlibHog(hogFaceDetector, frame)
-        tt_dlibHog += time.time() - t
-        fpsDlibHog = frame_count / tt_dlibHog
-
-        label = "DLIB HoG; FPS : {:.2f}".format(fpsDlibHog)
-        cv2.putText(
-            outDlibHog,
-            label,
-            (10, 50),
-            cv2.FONT_HERSHEY_SIMPLEX,
-            1.3,
-            (0, 0, 255),
-            3,
-            cv2.LINE_AA,
-        )
-
-        t = time.time()
-        outDlibMMOD, bboxes = detectFaceDlibMMOD(dnnFaceDetector, frame)
-        tt_dlibMmod += time.time() - t
-        fpsDlibMmod = frame_count / tt_dlibMmod
-
-        label = "DLIB MMOD; FPS : {:.2f}".format(fpsDlibMmod)
-        cv2.putText(
-            outDlibMMOD,
-            label,
-            (10, 50),
-            cv2.FONT_HERSHEY_SIMPLEX,
-            1.3,
-            (0, 0, 255),
-            3,
-            cv2.LINE_AA,
-        )
-
-        top = np.hstack([outOpencvHaar, outOpencvDnn])
-        bottom = np.hstack([outDlibHog, outDlibMMOD])
-        combined = np.vstack([top, bottom])
-        cv2.imshow("Face Detection Comparison", combined)
-
-        if frame_count == 1:
-            tt_opencvHaar = 0
-            tt_opencvDnn = 0
-            tt_dlibHog = 0
-            tt_dlibMmod = 0
-
-        vid_writer.write(combined)
-
-        k = cv2.waitKey(5)
-        if k == 27:
-            break
-
-    cv2.destroyAllWindows()
-    vid_writer.release()
+    raise SystemExit(main())

@@ -1,53 +1,82 @@
+"""OpenCV's Otsu thresholding call with reproducible, headless outputs."""
+
+from __future__ import annotations
+
+import argparse
+from pathlib import Path
+
 import cv2
-from matplotlib.ticker import FuncFormatter
-from matplotlib import pyplot as plt
-from otsu_implementation import otsu_implementation
+import matplotlib
+import numpy as np
+
+matplotlib.use("Agg")
+from matplotlib import pyplot as plt  # noqa: E402
 
 
-def call_otsu_threshold(img_title="boat.jpg", is_reduce_noise=False):
-    # Read the image in a greyscale mode
-    image = cv2.imread(img_title, 0)
+SCRIPT_DIR = Path(__file__).resolve().parent
+DEFAULT_INPUT = SCRIPT_DIR / "boat.jpg"
+DEFAULT_OUTPUT_DIR = SCRIPT_DIR / "outputs"
 
-    # Apply GaussianBlur to reduce image noise if it is required
-    if is_reduce_noise:
-        image = cv2.GaussianBlur(image, (5, 5), 0)
 
-    # View initial image histogram
-    plt.hist(image.ravel(), 256)
-    plt.xlabel('Colour intensity')
-    plt.ylabel('Number of pixels')
-    plt.savefig("image_hist.png")
-    plt.close()
+def call_otsu_threshold(
+    img_title: str | Path = DEFAULT_INPUT,
+    is_reduce_noise: bool = False,
+    output_dir: str | Path | None = None,
+) -> tuple[float, np.ndarray]:
+    """Apply OpenCV Otsu thresholding and optionally save plots and output."""
 
-    # Applying Otsu's method setting the flag value into cv.THRESH_OTSU.
-    # Use bimodal image as an input.
-    # Optimal threshold value is determined automatically.
-    otsu_threshold, image_result = cv2.threshold(
-        image, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU,
+    image_path = Path(img_title).expanduser().resolve()
+    image = cv2.imread(str(image_path), cv2.IMREAD_GRAYSCALE)
+    if image is None:
+        raise FileNotFoundError(f"Could not read grayscale image: {image_path}")
+
+    processed = cv2.GaussianBlur(image, (5, 5), 0) if is_reduce_noise else image
+    threshold, binary = cv2.threshold(
+        processed, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU
     )
-    print("Obtained threshold: ", otsu_threshold)
 
-    # View the resulting image histogram
-    fig = plt.figure()
-    ax = fig.add_subplot(111)
-    ax.hist(image_result.ravel(), 256)
-    ax.set_xlabel('Colour intensity')
-    ax.set_ylabel('Number of pixels')
-    # Get rid of 1e7
-    ax.yaxis.set_major_formatter(FuncFormatter(lambda x, pos: ('%1.1fM') % (x*1e-6)))
-    plt.savefig("image_hist_result.png")
-    plt.close()
+    if output_dir is not None:
+        destination = Path(output_dir).expanduser().resolve()
+        destination.mkdir(parents=True, exist_ok=True)
 
-    # Visualize the image after the Otsu's method application
-    cv2.imshow("Otsu's thresholding result", image_result)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+        figure, axis = plt.subplots()
+        axis.hist(processed.reshape(-1), bins=256, range=(0, 256))
+        axis.set(xlabel="Intensity", ylabel="Pixel count")
+        figure.tight_layout()
+        figure.savefig(destination / "input-histogram.png", dpi=160)
+        plt.close(figure)
+
+        figure, axis = plt.subplots()
+        axis.hist(binary.reshape(-1), bins=256, range=(0, 256))
+        axis.set(xlabel="Intensity", ylabel="Pixel count")
+        figure.tight_layout()
+        figure.savefig(destination / "binary-histogram.png", dpi=160)
+        plt.close(figure)
+
+        output_path = destination / "otsu-opencv.png"
+        if not cv2.imwrite(str(output_path), binary):
+            raise OSError(f"Could not write output image: {output_path}")
+
+    return threshold, binary
 
 
-def main():
-    call_otsu_threshold()
-    otsu_implementation()
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description="Apply OpenCV Otsu thresholding.")
+    parser.add_argument("--input", type=Path, default=DEFAULT_INPUT)
+    parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
+    parser.add_argument("--blur", action="store_true")
+    return parser
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = build_parser().parse_args(argv)
+    threshold, _ = call_otsu_threshold(
+        args.input, is_reduce_noise=args.blur, output_dir=args.output_dir
+    )
+    print(f"OpenCV Otsu threshold: {threshold:g}")
+    print(f"Saved outputs under: {args.output_dir.expanduser().resolve()}")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

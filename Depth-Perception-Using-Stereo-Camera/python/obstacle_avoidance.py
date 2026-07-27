@@ -1,164 +1,151 @@
-import numpy as np 
+"""Real-rig obstacle visualization built on the tested stereo-depth core."""
+
+from __future__ import annotations
+
+import argparse
+from pathlib import Path
+
 import cv2
 
-
-# Check for left and right camera IDs
-# These values can change depending on the system
-CamL_id = 2 # Camera ID for left camera
-CamR_id = 0 # Camera ID for right camera
-
-
-CamL= cv2.VideoCapture(CamL_id)
-CamR= cv2.VideoCapture(CamR_id)
-
-# Reading the mapping values for stereo image rectification
-cv_file = cv2.FileStorage("../data/stereo_rectify_maps.xml", cv2.FILE_STORAGE_READ)
-Left_Stereo_Map_x = cv_file.getNode("Left_Stereo_Map_x").mat()
-Left_Stereo_Map_y = cv_file.getNode("Left_Stereo_Map_y").mat()
-Right_Stereo_Map_x = cv_file.getNode("Right_Stereo_Map_x").mat()
-Right_Stereo_Map_y = cv_file.getNode("Right_Stereo_Map_y").mat()
-cv_file.release()
-
-disparity = None
-depth_map = None
-
-# These parameters can vary according to the setup
-max_depth = 400 # maximum distance the setup can measure (in cm)
-min_depth = 50 # minimum distance the setup can measure (in cm)
-depth_thresh = 100.0 # Threshold for SAFE distance (in cm)
-
-# Reading the stored the StereoBM parameters
-cv_file = cv2.FileStorage("../data/depth_estmation_params_py.xml", cv2.FILE_STORAGE_READ)
-numDisparities = int(cv_file.getNode("numDisparities").real())
-blockSize = int(cv_file.getNode("blockSize").real())
-preFilterType = int(cv_file.getNode("preFilterType").real())
-preFilterSize = int(cv_file.getNode("preFilterSize").real())
-preFilterCap = int(cv_file.getNode("preFilterCap").real())
-textureThreshold = int(cv_file.getNode("textureThreshold").real())
-uniquenessRatio = int(cv_file.getNode("uniquenessRatio").real())
-speckleRange = int(cv_file.getNode("speckleRange").real())
-speckleWindowSize = int(cv_file.getNode("speckleWindowSize").real())
-disp12MaxDiff = int(cv_file.getNode("disp12MaxDiff").real())
-minDisparity = int(cv_file.getNode("minDisparity").real())
-M = cv_file.getNode("M").real()
-cv_file.release()
-
-# mouse callback function
-def mouse_click(event,x,y,flags,param):
-	global Z
-	if event == cv2.EVENT_LBUTTONDBLCLK:
-		print("Distance = %.2f cm"%depth_map[y,x])	
+from stereo_depth import (
+    DEFAULT_CONFIG,
+    DEFAULT_MAPS,
+    compute_disparity,
+    create_matcher,
+    disparity_to_depth,
+    disparity_visualization,
+    find_largest_obstacle,
+    load_config,
+    load_rectification_maps,
+    rectify_pair,
+)
 
 
-cv2.namedWindow('disp',cv2.WINDOW_NORMAL)
-cv2.resizeWindow('disp',600,600)
-cv2.setMouseCallback('disp',mouse_click)
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--left-camera", type=int, default=2)
+    parser.add_argument("--right-camera", type=int, default=0)
+    parser.add_argument("--maps", type=Path, default=DEFAULT_MAPS)
+    parser.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
+    parser.add_argument("--minimum-depth", type=float, default=10.0)
+    parser.add_argument("--safe-distance", type=float, default=100.0)
+    parser.add_argument("--minimum-area-fraction", type=float, default=0.01)
+    parser.add_argument("--max-frames", type=int, default=0)
+    parser.add_argument("--no-display", action="store_true")
+    parser.add_argument("--output", type=Path)
+    return parser
 
-output_canvas = None
 
-# Creating an object of StereoBM algorithm
-stereo = cv2.StereoBM_create()
+def main(argv: list[str] | None = None) -> int:
+    args = build_parser().parse_args(argv)
+    if args.left_camera == args.right_camera:
+        raise ValueError("Left and right camera indices must be different.")
+    if args.max_frames < 0:
+        raise ValueError("--max-frames must be non-negative.")
+    if args.no_display and args.max_frames == 0:
+        raise ValueError("--no-display requires a positive --max-frames.")
 
-def obstacle_avoid():
+    config = load_config(args.config)
+    maps = load_rectification_maps(args.maps)
+    matcher = create_matcher(config)
+    left_camera = cv2.VideoCapture(args.left_camera)
+    right_camera = cv2.VideoCapture(args.right_camera)
+    if not left_camera.isOpened():
+        raise RuntimeError(f"Could not open left camera {args.left_camera}.")
+    if not right_camera.isOpened():
+        left_camera.release()
+        raise RuntimeError(f"Could not open right camera {args.right_camera}.")
 
-	# Mask to segment regions with depth less than threshold
-	mask = cv2.inRange(depth_map,10,depth_thresh)
+    final_canvas = None
+    frame_count = 0
+    try:
+        while True:
+            if not left_camera.grab() or not right_camera.grab():
+                raise RuntimeError("Could not grab synchronized stereo frames.")
+            left_ok, left_color = left_camera.retrieve()
+            right_ok, right_color = right_camera.retrieve()
+            if not left_ok or not right_ok:
+                raise RuntimeError("Could not retrieve synchronized stereo frames.")
 
-	# Check if a significantly large obstacle is present and filter out smaller noisy regions
-	if np.sum(mask)/255.0 > 0.01*mask.shape[0]*mask.shape[1]:
+            left_gray = cv2.cvtColor(left_color, cv2.COLOR_BGR2GRAY)
+            right_gray = cv2.cvtColor(right_color, cv2.COLOR_BGR2GRAY)
+            left_rectified, right_rectified = rectify_pair(
+                left_gray, right_gray, maps
+            )
+            disparity = compute_disparity(
+                left_rectified, right_rectified, config, matcher=matcher
+            )
+            depth = disparity_to_depth(disparity, config)
+            _, obstacle = find_largest_obstacle(
+                depth,
+                min_depth=args.minimum_depth,
+                max_depth=args.safe_distance,
+                minimum_area_fraction=args.minimum_area_fraction,
+            )
 
-		# Contour detection 
-		contours, _ = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-		cnts = sorted(contours, key=cv2.contourArea, reverse=True)
-		
-		# Check if detected contour is significantly large (to avoid multiple tiny regions)
-		if cv2.contourArea(cnts[0]) > 0.01*mask.shape[0]*mask.shape[1]:
+            final_canvas = cv2.remap(
+                left_color,
+                maps.left_x,
+                maps.left_y,
+                cv2.INTER_LANCZOS4,
+                cv2.BORDER_CONSTANT,
+            )
+            if obstacle is None:
+                cv2.putText(
+                    final_canvas,
+                    "SAFE",
+                    (30, 60),
+                    cv2.FONT_HERSHEY_SIMPLEX,
+                    1.4,
+                    (0, 255, 0),
+                    3,
+                    cv2.LINE_AA,
+                )
+            else:
+                x, y, width, height = obstacle.bounding_box
+                cv2.rectangle(
+                    final_canvas,
+                    (x, y),
+                    (x + width, y + height),
+                    (0, 0, 255),
+                    3,
+                )
+                cv2.putText(
+                    final_canvas,
+                    f"WARNING: {obstacle.mean_depth:.1f} cm",
+                    (max(0, x), max(30, y - 10)),
+                    cv2.FONT_HERSHEY_SIMPLEX,
+                    0.8,
+                    (0, 0, 255),
+                    2,
+                    cv2.LINE_AA,
+                )
 
-			x,y,w,h = cv2.boundingRect(cnts[0])
+            frame_count += 1
+            if not args.no_display:
+                cv2.imshow("Obstacle avoidance", final_canvas)
+                cv2.imshow("Disparity", disparity_visualization(disparity))
+                if cv2.waitKey(1) == 27:
+                    break
+            if args.max_frames and frame_count >= args.max_frames:
+                break
+    finally:
+        left_camera.release()
+        right_camera.release()
+        if not args.no_display:
+            cv2.destroyAllWindows()
 
-			# finding average depth of region represented by the largest contour 
-			mask2 = np.zeros_like(mask)
-			cv2.drawContours(mask2, cnts, 0, (255), -1)
+    if final_canvas is None:
+        raise RuntimeError("No stereo frames were processed.")
+    if args.output:
+        destination = args.output.expanduser().resolve()
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        if not cv2.imwrite(str(destination), final_canvas):
+            raise OSError(f"Could not write output image: {destination}")
+        print(f"Saved final obstacle view: {destination}")
+    print(f"Processed stereo frames: {frame_count}")
+    return 0
 
-			# Calculating the average depth of the object closer than the safe distance
-			depth_mean, _ = cv2.meanStdDev(depth_map, mask=mask2)
-			
-			# Display warning text
-			cv2.putText(output_canvas, "WARNING !", (x+5,y-40), 1, 2, (0,0,255), 2, 2)
-			cv2.putText(output_canvas, "Object at", (x+5,y), 1, 2, (100,10,25), 2, 2)
-			cv2.putText(output_canvas, "%.2f cm"%depth_mean, (x+5,y+40), 1, 2, (100,10,25), 2, 2)
 
-	else:
-		cv2.putText(output_canvas, "SAFE!", (100,100),1,3,(0,255,0),2,3)
-
-	cv2.imshow('output_canvas',output_canvas)
-	
-
-while True:
-	retR, imgR= CamR.read()
-	retL, imgL= CamL.read()
-	
-	if retL and retR:
-		
-		output_canvas = imgL.copy()
-
-		imgR_gray = cv2.cvtColor(imgR,cv2.COLOR_BGR2GRAY)
-		imgL_gray = cv2.cvtColor(imgL,cv2.COLOR_BGR2GRAY)
-
-		# Applying stereo image rectification on the left image
-		Left_nice= cv2.remap(imgL_gray,
-							Left_Stereo_Map_x,
-							Left_Stereo_Map_y,
-							cv2.INTER_LANCZOS4,
-							cv2.BORDER_CONSTANT,
-							0)
-		
-		# Applying stereo image rectification on the right image
-		Right_nice= cv2.remap(imgR_gray,
-							Right_Stereo_Map_x,
-							Right_Stereo_Map_y,
-							cv2.INTER_LANCZOS4,
-							cv2.BORDER_CONSTANT,
-							0)
-
-		# Setting the updated parameters before computing disparity map
-		stereo.setNumDisparities(numDisparities)
-		stereo.setBlockSize(blockSize)
-		stereo.setPreFilterType(preFilterType)
-		stereo.setPreFilterSize(preFilterSize)
-		stereo.setPreFilterCap(preFilterCap)
-		stereo.setTextureThreshold(textureThreshold)
-		stereo.setUniquenessRatio(uniquenessRatio)
-		stereo.setSpeckleRange(speckleRange)
-		stereo.setSpeckleWindowSize(speckleWindowSize)
-		stereo.setDisp12MaxDiff(disp12MaxDiff)
-		stereo.setMinDisparity(minDisparity)
-
-		# Calculating disparity using the StereoBM algorithm
-		disparity = stereo.compute(Left_nice,Right_nice)
-		# NOTE: compute returns a 16bit signed single channel image,
-		# CV_16S containing a disparity map scaled by 16. Hence it 
-		# is essential to convert it to CV_16S and scale it down 16 times.
-
-		# Converting to float32 
-		disparity = disparity.astype(np.float32)
-
-		# Normalizing the disparity map
-		disparity = (disparity/16.0 - minDisparity)/numDisparities
-		
-		depth_map = M/(disparity) # for depth in (cm)
-
-		mask_temp = cv2.inRange(depth_map,min_depth,max_depth)
-		depth_map = cv2.bitwise_and(depth_map,depth_map,mask=mask_temp)
-
-		obstacle_avoid()
-		
-		cv2.resizeWindow("disp",700,700)
-		cv2.imshow("disp",disparity)
-
-		if cv2.waitKey(1) == 27:
-			break
-	
-	else:
-		CamL= cv2.VideoCapture(CamL_id)
-		CamR= cv2.VideoCapture(CamR_id)
+if __name__ == "__main__":
+    raise SystemExit(main())

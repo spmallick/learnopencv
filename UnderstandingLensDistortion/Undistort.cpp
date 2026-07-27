@@ -1,114 +1,170 @@
-#include <opencv2/opencv.hpp>
-#include <opencv2/calib3d/calib3d.hpp>
-#include <opencv2/highgui/highgui.hpp>
-#include <opencv2/imgproc/imgproc.hpp>
-#include <stdio.h>
+#include "lens_calibration.hpp"
+
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgcodecs.hpp>
+
+#include <filesystem>
+#include <cstdlib>
+#include <iomanip>
 #include <iostream>
+#include <stdexcept>
+#include <string>
 
-// Defining the dimensions of checkerboard
-int CHECKERBOARD[2]{6,9}; 
+#ifndef LENS_SOURCE_DIR
+#define LENS_SOURCE_DIR "."
+#endif
 
-int main()
-{
-  // Creating vector to store vectors of 3D points for each checkerboard image
-  std::vector<std::vector<cv::Point3f> > objpoints;
+namespace {
 
-  // Creating vector to store vectors of 2D points for each checkerboard image
-  std::vector<std::vector<cv::Point2f> > imgpoints;
+struct Options {
+    std::filesystem::path imagesDirectory =
+        std::filesystem::path(LENS_SOURCE_DIR) / "images";
+    std::filesystem::path outputDirectory =
+        std::filesystem::path(LENS_SOURCE_DIR) / "outputs";
+    int boardColumns = 6;
+    int boardRows = 9;
+    double squareSize = 1.0;
+    double alpha = 1.0;
+    bool crop = false;
+    bool requireAll = false;
+    bool show = false;
+};
 
-  // Defining the world coordinates for 3D points
-  std::vector<cv::Point3f> objp;
-  for(int i{0}; i<CHECKERBOARD[1]; i++)
-  {
-    for(int j{0}; j<CHECKERBOARD[0]; j++)
-      objp.push_back(cv::Point3f(j,i,0));
-  }
-
-
-  // Extracting path of individual image stored in a given directory
-  std::vector<cv::String> images;
-  // Path of the folder containing checkerboard images
-  std::string path = "./images/*.jpg";
-
-  cv::glob(path, images);
-
-  cv::Mat frame, gray;
-  // vector to store the pixel coordinates of detected checker board corners 
-  std::vector<cv::Point2f> corner_pts;
-  bool success;
-
-  // Looping over all the images in the directory
-  for(int i{0}; i<images.size(); i++)
-  {
-    frame = cv::imread(images[i]);
-    cv::cvtColor(frame,gray,cv::COLOR_BGR2GRAY);
-
-    // Finding checker board corners
-    // If desired number of corners are found in the image then success = true  
-    success = cv::findChessboardCorners(gray,cv::Size(CHECKERBOARD[0],CHECKERBOARD[1]), corner_pts, cv::CALIB_CB_ADAPTIVE_THRESH | cv::CALIB_CB_FAST_CHECK | cv::CALIB_CB_NORMALIZE_IMAGE);
-
-    /*
-     * If desired number of corner are detected,
-     * we refine the pixel coordinates and display 
-     * them on the images of checker board
-    */
-    if(success)
-    {
-      cv::TermCriteria criteria(cv::TermCriteria::EPS | cv::TermCriteria::MAX_ITER, 30, 0.001);
-
-      // refining pixel coordinates for given 2d points.
-      cv::cornerSubPix(gray,corner_pts,cv::Size(11,11), cv::Size(-1,-1),criteria);
-
-      // Displaying the detected corner points on the checker board
-      cv::drawChessboardCorners(frame, cv::Size(CHECKERBOARD[0],CHECKERBOARD[1]), corner_pts,success);
-
-      objpoints.push_back(objp);
-      imgpoints.push_back(corner_pts);
+std::string requireValue(
+    const int argc,
+    char** argv,
+    int& index,
+    const std::string& option) {
+    if (index + 1 >= argc) {
+        throw std::invalid_argument(option + " requires a value.");
     }
+    return argv[++index];
+}
 
-    cv::imshow("Image",frame);
-    cv::waitKey(0);
-  }
+Options parseOptions(const int argc, char** argv) {
+    Options options;
+    for (int index = 1; index < argc; ++index) {
+        const std::string argument = argv[index];
+        if (argument == "--images-dir") {
+            options.imagesDirectory =
+                requireValue(argc, argv, index, argument);
+        } else if (argument == "--output-dir") {
+            options.outputDirectory =
+                requireValue(argc, argv, index, argument);
+        } else if (argument == "--board-columns") {
+            options.boardColumns = std::stoi(
+                requireValue(argc, argv, index, argument));
+        } else if (argument == "--board-rows") {
+            options.boardRows = std::stoi(
+                requireValue(argc, argv, index, argument));
+        } else if (argument == "--square-size") {
+            options.squareSize = std::stod(
+                requireValue(argc, argv, index, argument));
+        } else if (argument == "--alpha") {
+            options.alpha = std::stod(
+                requireValue(argc, argv, index, argument));
+        } else if (argument == "--crop") {
+            options.crop = true;
+        } else if (argument == "--require-all") {
+            options.requireAll = true;
+        } else if (argument == "--show") {
+            options.show = true;
+        } else if (argument == "--help" || argument == "-h") {
+            std::cout
+                << "Usage: Undistort [options]\n"
+                << "  --images-dir PATH       Calibration JPEG directory\n"
+                << "  --output-dir PATH       Saved-result directory\n"
+                << "  --board-columns N       Inner-corner columns (default 6)\n"
+                << "  --board-rows N          Inner-corner rows (default 9)\n"
+                << "  --square-size VALUE     Checkerboard square size\n"
+                << "  --alpha VALUE           Valid-pixel/free-scaling balance\n"
+                << "  --crop                  Crop to the valid-pixel ROI\n"
+                << "  --require-all           Fail if any detection fails\n"
+                << "  --show                  Open result windows\n";
+            std::exit(0);
+        } else {
+            throw std::invalid_argument("Unknown option: " + argument);
+        }
+    }
+    return options;
+}
 
-  cv::destroyAllWindows();
+void writeImage(
+    const std::filesystem::path& path,
+    const cv::Mat& image) {
+    if (!cv::imwrite(path.string(), image)) {
+        throw std::runtime_error(
+            "Could not write output image: " + path.string());
+    }
+}
 
-  cv::Mat cameraMatrix,distCoeffs,R,T;
+}  // namespace
 
-  /*
-   * Performing camera calibration by 
-   * passing the value of known 3D points (objpoints)
-   * and corresponding pixel coordinates of the 
-   * detected corners (imgpoints)
-  */
-  cv::calibrateCamera(objpoints, imgpoints,cv::Size(gray.rows,gray.cols),cameraMatrix,distCoeffs,R,T);
+int main(int argc, char** argv) {
+    try {
+        const Options options = parseOptions(argc, argv);
+        const auto paths =
+            lens_distortion::discoverImages(options.imagesDirectory);
+        const auto calibration = lens_distortion::calibrateFromImages(
+            paths,
+            cv::Size(options.boardColumns, options.boardRows),
+            options.squareSize,
+            options.requireAll);
 
-  std::cout << "cameraMatrix : " << cameraMatrix << std::endl;
-  std::cout << "distCoeffs : " << distCoeffs << std::endl;
-  std::cout << "Rotation vector : " << R << std::endl;
-  std::cout << "Translation vector : " << T << std::endl;
+        const cv::Mat sample = cv::imread(
+            calibration.successfulImages.front().string(),
+            cv::IMREAD_COLOR);
+        if (sample.empty()) {
+            throw std::runtime_error(
+                "Could not reread the first successful image.");
+        }
+        const auto direct = lens_distortion::undistortImage(
+            sample, calibration, options.alpha, "direct", options.crop);
+        const auto remapped = lens_distortion::undistortImage(
+            sample, calibration, options.alpha, "remap", options.crop);
 
+        std::filesystem::create_directories(options.outputDirectory);
+        writeImage(
+            options.outputDirectory / "calibration-corners.jpg",
+            calibration.cornerPreview);
+        writeImage(
+            options.outputDirectory / "undistorted-direct.jpg",
+            direct.image);
+        writeImage(
+            options.outputDirectory / "undistorted-remap.jpg",
+            remapped.image);
+        const auto calibrationPath =
+            options.outputDirectory / "calibration.yml";
+        lens_distortion::saveCalibration(
+            calibration, calibrationPath);
 
-  // Trying to undistort the image using the camera parameters obtained from calibration
-  
-  cv::Mat image;
-  image = cv::imread(images[0]);
-  cv::Mat dst, map1, map2,new_camera_matrix;
-  cv::Size imageSize(cv::Size(image.cols,image.rows));
+        std::cout
+            << "Checkerboards detected: "
+            << calibration.successfulImages.size() << "/"
+            << paths.size() << "\n"
+            << "Image size: " << calibration.imageSize.width << "x"
+            << calibration.imageSize.height << "\n"
+            << std::setprecision(10)
+            << "OpenCV calibration RMS: " << calibration.rms << "\n"
+            << "Reprojection RMSE: "
+            << calibration.reprojectionRMSE << " px\n"
+            << "Alpha-" << options.alpha << " ROI: ("
+            << direct.roi.x << ", " << direct.roi.y << ", "
+            << direct.roi.width << ", " << direct.roi.height << ")\n"
+            << "Saved calibration: " << calibrationPath << "\n"
+            << "Saved corrected images under: "
+            << options.outputDirectory << "\n";
 
-  // Refining the camera matrix using parameters obtained by calibration
-  new_camera_matrix = cv::getOptimalNewCameraMatrix(cameraMatrix, distCoeffs, imageSize, 1, imageSize, 0);
-
-  // Method 1 to undistort the image
-  cv::undistort( frame, dst, new_camera_matrix, distCoeffs, new_camera_matrix );
-
-  // Method 2 to undistort the image
-  cv::initUndistortRectifyMap(cameraMatrix, distCoeffs, cv::Mat(),cv::getOptimalNewCameraMatrix(cameraMatrix, distCoeffs,   imageSize, 1, imageSize, 0),imageSize, CV_16SC2, map1, map2);
-
-  cv::remap(frame, dst, map1, map2, cv::INTER_LINEAR);
-
-  //Displaying the undistorted image
-  cv::imshow("undistorted image",dst);
-  cv::waitKey(0);
-
-  return 0;
+        if (options.show) {
+            cv::imshow(
+                "Calibration corners", calibration.cornerPreview);
+            cv::imshow("Undistorted image", direct.image);
+            cv::waitKey(0);
+            cv::destroyAllWindows();
+        }
+        return 0;
+    } catch (const std::exception& error) {
+        std::cerr << "Error: " << error.what() << "\n";
+        return 1;
+    }
 }

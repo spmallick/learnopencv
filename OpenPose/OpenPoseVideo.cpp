@@ -1,166 +1,235 @@
-#include <opencv2/dnn.hpp>
-#include <opencv2/imgproc.hpp>
+#include "pose_estimation.hpp"
+
 #include <opencv2/highgui.hpp>
+#include <opencv2/videoio.hpp>
+
+#include <cmath>
+#include <filesystem>
 #include <iostream>
+#include <stdexcept>
+#include <string>
 
-using namespace std;
-using namespace cv;
-using namespace cv::dnn;
-
-#define MPI
-
-#ifdef MPI
-const int POSE_PAIRS[14][2] = 
-{   
-    {0,1}, {1,2}, {2,3},
-    {3,4}, {1,5}, {5,6},
-    {6,7}, {1,14}, {14,8}, {8,9},
-    {9,10}, {14,11}, {11,12}, {12,13}
-};
-
-string protoFile = "pose/mpi/pose_deploy_linevec_faster_4_stages.prototxt";
-string weightsFile = "pose/mpi/pose_iter_160000.caffemodel";
-
-int nPoints = 15;
+#ifndef OPENPOSE_SOURCE_DIR
+#define OPENPOSE_SOURCE_DIR "."
 #endif
 
-#ifdef COCO
-const int POSE_PAIRS[17][2] = 
-{   
-    {1,2}, {1,5}, {2,3},
-    {3,4}, {5,6}, {6,7},
-    {1,8}, {8,9}, {9,10},
-    {1,11}, {11,12}, {12,13},
-    {1,0}, {0,14},
-    {14,16}, {0,15}, {15,17}
+namespace {
+
+struct Options {
+    std::filesystem::path input =
+        std::filesystem::path(OPENPOSE_SOURCE_DIR) / "sample_video.mp4";
+    std::filesystem::path model =
+        std::filesystem::path(OPENPOSE_SOURCE_DIR) /
+        "models" /
+        "pose_estimation_mediapipe_2023mar.onnx";
+    std::filesystem::path output_dir =
+        std::filesystem::path(OPENPOSE_SOURCE_DIR) / "output";
+    std::string device = "cpu";
+    float score_threshold = 0.5F;
+    int max_frames = 0;
+    bool display = false;
+    bool validate = false;
+    bool help = false;
 };
 
-string protoFile = "pose/coco/pose_deploy_linevec.prototxt";
-string weightsFile = "pose/coco/pose_iter_440000.caffemodel";
-
-int nPoints = 18;
-#endif
-
-int main(int argc, char **argv)
-{
-
-    cout << "USAGE : ./OpenPose <videoFile> " << endl;
-    cout << "USAGE : ./OpenPose <videoFile> <device>" << endl;
-    
-    string device = "cpu";
-    string videoFile = "sample_video.mp4";
-
-    // Take arguments from commmand line
-    if (argc == 2)
-    {   
-      if((string)argv[1] == "gpu")
-        device = "gpu";
-      else 
-      videoFile = argv[1];
+std::string requireValue(int& index, int argc, char** argv) {
+    if (index + 1 >= argc) {
+        throw std::invalid_argument(
+            "Missing value after " + std::string(argv[index]));
     }
-    else if (argc == 3)
-    {
-        videoFile = argv[1];
-        if((string)argv[2] == "gpu")
-            device = "gpu";
+    ++index;
+    return argv[index];
+}
+
+Options parseOptions(int argc, char** argv) {
+    Options options;
+    for (int index = 1; index < argc; ++index) {
+        const std::string argument = argv[index];
+        if (argument == "--help" || argument == "-h") {
+            options.help = true;
+        } else if (argument == "--input") {
+            options.input = requireValue(index, argc, argv);
+        } else if (argument == "--model") {
+            options.model = requireValue(index, argc, argv);
+        } else if (argument == "--output-dir") {
+            options.output_dir = requireValue(index, argc, argv);
+        } else if (argument == "--device") {
+            options.device = requireValue(index, argc, argv);
+        } else if (argument == "--score-threshold") {
+            options.score_threshold =
+                std::stof(requireValue(index, argc, argv));
+        } else if (argument == "--max-frames") {
+            options.max_frames =
+                std::stoi(requireValue(index, argc, argv));
+        } else if (argument == "--display") {
+            options.display = true;
+        } else if (argument == "--no-display") {
+            options.display = false;
+        } else if (argument == "--validate") {
+            options.validate = true;
+        } else {
+            throw std::invalid_argument("Unknown argument: " + argument);
+        }
     }
-
-    int inWidth = 368;
-    int inHeight = 368;
-    float thresh = 0.01;    
-
-    cv::VideoCapture cap(videoFile);
-
-    if (!cap.isOpened())
-    {
-        cerr << "Unable to connect to camera" << endl;
-        return 1;
+    if (options.score_threshold < 0.0F || options.score_threshold > 1.0F) {
+        throw std::invalid_argument(
+            "--score-threshold must be between 0 and 1.");
     }
-    
-    Mat frame, frameCopy;
-    int frameWidth = cap.get(CAP_PROP_FRAME_WIDTH);
-    int frameHeight = cap.get(CAP_PROP_FRAME_HEIGHT);
-    
-    VideoWriter video("Output-Skeleton.avi",VideoWriter::fourcc('M','J','P','G'), 10, Size(frameWidth,frameHeight));
-
-    Net net = readNetFromCaffe(protoFile, weightsFile);
-    
-    if (device == "cpu")
-    {
-        cout << "Using CPU device" << endl;
-        net.setPreferableBackend(DNN_TARGET_CPU);
+    if (options.max_frames < 0) {
+        throw std::invalid_argument("--max-frames cannot be negative.");
     }
-    else if (device == "gpu")
-    {
-        cout << "Using GPU device" << endl;
-        net.setPreferableBackend(DNN_BACKEND_CUDA);
-        net.setPreferableTarget(DNN_TARGET_CUDA);
+    return options;
+}
+
+void printHelp(const char* executable) {
+    std::cout
+        << "Usage: " << executable << " [options]\n"
+        << "  --input PATH             Input video\n"
+        << "  --model PATH             MediaPipe Pose ONNX model\n"
+        << "  --output-dir PATH        Directory for pose-video.avi\n"
+        << "  --device cpu|cuda        DNN execution device\n"
+        << "  --score-threshold VALUE  Landmark probability threshold\n"
+        << "  --max-frames N           Zero processes the complete video\n"
+        << "  --display                Open an interactive window\n"
+        << "  --no-display             Run headlessly (default)\n"
+        << "  --validate               Check stable output invariants\n";
+}
+
+void validateWrittenVideo(
+    const std::filesystem::path& output_path,
+    const cv::Size& expected_size,
+    int expected_frames) {
+    cv::VideoCapture capture(output_path.string());
+    if (!capture.isOpened()) {
+        throw std::runtime_error(
+            "Could not reopen output video: " + output_path.string());
     }
+    const cv::Size actual_size{
+        cvRound(capture.get(cv::CAP_PROP_FRAME_WIDTH)),
+        cvRound(capture.get(cv::CAP_PROP_FRAME_HEIGHT)),
+    };
+    const int actual_frames =
+        cvRound(capture.get(cv::CAP_PROP_FRAME_COUNT));
+    capture.release();
+    if (actual_size != expected_size) {
+        throw std::runtime_error("Output video dimensions changed.");
+    }
+    if (actual_frames != expected_frames) {
+        throw std::runtime_error(
+            "Output video frame count does not match processed frames.");
+    }
+}
 
-    double t=0;
-    while( waitKey(1) < 0)
-    {       
-        double t = (double) cv::getTickCount();
+}  // namespace
 
-        cap >> frame;
-        frameCopy = frame.clone();
-        Mat inpBlob = blobFromImage(frame, 1.0 / 255, Size(inWidth, inHeight), Scalar(0, 0, 0), false, false);
+int main(int argc, char** argv) {
+    try {
+        const Options options = parseOptions(argc, argv);
+        if (options.help) {
+            printHelp(argv[0]);
+            return 0;
+        }
 
-        net.setInput(inpBlob);
+        cv::VideoCapture capture(options.input.string());
+        if (!capture.isOpened()) {
+            throw std::runtime_error(
+                "Could not open input video: " + options.input.string());
+        }
 
-        Mat output = net.forward();
+        const cv::Size frame_size{
+            cvRound(capture.get(cv::CAP_PROP_FRAME_WIDTH)),
+            cvRound(capture.get(cv::CAP_PROP_FRAME_HEIGHT)),
+        };
+        if (frame_size.width <= 0 || frame_size.height <= 0) {
+            throw std::runtime_error("Input video has invalid dimensions.");
+        }
+        double fps = capture.get(cv::CAP_PROP_FPS);
+        if (!std::isfinite(fps) || fps <= 0.0) {
+            fps = 25.0;
+        }
 
-        int H = output.size[2];
-        int W = output.size[3];
+        std::filesystem::create_directories(options.output_dir);
+        const std::filesystem::path output_path =
+            options.output_dir / "pose-video.avi";
+        cv::VideoWriter writer(
+            output_path.string(),
+            cv::VideoWriter::fourcc('M', 'J', 'P', 'G'),
+            fps,
+            frame_size);
+        if (!writer.isOpened()) {
+            throw std::runtime_error(
+                "Could not create output video: " + output_path.string());
+        }
 
-        // find the position of the body parts
-        vector<Point> points(nPoints);
-        for (int n=0; n < nPoints; n++)
-        {
-            // Probability map of corresponding body's part.
-            Mat probMap(H, W, CV_32F, output.ptr(0,n));
-
-            Point2f p(-1,-1);
-            Point maxLoc;
-            double prob;
-            minMaxLoc(probMap, 0, &prob, 0, &maxLoc);
-            if (prob > thresh)
-            {
-                p = maxLoc;
-                p.x *= (float)frameWidth / W ;
-                p.y *= (float)frameHeight / H ;
-
-                circle(frameCopy, cv::Point((int)p.x, (int)p.y), 8, Scalar(0,255,255), -1);
-                cv::putText(frameCopy, cv::format("%d", n), cv::Point((int)p.x, (int)p.y), cv::FONT_HERSHEY_COMPLEX, 1.1, cv::Scalar(0, 0, 255), 2);
+        learnopencv::pose::PoseEstimator estimator(
+            options.model, options.device);
+        int processed = 0;
+        long long total_visible = 0;
+        long long total_edges = 0;
+        cv::Mat frame;
+        while (capture.read(frame)) {
+            if (frame.empty()) {
+                throw std::runtime_error(
+                    "Decoded an empty frame at index " +
+                    std::to_string(processed) + ".");
             }
-            points[n] = p;
+            if (frame.size() != frame_size) {
+                throw std::runtime_error(
+                    "A decoded frame changed dimensions.");
+            }
+
+            const learnopencv::pose::PoseResult result =
+                estimator.infer(frame);
+            cv::Mat output = frame.clone();
+            const learnopencv::pose::DrawMetrics metrics =
+                learnopencv::pose::draw(
+                    output, result, options.score_threshold);
+            if (options.validate) {
+                learnopencv::pose::validate(frame, result, metrics);
+            }
+            writer.write(output);
+            ++processed;
+            total_visible += metrics.visible_count;
+            total_edges += metrics.edge_count;
+
+            if (options.display) {
+                cv::imshow("MediaPipe Pose", output);
+                if (cv::waitKey(1) == 27) {
+                    break;
+                }
+            }
+            if (options.max_frames > 0 &&
+                processed >= options.max_frames) {
+                break;
+            }
         }
 
-        int nPairs = sizeof(POSE_PAIRS)/sizeof(POSE_PAIRS[0]);
-
-        for (int n = 0; n < nPairs; n++)
-        {
-            // lookup 2 connected body/hand parts
-            Point2f partA = points[POSE_PAIRS[n][0]];
-            Point2f partB = points[POSE_PAIRS[n][1]];
-
-            if (partA.x<=0 || partA.y<=0 || partB.x<=0 || partB.y<=0)
-                continue;
-
-            line(frame, partA, partB, Scalar(0,255,255), 8);
-            circle(frame, partA, 8, Scalar(0,0,255), -1);
-            circle(frame, partB, 8, Scalar(0,0,255), -1);
+        capture.release();
+        writer.release();
+        if (options.display) {
+            cv::destroyAllWindows();
+        }
+        if (processed == 0) {
+            throw std::runtime_error("No frames were decoded.");
         }
 
-        t = ((double)cv::getTickCount() - t)/cv::getTickFrequency();
-        cv::putText(frame, cv::format("time taken = %.2f sec", t), cv::Point(50, 50), cv::FONT_HERSHEY_COMPLEX, .8, cv::Scalar(255, 50, 0), 2);
-        // imshow("Output-Keypoints", frameCopy);
-        imshow("Output-Skeleton", frame);
-        video.write(frame);
+        if (options.validate) {
+            validateWrittenVideo(output_path, frame_size, processed);
+            std::cout
+                << "VALIDATION PASSED: frames=" << processed
+                << " size=" << frame_size.width
+                << 'x' << frame_size.height << '\n';
+        }
+
+        std::cout << "OpenCV version: " << CV_VERSION << '\n';
+        std::cout
+            << "POSE VIDEO RESULT: frames=" << processed
+            << " total_visible=" << total_visible
+            << " total_edges=" << total_edges << '\n';
+        std::cout << "Saved output: " << output_path << '\n';
+        return 0;
+    } catch (const std::exception& error) {
+        std::cerr << "ERROR: " << error.what() << '\n';
+        return 2;
     }
-    // When everything done, release the video capture and write object
-    cap.release();
-    video.release();
-
-    return 0;
 }

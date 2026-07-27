@@ -30,6 +30,14 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Color Spaces in OpenCV (C++ and Python)](https://learnopencv.com/color-spaces-in-opencv-cpp-python/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/ColorSpaces) |
+| [Human Pose Estimation with OpenCV (C++ and Python)](https://learnopencv.com/deep-learning-based-human-pose-estimation-using-opencv-cpp-python/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/OpenPose) |
+| [Face Detection with OpenCV and Dlib (C++ and Python)](https://learnopencv.com/face-detection-opencv-dlib-and-deep-learning-c-python/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/FaceDetectionComparison) |
+| [Rotation Matrix to Euler Angles](https://learnopencv.com/rotation-matrix-to-euler-angles/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/RotationMatrixToEulerAngles) |
+| [Hough Transform with OpenCV (C++ and Python)](https://learnopencv.com/hough-transform-with-opencv-c-python/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/Hough-Transform) |
+| [Otsu's Thresholding with OpenCV](https://learnopencv.com/otsu-thresholding-with-opencv/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/otsu-method) |
+| [Stereo Camera Depth Estimation with OpenCV (Python and C++)](https://learnopencv.com/depth-perception-using-stereo-camera-python-c/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/Depth-Perception-Using-Stereo-Camera) |
+| [Understanding Lens Distortion](https://learnopencv.com/understanding-lens-distortion/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/UnderstandingLensDistortion) |
 | [Blob Detection Using OpenCV (Python, C++)](https://learnopencv.com/blob-detection-using-opencv-python-c/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/BlobDetector) |
 | [Homography Examples Using OpenCV (Python and C++)](https://learnopencv.com/homography-examples-using-opencv-python-c/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/Homography) |
 | [Convex Hull Using OpenCV in Python and C++](https://learnopencv.com/convex-hull-using-opencv-in-python-and-c/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/ConvexHull) |
@@ -342,7 +350,6 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 |[Variational Autoencoder in TensorFlow](https://learnopencv.com/variational-autoencoder-in-tensorflow/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Variational-Autoencoder-TensorFlow) |
 |[Autoencoder in TensorFlow 2: Beginner’s Guide](https://learnopencv.com/autoencoder-in-tensorflow-2-beginners-guide/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Autoencoder-in-TensorFlow) |
 |[Deep Learning with OpenCV DNN Module: A Definitive Guide](https://learnopencv.com/deep-learning-with-opencvs-dnn-module-a-definitive-guide/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Deep-Learning-with-OpenCV-DNN-Module) |
-|[Depth perception using stereo camera (Python/C++)](https://learnopencv.com/depth-perception-using-stereo-camera-python-c/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Depth-Perception-Using-Stereo-Camera) |
 |[Improving Illumination in Night Time Images](https://learnopencv.com/improving-illumination-in-night-time-images/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Improving-Illumination-in-Night-Time-Images) |
 |[Video Classification and Human Activity Recognition](https://learnopencv.com/introduction-to-video-classification-and-human-activity-recognition/) | [Code](https://github.com/spmallick/learnopencv/tree/master/video-classification-and-human-activity-recognition) |
 |[How to use OpenCV DNN Module with Nvidia GPU on Windows](https://learnopencv.com/how-to-use-opencv-dnn-module-with-nvidia-gpu-on-windows) | [Code](https://github.com/spmallick/learnopencv/tree/master/OpenCV-dnn-gpu-support-Windows) |
@@ -362,7 +369,6 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 |[PyTorch to Tensorflow Model Conversion](https://www.learnopencv.com/pytorch-to-tensorflow-model-conversion/) | [Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-to-TensorFlow-Model-Conversion) |
 |[Stanford MRNet Challenge: Classifying Knee MRIs](https://www.learnopencv.com/stanford-mrnet-challenge-classifying-knee-mris/)|[Code](https://github.com/spmallick/learnopencv/tree/master/MRNet-Single-Model) |
 |[Experiment Logging with TensorBoard and wandb](https://www.learnopencv.com/experiment-logging-with-tensorboard-and-wandb)|[Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-Vision-Experiment-Logging) |
-|[Understanding Lens Distortion](https://www.learnopencv.com/understanding-lens-distortion/)|[Code](https://github.com/spmallick/learnopencv/tree/master/UnderstandingLensDistortion) |
 |[Image Matting with state-of-the-art Method “F, B, Alpha Matting”](https://www.learnopencv.com/image-matting-with-state-of-the-art-method-f-b-alpha-matting/)|[Code](https://github.com/spmallick/learnopencv/tree/master/FBAMatting) |
 |[Bag Of Tricks For Image Classification - Let's check if it is working or not](https://www.learnopencv.com/bag-of-tricks-for-image-classification-lets-check-if-it-is-working-or-not/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Bag-Of-Tricks-For-Image-Classification) |
 |[Getting Started with OpenCV CUDA Module](https://www.learnopencv.com/getting-started-opencv-cuda-module/)|[Code](https://github.com/spmallick/learnopencv/tree/master/Getting-Started-OpenCV-CUDA-Module) |
@@ -370,7 +376,6 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 |[How To Run Inference Using TensorRT C++ API](https://www.learnopencv.com/how-to-run-inference-using-tensorrt-c-api/) | [Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-ONNX-TensorRT-CPP) |
 |[Using Facial Landmarks for Overlaying Faces with Medical Masks](https://www.learnopencv.com/using-facial-landmarks-for-overlaying-faces-with-masks/)|[Code](https://github.com/spmallick/learnopencv/tree/master/FaceMaskOverlay) |
 |[Tensorboard with PyTorch Lightning](https://www.learnopencv.com/tensorboard-with-pytorch-lightning)|[Code](https://github.com/spmallick/learnopencv/tree/master/TensorBoard-With-Pytorch-Lightning) |
-|[Otsu's Thresholding with OpenCV](https://www.learnopencv.com/otsu-thresholding-with-opencv/)|[Code](https://github.com/spmallick/learnopencv/tree/master/otsu-method) |
 |[PyTorch-to-CoreML-model-conversion](https://www.learnopencv.com/pytorch-to-coreml-model-conversion/) | [Code](https://github.com/spmallick/learnopencv/tree/master/PyTorch-to-CoreML-model-conversion) |
 |[Playing Rock, Paper, Scissors with AI](https://www.learnopencv.com/playing-rock-paper-scissors-with-ai/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Playing-rock-paper-scissors-with-AI) |
 |[CNN Receptive Field Computation Using Backprop with TensorFlow](https://www.learnopencv.com/cnn-receptive-field-computation-using-backprop-with-tensorflow/)|[Code](https://github.com/spmallick/learnopencv/tree/master/TensorFlow-Receptive-Field-With-Backprop)|
@@ -403,7 +408,6 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 |[Image Classification Using Transfer Learning in PyTorch](https://www.learnopencv.com/image-classification-using-transfer-learning-in-pytorch/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Image-Classification-in-PyTorch) |
 |[Hangman: Creating games in OpenCV](https://www.learnopencv.com/hangman-creating-games-in-opencv/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Hangman) |
 |[Image Inpainting with OpenCV (C++/Python)](https://www.learnopencv.com/image-inpainting-with-opencv-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Image-Inpainting) |
-|[Hough Transform with OpenCV (C++/Python)](https://www.learnopencv.com/hough-transform-with-opencv-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Hough-Transform) |
 |[Xeus-Cling: Run C++ code in Jupyter Notebook](https://www.learnopencv.com/xeus-cling-run-c-code-in-jupyter-notebook/) | [Code](https://github.com/spmallick/learnopencv/tree/master/XeusCling) |
 |[Gender & Age Classification using OpenCV Deep Learning ( C++/Python )](https://www.learnopencv.com/age-gender-classification-using-opencv-deep-learning-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/AgeGender) |
 |[Invisibility Cloak using Color Detection and Segmentation with OpenCV](https://www.learnopencv.com/invisibility-cloak-using-color-detection-and-segmentation-with-opencv/) | [Code](https://github.com/spmallick/learnopencv/tree/master/InvisibilityCloak) |
@@ -425,7 +429,6 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 |[Universal Sentence Encoder](https://www.learnopencv.com/universal-sentence-encoder) | [Code](https://github.com/spmallick/learnopencv/blob/master/Universal-Sentence-Encoder) |
 |[Install OpenCV 4 on Raspberry Pi](https://www.learnopencv.com/install-opencv-4-on-raspberry-pi/) | [Code](https://github.com/spmallick/learnopencv/blob/master/InstallScripts/installOpenCV-4-raspberry-pi.sh) |
 |[Install OpenCV 4 on Windows (C++ and Python)](https://www.learnopencv.com/install-opencv-4-on-windows/) | [Code](https://github.com/spmallick/learnopencv/tree/master/InstallScripts/Windows-4) |
-|[Face Detection – Dlib, OpenCV, and Deep Learning ( C++ / Python )](https://learnopencv.com/face-detection-opencv-dlib-and-deep-learning-c-python/)|[Code](https://github.com/spmallick/learnopencv/tree/master/FaceDetectionComparison)|
 |[Hand Keypoint Detection using Deep Learning and OpenCV](https://www.learnopencv.com/hand-keypoint-detection-using-deep-learning-and-opencv/) | [Code](https://github.com/spmallick/learnopencv/tree/master/HandPose)|
 |[Deep learning based Object Detection and Instance Segmentation using Mask R-CNN in OpenCV (Python / C++)](https://www.learnopencv.com/deep-learning-based-object-detection-and-instance-segmentation-using-mask-r-cnn-in-opencv-python-c/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Mask-RCNN) |
 |[Install OpenCV 4 on Ubuntu 18.04 (C++ and Python)](https://www.learnopencv.com/install-opencv-4-on-ubuntu-18-04/) | [Code](https://github.com/spmallick/learnopencv/blob/master/InstallScripts/installOpenCV-4-on-Ubuntu-18-04.sh) |
@@ -441,7 +444,6 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 |[Deep Learning based Character Classification using Synthetic Dataset](https://www.learnopencv.com/deep-learning-character-classification-using-synthetic-dataset/) | [Code](https://github.com/spmallick/learnopencv/tree/master/CharClassification)|
 |[Understanding AlexNet](https://www.learnopencv.com/understanding-alexnet/)||
 |[Deep Learning based Text Recognition (OCR) using Tesseract and OpenCV](https://www.learnopencv.com/deep-learning-based-text-recognition-ocr-using-tesseract-and-opencv/)| [Code](https://github.com/spmallick/learnopencv/tree/master/OCR)|
-|[Deep Learning based Human Pose Estimation using OpenCV ( C++ / Python )](https://www.learnopencv.com/deep-learning-based-human-pose-estimation-using-opencv-cpp-python/)|[Code](https://github.com/spmallick/learnopencv/tree/master/OpenPose)|
 |[Number of Parameters and Tensor Sizes in a Convolutional Neural Network (CNN)](https://www.learnopencv.com/number-of-parameters-and-tensor-sizes-in-convolutional-neural-network/)| |
 |[How to convert your OpenCV C++ code into a Python module](https://www.learnopencv.com/how-to-convert-your-opencv-c-code-into-a-python-module/)|[Code](https://github.com/spmallick/learnopencv/tree/master/pymodule)|
 |[CV4Faces : Best Project Award 2018](https://www.learnopencv.com/cv4faces-best-project-award-2018/)| |
@@ -478,7 +480,6 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 |[Install OpenCV 3 on MacOS](http://www.learnopencv.com/install-opencv3-on-macos/) | |
 |[Install OpenCV 3 on Windows](http://www.learnopencv.com/install-opencv3-on-windows/) | |
 |[Get OpenCV Build Information ( getBuildInformation )](http://www.learnopencv.com/get-opencv-build-information-getbuildinformation/) | |
-|[Color spaces in OpenCV (C++ / Python)](http://www.learnopencv.com/color-spaces-in-opencv-cpp-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/ColorSpaces)|
 |[Neural Networks : A 30,000 Feet View for Beginners](http://www.learnopencv.com/neural-networks-a-30000-feet-view-for-beginners/) | |
 |[Alpha Blending using OpenCV (C++ / Python)](http://www.learnopencv.com/alpha-blending-using-opencv-cpp-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/AlphaBlending) |
 |[User stories : How readers of this blog are applying their knowledge to build applications](http://www.learnopencv.com/user-stories-how-readers-of-this-blog-are-applying-their-knowledge-to-build-applications/) | |
@@ -497,7 +498,6 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 |[Live CV : A Computer Vision Coding Application](http://www.learnopencv.com/live-cv/) | |
 |[Approximate Focal Length for Webcams and Cell Phone Cameras](http://www.learnopencv.com/approximate-focal-length-for-webcams-and-cell-phone-cameras/) | |
 |[Configuring Qt for OpenCV on OSX](http://www.learnopencv.com/configuring-qt-for-opencv-on-osx/) | [Code](https://github.com/spmallick/learnopencv/tree/master/qt-test) |
-|[Rotation Matrix To Euler Angles](http://www.learnopencv.com/rotation-matrix-to-euler-angles/) | [Code](https://github.com/spmallick/learnopencv/tree/master/RotationMatrixToEulerAngles) |
 |[Speeding up Dlib’s Facial Landmark Detector](http://www.learnopencv.com/speeding-up-dlib-facial-landmark-detector/) | |
 |[Warp one triangle to another using OpenCV ( C++ / Python )](http://www.learnopencv.com/warp-one-triangle-to-another-using-opencv-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/WarpTriangle) |
 |[Face Swap using OpenCV ( C++ / Python )](http://www.learnopencv.com/face-swap-using-opencv-c-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/FaceSwap) |

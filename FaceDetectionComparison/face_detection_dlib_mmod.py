@@ -1,3 +1,9 @@
+"""LEGACY 2018 dlib MMOD example.
+
+This file is retained as historical tutorial material. It is not installed,
+imported, tested, or run by the current YuNet comparison workflow.
+"""
+
 import argparse
 import os
 import time

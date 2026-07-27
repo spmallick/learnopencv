@@ -1,0 +1,2 @@
+# Optional historical HOG baseline; not required by the default YuNet tests.
+dlib>=19.24,<21

@@ -1,67 +1,96 @@
+# [Stereo Camera Depth Estimation With OpenCV (Python/C++)](https://learnopencv.com/depth-perception-using-stereo-camera-python-c/)
 
-# Depth Estimation using Stereo Camera and OpenCV
+[<img src="https://cdn.learnopencv.com/wp-content/uploads/2021/06/04093439/Pg5-Depth-perception-using-stereo-camera-FeatureImage-768x432.jpg" alt="Stereo camera depth estimation and obstacle avoidance with OpenCV" width="800">](https://learnopencv.com/depth-perception-using-stereo-camera-python-c/)
 
-**This repository contains code for [Depth Estimation using Stereo Camera and OpenCV](https://learnopencv.com/depth-perception-using-stereo-camera-python-c/) blogpost**.
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download the stereo depth companion code" width="200">](https://github.com/spmallick/learnopencv/releases/download/stereo-depth-opencv-2026.07.26/Depth-Perception-Using-Stereo-Camera-2026.07.26.zip)
 
-[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/cl70ubt31ya0e64/AABA77qwIX8rFiclw8drdPSXa?dl=1)
+This companion uses OpenCV `StereoBM` to rectify a stereo pair, estimate
+pixel disparity, calibrate a disparity-to-depth model, and highlight nearby
+obstacles. Camera-independent Python and C++ functions are covered by
+deterministic tests; real-camera scripts remain available as optional smoke
+tests.
 
-Create a custom low-cost stereo camera and capture depth maps with it using OpenCV.
+## Requirements
 
-## Directory Structure
-**All the code files and folders follow the following structure.**
+- Python 3.10–3.14 with OpenCV 4.13 or newer
+- CMake 3.16 or newer
+- A C++17 compiler
+- OpenCV 4 or OpenCV 5 development libraries
+- A synchronized stereo camera only for the interactive examples
 
-```
-├── cpp
-│   ├── disparity2depth_calib.cpp
-│   ├── disparity_params_gui.cpp
-│   ├── obstacle_avoidance.cpp
-│   └── CMakeLists.txt
-├── data
-│   ├── depth_estimation_params.xml
-│   ├── depth_estimation_params_cpp.xml
-│   ├── depth_estmation_params_py.xml
-│   ├── depth_params.xml
-│   └── stereo_rectify_maps.xml
-├── python
-│   ├── disparity2depth_calib.py
-│   ├── disparity_params_gui.py
-│   ├── obstacle_avoidance.py
-│   └── requirements.txt
-└── README.md
+```bash
+python -m pip install -r python/requirements.txt
 ```
 
-## Instructions
+All default map and configuration paths are resolved relative to this
+directory, not the current working directory.
 
-### C++
+## Headless image-pair workflow
 
-To run the code in C++, please go into the `cpp` folder, then compile the `disparity_params_gui.cpp`, `obstacle_avoidance.cpp` and `disparity2depth_calib.cpp` code files, use the following:
+Provide a 640×480 pair from the calibrated rig:
 
-```shell
-mkdir build
-cd build
-cmake ..
-cmake --build . --config Release
+```bash
+python python/stereo_depth.py \
+  --left path/to/left.png \
+  --right path/to/right.png
 ```
 
-### Use the following commands to execute the compiled files:
+The command writes rectified inputs, disparity, and depth visualizations under
+`outputs/`. Add `--already-rectified` when the pair has already been
+rectified.
 
+The equivalent C++ executable is built as `stereo_depth_cli`.
 
-```shell
-./build/disparity_params_gui
-./build/disparity2depth_calib
-./build/obstacle_avoidance
+## Deterministic tests
+
+The tests use generated textured stereo pairs, known disparity/depth models,
+the tracked 640×480 rectification maps, invalid-disparity cases, configuration
+round trips, and a synthetic obstacle:
+
+```bash
+python -m pytest -q python/tests/test_stereo_depth.py
+
+cmake -S cpp -B cpp/build -DBUILD_TESTING=ON
+cmake --build cpp/build --config Release
+ctest --test-dir cpp/build --output-on-failure -C Release
 ```
 
+## Optional real-rig workflows
 
-### Python
+Tune `StereoBM` without mutating the input XML:
 
-To run the code in Python, please go into the `python` folder and refer to the following to use the `disparity_params_gui.py`, `obstacle_avoidance.py` and `disparity2depth_calib.py` files respectively:
-
-```shell
-python3 disparity_params_gui.py
-python3 disparity2depth_calib.py
-python3 obstacle_avoidance.py
+```bash
+python python/disparity_params_gui.py \
+  --save-config data/depth_estimation_params_py_updated.xml
 ```
+
+Fit both scale and offset in
+`depth = scale / (disparity - minDisparity) + offset`:
+
+```bash
+python python/disparity2depth_calib.py
+```
+
+Run obstacle visualization:
+
+```bash
+python python/obstacle_avoidance.py
+```
+
+For a bounded, non-GUI hardware smoke test:
+
+```bash
+python python/disparity_params_gui.py \
+  --no-display --max-frames 60 --output outputs/real-rig-disparity.png
+```
+
+The C++ executables accept the corresponding `--left-camera`,
+`--right-camera`, `--maps`, `--config`, `--max-frames`, and output options.
+They use `grab` on both cameras before `retrieve` to reduce capture skew.
+
+Legacy XML files store `M` against normalized disparity. The loaders migrate
+that value to a pixel-disparity scale in memory. Newly written configuration
+files store explicit `depthScale` and `depthOffset` fields.
 
 
 ---

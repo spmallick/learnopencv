@@ -1,13 +1,8 @@
-# ------------------------- POSE MODELS -------------------------
+#!/usr/bin/env sh
 
+# Preserve the familiar command while delegating security-sensitive download
+# and checksum handling to the cross-platform Python implementation.
+set -eu
 
-# Downloading the pose-model trained on COCO
-COCO_POSE_URL="https://www.dropbox.com/s/2h2bv29a130sgrk/pose_iter_440000.caffemodel"
-COCO_FOLDER="pose/coco/"
-wget -c ${COCO_POSE_URL} -P ${COCO_FOLDER}
-
-# Downloading the pose-model trained on MPI
-MPI_POSE_URL="https://www.dropbox.com/s/drumc6dzllfed16/pose_iter_160000.caffemodel"
-MPI_FOLDER="pose/mpi/"
-wget -c ${MPI_POSE_URL} -P ${MPI_FOLDER}
-
+SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+exec python3 "${SCRIPT_DIR}/download_models.py" "$@"

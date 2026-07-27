@@ -1,102 +1,139 @@
-import cv2
-import time
-import numpy as np
+#!/usr/bin/env python3
+"""Estimate one person's MediaPipe Pose landmarks in an image."""
+
+from __future__ import annotations
+
 import argparse
+from pathlib import Path
+import sys
 
-parser = argparse.ArgumentParser(description='Run keypoint detection')
-parser.add_argument("--device", default="cpu", help="Device to inference on")
-parser.add_argument("--image_file", default="single.jpeg", help="Input image")
+import cv2
 
-args = parser.parse_args()
-
-
-MODE = "COCO"
-
-if MODE is "COCO":
-    protoFile = "pose/coco/pose_deploy_linevec.prototxt"
-    weightsFile = "pose/coco/pose_iter_440000.caffemodel"
-    nPoints = 18
-    POSE_PAIRS = [ [1,0],[1,2],[1,5],[2,3],[3,4],[5,6],[6,7],[1,8],[8,9],[9,10],[1,11],[11,12],[12,13],[0,14],[0,15],[14,16],[15,17]]
-
-elif MODE is "MPI" :
-    protoFile = "pose/mpi/pose_deploy_linevec_faster_4_stages.prototxt"
-    weightsFile = "pose/mpi/pose_iter_160000.caffemodel"
-    nPoints = 15
-    POSE_PAIRS = [[0,1], [1,2], [2,3], [3,4], [1,5], [5,6], [6,7], [1,14], [14,8], [8,9], [9,10], [14,11], [11,12], [12,13] ]
+from pose_estimation import (
+    DEFAULT_MODEL,
+    PROJECT_DIR,
+    draw_pose,
+    infer_pose,
+    load_pose_model,
+    validate_pose,
+    write_image,
+)
 
 
-frame = cv2.imread(args.image_file)
-frameCopy = np.copy(frame)
-frameWidth = frame.shape[1]
-frameHeight = frame.shape[0]
-threshold = 0.1
-
-net = cv2.dnn.readNetFromCaffe(protoFile, weightsFile)
-
-if args.device == "cpu":
-    net.setPreferableBackend(cv2.dnn.DNN_TARGET_CPU)
-    print("Using CPU device")
-elif args.device == "gpu":
-    net.setPreferableBackend(cv2.dnn.DNN_BACKEND_CUDA)
-    net.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA)
-    print("Using GPU device")
-
-t = time.time()
-# input image dimensions for the network
-inWidth = 368
-inHeight = 368
-inpBlob = cv2.dnn.blobFromImage(frame, 1.0 / 255, (inWidth, inHeight),
-                          (0, 0, 0), swapRB=False, crop=False)
-
-net.setInput(inpBlob)
-
-output = net.forward()
-print("time taken by network : {:.3f}".format(time.time() - t))
-
-H = output.shape[2]
-W = output.shape[3]
-
-# Empty list to store the detected keypoints
-points = []
-
-for i in range(nPoints):
-    # confidence map of corresponding body's part.
-    probMap = output[0, i, :, :]
-
-    # Find global maxima of the probMap.
-    minVal, prob, minLoc, point = cv2.minMaxLoc(probMap)
-    
-    # Scale the point to fit on the original image
-    x = (frameWidth * point[0]) / W
-    y = (frameHeight * point[1]) / H
-
-    if prob > threshold : 
-        cv2.circle(frameCopy, (int(x), int(y)), 8, (0, 255, 255), thickness=-1, lineType=cv2.FILLED)
-        cv2.putText(frameCopy, "{}".format(i), (int(x), int(y)), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2, lineType=cv2.LINE_AA)
-
-        # Add the point to the list if the probability is greater than the threshold
-        points.append((int(x), int(y)))
-    else :
-        points.append(None)
-
-# Draw Skeleton
-for pair in POSE_PAIRS:
-    partA = pair[0]
-    partB = pair[1]
-
-    if points[partA] and points[partB]:
-        cv2.line(frame, points[partA], points[partB], (0, 255, 255), 2)
-        cv2.circle(frame, points[partA], 8, (0, 0, 255), thickness=-1, lineType=cv2.FILLED)
+DEFAULT_INPUT = PROJECT_DIR / "single.jpeg"
 
 
-cv2.imshow('Output-Keypoints', frameCopy)
-cv2.imshow('Output-Skeleton', frame)
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
+    """Expose reproducible input, output, device, display, and validation controls."""
+
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--input",
+        "--image_file",
+        dest="input",
+        type=Path,
+        default=DEFAULT_INPUT,
+        help=f"Input image (default: {DEFAULT_INPUT})",
+    )
+    parser.add_argument(
+        "--model",
+        type=Path,
+        default=DEFAULT_MODEL,
+        help=f"MediaPipe Pose ONNX model (default: {DEFAULT_MODEL})",
+    )
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        default=PROJECT_DIR / "output",
+        help="Directory for pose-image.jpg",
+    )
+    parser.add_argument(
+        "--device",
+        choices=("cpu", "cuda"),
+        default="cpu",
+        help="DNN execution device; CUDA requires a CUDA-enabled OpenCV build.",
+    )
+    parser.add_argument(
+        "--score-threshold",
+        type=float,
+        default=0.5,
+        help="Minimum landmark visibility and presence probability.",
+    )
+    display_group = parser.add_mutually_exclusive_group()
+    display_group.add_argument(
+        "--display",
+        action="store_true",
+        help="Open an interactive result window.",
+    )
+    display_group.add_argument(
+        "--no-display",
+        action="store_true",
+        help="Run headlessly (the default; accepted explicitly for CI).",
+    )
+    parser.add_argument(
+        "--validate",
+        action="store_true",
+        help="Check stable output invariants and print a success marker.",
+    )
+    return parser.parse_args(argv)
 
 
-cv2.imwrite('Output-Keypoints.jpg', frameCopy)
-cv2.imwrite('Output-Skeleton.jpg', frame)
+def run(args: argparse.Namespace) -> dict[str, object]:
+    """Run the real image pipeline and return metrics used by regression tests."""
 
-print("Total time taken : {:.3f}".format(time.time() - t))
+    input_path = args.input.expanduser().resolve()
+    frame = cv2.imread(str(input_path), cv2.IMREAD_COLOR)
+    if frame is None or frame.size == 0:
+        raise FileNotFoundError(f"Could not read input image: {input_path}")
+    if not 0.0 <= args.score_threshold <= 1.0:
+        raise ValueError("--score-threshold must be between 0 and 1.")
 
-cv2.waitKey(0)
+    net = load_pose_model(args.model, args.device)
+    result = infer_pose(net, frame)
+    output, visible_count, edge_count = draw_pose(
+        frame, result, args.score_threshold
+    )
+    output_path = args.output_dir.expanduser().resolve() / "pose-image.jpg"
+    write_image(output_path, output)
 
+    if args.validate:
+        validate_pose(frame, result, visible_count, edge_count)
+        print(
+            "VALIDATION PASSED: "
+            f"landmarks=33 visible={visible_count} edges={edge_count}"
+        )
+
+    if args.display and not args.no_display:
+        cv2.imshow("MediaPipe Pose", output)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
+
+    print(f"OpenCV version: {cv2.__version__}")
+    print(
+        "POSE RESULT: "
+        f"confidence={result.confidence:.6f} "
+        f"visible={visible_count} edges={edge_count}"
+    )
+    print(f"Saved output: {output_path}")
+    return {
+        "output": output_path,
+        "shape": output.shape,
+        "confidence": result.confidence,
+        "visible": visible_count,
+        "edges": edge_count,
+    }
+
+
+def main(argv: list[str] | None = None) -> int:
+    """Translate expected user errors into a concise nonzero CLI exit."""
+
+    try:
+        run(parse_args(argv))
+    except (FileNotFoundError, RuntimeError, ValueError, cv2.error) as error:
+        print(f"ERROR: {error}", file=sys.stderr)
+        return 2
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

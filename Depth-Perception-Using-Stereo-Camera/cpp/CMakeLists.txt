@@ -1,19 +1,44 @@
+cmake_minimum_required(VERSION 3.16)
 
-cmake_minimum_required(VERSION 2.8.12)
+project(stereo_depth_opencv LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 14)
+include(CTest)
 
-PROJECT(cameracalib)
+find_package(OpenCV REQUIRED)
+if(OpenCV_VERSION VERSION_GREATER_EQUAL "5.0")
+    set(OPENCV_COMPONENTS
+        core imgproc imgcodecs highgui videoio stereo geometry
+    )
+else()
+    set(OPENCV_COMPONENTS
+        core imgproc imgcodecs highgui videoio calib3d
+    )
+endif()
+find_package(OpenCV REQUIRED COMPONENTS ${OPENCV_COMPONENTS})
 
-find_package( OpenCV REQUIRED )
+add_library(stereo_depth STATIC stereo_depth.cpp)
+target_compile_features(stereo_depth PUBLIC cxx_std_17)
+target_include_directories(stereo_depth PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")
+target_link_libraries(stereo_depth PUBLIC ${OpenCV_LIBS})
+target_compile_definitions(
+    stereo_depth
+    PUBLIC STEREO_SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}/.."
+)
 
-include_directories( ${OpenCV_INCLUDE_DIRS})
+foreach(
+    target_name
+    IN ITEMS
+        disparity_params_gui
+        disparity2depth_calib
+        obstacle_avoidance
+        stereo_depth_cli
+)
+    add_executable("${target_name}" "${target_name}.cpp")
+    target_link_libraries("${target_name}" PRIVATE stereo_depth)
+endforeach()
 
-MACRO(add_example name)
-  ADD_EXECUTABLE(${name} ${name}.cpp)
-  TARGET_LINK_LIBRARIES(${name} ${OpenCV_LIBS})
-ENDMACRO()
-
-add_example(disparity_params_gui)
-add_example(disparity2depth_calib)
-add_example(obstacle_avoidance)
+if(BUILD_TESTING)
+    add_executable(test_stereo_depth tests/test_stereo_depth.cpp)
+    target_link_libraries(test_stereo_depth PRIVATE stereo_depth)
+    add_test(NAME stereo_depth_cpp_regression COMMAND test_stereo_depth)
+endif()

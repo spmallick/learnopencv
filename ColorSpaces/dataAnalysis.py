@@ -1,141 +1,171 @@
-#import the required packages
-import matplotlib.pyplot as plt
-from matplotlib.colors import LogNorm
-import cv2,glob
+#!/usr/bin/env python3
+"""Plot channel-pair densities for Rubik's Cube color samples."""
+
+from __future__ import annotations
+
+import argparse
+from collections.abc import Sequence
+from pathlib import Path
+
+import cv2
+import matplotlib
 import numpy as np
+from matplotlib.colors import LogNorm
 
-#specify the color for which histogram is to be plotted
-color = 'pieces/yellow'
-# whether the plot should be on full scale or zoomed
-zoom = 1
-# load all the files in the folder
-files = glob.glob(color + '*.jpg')
-files.sort()
-# empty arrays for separating the channels for plotting
-B = np.array([])
-G = np.array([])
-R = np.array([])
-H = np.array([])
-S = np.array([])
-V = np.array([])
-Y = np.array([])
-Cr = np.array([])
-Cb = np.array([])
-LL = np.array([])
-LA = np.array([])
-LB = np.array([])
+from color_spaces import PROJECT_DIR, convert_bgr, read_bgr
 
-# Data creation
-# append the values from each file to the respective channel
-for fi in files[:]:
-    # BGR
-    im = cv2.imread(fi)
-    b = im[:,:,0]
-    b = b.reshape(b.shape[0]*b.shape[1])
-    g = im[:,:,1]
-    g = g.reshape(g.shape[0]*g.shape[1])
-    r = im[:,:,2]
-    r = r.reshape(r.shape[0]*r.shape[1])
-    B = np.append(B,b)
-    G = np.append(G,g)
-    R = np.append(R,r)
-    # HSV
-    hsv = cv2.cvtColor(im,cv2.COLOR_BGR2HSV)
-    h = hsv[:,:,0]
-    h = h.reshape(h.shape[0]*h.shape[1])
-    s = hsv[:,:,1]
-    s = s.reshape(s.shape[0]*s.shape[1])
-    v = hsv[:,:,2]
-    v = v.reshape(v.shape[0]*v.shape[1])
-    H = np.append(H,h)
-    S = np.append(S,s)
-    V = np.append(V,v)
-    # YCrCb
-    ycb = cv2.cvtColor(im,cv2.COLOR_BGR2YCrCb)
-    y = ycb[:,:,0]
-    y = y.reshape(y.shape[0]*y.shape[1])
-    cr = ycb[:,:,1]
-    cr = cr.reshape(cr.shape[0]*cr.shape[1])
-    cb = ycb[:,:,2]
-    cb = cb.reshape(cb.shape[0]*cb.shape[1])
-    Y = np.append(Y,y)
-    Cr = np.append(Cr,cr)
-    Cb = np.append(Cb,cb)
-    # Lab
-    lab = cv2.cvtColor(im,cv2.COLOR_BGR2LAB)
-    ll = lab[:,:,0]
-    ll = ll.reshape(ll.shape[0]*ll.shape[1])
-    la = lab[:,:,1]
-    la = la.reshape(la.shape[0]*la.shape[1])
-    lb = lab[:,:,2]
-    lb = lb.reshape(lb.shape[0]*lb.shape[1])
-    LL = np.append(LL,ll)
-    LA = np.append(LA,la)
-    LB = np.append(LB,lb)
-    
-    
-# Plotting the histogram
-nbins = 10
-plt.figure(figsize=[20,10])
-plt.subplot(2,3,1)
-plt.hist2d(B, G, bins=nbins, norm=LogNorm())
-plt.xlabel('B')
-plt.ylabel('G')
-plt.title('RGB')
-if not zoom:
-    plt.xlim([0,255])
-    plt.ylim([0,255])
-plt.colorbar()
-plt.subplot(2,3,2)
-plt.hist2d(B, R, bins=nbins, norm=LogNorm())
-plt.colorbar()
-plt.xlabel('B')
-plt.ylabel('R')
-plt.title('RGB')
-if not zoom:
-    plt.xlim([0,255])
-    plt.ylim([0,255])
-plt.subplot(2,3,3)
-plt.hist2d(R, G, bins=nbins, norm=LogNorm())
-plt.colorbar()
-plt.xlabel('R')
-plt.ylabel('G')
-plt.title('RGB')
-if not zoom:
-    plt.xlim([0,255])
-    plt.ylim([0,255])
+# A non-interactive backend keeps validation and CI independent of a desktop.
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt  # noqa: E402
 
-plt.subplot(2,3,4)
-plt.hist2d(H, S, bins=nbins, norm=LogNorm())
-plt.colorbar()
-plt.xlabel('H')
-plt.ylabel('S')
-plt.title('HSV')
-if not zoom:
-    plt.xlim([0,180])
-    plt.ylim([0,255])
+VALID_PREFIXES = ("blue1", "blue2", "green", "orange1", "orange2", "red", "yellow")
 
-plt.subplot(2,3,5)
-plt.hist2d(Cr, Cb, bins=nbins, norm=LogNorm())
-plt.colorbar()
-plt.xlabel('Cr')
-plt.ylabel('Cb')
-plt.title('YCrCb')
-if not zoom:
-    plt.xlim([0,255])
-    plt.ylim([0,255])
 
-plt.subplot(2,3,6)
-plt.hist2d(LA, LB, bins=nbins, norm=LogNorm())
-plt.colorbar()
-plt.xlabel('A')
-plt.ylabel('B')
-plt.title('LAB')
-if not zoom:
-    plt.xlim([0,255])
-    plt.ylim([0,255])
-    plt.savefig(color + '.png',bbox_inches='tight')
-else:
-    plt.savefig(color + '-zoom.png',bbox_inches='tight')
+def sample_files(pieces_dir: str | Path, prefix: str) -> list[Path]:
+    """Return the deterministically sorted sample files for one cube color."""
 
-plt.show()
+    if prefix not in VALID_PREFIXES:
+        raise ValueError(f"unknown color prefix {prefix!r}")
+    directory = Path(pieces_dir).expanduser().resolve()
+    files = sorted(directory.glob(f"{prefix}r*.jpg"))
+    if not files:
+        raise FileNotFoundError(f"no {prefix}r*.jpg samples found in {directory}")
+    return files
+
+
+def collect_channels(files: Sequence[Path]) -> dict[str, np.ndarray]:
+    """Convert all samples once and concatenate their channel values."""
+
+    images = [read_bgr(path) for path in files]
+    converted = {
+        "BGR": [image for image in images],
+        "HSV": [convert_bgr(image, "HSV") for image in images],
+        "YCrCb": [convert_bgr(image, "YCrCb") for image in images],
+        "Lab": [convert_bgr(image, "Lab") for image in images],
+    }
+
+    channels: dict[str, np.ndarray] = {}
+    for name, space_images in converted.items():
+        pixels = np.concatenate([image.reshape(-1, 3) for image in space_images], axis=0)
+        for index in range(3):
+            channels[f"{name}{index}"] = pixels[:, index]
+    return channels
+
+
+def create_density_figure(
+    channels: dict[str, np.ndarray],
+    *,
+    bins: int = 20,
+    zoom: bool = False,
+) -> plt.Figure:
+    """Create the six comparison plots used by the tutorial."""
+
+    if bins < 2:
+        raise ValueError("bins must be at least 2")
+    figure, axes = plt.subplots(2, 3, figsize=(16, 9), constrained_layout=True)
+    plots = (
+        ("BGR0", "BGR1", "B vs G", (0, 255), (0, 255)),
+        ("BGR0", "BGR2", "B vs R", (0, 255), (0, 255)),
+        ("BGR2", "BGR1", "R vs G", (0, 255), (0, 255)),
+        ("HSV0", "HSV1", "Hue vs Saturation", (0, 179), (0, 255)),
+        ("YCrCb1", "YCrCb2", "Cr vs Cb", (0, 255), (0, 255)),
+        ("Lab1", "Lab2", "Lab a vs b", (0, 255), (0, 255)),
+    )
+
+    for axis, (x_name, y_name, title, x_range, y_range) in zip(axes.flat, plots):
+        histogram = axis.hist2d(
+            channels[x_name],
+            channels[y_name],
+            bins=bins,
+            norm=LogNorm(),
+        )
+        axis.set_xlabel(x_name)
+        axis.set_ylabel(y_name)
+        axis.set_title(title)
+        if not zoom:
+            axis.set_xlim(x_range)
+            axis.set_ylim(y_range)
+        figure.colorbar(histogram[3], ax=axis)
+    return figure
+
+
+def save_density_plot(
+    files: Sequence[Path],
+    output: str | Path,
+    *,
+    bins: int = 20,
+    zoom: bool = False,
+) -> tuple[Path, int]:
+    """Generate, save, verify, and close one density plot."""
+
+    channels = collect_channels(files)
+    pixel_count = int(channels["BGR0"].size)
+    figure = create_density_figure(channels, bins=bins, zoom=zoom)
+    output_path = Path(output).expanduser().resolve()
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    figure.savefig(output_path, dpi=140, bbox_inches="tight")
+    plt.close(figure)
+
+    verified = cv2.imread(str(output_path), cv2.IMREAD_COLOR)
+    if verified is None or verified.size == 0:
+        raise OSError(f"could not verify density plot: {output_path}")
+    return output_path, pixel_count
+
+
+def run_validation(output: str | Path | None = None) -> dict[str, int]:
+    """Validate the eight yellow samples and optional rendered plot."""
+
+    files = sample_files(PROJECT_DIR / "pieces", "yellow")
+    if len(files) != 8:
+        raise AssertionError(f"expected 8 yellow samples, found {len(files)}")
+    channels = collect_channels(files)
+    pixel_count = int(channels["BGR0"].size)
+    if pixel_count <= 0 or any(channel.size != pixel_count for channel in channels.values()):
+        raise AssertionError("channel arrays have inconsistent sizes")
+
+    if output is not None:
+        output_path, rendered_pixels = save_density_plot(files, output, bins=20, zoom=True)
+        if rendered_pixels != pixel_count:
+            raise AssertionError("rendered pixel count differs from channel data")
+        print(f"Wrote: {output_path}")
+
+    print(f"VALIDATION PASSED: samples={len(files)}, pixels={pixel_count}")
+    return {"samples": len(files), "pixels": pixel_count}
+
+
+def _build_parser() -> argparse.ArgumentParser:
+    """Create the command-line parser."""
+
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--pieces-dir", type=Path, default=PROJECT_DIR / "pieces")
+    parser.add_argument("--color", choices=VALID_PREFIXES, default="yellow")
+    parser.add_argument("--bins", type=int, default=20)
+    parser.add_argument("--zoom", action="store_true")
+    parser.add_argument("--output", type=Path, help="output PNG path")
+    parser.add_argument("--validate", action="store_true", help="run deterministic checks")
+    return parser
+
+
+def main(argv: Sequence[str] | None = None) -> int:
+    """Generate the requested density plot."""
+
+    arguments = _build_parser().parse_args(argv)
+    if arguments.validate:
+        run_validation(arguments.output)
+        return 0
+
+    files = sample_files(arguments.pieces_dir, arguments.color)
+    output = arguments.output or Path(f"{arguments.color}{'-zoom' if arguments.zoom else ''}.png")
+    output_path, pixel_count = save_density_plot(
+        files,
+        output,
+        bins=arguments.bins,
+        zoom=arguments.zoom,
+    )
+    print(f"Samples: {len(files)}; pixels: {pixel_count}")
+    print(f"Wrote: {output_path}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

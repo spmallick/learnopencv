@@ -1,224 +1,193 @@
-#include "opencv2/opencv.hpp"
+#include "color_spaces.hpp"
+
+#include <opencv2/core.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgproc.hpp>
+
+#include <array>
+#include <cctype>
+#include <filesystem>
 #include <iostream>
-#include <cstring>
+#include <optional>
+#include <stdexcept>
+#include <string>
 
-using namespace cv;
-using namespace std;
-// global variable to keep track of
-bool show = false;
+#ifndef COLOR_SPACES_PROJECT_DIR
+#error "COLOR_SPACES_PROJECT_DIR must be defined by CMake"
+#endif
 
+namespace {
 
-// Create a callback for event on trackbars
-void onTrackbarActivity(int pos, void* userdata){
-	// Just uodate the global variable that there is an event 
-	show = true;
-	return;
+int parseInteger(const std::string& text) {
+    std::size_t consumed = 0;
+    const int value = std::stoi(text, &consumed);
+    if (consumed != text.size()) {
+        throw std::invalid_argument("invalid integer: " + text);
+    }
+    return value;
 }
 
+struct Options {
+    std::filesystem::path input =
+        std::filesystem::path(COLOR_SPACES_PROJECT_DIR) / "images" / "rub00.jpg";
+    color_spaces::ColorSpace colorSpace = color_spaces::ColorSpace::Hsv;
+    std::array<int, 3> lower{20, 80, 40};
+    std::array<int, 3> upper{45, 255, 255};
+    std::optional<std::filesystem::path> outputDirectory;
+    bool noDisplay = false;
+    bool validate = false;
+    bool help = false;
+};
 
-int main(int argc, char **argv)
-{
-	int image_number = 0;
-    int nImages = 10;
-    if(argc > 1)
-        nImages = atoi(argv[1]);
-    char filename[20];
-    sprintf(filename,"images/rub%02d.jpg",image_number%nImages);
+std::array<int, 3> parseTriplet(const int argc, char** argv, int& index) {
+    if (index + 3 >= argc) {
+        throw std::invalid_argument("threshold option requires three integer values");
+    }
+    return {
+        parseInteger(argv[++index]),
+        parseInteger(argv[++index]),
+        parseInteger(argv[++index]),
+    };
+}
 
-    Mat original = imread(filename);
-
-	// image resize width and height 
-	int resizeHeight = 250;
-	int resizeWidth = 250;
-	Size rsize(resizeHeight,resizeWidth);
-	resize(original, original, rsize);
-
-	// position on the screen where the windows start 
-	int initialX = 50;
-	int	initialY = 50;
-	
-	// creating windows to display images 
-	namedWindow("P-> Previous, N-> Next", WINDOW_AUTOSIZE);
-	namedWindow("SelectBGR", WINDOW_AUTOSIZE);
-	namedWindow("SelectHSV", WINDOW_AUTOSIZE);
-	namedWindow("SelectYCB", WINDOW_AUTOSIZE);
-	namedWindow("SelectLAB", WINDOW_AUTOSIZE);
-	
-	// moving the windows to stack them horizontally 
-	moveWindow("P-> Previous, N-> Next", initialX, initialY);
-	moveWindow("SelectBGR", initialX + 1 * (resizeWidth + 5), initialY);
-	moveWindow("SelectHSV", initialX + 2 * (resizeWidth + 5), initialY);
-	moveWindow("SelectYCB", initialX + 3 * (resizeWidth + 5), initialY);
-	moveWindow("SelectLAB", initialX + 4 * (resizeWidth + 5), initialY);
-	
-	// creating trackbars to get values for YCrCb 
-	createTrackbar("CrMin", "SelectYCB", 0, 255, onTrackbarActivity);
-	createTrackbar("CrMax", "SelectYCB", 0, 255, onTrackbarActivity);
-	createTrackbar("CbMin", "SelectYCB", 0, 255, onTrackbarActivity);
-	createTrackbar("CbMax", "SelectYCB", 0, 255, onTrackbarActivity);
-	createTrackbar("YMin", "SelectYCB", 0, 255, onTrackbarActivity);
-	createTrackbar("YMax", "SelectYCB", 0, 255, onTrackbarActivity);
-
-	// creating trackbars to get values for HSV 
-	createTrackbar("HMin", "SelectHSV", 0, 180, onTrackbarActivity);
-	createTrackbar("HMax", "SelectHSV", 0, 180, onTrackbarActivity);
-	createTrackbar("SMin", "SelectHSV", 0, 255, onTrackbarActivity);
-	createTrackbar("SMax", "SelectHSV", 0, 255, onTrackbarActivity);
-	createTrackbar("VMin", "SelectHSV", 0, 255, onTrackbarActivity);
-	createTrackbar("VMax", "SelectHSV", 0, 255, onTrackbarActivity);
-
-	// creating trackbars to get values for BGR 
-	createTrackbar("BMin", "SelectBGR", 0, 255, onTrackbarActivity);
-	createTrackbar("BMax", "SelectBGR", 0, 255, onTrackbarActivity);
-	createTrackbar("GMin", "SelectBGR", 0, 255, onTrackbarActivity);
-	createTrackbar("GMax", "SelectBGR", 0, 255, onTrackbarActivity);
-	createTrackbar("RMin", "SelectBGR", 0, 255, onTrackbarActivity);
-	createTrackbar("RMax", "SelectBGR", 0, 255, onTrackbarActivity);
-
-	// creating trackbars to get values for LAB 
-	createTrackbar("LMin", "SelectLAB", 0, 255, onTrackbarActivity);
-	createTrackbar("LMax", "SelectLAB", 0, 255, onTrackbarActivity);
-	createTrackbar("AMin", "SelectLAB", 0, 255, onTrackbarActivity);
-	createTrackbar("AMax", "SelectLAB", 0, 255, onTrackbarActivity);
-	createTrackbar("BMin", "SelectLAB", 0, 255, onTrackbarActivity);
-	createTrackbar("BMax", "SelectLAB", 0, 255, onTrackbarActivity);
-
-	// show all images initially 
-	imshow("SelectHSV", original);
-	imshow("SelectYCB", original);
-	imshow("SelectLAB", original);
-	imshow("SelectBGR", original);
-	
-	// declare local variables
-	int BMin, GMin, RMin;
-	int BMax, GMax, RMax;
-	Scalar minBGR, maxBGR;
-
-	int HMin, SMin, VMin;
-	int HMax, SMax, VMax;
-	Scalar minHSV, maxHSV;
-
-	int LMin, aMin, bMin;
-	int LMax, aMax, bMax;
-	Scalar minLab, maxLab;
-
-	int YMin, CrMin, CbMin;
-	int YMax, CrMax, CbMax;
-	Scalar minYCrCb, maxYCrCb;
-
-	Mat imageBGR, imageHSV, imageLab, imageYCrCb;
-	Mat maskBGR, maskHSV, maskLab, maskYCrCb;
-	Mat resultBGR, resultHSV, resultLab, resultYCrCb;
-
-	char k;
-	while (1){
-		imshow("P-> Previous, N-> Next", original);
-		k = waitKey(1) & 0xFF;
-		//Check next image in the folder
-        if (k =='n')
-        {
-            image_number++;
-            sprintf(filename,"images/rub%02d.jpg",image_number%nImages);
-            original = imread(filename);
-            resize(original,original,rsize); 
-            show = true;
+Options parseArguments(const int argc, char** argv) {
+    Options options;
+    for (int index = 1; index < argc; ++index) {
+        const std::string argument(argv[index]);
+        if (argument == "--input") {
+            if (++index >= argc) {
+                throw std::invalid_argument("--input requires a path");
+            }
+            options.input = std::filesystem::absolute(argv[index]);
+        } else if (argument == "--space") {
+            if (++index >= argc) {
+                throw std::invalid_argument("--space requires BGR, HSV, YCrCb, or Lab");
+            }
+            options.colorSpace = color_spaces::parseColorSpace(argv[index]);
+        } else if (argument == "--lower") {
+            options.lower = parseTriplet(argc, argv, index);
+        } else if (argument == "--upper") {
+            options.upper = parseTriplet(argc, argv, index);
+        } else if (argument == "--output-dir") {
+            if (++index >= argc) {
+                throw std::invalid_argument("--output-dir requires a path");
+            }
+            options.outputDirectory = std::filesystem::absolute(argv[index]);
+        } else if (argument == "--no-display") {
+            options.noDisplay = true;
+        } else if (argument == "--validate") {
+            options.validate = true;
+        } else if (argument == "--help" || argument == "-h") {
+            options.help = true;
+        } else {
+            throw std::invalid_argument("unknown argument: " + argument);
         }
-        //Check previous image in he folder
-        else if (k =='p')
-        {
-            image_number--;
-            sprintf(filename,"images/rub%02d.jpg",image_number%nImages);
-            original = imread(filename);
-            resize(original,original,rsize);
-            show = true;
+    }
+    return options;
+}
+
+struct Segmentation {
+    cv::Mat mask;
+    cv::Mat result;
+};
+
+Segmentation segment(const cv::Mat& image, const Options& options) {
+    cv::Mat mask = color_spaces::thresholdMask(
+        image, options.colorSpace, options.lower, options.upper);
+    cv::Mat result = color_spaces::applyMask(image, mask);
+    return Segmentation{mask, result};
+}
+
+std::pair<std::filesystem::path, std::filesystem::path> outputPaths(
+    const Options& options) {
+    if (!options.outputDirectory.has_value()) {
+        throw std::logic_error("output directory is unavailable");
+    }
+    const std::string stem = options.input.stem().string();
+    std::string normalizedSpace = color_spaces::name(options.colorSpace);
+    for (char& character : normalizedSpace) {
+        character = static_cast<char>(
+            std::tolower(static_cast<unsigned char>(character)));
+    }
+    return {
+        *options.outputDirectory / (stem + "-" + normalizedSpace + "-mask.png"),
+        *options.outputDirectory / (stem + "-" + normalizedSpace + "-result.png"),
+    };
+}
+
+void writeOutputs(const Options& options, const Segmentation& segmentation) {
+    const auto [maskPath, resultPath] = outputPaths(options);
+    color_spaces::writeImage(maskPath, segmentation.mask);
+    color_spaces::writeImage(resultPath, segmentation.result);
+    std::cout << "Wrote: " << maskPath << '\n';
+    std::cout << "Wrote: " << resultPath << '\n';
+}
+
+void runValidation(const Options& options) {
+    const cv::Mat image = color_spaces::readBgr(options.input);
+    const Segmentation segmentation = segment(image, options);
+    const int foregroundPixels = cv::countNonZero(segmentation.mask);
+    if (foregroundPixels <= 0 ||
+        foregroundPixels >= segmentation.mask.rows * segmentation.mask.cols) {
+        throw std::runtime_error("foreground pixel count is outside the expected range");
+    }
+    if (segmentation.result.size() != image.size() ||
+        segmentation.result.type() != image.type()) {
+        throw std::runtime_error("segmentation result does not match input shape/type");
+    }
+    if (options.outputDirectory.has_value()) {
+        writeOutputs(options, segmentation);
+    }
+    std::cout << "VALIDATION PASSED: foreground_pixels=" << foregroundPixels
+              << ", image=" << image.cols << 'x' << image.rows << '\n';
+}
+
+void printUsage(const char* program) {
+    std::cout
+        << "Usage: " << program
+        << " [--input IMAGE] [--space BGR|HSV|YCrCb|Lab]"
+        << " [--lower C0 C1 C2] [--upper C0 C1 C2]"
+        << " [--output-dir DIR] [--no-display] [--validate]\n";
+}
+
+}  // namespace
+
+int main(const int argc, char** argv) {
+    try {
+        const Options options = parseArguments(argc, argv);
+        if (options.help) {
+            printUsage(argv[0]);
+            return 0;
+        }
+        if (options.validate) {
+            runValidation(options);
+            return 0;
         }
 
-        // Close all windows when 'esc' key is pressed		
-		if (k == 27){
-			break;
-		}
-		
-		if (show) { //If there is any event on the trackbar
-			show = false;
+        const cv::Mat image = color_spaces::readBgr(options.input);
+        const Segmentation segmentation = segment(image, options);
+        const int foregroundPixels = cv::countNonZero(segmentation.mask);
+        std::cout << "Input: " << options.input << '\n';
+        std::cout << "Color space: " << color_spaces::name(options.colorSpace) << '\n';
+        std::cout << "Foreground pixels: " << foregroundPixels << '/'
+                  << segmentation.mask.rows * segmentation.mask.cols << '\n';
 
-            // Get values from the BGR trackbar
-			BMin = getTrackbarPos("BMin", "SelectBGR");
-			GMin = getTrackbarPos("GMin", "SelectBGR");
-			RMin = getTrackbarPos("RMin", "SelectBGR");
-
-			BMax = getTrackbarPos("BMax", "SelectBGR");
-			GMax = getTrackbarPos("GMax", "SelectBGR");
-			RMax = getTrackbarPos("RMax", "SelectBGR");
-
-			minBGR = Scalar(BMin, GMin, RMin);
-			maxBGR = Scalar(BMax, GMax, RMax);
-
-            // Get values from the HSV trackbar
-			HMin = getTrackbarPos("HMin", "SelectHSV");
-			SMin = getTrackbarPos("SMin", "SelectHSV");
-			VMin = getTrackbarPos("VMin", "SelectHSV");
-
-			HMax = getTrackbarPos("HMax", "SelectHSV");
-			SMax = getTrackbarPos("SMax", "SelectHSV");
-			VMax = getTrackbarPos("VMax", "SelectHSV");
-
-			minHSV = Scalar(HMin, SMin, VMin);
-			maxHSV = Scalar(HMax, SMax, VMax);
-
-            // Get values from the LAB trackbar
-			LMin = getTrackbarPos("LMin", "SelectLAB");
-			aMin = getTrackbarPos("AMin", "SelectLAB");
-			bMin = getTrackbarPos("BMin", "SelectLAB");
-
-			LMax = getTrackbarPos("LMax", "SelectLAB");
-			aMax = getTrackbarPos("AMax", "SelectLAB");
-			bMax = getTrackbarPos("BMax", "SelectLAB");
-
-			minLab = Scalar(LMin, aMin, bMin);
-			maxLab = Scalar(LMax, aMax, bMax);
-
-            // Get values from the YCrCb trackbar
-			YMin = getTrackbarPos("YMin", "SelectYCB");
-			CrMin = getTrackbarPos("CrMin", "SelectYCB");
-			CbMin = getTrackbarPos("CbMin", "SelectYCB");
-
-			YMax = getTrackbarPos("YMax", "SelectYCB");
-			CrMax = getTrackbarPos("CrMax", "SelectYCB");
-			CbMax = getTrackbarPos("CbMax", "SelectYCB");
-
-			minYCrCb = Scalar(YMin, CrMin, CbMin);
-			maxYCrCb = Scalar(YMax, CrMax, CbMax);
-
-			// Convert the BGR image to other color spaces
-			original.copyTo(imageBGR);
-			cvtColor(original, imageHSV, COLOR_BGR2HSV);
-			cvtColor(original, imageYCrCb, COLOR_BGR2YCrCb);
-			cvtColor(original, imageLab, COLOR_BGR2Lab);
-
-			// Create the mask using the min and max values obtained from trackbar and apply bitwise and operation to get the results
-			inRange(imageBGR, minBGR, maxBGR, maskBGR);
-			resultBGR = Mat::zeros(original.rows, original.cols, CV_8UC3);
-			bitwise_and(original, original, resultBGR, maskBGR);
-
-			inRange(imageHSV, minHSV, maxHSV, maskHSV);
-			resultHSV = Mat::zeros(original.rows, original.cols, CV_8UC3);
-			bitwise_and(original, original, resultHSV, maskHSV);
-
-			inRange(imageYCrCb, minYCrCb, maxYCrCb, maskYCrCb);
-			resultYCrCb = Mat::zeros(original.rows, original.cols, CV_8UC3);
-			bitwise_and(original, original, resultYCrCb, maskYCrCb);
-
-			inRange(imageLab, minLab, maxLab, maskLab);
-			resultLab = Mat::zeros(original.rows, original.cols, CV_8UC3);
-			bitwise_and(original, original, resultLab, maskLab);
-
-			// Show the results
-			imshow("SelectBGR", resultBGR);
-			imshow("SelectYCB", resultYCrCb);
-			imshow("SelectLAB", resultLab);
-			imshow("SelectHSV", resultHSV);
-		}
-	}
-	destroyAllWindows();
-	return 0;
+        if (options.outputDirectory.has_value()) {
+            writeOutputs(options, segmentation);
+        }
+        if (!options.noDisplay) {
+            cv::imshow("Input", image);
+            cv::imshow("Mask", segmentation.mask);
+            cv::imshow(
+                color_spaces::name(options.colorSpace) + " segmentation",
+                segmentation.result);
+            cv::waitKey(0);
+            cv::destroyAllWindows();
+        }
+        return 0;
+    } catch (const std::exception& error) {
+        std::cerr << "Error: " << error.what() << '\n';
+        printUsage(argv[0]);
+        return 2;
+    }
 }
