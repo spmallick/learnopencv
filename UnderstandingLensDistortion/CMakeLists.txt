@@ -17,6 +17,11 @@ else()
 endif()
 find_package(OpenCV REQUIRED COMPONENTS ${OPENCV_COMPONENTS})
 
+set(OPENCV_TARGETS)
+foreach(component IN LISTS OPENCV_COMPONENTS)
+    list(APPEND OPENCV_TARGETS "opencv_${component}")
+endforeach()
+
 add_library(lens_calibration lens_calibration.cpp)
 target_include_directories(
     lens_calibration
@@ -24,7 +29,7 @@ target_include_directories(
         "${CMAKE_CURRENT_SOURCE_DIR}"
         ${OpenCV_INCLUDE_DIRS}
 )
-target_link_libraries(lens_calibration PUBLIC ${OpenCV_LIBS})
+target_link_libraries(lens_calibration PUBLIC ${OPENCV_TARGETS})
 
 add_executable(Undistort Undistort.cpp)
 target_link_libraries(Undistort PRIVATE lens_calibration)

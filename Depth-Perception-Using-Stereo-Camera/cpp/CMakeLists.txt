@@ -16,10 +16,15 @@ else()
 endif()
 find_package(OpenCV REQUIRED COMPONENTS ${OPENCV_COMPONENTS})
 
+set(OPENCV_TARGETS)
+foreach(component IN LISTS OPENCV_COMPONENTS)
+    list(APPEND OPENCV_TARGETS "opencv_${component}")
+endforeach()
+
 add_library(stereo_depth STATIC stereo_depth.cpp)
 target_compile_features(stereo_depth PUBLIC cxx_std_17)
 target_include_directories(stereo_depth PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")
-target_link_libraries(stereo_depth PUBLIC ${OpenCV_LIBS})
+target_link_libraries(stereo_depth PUBLIC ${OPENCV_TARGETS})
 target_compile_definitions(
     stereo_depth
     PUBLIC STEREO_SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}/.."
