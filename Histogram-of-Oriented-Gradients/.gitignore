@@ -1,0 +1,8 @@
+__pycache__/
+.pytest_cache/
+build/
+output/
+hog-descriptor.npy
+hog-descriptor.yml
+hog-input.png
+hog-visualization.png

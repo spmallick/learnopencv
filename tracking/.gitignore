@@ -1,0 +1,7 @@
+__pycache__/
+.pytest_cache/
+build/
+output/
+tracked.avi
+tracked.mp4
+tracked.png
