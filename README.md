@@ -30,6 +30,16 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [Object Tracking using OpenCV (C++/Python)](https://learnopencv.com/object-tracking-using-opencv-cpp-python/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/tracking) |
+| [Read, Write and Display a Video using OpenCV](https://learnopencv.com/read-write-and-display-a-video-using-opencv-cpp-python/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/VideoReadWriteDisplay) |
+| [Histogram of Oriented Gradients Explained Using OpenCV](https://learnopencv.com/histogram-of-oriented-gradients/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/Histogram-of-Oriented-Gradients) |
+| [Edge Detection Using OpenCV](https://learnopencv.com/edge-detection-using-opencv/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/Edge-Detection-OpenCV) |
+| [Read, Display and Write an Image Using OpenCV](https://learnopencv.com/read-display-and-write-an-image-using-opencv/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/Read-Write-Display-Image-OpenCV) |
+| [Cropping an Image Using OpenCV](https://learnopencv.com/cropping-an-image-using-opencv/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/Image-Cropping-OpenCV) |
+| [Image Resizing with OpenCV](https://learnopencv.com/image-resizing-with-opencv/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/Image-Resizing-OpenCV) |
+| [Filling Holes in an Image Using OpenCV (Python/C++)](https://learnopencv.com/filling-holes-in-an-image-using-opencv-python-c/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/Holes) |
+| [Barcode and QR Code Scanner Using OpenCV](https://learnopencv.com/barcode-and-qr-code-scanner-using-zbar-and-opencv/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/barcode-QRcodeScanner) |
+| [OCR Text Recognition Using Tesseract and OpenCV](https://learnopencv.com/deep-learning-based-text-recognition-ocr-using-tesseract-and-opencv/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/OCR) |
 | [Color Spaces in OpenCV (C++ and Python)](https://learnopencv.com/color-spaces-in-opencv-cpp-python/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/ColorSpaces) |
 | [Human Pose Estimation with OpenCV (C++ and Python)](https://learnopencv.com/deep-learning-based-human-pose-estimation-using-opencv-cpp-python/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/OpenPose) |
 | [Face Detection with OpenCV and Dlib (C++ and Python)](https://learnopencv.com/face-detection-opencv-dlib-and-deep-learning-c-python/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/FaceDetectionComparison) |
@@ -443,12 +453,10 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 |[Batch Normalization in Deep Networks](https://www.learnopencv.com/batch-normalization-in-deep-networks/) | [Code](https://github.com/spmallick/learnopencv/tree/master/BatchNormalization)|
 |[Deep Learning based Character Classification using Synthetic Dataset](https://www.learnopencv.com/deep-learning-character-classification-using-synthetic-dataset/) | [Code](https://github.com/spmallick/learnopencv/tree/master/CharClassification)|
 |[Understanding AlexNet](https://www.learnopencv.com/understanding-alexnet/)||
-|[Deep Learning based Text Recognition (OCR) using Tesseract and OpenCV](https://www.learnopencv.com/deep-learning-based-text-recognition-ocr-using-tesseract-and-opencv/)| [Code](https://github.com/spmallick/learnopencv/tree/master/OCR)|
 |[Number of Parameters and Tensor Sizes in a Convolutional Neural Network (CNN)](https://www.learnopencv.com/number-of-parameters-and-tensor-sizes-in-convolutional-neural-network/)| |
 |[How to convert your OpenCV C++ code into a Python module](https://www.learnopencv.com/how-to-convert-your-opencv-c-code-into-a-python-module/)|[Code](https://github.com/spmallick/learnopencv/tree/master/pymodule)|
 |[CV4Faces : Best Project Award 2018](https://www.learnopencv.com/cv4faces-best-project-award-2018/)| |
 |[Facemark : Facial Landmark Detection using OpenCV](https://www.learnopencv.com/facemark-facial-landmark-detection-using-opencv/)|[Code](https://github.com/spmallick/learnopencv/tree/master/FacialLandmarkDetection)|
-|[Barcode and QR code Scanner using ZBar and OpenCV](https://www.learnopencv.com/barcode-and-qr-code-scanner-using-zbar-and-opencv/)| [Code](https://github.com/spmallick/learnopencv/tree/master/barcode-QRcodeScanner)|
 |[Keras Tutorial : Fine-tuning using pre-trained models](https://www.learnopencv.com/keras-tutorial-fine-tuning-using-pre-trained-models/)| [Code](https://github.com/spmallick/learnopencv/tree/master/Keras-Fine-Tuning)|
 |[OpenCV Transparent API](https://www.learnopencv.com/opencv-transparent-api/)| |
 |[Face Reconstruction using EigenFaces (C++/Python)](https://www.learnopencv.com/face-reconstruction-using-eigenfaces-cpp-python/)|[Code](https://github.com/spmallick/learnopencv/tree/master/ReconstructFaceUsingEigenFaces) |
@@ -475,7 +483,6 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 |[Install Dlib on Windows](http://www.learnopencv.com/install-dlib-on-windows/) | |
 |[Install Dlib on Ubuntu](http://www.learnopencv.com/install-dlib-on-ubuntu/) | |
 |[Install OpenCV3 on Ubuntu](http://www.learnopencv.com/install-opencv3-on-ubuntu/) | |
-|[Read, Write and Display a video using OpenCV ( C++/ Python )](http://www.learnopencv.com/read-write-and-display-a-video-using-opencv-cpp-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/VideoReadWriteDisplay) |
 |[Install Dlib on MacOS](http://www.learnopencv.com/install-dlib-on-macos/) | |
 |[Install OpenCV 3 on MacOS](http://www.learnopencv.com/install-opencv3-on-macos/) | |
 |[Install OpenCV 3 on Windows](http://www.learnopencv.com/install-opencv3-on-windows/) | |
@@ -487,13 +494,11 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 |[Automatic Red Eye Remover using OpenCV (C++ / Python)](http://www.learnopencv.com/automatic-red-eye-remover-using-opencv-cpp-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/RedEyeRemover) |
 |[Bias-Variance Tradeoff in Machine Learning](http://www.learnopencv.com/bias-variance-tradeoff-in-machine-learning/) | |
 |[Embedded Computer Vision: Which device should you choose?](http://www.learnopencv.com/embedded-computer-vision-which-device-should-you-choose/) | |
-|[Object Tracking using OpenCV (C++/Python)](http://www.learnopencv.com/object-tracking-using-opencv-cpp-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/tracking) |
 |[Handwritten Digits Classification : An OpenCV ( C++ / Python ) Tutorial](http://www.learnopencv.com/handwritten-digits-classification-an-opencv-c-python-tutorial/) | [Code](https://github.com/spmallick/learnopencv/tree/master/digits-classification) |
 |[Training a better Haar and LBP cascade based Eye Detector using OpenCV](http://www.learnopencv.com/training-better-haar-lbp-cascade-eye-detector-opencv/) | |
 |[Deep Learning Book Gift Recipients](http://www.learnopencv.com/deep-learning-book-gift-recipients/) | |
 |[Minified OpenCV Haar and LBP Cascades](http://www.learnopencv.com/minified-opencv-haar-and-lbp-cascades/) | [Code](https://github.com/spmallick/learnopencv/tree/master/ninjaEyeDetector)|
 |[Deep Learning Book Gift](http://www.learnopencv.com/deep-learning-book-gift/) | |
-|[Histogram of Oriented Gradients](http://www.learnopencv.com/histogram-of-oriented-gradients/) | |
 |[Image Recognition and Object Detection : Part 1](http://www.learnopencv.com/image-recognition-and-object-detection-part1/) | |
 |[Live CV : A Computer Vision Coding Application](http://www.learnopencv.com/live-cv/) | |
 |[Approximate Focal Length for Webcams and Cell Phone Cameras](http://www.learnopencv.com/approximate-focal-length-for-webcams-and-cell-phone-cameras/) | |
@@ -504,7 +509,6 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 |[Face Morph Using OpenCV — C++ / Python](http://www.learnopencv.com/face-morph-using-opencv-cpp-python/) | [Code](https://github.com/spmallick/learnopencv/tree/master/FaceMorph) |
 |[Deep Learning Example using NVIDIA DIGITS 3 on EC2](http://www.learnopencv.com/deep-learning-example-using-nvidia-digits-3-on-ec2/) | |
 |[NVIDIA DIGITS 3 on EC2](http://www.learnopencv.com/nvidia-digits-3-on-ec2/) | |
-|[Filling holes in an image using OpenCV ( Python / C++ )](http://www.learnopencv.com/filling-holes-in-an-image-using-opencv-python-c/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Holes) |
 |[OpenCV (C++ vs Python) vs MATLAB for Computer Vision](http://www.learnopencv.com/opencv-c-vs-python-vs-matlab-for-computer-vision/) | |
 |[Facial Landmark Detection](http://www.learnopencv.com/facial-landmark-detection/) | |
 |[Why does OpenCV use BGR color format ?](http://www.learnopencv.com/why-does-opencv-use-bgr-color-format/) | |

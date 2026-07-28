@@ -1,0 +1,2 @@
+numpy>=2,<3
+opencv-python>=4.13,<5.1

@@ -1,21 +1,23 @@
-# Usage sh ocr_simple.sh image.jpg
+#!/usr/bin/env bash
+set -eu
 
-# '${1}' passes image.jpg as an input
-# 'stdout' ensures that result is printed on terminal
-# If some other name is specified say output, tesseract
-# will write result in file named output.txt
-# '-l eng'  for using the English language
-# '--oem 1' sets the OCR Engine Mode to LSTM only
-# '--psm 3' sets the Page Segmentation Mode (psm) to auto
+if [ "$#" -lt 1 ] || [ "$#" -gt 3 ]; then
+  echo "Usage: $0 IMAGE [LANGUAGE] [PSM]" >&2
+  exit 2
+fi
 
-#  There are four OCR Engine Mode (oem) available
-#  0    Legacy engine only.
-#  1    Neural nets LSTM engine only.
-#  2    Legacy + LSTM engines.
-#  3    Default, based on what is available.
-#
-#  '--psm 3' sets the Page Segmentation Mode (psm) to auto.
-#  Other important psm modes will be discussed in a future post.
+image_path=$1
+language=${2:-eng}
+page_segmentation_mode=${3:-6}
 
-tesseract ${1} stdout -l eng --oem 1 --psm 3
+if [ ! -f "$image_path" ]; then
+  echo "error: image not found: $image_path" >&2
+  exit 2
+fi
 
+exec tesseract \
+  "$image_path" \
+  stdout \
+  -l "$language" \
+  --oem 1 \
+  --psm "$page_segmentation_mode"
