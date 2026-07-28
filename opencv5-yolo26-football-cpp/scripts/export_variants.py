@@ -3,7 +3,7 @@ Export YOLO26 segmentation and pose variants to ONNX for OpenCV 5 DNN.
 Static shape, opset 12, no embedded NMS (same recipe as Part 1's detector).
 Prints the ONNX input/output tensor shapes so we know how to parse them in C++.
 """
-import sys, shutil
+import shutil
 from pathlib import Path
 from ultralytics import YOLO
 
@@ -30,17 +30,23 @@ def shapes(onnx_path):
     print("  outputs:", [(vi.name, sh(vi)) for vi in m.graph.output])
 
 
-for weights, tag in VARIANTS:
-    print(f"\n=== {weights} ===")
-    try:
-        model = YOLO(weights)   # auto-downloads
+def main():
+    for weights, tag in VARIANTS:
+        print(f"\n=== {weights} ===")
+        model_path = MODELS / weights
+        model = YOLO(str(model_path) if model_path.exists() else weights)
         out = model.export(format="onnx", opset=12, imgsz=IMGSZ,
                            dynamic=False, simplify=True, nms=False)
         out = Path(out)
         tagged = MODELS / f"yolo26n_{tag}_{IMGSZ}.onnx"
         if out.resolve() != tagged.resolve():
-            shutil.copy(out, tagged)
+            shutil.move(out, tagged)
+        downloaded_weights = Path(weights)
+        if not model_path.exists() and downloaded_weights.exists():
+            shutil.move(downloaded_weights, model_path)
         print("exported:", tagged)
         shapes(tagged)
-    except Exception as e:
-        print("  FAILED:", type(e).__name__, e)
+
+
+if __name__ == "__main__":
+    main()

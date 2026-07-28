@@ -31,7 +31,8 @@ def main():
     args = ap.parse_args()
 
     weights = MODELS_DIR / MODEL_NAME
-    # Ultralytics downloads the weights automatically if missing.
+    # Ultralytics downloads the weights automatically if missing. Move the
+    # downloaded file into models/ after export so the project root stays clean.
     model = YOLO(str(weights) if weights.exists() else MODEL_NAME)
 
     onnx_path = model.export(
@@ -47,7 +48,10 @@ def main():
     # Give the file a size-tagged name (in models/) so 640 and 1280 coexist.
     tagged = MODELS_DIR / f"yolo26n_{args.imgsz}.onnx"
     if onnx_path.resolve() != tagged.resolve():
-        shutil.copy(onnx_path, tagged)
+        shutil.move(onnx_path, tagged)
+    downloaded_weights = Path(MODEL_NAME)
+    if not weights.exists() and downloaded_weights.exists():
+        shutil.move(downloaded_weights, weights)
     print("Exported ONNX:", tagged)
     onnx_path = tagged
 

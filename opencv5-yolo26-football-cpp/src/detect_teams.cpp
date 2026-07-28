@@ -15,8 +15,8 @@
 // image or a video (auto-detected).
 //
 // Usage (run from the repo root; no args needed for a default demo run):
-//   detect_teams --model models/yolo26n_640.onnx --imgsz 640 \
-//                --source assets/videos/stadium_wide.mp4 --teams 2 \
+//   detect_teams --model models/yolo26n_640.onnx --imgsz 640
+//                --source assets/videos/stadium_wide.mp4 --teams 2
 //                --out outputs/team_split.mp4
 #include "yolo26_dnn.hpp"
 #include "cli.hpp"
@@ -140,6 +140,10 @@ int main(int argc, char** argv) {
     const int teams          = cli.geti("teams", 2);
     const float minh         = cli.getf("minh", 0.12f);
     const std::string out    = cli.get("out", "outputs/team_split.mp4");
+    if (teams < 2 || teams > 4) {
+        std::cerr << "--teams must be between 2 and 4\n";
+        return 1;
+    }
 
     cv::dnn::Net net = y26::build_net(model, engine);
     y26::ensure_parent_dir(out);
@@ -148,7 +152,10 @@ int main(int argc, char** argv) {
     cv::Mat img = cv::imread(source);
     if (!img.empty()) {
         process(net, img, imgsz, conf, teams, minh);
-        cv::imwrite(out, img);
+        if (!cv::imwrite(out, img)) {
+            std::cerr << "could not write output: " << out << "\n";
+            return 1;
+        }
         std::cout << "saved " << out << "\n";
         return 0;
     }
@@ -159,9 +166,17 @@ int main(int argc, char** argv) {
     const int W = (int)cap.get(cv::CAP_PROP_FRAME_WIDTH);
     const int H = (int)cap.get(cv::CAP_PROP_FRAME_HEIGHT);
     cv::VideoWriter writer(out, cv::VideoWriter::fourcc('m', 'p', '4', 'v'), fps, {W, H});
+    if (!writer.isOpened()) {
+        std::cerr << "could not open writer: " << out << "\n";
+        return 1;
+    }
 
     cv::Mat frame; int n = 0;
     while (cap.read(frame)) { process(net, frame, imgsz, conf, teams, minh); writer.write(frame); ++n; }
+    if (n == 0) {
+        std::cerr << "video contained no readable frames: " << source << "\n";
+        return 1;
+    }
     std::cout << "processed " << n << " frames, saved " << out << "\n";
     return 0;
 }

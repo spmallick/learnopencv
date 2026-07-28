@@ -10,8 +10,8 @@
 #      (Ultralytics downloads the nano weights), then runs every demo.
 #
 # The models/ and outputs/ folders are generated here, never committed.
-set -e
-PY=${PYTHON:-python}
+set -euo pipefail
+PY=${PYTHON:-python3}
 BIN=build
 A=assets
 M=models
@@ -30,42 +30,48 @@ if [ ! -f "$DET640" ] || [ ! -f "$DET1280" ] || [ ! -f "$SEG" ] || [ ! -f "$POSE
   "$PY" scripts/export_yolo26_onnx.py --imgsz 1280
   "$PY" scripts/export_variants.py            # yolo26n-seg + yolo26n-pose
 fi
+for model in "$DET640" "$DET1280" "$SEG" "$POSE"; do
+    [ -s "$model" ] || {
+        echo "model export did not create a nonempty file: $model" >&2
+        exit 1
+    }
+done
 
 echo "== Object detection (images) =="
-$BIN/detect_image --model $DET1280 --imgsz 1280 --engine new --conf 0.25 \
+"$BIN/detect_image" --model "$DET1280" --imgsz 1280 --engine new --conf 0.25 \
     --source "$A/images/team_lineup.jpg"   --out "$O/detection_germany.jpg"
-$BIN/detect_image --model $DET1280 --imgsz 1280 --engine new --conf 0.25 \
+"$BIN/detect_image" --model "$DET1280" --imgsz 1280 --engine new --conf 0.25 \
     --source "$A/images/match_broadcast.jpg"  --out "$O/detection_broadcast.jpg"
-$BIN/detect_image --model $DET1280 --imgsz 1280 --engine new --conf 0.25 \
+"$BIN/detect_image" --model "$DET1280" --imgsz 1280 --engine new --conf 0.25 \
     --source "$A/images/player_duel.jpg"             --out "$O/detection_duel_limitation.jpg"
 
 echo "== Object detection (video) =="
-$BIN/detect_video --model $DET640 --imgsz 640 --engine new \
+"$BIN/detect_video" --model "$DET640" --imgsz 640 --engine new \
     --source "$A/videos/match_play.mp4"   --out "$O/detection_football.mp4"
 
 echo "== Detection on wide stadium footage =="
-$BIN/detect_video --model $DET640 --imgsz 640 --engine new --conf 0.25 \
+"$BIN/detect_video" --model "$DET640" --imgsz 640 --engine new --conf 0.25 \
     --source "$A/videos/stadium_wide.mp4"      --out "$O/detection_stadium.mp4"
 
 echo "== Team split (jersey colour) =="
-$BIN/detect_teams --model $DET640 --imgsz 640 --teams 2 --minh 0.08 \
+"$BIN/detect_teams" --model "$DET640" --imgsz 640 --teams 2 --minh 0.08 \
     --source "$A/videos/stadium_wide.mp4"          --out "$O/team_split_stadium.mp4"
 
 echo "== Pose / keypoints =="
-$BIN/detect_pose --model $POSE --conf 0.30 \
+"$BIN/detect_pose" --model "$POSE" --conf 0.30 \
     --source "$A/images/aerial_duel.jpg"      --out "$O/pose_header.jpg"
-Y26_PERSON_LABEL=Dancer $BIN/detect_pose --model $POSE \
+Y26_PERSON_LABEL=Dancer "$BIN/detect_pose" --model "$POSE" \
     --source "$A/videos/halftime_dancers.mp4"          --out "$O/pose_dancers.mp4"
 
 echo "== Instance segmentation =="
-$BIN/detect_seg --model $SEG --conf 0.35 \
+"$BIN/detect_seg" --model "$SEG" --conf 0.35 \
     --source "$A/images/goal_celebration.jpg"      --out "$O/seg_celebration.jpg"
-$BIN/detect_seg --model $SEG --conf 0.30 \
+"$BIN/detect_seg" --model "$SEG" --conf 0.30 \
     --source "$A/images/player_duel.jpg"             --out "$O/seg_duel.jpg"
 # the halftime performers read better as "dancer" than "player"
-Y26_PERSON_LABEL=Dancer $BIN/detect_seg --model $SEG --conf 0.35 \
+Y26_PERSON_LABEL=Dancer "$BIN/detect_seg" --model "$SEG" --conf 0.35 \
     --source "$A/videos/halftime_dancers.mp4"          --out "$O/seg_dancers.mp4"
-$BIN/detect_seg --model $SEG --conf 0.35 \
+"$BIN/detect_seg" --model "$SEG" --conf 0.35 \
     --source "$A/videos/ball_closeup.mp4"     --out "$O/seg_ball_closeup.mp4"
 
 echo "== Web-safe re-encode =="

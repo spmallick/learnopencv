@@ -3,6 +3,7 @@
 
 #include <opencv2/imgproc.hpp>
 #include <algorithm>
+#include <cctype>
 #include <cstdlib>
 #include <filesystem>
 #include <stdexcept>
@@ -28,7 +29,8 @@ const std::vector<std::string> COCO_NAMES = {
 cv::dnn::Net build_net(const std::string& onnx_path, const std::string& engine) {
     int eng = cv::dnn::ENGINE_AUTO;
     std::string e = engine;
-    std::transform(e.begin(), e.end(), e.begin(), ::tolower);
+    std::transform(e.begin(), e.end(), e.begin(),
+                   [](unsigned char c) { return static_cast<char>(std::tolower(c)); });
     if (e == "auto")         eng = cv::dnn::ENGINE_AUTO;
     else if (e == "new")     eng = cv::dnn::ENGINE_NEW;
     else if (e == "classic") eng = cv::dnn::ENGINE_CLASSIC;
@@ -49,6 +51,11 @@ void ensure_parent_dir(const std::string& path) {
 
 cv::Mat letterbox(const cv::Mat& img, int size, float& r, int& dw, int& dh,
                   const cv::Scalar& color) {
+    if (img.empty())
+        throw std::invalid_argument("letterbox input image must not be empty");
+    if (size <= 0)
+        throw std::invalid_argument("letterbox size must be positive");
+
     const int h = img.rows, w = img.cols;
     r = std::min(static_cast<float>(size) / h, static_cast<float>(size) / w);
     const int nw = static_cast<int>(std::round(w * r));
@@ -75,6 +82,10 @@ std::vector<Detection> detect(cv::dnn::Net& net, const cv::Mat& img,
                                           /*swapRB=*/true, /*crop=*/false);
     net.setInput(blob);
     cv::Mat out = net.forward();          // shape [1, 300, 6]
+    if (out.dims != 3 || out.type() != CV_32F || out.size[2] < 6)
+        throw std::runtime_error("unexpected detection output; expected [1,N,6] float tensor");
+    if (!out.isContinuous())
+        out = out.clone();
 
     // The output is [1, N, 6]; read N (rows) and 6 (cols) from the shape so the
     // parser does not care whether N is 300 or something else.
@@ -189,13 +200,19 @@ static const int SKELETON[][2] = {
 };
 
 std::vector<PoseDetection> detect_pose(cv::dnn::Net& net, const cv::Mat& img,
-                                       int size, float conf_thres, float kpt_thres) {
+                                       int size, float conf_thres) {
     float r; int dw, dh;
     cv::Mat padded = letterbox(img, size, r, dw, dh);
     cv::Mat blob = cv::dnn::blobFromImage(padded, 1.0 / 255.0, cv::Size(size, size),
                                           cv::Scalar(), true, false);
     net.setInput(blob);
     cv::Mat out = net.forward();            // [1, 300, 57]
+    if (out.dims != 3 || out.type() != CV_32F || out.size[2] < 9 ||
+        (out.size[2] - 6) % 3 != 0)
+        throw std::runtime_error(
+            "unexpected pose output; expected [1,N,6+3*K] float tensor");
+    if (!out.isContinuous())
+        out = out.clone();
 
     const int rows = out.size[out.dims - 2];
     const int cols = out.size[out.dims - 1];   // 57
@@ -218,11 +235,11 @@ std::vector<PoseDetection> detect_pose(cv::dnn::Net& net, const cv::Mat& img,
         }
         res.push_back(std::move(d));
     }
-    (void)kpt_thres;
     return res;
 }
 
-void draw_pose(cv::Mat& img, const std::vector<PoseDetection>& poses, bool skeleton_only) {
+void draw_pose(cv::Mat& img, const std::vector<PoseDetection>& poses,
+               bool skeleton_only, float kpt_thres) {
     int box_th, font_th; double font;
     visual_scale(img, box_th, font, font_th);
     const int limb_th = std::max(2, box_th);
@@ -237,13 +254,13 @@ void draw_pose(cv::Mat& img, const std::vector<PoseDetection>& poses, bool skele
         for (auto& e : SKELETON) {
             const auto& a = d.kpts[e[0]];
             const auto& b = d.kpts[e[1]];
-            if (a.conf < 0.3f || b.conf < 0.3f) continue;
+            if (a.conf < kpt_thres || b.conf < kpt_thres) continue;
             cv::line(img, {cvRound(a.x), cvRound(a.y)}, {cvRound(b.x), cvRound(b.y)},
                      col, limb_th, cv::LINE_AA);
         }
         // joints
         for (const auto& k : d.kpts) {
-            if (k.conf < 0.3f) continue;
+            if (k.conf < kpt_thres) continue;
             cv::circle(img, {cvRound(k.x), cvRound(k.y)}, rad, cv::Scalar(255, 255, 255),
                        cv::FILLED, cv::LINE_AA);
             cv::circle(img, {cvRound(k.x), cvRound(k.y)}, rad, col, std::max(1, box_th - 1),
@@ -278,6 +295,15 @@ std::vector<SegDetection> detect_seg(cv::dnn::Net& net, const cv::Mat& img,
         else if (o.dims == 4) proto = o;
     }
     if (dets.empty() || proto.empty()) return {};
+    if (dets.type() != CV_32F || proto.type() != CV_32F ||
+        dets.size[2] < 7 || proto.size[1] <= 0 ||
+        dets.size[2] < 6 + proto.size[1])
+        throw std::runtime_error(
+            "unexpected segmentation outputs; expected [1,N,6+M] and [1,M,H,W]");
+    if (!dets.isContinuous())
+        dets = dets.clone();
+    if (!proto.isContinuous())
+        proto = proto.clone();
 
     const int rows = dets.size[1];
     const int cols = dets.size[2];       // 38

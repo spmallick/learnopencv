@@ -1,10 +1,12 @@
-# OpenCV 5 in C++: How To Detect, Pose & Segment Objects
+# [Object Detection with OpenCV 5 in C++: YOLO26 Pose and Segmentation](https://learnopencv.com/opencv-5-cpp-object-detection-yolo26/)
 
-**This repository contains the code for the LearnOpenCV blog post [OpenCV 5 in C++: How To Detect, Pose & Segment Objects](https://learnopencv.com/opencv-5-in-c-how-to-detect-pose-segment-objects/).**
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://github.com/spmallick/learnopencv/releases/download/opencv5-yolo26-football-cpp-2026.07.28/opencv5-yolo26-football-cpp.zip)
 
-[![OpenCV 5 in C++: How To Detect, Pose & Segment Objects](opencv5-cpp-football-vision-thumbnail.jpg)](https://learnopencv.com/opencv-5-in-c-how-to-detect-pose-segment-objects/)
+[SHA-256 checksum](https://github.com/spmallick/learnopencv/releases/download/opencv5-yolo26-football-cpp-2026.07.28/opencv5-yolo26-football-cpp.zip.sha256)
 
-Companion code for the [LearnOpenCV post](https://learnopencv.com/opencv-5-in-c-how-to-detect-pose-segment-objects/) on running **YOLO26** through the **OpenCV 5 DNN module** in **C++**, on the **CPU**. This is Part 2 of the series (Part 1 was Python). Here everything is C++, and the same NMS-free pipeline is extended from plain object detection to **team splitting, pose estimation and instance segmentation**.
+[![Object Detection with OpenCV 5 in C++ using YOLO26 for pose and segmentation](opencv5-cpp-football-vision-thumbnail.jpg)](https://learnopencv.com/opencv-5-cpp-object-detection-yolo26/)
+
+Companion code for the [LearnOpenCV post](https://learnopencv.com/opencv-5-cpp-object-detection-yolo26/) on running **YOLO26** through the **OpenCV 5 DNN module** in **C++**, on the **CPU**. This is Part 2 of the series (Part 1 was Python). Here everything is C++, and the same NMS-free pipeline is extended from plain object detection to **team splitting, pose estimation and instance segmentation**.
 
 Everything runs on the **CPU only**. There is no CUDA and no GPU requirement, so
 you can build and run all of it on an ordinary laptop. No PyTorch or Python is
@@ -21,6 +23,45 @@ ONNX.
 | `CMakeLists.txt` | Build config for the demos | Builds the six executables |
 | `build_opencv5.sh` | Builds OpenCV 5 from source | The C++ dev files are not on pip yet |
 | `reproduce.sh` | Regenerates every blog result | One command, from `assets/` to annotated outputs |
+| `requirements.txt` | Pinned export dependencies | Recreates the tested ONNX export environment |
+
+### Standalone ZIP contents
+
+```text
+opencv5-yolo26-football-cpp/
+├── .gitignore
+├── CMakeLists.txt
+├── README.md
+├── requirements.txt
+├── build_opencv5.sh
+├── reproduce.sh
+├── opencv5-cpp-football-vision-thumbnail.jpg
+├── assets/
+│   ├── images/
+│   │   ├── aerial_duel.jpg
+│   │   ├── goal_celebration.jpg
+│   │   ├── match_broadcast.jpg
+│   │   ├── player_duel.jpg
+│   │   └── team_lineup.jpg
+│   └── videos/
+│       ├── ball_closeup.mp4
+│       ├── halftime_dancers.mp4
+│       ├── match_play.mp4
+│       └── stadium_wide.mp4
+├── scripts/
+│   ├── export_variants.py
+│   └── export_yolo26_onnx.py
+└── src/
+    ├── benchmark_engines.cpp
+    ├── cli.hpp
+    ├── detect_image.cpp
+    ├── detect_pose.cpp
+    ├── detect_seg.cpp
+    ├── detect_teams.cpp
+    ├── detect_video.cpp
+    ├── yolo26_dnn.cpp
+    └── yolo26_dnn.hpp
+```
 
 ### `src/` (the C++ code)
 
@@ -64,7 +105,7 @@ All of the above are in `.gitignore`.
 
 - A **C++17** compiler, **CMake**, and **Ninja**
 - The **FFmpeg development libraries** (for reading/writing MP4)
-- **Python 3** with `ultralytics`, `onnx`, `onnxslim` (only to export the models)
+- **Python 3** with the packages pinned in `requirements.txt` (only to export the models)
 
 On MSYS2 (Windows): `pacman -S mingw-w64-ucrt-x86_64-{cmake,ninja,ffmpeg}`
 On Debian/Ubuntu: `apt install cmake ninja-build libavcodec-dev libavformat-dev libswscale-dev`
@@ -81,7 +122,7 @@ cmake --build build
 
 # 3. Reproduce every result. First run auto-exports the models, then runs
 #    each demo on assets/ and writes annotated results into outputs/.
-pip install ultralytics onnx onnxslim
+python3 -m pip install -r requirements.txt
 ./reproduce.sh
 ```
 
@@ -116,7 +157,8 @@ build/benchmark_engines --model models/yolo26n_640.onnx --imgsz 640 \
 ```
 
 `--engine` takes `auto` (default), `new`, or `classic`. `--imgsz` must match the
-exported model, since the ONNX input shape is static.
+exported model, since the ONNX input shape is static. The pose demo also accepts
+`--kpt-conf` (default `0.30`) for the keypoint drawing threshold.
 
 ## Notes
 

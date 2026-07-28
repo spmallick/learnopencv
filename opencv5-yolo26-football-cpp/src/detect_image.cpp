@@ -5,8 +5,8 @@
 // optimized, times a clean pass, draws the detections, and writes the result.
 //
 // Usage (run from the repo root; no args needed for a default demo run):
-//   detect_image --model models/yolo26n_640.onnx --imgsz 640 \
-//                --source assets/images/team_lineup.jpg --engine auto \
+//   detect_image --model models/yolo26n_640.onnx --imgsz 640
+//                --source assets/images/team_lineup.jpg --engine auto
 //                --out outputs/image_detected.jpg
 #include "yolo26_dnn.hpp"
 #include "cli.hpp"

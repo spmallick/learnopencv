@@ -6,7 +6,7 @@
 // the new graph engine against the classic layer engine, in C++.
 //
 // Usage (run from the repo root; no args needed for a default demo run):
-//   benchmark_engines --model models/yolo26n_640.onnx --imgsz 640 \
+//   benchmark_engines --model models/yolo26n_640.onnx --imgsz 640
 //                     --source assets/images/team_lineup.jpg --runs 40
 #include "yolo26_dnn.hpp"
 #include "cli.hpp"
@@ -38,6 +38,10 @@ int main(int argc, char** argv) {
     const std::string model  = cli.get("model", "models/yolo26n_640.onnx");
     const std::string source = cli.get("source", "assets/images/team_lineup.jpg");
     const int runs           = cli.geti("runs", 40);
+    if (runs <= 0) {
+        std::cerr << "--runs must be positive\n";
+        return 1;
+    }
 
     cv::Mat img = cv::imread(source);
     if (img.empty()) {

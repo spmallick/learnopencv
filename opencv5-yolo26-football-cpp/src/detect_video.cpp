@@ -6,8 +6,8 @@
 // window to keep demo clips short.
 //
 // Usage (run from the repo root; no args needed for a default demo run):
-//   detect_video --model models/yolo26n_640.onnx --imgsz 640 \
-//                --source assets/videos/match_play.mp4 --start 0 --end 12 \
+//   detect_video --model models/yolo26n_640.onnx --imgsz 640
+//                --source assets/videos/match_play.mp4 --start 0 --end 12
 //                --out outputs/video_detected.mp4
 #include "yolo26_dnn.hpp"
 #include "cli.hpp"
@@ -90,6 +90,11 @@ int main(int argc, char** argv) {
     const double wall = std::chrono::duration<double>(wall1 - wall0).count();
 
     const int n = idx - start_f;
+    if (n == 0) {
+        std::cerr << "video contained no readable frames in the requested range: "
+                  << source << "\n";
+        return 1;
+    }
     std::cout << "processed " << n << " frames | detect avg "
               << (total_ms / std::max(n, 1)) << " ms/frame | detect-only "
               << (1000.0 * n / std::max(total_ms, 1.0)) << " FPS\n";

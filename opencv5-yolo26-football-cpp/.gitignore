@@ -1,0 +1,10 @@
+/build/
+/models/
+/outputs/
+/opencv5_src/
+/opencv5_build/
+/opencv5_install/
+/yolo26*.onnx
+/yolo26*.pt
+__pycache__/
+*.py[cod]

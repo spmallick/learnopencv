@@ -88,12 +88,11 @@ struct PoseDetection {
 };
 
 std::vector<PoseDetection> detect_pose(cv::dnn::Net& net, const cv::Mat& img,
-                                       int size = 640, float conf_thres = 0.30f,
-                                       float kpt_thres = 0.30f);
+                                       int size = 640, float conf_thres = 0.30f);
 // skeleton_only = true draws just limbs + joints (no box/label), which is what
 // you want when overlaying pose on top of segmentation masks.
 void draw_pose(cv::Mat& img, const std::vector<PoseDetection>& poses,
-               bool skeleton_only = false);
+               bool skeleton_only = false, float kpt_thres = 0.30f);
 
 // ---------------------------------------------------------------------------
 // Instance segmentation.  YOLO26-seg ONNX has two outputs:

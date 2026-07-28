@@ -9,13 +9,22 @@
 # (needed for MP4 read/write):
 #   MSYS2 : pacman -S mingw-w64-ucrt-x86_64-{cmake,ninja,ffmpeg}
 #   Debian: apt install cmake ninja-build libavcodec-dev libavformat-dev libswscale-dev
-set -e
+set -euo pipefail
 
 SRC=opencv5_src
 BUILD=opencv5_build
 INSTALL="$(pwd)/opencv5_install"
 
-[ -d "$SRC" ] || git clone --depth 1 --branch 5.0.0 https://github.com/opencv/opencv.git "$SRC"
+if [ ! -d "$SRC/.git" ]; then
+  git clone --depth 1 --branch 5.0.0 https://github.com/opencv/opencv.git "$SRC"
+else
+  expected_commit=$(git -C "$SRC" rev-list -n 1 5.0.0)
+  actual_commit=$(git -C "$SRC" rev-parse HEAD)
+  if [ "$actual_commit" != "$expected_commit" ]; then
+    echo "$SRC is not checked out at OpenCV 5.0.0" >&2
+    exit 1
+  fi
+fi
 
 cmake -G Ninja -B "$BUILD" \
   -DCMAKE_BUILD_TYPE=Release \
