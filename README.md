@@ -30,6 +30,7 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [OpenCV 5 in C++: How To Detect, Pose & Segment Objects](https://learnopencv.com/opencv-5-in-c-how-to-detect-pose-segment-objects/) | [Code](https://github.com/spmallick/learnopencv/tree/master/opencv5-yolo26-football-cpp) |
 | [Object Tracking using OpenCV (C++/Python)](https://learnopencv.com/object-tracking-using-opencv-cpp-python/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/tracking) |
 | [Read, Write and Display a Video using OpenCV](https://learnopencv.com/read-write-and-display-a-video-using-opencv-cpp-python/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/VideoReadWriteDisplay) |
 | [Histogram of Oriented Gradients Explained Using OpenCV](https://learnopencv.com/histogram-of-oriented-gradients/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/Histogram-of-Oriented-Gradients) |
