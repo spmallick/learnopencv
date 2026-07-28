@@ -1,13 +1,10 @@
-# OpenCV 5 + YOLO26 Football: Detection, Team Split, Pose & Segmentation
+# OpenCV 5 in C++: How To Detect, Pose & Segment Objects
 
-![OpenCV 5 + YOLO26 football vision in C++](opencv5-cpp-football-vision-thumbnail.jpg)
+**This repository contains the code for the LearnOpenCV blog post [OpenCV 5 in C++: How To Detect, Pose & Segment Objects](https://learnopencv.com/opencv-5-in-c-how-to-detect-pose-segment-objects/).**
 
+[![OpenCV 5 in C++: How To Detect, Pose & Segment Objects](opencv5-cpp-football-vision-thumbnail.jpg)](https://learnopencv.com/opencv-5-in-c-how-to-detect-pose-segment-objects/)
 
-Companion code for the LearnOpenCV post on running **YOLO26** through the
-**OpenCV 5 DNN module** in **C++**, on the **CPU**. This is Part 2 of the series
-(Part 1 was Python). Here everything is C++, and the same NMS-free pipeline is
-extended from plain object detection to **team splitting, pose estimation and
-instance segmentation**.
+Companion code for the [LearnOpenCV post](https://learnopencv.com/opencv-5-in-c-how-to-detect-pose-segment-objects/) on running **YOLO26** through the **OpenCV 5 DNN module** in **C++**, on the **CPU**. This is Part 2 of the series (Part 1 was Python). Here everything is C++, and the same NMS-free pipeline is extended from plain object detection to **team splitting, pose estimation and instance segmentation**.
 
 Everything runs on the **CPU only**. There is no CUDA and no GPU requirement, so
 you can build and run all of it on an ordinary laptop. No PyTorch or Python is
