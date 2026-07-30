@@ -13,17 +13,133 @@ from typing import Any
 import cv2
 
 
-TRACKER_NAMES = ("MIL", "CSRT", "KCF")
+# Resolve the default model folder beside this script, independent of cwd.
+DEFAULT_MODELS_DIR = Path(__file__).resolve().parent / "models"
+# Classic trackers construct without external neural-network weights.
+CLASSIC_TRACKER_NAMES = ("MIL", "CSRT", "KCF")
+# Each model-backed tracker must receive exactly the files its Params object uses.
+MODEL_TRACKER_FILES = {
+    "DASIAMRPN": (
+        "dasiamrpn_model.onnx",
+        "dasiamrpn_kernel_cls1.onnx",
+        "dasiamrpn_kernel_r1.onnx",
+    ),
+    "NANO": (
+        "nanotrack_backbone_sim.onnx",
+        "nanotrack_head_sim.onnx",
+    ),
+    "VIT": ("object_tracking_vittrack_2023sep.onnx",),
+}
+# Class names are kept as data because Python bindings expose two layouts.
+MODEL_TRACKER_CLASSES = {
+    "DASIAMRPN": "TrackerDaSiamRPN",
+    "NANO": "TrackerNano",
+    "VIT": "TrackerVit",
+}
+# Accept the longer names readers commonly use while keeping a compact CLI.
+TRACKER_ALIASES = {"NANOTRACK": "NANO", "VITTRACK": "VIT"}
+TRACKER_NAMES = (*CLASSIC_TRACKER_NAMES, *MODEL_TRACKER_FILES)
 
 
-def create_tracker(name: str) -> Any:
-    """Create a tracker from the current namespace, then try OpenCV 4's legacy one."""
+def _normalized_tracker_name(name: str) -> str:
+    """Return the canonical command-line name used in summaries and errors."""
     normalized = name.upper()
+    return TRACKER_ALIASES.get(normalized, normalized)
+
+
+def _tracker_creator(class_name: str) -> Any | None:
+    """Resolve either spelling used by OpenCV's Python tracker bindings."""
+    flat_creator = getattr(cv2, f"{class_name}_create", None)
+    if flat_creator is not None:
+        return flat_creator
+    tracker_class = getattr(cv2, class_name, None)
+    if tracker_class is not None:
+        return getattr(tracker_class, "create", None)
+    return None
+
+
+def _tracker_params(class_name: str) -> Any | None:
+    """Create the Params object exposed by either binding layout."""
+    params_class = getattr(cv2, f"{class_name}_Params", None)
+    if params_class is None:
+        tracker_class = getattr(cv2, class_name, None)
+        params_class = (
+            getattr(tracker_class, "Params", None)
+            if tracker_class is not None
+            else None
+        )
+    return params_class() if params_class is not None else None
+
+
+def _create_model_tracker(name: str, models_dir: Path) -> Any:
+    """Validate model assets, configure the DNN backend, and create a tracker."""
+    required_files = MODEL_TRACKER_FILES[name]
+    # Check the complete set before OpenCV emits a less actionable load error.
+    missing = [
+        models_dir / filename
+        for filename in required_files
+        if not (models_dir / filename).is_file()
+    ]
+    if missing:
+        missing_names = ", ".join(path.name for path in missing)
+        raise FileNotFoundError(
+            f"{name} requires model files in {models_dir}; missing: "
+            f"{missing_names}. Run: python download_models.py "
+            f"--tracker {name.lower()}"
+        )
+
+    # Resolve both factory spellings used across wheel and source builds.
+    class_name = MODEL_TRACKER_CLASSES[name]
+    creator = _tracker_creator(class_name)
+    params = _tracker_params(class_name)
+    if creator is None or params is None:
+        raise RuntimeError(
+            f"{name} is unavailable in this OpenCV build. Use OpenCV 4.9 or "
+            "newer with the video and DNN modules."
+        )
+    # Tracker classes can be present in a build whose DNN module was disabled.
+    dnn = getattr(cv2, "dnn", None)
+    if dnn is None:
+        raise RuntimeError(
+            f"{name} requires an OpenCV build that includes the DNN module."
+        )
+
+    # Populate the differently named path fields in each OpenCV Params class.
+    if name == "DASIAMRPN":
+        params.model = str(models_dir / required_files[0])
+        params.kernel_cls1 = str(models_dir / required_files[1])
+        params.kernel_r1 = str(models_dir / required_files[2])
+    elif name == "NANO":
+        params.backbone = str(models_dir / required_files[0])
+        params.neckhead = str(models_dir / required_files[1])
+    else:
+        params.net = str(models_dir / required_files[0])
+
+    # Explicit CPU settings provide the same documented path in OpenCV 4 and 5.
+    params.backend = dnn.DNN_BACKEND_OPENCV
+    params.target = dnn.DNN_TARGET_CPU
+    try:
+        return creator(params)
+    except cv2.error as exc:
+        raise RuntimeError(
+            f"OpenCV could not create {name}. Confirm that this build includes "
+            "the DNN module and that download_models.py verified every model."
+        ) from exc
+
+
+def create_tracker(name: str, models_dir: Path = DEFAULT_MODELS_DIR) -> Any:
+    """Create a classic or model-backed tracker exposed by this OpenCV build."""
+    normalized = _normalized_tracker_name(name)
     if normalized not in TRACKER_NAMES:
         raise ValueError(
             f"Unsupported tracker '{name}'. Choose one of: {', '.join(TRACKER_NAMES)}"
         )
 
+    # Neural trackers need explicit, checksum-verified model paths.
+    if normalized in MODEL_TRACKER_FILES:
+        return _create_model_tracker(normalized, Path(models_dir))
+
+    # Classic factories may be in the main namespace or OpenCV 4's legacy one.
     factory_name = f"Tracker{normalized}_create"
     for namespace in (cv2, getattr(cv2, "legacy", None)):
         if namespace is None:
@@ -36,9 +152,9 @@ def create_tracker(name: str) -> Any:
 
     if normalized in {"CSRT", "KCF"}:
         raise RuntimeError(
-            f"{normalized} is unavailable. It requires an OpenCV 4 contrib "
-            "build and is absent from the tested OpenCV 5.0 API; use MIL for "
-            "the cross-version example."
+            f"{normalized} is unavailable in this build. It is a contrib tracker "
+            "when exposed and was absent from the exact OpenCV 5.0 builds tested "
+            "here; use MIL for the verified cross-version example."
         )
     raise RuntimeError(
         "MIL is unavailable. Install an OpenCV build that includes the video "
@@ -100,6 +216,7 @@ def run_tracking(
     bbox: tuple[int, int, int, int] | None,
     *,
     tracker_name: str = "MIL",
+    models_dir: Path = DEFAULT_MODELS_DIR,
     output_path: Path | None = None,
     snapshot_path: Path | None = None,
     max_frames: int | None = None,
@@ -130,7 +247,7 @@ def run_tracking(
             raise ValueError("Provide --bbox or use --select-roi")
         bbox = _checked_bbox(bbox, frame_width, frame_height)
 
-        tracker = create_tracker(tracker_name)
+        tracker = create_tracker(tracker_name, models_dir)
         init_result = tracker.init(frame, bbox)
         if init_result is False:
             raise RuntimeError("Tracker initialization failed")
@@ -208,7 +325,7 @@ def run_tracking(
                 raise RuntimeError(f"Could not write snapshot: {snapshot_path}")
 
         return {
-            "tracker": tracker_name.upper(),
+            "tracker": _normalized_tracker_name(tracker_name),
             "frames_processed": frames_processed,
             "successful_updates": successful_updates,
             "success_rate": successful_updates / frames_processed,
@@ -236,7 +353,15 @@ def build_parser() -> argparse.ArgumentParser:
         "--tracker",
         choices=TRACKER_NAMES,
         default="MIL",
-        help="MIL works in OpenCV 4 and 5; CSRT/KCF require an OpenCV 4 contrib build",
+        help=(
+            "MIL/CSRT/KCF are model-free; DASIAMRPN/NANO/VIT use ONNX files"
+        ),
+    )
+    parser.add_argument(
+        "--models-dir",
+        type=Path,
+        default=DEFAULT_MODELS_DIR,
+        help=f"verified ONNX directory (default: {DEFAULT_MODELS_DIR})",
     )
     parser.add_argument(
         "--bbox",
@@ -259,6 +384,7 @@ def main() -> int:
             args.input,
             args.bbox,
             tracker_name=args.tracker,
+            models_dir=args.models_dir,
             output_path=args.output,
             snapshot_path=args.snapshot,
             max_frames=args.max_frames,
