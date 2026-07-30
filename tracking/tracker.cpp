@@ -1,8 +1,10 @@
+#include <opencv2/dnn.hpp>
 #include <opencv2/highgui.hpp>
 #include <opencv2/imgproc.hpp>
 #include <opencv2/video/tracking.hpp>
 #include <opencv2/videoio.hpp>
 
+// KCF and CSRT live in opencv_contrib when that optional header is installed.
 #if __has_include(<opencv2/tracking.hpp>)
 #include <opencv2/tracking.hpp>
 #define LEARNOPENCV_HAS_CONTRIB_TRACKING 1
@@ -12,14 +14,20 @@
 
 #include <algorithm>
 #include <cctype>
+#include <filesystem>
 #include <iomanip>
 #include <iostream>
 #include <sstream>
 #include <stdexcept>
 #include <string>
+#include <vector>
 
 namespace {
 
+// The filesystem alias keeps model-path validation concise and type-safe.
+namespace fs = std::filesystem;
+
+// Tracker names are case-insensitive at the command line.
 std::string upper(std::string value) {
     std::transform(value.begin(), value.end(), value.begin(),
                    [](unsigned char character) {
@@ -28,9 +36,52 @@ std::string upper(std::string value) {
     return value;
 }
 
-cv::Ptr<cv::Tracker> createTracker(const std::string& requestedName) {
+// The downloader accepts lowercase tracker group names.
+std::string lower(std::string value) {
+    std::transform(value.begin(), value.end(), value.begin(),
+                   [](unsigned char character) {
+                       return static_cast<char>(std::tolower(character));
+                   });
+    return value;
+}
+
+// Fail before calling OpenCV when a tracker model set is incomplete.
+void requireModels(
+    const std::string& trackerName,
+    const fs::path& modelsDir,
+    const std::vector<std::string>& filenames) {
+    std::vector<std::string> missing;
+    // Report every missing file together so the reader can fix one download.
+    for (const std::string& filename : filenames) {
+        if (!fs::is_regular_file(modelsDir / filename)) {
+            missing.push_back(filename);
+        }
+    }
+    if (missing.empty()) {
+        return;
+    }
+
+    // Include the exact recovery command in the reader-facing error.
+    std::ostringstream message;
+    message << trackerName << " requires model files in " << modelsDir
+            << "; missing: ";
+    for (std::size_t index = 0; index < missing.size(); ++index) {
+        if (index != 0) {
+            message << ", ";
+        }
+        message << missing[index];
+    }
+    message << ". Run: python download_models.py --tracker "
+            << lower(trackerName);
+    throw std::runtime_error(message.str());
+}
+
+// Construct only trackers exposed by the linked OpenCV installation.
+cv::Ptr<cv::Tracker> createTracker(
+    const std::string& requestedName, const fs::path& modelsDir) {
     const std::string name = upper(requestedName);
 #if LEARNOPENCV_HAS_CONTRIB_TRACKING
+    // These factories compile only when the contrib tracking header exists.
     if (name == "CSRT") {
         return cv::TrackerCSRT::create();
     }
@@ -41,10 +92,53 @@ cv::Ptr<cv::Tracker> createTracker(const std::string& requestedName) {
     if (name == "MIL") {
         return cv::TrackerMIL::create();
     }
+    if (name == "DASIAMRPN") {
+        // DaSiamRPN separates its search network from two template kernels.
+        requireModels(
+            name, modelsDir,
+            {"dasiamrpn_model.onnx", "dasiamrpn_kernel_cls1.onnx",
+             "dasiamrpn_kernel_r1.onnx"});
+        cv::TrackerDaSiamRPN::Params parameters;
+        // Pass absolute or working-directory-relative paths explicitly.
+        parameters.model = (modelsDir / "dasiamrpn_model.onnx").string();
+        parameters.kernel_cls1 =
+            (modelsDir / "dasiamrpn_kernel_cls1.onnx").string();
+        parameters.kernel_r1 =
+            (modelsDir / "dasiamrpn_kernel_r1.onnx").string();
+        // The documented CPU backend is reproducible across OpenCV 4 and 5.
+        parameters.backend = cv::dnn::DNN_BACKEND_OPENCV;
+        parameters.target = cv::dnn::DNN_TARGET_CPU;
+        return cv::TrackerDaSiamRPN::create(parameters);
+    }
+    if (name == "NANO") {
+        // NanoTrack v2 uses one template backbone and one prediction head.
+        requireModels(
+            name, modelsDir,
+            {"nanotrack_backbone_sim.onnx", "nanotrack_head_sim.onnx"});
+        cv::TrackerNano::Params parameters;
+        parameters.backbone =
+            (modelsDir / "nanotrack_backbone_sim.onnx").string();
+        parameters.neckhead =
+            (modelsDir / "nanotrack_head_sim.onnx").string();
+        parameters.backend = cv::dnn::DNN_BACKEND_OPENCV;
+        parameters.target = cv::dnn::DNN_TARGET_CPU;
+        return cv::TrackerNano::create(parameters);
+    }
+    if (name == "VIT") {
+        // VitTrack packages its compact transformer into one ONNX graph.
+        requireModels(
+            name, modelsDir, {"object_tracking_vittrack_2023sep.onnx"});
+        cv::TrackerVit::Params parameters;
+        parameters.net =
+            (modelsDir / "object_tracking_vittrack_2023sep.onnx").string();
+        parameters.backend = cv::dnn::DNN_BACKEND_OPENCV;
+        parameters.target = cv::dnn::DNN_TARGET_CPU;
+        return cv::TrackerVit::create(parameters);
+    }
     throw std::invalid_argument(
         "Tracker '" + requestedName +
-        "' is unavailable in this OpenCV build. MIL works in OpenCV 4 and 5; "
-        "CSRT and KCF require the OpenCV 4 contrib tracking module.");
+        "' is unavailable. Choose MIL, CSRT, KCF, DASIAMRPN, NANO, or VIT. "
+        "CSRT and KCF are capability-gated contrib options.");
 }
 
 cv::Rect parseBoundingBox(const std::string& text) {
@@ -93,10 +187,12 @@ cv::VideoWriter openWriter(
 }  // namespace
 
 int main(int argc, char** argv) {
+    // CommandLineParser supplies defaults that match the bundled Chaplin clip.
     const std::string keys =
         "{help h usage ?||Show this help message}"
         "{input|videos/chaplin.mp4|Input video path}"
-        "{tracker|MIL|MIL works in OpenCV 4/5; CSRT/KCF require OpenCV 4 contrib}"
+        "{tracker|MIL|MIL, CSRT, KCF, DASIAMRPN, NANO, or VIT}"
+        "{models-dir|models|Directory containing verified ONNX tracker models}"
         "{bbox|287,23,86,320|Initial x,y,width,height}"
         "{select-roi||Select the initial box interactively}"
         "{output||Optional annotated output video}"
@@ -116,6 +212,9 @@ int main(int argc, char** argv) {
     try {
         const std::string inputPath = parser.get<std::string>("input");
         const std::string trackerName = upper(parser.get<std::string>("tracker"));
+        // Keep models outside the executable so the downloader can verify them.
+        const fs::path modelsDir =
+            fs::path(parser.get<std::string>("models-dir"));
         const std::string outputPath = parser.get<std::string>("output");
         const std::string snapshotPath = parser.get<std::string>("snapshot");
         const int maxFrames = parser.get<int>("max-frames");
@@ -143,7 +242,8 @@ int main(int argc, char** argv) {
         }
         validateBoundingBox(box, frame.size());
 
-        cv::Ptr<cv::Tracker> tracker = createTracker(trackerName);
+        // Every tracker receives the same validated first-frame rectangle.
+        cv::Ptr<cv::Tracker> tracker = createTracker(trackerName, modelsDir);
         tracker->init(frame, box);
 
         double sourceFps = capture.get(cv::CAP_PROP_FPS);
