@@ -1,5 +1,7 @@
 # MiniCPM-o 4.5: Full-Duplex Real-Time Video Understanding
 
+![MiniCPM-o 4.5: A 9B model that can see, hear, and speak at the same time](minicpm-o-4.5-banner-padded.png)
+
 **This repository contains the notebook accompanying the LearnOpenCV blog post _MiniCPM-o 4.5: A 9B Model That Can See, Hear, and Speak at the Same Time_.**
 
 MiniCPM-o 4.5 is a 9B omni-modal model capable of processing video and audio streams while generating speech in real time. This repository contains the notebook and supporting code used to evaluate its full-duplex streaming capabilities across a variety of real-world scenarios.
