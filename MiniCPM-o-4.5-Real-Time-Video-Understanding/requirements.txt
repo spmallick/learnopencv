@@ -1,0 +1,43 @@
+# ------------------------------------------------------------------
+# requirements.txt  ->  conda/venv env named "minicpmo"
+# MiniCPM-o 4.5 full-duplex real-time video commentary / Q&A (qa.py)
+#
+# Tested with Python 3.10 on a CUDA-capable GPU (bfloat16 inference).
+#
+#   pip install -r requirements.txt
+#
+# NOTE: `ffmpeg` must ALSO be installed and on your system PATH.
+#       qa.py shells out to it (via subprocess) to strip and mux
+#       audio tracks. It is a system package, not a pip package:
+#         conda install -c conda-forge ffmpeg      # or: apt install ffmpeg
+# ------------------------------------------------------------------
+
+# --- MiniCPM-o helper utils (provides `minicpmo.utils`) ------------
+minicpmo-utils[all]==1.0.6
+
+# --- Core model / inference stack ---------------------------------
+torch==2.8.0
+torchaudio==2.8.0
+transformers==4.51.0
+accelerate==1.14.0
+huggingface_hub==0.36.2
+tokenizers==0.21.4
+safetensors==0.8.0
+einops==0.8.1
+
+
+# --- Audio I/O & processing ---------------------------------------
+# setuptools provides `pkg_resources`, which librosa 0.9.0 imports internally.
+setuptools==69.5.1
+librosa==0.9.0
+soundfile==0.12.1
+
+# --- Video / image I/O --------------------------------------------
+opencv-python==4.13.0.92
+decord==0.6.0
+moviepy==2.1.2
+imageio-ffmpeg==0.6.0
+
+# --- Numerics -----------------------------------------------------
+numpy==2.2.6
+scipy==1.15.3
