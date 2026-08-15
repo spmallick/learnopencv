@@ -1,4 +1,6 @@
-# VGGT vs VGGT-Omega: 3D Reconstruction
+<p align="center">
+  <img src="vggt-vs-vggt-omega-comparison.jpg" alt="VGGT vs VGGT-Omega: Feed-Forward 3D Reconstruction" width="900">
+</p>
 
 Benchmark code for the LearnOpenCV post **[VGGT vs VGGT-Omega: 3D Reconstruction](https://learnopencv.com/vggt-vs-vggt-omega-3d-reconstruction/)**.
 
@@ -58,4 +60,3 @@ Everything lands under `benchmark_out/notebook_run/`:
 - `results/` holds every measurement as JSON, plus a human-readable run log.
 - `gltf/` holds four 3D reconstructions (VGGT and Omega, each in mixed and bf16) as `.gltf` and `.glb`, openable in any glTF viewer such as [gltf-viewer.donmccurdy.com](https://gltf-viewer.donmccurdy.com/).
 
-Built and tested on a 32 GB RTX 5090 with Python 3.10+. It runs on smaller NVIDIA GPUs too; scale the frame counts down for cards with less memory.
