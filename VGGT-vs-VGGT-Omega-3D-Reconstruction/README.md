@@ -49,7 +49,6 @@ VGGT-vs-VGGT-Omega-3D-Reconstruction/
 ├── vggt_omega_1b_512.pt
 └── your_video.mp4
 ```
-
 ## Running
 
 Open the notebook and run the cells in order. A full run (both models, both precisions, every frame count, plus the frame-ceiling search) takes roughly 1.5 to 2 hours. To check the setup first, set `QUICK_TEST = True` in the Configuration cell for a few-minute smoke test. Those numbers are only a sanity check, not the published results.
