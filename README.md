@@ -30,6 +30,8 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [VGGT vs. VGGT-Ω (VGGT-Omega): A Complete Guide to Feed-Forward 3D Reconstruction](https://learnopencv.com/vggt-vs-vggt-%cf%89-vggt-omega-a-complete-guide-to-feed-forward-3d-reconstruction/) | [Code](https://github.com/spmallick/learnopencv/tree/master/VGGT-vs-VGGT-Omega-3D-Reconstruction) |
+| [MiniCPM-o 4.5: A 9B Model That Can See, Hear, and Speak at the Same Time](https://learnopencv.com/minicpm-o-4-5-a-9b-model-that-can-see-hear-and-speak-at-the-same-time/) | [Code](https://github.com/spmallick/learnopencv/tree/master/MiniCPM-o-4.5-Real-Time-Video-Understanding) |
 | [Object Tracking using OpenCV (C++/Python)](https://learnopencv.com/object-tracking-using-opencv-cpp-python/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/tracking) |
 | [Object Detection with OpenCV 5 in C++: YOLO26 Pose and Segmentation](https://learnopencv.com/opencv-5-cpp-object-detection-yolo26/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/opencv5-yolo26-football-cpp) |
 | [Read, Write and Display a Video using OpenCV](https://learnopencv.com/read-write-and-display-a-video-using-opencv-cpp-python/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/VideoReadWriteDisplay) |

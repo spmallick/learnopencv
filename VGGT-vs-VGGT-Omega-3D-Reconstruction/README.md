@@ -2,7 +2,7 @@
   <img src="vggt-vs-vggt-omega-comparison.jpg" alt="VGGT vs VGGT-Omega: Feed-Forward 3D Reconstruction" width="900">
 </p>
 
-Benchmark code for the LearnOpenCV post **[VGGT vs VGGT-Omega: 3D Reconstruction](https://learnopencv.com/vggt-vs-vggt-omega-3d-reconstruction/)**.
+Benchmark code for the LearnOpenCV post **[VGGT vs VGGT-Omega: 3D Reconstruction](https://learnopencv.com/vggt-vs-vggt-%cf%89-vggt-omega-a-complete-guide-to-feed-forward-3d-reconstruction/)**.
 
 The notebook compares two 3D reconstruction models, **VGGT-1B** and **VGGT-Omega-1B-512**, each run two ways: standard **mixed precision** and true **bf16** (model weights cast to bfloat16, which roughly halves resident weight memory). It answers two questions:
 
@@ -49,7 +49,6 @@ VGGT-vs-VGGT-Omega-3D-Reconstruction/
 ├── vggt_omega_1b_512.pt
 └── your_video.mp4
 ```
-
 ## Running
 
 Open the notebook and run the cells in order. A full run (both models, both precisions, every frame count, plus the frame-ceiling search) takes roughly 1.5 to 2 hours. To check the setup first, set `QUICK_TEST = True` in the Configuration cell for a few-minute smoke test. Those numbers are only a sanity check, not the published results.
@@ -60,3 +59,26 @@ Everything lands under `benchmark_out/notebook_run/`:
 - `results/` holds every measurement as JSON, plus a human-readable run log.
 - `gltf/` holds four 3D reconstructions (VGGT and Omega, each in mixed and bf16) as `.gltf` and `.glb`, openable in any glTF viewer such as [gltf-viewer.donmccurdy.com](https://gltf-viewer.donmccurdy.com/).
 
+
+---
+<p align="center">
+  <a href="https://bigvision.ai/">
+    <img src="https://bigvision.ai/logos/logo.png" alt="BigVision.AI" width="300">
+  </a>
+</p>
+
+<h2 align="center">Build Production-Ready Computer Vision &amp; AI Solutions</h2>
+
+<p align="center">
+  LearnOpenCV is maintained by <a href="https://bigvision.ai/"><strong>BigVision.AI</strong></a>, a computer vision and AI consulting company. We help organizations design, build, optimize, and deploy production-ready AI solutions. Our team has deep expertise in computer vision, deep learning, multimodal AI, and edge deployment, with experience solving complex technical challenges across industries.
+</p>
+
+<p align="center">
+  Have a project in mind? Talk with our expert AI solution builders.
+</p>
+
+<p align="center">
+  <a href="https://bigvision.ai/expert-ai-solution-builders?utm_source=locv-github">
+    <img src="https://img.shields.io/badge/Get%20in%20Touch-087EA4?style=for-the-badge" alt="Get in Touch with BigVision.AI">
+  </a>
+</p>
