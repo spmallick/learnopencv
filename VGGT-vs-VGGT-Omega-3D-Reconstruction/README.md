@@ -2,7 +2,7 @@
   <img src="vggt-vs-vggt-omega-comparison.jpg" alt="VGGT vs VGGT-Omega: Feed-Forward 3D Reconstruction" width="900">
 </p>
 
-Benchmark code for the LearnOpenCV post **[VGGT vs VGGT-Omega: 3D Reconstruction](https://learnopencv.com/vggt-vs-vggt-omega-3d-reconstruction/)**.
+Benchmark code for the LearnOpenCV post **[VGGT vs VGGT-Omega: 3D Reconstruction](https://learnopencv.com/vggt-vs-vggt-%cf%89-vggt-omega-a-complete-guide-to-feed-forward-3d-reconstruction/)**.
 
 The notebook compares two 3D reconstruction models, **VGGT-1B** and **VGGT-Omega-1B-512**, each run two ways: standard **mixed precision** and true **bf16** (model weights cast to bfloat16, which roughly halves resident weight memory). It answers two questions:
 
