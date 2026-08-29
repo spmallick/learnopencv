@@ -1,0 +1,6 @@
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+output*.mp4
+*.video-only.mp4
+*.muxed.mp4

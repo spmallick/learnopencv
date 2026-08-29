@@ -30,6 +30,7 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [SAM-3: What’s New, How It Works, and Why It Matters](https://learnopencv.com/sam-3-whats-new/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/SAM-3) |
 | [VGGT vs. VGGT-Ω (VGGT-Omega): A Complete Guide to Feed-Forward 3D Reconstruction](https://learnopencv.com/vggt-vs-vggt-%cf%89-vggt-omega-a-complete-guide-to-feed-forward-3d-reconstruction/) | [Code](https://github.com/spmallick/learnopencv/tree/master/VGGT-vs-VGGT-Omega-3D-Reconstruction) |
 | [MiniCPM-o 4.5: A 9B Model That Can See, Hear, and Speak at the Same Time](https://learnopencv.com/minicpm-o-4-5-a-9b-model-that-can-see-hear-and-speak-at-the-same-time/) | [Code](https://github.com/spmallick/learnopencv/tree/master/MiniCPM-o-4.5-Real-Time-Video-Understanding) |
 | [Object Tracking using OpenCV (C++/Python)](https://learnopencv.com/object-tracking-using-opencv-cpp-python/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/tracking) |
@@ -98,7 +99,6 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 | [How to Build a GitHub Code-Analyser Agent for Developer Productivity](https://learnopencv.com/how-to-build-a-github-code-analyser-agent/) | [Code](https://github.com/spmallick/learnopencv/tree/master/How_to_Build_a_GitHub_Code_Analyser_Agent_for_Developer_Productivity) |
 | [The Existential Problems in LLM Serving](https://learnopencv.com/the-existential-problems-in-llm-serving/) | |
 | [SAM 3D: Foundation Model for Single-Image 3D Reconstruction](https://learnopencv.com/sam-3d/) | |
-| [SAM-3: What’s New, How It Works, and Why It Matters](https://learnopencv.com/sam-3-whats-new/) | [Code](https://github.com/spmallick/learnopencv/tree/master/SAM-3) |
 | [Image-GS: Adaptive Image Reconstruction using 2D Gaussians](https://learnopencv.com/image-gs-image-reconstruction-using-2d-gaussians/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Image_GS_Adaptive_Image_Reconstruction_using_2D_Gaussians) |
 | [Ultimate Guide to Vector Databases and RAG Pipeline](https://learnopencv.com/vector-db-and-rag-pipeline-for-document-rag/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Ultimate_Guide_to_Vector_Databases_and_RAG_pipeline) |
 |[What Makes DeepSeek OCR So Powerful](https://learnopencv.com/what-makes-deepseek-ocr-so-powerful/)|[Code](https://github.com/spmallick/learnopencv/tree/master/What-Makes-DeepSeek-OCR-So-Powerful)|
