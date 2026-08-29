@@ -7,7 +7,7 @@ rather than stateful tracking.
 
 [<img src="./featured_image_SAM_3.jpg" alt="SAM 3 Promptable Concept Segmentation" width="100%">](https://learnopencv.com/sam-3-whats-new/)
 
-[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://github.com/spmallick/learnopencv/releases/download/sam-3-1-video-tracking-2026.08.30/SAM-3.zip)
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://github.com/spmallick/learnopencv/releases/download/sam-3-1-video-tracking-2026.08.30-r2/SAM-3.zip)
 
 ## What This Example Does
 
@@ -58,29 +58,32 @@ SAM-3/
 
 ## Installation
 
-Follow Meta's current CUDA setup before installing this example:
+Download this companion through the button above, extract `SAM-3.zip`, open a
+terminal in the directory that contains the extracted folder, and enter it
+once:
+
+```bash
+cd SAM-3
+```
+
+Every command and relative path below assumes `SAM-3` is the working directory.
+Create the environment, install the current CUDA build of PyTorch, and keep the
+pinned official Meta checkout under `vendor/` so the working directory does not
+change:
 
 ```bash
 conda create -n sam31 python=3.12
 conda activate sam31
 
-pip install torch==2.10.0 torchvision \
+python -m pip install torch==2.10.0 torchvision \
   --index-url https://download.pytorch.org/whl/cu128
 
-git clone https://github.com/facebookresearch/sam3.git
-cd sam3
-git checkout 660a5e9e1b8b4c02c0ad97229b88a09a6e4ff5b7
-pip install -e .
-pip install -e ".[notebooks]"
+mkdir -p vendor
+git clone https://github.com/facebookresearch/sam3.git vendor/sam3
+git -C vendor/sam3 checkout 660a5e9e1b8b4c02c0ad97229b88a09a6e4ff5b7
+python -m pip install -e "./vendor/sam3[notebooks]"
+python -m pip install -r requirements.txt
 hf auth login
-```
-
-Download this companion through the button above, extract `SAM-3.zip`, and
-install its OpenCV and NumPy dependencies:
-
-```bash
-cd SAM-3
-pip install -r requirements.txt
 ```
 
 ## Run Stateful SAM 3.1 Tracking

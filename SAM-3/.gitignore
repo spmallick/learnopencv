@@ -4,3 +4,4 @@ __pycache__/
 output*.mp4
 *.video-only.mp4
 *.muxed.mp4
+vendor/
