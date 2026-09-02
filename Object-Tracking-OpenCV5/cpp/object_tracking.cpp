@@ -22,6 +22,8 @@
 #include <opencv2/opencv_modules.hpp>
 // Drawing primitives (rectangle, putText) and image resizing.
 #include <opencv2/imgproc.hpp>
+// Explicit DNN backend/target constants used by TrackerVit.
+#include <opencv2/dnn.hpp>
 // VideoCapture and VideoWriter for file, camera, and clip generation.
 #include <opencv2/videoio.hpp>
 // The main-module trackers: MIL, DaSiamRPN, Nano, Vit (GOTURN in 4.x only).
@@ -69,6 +71,12 @@ constexpr int kSynthSeed = 7;      // fixed seed keeps the clip deterministic
 constexpr double kValidateMeanIou = 0.45;
 constexpr double kValidateSuccessIou = 0.30;
 constexpr double kValidateSuccessRate = 0.90;
+
+// Promote the official demo's 0.30 visualization cutoff into this
+// application's acceptance policy. OpenCV's lower built-in default (0.20) is
+// intended only to reject nearly black inputs and can allow a weak prediction
+// to update the template and trigger scale drift.
+constexpr float kVitTrackingScoreThreshold = 0.30f;
 
 // MODELS_DIR is injected by CMake as the absolute path of ../models so the
 // executable finds the shared ONNX files regardless of the current directory.
@@ -149,6 +157,16 @@ static cv::Ptr<cv::Tracker> createTracker(const std::string& name,
         }
         cv::TrackerVit::Params params;
         params.net = (modelsDir / "object_tracking_vittrack_2023sep.onnx").string();
+        // Pin the portable CPU implementation and use the official demo's
+        // visualization cutoff as this application's acceptance threshold.
+        params.backend = cv::dnn::DNN_BACKEND_OPENCV;
+        params.target = cv::dnn::DNN_TARGET_CPU;
+#if CV_VERSION_MAJOR >= 5 || \
+    (CV_VERSION_MAJOR == 4 && CV_VERSION_MINOR >= 11)
+        // OpenCV 4.9/4.10 expose the score but not this Params field. The
+        // tracking loop still applies the same display/acceptance cutoff.
+        params.tracking_score_threshold = kVitTrackingScoreThreshold;
+#endif
         return cv::TrackerVit::create(params);
     }
     whyNot = "unknown tracker name: " + name;
@@ -158,6 +176,20 @@ static cv::Ptr<cv::Tracker> createTracker(const std::string& name,
 // The canonical tracker order used by --list and the help text.
 static const std::vector<std::string> kTrackerNames =
     {"mil", "kcf", "csrt", "dasiamrpn", "nanotrack", "vittrack"};
+
+// TrackerVit exposes a confidence score in addition to update()'s boolean.
+// Keep the factory's common cv::Tracker pointer while safely recovering the
+// more specific interface only for VitTrack.
+static std::optional<float> getVitTrackingScore(
+    const cv::Ptr<cv::Tracker>& tracker, const std::string& trackerName)
+{
+    if (trackerName != "vittrack") return std::nullopt;
+    const cv::Ptr<cv::TrackerVit> vit = tracker.dynamicCast<cv::TrackerVit>();
+    if (!vit)
+        throw std::runtime_error(
+            "Internal error: vittrack does not expose TrackerVit");
+    return vit->getTrackingScore();
+}
 
 // ---------------------------------------------------------------------------
 // Synthetic validation clip
@@ -447,8 +479,15 @@ static RunMetrics track(cv::Ptr<cv::Tracker> tracker, cv::VideoCapture& capture,
         cv::Rect box;
         // Time only the update call, not drawing or file I/O.
         meter.start();
-        const bool found = tracker->update(frame, box);
+        const bool located = tracker->update(frame, box);
         meter.stop();
+        const std::optional<float> score =
+            getVitTrackingScore(tracker, options.trackerName);
+        // The explicit comparison keeps the visible policy identical on
+        // OpenCV 4.9/4.10, whose TrackerVit::Params lacks the threshold field.
+        // On 4.11+ the internal threshold already makes located false.
+        const bool found =
+            located && (!score || *score >= kVitTrackingScoreThreshold);
         if (found)
         {
             // Draw the tracked box in green.
@@ -469,9 +508,12 @@ static RunMetrics track(cv::Ptr<cv::Tracker> tracker, cv::VideoCapture& capture,
             ious.push_back(found ? iou(box, truth) : 0.0);
         }
         // Overlay the running-average FPS of tracker updates.
-        cv::putText(frame,
-                    options.trackerName + cv::format("  %5.1f FPS", meter.getFPS()),
-                    {20, 30}, cv::FONT_HERSHEY_SIMPLEX, 0.8, {50, 170, 50}, 2);
+        std::string status =
+            options.trackerName + cv::format("  %5.1f FPS", meter.getFPS());
+        if (score)
+            status += cv::format("  score %.2f", *score);
+        cv::putText(frame, status, {20, 30}, cv::FONT_HERSHEY_SIMPLEX, 0.8,
+                    {50, 170, 50}, 2);
         // Count this frame before any interactive early exit; it has already
         // been read, tracked, scored, and will be written below.
         ++metrics.frames;
