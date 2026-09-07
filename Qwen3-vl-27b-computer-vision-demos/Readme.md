@@ -1,7 +1,6 @@
 # How to Master Qwen3.8-27B for Real Computer Vision Tasks
 
 **This repository contains the Colab notebook and sample assets for the LearnOpenCV blog post [How to Master Qwen3.8-27B for Real Computer Vision Tasks](ADD_BLOG_LINK_HERE).**
-
 ![How to Master Qwen3.8-27B for Real Computer Vision Tasks](Qwen_3.8_27B_featured.jpg)
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/spmallick/learnopencv/blob/master/Qwen3-vl-27b-computer-vision-demos/Qwen3_8_27B_Vision_Tour.ipynb)
