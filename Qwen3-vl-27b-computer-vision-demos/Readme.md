@@ -31,7 +31,6 @@ An A100 runtime (Colab Pro or Pro+) is recommended. Open the notebook in Colab a
 - `assets/` - the sample images and video clips used by the demos
 
 ---
-
 # AI Courses by OpenCV
 
 Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/courses/) is a great place to start.
