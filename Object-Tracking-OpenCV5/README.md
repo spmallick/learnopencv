@@ -26,8 +26,9 @@ with it the GOTURN tracker. The article covers the migration path.
   `opencv_contrib`.
 - Python 3.9+ with NumPy 1.23–2.x. The dependency range is
   `opencv-contrib-python>=4.9,<6` and `numpy>=1.23,<3`; TrackerVit establishes
-  the OpenCV 4.9 API floor, while 4.14.0 and 5.0.0 are the exact validation
-  targets.
+  the OpenCV 4.9 API floor. Use OpenCV 4.11+ for the internal VitTrack
+  confidence threshold demonstrated in the article; 4.14.0 and 5.0.0 are the
+  exact validation targets.
 - C++17 and CMake 3.16+. OpenCV's `core`, `dnn`, `imgproc`, `videoio`,
   `highgui`, and `video` modules are required. The contrib `tracking` module
   enables KCF and CSRT; without it, the other four trackers still build and the
@@ -143,6 +144,15 @@ Python uses `--list-trackers`; C++ uses `--list`. Invalid options, malformed or
 out-of-frame boxes, missing inputs, and output failures return a clean nonzero
 exit.
 
+VitTrack is configured explicitly with `DNN_BACKEND_OPENCV`,
+`DNN_TARGET_CPU`, and a tracking-score threshold of `0.30`. This promotes the
+official OpenCV demo's `0.30` visualization cutoff into the tracker's internal
+acceptance threshold on OpenCV 4.11+. OpenCV 4.9/4.10 do not expose that
+`Params` field, so the common tracking loop applies the same visible cutoff
+after `update()`. The annotated output shows `getTrackingScore()` on every
+updated frame; below `0.30`, it reports failure and draws no potentially
+misleading box.
+
 Validation generates an 80-frame, 640×360 clip containing a textured square on
 a seeded noisy background. It initializes from frame zero and passes only when
 the 79 subsequent updates have mean IoU ≥ 0.45 and at least 90% exceed 0.30
@@ -152,7 +162,7 @@ JSON, then prints `VALIDATION PASSED` or `VALIDATION FAILED`.
 ## Test
 
 ```shell
-# Python: 23 tests, including all six tracker entry points.
+# Python: 25 tests, including all six tracker entry points.
 python3 -m unittest discover -s python/tests -v
 
 # C++: 17 tests with contrib and all downloaded models.
@@ -183,7 +193,12 @@ directory.
   in Python and C++. Tracker scores can differ across OpenCV versions; passing
   semantics and artifact contracts—not four-decimal score equality—are the
   compatibility guarantee.
-- OpenCV 5's new DNN graph engine prints `setPreferableTarget` warnings when the DNN trackers load; they are harmless and do not affect results.
+- VitTrack explicitly selects OpenCV's CPU DNN backend, so its result does not
+  depend on which backend a particular OpenCV build chooses by default.
+- OpenCV 4.9/4.10 expose VitTrack's score but not its internal threshold
+  parameter. The application hides updates below `0.30` on those releases, but
+  it cannot undo the tracker state change that already occurred. Use 4.11+ to
+  reproduce the anti-drift acceptance behavior shown in the article.
 - The C++ and Python synthetic clips share the same geometry, trajectory, and thresholds, but use different random generators, so their pixels (and exact IoU values) differ slightly across languages by design.
 - Output videos preserve the input frame rate when the backend reports one and
   otherwise use a 30 FPS fallback.
