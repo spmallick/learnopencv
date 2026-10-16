@@ -36,7 +36,7 @@ A hands-on capability tour of the new native depth task in Ultralytics YOLO26. O
 
 ```
 Yolo26-depth-estimation/
-├── YOLO26_Depth_Capability_Tour.ipynb   the notebook, with outputs
+├── YOLO26_Depth_Capability_Tour.ipynb   the notebook (outputs cleared; run it in Colab to regenerate every figure)
 ├── assets/                              every image and video the notebook uses
 │   ├── bus.jpg, zidane.jpg
 │   ├── gallery_scene1.jpg ... gallery_scene4.jpg
