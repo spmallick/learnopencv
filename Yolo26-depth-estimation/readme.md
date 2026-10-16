@@ -1,10 +1,20 @@
 # YOLO26 Depth Estimation: Metric Monocular Depth and What You Can Build With It
 
+<p align="center">
+  <img src="yolo26-depth-estimation_featured.jpg" alt="YOLO26 depth estimation: original view next to its metric depth map" width="100%">
+</p>
+
 A hands-on capability tour of the new native depth task in Ultralytics YOLO26. One Colab notebook, one small checkpoint (`yolo26n-depth.pt`, 12.4 MB), and a dense map where every pixel is a real distance in meters. The notebook runs end to end on a free Colab T4 in a few minutes, with no setup beyond `pip install ultralytics`.
 
-Companion code for the LearnOpenCV article: **[YOLO26 Depth Estimation](https://learnopencv.com/)** (link will be updated when the post goes live).
-
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YOUR_GITHUB_USERNAME/yolo26-depth-estimation/blob/main/YOLO26_Depth_Capability_Tour.ipynb)
+<p>
+  <a href="https://colab.research.google.com/github/oliverhale07-dot/learnopencv/blob/master/Yolo26-depth-estimation/YOLO26_Depth_Capability_Tour.ipynb">
+    <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab">
+  </a>
+  &nbsp;
+  <a href="https://learnopencv.com/yolo26-depth-estimation-metric-monocular-depth-and-what-you-can-build-with-it/">
+    <img src="https://img.shields.io/badge/Read%20the%20Blog-LearnOpenCV-F26A22?logo=wordpress&logoColor=white" alt="Read the blog on LearnOpenCV">
+  </a>
+</p>
 
 ## What you will learn
 
@@ -25,24 +35,25 @@ Companion code for the LearnOpenCV article: **[YOLO26 Depth Estimation](https://
 ## Repository layout
 
 ```
-.
+Yolo26-depth-estimation/
 ├── YOLO26_Depth_Capability_Tour.ipynb   the notebook, with outputs
 ├── assets/                              every image and video the notebook uses
 │   ├── bus.jpg, zidane.jpg
 │   ├── gallery_scene1.jpg ... gallery_scene4.jpg
 │   ├── bokeh_car.jpg, bokeh_pelican.jpg
 │   └── people.mp4, aisle.mp4, car.mp4
-└── README.md
+├── yolo26-depth-estimation_featured.jpg the article's featured image
+└── readme.md
 ```
 
-The notebook downloads everything it needs by itself, so `assets/` is there for reference and for running offline.
+The first code cells fetch `assets/` from this repository into a local folder next to the notebook (skipped if the files are already there, for example after a clone), and every later cell reads from that folder with relative paths. Nothing depends on Colab: the same notebook runs on a local machine with a GPU.
 
 ## Quick start
 
 Open the notebook in Colab with the badge above, set the runtime to **T4 GPU**, and run all cells. Or run it locally:
 
 ```bash
-pip install ultralytics
+pip install "ultralytics==8.4.174"
 ```
 
 ```python
@@ -59,6 +70,8 @@ From the command line:
 ```bash
 yolo depth predict model=yolo26n-depth.pt source=assets/bus.jpg
 ```
+
+The Ultralytics release is pinned to the one every figure and number in the article was produced with, so the results reproduce. Newer releases can change inference details such as the input letterboxing, which shifts the metric values slightly.
 
 ## Numbers you should expect
 
@@ -90,3 +103,27 @@ Official NYU Depth V2 numbers for the five checkpoints (delta1, higher is better
 ## License
 
 Code in this repository is released under the MIT License. Ultralytics YOLO26 weights and package are under the AGPL-3.0 license (see the Ultralytics repository). Sample images and videos belong to their respective sources listed above.
+
+---
+
+<p align="center">
+  <a href="https://bigvision.ai/">
+    <img src="https://bigvision.ai/logos/logo.png" alt="BigVision.AI" width="300">
+  </a>
+</p>
+
+<h2 align="center">Build Production-Ready Computer Vision &amp; AI Solutions</h2>
+
+<p align="center">
+  LearnOpenCV is maintained by <a href="https://bigvision.ai/"><strong>BigVision.AI</strong></a>, a computer vision and AI consulting company. We help organizations design, build, optimize, and deploy production-ready AI solutions. Our team has deep expertise in computer vision, deep learning, multimodal AI, and edge deployment, with experience solving complex technical challenges across industries.
+</p>
+
+<p align="center">
+  Have a project in mind? Talk with our expert AI solution builders.
+</p>
+
+<p align="center">
+  <a href="https://bigvision.ai/expert-ai-solution-builders?utm_source=locv-github">
+    <img src="https://img.shields.io/badge/Get%20in%20Touch-087EA4?style=for-the-badge" alt="Get in Touch with BigVision.AI">
+  </a>
+</p>
