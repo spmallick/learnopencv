@@ -4,17 +4,13 @@
   <img src="yolo26-depth-estimation_featured.jpg" alt="YOLO26 depth estimation: original view next to its metric depth map" width="100%">
 </p>
 
+**[Read the full article on LearnOpenCV](https://learnopencv.com/yolo26-depth-estimation-metric-monocular-depth-and-what-you-can-build-with-it/)**
+
 A hands-on capability tour of the new native depth task in Ultralytics YOLO26. One Colab notebook, one small checkpoint (`yolo26n-depth.pt`, 12.4 MB), and a dense map where every pixel is a real distance in meters. The notebook runs end to end on a free Colab T4 in a few minutes, with no setup beyond `pip install ultralytics`.
 
-<p>
-  <a href="https://colab.research.google.com/github/oliverhale07-dot/learnopencv/blob/master/Yolo26-depth-estimation/YOLO26_Depth_Capability_Tour.ipynb">
-    <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab">
-  </a>
-  &nbsp;
-  <a href="https://learnopencv.com/yolo26-depth-estimation-metric-monocular-depth-and-what-you-can-build-with-it/">
-    <img src="https://img.shields.io/badge/Read%20the%20Blog-LearnOpenCV-F26A22?logo=wordpress&logoColor=white" alt="Read the blog on LearnOpenCV">
-  </a>
-</p>
+<a href="https://colab.research.google.com/github/spmallick/learnopencv/blob/master/Yolo26-depth-estimation/YOLO26_Depth_Capability_Tour.ipynb">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab">
+</a>
 
 ## What you will learn
 
@@ -73,20 +69,6 @@ yolo depth predict model=yolo26n-depth.pt source=assets/bus.jpg
 
 The Ultralytics release is pinned to the one every figure and number in the article was produced with, so the results reproduce. Newer releases can change inference details such as the input letterboxing, which shifts the metric values slightly.
 
-## Numbers you should expect
-
-Measured in this notebook on a free Colab T4 with `ultralytics 8.4.174`:
-
-| Item | Value |
-|---|---|
-| `yolo26n-depth.pt` single image, PyTorch, T4 | about 32 ms |
-| Same, CPU | about 1.1 s |
-| Video (640x360), per-frame depth, T4 | about 30 FPS |
-| Fine-tune, 15 epochs on the built-in `depth8` sample set | about 14 s, validation delta1 about 0.90 |
-| ONNX export of the fine-tuned model | `best.onnx`, 19.8 MB |
-
-Official NYU Depth V2 numbers for the five checkpoints (delta1, higher is better): n 0.882, s 0.896, m 0.921, l 0.930, x 0.933. See the [Ultralytics depth task docs](https://docs.ultralytics.com/tasks/depth/) for the full table.
-
 ## Things to know before you build on it
 
 - The map is **metric**: a value of 4.2 means 4.2 meters. Normalize a copy for display, but keep the raw array for any measurement.
@@ -99,10 +81,6 @@ Official NYU Depth V2 numbers for the five checkpoints (delta1, higher is better
 - Ultralytics announcement: [YOLO26 now supports monocular depth estimation](https://www.ultralytics.com/blog/ultralytics-yolo26-now-supports-monocular-depth-estimation)
 - Ultralytics docs: [Depth estimation task](https://docs.ultralytics.com/tasks/depth/)
 - Sample media: `bus.jpg` and `zidane.jpg` from the Ultralytics assets, scene photos from [Lorem Picsum](https://picsum.photos/), video clips from the [Intel IoT DevKit sample videos](https://github.com/intel-iot-devkit/sample-videos)
-
-## License
-
-Code in this repository is released under the MIT License. Ultralytics YOLO26 weights and package are under the AGPL-3.0 license (see the Ultralytics repository). Sample images and videos belong to their respective sources listed above.
 
 ---
 
@@ -124,6 +102,6 @@ Code in this repository is released under the MIT License. Ultralytics YOLO26 we
 
 <p align="center">
   <a href="https://bigvision.ai/expert-ai-solution-builders?utm_source=locv-github">
-    <img src="https://img.shields.io/badge/Get%20in%20Touch-087EA4?style=for-the-badge" alt="Get in Touch with BigVision.AI">
+    <img src="https://img.shields.io/badge/Get%20in%20Touch-BigVision.AI-087EA4?style=for-the-badge" alt="Get in Touch with BigVision.AI">
   </a>
 </p>
