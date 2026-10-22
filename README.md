@@ -30,6 +30,7 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [YOLO26 Depth Estimation: Metric Monocular Depth and What You Can Build With It](https://learnopencv.com/yolo26-depth-estimation-metric-monocular-depth-and-what-you-can-build-with-it/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Yolo26-depth-estimation) |
 | [How to Master Qwen3.8-27B for Real Computer Vision Tasks](https://learnopencv.com/qwen3-8-27b-computer-vision/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Qwen3-vl-27b-computer-vision-demos) |
 | [SAM-3: What’s New, How It Works, and Why It Matters](https://learnopencv.com/sam-3-whats-new/) [Updated] | [Code](https://github.com/spmallick/learnopencv/tree/master/SAM-3) |
 | [Train RF-DETR for Instance Segmentation with GPT-6 Astra](https://learnopencv.com/astra-rf-detr-microduck-segmentation/) |  |
