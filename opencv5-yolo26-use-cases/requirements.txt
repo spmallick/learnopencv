@@ -1,0 +1,6 @@
+opencv-python==5.0.0.93
+numpy>=1.26
+matplotlib>=3.8
+ultralytics>=8.4
+onnx>=1.16
+onnxslim>=0.1
