@@ -2,6 +2,8 @@
 
 **This repository contains the code for the LearnOpenCV blog post [OpenCV 5 Object Detection Use Cases: Traffic Counting, Parking Monitoring and Safety Zones](https://learnopencv.com/opencv-5-object-detection-use-cases/).**
 
+[![OpenCV 5 Object Detection Use Cases](featured_thumbnail.jpg)](https://learnopencv.com/opencv-5-object-detection-use-cases/)
+
 Three applications built on YOLO26 and the OpenCV 5 DNN engine, CPU only: traffic counting by line, lane and direction;
 parking monitoring that tells parked cars from moving ones on a drifting camera; and safety-zone alerts with dwell
 times, snapshots and event logs. Seven video examples and eight still-photo examples, all on free-license footage.
@@ -60,15 +62,33 @@ models/, outputs/   created by the scripts above
 
 ## Using your own camera
 
-Grab one frame, read off line endpoints or polygon corners as fractions of the width and height (0 to 1), and put them
-in a config like the ones in `examples.py`. `cv2.VideoCapture` also takes an RTSP or HTTP URL. If the camera moves, set
-`align=True` and draw on the first frame. Use the 640 model when objects are large, the 960 model for dense small
-objects, and `tiles=` on photos.
+Grab one frame, read off line endpoints or polygon corners as fractions of the width and height (0 to 1), and put them in a config like the ones in `examples.py`. `cv2.VideoCapture` also takes an RTSP or HTTP URL. If the camera moves, set `align=True` and draw on the first frame. Use the 640 model when objects are large, the 960 model for dense small objects, and tiling on photos, for example `tiles=(2, 3)` for a grid of 2 rows by 3 columns.
 
-## Footage licenses
+## Footage
 
-The clips and photos in `assets/` are free to use: Pexels videos 18553048, 15300538, 37494789, 40368581, 31635297,
-10441075, 9010418, 31922736, 6079421 and photos 15610996, 27374365, 5231181, 33968153, 4487383 under the
-[Pexels license](https://www.pexels.com/license/); `worker_zone.mp4` is from Intel's
-[sample-videos](https://github.com/intel-iot-devkit/sample-videos) repository (CC BY 4.0). They are provided for
-educational purposes only, not for resale. YOLO26 weights are from Ultralytics (AGPL-3.0).
+The clips and photos in `assets/` are free to use and are included here for educational purposes only, not for resale. Our thanks to [Pexels](https://www.pexels.com/) and the photographers and filmmakers who shared them, and to Intel for the worker-zone sample video from their [sample-videos](https://github.com/intel-iot-devkit/sample-videos) repository. The YOLO26 weights come from Ultralytics.
+
+
+---
+
+<p align="center">
+  <a href="https://bigvision.ai/">
+    <img src="https://bigvision.ai/logos/logo.png" alt="BigVision.AI" width="300">
+  </a>
+</p>
+
+<h2 align="center">Build Production-Ready Computer Vision &amp; AI Solutions</h2>
+
+<p align="center">
+  LearnOpenCV is maintained by <a href="https://bigvision.ai/"><strong>BigVision.AI</strong></a>, a computer vision and AI consulting company. We help organizations design, build, optimize, and deploy production-ready AI solutions. Our team has deep expertise in computer vision, deep learning, multimodal AI, and edge deployment, with experience solving complex technical challenges across industries.
+</p>
+
+<p align="center">
+  Have a project in mind? Talk with our expert AI solution builders.
+</p>
+
+<p align="center">
+  <a href="https://bigvision.ai/expert-ai-solution-builders?utm_source=locv-github">
+    <img src="https://img.shields.io/badge/Get%20in%20Touch-087EA4?style=for-the-badge" alt="Get in Touch with BigVision.AI">
+  </a>
+</p>
