@@ -24,7 +24,7 @@ Run one example with `python code/examples.py traffic_highway`, or a quick 8-sec
 `python code/examples.py all 8`. Results are annotated videos (`outputs/0N_*.mp4`), CSV event logs, alert snapshots
 and an occupancy chart.
 
-The notebook `notebook/OpenCV5_Detection_Use_Cases.ipynb` runs the same code end to end on Google Colab. A free CPU or
+The notebook `OpenCV5_Detection_Use_Cases.ipynb` runs the same code end to end on Google Colab. A free CPU or
 T4 runtime is enough; the OpenCV 5 wheel is CPU-only. The notebook downloads the assets from this repository into an
 `assets` folder next to it, so it runs the same way on Colab and on your own machine.
 
