@@ -256,8 +256,13 @@ std::vector<cv::Point2f> project_points(const std::vector<cv::Point2f>& points, 
     for (const cv::Point2f& point : points) {
         const double x = static_cast<double>(point.x);
         const double y = static_cast<double>(point.y);
-        const double w = matrix.at<double>(2, 0) * x + matrix.at<double>(2, 1) * y + matrix.at<double>(2, 2);
-        if (!std::isfinite(w) || std::abs(w) < 1e-10) {
+        const double wx = matrix.at<double>(2, 0) * x;
+        const double wy = matrix.at<double>(2, 1) * y;
+        const double constant = matrix.at<double>(2, 2);
+        const double w = wx + wy + constant;
+        // A relative cancellation check gives equivalent projective scales the same decision.
+        const double denominator_scale = std::abs(wx) + std::abs(wy) + std::abs(constant);
+        if (!std::isfinite(w) || std::abs(w) <= 1e-10 * denominator_scale) {
             throw std::invalid_argument("A projected point lies on the projective horizon.");
         }
         // Explicit homogeneous division makes the source/destination convention inspectable.
@@ -371,9 +376,6 @@ AlignmentResult estimate_alignment(const MatchResult& matches, cv::Size referenc
         for (const cv::Point2f& corner : reference_corners) {
             const double denominator = inverse.at<double>(2, 0) * corner.x
                                        + inverse.at<double>(2, 1) * corner.y + inverse.at<double>(2, 2);
-            if (std::abs(denominator) < 1e-10) {
-                throw std::invalid_argument("The projected reference crosses the projective horizon.");
-            }
             minimum_denominator = std::min(minimum_denominator, denominator);
             maximum_denominator = std::max(maximum_denominator, denominator);
         }
@@ -401,7 +403,7 @@ AlignmentResult estimate_alignment(const MatchResult& matches, cv::Size referenc
 }
 
 std::pair<cv::Mat, cv::Mat> warp_alignment(const cv::Mat& moving_bgr, const AlignmentResult& result,
-                                        cv::Size reference_size, bool require_accepted) {
+                                        cv::Size reference_size, bool require_accepted, bool full_support) {
     check_image(moving_bgr);
     image_corners(reference_size);
     if (result.H.empty() || (require_accepted && !result.accepted)) {
@@ -409,10 +411,18 @@ std::pair<cv::Mat, cv::Mat> warp_alignment(const cv::Mat& moving_bgr, const Alig
     }
     cv::Mat aligned;
     cv::warpPerspective(moving_bgr, aligned, result.H, reference_size, cv::INTER_LINEAR);
-    const cv::Mat source_mask(moving_bgr.size(), CV_8UC1, cv::Scalar(255));
     cv::Mat valid;
-    // A real black source pixel remains valid; only the warped support mask defines missing pixels.
-    cv::warpPerspective(source_mask, valid, result.H, reference_size, cv::INTER_NEAREST);
+    if (full_support) {
+        // A float mask preserves fractional weights, including tiny corner contributions.
+        const cv::Mat source_ones(moving_bgr.size(), CV_32F, cv::Scalar(1));
+        cv::Mat weight;
+        cv::warpPerspective(source_ones, weight, result.H, reference_size, cv::INTER_LINEAR);
+        cv::compare(weight, 1.0, valid, cv::CMP_EQ);
+    } else {
+        // Nearest-source validity is independent of the image colors, including black.
+        const cv::Mat source_mask(moving_bgr.size(), CV_8UC1, cv::Scalar(255));
+        cv::warpPerspective(source_mask, valid, result.H, reference_size, cv::INTER_NEAREST);
+    }
     return {aligned, valid};
 }
 
@@ -429,9 +439,21 @@ std::pair<cv::Mat, double> refine_ecc(const cv::Mat& reference_bgr, const cv::Ma
     cv::cvtColor(moving_bgr, moving_gray, cv::COLOR_BGR2GRAY);
     reference_gray.convertTo(reference_gray, CV_32F, 1.0 / 255.0);
     moving_gray.convertTo(moving_gray, CV_32F, 1.0 / 255.0);
+    // Remove arbitrary projective scale before inversion to handle equivalent inputs alike.
+    const cv::Mat initial = checked_homography(H_moving_to_reference);
+    const double magnitude = cv::norm(initial, cv::NORM_INF);
+    if (magnitude == 0.0) {
+        throw std::invalid_argument("ECC needs a nonzero initial homography.");
+    }
+    const cv::Mat inverse = inverse_homography(initial / magnitude);
+    // The ECC Jacobian fixes h22 to one in template-to-input coordinates. Inverting
+    // generally changes this entry even when the public moving-to-reference H had h22=1.
+    const double h22 = inverse.at<double>(2, 2);
+    if (!cv::checkRange(inverse) || std::abs(h22) <= 1e-12 * cv::norm(inverse, cv::NORM_INF)) {
+        throw std::invalid_argument("ECC cannot normalize its reference-to-moving initialization at [2, 2].");
+    }
     cv::Mat reference_to_moving;
-    // ECC estimates template -> input, the inverse of the public alignment convention.
-    inverse_homography(H_moving_to_reference).convertTo(reference_to_moving, CV_32F);
+    inverse.convertTo(reference_to_moving, CV_32F, 1.0 / h22);
     const cv::Mat reference_support(reference_bgr.size(), CV_8UC1, cv::Scalar(255));
     cv::Mat input_mask;
     cv::warpPerspective(reference_support, input_mask, reference_to_moving, moving_bgr.size(), cv::INTER_NEAREST);
@@ -444,18 +466,15 @@ std::pair<cv::Mat, double> refine_ecc(const cv::Mat& reference_bgr, const cv::Ma
     const cv::TermCriteria criteria(cv::TermCriteria::EPS | cv::TermCriteria::COUNT, iterations, epsilon);
     const double correlation = cv::findTransformECC(reference_gray, moving_gray, reference_to_moving,
                                                     cv::MOTION_HOMOGRAPHY, criteria, input_mask, 5);
-    cv::Mat float_inverse;
-    if (cv::invert(reference_to_moving, float_inverse, cv::DECOMP_LU) == 0.0) {
-        throw std::invalid_argument("ECC returned a singular homography.");
+    // Return to the public direction in double precision. The inverse can have h22=0.
+    cv::Mat H = inverse_homography(reference_to_moving);
+    if (!cv::checkRange(H) || !std::isfinite(correlation)) {
+        throw std::invalid_argument("ECC returned a nonfinite refinement.");
     }
-    cv::Mat H;
-    float_inverse.convertTo(H, CV_64F);  // Match NumPy's float32 inversion then float64 reporting.
+    const double max_entry = cv::norm(H, cv::NORM_INF);
     const double scale = H.at<double>(2, 2);
-    if (std::abs(scale) < 1e-12) {
-        throw std::invalid_argument("ECC returned an unusable homography normalization.");
-    }
-    H /= scale;
-    return {checked_homography(H), correlation};
+    H /= std::abs(scale) > 1e-12 * max_entry ? scale : max_entry;
+    return {H, correlation};
 }
 
 cv::Mat draw_matches(const cv::Mat& reference_bgr, const cv::Mat& moving_bgr, const MatchResult& matches,

@@ -35,7 +35,7 @@ cells = [
     homography does not describe arbitrary 3D scenes with parallax or deformation.
 
     We will:
-    1. Verify OpenCV **5.1.0**, the latest stable 5.x release checked on **November 14, 2026**, and the checksummed inputs.
+    1. Verify the tested OpenCV **5.1.0** runtime and the checksummed inputs.
     2. Extract ALIKED features, match with LightGlue, and fit geometry with MAGSAC++.
     3. Align real viewpoint, illumination, and document examples.
     4. Locate a known object design from one reference and reject absent targets.
@@ -87,8 +87,9 @@ cells = [
     graffiti and Leuven sequences contain **real camera captures** and supplied
     reference-to-moving homographies; the later noise study is synthetic.
 
-    The box and photographed-form examples are qualitative demonstrations with
-    no independent ground-truth homography bundled. The manifest preserves
+    For the form, the blank reference is a digital DMV template. The other
+    image is a phone photo of a printed, completed copy. The box and form are
+    qualitative examples without an independently measured homography. The manifest preserves
     provenance and licensing notes; downloading an image does not relicense it.
     Model weights are likewise pinned and verified before inference.
     """),
@@ -145,7 +146,8 @@ cells = [
     ## ALIKED finds the features and LightGlue matches them
 
     ALIKED's sparse deformable descriptor head learns where to sample supporting
-    features around a keypoint. LightGlue then uses context within and between
+    features at 16 learned offsets around each keypoint in aliked-n16. LightGlue
+    then uses context within and between
     images to establish correspondences. Their pretrained weights form a pair:
     this notebook uses **`aliked-n16`** and **`LightGlue(features="aliked")`**.
 
@@ -175,8 +177,9 @@ cells = [
     `matcher.match(reference_features, moving_features)` provides the reusable
     equivalent with timing and consistent empty-input handling.
 
-    LightGlue can stop early on confident pairs and prune confidently unmatchable
-    points. Its match scores are not probabilities of object identity.
+    LightGlue can stop before the ninth layer when enough point assignments
+    have stabilized. It can also prune confidently unmatchable points when
+    pruning is active for the device and point count.
     """),
     code(r"""
     with torch.inference_mode():
@@ -230,16 +233,18 @@ cells = [
 
     `warpPerspective` uses the moving-to-reference homography directly. Missing
     pixels can appear black, but real image content can also be black; therefore
-    validity comes from a warped source mask, not from testing pixel intensity.
-    The overlay below retains the reference wherever source support is absent.
+    a warped source mask lets us keep genuine black pixels. The default mask
+    tests the nearest source pixel. Passing `full_support=True` instead uses
+    the same bilinear sampling as the image and drops border pixels that mix
+    real input with padding. We use that stricter mask for this overlay.
     """),
     code(r"""
-    aligned, valid_mask = warp_alignment(moving, result, reference.shape)
+    aligned, valid_mask = warp_alignment(moving, result, reference.shape, full_support=True)
     overlay = cv2.addWeighted(reference, 0.5, aligned, 0.5, 0)
     overlay[valid_mask == 0] = reference[valid_mask == 0]
     show_images([
         ("Reference", reference), ("Aligned moving image", aligned),
-        ("Valid source support", valid_mask), ("50/50 overlay", overlay),
+        ("Full bilinear support", valid_mask), ("50/50 overlay", overlay),
     ])
     """),
     markdown(r"""
@@ -249,11 +254,16 @@ cells = [
     selected. A wrong model can fit its own selected matches very well. Here we
     instead construct a regular grid in the reference, map it with the dataset's
     supplied homography, and evaluate estimated alignment only inside the true
-    overlap. Errors are in original reference-image pixels.
+    overlap. The grid measures agreement with the supplied homography in
+    original reference-image pixels. The dataset authors estimated these
+    homographies and report a fit RMS below one pixel for each pair.
 
     These are small teaching experiments on two capture sequences. The split
     holds out image pairs, not entirely new scenes, so it is not a generalization
-    benchmark or a claim of state-of-the-art performance.
+    benchmark or a claim of state-of-the-art performance. CUDA and CPU can also
+    give different correspondences on the same pair. The default LightGlue
+    pipeline passed 8/8 on CUDA and 7/8 on both CPU and Apple MPS. On graf 1→6
+    all three passed the geometric checks. Only CUDA passed the 3 px criterion.
     """),
     code(r"""
     H_ground_truth = np.asarray(pairs["graf_1_6"]["homography_matrix"]).reshape(3, 3)
@@ -392,9 +402,10 @@ cells = [
 
     ECC directly optimizes image agreement. It requires a reasonable initial
     alignment and may improve, worsen, or fail on a pair. OpenCV ECC expects a
-    reference-to-moving initialization; `refine_ecc` inverts the module's H before
-    optimization and inverts the returned matrix afterward. It also masks the
-    initial overlap to reduce clutter and invalid-border influence.
+    reference-to-moving initialization. The helper inverts the initial matrix
+    and normalizes it to a bottom-right entry of one, as required by OpenCV's
+    eight-parameter homography update. It masks the initial overlap in moving
+    coordinates and inverts the refined matrix to return moving → reference.
 
     Compare before and after against independent geometry. A high correlation
     value alone is not proof of a better alignment.
@@ -440,9 +451,10 @@ cells = [
 
     This study generates point correspondences from a known homography, adds
     Gaussian coordinate noise, and replaces exactly 60% with uniform outliers.
-    Both estimators receive identical correspondences for each seed. It isolates
-    a useful failure mechanism but does not model repeated structures, coherent
-    false matches, image formation, or domain shift.
+    Both OpenCV presets receive identical correspondences for each seed. The
+    sweep varies the reprojection threshold and the maximum median inlier
+    residual together. It compares the full configurations. Repeated patterns
+    in a photograph can produce much more coherent false correspondences.
 
     The short notebook run uses three seeds. The saved article experiment records
     its larger seed count separately; do not confuse either with real captures.
@@ -467,13 +479,15 @@ cells = [
     ## Read the article's stored evidence or rerun the complete benchmark
 
     Stored results are evidence from the recorded machine, **not timings measured
-    by this notebook kernel**. The benchmark compares SIFT + ratio matching,
+    by this notebook kernel**. The timing table retains the November 14 run.
+    November 20 checks reproduced the geometric results and evaluated the
+    corrected ECC initialization. The benchmark compares SIFT + ratio matching,
     ALIKED + ratio matching, and ALIKED + LightGlue, each with RANSAC and MAGSAC++.
     A result passes its stated teaching criterion when accepted and below 3 px
     median independent overlap-grid error. Accuracy counts use all eight
     evaluation pairs. For comparable processing times, use only the same five
     pairs that all three MAGSAC++ pipelines successfully aligned in the stored
-    article experiment, with five repetitions per pair: 25 trials per pipeline.
+    CUDA experiment, with five repetitions per pair (25 trials per pipeline).
     The cell derives and prints that common-success intersection; a local rerun
     may produce a different intersection.
 
@@ -495,10 +509,11 @@ cells = [
     RUN_FULL_BENCHMARK = False
     evidence_path = PROJECT / "results" / "experiments.json"
     if RUN_FULL_BENCHMARK:
-        evidence_path = PROJECT / "results" / "notebook-rerun.json"
+        # Isolate the JSON, summary, CSV, and OpenCV build record from the published results.
+        evidence_path = PROJECT / "alignment-output" / "notebook-rerun" / "experiments.json"
         subprocess.run([
             sys.executable, str(PROJECT / "run_experiments.py"),
-            "--device", matcher.device, "--repeats", "3", "--study-seeds", "12",
+            "--device", matcher.device, "--repeats", "5", "--study-seeds", "12",
             "--output", str(evidence_path),
         ], check=True)
     if evidence_path.is_file():

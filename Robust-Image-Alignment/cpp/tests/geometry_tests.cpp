@@ -194,6 +194,30 @@ void distinguishes_black_pixels_from_missing_source_support() {
     require(warped.second.at<std::uint8_t>(25, 20) == 255, "Real black content must remain valid");
 }
 
+void excludes_partial_bilinear_support_at_subpixel_boundaries() {
+    cv::Mat white(18, 20, CV_8UC3, cv::Scalar::all(255));
+    white(cv::Rect(8, 8, 4, 4)).setTo(cv::Scalar::all(0));
+    robust_alignment::AlignmentResult result;
+    result.H = cv::Mat(cv::Matx33d(1, 0, 0.4, 0, 1, 0.3, 0, 0, 1));
+    result.accepted = true;
+    const auto nearest = robust_alignment::warp_alignment(white, result, white.size());
+    const auto full = robust_alignment::warp_alignment(white, result, white.size(), true, true);
+    require(cv::norm(nearest.first, full.first, cv::NORM_INF) == 0, "Mask choice changed the aligned image");
+    const auto edge_value = full.first.at<cv::Vec3b>(5, 0)[0];
+    require(edge_value > 0 && edge_value < 255 && nearest.second.at<std::uint8_t>(5, 0) == 255,
+            "Fixture must include a partially padded, nearest-valid edge");
+    require(cv::countNonZero(full.second.col(0)) == 0 && cv::countNonZero(full.second.row(0)) == 0,
+            "Full support retained partially padded edges");
+    require(cv::countNonZero(full.second) == (white.cols - 1) * (white.rows - 1),
+            "Full support excluded interior pixels");
+    require(full.first.at<cv::Vec3b>(10, 10)[0] == 0 && full.second.at<std::uint8_t>(10, 10) == 255,
+            "Fully supported black pixels must be valid");
+    result.H = cv::Mat::eye(3, 3, CV_64F);
+    const auto identity = robust_alignment::warp_alignment(white, result, white.size(), true, true);
+    require(cv::countNonZero(identity.second) == white.cols * white.rows,
+            "Zero-weight neighbors at the border must not invalidate exact pixel samples");
+}
+
 void prevents_unaccepted_warps() {
     const cv::Mat image(50, 60, CV_8UC3, cv::Scalar(0));
     robust_alignment::AlignmentResult rejected;
@@ -222,6 +246,35 @@ void keeps_ecc_in_the_moving_to_reference_convention() {
     const double after = corner_error(forward, refined.first, reference.size());
     require(std::isfinite(refined.second), "ECC did not return a finite correlation");
     require(after < before && after < 0.75, "ECC inversion or initialization used the wrong coordinate direction");
+}
+
+void ecc_is_invariant_to_initial_projective_scale() {
+    const cv::Mat reference = textured_image();
+    const cv::Mat forward(cv::Matx33d(0.96, -0.02, 16, 0.03, 0.95, 8, 0.00022, -0.0001, 1));
+    cv::Mat moving;
+    cv::warpPerspective(reference, moving, forward, reference.size());
+    cv::Mat initial = forward.inv();
+    initial.at<double>(0, 2) += 0.7;
+    initial.at<double>(1, 2) -= 0.5;
+    const auto baseline = robust_alignment::refine_ecc(reference, moving, initial);
+    require(corner_error(forward, baseline.first, reference.size()) < 0.5, "ECC failed to recover known corners");
+    const auto corners = robust_alignment::image_corners(reference.size());
+    const auto expected = robust_alignment::project_points(corners, baseline.first);
+    for (const double scale : {8.0, -4.0, 1e-40, 1e40}) {
+        const auto refined = robust_alignment::refine_ecc(reference, moving, initial * scale);
+        const auto found = robust_alignment::project_points(corners, refined.first);
+        for (std::size_t i = 0; i < corners.size(); ++i) {
+            require(cv::norm(found[i] - expected[i]) < 1e-4, "ECC changed under equivalent projective scaling");
+        }
+        require(std::abs(refined.second - baseline.second) < 1e-6, "ECC score changed under projective scaling");
+    }
+}
+
+void rejects_ecc_initialization_outside_its_parameterization() {
+    const cv::Mat reference = textured_image();
+    const cv::Mat swap_x_w(cv::Matx33d(0, 0, 1, 0, 1, 0, 1, 0, 0));
+    require_throws([&]() { robust_alignment::refine_ecc(reference, reference, swap_x_w); },
+                   "The inverse cannot be represented with a unit bottom-right entry", "cannot normalize");
 }
 
 void rejects_ecc_without_enough_overlap() {
@@ -257,6 +310,15 @@ void validates_correspondences_configuration_and_projection() {
     const cv::Mat horizon(cv::Matx33d(1, 0, 0, 0, 1, 0, 1, 0, -5));
     require_throws([&]() { robust_alignment::project_points({{5, 0}}, horizon); },
                    "Projection at infinity should fail", "projective horizon");
+    const cv::Mat perspective(cv::Matx33d(1, 0.1, 5, -0.02, 1, 8, 0.002, 0.01, 1));
+    const auto expected = robust_alignment::project_points({{4, 7}}, perspective);
+    for (const double factor : {-3.0, 1e-40, 1e40}) {
+        require_throws([&]() { robust_alignment::project_points({{5, 0}}, factor * horizon); },
+                       "Rescaling cannot move a point off the horizon", "projective horizon");
+        const auto scaled = robust_alignment::project_points({{4, 7}}, factor * perspective);
+        require(cv::norm(scaled.front() - expected.front()) < 1e-6,
+                "Rescaling cannot move an ordinary projected point");
+    }
     const cv::Mat scale(cv::Matx33d(2, 0, 4, 0, 3, -2, 0, 0, 1));
     const auto transformed = robust_alignment::project_points({{7, 9}}, scale);
     require(transformed.front() == cv::Point2f(18, 25), "Homogeneous projection changed x/y ordering");
@@ -300,6 +362,9 @@ int main() {
         {"reference coverage", rejects_inliers_covering_only_a_small_reference_patch},
         {"projective horizon", rejects_a_projected_boundary_crossing_the_horizon},
         {"black content and support mask", distinguishes_black_pixels_from_missing_source_support},
+        {"full bilinear support", excludes_partial_bilinear_support_at_subpixel_boundaries},
+        {"ECC projective scale equivalence", ecc_is_invariant_to_initial_projective_scale},
+        {"ECC h22 parameterization", rejects_ecc_initialization_outside_its_parameterization},
         {"rejected warp contract", prevents_unaccepted_warps},
         {"ECC direction", keeps_ecc_in_the_moving_to_reference_convention},
         {"ECC overlap and arguments", rejects_ecc_without_enough_overlap},

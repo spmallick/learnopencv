@@ -1,18 +1,19 @@
 {
-  "image_fixture_created_with": "5.0.0",
+  "checked_on": "2026-11-20",
+  "image_fixture_created_with": "5.1.0",
   "native_opencv": "5.1.0",
   "checks": [
     {
       "case": "blank_aliked-nn",
       "args": [
         "--reference",
-        "/tmp/robust-cpp-blank.png",
+        "<test-dir>/blank.png",
         "--moving",
-        "/Users/spmallick/github/learnopencv-robust-image-alignment/Robust-Image-Alignment/assets/downloads/opencv/box.png",
+        "<project>/assets/downloads/opencv/box.png",
         "--method",
         "aliked-nn",
         "--output-dir",
-        "/tmp/robust-cpp-edge-aliked-nn",
+        "<test-dir>/aliked-nn",
         "--validate"
       ],
       "expected_exit": 3,
@@ -23,13 +24,13 @@
       "case": "blank_lightglue",
       "args": [
         "--reference",
-        "/tmp/robust-cpp-blank.png",
+        "<test-dir>/blank.png",
         "--moving",
-        "/Users/spmallick/github/learnopencv-robust-image-alignment/Robust-Image-Alignment/assets/downloads/opencv/box.png",
+        "<project>/assets/downloads/opencv/box.png",
         "--method",
         "lightglue",
         "--output-dir",
-        "/tmp/robust-cpp-edge-lightglue",
+        "<test-dir>/lightglue",
         "--validate"
       ],
       "expected_exit": 3,
@@ -56,13 +57,13 @@
       "case": "sift_without_models",
       "args": [
         "--reference",
-        "/Users/spmallick/github/learnopencv-robust-image-alignment/Robust-Image-Alignment/assets/downloads/opencv/box.png",
+        "<project>/assets/downloads/opencv/box.png",
         "--moving",
-        "/Users/spmallick/github/learnopencv-robust-image-alignment/Robust-Image-Alignment/assets/downloads/opencv/box_in_scene.png",
+        "<project>/assets/downloads/opencv/box_in_scene.png",
         "--model-dir",
-        "/tmp/robust-cpp-no-models",
+        "<test-dir>/no-models",
         "--output-dir",
-        "/tmp/robust-cpp-edge-missing-model",
+        "<test-dir>/missing-model",
         "--method",
         "sift",
         "--validate"
@@ -75,15 +76,16 @@
       "case": "neural_missing_models",
       "args": [
         "--reference",
-        "/Users/spmallick/github/learnopencv-robust-image-alignment/Robust-Image-Alignment/assets/downloads/opencv/box.png",
+        "<project>/assets/downloads/opencv/box.png",
         "--moving",
-        "/Users/spmallick/github/learnopencv-robust-image-alignment/Robust-Image-Alignment/assets/downloads/opencv/box_in_scene.png",
+        "<project>/assets/downloads/opencv/box_in_scene.png",
         "--model-dir",
-        "/tmp/robust-cpp-no-models",
+        "<test-dir>/no-models",
         "--output-dir",
-        "/tmp/robust-cpp-edge-missing-model",
+        "<test-dir>/missing-model",
         "--method",
-        "lightglue"
+        "lightglue",
+        "--validate"
       ],
       "expected_exit": 2,
       "actual_exit": 2,
@@ -93,12 +95,12 @@
       "case": "ecc_candidate",
       "args": [
         "--reference",
-        "/Users/spmallick/github/learnopencv-robust-image-alignment/Robust-Image-Alignment/assets/downloads/oxford/leuven/img1.png",
+        "<project>/assets/downloads/oxford/leuven/img1.png",
         "--moving",
-        "/Users/spmallick/github/learnopencv-robust-image-alignment/Robust-Image-Alignment/assets/downloads/oxford/leuven/img6.png",
+        "<project>/assets/downloads/oxford/leuven/img6.png",
         "--refine-ecc",
         "--output-dir",
-        "/tmp/robust-cpp-edge-ecc",
+        "<test-dir>/ecc",
         "--validate"
       ],
       "expected_exit": 0,

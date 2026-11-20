@@ -9,7 +9,7 @@
         "max_keypoints": 2048,
         "resize_longest_side_cap": 1024,
         "repeats": 3,
-        "study_seeds": 3,
+        "study_seeds": 12,
         "threshold_px": 3.0,
         "opencv_threads_requested": 1,
         "opencv_threads_reported": 18,
@@ -76,7 +76,7 @@
                 ]
             ],
             "estimator": "magsac",
-            "estimation_ms": 0.90095899999999995,
+            "estimation_ms": 0.731541,
             "available": 1,
             "grid_median_error_px": 11.970080478936065,
             "grid_p95_error_px": 25.44410066234132,
@@ -135,7 +135,7 @@
                 ]
             ],
             "estimator": "magsac",
-            "estimation_ms": 0.29149999999999998,
+            "estimation_ms": 0.29775000000000001,
             "available": 1,
             "grid_median_error_px": 0.13290622503561597,
             "grid_p95_error_px": 0.44751910590146432,
@@ -192,7 +192,7 @@
                 ]
             ],
             "estimator": "magsac",
-            "estimation_ms": 0.33016699999999999
+            "estimation_ms": 0.37395899999999999
         },
         {
             "id": "box_identification",
@@ -282,7 +282,7 @@
             "projected_reference_quad": [
             ],
             "estimator": "magsac",
-            "estimation_ms": 0.120084
+            "estimation_ms": 0.1225
         },
         {
             "id": "absent_building",
@@ -335,7 +335,7 @@
                 ]
             ],
             "estimator": "magsac",
-            "estimation_ms": 0.074833999999999998
+            "estimation_ms": 0.083333000000000004
         },
         {
             "id": "aloe_parallax",
@@ -387,7 +387,7 @@
                 ]
             ],
             "estimator": "magsac",
-            "estimation_ms": 0.57445800000000002
+            "estimation_ms": 0.62195800000000001
         }
     ],
     "catalogue": [
@@ -440,7 +440,7 @@
                 ]
             ],
             "estimator": "magsac",
-            "estimation_ms": 0.104542
+            "estimation_ms": 0.107417
         },
         {
             "name": "graffiti wall",
@@ -477,7 +477,7 @@
             "projected_reference_quad": [
             ],
             "estimator": "magsac",
-            "estimation_ms": 0.034625000000000003
+            "estimation_ms": 0.044207999999999997
         },
         {
             "name": "blank form",
@@ -514,7 +514,7 @@
             "projected_reference_quad": [
             ],
             "estimator": "magsac",
-            "estimation_ms": 0.087207999999999994
+            "estimation_ms": 0.098083000000000004
         }
     ],
     "catalogue_identification": "box design",
@@ -567,7 +567,7 @@
                 ]
             ],
             "estimator": "ransac",
-            "estimation_ms": 4.2329590000000001,
+            "estimation_ms": 4.4215419999999996,
             "available": 1,
             "grid_median_error_px": 11.088333808647299,
             "grid_p95_error_px": 26.125556990983444,
@@ -622,7 +622,7 @@
                 ]
             ],
             "estimator": "magsac",
-            "estimation_ms": 0.62833399999999995,
+            "estimation_ms": 0.67466599999999999,
             "available": 1,
             "grid_median_error_px": 11.970080478936065,
             "grid_p95_error_px": 25.44410066234132,
@@ -641,13 +641,13 @@
                 "grid_points": 661
             },
             "status": "returned",
-            "correlation": 0.79572349884975069,
-            "refinement_ms": 262.54729200000003,
+            "correlation": 0.79594401130856374,
+            "refinement_ms": 313.51162499999998,
             "after": {
                 "available": 1,
-                "grid_median_error_px": 0.76944101356427341,
-                "grid_p95_error_px": 3.7446233973435854,
-                "corner_mean_error_px": 3.1699730416215104,
+                "grid_median_error_px": 0.77593406855661362,
+                "grid_p95_error_px": 3.7098207670694516,
+                "corner_mean_error_px": 3.2681209453552635,
                 "grid_points": 661
             }
         },
@@ -661,13 +661,13 @@
                 "grid_points": 667
             },
             "status": "returned",
-            "correlation": 0.93243817012607921,
-            "refinement_ms": 91.47175,
+            "correlation": 0.93243851802016253,
+            "refinement_ms": 117.51287499999999,
             "after": {
                 "available": 1,
-                "grid_median_error_px": 0.18665841381848214,
-                "grid_p95_error_px": 0.4739431401063226,
-                "corner_mean_error_px": 0.34301788418434831,
+                "grid_median_error_px": 0.18668274982714311,
+                "grid_p95_error_px": 0.47392963709775232,
+                "corner_mean_error_px": 0.34296605751018655,
                 "grid_points": 667
             }
         }
@@ -707,7 +707,7 @@
         "projected_reference_quad": [
         ],
         "estimator": "magsac",
-        "estimation_ms": 0.18662500000000001
+        "estimation_ms": 0.16208400000000001
     },
     "validation_passed": 1
 }

@@ -32078,57 +32078,180 @@
   "ecc_study": [
     {
       "id": "graf_1_3",
+      "homography_direction": "moving_to_reference",
+      "initial_H": [
+        [
+          1.1557711376722548,
+          0.33683725517821506,
+          -234.37905373340612
+        ],
+        [
+          -0.4108887502970238,
+          0.7842902927524408,
+          152.5621889098127
+        ],
+        [
+          -0.00040956607502711786,
+          -0.00010735387756175937,
+          1.0
+        ]
+      ],
+      "refined_H": [
+        [
+          1.1584497050785965,
+          0.32931681325755874,
+          -233.59075497579488
+        ],
+        [
+          -0.41023307495900124,
+          0.778224951174168,
+          152.7395348206464
+        ],
+        [
+          -0.0004031321939632764,
+          -0.00012142010920559164,
+          1.0
+        ]
+      ],
+      "initial_accepted": true,
+      "initial_reasons": [],
       "before": {
         "grid_median_error_px": 0.815664529800415,
         "grid_p95_error_px": 1.9686039686203003,
         "grid_points": 691,
         "corner_mean_error_px": 1.1585568189620972
       },
+      "iterations": 100,
+      "epsilon": 1e-06,
       "status": "returned",
-      "correlation": 0.878783760777613,
-      "refinement_ms": 414.4118186086416,
+      "correlation": 0.8787795529039102,
+      "refinement_ms": 457.27840065956116,
       "after": {
-        "grid_median_error_px": 0.7821064591407776,
-        "grid_p95_error_px": 2.671710968017578,
+        "grid_median_error_px": 0.7797952890396118,
+        "grid_p95_error_px": 2.676863431930542,
         "grid_points": 691,
-        "corner_mean_error_px": 2.9254212379455566
+        "corner_mean_error_px": 2.929255723953247
       }
     },
     {
       "id": "graf_1_6",
+      "homography_direction": "moving_to_reference",
+      "initial_H": [
+        [
+          1.3707933067165474,
+          0.8638137817257017,
+          -580.8814868565
+        ],
+        [
+          -0.6385665557284714,
+          0.2587699803828741,
+          303.4790963360276
+        ],
+        [
+          -0.000773521688652562,
+          -0.0004349934352608995,
+          1.0
+        ]
+      ],
+      "refined_H": [
+        [
+          1.3675810370056323,
+          0.8608657630664794,
+          -579.709174299549
+        ],
+        [
+          -0.6377524928465473,
+          0.2559319487146721,
+          302.19401858297
+        ],
+        [
+          -0.0007759482280644692,
+          -0.0004417511116643318,
+          1.0
+        ]
+      ],
+      "initial_accepted": true,
+      "initial_reasons": [],
       "before": {
         "grid_median_error_px": 1.762966275215149,
         "grid_p95_error_px": 2.2262160778045654,
         "grid_points": 661,
         "corner_mean_error_px": 1.9334574937820435
       },
+      "iterations": 100,
+      "epsilon": 1e-06,
       "status": "returned",
-      "correlation": 0.8048288185949098,
-      "refinement_ms": 2814.5987018942833,
+      "correlation": 0.8044910144386388,
+      "refinement_ms": 819.6215089410543,
       "after": {
-        "grid_median_error_px": 0.5403755903244019,
-        "grid_p95_error_px": 2.5128366947174072,
+        "grid_median_error_px": 0.591248095035553,
+        "grid_p95_error_px": 2.705244779586792,
         "grid_points": 661,
-        "corner_mean_error_px": 2.2081573009490967
+        "corner_mean_error_px": 2.426872968673706
       }
     },
     {
       "id": "leuven_1_6",
+      "homography_direction": "moving_to_reference",
+      "initial_H": [
+        [
+          0.9958420980650352,
+          -0.01198357512931781,
+          -2.1612785489487347
+        ],
+        [
+          -0.0029461622320999443,
+          0.9891509816632493,
+          16.382870116663913
+        ],
+        [
+          3.8609534404955435e-06,
+          -2.3668477743843873e-05,
+          1.0
+        ]
+      ],
+      "refined_H": [
+        [
+          0.9957417297379186,
+          -0.009568618489149793,
+          -2.4476087621982905
+        ],
+        [
+          -0.003226319971640115,
+          0.9905545192533175,
+          16.2120230181507
+        ],
+        [
+          3.0721465426381506e-06,
+          -2.0586738561581802e-05,
+          1.0
+        ]
+      ],
+      "initial_accepted": true,
+      "initial_reasons": [],
       "before": {
         "grid_median_error_px": 0.15871146321296692,
         "grid_p95_error_px": 0.4000726640224457,
         "grid_points": 667,
         "corner_mean_error_px": 0.41690462827682495
       },
+      "iterations": 100,
+      "epsilon": 1e-06,
       "status": "returned",
-      "correlation": 0.9324443179695221,
-      "refinement_ms": 331.29812590777874,
+      "correlation": 0.9324443296438111,
+      "refinement_ms": 342.76585280895233,
       "after": {
-        "grid_median_error_px": 0.18870510160923004,
-        "grid_p95_error_px": 0.47812312841415405,
+        "grid_median_error_px": 0.188734769821167,
+        "grid_p95_error_px": 0.4781275987625122,
         "grid_points": 667,
-        "corner_mean_error_px": 0.35264962911605835
+        "corner_mean_error_px": 0.35268929600715637
       }
     }
-  ]
+  ],
+  "study_dates": {
+    "real_pairs": "2026-11-14",
+    "estimator_study": "2026-11-14",
+    "ecc_study": "2026-11-20",
+    "real_and_synthetic_geometry_revalidated": "2026-11-20"
+  }
 }

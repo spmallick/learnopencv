@@ -1,7 +1,16 @@
-[ 22%] Built target alignment_geometry
-[ 44%] Built target alignment_geometry_tests
-[ 66%] Built target alignment_features
-[ 77%] Building CXX object CMakeFiles/robust_image_alignment_cpp.dir/cpp/main.cpp.o
-[ 88%] Building CXX object CMakeFiles/robust_image_alignment_cpp.dir/cpp/workflows.cpp.o
+[  9%] Building CXX object CMakeFiles/alignment_geometry.dir/cpp/alignment.cpp.o
+[ 18%] Linking CXX static library libalignment_geometry.a
+[ 18%] Built target alignment_geometry
+[ 36%] Building CXX object CMakeFiles/alignment_geometry_tests.dir/cpp/tests/geometry_tests.cpp.o
+[ 36%] Building CXX object CMakeFiles/alignment_features.dir/cpp/feature_matcher.cpp.o
+[ 45%] Linking CXX executable alignment_geometry_tests
+[ 45%] Built target alignment_geometry_tests
+[ 54%] Linking CXX static library libalignment_features.a
+[ 54%] Built target alignment_features
+[ 81%] Building CXX object CMakeFiles/alignment_sift_resize_tests.dir/cpp/tests/sift_resize_tests.cpp.o
+[ 81%] Building CXX object CMakeFiles/robust_image_alignment_cpp.dir/cpp/main.cpp.o
+[ 81%] Building CXX object CMakeFiles/robust_image_alignment_cpp.dir/cpp/workflows.cpp.o
+[ 90%] Linking CXX executable alignment_sift_resize_tests
+[ 90%] Built target alignment_sift_resize_tests
 [100%] Linking CXX executable robust_image_alignment_cpp
 [100%] Built target robust_image_alignment_cpp

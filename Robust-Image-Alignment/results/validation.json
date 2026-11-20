@@ -1,20 +1,24 @@
 {
-  "checked_on": "2026-11-14",
+  "checked_on": "2026-11-20",
   "opencv_runtime": "5.1.0",
-  "fresh_source_build": "passed",
-  "fresh_source_geometry_cli_regressions": 13,
-  "main_environment_tests": 13,
-  "article_python_blocks_executed": 10,
+  "python_regressions": 17,
+  "native_ctest": {
+    "linux-x64": 11,
+    "macos-arm64": 11
+  },
+  "article_python_blocks_executed": 11,
   "notebook_code_cells_executed": 18,
   "notebook_errors": 0,
   "cpu_cli_configurations_passed": 6,
-  "external_article_links_http_200": 16,
-  "learnopencv_cross_references": 5,
+  "external_article_links_http_200": 21,
+  "canonical_url_http_200": true,
   "real_evaluation_pairs": 8,
   "real_evaluation_scenes": 2,
   "validation_pairs": 2,
   "timing_repeats_per_pair": 5,
-  "synthetic_estimator_trials": 216,
-  "article_sha256": "919e54fe322a52eda4e84aedb5d3ead34f98d8c4d3afd4fbc3f964bc458ec681",
-  "notebook_sha256": "87d78c737b4b67743e11d274c66a0988320bd020985ac0ff8d3704039bf3aada"
+  "real_pair_trials_rechecked": 300,
+  "synthetic_estimator_trials_rechecked": 216,
+  "experiment_recheck": "review_revalidation.json",
+  "article_sha256": "52285a5c90de013dc04ec1eb4f9c23eb2399bb967a0e22fde5f06b46028226d8",
+  "notebook_sha256": "d7b55c70c37578d1da0e30aa75ec768c425ba9e5b62e4fbe0c6be8b759903049"
 }

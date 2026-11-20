@@ -24,13 +24,18 @@ def prepare(output: Path) -> None:
     source = re.sub(r'<!-- repository-reader-note -->.*?<!-- /repository-reader-note -->\s*', '', source, flags=re.S)
     seo = json.loads((PROJECT / 'research/seo-metadata.json').read_text())
 
+    # Fresh names keep browser and WordPress caches of the original diagrams valid.
+    revised_figures = {'pipeline', 'aliked_sampling', 'lightglue_depth',
+                       'benchmark_grid_errors', 'magsac_threshold_sensitivity'}
+
     def copy_image(match):
         label, relative = match.groups()
         original = PROJECT / relative
         # Existing PNG exports preserve the explanatory SVGs in a WP-safe format.
         raster = original.with_suffix('.png') if original.suffix == '.svg' else original
         webp = raster.with_suffix('.webp')
-        destination = assets / webp.name
+        published_name = f'{webp.stem}-20261120.webp' if webp.stem in revised_figures else webp.name
+        destination = assets / published_name
         if webp.exists():
             shutil.copy2(webp, destination)
         else:
@@ -52,7 +57,7 @@ def prepare(output: Path) -> None:
         return f'![{label}](assets/{destination.name})'
 
     source = re.sub(r'!\[([^\]]*)\]\((figures/[^)]+)\)', copy_image, source)
-    featured = Path(seo['featured_image_absolute_path'])
+    featured = PROJECT / 'figures' / Path(seo['featured_image_absolute_path']).name
     featured_copy = assets / featured.name
     shutil.copy2(featured, featured_copy)
     slug = seo['proposed_slug']

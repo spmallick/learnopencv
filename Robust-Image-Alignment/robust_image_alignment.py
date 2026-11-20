@@ -233,9 +233,10 @@ class FeatureMatcher:
                 keypoints = [keypoints[index] for index in retained]
                 descriptors = descriptors[retained]
             points = np.array([keypoint.pt for keypoint in keypoints], np.float32).reshape(-1, 2)
-            if len(points):
-                # Actual resize dimensions account for integer rounding of each axis.
-                points *= np.array([image_bgr.shape[1] / work.shape[1], image_bgr.shape[0] / work.shape[0]])
+            if scale != 1:
+                # cv2.resize with fx/fy samples at (destination + 0.5) / scale - 0.5.
+                # Rounding the shorter output dimension does not change that sampling scale.
+                points = ((points.astype(np.float64) + 0.5) / scale - 0.5).astype(np.float32)
             if descriptors is None:
                 descriptors = np.empty((0, 128), np.float32)
             return FeatureSet(points, descriptors, image_bgr.shape[:2], (perf_counter() - start) * 1000, "sift")
@@ -314,11 +315,15 @@ def project_points(points: np.ndarray, H: np.ndarray) -> np.ndarray:
     H = np.asarray(H, np.float64)
     if H.shape != (3, 3) or not np.isfinite(H).all():
         raise ValueError("Expected a finite 3-by-3 homography.")
-    homogeneous = np.column_stack((points, np.ones(len(points)))) @ H.T
-    if np.any(np.abs(homogeneous[:, 2]) < 1e-10):
+    coordinates = np.column_stack((points, np.ones(len(points))))
+    homogeneous = coordinates @ H.T
+    # Compare w with the magnitudes of its three terms so a global rescaling
+    # of H does not turn an ordinary point into a spurious horizon rejection.
+    denominator_scale = np.abs(coordinates) @ np.abs(H[2, :])
+    if np.any(np.abs(homogeneous[:, 2]) <= 1e-10 * denominator_scale):
         raise ValueError("A projected point lies on the projective horizon.")
     projected = homogeneous[:, :2] / homogeneous[:, 2:3]
-    if not np.isfinite(projected).all():
+    if not np.isfinite(projected).all() or np.any(np.abs(projected) > np.finfo(np.float32).max):
         raise ValueError("Homography projection produced nonfinite coordinates.")
     return projected.astype(np.float32)
 
@@ -397,7 +402,7 @@ def estimate_alignment(
         H_inverse = np.linalg.inv(H)
         # A target boundary crossing infinity is not a usable physical image region.
         denominators = np.column_stack((reference_corners, np.ones(4))) @ H_inverse[2, :]
-        if np.any(np.abs(denominators) < 1e-10) or np.min(denominators) * np.max(denominators) < 0:
+        if np.min(denominators) < 0 < np.max(denominators):
             raise ValueError("The projected reference crosses the projective horizon.")
         quad = project_points(reference_corners, H_inverse)
         result.projected_reference_quad = quad
@@ -420,16 +425,29 @@ def warp_alignment(
     result: AlignmentResult,
     reference_shape: tuple[int, ...],
     require_accepted: bool = True,
+    *,
+    full_support: bool = False,
 ) -> tuple[np.ndarray, np.ndarray]:
-    """Warp into reference coordinates and mark pixels with real source support."""
+    """Warp into reference coordinates and return a uint8 mask (255 inside).
+
+    The default mask follows the nearest source pixel for display overlays.
+    Set full_support=True for intensity comparisons to exclude any pixel whose
+    bilinear interpolation uses a nonzero contribution from the constant border.
+    """
     _check_image(moving_bgr)
     if result.H is None or (require_accepted and not result.accepted):
         raise ValueError("Alignment was rejected; inspect the report before warping.")
     height, width = reference_shape[:2]
     aligned = cv2.warpPerspective(moving_bgr, result.H, (width, height), flags=cv2.INTER_LINEAR)
-    # Warping a mask, rather than testing for black pixels, preserves real black content.
-    source_mask = np.full(moving_bgr.shape[:2], 255, np.uint8)
-    valid = cv2.warpPerspective(source_mask, result.H, (width, height), flags=cv2.INTER_NEAREST)
+    if full_support:
+        # A float mask preserves fractional weights, including tiny corner contributions.
+        source_ones = np.ones(moving_bgr.shape[:2], np.float32)
+        weight = cv2.warpPerspective(source_ones, result.H, (width, height), flags=cv2.INTER_LINEAR)
+        valid = cv2.compare(weight, 1.0, cv2.CMP_EQ)
+    else:
+        # Source colors, including genuine black pixels, do not affect validity.
+        source_mask = np.full(moving_bgr.shape[:2], 255, np.uint8)
+        valid = cv2.warpPerspective(source_mask, result.H, (width, height), flags=cv2.INTER_NEAREST)
     return aligned, valid
 
 
@@ -448,11 +466,20 @@ def refine_ecc(
     """
     _check_image(reference_bgr)
     _check_image(moving_bgr)
-    if iterations < 1 or epsilon <= 0:
+    if iterations < 1 or not np.isfinite(epsilon) or epsilon <= 0:
         raise ValueError("ECC iterations and epsilon must be positive.")
     reference_gray = cv2.cvtColor(reference_bgr, cv2.COLOR_BGR2GRAY).astype(np.float32) / 255
     moving_gray = cv2.cvtColor(moving_bgr, cv2.COLOR_BGR2GRAY).astype(np.float32) / 255
-    initial_reference_to_moving = np.linalg.inv(H_moving_to_reference).astype(np.float32)
+    # Remove arbitrary projective scale before inversion to handle equivalent inputs alike.
+    initial = np.asarray(H_moving_to_reference, dtype=np.float64)
+    if initial.shape != (3, 3) or not np.isfinite(initial).all() or not np.any(initial):
+        raise ValueError("ECC needs a finite, nonzero 3-by-3 initial homography.")
+    inverse = np.linalg.inv(initial / np.max(np.abs(initial)))
+    # The ECC homography Jacobian fixes the bottom-right coefficient to one.
+    # Inversion generally changes it, even when the incoming matrix had H[2, 2] == 1.
+    if not np.isfinite(inverse).all() or abs(inverse[2, 2]) <= 1e-12 * np.max(np.abs(inverse)):
+        raise ValueError("ECC cannot normalize its reference-to-moving initialization at [2, 2].")
+    initial_reference_to_moving = (inverse / inverse[2, 2]).astype(np.float32)
     # Restrict optimization to source pixels that the initial estimate places
     # inside the reference; scene clutter and black padding are not evidence.
     input_mask = cv2.warpPerspective(
@@ -468,8 +495,13 @@ def refine_ecc(
         reference_gray, moving_gray, initial_reference_to_moving,
         cv2.MOTION_HOMOGRAPHY, criteria, input_mask, 5,
     )
-    H = np.linalg.inv(reference_to_moving).astype(np.float64)
-    return H / H[2, 2], float(correlation)
+    # Return to the public direction in double precision. The inverse may have H[2, 2] == 0.
+    H = np.linalg.inv(reference_to_moving.astype(np.float64))
+    if not np.isfinite(H).all() or not np.isfinite(correlation):
+        raise ValueError("ECC returned a nonfinite refinement.")
+    max_entry = np.max(np.abs(H))
+    scale = H[2, 2] if abs(H[2, 2]) > 1e-12 * max_entry else max_entry
+    return H / scale, float(correlation)
 
 
 def draw_matches(
