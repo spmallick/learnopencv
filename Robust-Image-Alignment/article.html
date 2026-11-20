@@ -124,7 +124,7 @@ table{border-collapse:collapse;display:block;overflow-x:auto;width:100%;font-siz
 <p>The interfaces matter as much as the model names. A keypoint is an <code>(x, y)</code> coordinate. A descriptor is a vector describing the local appearance around it. A match pairs a reference keypoint with a moving-image keypoint. A homography acts on coordinates; warping samples image pixels according to that mapping.</p>
 <p>A high match score does not establish that the whole image is aligned. A valid matrix does not establish that the target is present. Each stage supplies evidence for the next, and the final decision must reflect what the application actually needs.</p>
 <h3 id="set-up-the-released-opencv-environment">Set up the released OpenCV environment</h3>
-<p>Extract the downloaded ZIP and open a terminal in its <code>Robust-Image-Alignment</code> folder. Create an isolated environment, install the pinned dependencies, and build OpenCV with the Python interpreter from that environment. All later commands assume this same project folder:</p>
+<p>Extract the downloaded ZIP. In a terminal, use the first command below to enter its <code>Robust-Image-Alignment</code> folder, then create an isolated environment, install the pinned dependencies, and build OpenCV with that environment's Python interpreter. All later commands assume this same project folder:</p>
 <pre><code class="language-bash">cd Robust-Image-Alignment
 python3 -m venv .venv
 source .venv/bin/activate

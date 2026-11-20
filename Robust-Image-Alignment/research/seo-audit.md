@@ -194,3 +194,9 @@ found in this review. Actual canonical/OG image URLs, author/date metadata,
 indexability, and the site-managed newsletter button and GitHub landing link
 still require verification against the published site; this local review does
 not claim they have already been activated or tested.
+
+## Production verification — November 19, 2026
+
+Published post 80541 at https://learnopencv.com/robust-image-alignment/. Anonymous HTTP 200, the exact title and 148-character description, canonical, 1600×900 featured thumbnail, indexing directives, one H1, article schema dates, and article-body link policy all pass. The GitHub reader notice now links to this live article. All 13 uploaded media items have descriptive alt text. The public Download Example Code control opens the site-managed registration popup; First Name and Email are required and its Code URL equals the anonymously verified GitHub release ZIP. No form was submitted and actual email delivery was not tested.
+
+The site emits existing AIOSEO/Schema Pro article metadata with matching title and dates; no extra FAQPage schema was added. Sitemap retrieval returned HTTP403 to the terminal, so sitemap inclusion was not claimed. No site-wide plugin, robots, security, or cache changes were made. Detailed live evidence is in ../publication/publication-verification.json.

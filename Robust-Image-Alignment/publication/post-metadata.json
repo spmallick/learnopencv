@@ -25,40 +25,40 @@
     "fresh_precreation_matches": []
   },
   "slug": "robust-image-alignment",
-  "wordpress_status": "draft",
+  "wordpress_status": "publish",
   "author_id": 2,
   "featured_media_id": 80540,
-  "published_gmt": null,
-  "modified_gmt": "2026-11-20T02:02:01",
-  "content_sha256": "af4530827691c86dfc3a304ad58a139022ede16330273721b468f4000e0cc489",
+  "published_gmt": "2026-11-20T02:21:23",
+  "modified_gmt": "2026-11-20T02:21:23",
+  "content_sha256": "7c5dfe982b00e2bf76aa83e37fd73dfe437cd41ca995e3e4e23e8fad4df938ae",
   "acf_code_url": {
     "label": "Code URL",
     "name": "code_url",
     "field_key": "field_605e315832c84",
     "admin_input_name": "acf[field_605e315832c84]",
     "frontend_hidden_input": "form_fields[code_url]",
-    "intended_value": null,
-    "actual_value": null,
-    "result": "pending_release_and_wordpress_publication"
+    "intended_value": "https://github.com/spmallick/learnopencv/releases/download/robust-image-alignment-opencv-5.1.0-2026.11.19/Robust-Image-Alignment.zip",
+    "actual_value": "https://github.com/spmallick/learnopencv/releases/download/robust-image-alignment-opencv-5.1.0-2026.11.19/Robust-Image-Alignment.zip",
+    "result": "verified_in_admin_after_reload_and_public_newsletter_popup"
   },
   "github_release": {
     "repository": "spmallick/learnopencv",
-    "tag": null,
-    "tested_commit": null,
-    "asset_url": null,
-    "checksum_url": null,
-    "sha256": null,
+    "tag": "robust-image-alignment-opencv-5.1.0-2026.11.19",
+    "tested_commit": "761e0d8acaaa069773bf9b859cd4031ce0ec8df4",
+    "asset_url": "https://github.com/spmallick/learnopencv/releases/download/robust-image-alignment-opencv-5.1.0-2026.11.19/Robust-Image-Alignment.zip",
+    "checksum_url": "https://github.com/spmallick/learnopencv/releases/download/robust-image-alignment-opencv-5.1.0-2026.11.19/Robust-Image-Alignment.zip.sha256",
+    "sha256": "bd536db3670a8532a6d70b22346649dc40446fb0c5d0e8b1102d24914607ba67",
     "archive_root": "Robust-Image-Alignment/",
-    "manifest_file_count": null,
-    "anonymous_download_verified": false,
-    "extracted_bundle_tests_verified": false
+    "manifest_file_count": 127,
+    "anonymous_download_verified": true,
+    "extracted_bundle_tests_verified": true
   },
   "newsletter_flow": {
     "site_managed": true,
     "source_article_contains_direct_code_link": false,
-    "new_article_popup_opened": false,
-    "new_article_popup_code_url_matches_release": false,
-    "registration_required_verified": false,
+    "new_article_popup_opened": true,
+    "new_article_popup_code_url_matches_release": true,
+    "registration_required_verified": true,
     "form_submitted": false,
     "actual_email_delivery_tested": false,
     "existing_post_reference": {
@@ -84,7 +84,7 @@
     "code_url_backend_readback": "pending",
     "newsletter_popup_readback": "pending"
   },
-  "canonical_status": "assigned_slug_pending_publication",
+  "canonical_status": "published",
   "staged_media": [
     {
       "ref": "assets/graf_alignment.webp",
@@ -158,5 +158,27 @@
       "id": 80539,
       "url": "https://learnopencv.com/wp-content/uploads/2026/11/parallax_failure.webp"
     }
-  ]
+  ],
+  "verification": {
+    "anonymous_public_page": true,
+    "canonical_matches": true,
+    "seo_description_matches": true,
+    "featured_image_matches": true,
+    "single_h1": true,
+    "no_direct_companion_links_in_article": true,
+    "article_schema_dates_consistent": true,
+    "sitemap_check": "HTTP403; inaccessible to terminal request; no cache purge or site-wide changes",
+    "newsletter_required_fields": [
+      "First Name",
+      "Email"
+    ],
+    "registration_form_submitted": false,
+    "actual_email_delivery_tested": false
+  },
+  "category_ids": [
+    61,
+    4093,
+    738
+  ],
+  "tag_ids": []
 }

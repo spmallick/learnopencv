@@ -92,7 +92,7 @@ def prepare(output: Path) -> None:
         'Featured image': str(featured_copy.resolve()),
         'Primary keyphrase': seo['primary_keyphrase'],
         'Secondary keyphrases': ', '.join(seo['secondary_keyphrases']),
-        'WordPress categories': 'Image Alignment, OpenCV Tutorials',
+        'WordPress categories': 'Image Alignment, OpenCV 5, OpenCV Tutorials',
     }
     (output / f'{slug}-seo.md').write_text('\n'.join(f'{key}: {value}' for key, value in values.items()) + '\n')
     metadata_path = PROJECT / 'publication/post-metadata.json'
