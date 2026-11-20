@@ -1,83 +1,25 @@
-# WordPress publication and newsletter download handoff
+# Publication record — robust image alignment
 
-Article title: **Robust Image Alignment with ALIKED, LightGlue, and MAGSAC++**.
-The user authorized GitHub publication and subsequently requested full
-LearnOpenCV publication, including its thumbnail. This file documents the
-publishing contract; it does not itself change WordPress.
+The article is published at [LearnOpenCV](https://learnopencv.com/robust-image-alignment/) as post **80541**, slug `robust-image-alignment`, author Satya Mallick (ID 2), with featured media **80540**. Its exact title is **Robust Image Alignment with ALIKED, LightGlue, and MAGSAC++**.
 
-## Article and gated download
+The notebook, Python module, native C++ program, article source, model graphs, and thumbnail are published in the LearnOpenCV GitHub project. The immutable standalone release is [here](https://github.com/spmallick/learnopencv/releases/tag/robust-image-alignment-opencv-5.1.0-2026.11.19). Its ZIP is derived from commit `761e0d8acaaa069773bf9b859cd4031ce0ec8df4`, contains 127 tracked files, and has SHA-256 `bd536db3670a8532a6d70b22346649dc40446fb0c5d0e8b1102d24914607ba67`. Both extracted-platform matrices and the Python/notebook checks pass; all three uploaded release assets were compared with anonymous downloads.
 
-Keep the Python teaching excerpts in the article. The complete download includes
-the Jupyter notebook, standalone Python implementation, native C++ implementation,
-models, tests, setup instructions, and retained evidence. The release must contain
-one top-level `Robust-Image-Alignment/` directory and be derived from the tested
-Git commit. The exact public GitHub Release ZIP and its SHA-256 must be verified
-before configuring the newsletter flow.
+## Newsletter download configuration
 
-The article callout should tell readers to use the site's **Download Code**
-control and register. Do not add a repository URL, notebook link or filename,
-direct ZIP URL, Google Colab link, download shortcode, or embedded signup form
-to article Markdown or WordPress content. The companion repository README may
-link its download button to the verified release ZIP.
+- ACF label/name: **Code URL** / `code_url`.
+- Field key/admin input: `field_605e315832c84` / `acf[field_605e315832c84]`.
+- Saved value: `https://github.com/spmallick/learnopencv/releases/download/robust-image-alignment-opencv-5.1.0-2026.11.19/Robust-Image-Alignment.zip`.
+- Public popup: Elementor 75958, form `download_code`.
+- Delivery field: `form_fields[code_url]`.
 
-GitHub cannot run the LearnOpenCV popup. After the LearnOpenCV article is live,
-the GitHub article may direct readers to that live article's **Download Code**
-control. A generic newsletter link must not be presented as a working delivery
-path for this particular ZIP unless its package-specific behavior is verified.
+The saved field was verified after an Admin reload. The public article's Download Example Code control was opened and its registration popup carried this exact ZIP URL. First Name and Email are required. The form was **not submitted**, so actual email delivery was not tested. The existing LearnOpenCV registration/email mechanism remains site-managed.
 
-## Configure WordPress metadata
+Keep the ZIP URL in metadata and the repository README, never in article content. GitHub article readers are directed to the public LearnOpenCV article to register. Do not replace the newsletter flow with a direct article-body download link.
 
-Set the verified GitHub Release asset URL in the ACF **Blog Post → Code URL**
-field, separately from the article body:
+## Evidence and future updates
 
-- Field name: `code_url`
-- Field key: `field_605e315832c84`
-- WordPress Admin input: `acf[field_605e315832c84]`
-- Frontend newsletter hidden input: `form_fields[code_url]`
+`post-metadata.json` records identity, status, source hash, media, dates, and the gated URL. `publication-verification.json` records anonymous public-page checks. `release-validation.json` records the extracted bundle's tests. The editable WordPress Markdown, HTML, media, SEO handoff, and non-overwriting rollback snapshots are under `/Users/spmallick/github/wordpress/drafts/robust-image-alignment/`.
 
-Use WordPress Admin unless a current capability check proves this ACF field is
-writable through an authenticated API. Standard post REST access does not prove
-ACF write support. Do not activate a guessed URL, mutable branch archive, or
-repository-directory URL.
+The canonical, description, thumbnail, indexing, single page H1, article schema dates, anchors, and absence of direct companion-code links passed public checks. Sitemap retrieval returned HTTP403 to the terminal; no site-wide cache, robots, plugin, or security settings were changed.
 
-## Verified site behavior
-
-A read-only inspection on November 19, 2026 of the existing
-[feature-based alignment article](https://learnopencv.com/image-alignment-feature-based-using-opencv-c-python/)
-found Elementor popup `75958`, form name `download_code`, and opening selectors
-`.elementorDownloadPopup`, `.github`, and `.top-bar-download`. The popup's hidden
-`form_fields[code_url]` contains that article's versioned GitHub Release ZIP.
-The navigation's generic **Subscribe** link points to the homepage with `#`;
-it is not a package-specific download endpoint. These are observations of an
-existing post, not proof that the new article is configured.
-
-## Publication checks
-
-1. Resolve the new article's exact WordPress identity and avoid an existing post
-   with the same title or slug. Keep unrelated existing alignment articles intact.
-2. Use the SEO-reviewed title, description, slug, categories, and featured image.
-   Upload local article media and replace local paths with their verified media
-   URLs. The handoff HTML is one `<article>` fragment with SyntaxHighlighter code
-   blocks, stable heading IDs, and a matching table of contents.
-3. Verify the published GitHub ZIP anonymously, check its SHA-256 and manifest,
-   then set **Code URL** to that exact asset. Record it only in metadata.
-4. After publication, confirm post ID, slug, title, status, author, featured media,
-   content, canonical URL, SEO metadata, dates, images, and internal anchors.
-5. Open the site's **Download Code** control and inspect the newsletter popup.
-   Confirm its hidden `form_fields[code_url]` equals the verified ZIP URL and that
-   name/email registration is still required. **Do not submit the form** during
-   verification. This inspection does not test delivery of an actual email.
-6. Search the published article body for prohibited code/download URLs and
-   notebook references. Verify that the page presents the current article rather
-   than cached prior content; do not purge sitewide caches automatically.
-
-The exact live identity, release URL, checksum, and final validation outcomes
-belong in [post-metadata.json](post-metadata.json). Unset fields are pending
-publication and must not be interpreted as an active website configuration.
-
-An authenticated read-only preflight on November 19 found no post or draft
-matching the exact phrase “Robust Image Alignment” or either proposed slug
-`robust-image-alignment` / `robust-image-alignment-aliked-lightglue-magsac`.
-Existing posts about feature-based alignment and neural feature matching are
-separate articles. Repeat this identity check immediately before creating the
-new post.
+For an update, preserve post 80541 and its original publication date, snapshot the current content, verify any replacement GitHub asset first, save Code URL separately, and recheck the public registration popup without submitting it. This installation exposes AIOSEO metadata through core REST but not ACF Code URL; the latter was saved through the legitimate Admin session.

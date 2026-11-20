@@ -1,7 +1,7 @@
 {
   "audited_on": "2026-11-19",
   "audit_baseline_commit": "8e432bed",
-  "publication_status": "prepared_not_applied_to_live_site",
+  "publication_status": "published_and_verified",
   "title": "Robust Image Alignment with ALIKED, LightGlue, and MAGSAC++",
   "title_characters": 59,
   "seo_title": "Robust Image Alignment with ALIKED, LightGlue, and MAGSAC++",
@@ -10,7 +10,7 @@
   "social_title": "Robust Image Alignment with ALIKED, LightGlue, and MAGSAC++",
   "social_description": "Learn robust image alignment with ALIKED, LightGlue, and MAGSAC++ in OpenCV. Align documents, locate objects from one reference, and check failures.",
   "proposed_slug": "robust-image-alignment",
-  "slug_status": "assigned_to_post_80541_pending_publication",
+  "slug_status": "published",
   "canonical_url": "https://learnopencv.com/robust-image-alignment/",
   "primary_keyphrase": "robust image alignment",
   "secondary_keyphrases": [
@@ -25,8 +25,8 @@
   "featured_image_public_url": "https://learnopencv.com/wp-content/uploads/2026/11/robust-image-alignment-thumbnail.webp",
   "author_name": "Satya Mallick",
   "author_profile_url": "https://learnopencv.com/author/spmallick/",
-  "date_published": null,
-  "date_modified": null,
+  "date_published": "2026-11-19T18:21:23",
+  "date_modified": "2026-11-19T18:21:23",
   "structured_data": {
     "preferred_type": "BlogPosting",
     "implementation": "Use the existing site SEO integration after actual author, canonical, media, and dates are known; avoid duplicate conflicting schema.",
@@ -36,7 +36,7 @@
   "newsletter": {
     "cta_label": "Download Code",
     "cta_must_open": "LearnOpenCV newsletter registration flow",
-    "newsletter_landing_url": null,
+    "newsletter_landing_url": "https://learnopencv.com/robust-image-alignment/",
     "code_url_metadata_field": "code_url",
     "code_url_acf_key": "field_605e315832c84",
     "article_must_contain_direct_code_or_zip_url": false,
@@ -170,5 +170,24 @@
         "image_payload_bytes": 1841694
       }
     }
+  },
+  "live_validation": {
+    "checked_on": "2026-11-19",
+    "anonymous_http_status": 200,
+    "canonical_verified": true,
+    "title_verified": true,
+    "description_verified": true,
+    "og_thumbnail_verified": true,
+    "indexable": true,
+    "h1_count": 1,
+    "direct_code_links_in_article": 0,
+    "popup_code_url_matches_verified_release": true,
+    "registration_required_fields": [
+      "First Name",
+      "Email"
+    ],
+    "form_submitted": false,
+    "email_delivery_tested": false,
+    "sitemap_http_status": 403
   }
 }

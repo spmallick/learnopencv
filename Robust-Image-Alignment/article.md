@@ -92,7 +92,7 @@ A high match score does not establish that the whole image is aligned. A valid m
 
 ### Set up the released OpenCV environment
 
-Extract the downloaded ZIP and open a terminal in its `Robust-Image-Alignment` folder. Create an isolated environment, install the pinned dependencies, and build OpenCV with the Python interpreter from that environment. All later commands assume this same project folder:
+Extract the downloaded ZIP. In a terminal, use the first command below to enter its `Robust-Image-Alignment` folder, then create an isolated environment, install the pinned dependencies, and build OpenCV with that environment's Python interpreter. All later commands assume this same project folder:
 
 ```bash
 cd Robust-Image-Alignment

@@ -1,6 +1,12 @@
-# Robust Image Alignment with ALIKED, LightGlue, and MAGSAC++
+# [Robust Image Alignment with ALIKED, LightGlue, and MAGSAC++](https://learnopencv.com/robust-image-alignment/)
 
-This companion contains three runnable versions: the [complete notebook](robust_image_alignment.ipynb), a [pure Python module and CLI](robust_image_alignment.py), and a [native C++17 program](cpp/main.cpp). They cover natural photographs, planar documents and printed targets, including identification of a known appearance from one reference image. The [article draft](article.md), explanatory diagrams, and recorded experiments accompany the code.
+[<img src="figures/robust-image-alignment-thumbnail.webp" alt="Robust image alignment: real viewpoint change and the aligned overlay, using ALIKED, LightGlue, and MAGSAC++." width="900">](https://learnopencv.com/robust-image-alignment/)
+
+This companion contains three runnable versions: the [complete notebook](robust_image_alignment.ipynb), a [pure Python module and CLI](robust_image_alignment.py), and a [native C++17 program](cpp/main.cpp). They cover natural photographs, planar documents and printed targets, including identification of a known appearance from one reference image. The [article source](article.md), explanatory diagrams, and recorded experiments accompany the code.
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://github.com/spmallick/learnopencv/releases/download/robust-image-alignment-opencv-5.1.0-2026.11.19/Robust-Image-Alignment.zip)
+
+The [versioned standalone release](https://github.com/spmallick/learnopencv/releases/tag/robust-image-alignment-opencv-5.1.0-2026.11.19) contains one `Robust-Image-Alignment/` directory with 127 files from tested commit `761e0d8acaaa069773bf9b859cd4031ce0ec8df4`. Download its [SHA-256 checksum](https://github.com/spmallick/learnopencv/releases/download/robust-image-alignment-opencv-5.1.0-2026.11.19/Robust-Image-Alignment.zip.sha256) alongside the ZIP. The extracted package was tested on macOS and Linux; the release includes the validation report. Sample inputs are fetched separately by the checked downloaders.
 
 ## Tested release and environment
 
@@ -141,6 +147,7 @@ python scripts/check_cpp_parity.py \
 
 ```text
 Robust-Image-Alignment/
+├── README.md / .gitignore
 ├── article.md / article.html
 ├── robust_image_alignment.ipynb
 ├── robust_image_alignment.py
@@ -161,6 +168,7 @@ Robust-Image-Alignment/
 ├── figures/            # Diagrams and measured photographic results
 ├── results/            # Raw experiments and environment evidence
 ├── research/           # Primary sources and provenance
+├── publication/        # SEO, release, and newsletter publication records
 └── assets/             # Retained notices; downloaded pixels are ignored
 ```
 
