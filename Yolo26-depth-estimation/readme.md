@@ -8,6 +8,12 @@
 
 A hands-on capability tour of the new native depth task in Ultralytics YOLO26. One Colab notebook, one small checkpoint (`yolo26n-depth.pt`, 12.4 MB), and a dense map where every pixel is a real distance in meters. The notebook runs end to end on a free Colab T4 in a few minutes, with no setup beyond `pip install ultralytics`.
 
+## Download the standalone project
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://github.com/spmallick/learnopencv/releases/download/yolo26-depth-estimation-2026.11.19/Yolo26-depth-estimation.zip)
+
+The versioned ZIP contains one `Yolo26-depth-estimation/` folder with 14 tracked files from commit `5a727bec1242bafb8eda075401f5542a0b048585`. Download the [SHA-256 checksum](https://github.com/spmallick/learnopencv/releases/download/yolo26-depth-estimation-2026.11.19/Yolo26-depth-estimation.zip.sha256) alongside the ZIP.
+
 <a href="https://colab.research.google.com/github/spmallick/learnopencv/blob/master/Yolo26-depth-estimation/YOLO26_Depth_Capability_Tour.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab">
 </a>
