@@ -29,8 +29,8 @@
   "author_id": 2,
   "featured_media_id": 80540,
   "published_gmt": "2026-11-20T02:21:23",
-  "modified_gmt": "2026-11-20T19:34:47",
-  "content_sha256": "bfdb9cf8290764db6093cbaa2dd576846dd0f57a971db2f3e77e5aa17ba3fb4d",
+  "modified_gmt": "2026-11-20T19:42:06",
+  "content_sha256": "2c9069199b84c27ed19f1459d95183f8150a5d22cfa83e83031cfb7d35167d17",
   "acf_code_url": {
     "label": "Code URL",
     "name": "code_url",
@@ -160,7 +160,7 @@
     "sitemap": {
       "http_status": 200,
       "sitemap": "https://learnopencv.com/post-sitemap.xml",
-      "lastmod": "2026-11-20T19:34:47+00:00"
+      "lastmod": "2026-11-20T19:42:06+00:00"
     }
   },
   "category_ids": [

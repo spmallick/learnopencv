@@ -1,8 +1,8 @@
 {
-  "verified_utc": "2026-11-20T19:36:00.841412+00:00",
+  "verified_utc": "2026-11-20T19:42:45.041561+00:00",
   "canonical": "https://learnopencv.com/robust-image-alignment/",
   "post_id": 80541,
-  "content_sha256": "bfdb9cf8290764db6093cbaa2dd576846dd0f57a971db2f3e77e5aa17ba3fb4d",
+  "content_sha256": "2c9069199b84c27ed19f1459d95183f8150a5d22cfa83e83031cfb7d35167d17",
   "public_page_authenticated": false,
   "retained_identity_fields": [
     "id",
@@ -339,16 +339,16 @@
       ]
     },
     "dateModified": {
-      "wordpress_gmt": "2026-11-20T19:34:47",
-      "open_graph": "2026-11-20T19:34:47+00:00",
+      "wordpress_gmt": "2026-11-20T19:42:06",
+      "open_graph": "2026-11-20T19:42:06+00:00",
       "jsonld": [
-        "2026-11-20T11:34:47-08:00",
-        "2026-11-20T11:34:47-08:00",
+        "2026-11-20T11:42:06-08:00",
+        "2026-11-20T11:42:06-08:00",
         "2026-11-20T11:34:47"
       ]
     }
   },
-  "visible_update_note": true,
+  "visible_update_note": false,
   "seo_title": "Robust Image Alignment with ALIKED, LightGlue, and MAGSAC++",
   "seo_description": "Learn robust image alignment with ALIKED, LightGlue, and MAGSAC++ in OpenCV. Align documents, locate objects from one reference, and check failures.",
   "newsletter": {
@@ -370,7 +370,7 @@
   "sitemap": {
     "http_status": 200,
     "sitemap": "https://learnopencv.com/post-sitemap.xml",
-    "lastmod": "2026-11-20T19:34:47+00:00"
+    "lastmod": "2026-11-20T19:42:06+00:00"
   },
   "browser": {
     "saved_and_reloaded_on_post_id": 80541,
