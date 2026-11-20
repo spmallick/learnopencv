@@ -1,0 +1,2 @@
+# Install with --no-deps after requirements.txt; prevents pulling an older OpenCV wheel.
+lightglue @ git+https://github.com/cvg/LightGlue.git@5a650c444718caffc2669dc0094cde908f42dd73

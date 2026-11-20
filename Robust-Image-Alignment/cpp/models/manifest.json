@@ -1,0 +1,83 @@
+{
+  "lightglue_commit": "5a650c444718caffc2669dc0094cde908f42dd73",
+  "aliked_variant": "aliked-n16",
+  "max_keypoints": 2048,
+  "detection_threshold": 0.2,
+  "nms_radius": 2,
+  "lightglue_layers": 9,
+  "depth_confidence": 0.95,
+  "width_confidence": 0.99,
+  "filter_threshold": 0.1,
+  "onnx_opset": 18,
+  "files": [
+    {
+      "file": "aliked_n16_dense.onnx",
+      "bytes": 1596292,
+      "sha256": "172c6e0624a60cd798d7a369f0fe52f807fee500e98ed51f48838dffa877eb86"
+    },
+    {
+      "file": "aliked_n16_descriptor.onnx",
+      "bytes": 1277305,
+      "sha256": "09eca2cef8c67b3f44fa905f9d2789ce33184a873bb63fe0eecc75eeca18946b"
+    },
+    {
+      "file": "lightglue_layer_0.onnx",
+      "bytes": 5441135,
+      "sha256": "dfa485d71455d3a721a137dce47f0136372dade6914d862ba23fcc72ad845921"
+    },
+    {
+      "file": "lightglue_layer_1.onnx",
+      "bytes": 5308301,
+      "sha256": "d3b9a5bba0a487062be54327e5755a845f4efa1331b77d3015e613dc0035fa85"
+    },
+    {
+      "file": "lightglue_layer_2.onnx",
+      "bytes": 5308301,
+      "sha256": "a21501869dcaf8136cc7e2076ab230006f942411bb41effc3fc0e57371fe2a32"
+    },
+    {
+      "file": "lightglue_layer_3.onnx",
+      "bytes": 5308301,
+      "sha256": "6de903419c68a113ea7b7189f620b676de2418b1b59ebc06e4ce0a8d4e96bc34"
+    },
+    {
+      "file": "lightglue_layer_4.onnx",
+      "bytes": 5308301,
+      "sha256": "ae7ddb63537062b84d47c5cfe4ee2084792059675e115b4bfd380bfe6af3a7f7"
+    },
+    {
+      "file": "lightglue_layer_5.onnx",
+      "bytes": 5308301,
+      "sha256": "7bd3787f224e07601904cf405b40e207a20fca81eb16898442d9c30bf1bdfa1e"
+    },
+    {
+      "file": "lightglue_layer_6.onnx",
+      "bytes": 5308301,
+      "sha256": "a9c2180cfe036b58f487379c975925c0249175db6c00d2291137ba1eff11a989"
+    },
+    {
+      "file": "lightglue_layer_7.onnx",
+      "bytes": 5308301,
+      "sha256": "ccea7f0aa6067e06d9e33eb065023d356dd39c373a66372edc3e69ffe28350a2"
+    },
+    {
+      "file": "lightglue_layer_8.onnx",
+      "bytes": 5306397,
+      "sha256": "ffd54057e6d5d3b29256ea6c76c5d52524223a69d51e8e3adc2b0e0e2fb6e9be"
+    }
+  ],
+  "checkpoints": [
+    {
+      "file": "aliked-n16.pth",
+      "bytes": 2738091,
+      "sha256": "5be8704840ed662d9d8c561bf7279c222092674e7eb05fd0feab94899e9d82f2",
+      "url": "https://github.com/Shiaoming/ALIKED/raw/683d7c65197395c0b3f01ebe76e1084a27e73a65/models/aliked-n16.pth"
+    },
+    {
+      "file": "aliked_lightglue_v0-1_arxiv.pth",
+      "bytes": 47632827,
+      "sha256": "d975e965b105311a6143194852297dff4f02aea5cc2e10cecfed966ca0e22503",
+      "url": "https://github.com/cvg/LightGlue/releases/download/v0.1_arxiv/aliked_lightglue.pth"
+    }
+  ]
+}

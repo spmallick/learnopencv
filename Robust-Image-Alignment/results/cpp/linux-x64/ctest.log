@@ -1,0 +1,26 @@
+Internal ctest changing into directory: /tmp/robust-alignment-cpp-linux
+Test project /tmp/robust-alignment-cpp-linux
+      Start  1: geometry_regressions
+ 1/10 Test  #1: geometry_regressions .............   Passed    0.06 sec
+      Start  2: cli_sift_ransac
+ 2/10 Test  #2: cli_sift_ransac ..................   Passed    0.15 sec
+      Start  3: cli_sift_magsac
+ 3/10 Test  #3: cli_sift_magsac ..................   Passed    0.14 sec
+      Start  4: cli_aliked-nn_ransac
+ 4/10 Test  #4: cli_aliked-nn_ransac .............   Passed    0.72 sec
+      Start  5: cli_aliked-nn_magsac
+ 5/10 Test  #5: cli_aliked-nn_magsac .............   Passed    0.72 sec
+      Start  6: cli_lightglue_ransac
+ 6/10 Test  #6: cli_lightglue_ransac .............   Passed    1.18 sec
+      Start  7: cli_lightglue_magsac
+ 7/10 Test  #7: cli_lightglue_magsac .............   Passed    1.17 sec
+      Start  8: native_notebook_demos
+ 8/10 Test  #8: native_notebook_demos ............   Passed   18.55 sec
+      Start  9: native_synthetic_study
+ 9/10 Test  #9: native_synthetic_study ...........   Passed    1.05 sec
+      Start 10: cli_errors_and_reuse
+10/10 Test #10: cli_errors_and_reuse .............   Passed    0.37 sec
+
+100% tests passed, 0 tests failed out of 10
+
+Total Test time (real) =  24.13 sec

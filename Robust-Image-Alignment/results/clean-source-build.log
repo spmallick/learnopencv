@@ -1,0 +1,1283 @@
+-- The CXX compiler identification is GNU 13.3.0
+-- The C compiler identification is GNU 13.3.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Looking for a ASM compiler
+-- Looking for a ASM compiler - /usr/bin/cc
+-- The ASM compiler identification is GNU
+-- Found assembler: /usr/bin/cc
+-- Detected processor: x86_64
+-- Found PythonInterp: /tmp/robust-align-clean-py314/bin/python (found suitable version "3.14.3", minimum required is "3.2")
+-- Found PythonLibs: /home/spmallick/.local/share/uv/python/cpython-3.14.3-linux-x86_64-gnu/lib/libpython3.14.so (found suitable exact version "3.14.3")
+-- Looking for ccache - not found
+-- Performing Test HAVE_CXX_FSIGNED_CHAR
+-- Performing Test HAVE_CXX_FSIGNED_CHAR - Success
+-- Performing Test HAVE_C_FSIGNED_CHAR
+-- Performing Test HAVE_C_FSIGNED_CHAR - Success
+-- Performing Test HAVE_CXX_W
+-- Performing Test HAVE_CXX_W - Success
+-- Performing Test HAVE_C_W
+-- Performing Test HAVE_C_W - Success
+-- Performing Test HAVE_CXX_WALL
+-- Performing Test HAVE_CXX_WALL - Success
+-- Performing Test HAVE_C_WALL
+-- Performing Test HAVE_C_WALL - Success
+-- Performing Test HAVE_CXX_WRETURN_TYPE
+-- Performing Test HAVE_CXX_WRETURN_TYPE - Success
+-- Performing Test HAVE_C_WRETURN_TYPE
+-- Performing Test HAVE_C_WRETURN_TYPE - Success
+-- Performing Test HAVE_CXX_WNON_VIRTUAL_DTOR
+-- Performing Test HAVE_CXX_WNON_VIRTUAL_DTOR - Success
+-- Performing Test HAVE_C_WNON_VIRTUAL_DTOR
+-- Performing Test HAVE_C_WNON_VIRTUAL_DTOR - Failed
+-- Performing Test HAVE_CXX_WADDRESS
+-- Performing Test HAVE_CXX_WADDRESS - Success
+-- Performing Test HAVE_C_WADDRESS
+-- Performing Test HAVE_C_WADDRESS - Success
+-- Performing Test HAVE_CXX_WSEQUENCE_POINT
+-- Performing Test HAVE_CXX_WSEQUENCE_POINT - Success
+-- Performing Test HAVE_C_WSEQUENCE_POINT
+-- Performing Test HAVE_C_WSEQUENCE_POINT - Success
+-- Performing Test HAVE_CXX_WFORMAT
+-- Performing Test HAVE_CXX_WFORMAT - Success
+-- Performing Test HAVE_C_WFORMAT
+-- Performing Test HAVE_C_WFORMAT - Success
+-- Performing Test HAVE_CXX_WFORMAT_SECURITY
+-- Performing Test HAVE_CXX_WFORMAT_SECURITY - Success
+-- Performing Test HAVE_C_WFORMAT_SECURITY
+-- Performing Test HAVE_C_WFORMAT_SECURITY - Success
+-- Performing Test HAVE_CXX_WMISSING_DECLARATIONS
+-- Performing Test HAVE_CXX_WMISSING_DECLARATIONS - Success
+-- Performing Test HAVE_C_WMISSING_DECLARATIONS
+-- Performing Test HAVE_C_WMISSING_DECLARATIONS - Success
+-- Performing Test HAVE_CXX_WMISSING_PROTOTYPES
+-- Performing Test HAVE_CXX_WMISSING_PROTOTYPES - Failed
+-- Performing Test HAVE_C_WMISSING_PROTOTYPES
+-- Performing Test HAVE_C_WMISSING_PROTOTYPES - Success
+-- Performing Test HAVE_CXX_WSTRICT_PROTOTYPES
+-- Performing Test HAVE_CXX_WSTRICT_PROTOTYPES - Failed
+-- Performing Test HAVE_C_WSTRICT_PROTOTYPES
+-- Performing Test HAVE_C_WSTRICT_PROTOTYPES - Success
+-- Performing Test HAVE_CXX_WUNDEF
+-- Performing Test HAVE_CXX_WUNDEF - Success
+-- Performing Test HAVE_C_WUNDEF
+-- Performing Test HAVE_C_WUNDEF - Success
+-- Performing Test HAVE_CXX_WINIT_SELF
+-- Performing Test HAVE_CXX_WINIT_SELF - Success
+-- Performing Test HAVE_C_WINIT_SELF
+-- Performing Test HAVE_C_WINIT_SELF - Success
+-- Performing Test HAVE_CXX_WPOINTER_ARITH
+-- Performing Test HAVE_CXX_WPOINTER_ARITH - Success
+-- Performing Test HAVE_C_WPOINTER_ARITH
+-- Performing Test HAVE_C_WPOINTER_ARITH - Success
+-- Performing Test HAVE_CXX_WSHADOW
+-- Performing Test HAVE_CXX_WSHADOW - Success
+-- Performing Test HAVE_C_WSHADOW
+-- Performing Test HAVE_C_WSHADOW - Success
+-- Performing Test HAVE_CXX_WSIGN_PROMO
+-- Performing Test HAVE_CXX_WSIGN_PROMO - Success
+-- Performing Test HAVE_C_WSIGN_PROMO
+-- Performing Test HAVE_C_WSIGN_PROMO - Failed
+-- Performing Test HAVE_CXX_WUNINITIALIZED
+-- Performing Test HAVE_CXX_WUNINITIALIZED - Success
+-- Performing Test HAVE_C_WUNINITIALIZED
+-- Performing Test HAVE_C_WUNINITIALIZED - Success
+-- Performing Test HAVE_CXX_WSUGGEST_OVERRIDE
+-- Performing Test HAVE_CXX_WSUGGEST_OVERRIDE - Success
+-- Performing Test HAVE_C_WSUGGEST_OVERRIDE
+-- Performing Test HAVE_C_WSUGGEST_OVERRIDE - Failed
+-- Performing Test HAVE_CXX_WNO_DELETE_NON_VIRTUAL_DTOR
+-- Performing Test HAVE_CXX_WNO_DELETE_NON_VIRTUAL_DTOR - Success
+-- Performing Test HAVE_C_WNO_DELETE_NON_VIRTUAL_DTOR
+-- Performing Test HAVE_C_WNO_DELETE_NON_VIRTUAL_DTOR - Failed
+-- Performing Test HAVE_CXX_WNO_UNNAMED_TYPE_TEMPLATE_ARGS
+-- Performing Test HAVE_CXX_WNO_UNNAMED_TYPE_TEMPLATE_ARGS - Failed
+-- Performing Test HAVE_C_WNO_UNNAMED_TYPE_TEMPLATE_ARGS
+-- Performing Test HAVE_C_WNO_UNNAMED_TYPE_TEMPLATE_ARGS - Failed
+-- Performing Test HAVE_CXX_WNO_COMMENT
+-- Performing Test HAVE_CXX_WNO_COMMENT - Success
+-- Performing Test HAVE_C_WNO_COMMENT
+-- Performing Test HAVE_C_WNO_COMMENT - Success
+-- Performing Test HAVE_CXX_WIMPLICIT_FALLTHROUGH_3
+-- Performing Test HAVE_CXX_WIMPLICIT_FALLTHROUGH_3 - Success
+-- Performing Test HAVE_C_WIMPLICIT_FALLTHROUGH_3
+-- Performing Test HAVE_C_WIMPLICIT_FALLTHROUGH_3 - Success
+-- Performing Test HAVE_CXX_WNO_STRICT_OVERFLOW
+-- Performing Test HAVE_CXX_WNO_STRICT_OVERFLOW - Success
+-- Performing Test HAVE_C_WNO_STRICT_OVERFLOW
+-- Performing Test HAVE_C_WNO_STRICT_OVERFLOW - Success
+-- Performing Test HAVE_CXX_FDIAGNOSTICS_SHOW_OPTION
+-- Performing Test HAVE_CXX_FDIAGNOSTICS_SHOW_OPTION - Success
+-- Performing Test HAVE_C_FDIAGNOSTICS_SHOW_OPTION
+-- Performing Test HAVE_C_FDIAGNOSTICS_SHOW_OPTION - Success
+-- Performing Test HAVE_CXX_PTHREAD
+-- Performing Test HAVE_CXX_PTHREAD - Success
+-- Performing Test HAVE_C_PTHREAD
+-- Performing Test HAVE_C_PTHREAD - Success
+-- Performing Test HAVE_CXX_FOMIT_FRAME_POINTER
+-- Performing Test HAVE_CXX_FOMIT_FRAME_POINTER - Success
+-- Performing Test HAVE_C_FOMIT_FRAME_POINTER
+-- Performing Test HAVE_C_FOMIT_FRAME_POINTER - Success
+-- Performing Test HAVE_CXX_FFUNCTION_SECTIONS
+-- Performing Test HAVE_CXX_FFUNCTION_SECTIONS - Success
+-- Performing Test HAVE_C_FFUNCTION_SECTIONS
+-- Performing Test HAVE_C_FFUNCTION_SECTIONS - Success
+-- Performing Test HAVE_CXX_FDATA_SECTIONS
+-- Performing Test HAVE_CXX_FDATA_SECTIONS - Success
+-- Performing Test HAVE_C_FDATA_SECTIONS
+-- Performing Test HAVE_C_FDATA_SECTIONS - Success
+-- Performing Test HAVE_CPU_SSE_SUPPORT (check file: cmake/checks/cpu_sse.cpp)
+-- Performing Test HAVE_CPU_SSE_SUPPORT - Success
+-- Performing Test HAVE_CPU_SSE2_SUPPORT (check file: cmake/checks/cpu_sse2.cpp)
+-- Performing Test HAVE_CPU_SSE2_SUPPORT - Success
+-- Performing Test HAVE_CPU_SSE3_SUPPORT (check file: cmake/checks/cpu_sse3.cpp)
+-- Performing Test HAVE_CPU_SSE3_SUPPORT - Failed
+-- Performing Test HAVE_CXX_MSSE3 (check file: cmake/checks/cpu_sse3.cpp)
+-- Performing Test HAVE_CXX_MSSE3 - Success
+-- Performing Test HAVE_CXX_MSSSE3 (check file: cmake/checks/cpu_ssse3.cpp)
+-- Performing Test HAVE_CXX_MSSSE3 - Success
+-- Performing Test HAVE_CXX_MSSE4_1 (check file: cmake/checks/cpu_sse41.cpp)
+-- Performing Test HAVE_CXX_MSSE4_1 - Success
+-- Performing Test HAVE_CXX_MPOPCNT (check file: cmake/checks/cpu_popcnt.cpp)
+-- Performing Test HAVE_CXX_MPOPCNT - Success
+-- Performing Test HAVE_CXX_MSSE4_2 (check file: cmake/checks/cpu_sse42.cpp)
+-- Performing Test HAVE_CXX_MSSE4_2 - Success
+-- Performing Test HAVE_CXX_MAVX (check file: cmake/checks/cpu_avx.cpp)
+-- Performing Test HAVE_CXX_MAVX - Success
+-- Performing Test HAVE_CXX_MF16C (check file: cmake/checks/cpu_fp16.cpp)
+-- Performing Test HAVE_CXX_MF16C - Success
+-- Performing Test HAVE_CXX_MAVX2 (check file: cmake/checks/cpu_avx2.cpp)
+-- Performing Test HAVE_CXX_MAVX2 - Success
+-- Performing Test HAVE_CXX_MFMA
+-- Performing Test HAVE_CXX_MFMA - Success
+-- Performing Test HAVE_CXX_MAVXVNNI (check file: cmake/checks/cpu_avx_vnni.cpp)
+-- Performing Test HAVE_CXX_MAVXVNNI - Success
+-- Performing Test HAVE_CXX_MAVX512F (check file: cmake/checks/cpu_avx512.cpp)
+-- Performing Test HAVE_CXX_MAVX512F - Success
+-- Performing Test HAVE_CXX_MAVX512F_MAVX512CD (check file: cmake/checks/cpu_avx512common.cpp)
+-- Performing Test HAVE_CXX_MAVX512F_MAVX512CD - Success
+-- Performing Test HAVE_CXX_MAVX512F_MAVX512CD_MAVX512VL_MAVX512BW_MAVX512DQ (check file: cmake/checks/cpu_avx512skx.cpp)
+-- Performing Test HAVE_CXX_MAVX512F_MAVX512CD_MAVX512VL_MAVX512BW_MAVX512DQ - Success
+-- Performing Test HAVE_CXX_MAVX512F_MAVX512CD_MAVX512VL_MAVX512BW_MAVX512DQ_MAVX512VNNI (check file: cmake/checks/cpu_avx512clx.cpp)
+-- Performing Test HAVE_CXX_MAVX512F_MAVX512CD_MAVX512VL_MAVX512BW_MAVX512DQ_MAVX512VNNI - Success
+-- Performing Test HAVE_CPU_BASELINE_FLAGS
+-- Performing Test HAVE_CPU_BASELINE_FLAGS - Success
+-- Performing Test HAVE_CPU_DISPATCH_FLAGS_SSE4_1
+-- Performing Test HAVE_CPU_DISPATCH_FLAGS_SSE4_1 - Success
+-- Performing Test HAVE_CPU_DISPATCH_FLAGS_SSE4_2
+-- Performing Test HAVE_CPU_DISPATCH_FLAGS_SSE4_2 - Success
+-- Performing Test HAVE_CPU_DISPATCH_FLAGS_AVX
+-- Performing Test HAVE_CPU_DISPATCH_FLAGS_AVX - Success
+-- Performing Test HAVE_CPU_DISPATCH_FLAGS_FP16
+-- Performing Test HAVE_CPU_DISPATCH_FLAGS_FP16 - Success
+-- Performing Test HAVE_CPU_DISPATCH_FLAGS_AVX2
+-- Performing Test HAVE_CPU_DISPATCH_FLAGS_AVX2 - Success
+-- Performing Test HAVE_CPU_DISPATCH_FLAGS_AVX_VNNI
+-- Performing Test HAVE_CPU_DISPATCH_FLAGS_AVX_VNNI - Success
+-- Performing Test HAVE_CPU_DISPATCH_FLAGS_AVX512_SKX
+-- Performing Test HAVE_CPU_DISPATCH_FLAGS_AVX512_SKX - Success
+-- Performing Test HAVE_CPU_DISPATCH_FLAGS_AVX512_CLX
+-- Performing Test HAVE_CPU_DISPATCH_FLAGS_AVX512_CLX - Success
+-- Performing Test HAVE_CXX_FVISIBILITY_HIDDEN
+-- Performing Test HAVE_CXX_FVISIBILITY_HIDDEN - Success
+-- Performing Test HAVE_C_FVISIBILITY_HIDDEN
+-- Performing Test HAVE_C_FVISIBILITY_HIDDEN - Success
+-- Performing Test HAVE_CXX_FVISIBILITY_INLINES_HIDDEN
+-- Performing Test HAVE_CXX_FVISIBILITY_INLINES_HIDDEN - Success
+-- Performing Test HAVE_C_FVISIBILITY_INLINES_HIDDEN
+-- Performing Test HAVE_C_FVISIBILITY_INLINES_HIDDEN - Failed
+-- Performing Test HAVE_LINK_AS_NEEDED
+-- Performing Test HAVE_LINK_AS_NEEDED - Success
+-- Performing Test HAVE_LINK_NO_UNDEFINED
+-- Performing Test HAVE_LINK_NO_UNDEFINED - Success
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Looking for posix_memalign
+-- Looking for posix_memalign - found
+-- Looking for malloc.h
+-- Looking for malloc.h - found
+-- Looking for memalign
+-- Looking for memalign - found
+-- Looking for getauxval
+-- Looking for getauxval - found
+-- Looking for elf_aux_info
+-- Looking for elf_aux_info - not found
+-- Found ZLIB: /usr/lib/x86_64-linux-gnu/libz.so (found suitable version "1.3", minimum required is "1.2.3")
+-- Could NOT find AVIF (missing: AVIF_LIBRARY AVIF_INCLUDE_DIR)
+-- Found JPEG: /usr/lib/x86_64-linux-gnu/libjpeg.so (found version "80")
+-- Found WebP: /usr/lib/x86_64-linux-gnu/libwebp.so
+-- Found TIFF: /usr/lib/x86_64-linux-gnu/libtiff.so (found version "4.5.1")
+-- The imported target "openjpip" references the file
+   "/usr/lib/x86_64-linux-gnu/libopenjpip.so.2.5.0"
+but this file does not exist.  Possible reasons include:
+* The file was deleted, renamed, or moved to another location.
+* An install or uninstall procedure did not complete successfully.
+* The installation package was faulty and contained
+   "/usr/lib/x86_64-linux-gnu/openjpeg-2.1/OpenJPEGTargets.cmake"
+but not all the files it references.
+
+-- The imported target "opj_decompress" references the file
+   "/usr/bin/opj_decompress"
+but this file does not exist.  Possible reasons include:
+* The file was deleted, renamed, or moved to another location.
+* An install or uninstall procedure did not complete successfully.
+* The installation package was faulty and contained
+   "/usr/lib/x86_64-linux-gnu/openjpeg-2.1/OpenJPEGTargets.cmake"
+but not all the files it references.
+
+-- The imported target "opj_compress" references the file
+   "/usr/bin/opj_compress"
+but this file does not exist.  Possible reasons include:
+* The file was deleted, renamed, or moved to another location.
+* An install or uninstall procedure did not complete successfully.
+* The installation package was faulty and contained
+   "/usr/lib/x86_64-linux-gnu/openjpeg-2.1/OpenJPEGTargets.cmake"
+but not all the files it references.
+
+-- The imported target "opj_dump" references the file
+   "/usr/bin/opj_dump"
+but this file does not exist.  Possible reasons include:
+* The file was deleted, renamed, or moved to another location.
+* An install or uninstall procedure did not complete successfully.
+* The installation package was faulty and contained
+   "/usr/lib/x86_64-linux-gnu/openjpeg-2.1/OpenJPEGTargets.cmake"
+but not all the files it references.
+
+-- The imported target "opj_jpip_addxml" references the file
+   "/usr/bin/opj_jpip_addxml"
+but this file does not exist.  Possible reasons include:
+* The file was deleted, renamed, or moved to another location.
+* An install or uninstall procedure did not complete successfully.
+* The installation package was faulty and contained
+   "/usr/lib/x86_64-linux-gnu/openjpeg-2.1/OpenJPEGTargets.cmake"
+but not all the files it references.
+
+-- The imported target "opj_server" references the file
+   "/usr/bin/opj_server"
+but this file does not exist.  Possible reasons include:
+* The file was deleted, renamed, or moved to another location.
+* An install or uninstall procedure did not complete successfully.
+* The installation package was faulty and contained
+   "/usr/lib/x86_64-linux-gnu/openjpeg-2.1/OpenJPEGTargets.cmake"
+but not all the files it references.
+
+-- The imported target "opj_dec_server" references the file
+   "/usr/bin/opj_dec_server"
+but this file does not exist.  Possible reasons include:
+* The file was deleted, renamed, or moved to another location.
+* An install or uninstall procedure did not complete successfully.
+* The installation package was faulty and contained
+   "/usr/lib/x86_64-linux-gnu/openjpeg-2.1/OpenJPEGTargets.cmake"
+but not all the files it references.
+
+-- The imported target "opj_jpip_transcode" references the file
+   "/usr/bin/opj_jpip_transcode"
+but this file does not exist.  Possible reasons include:
+* The file was deleted, renamed, or moved to another location.
+* An install or uninstall procedure did not complete successfully.
+* The installation package was faulty and contained
+   "/usr/lib/x86_64-linux-gnu/openjpeg-2.1/OpenJPEGTargets.cmake"
+but not all the files it references.
+
+-- The imported target "opj_jpip_test" references the file
+   "/usr/bin/opj_jpip_test"
+but this file does not exist.  Possible reasons include:
+* The file was deleted, renamed, or moved to another location.
+* An install or uninstall procedure did not complete successfully.
+* The installation package was faulty and contained
+   "/usr/lib/x86_64-linux-gnu/openjpeg-2.1/OpenJPEGTargets.cmake"
+but not all the files it references.
+
+-- Found system OpenJPEG: openjp2 (found version "2.5.0")
+-- Checking for module 'harfbuzz'
+--   Found harfbuzz, version 8.3.0
+-- Checking for module 'harfbuzz-raster'
+--   Package 'harfbuzz-raster', required by 'virtual:world', not found
+-- Performing Test HARFBUZZ_HAS_RASTER
+-- Performing Test HARFBUZZ_HAS_RASTER - Failed
+-- HarfBuzz: found system version 8.3.0 but it lacks the hb-raster API; building the bundled copy instead
+-- Performing Test HAVE_CXX_WNO_UNUSED_VARIABLE
+-- Performing Test HAVE_CXX_WNO_UNUSED_VARIABLE - Success
+-- Performing Test HAVE_CXX_WNO_UNUSED_FUNCTION
+-- Performing Test HAVE_CXX_WNO_UNUSED_FUNCTION - Success
+-- Performing Test HAVE_CXX_WNO_UNUSED_PARAMETER
+-- Performing Test HAVE_CXX_WNO_UNUSED_PARAMETER - Success
+-- Performing Test HAVE_CXX_WNO_UNUSED_BUT_SET_VARIABLE
+-- Performing Test HAVE_CXX_WNO_UNUSED_BUT_SET_VARIABLE - Success
+-- Performing Test HAVE_CXX_WNO_SHADOW
+-- Performing Test HAVE_CXX_WNO_SHADOW - Success
+-- Performing Test HAVE_CXX_WNO_MISSING_DECLARATIONS
+-- Performing Test HAVE_CXX_WNO_MISSING_DECLARATIONS - Success
+-- Performing Test HAVE_CXX_WNO_MISSING_PROTOTYPES
+-- Performing Test HAVE_CXX_WNO_MISSING_PROTOTYPES - Failed
+-- Performing Test HAVE_CXX_WNO_IMPLICIT_FALLTHROUGH
+-- Performing Test HAVE_CXX_WNO_IMPLICIT_FALLTHROUGH - Success
+-- Performing Test HAVE_CXX_WNO_EXTRA_SEMI
+-- Performing Test HAVE_CXX_WNO_EXTRA_SEMI - Success
+-- Performing Test HAVE_CXX_WNO_DEPRECATED_COPY
+-- Performing Test HAVE_CXX_WNO_DEPRECATED_COPY - Success
+-- Performing Test HAVE_CXX_WNO_SUGGEST_OVERRIDE
+-- Performing Test HAVE_CXX_WNO_SUGGEST_OVERRIDE - Success
+-- Performing Test HAVE_CXX_WNO_CAST_FUNCTION_TYPE
+-- Performing Test HAVE_CXX_WNO_CAST_FUNCTION_TYPE - Success
+-- Performing Test HAVE_CXX_WNO_CLASS_MEMACCESS
+-- Performing Test HAVE_CXX_WNO_CLASS_MEMACCESS - Success
+-- Performing Test HAVE_CXX_WNO_EXPANSION_TO_DEFINED
+-- Performing Test HAVE_CXX_WNO_EXPANSION_TO_DEFINED - Success
+-- libva: missing va.h header (VA_INCLUDE_DIR)
+-- Could NOT find Atlas (missing: Atlas_CBLAS_LIBRARY Atlas_BLAS_LIBRARY)
+-- Looking for sgemm_
+-- Looking for sgemm_ - not found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- Looking for sgemm_
+-- Looking for sgemm_ - found
+-- Found BLAS: /usr/lib/x86_64-linux-gnu/libblas.so
+-- Looking for cheev_
+-- Looking for cheev_ - not found
+-- Looking for cheev_
+-- Looking for cheev_ - found
+-- Found LAPACK: /usr/lib/x86_64-linux-gnu/liblapack.so;/usr/lib/x86_64-linux-gnu/libblas.so
+-- LAPACK(LAPACK/Generic): LAPACK_LIBRARIES: /usr/lib/x86_64-linux-gnu/liblapack.so;/usr/lib/x86_64-linux-gnu/libblas.so
+-- LAPACK(LAPACK/Generic): Support is enabled.
+-- Performing Test HAVE_CXX_WNO_DEPRECATED
+-- Performing Test HAVE_CXX_WNO_DEPRECATED - Success
+-- Performing Test HAVE_CXX_WNO_UNUSED_LOCAL_TYPEDEFS
+-- Performing Test HAVE_CXX_WNO_UNUSED_LOCAL_TYPEDEFS - Success
+-- Performing Test HAVE_CXX_WNO_SIGN_COMPARE
+-- Performing Test HAVE_CXX_WNO_SIGN_COMPARE - Success
+-- Performing Test HAVE_CXX_WNO_SIGN_PROMO
+-- Performing Test HAVE_CXX_WNO_SIGN_PROMO - Success
+-- Performing Test HAVE_CXX_WNO_UNDEF
+-- Performing Test HAVE_CXX_WNO_UNDEF - Success
+-- Performing Test HAVE_CXX_WNO_TAUTOLOGICAL_UNDEFINED_COMPARE
+-- Performing Test HAVE_CXX_WNO_TAUTOLOGICAL_UNDEFINED_COMPARE - Failed
+-- Performing Test HAVE_CXX_WNO_IGNORED_QUALIFIERS
+-- Performing Test HAVE_CXX_WNO_IGNORED_QUALIFIERS - Success
+-- Performing Test HAVE_CXX_WNO_EXTRA
+-- Performing Test HAVE_CXX_WNO_EXTRA - Success
+-- Performing Test HAVE_CXX_WNO_UNUSED_CONST_VARIABLE
+-- Performing Test HAVE_CXX_WNO_UNUSED_CONST_VARIABLE - Success
+-- Performing Test HAVE_CXX_WNO_SHORTEN_64_TO_32
+-- Performing Test HAVE_CXX_WNO_SHORTEN_64_TO_32 - Failed
+-- Performing Test HAVE_CXX_WNO_INVALID_OFFSETOF
+-- Performing Test HAVE_CXX_WNO_INVALID_OFFSETOF - Success
+-- Performing Test HAVE_CXX_WNO_ENUM_COMPARE_SWITCH
+-- Performing Test HAVE_CXX_WNO_ENUM_COMPARE_SWITCH - Failed
+-- Performing Test HAVE_CXX_WNO_INCONSISTENT_MISSING_OVERRIDE
+-- Performing Test HAVE_CXX_WNO_INCONSISTENT_MISSING_OVERRIDE - Failed
+-- Performing Test HAVE_CXX_WNO_ARRAY_BOUNDS
+-- Performing Test HAVE_CXX_WNO_ARRAY_BOUNDS - Success
+-- Performing Test HAVE_CXX_WNO_STRINGOP_OVERFLOW
+-- Performing Test HAVE_CXX_WNO_STRINGOP_OVERFLOW - Success
+-- Performing Test HAVE_CXX_WNO_STRINGOP_OVERREAD
+-- Performing Test HAVE_CXX_WNO_STRINGOP_OVERREAD - Success
+-- Performing Test HAVE_CXX_WNO_COMMA
+-- Performing Test HAVE_CXX_WNO_COMMA - Failed
+-- Looking for dlerror in dl
+-- Looking for dlerror in dl - found
+-- Performing Test HAVE_C_WNO_IMPLICIT_FALLTHROUGH
+-- Performing Test HAVE_C_WNO_IMPLICIT_FALLTHROUGH - Success
+-- Performing Test HAVE_C_WNO_UNDEF
+-- Performing Test HAVE_C_WNO_UNDEF - Success
+-- Performing Test HAVE_C_WNO_SIGN_COMPARE
+-- Performing Test HAVE_C_WNO_SIGN_COMPARE - Success
+-- Performing Test HAVE_C_WNO_STRICT_PROTOTYPES
+-- Performing Test HAVE_C_WNO_STRICT_PROTOTYPES - Success
+-- Performing Test HAVE_CXX_WCAST_FUNCTION_TYPE_STRICT
+-- Performing Test HAVE_CXX_WCAST_FUNCTION_TYPE_STRICT - Failed
+-- Using whitelist: opencv_core;opencv_features;opencv_geometry;opencv_imgcodecs;opencv_imgproc;opencv_python3;opencv_python_bindings_generator;opencv_video
+-- Module opencv_calib disabled by whitelist
+-- Module opencv_dnn disabled by whitelist
+-- Module opencv_highgui disabled by whitelist
+-- Module opencv_java_bindings_generator disabled by whitelist
+-- Module opencv_js_bindings_generator disabled by whitelist
+-- Module opencv_objc_bindings_generator disabled by whitelist
+-- Module opencv_objdetect disabled by whitelist
+-- Module opencv_photo disabled by whitelist
+-- Module opencv_ptcloud disabled by whitelist
+-- Module opencv_python_tests disabled by whitelist
+-- Module opencv_stereo disabled by whitelist
+-- Module opencv_stitching disabled by whitelist
+-- Module opencv_videoio disabled by whitelist
+-- Allocator metrics storage type: 'long long'
+-- Excluding from source files list: modules/imgproc/src/imgwarp.lasx.cpp
+-- Excluding from source files list: modules/imgproc/src/resize.lasx.cpp
+-- Performing Test HAVE_CXX_WNO_DEPRECATED_DECLARATIONS
+-- Performing Test HAVE_CXX_WNO_DEPRECATED_DECLARATIONS - Success
+-- Found 'misc' Python modules from /tmp/robust-opencv-5.1-clean/source/modules/python/package/extra_modules
+-- Found 'mat_wrapper;utils' Python modules from /tmp/robust-opencv-5.1-clean/source/modules/core/misc/python/package
+-- Performing Test HAVE_CXX_WNO_OVERLOADED_VIRTUAL
+-- Performing Test HAVE_CXX_WNO_OVERLOADED_VIRTUAL - Success
+-- Performing Test HAVE_CXX_WNO_UNUSED_PRIVATE_FIELD
+-- Performing Test HAVE_CXX_WNO_UNUSED_PRIVATE_FIELD - Failed
+-- Found 'misc' Python modules from /tmp/robust-opencv-5.1-clean/source/modules/python/package/extra_modules
+-- Found 'mat_wrapper;utils' Python modules from /tmp/robust-opencv-5.1-clean/source/modules/core/misc/python/package
+CMake Warning at cmake/OpenCVGenSetupVars.cmake:54 (message):
+  CONFIGURATION IS NOT SUPPORTED: validate setupvars script in install
+  directory
+Call Stack (most recent call first):
+  CMakeLists.txt:1167 (include)
+
+
+--
+-- General configuration for OpenCV 5.1.0 =====================================
+--   Version control:               5.1.0
+--
+--   Platform:
+--     Timestamp:                   2026-11-14T21:47:52Z
+--     Host:                        Linux 6.17.0-40-generic x86_64
+--     CMake:                       3.28.3
+--     CMake generator:             Unix Makefiles
+--     CMake build tool:            /usr/bin/gmake
+--     Configuration:               Release
+--     Algorithm Hint:              ALGO_HINT_ACCURATE
+--
+--   CPU/HW features:
+--     Baseline:                    SSE SSE2 SSE3
+--       requested:                 SSE3
+--     Dispatched code generation:  SSE4_1 SSE4_2 AVX FP16 AVX2 AVX_VNNI AVX512_SKX AVX512_CLX
+--       SSE4_1 (19 files):         + SSSE3 SSE4_1
+--       SSE4_2 (1 files):          + SSSE3 SSE4_1 POPCNT SSE4_2
+--       AVX (5 files):             + SSSE3 SSE4_1 POPCNT SSE4_2 AVX
+--       FP16 (0 files):            + SSSE3 SSE4_1 POPCNT SSE4_2 AVX FP16
+--       AVX2 (37 files):           + SSSE3 SSE4_1 POPCNT SSE4_2 AVX FP16 AVX2 FMA3
+--       AVX_VNNI (0 files):        + SSSE3 SSE4_1 POPCNT SSE4_2 AVX FP16 AVX2 FMA3 AVX_VNNI
+--       AVX512_SKX (16 files):     + SSSE3 SSE4_1 POPCNT SSE4_2 AVX FP16 AVX2 FMA3 AVX_512F AVX512_COMMON AVX512_SKX
+--       AVX512_CLX (0 files):      + SSSE3 SSE4_1 POPCNT SSE4_2 AVX FP16 AVX2 FMA3 AVX_512F AVX512_COMMON AVX512_SKX AVX512_CLX
+--
+--   C/C++:
+--     Built as dynamic libs?:      NO
+--     C++ standard:                17
+--     C++ Compiler:                /usr/bin/c++  (ver 13.3.0)
+--     C++ flags (Release):         -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wundef -Winit-self -Wpointer-arith -Wshadow -Wsign-promo -Wuninitialized -Wsuggest-override -Wno-delete-non-virtual-dtor -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections  -msse3 -fvisibility=hidden -fvisibility-inlines-hidden -O3 -DNDEBUG  -DNDEBUG
+--     C++ flags (Debug):           -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wundef -Winit-self -Wpointer-arith -Wshadow -Wsign-promo -Wuninitialized -Wsuggest-override -Wno-delete-non-virtual-dtor -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections  -msse3 -fvisibility=hidden -fvisibility-inlines-hidden -g  -O0 -DDEBUG -D_DEBUG
+--     C Compiler:                  /usr/bin/cc
+--     C flags (Release):           -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections  -msse3 -fvisibility=hidden -O3 -DNDEBUG  -DNDEBUG
+--     C flags (Debug):             -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections  -msse3 -fvisibility=hidden -g  -O0 -DDEBUG -D_DEBUG
+--     Linker flags (Release):      -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined
+--     Linker flags (Debug):        -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined
+--     ccache:                      NO
+--     Precompiled headers:         NO
+--     Extra dependencies:          /usr/lib/x86_64-linux-gnu/liblapack.so /usr/lib/x86_64-linux-gnu/libblas.so /usr/lib/x86_64-linux-gnu/libjpeg.so /usr/lib/x86_64-linux-gnu/libwebp.so /usr/lib/x86_64-linux-gnu/libwebpmux.so /usr/lib/x86_64-linux-gnu/libwebpdemux.so /usr/lib/x86_64-linux-gnu/libpng.so /usr/lib/x86_64-linux-gnu/libtiff.so openjp2 /usr/lib/x86_64-linux-gnu/libz.so dl m pthread rt
+--     3rdparty dependencies:       ittnotify libharfbuzz
+--
+--   OpenCV modules:
+--     To be built:                 core features flann geometry imgcodecs imgproc python3 video
+--     Disabled:                    world
+--     Disabled by dependency:      calib dnn highgui java_bindings_generator js_bindings_generator objc_bindings_generator objdetect photo ptcloud python_tests stereo stitching videoio
+--     Unavailable:                 java ts
+--     Applications:                apps
+--     Documentation:               NO
+--     Non-free algorithms:         NO
+--
+--   GUI:
+--     Built-in fonts:              sans
+--
+--   Media I/O:
+--     ZLib:                        /usr/lib/x86_64-linux-gnu/libz.so (ver 1.3)
+--     JPEG:                        /usr/lib/x86_64-linux-gnu/libjpeg.so (ver 2.1.5-80)
+--     WEBP:                        /usr/lib/x86_64-linux-gnu/libwebp.so (ver decoder: 0x0209, encoder: 0x020f, demux: 0x0107)
+--     AVIF:                        NO
+--     PNG:                         /usr/lib/x86_64-linux-gnu/libpng.so (ver 1.6.43)
+--       Metadata Support:          EXIF XMP ICC
+--     TIFF:                        /usr/lib/x86_64-linux-gnu/libtiff.so (ver 42 / 4.5.1)
+--     JPEG 2000:                   OpenJPEG (ver 2.5.0)
+--     GIF:                         YES
+--     HDR:                         YES
+--     SUNRASTER:                   YES
+--     PXM:                         YES
+--     PFM:                         YES
+--
+--   Video I/O:
+--     v4l/v4l2:                    YES (linux/videodev2.h)
+--     Orbbec:                      YES
+--
+--   Parallel framework:            pthreads
+--
+--   Trace:                         YES (with Intel ITT(3.25.4))
+--
+--   Other third-party libraries:
+--     HarfBuzz:                    build (14.2.1)
+--     Intel IPP:                   NO
+--     VA:                          NO
+--     Lapack:                      YES (LAPACK/Generic /usr/lib/x86_64-linux-gnu/liblapack.so /usr/lib/x86_64-linux-gnu/libblas.so)
+--     Eigen:                       YES (ver 3.4.0)
+--     Custom HAL:                  NO
+--     Protobuf:                    build (3.19.1)
+--     Flatbuffers:                 builtin/3rdparty (25.9.23)
+--
+--   ONNX Runtime:                  NO
+--
+--   Python 3:
+--     Interpreter:                 /tmp/robust-align-clean-py314/bin/python (ver 3.14.3)
+--     Libraries:                   /home/spmallick/.local/share/uv/python/cpython-3.14.3-linux-x86_64-gnu/lib/libpython3.14.so (ver 3.14.3)
+--     Limited API:                 NO
+--     numpy:                       /home/spmallick/.venvs/cv-torch/lib/python3.14/site-packages/numpy/_core/include (ver 2.4.2)
+--     install path:                /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/python-3.14
+--
+--   Python (for build):            /tmp/robust-align-clean-py314/bin/python
+--
+--   Install to:                    /tmp/robust-opencv-5.1-clean/install
+-- -----------------------------------------------------------------
+--
+-- Configuring done (18.5s)
+-- Generating done (0.1s)
+-- Build files have been written to: /tmp/robust-opencv-5.1-clean/build
+[  0%] Generate files for Python bindings and documentation
+[  0%] Built target opencv_highgui_plugins
+[  0%] Building C object 3rdparty/ittnotify/CMakeFiles/ittnotify.dir/src/ittnotify/ittnotify_static.c.o
+[  0%] Built target opencv_dnn_plugins
+[  0%] Built target opencv_videoio_plugins
+[  0%] Building C object 3rdparty/ittnotify/CMakeFiles/ittnotify.dir/src/ittnotify/jitprofiling.c.o
+[  0%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-blob.cc.o
+[  1%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/OT/Var/VARC/VARC.cc.o
+[  1%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-common.cc.o
+[  1%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-buffer.cc.o
+[  1%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-draw.cc.o
+[  2%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-face-builder.cc.o
+[  2%] Built target gen_opencv_python_source
+[  2%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-face.cc.o
+[  2%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-font.cc.o
+[  2%] Linking C static library ../lib/libittnotify.a
+[  2%] Built target ittnotify
+[  2%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-map.cc.o
+[  2%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-number.cc.o
+[  3%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-ot-cff1-table.cc.o
+[  3%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-ot-cff2-table.cc.o
+[  3%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-ot-color.cc.o
+[  3%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-ot-face.cc.o
+[  3%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-ot-font.cc.o
+[  4%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-ot-layout.cc.o
+[  4%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-ot-map.cc.o
+[  4%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-ot-metrics.cc.o
+[  4%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-ot-shape-fallback.cc.o
+[  4%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-ot-shape-normalize.cc.o
+[  5%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-ot-shape.cc.o
+[  5%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-ot-shaper-arabic.cc.o
+[  5%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-ot-shaper-default.cc.o
+[  5%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-ot-shaper-hangul.cc.o
+[  6%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-ot-shaper-hebrew.cc.o
+[  6%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-ot-shaper-indic-table.cc.o
+[  6%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-ot-shaper-indic.cc.o
+[  6%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-ot-shaper-khmer.cc.o
+[  6%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-ot-shaper-myanmar.cc.o
+[  7%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-ot-shaper-syllabic.cc.o
+[  7%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-ot-shaper-thai.cc.o
+[  7%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-ot-shaper-use.cc.o
+[  7%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-ot-shaper-vowel-constraints.cc.o
+[  7%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-ot-tag.cc.o
+[  8%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-ot-var.cc.o
+[  8%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-outline.cc.o
+[  8%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-paint-bounded.cc.o
+[  8%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-paint-extents.cc.o
+[  8%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-paint.cc.o
+[  9%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-raster-draw.cc.o
+[  9%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-raster-image.cc.o
+[  9%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-raster-paint.cc.o
+[  9%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-set.cc.o
+[  9%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-shape-plan.cc.o
+[ 10%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-shape.cc.o
+[ 10%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-shaper.cc.o
+[ 10%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-static.cc.o
+[ 10%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-ucd.cc.o
+[ 12%] Building CXX object 3rdparty/harfbuzz/CMakeFiles/libharfbuzz.dir/src/hb-unicode.cc.o
+[ 12%] Processing OpenCL kernels (core)
+[ 12%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/algorithm.cpp.o
+[ 12%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/alloc.cpp.o
+[ 12%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/arithm.cpp.o
+[ 13%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/arithm.dispatch.cpp.o
+[ 13%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/arithm_expr.cpp.o
+[ 13%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/async.cpp.o
+[ 13%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/batch_distance.cpp.o
+[ 14%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/bindings_utils.cpp.o
+[ 14%] Linking CXX static library ../lib/liblibharfbuzz.a
+[ 14%] Built target libharfbuzz
+[ 14%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/broadcast.cpp.o
+[ 14%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/buffer_area.cpp.o
+[ 14%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/channels.cpp.o
+[ 14%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/check.cpp.o
+[ 15%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/command_line_parser.cpp.o
+[ 15%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/conjugate_gradient.cpp.o
+[ 15%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/convert.dispatch.cpp.o
+[ 15%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/convert_scale.dispatch.cpp.o
+[ 15%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/copy.cpp.o
+[ 16%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/count_non_zero.dispatch.cpp.o
+[ 16%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/cuda_gpu_mat.cpp.o
+[ 16%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/cuda_gpu_mat_nd.cpp.o
+[ 16%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/cuda_host_mem.cpp.o
+[ 16%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/cuda_info.cpp.o
+/tmp/robust-opencv-5.1-clean/source/modules/core/src/cuda_gpu_mat.cpp: In member function ‘void cv::cuda::GpuMat::release()’:
+/tmp/robust-opencv-5.1-clean/source/modules/core/src/cuda_gpu_mat.cpp:439:33: warning: ‘this’ pointer is null [-Wnonnull]
+  439 |         defaultAllocator()->free(this);
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~
+In member function ‘void cv::cuda::GpuMat::release()’,
+    inlined from ‘cv::cuda::GpuMat::~GpuMat()’ at /tmp/robust-opencv-5.1-clean/source/modules/core/include/opencv2/core/cuda.inl.hpp:126:12,
+    inlined from ‘cv::cuda::GpuMat& cv::cuda::GpuMat::operator=(const cv::cuda::GpuMat&)’ at /tmp/robust-opencv-5.1-clean/source/modules/core/include/opencv2/core/cuda.inl.hpp:136:5,
+    inlined from ‘cv::cuda::GpuMat& cv::cuda::GpuMat::operator=(const cv::cuda::GpuMat&)’ at /tmp/robust-opencv-5.1-clean/source/modules/core/include/opencv2/core/cuda.inl.hpp:130:9,
+    inlined from ‘void {anonymous}::createContinuousImpl(int, int, int, ObjType&) [with ObjType = cv::cuda::GpuMat]’ at /tmp/robust-opencv-5.1-clean/source/modules/core/src/cuda_gpu_mat.cpp:266:13,
+    inlined from ‘void cv::cuda::createContinuous(int, int, int, cv::OutputArray)’ at /tmp/robust-opencv-5.1-clean/source/modules/core/src/cuda_gpu_mat.cpp:279:31:
+/tmp/robust-opencv-5.1-clean/source/modules/core/src/cuda_gpu_mat.cpp:439:33: warning: ‘this’ pointer is null [-Wnonnull]
+  439 |         defaultAllocator()->free(this);
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~
+In member function ‘void cv::cuda::GpuMat::release()’,
+    inlined from ‘cv::cuda::GpuMat::~GpuMat()’ at /tmp/robust-opencv-5.1-clean/source/modules/core/include/opencv2/core/cuda.inl.hpp:126:12,
+    inlined from ‘void {anonymous}::createContinuousImpl(int, int, int, ObjType&) [with ObjType = cv::cuda::GpuMat]’ at /tmp/robust-opencv-5.1-clean/source/modules/core/src/cuda_gpu_mat.cpp:266:13,
+    inlined from ‘void cv::cuda::createContinuous(int, int, int, cv::OutputArray)’ at /tmp/robust-opencv-5.1-clean/source/modules/core/src/cuda_gpu_mat.cpp:279:31:
+/tmp/robust-opencv-5.1-clean/source/modules/core/src/cuda_gpu_mat.cpp:439:33: warning: ‘this’ pointer is null [-Wnonnull]
+  439 |         defaultAllocator()->free(this);
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~
+[ 17%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/cuda_stream.cpp.o
+[ 17%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/cuda_umat.cpp.o
+[ 17%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/directx.cpp.o
+[ 17%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/downhill_simplex.cpp.o
+[ 17%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/dxt.cpp.o
+[ 18%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/gl_core_3_1.cpp.o
+[ 18%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/glob.cpp.o
+[ 18%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/hal_internal.cpp.o
+[ 18%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/has_non_zero.dispatch.cpp.o
+[ 19%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/kmeans.cpp.o
+[ 19%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/lapack.cpp.o
+[ 19%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/lda.cpp.o
+[ 19%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/linear_assignment.cpp.o
+[ 19%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/logger.cpp.o
+[ 20%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/lpsolver.cpp.o
+[ 20%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/lut.cpp.o
+[ 20%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/lut.dispatch.cpp.o
+[ 20%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/math.dispatch.cpp.o
+[ 20%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/mathfuncs.cpp.o
+[ 21%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/mathfuncs_core.dispatch.cpp.o
+[ 21%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/matmul.dispatch.cpp.o
+[ 21%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/matrix.cpp.o
+[ 21%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/matrix_decomp.cpp.o
+[ 21%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/matrix_expressions.cpp.o
+[ 23%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/matrix_iterator.cpp.o
+[ 23%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/matrix_operations.cpp.o
+[ 23%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/matrix_sparse.cpp.o
+[ 23%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/matrix_transform.cpp.o
+[ 23%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/matrix_wrap.cpp.o
+[ 24%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/mean.dispatch.cpp.o
+[ 24%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/merge.dispatch.cpp.o
+[ 24%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/minmax.dispatch.cpp.o
+[ 24%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/nan_mask.dispatch.cpp.o
+[ 25%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/nd_copy.cpp.o
+[ 25%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/norm.dispatch.cpp.o
+[ 25%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/ocl.cpp.o
+[ 25%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/opencl/runtime/opencl_clblas.cpp.o
+[ 25%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/opencl/runtime/opencl_clfft.cpp.o
+[ 26%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/opencl/runtime/opencl_core.cpp.o
+[ 26%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/opengl.cpp.o
+[ 26%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/out.cpp.o
+[ 26%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/parallel/parallel.cpp.o
+[ 26%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/parallel.cpp.o
+[ 27%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/parallel/parallel_openmp.cpp.o
+[ 27%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/parallel/parallel_tbb.cpp.o
+[ 27%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/parallel_impl.cpp.o
+[ 27%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/pca.cpp.o
+[ 27%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/persistence.cpp.o
+[ 28%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/persistence_base64_encoding.cpp.o
+[ 28%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/persistence_json.cpp.o
+[ 28%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/persistence_types.cpp.o
+[ 28%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/persistence_xml.cpp.o
+[ 28%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/persistence_yml.cpp.o
+[ 29%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/rand.cpp.o
+[ 29%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/reduce.dispatch.cpp.o
+[ 29%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/reduce_nd.cpp.o
+[ 29%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/shape_ops.cpp.o
+[ 30%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/softfloat.cpp.o
+[ 30%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/split.dispatch.cpp.o
+[ 30%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/stat.dispatch.cpp.o
+[ 30%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/stl.cpp.o
+[ 30%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/sum.dispatch.cpp.o
+[ 31%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/system.cpp.o
+[ 31%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/tables.cpp.o
+[ 31%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/trace.cpp.o
+[ 31%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/types.cpp.o
+[ 31%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/umatrix.cpp.o
+[ 32%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/utils/datafile.cpp.o
+[ 32%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/utils/filesystem.cpp.o
+[ 32%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/utils/logtagconfigparser.cpp.o
+[ 32%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/utils/logtagmanager.cpp.o
+[ 32%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/utils/samples.cpp.o
+[ 34%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/va_intel.cpp.o
+[ 34%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/opencl_kernels_core.cpp.o
+[ 34%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/arithm.sse4_1.cpp.o
+[ 34%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/math.sse4_1.cpp.o
+[ 34%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/matmul.sse4_1.cpp.o
+[ 35%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/minmax.sse4_1.cpp.o
+[ 35%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/norm.sse4_1.cpp.o
+[ 35%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/stat.sse4_2.cpp.o
+[ 35%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/mathfuncs_core.avx.cpp.o
+[ 35%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/norm.avx.cpp.o
+[ 36%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/transpose.avx.cpp.o
+[ 36%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/mathfuncs_core.avx2.cpp.o
+[ 36%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/stat.avx2.cpp.o
+[ 36%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/arithm.avx2.cpp.o
+[ 37%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/math.avx2.cpp.o
+[ 37%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/convert.avx2.cpp.o
+[ 37%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/convert_scale.avx2.cpp.o
+[ 37%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/count_non_zero.avx2.cpp.o
+[ 37%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/has_non_zero.avx2.cpp.o
+[ 38%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/matmul.avx2.cpp.o
+[ 38%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/mean.avx2.cpp.o
+[ 38%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/merge.avx2.cpp.o
+[ 38%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/minmax.avx2.cpp.o
+[ 38%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/nan_mask.avx2.cpp.o
+[ 39%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/split.avx2.cpp.o
+[ 39%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/sum.avx2.cpp.o
+[ 39%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/reduce.avx2.cpp.o
+[ 39%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/norm.avx2.cpp.o
+[ 39%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/transpose.avx2.cpp.o
+[ 40%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/dxt.avx2.cpp.o
+[ 40%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/stat.avx512_skx.cpp.o
+[ 40%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/count_non_zero.avx512_skx.cpp.o
+[ 40%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/matmul.avx512_skx.cpp.o
+[ 40%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/mean.avx512_skx.cpp.o
+[ 41%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/minmax.avx512_skx.cpp.o
+[ 41%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/sum.avx512_skx.cpp.o
+[ 41%] Building CXX object modules/core/CMakeFiles/opencv_core.dir/norm.avx512_skx.cpp.o
+[ 41%] Linking CXX static library ../../lib/libopencv_core.a
+[ 41%] Built target opencv_core
+[ 41%] Building CXX object apps/version/CMakeFiles/opencv_version.dir/opencv_version.cpp.o
+[ 42%] Building CXX object modules/flann/CMakeFiles/opencv_flann.dir/src/miniflann.cpp.o
+[ 42%] Building CXX object modules/flann/CMakeFiles/opencv_flann.dir/src/flann.cpp.o
+[ 43%] Linking CXX executable ../../bin/opencv_version
+[ 43%] Built target opencv_version
+[ 43%] Linking CXX static library ../../lib/libopencv_flann.a
+[ 43%] Built target opencv_flann
+[ 43%] Processing OpenCL kernels (geometry)
+[ 45%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/calibration_base.cpp.o
+[ 45%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/fisheye.cpp.o
+[ 45%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/ap3p.cpp.o
+[ 45%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/convhull.cpp.o
+[ 45%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/approx.cpp.o
+[ 45%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/epnp.cpp.o
+[ 45%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/five-point.cpp.o
+[ 46%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/fundam.cpp.o
+[ 46%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/geometry.cpp.o
+[ 46%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/homography_decomp.cpp.o
+[ 46%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/intersection.cpp.o
+[ 46%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/ippe.cpp.o
+[ 47%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/levmarq.cpp.o
+[ 47%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/linefit.cpp.o
+[ 47%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/main.cpp.o
+[ 47%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/matchcontours.cpp.o
+[ 48%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/min_enclosing_convex_polygon.cpp.o
+[ 48%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/min_enclosing_triangle.cpp.o
+[ 48%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/moments.cpp.o
+[ 48%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/mst.cpp.o
+[ 48%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/p3p.cpp.o
+[ 49%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/pinhole.cpp.o
+[ 49%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/polynom_solver.cpp.o
+[ 49%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/ptcloud/normal_estimation.cpp.o
+[ 49%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/ptcloud/ptcloud_utils.cpp.o
+[ 49%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/ptcloud/region_growing_3d.cpp.o
+[ 50%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/ptcloud/sac_segmentation.cpp.o
+[ 50%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/ptcloud/sampling.cpp.o
+[ 50%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/ptsetreg.cpp.o
+[ 50%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/rho.cpp.o
+[ 50%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/rotcalipers.cpp.o
+[ 51%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/shapedescr.cpp.o
+[ 51%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/solvepnp.cpp.o
+[ 51%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/sqpnp.cpp.o
+[ 51%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/subdivision2d.cpp.o
+[ 51%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/triangulate.cpp.o
+[ 52%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/usac/bundle.cpp.o
+[ 52%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/usac/degeneracy.cpp.o
+[ 52%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/usac/dls_solver.cpp.o
+[ 52%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/usac/essential_solver.cpp.o
+[ 52%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/usac/estimator.cpp.o
+[ 53%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/usac/fundamental_solver.cpp.o
+[ 53%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/usac/gamma_values.cpp.o
+[ 53%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/usac/homography_solver.cpp.o
+[ 53%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/usac/local_optimization.cpp.o
+[ 54%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/usac/plane_solver.cpp.o
+[ 54%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/usac/pnp_solver.cpp.o
+[ 54%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/usac/ransac_solvers.cpp.o
+[ 54%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/usac/quality.cpp.o
+[ 54%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/usac/sampler.cpp.o
+[ 56%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/usac/sphere_solver.cpp.o
+[ 56%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/usac/termination.cpp.o
+[ 56%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/src/usac/utils.cpp.o
+[ 56%] Building CXX object modules/geometry/CMakeFiles/opencv_geometry.dir/opencl_kernels_geometry.cpp.o
+[ 56%] Linking CXX static library ../../lib/libopencv_geometry.a
+[ 56%] Built target opencv_geometry
+[ 56%] Processing OpenCL kernels (imgproc)
+[ 56%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/blend.cpp.o
+[ 57%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/clahe.cpp.o
+[ 58%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/alpha_composite.cpp.o
+[ 58%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/accum.dispatch.cpp.o
+[ 58%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/box_filter.dispatch.cpp.o
+[ 58%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/canny.cpp.o
+[ 58%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/accum.cpp.o
+[ 58%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/bilateral_filter.dispatch.cpp.o
+[ 58%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/color.cpp.o
+[ 58%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/color_hsv.dispatch.cpp.o
+[ 58%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/color_lab.cpp.o
+[ 59%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/color_oklab.cpp.o
+[ 59%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/color_rgb.dispatch.cpp.o
+[ 59%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/color_yuv.dispatch.cpp.o
+[ 59%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/colormap.cpp.o
+[ 59%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/connectedcomponents.cpp.o
+[ 60%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/contours_approx.cpp.o
+[ 60%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/contours_common.cpp.o
+[ 60%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/contours_link.cpp.o
+[ 60%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/contours_new.cpp.o
+[ 60%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/contours_truco.cpp.o
+[ 61%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/corner.cpp.o
+[ 61%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/cornersubpix.cpp.o
+[ 61%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/demosaicing.cpp.o
+[ 61%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/deriv.cpp.o
+[ 61%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/distransform.cpp.o
+[ 62%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/drawing.cpp.o
+[ 62%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/drawing_text.cpp.o
+[ 62%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/emd_new.cpp.o
+[ 62%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/equalize_hist.dispatch.cpp.o
+[ 62%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/filter.dispatch.cpp.o
+[ 63%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/fisheye.cpp.o
+[ 63%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/floodfill.cpp.o
+[ 63%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/gabor.cpp.o
+[ 63%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/generalized_hough.cpp.o
+[ 64%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/grabcut.cpp.o
+[ 64%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/histogram.cpp.o
+[ 64%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/hough.cpp.o
+[ 64%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/imgwarp.cpp.o
+[ 64%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/lsd.cpp.o
+[ 65%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/main.cpp.o
+[ 65%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/median_blur.dispatch.cpp.o
+[ 65%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/morph.dispatch.cpp.o
+[ 65%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/phasecorr.cpp.o
+[ 65%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/phasecorr_iterative.cpp.o
+[ 67%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/pyramids.cpp.o
+[ 67%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/resize.cpp.o
+[ 67%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/samplers.cpp.o
+[ 67%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/segmentation.cpp.o
+[ 67%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/smooth.dispatch.cpp.o
+[ 68%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/spatialgradient.cpp.o
+[ 68%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/stackblur.cpp.o
+[ 68%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/sumpixels.dispatch.cpp.o
+[ 68%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/tables.cpp.o
+[ 68%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/templmatch.cpp.o
+[ 69%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/thresh.cpp.o
+[ 69%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/undistort.dispatch.cpp.o
+[ 69%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/utils.cpp.o
+[ 69%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/opencl_kernels_imgproc.cpp.o
+[ 69%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/imgwarp.sse4_1.cpp.o
+[ 70%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/resize.sse4_1.cpp.o
+[ 70%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/accum.sse4_1.cpp.o
+[ 70%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/box_filter.sse4_1.cpp.o
+[ 70%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/filter.sse4_1.cpp.o
+[ 71%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/color_hsv.sse4_1.cpp.o
+[ 71%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/color_rgb.sse4_1.cpp.o
+[ 71%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/color_yuv.sse4_1.cpp.o
+[ 71%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/median_blur.sse4_1.cpp.o
+[ 71%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/morph.sse4_1.cpp.o
+[ 72%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/smooth.sse4_1.cpp.o
+[ 72%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/warp_kernels.sse4_1.cpp.o
+[ 72%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/corner.avx.cpp.o
+[ 72%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/accum.avx.cpp.o
+[ 72%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/imgwarp.avx2.cpp.o
+[ 73%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/resize.avx2.cpp.o
+[ 73%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/accum.avx2.cpp.o
+[ 73%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/bilateral_filter.avx2.cpp.o
+[ 73%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/box_filter.avx2.cpp.o
+[ 73%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/filter.avx2.cpp.o
+[ 74%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/color_hsv.avx2.cpp.o
+[ 74%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/color_rgb.avx2.cpp.o
+[ 74%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/color_yuv.avx2.cpp.o
+[ 74%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/median_blur.avx2.cpp.o
+[ 74%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/morph.avx2.cpp.o
+[ 75%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/smooth.avx2.cpp.o
+[ 75%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/sumpixels.avx2.cpp.o
+[ 75%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/warp_kernels.avx2.cpp.o
+[ 75%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/undistort.avx2.cpp.o
+[ 76%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/bilateral_filter.avx512_skx.cpp.o
+[ 76%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/box_filter.avx512_skx.cpp.o
+[ 76%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/color_hsv.avx512_skx.cpp.o
+[ 76%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/color_rgb.avx512_skx.cpp.o
+[ 76%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/color_yuv.avx512_skx.cpp.o
+[ 78%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/median_blur.avx512_skx.cpp.o
+[ 78%] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/sumpixels.avx512_skx.cpp.o
+[ 78%] Linking CXX static library ../../lib/libopencv_imgproc.a
+[ 78%] Built target opencv_imgproc
+[ 79%] Processing OpenCL kernels (features)
+[ 79%] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_bmp.cpp.o
+[ 79%] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_avif.cpp.o
+[ 79%] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_base.cpp.o
+[ 79%] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/utils.cpp.o
+[ 80%] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/loadsave.cpp.o
+[ 81%] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_exr.cpp.o
+[ 81%] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_gdal.cpp.o
+[ 81%] Building CXX object modules/features/CMakeFiles/opencv_features.dir/src/affine_feature.cpp.o
+[ 81%] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_gdcm.cpp.o
+[ 81%] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_gif.cpp.o
+[ 81%] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_hdr.cpp.o
+[ 82%] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_jpeg.cpp.o
+[ 82%] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_jpeg2000.cpp.o
+[ 82%] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_jpeg2000_openjpeg.cpp.o
+[ 82%] Building CXX object modules/features/CMakeFiles/opencv_features.dir/src/annoy.cpp.o
+[ 82%] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_jpegxl.cpp.o
+[ 83%] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_pam.cpp.o
+[ 83%] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_pfm.cpp.o
+[ 83%] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_png.cpp.o
+[ 83%] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_pxm.cpp.o
+[ 83%] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_spng.cpp.o
+[ 84%] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_sunras.cpp.o
+[ 84%] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_tiff.cpp.o
+[ 84%] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_webp.cpp.o
+[ 84%] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/bitstrm.cpp.o
+[ 84%] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/rgbe.cpp.o
+[ 85%] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/exif.cpp.o
+[ 85%] Building CXX object modules/features/CMakeFiles/opencv_features.dir/src/blobdetector.cpp.o
+[ 85%] Building CXX object modules/features/CMakeFiles/opencv_features.dir/src/disk.cpp.o
+[ 86%] Building CXX object modules/features/CMakeFiles/opencv_features.dir/src/draw.cpp.o
+[ 86%] Building CXX object modules/features/CMakeFiles/opencv_features.dir/src/dynamic.cpp.o
+[ 86%] Building CXX object modules/features/CMakeFiles/opencv_features.dir/src/evaluation.cpp.o
+[ 86%] Building CXX object modules/features/CMakeFiles/opencv_features.dir/src/fast.cpp.o
+[ 86%] Building CXX object modules/features/CMakeFiles/opencv_features.dir/src/fast_score.cpp.o
+[ 87%] Building CXX object modules/features/CMakeFiles/opencv_features.dir/src/feature2d.cpp.o
+[ 87%] Building CXX object modules/features/CMakeFiles/opencv_features.dir/src/feature2d_aliked.cpp.o
+[ 87%] Building CXX object modules/features/CMakeFiles/opencv_features.dir/src/feature2d_xfeat.cpp.o
+[ 87%] Linking CXX static library ../../lib/libopencv_imgcodecs.a
+[ 87%] Building CXX object modules/features/CMakeFiles/opencv_features.dir/src/featureselect.cpp.o
+[ 87%] Built target opencv_imgcodecs
+[ 87%] Building CXX object modules/features/CMakeFiles/opencv_features.dir/src/gftt.cpp.o
+[ 89%] Building CXX object modules/features/CMakeFiles/opencv_features.dir/src/keypoint.cpp.o
+[ 89%] Building CXX object modules/features/CMakeFiles/opencv_features.dir/src/main.cpp.o
+[ 89%] Building CXX object modules/features/CMakeFiles/opencv_features.dir/src/matchers.cpp.o
+[ 89%] Building CXX object modules/features/CMakeFiles/opencv_features.dir/src/matchers_lightglue.cpp.o
+[ 89%] Building CXX object modules/features/CMakeFiles/opencv_features.dir/src/mser.cpp.o
+[ 90%] Building CXX object modules/features/CMakeFiles/opencv_features.dir/src/orb.cpp.o
+[ 90%] Building CXX object modules/features/CMakeFiles/opencv_features.dir/src/sift.dispatch.cpp.o
+[ 90%] Building CXX object modules/features/CMakeFiles/opencv_features.dir/opencl_kernels_features.cpp.o
+[ 90%] Building CXX object modules/features/CMakeFiles/opencv_features.dir/sift.sse4_1.cpp.o
+[ 91%] Building CXX object modules/features/CMakeFiles/opencv_features.dir/src/fast.avx2.cpp.o
+[ 91%] Building CXX object modules/features/CMakeFiles/opencv_features.dir/sift.avx2.cpp.o
+[ 91%] Building CXX object modules/features/CMakeFiles/opencv_features.dir/sift.avx512_skx.cpp.o
+[ 91%] Linking CXX static library ../../lib/libopencv_features.a
+[ 91%] Built target opencv_features
+[ 91%] Processing OpenCL kernels (video)
+[ 91%] Building CXX object modules/video/CMakeFiles/opencv_video.dir/src/camshift.cpp.o
+[ 91%] Building CXX object modules/video/CMakeFiles/opencv_video.dir/src/ecc.cpp.o
+[ 92%] Building CXX object modules/video/CMakeFiles/opencv_video.dir/src/lkpyramid.cpp.o
+[ 92%] Building CXX object modules/video/CMakeFiles/opencv_video.dir/src/bgfg_KNN.cpp.o
+[ 93%] Building CXX object modules/video/CMakeFiles/opencv_video.dir/src/dis_flow.cpp.o
+[ 93%] Building CXX object modules/video/CMakeFiles/opencv_video.dir/src/bgfg_gaussmix2.cpp.o
+[ 93%] Building CXX object modules/video/CMakeFiles/opencv_video.dir/src/eccms.cpp.o
+[ 93%] Building CXX object modules/video/CMakeFiles/opencv_video.dir/src/kalman.cpp.o
+[ 93%] Building CXX object modules/video/CMakeFiles/opencv_video.dir/src/lkpyramid.dispatch.cpp.o
+[ 93%] Building CXX object modules/video/CMakeFiles/opencv_video.dir/src/optflowgf.cpp.o
+[ 93%] Building CXX object modules/video/CMakeFiles/opencv_video.dir/src/optical_flow_io.cpp.o
+[ 93%] Building CXX object modules/video/CMakeFiles/opencv_video.dir/src/tracking/detail/tracker_feature.cpp.o
+[ 94%] Building CXX object modules/video/CMakeFiles/opencv_video.dir/src/tracking/detail/tracker_feature_set.cpp.o
+[ 94%] Building CXX object modules/video/CMakeFiles/opencv_video.dir/src/tracking/detail/tracker_mil_model.cpp.o
+[ 94%] Building CXX object modules/video/CMakeFiles/opencv_video.dir/src/tracking/detail/tracker_mil_state.cpp.o
+[ 94%] Building CXX object modules/video/CMakeFiles/opencv_video.dir/src/tracking/detail/tracker_model.cpp.o
+[ 94%] Building CXX object modules/video/CMakeFiles/opencv_video.dir/src/tracking/detail/tracker_sampler.cpp.o
+[ 95%] Building CXX object modules/video/CMakeFiles/opencv_video.dir/src/tracking/detail/tracker_sampler_algorithm.cpp.o
+[ 95%] Building CXX object modules/video/CMakeFiles/opencv_video.dir/src/tracking/detail/tracker_state_estimator.cpp.o
+[ 95%] Building CXX object modules/video/CMakeFiles/opencv_video.dir/src/tracking/detail/tracking_feature.cpp.o
+[ 95%] Building CXX object modules/video/CMakeFiles/opencv_video.dir/src/tracking/detail/tracking_online_mil.cpp.o
+[ 95%] Building CXX object modules/video/CMakeFiles/opencv_video.dir/src/tracking/tracker.cpp.o
+[ 96%] Building CXX object modules/video/CMakeFiles/opencv_video.dir/src/tracking/tracker_dasiamrpn.cpp.o
+[ 96%] Building CXX object modules/video/CMakeFiles/opencv_video.dir/src/tracking/tracker_mil.cpp.o
+[ 96%] Building CXX object modules/video/CMakeFiles/opencv_video.dir/src/tracking/tracker_nano.cpp.o
+[ 96%] Building CXX object modules/video/CMakeFiles/opencv_video.dir/src/tracking/tracker_vit.cpp.o
+[ 96%] Building CXX object modules/video/CMakeFiles/opencv_video.dir/src/variational_refinement.cpp.o
+[ 97%] Building CXX object modules/video/CMakeFiles/opencv_video.dir/opencl_kernels_video.cpp.o
+[ 97%] Building CXX object modules/video/CMakeFiles/opencv_video.dir/lkpyramid.sse4_1.cpp.o
+[ 97%] Building CXX object modules/video/CMakeFiles/opencv_video.dir/lkpyramid.avx2.cpp.o
+[ 97%] Building CXX object modules/video/CMakeFiles/opencv_video.dir/lkpyramid.avx512_skx.cpp.o
+[ 98%] Linking CXX static library ../../lib/libopencv_video.a
+[ 98%] Built target opencv_video
+[ 98%] Building CXX object modules/python3/CMakeFiles/opencv_python3.dir/__/src2/cv2.cpp.o
+[100%] Building CXX object modules/python3/CMakeFiles/opencv_python3.dir/__/src2/cv2_numpy.cpp.o
+[100%] Building CXX object modules/python3/CMakeFiles/opencv_python3.dir/__/src2/cv2_convert.cpp.o
+[100%] Building CXX object modules/python3/CMakeFiles/opencv_python3.dir/__/src2/cv2_util.cpp.o
+[100%] Building CXX object modules/python3/CMakeFiles/opencv_python3.dir/__/src2/cv2_highgui.cpp.o
+[100%] Linking CXX shared module ../../lib/python3/cv2.cpython-314-x86_64-linux-gnu.so
+[100%] Built target opencv_python3
+-- Install configuration: "Release"
+-- Installing: /tmp/robust-opencv-5.1-clean/install/share/licenses/opencv5/dlpack-LICENSE
+-- Installing: /tmp/robust-opencv-5.1-clean/install/share/licenses/opencv5/flatbuffers-LICENSE.txt
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/cvconfig.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/opencv_modules.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/lib/cmake/opencv5/OpenCVModules.cmake
+-- Installing: /tmp/robust-opencv-5.1-clean/install/lib/cmake/opencv5/OpenCVModules-release.cmake
+-- Installing: /tmp/robust-opencv-5.1-clean/install/lib/cmake/opencv5/OpenCVConfig-version.cmake
+-- Installing: /tmp/robust-opencv-5.1-clean/install/lib/cmake/opencv5/OpenCVConfig.cmake
+-- Installing: /tmp/robust-opencv-5.1-clean/install/bin/setup_vars_opencv5.sh
+-- Installing: /tmp/robust-opencv-5.1-clean/install/share/opencv5/valgrind.supp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/share/opencv5/valgrind_3rdparty.supp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/lib/opencv5/3rdparty/liblibharfbuzz.a
+-- Installing: /tmp/robust-opencv-5.1-clean/install/share/licenses/opencv5/protobuf-LICENSE
+-- Installing: /tmp/robust-opencv-5.1-clean/install/share/licenses/opencv5/protobuf-README.md
+-- Installing: /tmp/robust-opencv-5.1-clean/install/lib/opencv5/3rdparty/libittnotify.a
+-- Installing: /tmp/robust-opencv-5.1-clean/install/share/licenses/opencv5/ittnotify-BSD-3-Clause.txt
+-- Installing: /tmp/robust-opencv-5.1-clean/install/share/licenses/opencv5/ittnotify-GPL-2.0-only.txt
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/opencv.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/lib/libopencv_core.a
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/affine.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/async.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/base.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/bindings_utils.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/bufferpool.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/check.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/core.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cuda.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cuda.inl.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cuda/block.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cuda/border_interpolate.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cuda/color.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cuda/common.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cuda/cuda_compat.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cuda/datamov_utils.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cuda/detail/color_detail.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cuda/detail/reduce.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cuda/detail/reduce_key_val.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cuda/detail/transform_detail.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cuda/detail/type_traits_detail.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cuda/detail/vec_distance_detail.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cuda/dynamic_smem.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cuda/emulation.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cuda/filters.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cuda/funcattrib.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cuda/functional.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cuda/limits.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cuda/reduce.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cuda/saturate_cast.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cuda/scan.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cuda/simd_functions.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cuda/transform.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cuda/type_traits.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cuda/utility.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cuda/vec_distance.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cuda/vec_math.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cuda/vec_traits.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cuda/warp.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cuda/warp_reduce.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cuda/warp_shuffle.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cuda_stream_accessor.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cuda_types.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cv_cpu_dispatch.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cv_cpu_helper.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cvdef.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cvstd.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cvstd.inl.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/cvstd_wrapper.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/detail/async_promise.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/detail/dispatch_helper.impl.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/detail/exception_ptr.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/directx.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/dualquaternion.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/dualquaternion.inl.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/eigen.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/exception.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/fast_math.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/fwddecl.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/hal/hal.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/hal/interface.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/hal/intrin.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/hal/intrin_avx.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/hal/intrin_avx512.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/hal/intrin_cpp.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/hal/intrin_forward.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/hal/intrin_lasx.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/hal/intrin_legacy_ops.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/hal/intrin_lsx.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/hal/intrin_math.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/hal/intrin_msa.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/hal/intrin_neon.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/hal/intrin_rvv071.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/hal/intrin_rvv_scalable.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/hal/intrin_sse.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/hal/intrin_sse_em.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/hal/intrin_vsx.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/hal/intrin_wasm.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/hal/msa_macros.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/hal/simd_utils.impl.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/mat.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/mat.inl.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/matx.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/matx.inl.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/neon_utils.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/ocl.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/ocl_genbase.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/opencl/ocl_defs.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/opencl/opencl_info.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/opencl/opencl_svm.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/opencl/runtime/autogenerated/opencl_clblas.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/opencl/runtime/autogenerated/opencl_clfft.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/opencl/runtime/autogenerated/opencl_core.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/opencl/runtime/autogenerated/opencl_core_wrappers.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/opencl/runtime/autogenerated/opencl_gl.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/opencl/runtime/autogenerated/opencl_gl_wrappers.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/opencl/runtime/opencl_clblas.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/opencl/runtime/opencl_clfft.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/opencl/runtime/opencl_core.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/opencl/runtime/opencl_core_wrappers.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/opencl/runtime/opencl_gl.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/opencl/runtime/opencl_gl_wrappers.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/opencl/runtime/opencl_svm_20.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/opencl/runtime/opencl_svm_definitions.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/opencl/runtime/opencl_svm_hsa_extension.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/opengl.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/operations.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/optim.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/parallel/backend/parallel_for.openmp.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/parallel/backend/parallel_for.tbb.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/parallel/parallel_backend.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/persistence.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/quaternion.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/quaternion.inl.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/saturate.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/simd_intrinsics.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/softfloat.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/traits.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/types.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/utility.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/utils/allocator_stats.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/utils/allocator_stats.impl.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/utils/filesystem.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/utils/fp_control_utils.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/utils/instrumentation.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/utils/logger.defines.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/utils/logger.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/utils/logtag.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/utils/tls.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/utils/trace.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/va_intel.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/version.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/core/vsx_utils.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/share/licenses/opencv5/SoftFloat-COPYING.txt
+-- Installing: /tmp/robust-opencv-5.1-clean/install/lib/libopencv_flann.a
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/flann.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/flann/all_indices.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/flann/allocator.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/flann/any.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/flann/autotuned_index.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/flann/composite_index.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/flann/config.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/flann/defines.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/flann/dist.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/flann/dummy.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/flann/dynamic_bitset.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/flann/flann.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/flann/flann_base.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/flann/general.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/flann/ground_truth.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/flann/heap.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/flann/hierarchical_clustering_index.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/flann/index_testing.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/flann/kdtree_index.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/flann/kdtree_single_index.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/flann/kmeans_index.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/flann/linear_index.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/flann/logger.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/flann/lsh_index.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/flann/lsh_table.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/flann/matrix.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/flann/miniflann.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/flann/nn_index.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/flann/object_factory.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/flann/params.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/flann/random.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/flann/result_set.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/flann/sampling.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/flann/saving.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/flann/simplex_downhill.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/flann/timer.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/lib/libopencv_geometry.a
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/geometry.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/geometry/2d.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/geometry/3d.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/geometry/detail/gcgraph.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/geometry/detail/optimizer.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/geometry/mst.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/geometry/segment.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/lib/libopencv_imgproc.a
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/imgproc.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/imgproc/bindings.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/imgproc/hal/hal.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/imgproc/hal/interface.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/imgproc/imgproc.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/share/licenses/opencv5/fonts-Rubik_OFL.txt
+-- Installing: /tmp/robust-opencv-5.1-clean/install/share/licenses/opencv5/harfbuzz-COPYING
+-- Installing: /tmp/robust-opencv-5.1-clean/install/lib/libopencv_features.a
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/features.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/features/features.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/features/hal/interface.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/features2d.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/share/licenses/opencv5/mscr-chi_table_LICENSE.txt
+-- Installing: /tmp/robust-opencv-5.1-clean/install/share/licenses/opencv5/annoylib-LICENSE
+-- Installing: /tmp/robust-opencv-5.1-clean/install/lib/libopencv_imgcodecs.a
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/imgcodecs.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/imgcodecs/imgcodecs.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/imgcodecs/ios.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/imgcodecs/macosx.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/lib/libopencv_video.a
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/video.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/video/background_segm.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/video/detail/tracking.detail.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/video/legacy/constants_c.h
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/video/tracking.hpp
+-- Installing: /tmp/robust-opencv-5.1-clean/install/include/opencv5/opencv2/video/video.hpp
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/__init__.py
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/load_config_py2.py
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/load_config_py3.py
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/config.py
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/misc/__init__.py
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/misc/version.py
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/mat_wrapper/__init__.py
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/utils/__init__.py
+-- Up-to-date: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/cuda
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/cuda/__init__.pyi
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/__init__.pyi
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/flann
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/flann/__init__.pyi
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/samples
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/samples/__init__.pyi
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/typing
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/typing/__init__.py
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/ipp
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/ipp/__init__.pyi
+-- Up-to-date: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/utils
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/utils/fs
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/utils/fs/__init__.pyi
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/utils/__init__.pyi
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/utils/logging
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/utils/logging/__init__.pyi
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/utils/nested
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/utils/nested/__init__.pyi
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/ocl
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/ocl/__init__.pyi
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/fisheye
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/fisheye/__init__.pyi
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/ogl
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/ogl/__init__.pyi
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/parallel
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/parallel/__init__.pyi
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/py.typed
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/detail
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/detail/__init__.pyi
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/Error
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/Error/__init__.pyi
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/instr
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/instr/__init__.pyi
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/python-3.14/cv2.cpython-314-x86_64-linux-gnu.so
+-- Set non-toolchain portion of runtime path of "/tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/python-3.14/cv2.cpython-314-x86_64-linux-gnu.so" to "/tmp/robust-opencv-5.1-clean/install/lib"
+-- Installing: /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/config-3.14.py
+-- Installing: /tmp/robust-opencv-5.1-clean/install/bin/opencv_version
+-- Set non-toolchain portion of runtime path of "/tmp/robust-opencv-5.1-clean/install/bin/opencv_version" to "/tmp/robust-opencv-5.1-clean/install/lib"
+OpenCV runtime: 5.1.0 /tmp/robust-align-clean-py314/lib/python3.14/site-packages/cv2/__init__.py

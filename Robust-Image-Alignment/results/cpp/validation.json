@@ -1,0 +1,87 @@
+{
+  "validated_on": "2026-11-19",
+  "opencv": "5.1.0",
+  "opencv_commit": "e4f78fbcf1a773fbed69e14500e8b734963eb585",
+  "onnxruntime": "1.24.3",
+  "neural_backend": "native_cpu",
+  "native_runtime_requires_python": false,
+  "onnxruntime_intra_op_threads": 4,
+  "onnxruntime_inter_op_threads": 1,
+  "platforms": [
+    {
+      "platform": "macos-arm64",
+      "os": "macOS 26.6.2",
+      "cpu": "Apple M5 Pro",
+      "compiler": "Apple Clang 21.0.0",
+      "build": "Release",
+      "cxx_standard": 17,
+      "strict_flags": [
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror"
+      ],
+      "ctest_passed": 10,
+      "ctest_total": 10,
+      "geometry_regressions_inside_ctest": 13,
+      "benchmark_rows": 180,
+      "synthetic_rows": 216,
+      "independent_evaluation_pairs": 8,
+      "evaluation_magsac_successes_3px": {
+        "sift": 6,
+        "aliked-nn": 6,
+        "lightglue": 7
+      },
+      "opencv_threads_requested": 1,
+      "opencv_threads_reported": 18
+    },
+    {
+      "platform": "linux-x64",
+      "os": "Ubuntu 24.04 / Linux 6.17.0-40-generic",
+      "cpu": "Intel Core i7-6850K",
+      "compiler": "GCC 13.3.0",
+      "build": "Release",
+      "cxx_standard": 17,
+      "strict_flags": [
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror"
+      ],
+      "ctest_passed": 10,
+      "ctest_total": 10,
+      "geometry_regressions_inside_ctest": 13,
+      "benchmark_rows": 180,
+      "synthetic_rows": 216,
+      "independent_evaluation_pairs": 8,
+      "evaluation_magsac_successes_3px": {
+        "sift": 6,
+        "aliked-nn": 6,
+        "lightglue": 7
+      },
+      "opencv_threads_requested": 1,
+      "opencv_threads_reported": 1
+    }
+  ],
+  "python_cpu_parity": {
+    "passed": true,
+    "geometry_cases": 5,
+    "real_pipelines": 12,
+    "all_acceptance_decisions_agree": true,
+    "minimum_feature_point_precision": 0.9991755976916735,
+    "minimum_feature_descriptor_precision": 0.9991755976916735,
+    "minimum_match_precision": 0.9989816700610998,
+    "minimum_match_recall": 1.0,
+    "evidence": "python_cpu_parity.json"
+  },
+  "export_validation": {
+    "comparisons": 132,
+    "max_abs_error": 0.00013446807861328125,
+    "tolerance": 0.0002,
+    "evidence": "../../cpp/models/export_validation.json"
+  },
+  "fresh_cmake_assets_verified": 35,
+  "extra_native_cli_checks": 7,
+  "cpu_accuracy_caveat": "graf_1_6 is accepted in both Python CPU and C++ CPU but has about 11.97 px independent error and fails the strict 3 px benchmark criterion; stored Python GPU error is about 1.76 px.",
+  "timing_scope": "Three trials per pair, ten pairs, six matcher/estimator combinations. Timing excludes disk IO, loading, warm-up, and visualization. These CPU timings are separate from the article GPU measurements."
+}

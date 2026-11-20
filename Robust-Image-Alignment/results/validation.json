@@ -1,0 +1,20 @@
+{
+  "checked_on": "2026-11-14",
+  "opencv_runtime": "5.1.0",
+  "fresh_source_build": "passed",
+  "fresh_source_geometry_cli_regressions": 13,
+  "main_environment_tests": 13,
+  "article_python_blocks_executed": 10,
+  "notebook_code_cells_executed": 18,
+  "notebook_errors": 0,
+  "cpu_cli_configurations_passed": 6,
+  "external_article_links_http_200": 16,
+  "learnopencv_cross_references": 5,
+  "real_evaluation_pairs": 8,
+  "real_evaluation_scenes": 2,
+  "validation_pairs": 2,
+  "timing_repeats_per_pair": 5,
+  "synthetic_estimator_trials": 216,
+  "article_sha256": "919e54fe322a52eda4e84aedb5d3ead34f98d8c4d3afd4fbc3f964bc458ec681",
+  "notebook_sha256": "87d78c737b4b67743e11d274c66a0988320bd020985ac0ff8d3704039bf3aada"
+}

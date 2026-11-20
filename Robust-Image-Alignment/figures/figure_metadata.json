@@ -1,0 +1,332 @@
+{
+  "opencv_version": "5.1.0",
+  "method": "ALIKED-n16 + LightGlue",
+  "device": "cuda",
+  "max_keypoints": 2048,
+  "resize": 1024,
+  "configuration": {
+    "reprojection_threshold": 3.0,
+    "confidence": 0.999,
+    "max_iterations": 10000,
+    "min_inliers": 12,
+    "min_inlier_ratio": 0.25,
+    "min_reference_coverage": 0.04,
+    "max_median_reprojection_error": 3.0,
+    "min_projected_area": 16.0,
+    "min_visible_fraction": 0.1
+  },
+  "showcases": [
+    {
+      "accepted": true,
+      "reasons": [],
+      "homography_direction": "moving_to_reference",
+      "H": [
+        [
+          1.3707933067165474,
+          0.8638137817257017,
+          -580.8814868565
+        ],
+        [
+          -0.6385665557284714,
+          0.2587699803828741,
+          303.4790963360276
+        ],
+        [
+          -0.000773521688652562,
+          -0.0004349934352608995,
+          1.0
+        ]
+      ],
+      "num_matches": 237,
+      "num_inliers": 72,
+      "inlier_ratio": 0.3037974683544304,
+      "median_reprojection_error_px": 1.391448736190796,
+      "reference_inlier_hull_coverage": 0.5281742937802943,
+      "moving_inlier_hull_coverage": 0.17433519641319586,
+      "projected_reference_visible_fraction": 0.9464310864762847,
+      "projected_reference_quad": [
+        [
+          455.0962829589844,
+          -49.73462677001953
+        ],
+        [
+          562.5693359375,
+          215.4766082763672
+        ],
+        [
+          269.0138854980469,
+          697.4369506835938
+        ],
+        [
+          25.511180877685547,
+          631.9775390625
+        ]
+      ],
+      "estimator": "magsac",
+      "estimation_ms": 1.5935692936182022,
+      "id": "graf_alignment",
+      "reference": "oxford/graf/img1.png",
+      "moving": "oxford/graf/img6.png",
+      "extraction_ms": 503.39848175644875,
+      "matching_ms": 471.32275626063347
+    },
+    {
+      "accepted": true,
+      "reasons": [],
+      "homography_direction": "moving_to_reference",
+      "H": [
+        [
+          0.9958420980650352,
+          -0.01198357512931781,
+          -2.1612785489487347
+        ],
+        [
+          -0.0029461622320999443,
+          0.9891509816632493,
+          16.382870116663913
+        ],
+        [
+          3.8609534404955435e-06,
+          -2.3668477743843873e-05,
+          1.0
+        ]
+      ],
+      "num_matches": 980,
+      "num_inliers": 957,
+      "inlier_ratio": 0.976530612244898,
+      "median_reprojection_error_px": 0.5758061408996582,
+      "reference_inlier_hull_coverage": 0.8224271977003539,
+      "moving_inlier_hull_coverage": 0.8243737961228905,
+      "projected_reference_visible_fraction": 0.967503549311499,
+      "projected_reference_quad": [
+        [
+          1.9710657596588135,
+          -16.556686401367188
+        ],
+        [
+          908.2188110351562,
+          -13.857449531555176
+        ],
+        [
+          902.6060791015625,
+          585.4153442382812
+        ],
+        [
+          9.158609390258789,
+          580.7323608398438
+        ]
+      ],
+      "estimator": "magsac",
+      "estimation_ms": 0.622207298874855,
+      "id": "leuven_alignment",
+      "reference": "oxford/leuven/img1.png",
+      "moving": "oxford/leuven/img6.png",
+      "extraction_ms": 70.06474770605564,
+      "matching_ms": 211.4830408245325
+    },
+    {
+      "accepted": true,
+      "reasons": [],
+      "homography_direction": "moving_to_reference",
+      "H": [
+        [
+          1.4175231655932763,
+          -0.19827376076775938,
+          -12.993928623707218
+        ],
+        [
+          0.2281616127494013,
+          1.5271509954184517,
+          -486.1556559462862
+        ],
+        [
+          -4.494282520800958e-05,
+          0.00012346501908539937,
+          1.0
+        ]
+      ],
+      "num_matches": 1104,
+      "num_inliers": 1016,
+      "inlier_ratio": 0.9202898550724637,
+      "median_reprojection_error_px": 0.94303297996521,
+      "reference_inlier_hull_coverage": 0.8739918778782114,
+      "moving_inlier_hull_coverage": 0.44913185731981703,
+      "projected_reference_visible_fraction": 0.9999999709368019,
+      "projected_reference_quad": [
+        [
+          52.59504699707031,
+          310.48370361328125
+        ],
+        [
+          737.7679443359375,
+          208.1165008544922
+        ],
+        [
+          934.90185546875,
+          1104.5064697265625
+        ],
+        [
+          185.59271240234375,
+          1261.326904296875
+        ]
+      ],
+      "estimator": "magsac",
+      "estimation_ms": 1.0551996529102325,
+      "id": "document_alignment",
+      "reference": "learnopencv/form.jpg",
+      "moving": "learnopencv/scanned-form.jpg",
+      "extraction_ms": 112.06329800188541,
+      "matching_ms": 318.1732799857855
+    },
+    {
+      "accepted": true,
+      "reasons": [],
+      "homography_direction": "moving_to_reference",
+      "H": [
+        [
+          2.462345190737942,
+          0.6263660323924993,
+          -391.14796855798664
+        ],
+        [
+          -0.21643522771745208,
+          2.5061330855315513,
+          -376.7860453232088
+        ],
+        [
+          0.0005892470710264211,
+          0.0008142301235329267,
+          1.0
+        ]
+      ],
+      "num_matches": 151,
+      "num_inliers": 134,
+      "inlier_ratio": 0.8874172185430463,
+      "median_reprojection_error_px": 1.1529732942581177,
+      "reference_inlier_hull_coverage": 0.6605335160794563,
+      "moving_inlier_hull_coverage": 0.07112603458332653,
+      "projected_reference_visible_fraction": 0.9999999674003044,
+      "projected_reference_quad": [
+        [
+          118.01459503173828,
+          160.53758239746094
+        ],
+        [
+          286.3232727050781,
+          175.07310485839844
+        ],
+        [
+          266.7691955566406,
+          297.3376159667969
+        ],
+        [
+          89.93304443359375,
+          270.9306640625
+        ]
+      ],
+      "estimator": "magsac",
+      "estimation_ms": 0.40067359805107117,
+      "id": "object_identification",
+      "reference": "opencv/box.png",
+      "moving": "opencv/box_in_scene.png",
+      "extraction_ms": 90.2353972196579,
+      "matching_ms": 71.07778452336788
+    },
+    {
+      "accepted": true,
+      "reasons": [],
+      "homography_direction": "moving_to_reference",
+      "H": [
+        [
+          1.0052863698019694,
+          0.025551554431232467,
+          45.71333579669696
+        ],
+        [
+          0.0017999691573172033,
+          1.0106837717950334,
+          -2.06041095402242
+        ],
+        [
+          5.031977798653158e-06,
+          8.532987350385537e-06,
+          1.0
+        ]
+      ],
+      "num_matches": 1385,
+      "num_inliers": 887,
+      "inlier_ratio": 0.6404332129963899,
+      "median_reprojection_error_px": 1.004668951034546,
+      "reference_inlier_hull_coverage": 0.8072968132274282,
+      "moving_inlier_hull_coverage": 0.8096143530309083,
+      "projected_reference_visible_fraction": 0.9513028188099215,
+      "projected_reference_quad": [
+        [
+          -45.526824951171875,
+          2.119711399078369
+        ],
+        [
+          1236.72314453125,
+          -0.16390149295330048
+        ],
+        [
+          1220.40966796875,
+          1114.31396484375
+        ],
+        [
+          -73.67147827148438,
+          1109.4276123046875
+        ]
+      ],
+      "estimator": "magsac",
+      "estimation_ms": 1.545758917927742,
+      "id": "parallax_failure",
+      "reference": "opencv/aloeL.jpg",
+      "moving": "opencv/aloeR.jpg",
+      "extraction_ms": 112.12773248553276,
+      "matching_ms": 416.4429623633623
+    },
+    {
+      "accepted": false,
+      "reasons": [
+        "Only 4 inliers; need 12.",
+        "Invalid projected geometry: The projected reference crosses the projective horizon."
+      ],
+      "homography_direction": "moving_to_reference",
+      "H": [
+        [
+          -0.45321043297653557,
+          -0.19481323397188993,
+          24.554585649589725
+        ],
+        [
+          -0.5871590204181705,
+          -0.828921236991975,
+          158.9218040719221
+        ],
+        [
+          -0.004685426813978706,
+          -0.0085882372073538,
+          1.0
+        ]
+      ],
+      "num_matches": 13,
+      "num_inliers": 4,
+      "inlier_ratio": 0.3076923076923077,
+      "median_reprojection_error_px": 0.0,
+      "reference_inlier_hull_coverage": 0.08075438819378981,
+      "moving_inlier_hull_coverage": 0.05878612077938992,
+      "projected_reference_visible_fraction": 0.0,
+      "projected_reference_quad": null,
+      "estimator": "magsac",
+      "estimation_ms": 0.21527893841266632,
+      "id": "target_absent",
+      "reference": "opencv/box.png",
+      "moving": "opencv/fruits.jpg",
+      "extraction_ms": 83.07638578116894,
+      "matching_ms": 41.905855759978294
+    }
+  ],
+  "note": "Actual computed outputs. Schematic diagram sampling locations and exit layers are illustrative only.",
+  "rendering_opencv_version": "5.1.0"
+}

@@ -1,0 +1,7 @@
+[ 22%] Built target alignment_geometry
+[ 44%] Built target alignment_geometry_tests
+[ 66%] Built target alignment_features
+[ 77%] Building CXX object CMakeFiles/robust_image_alignment_cpp.dir/cpp/main.cpp.o
+[ 88%] Building CXX object CMakeFiles/robust_image_alignment_cpp.dir/cpp/workflows.cpp.o
+[100%] Linking CXX executable robust_image_alignment_cpp
+[100%] Built target robust_image_alignment_cpp

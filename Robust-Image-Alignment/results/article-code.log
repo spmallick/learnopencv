@@ -1,0 +1,16 @@
+OpenCV: 5.1.0
+Imported from: /tmp/robust-align-py314/lib/python3.14/site-packages/cv2/__init__.py
+Article Python block 1: passed
+Article Python block 2: passed
+[0;93m2026-11-14 13:44:09.292252191 [W:onnxruntime:Default, device_discovery.cc:211 DiscoverDevicesForPlatform] GPU device discovery failed: device_discovery.cc:91 ReadFileContents Failed to open file: "/sys/class/drm/card0/device/vendor"[m
+Article Python block 3: passed
+Tentative matches: 151
+Article Python block 4: passed
+Article Python block 5: passed
+Article Python block 6: passed
+Article Python block 7: passed
+ECC correlation: 0.5887077687308827
+Article Python block 8: passed
+Article Python block 9: passed
+Article Python block 10: passed
+VALIDATION PASSED: 10 article Python excerpts

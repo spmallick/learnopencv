@@ -1,0 +1,560 @@
+{
+  "schema_version": 1,
+  "download_root": "assets/downloads",
+  "upstream_commits": {
+    "opencv/opencv": "205613a29728c2217049bdddbbe98322b485b34e",
+    "opencv/opencv_extra": "697e5c3de828f3154e82f222dbe902d622bbe19a",
+    "spmallick/learnopencv": "2d51fd56ba5cb809eda72c342f89ea359edc70fb"
+  },
+  "files": [
+    {
+      "path": "opencv/box.png",
+      "url": "https://raw.githubusercontent.com/opencv/opencv/205613a29728c2217049bdddbbe98322b485b34e/samples/data/box.png",
+      "sha256": "1094629c1e2ebbc8a9ae2c9c63e18c1dff0f5f1481146e02f3b11a3d30feb20a",
+      "bytes": 50728,
+      "group": "opencv-main-samples",
+      "width": 324,
+      "height": 223
+    },
+    {
+      "path": "opencv/box_in_scene.png",
+      "url": "https://raw.githubusercontent.com/opencv/opencv/205613a29728c2217049bdddbbe98322b485b34e/samples/data/box_in_scene.png",
+      "sha256": "8b0225ff76244a42bd1400c0904f8b7afea7d97b7d8115495e42e98ad347bd51",
+      "bytes": 122490,
+      "group": "opencv-main-samples",
+      "width": 512,
+      "height": 384
+    },
+    {
+      "path": "opencv/graf1.png",
+      "url": "https://raw.githubusercontent.com/opencv/opencv/205613a29728c2217049bdddbbe98322b485b34e/samples/data/graf1.png",
+      "sha256": "1504b769303c7bde00fa578eeaad3c68e02aceabeb1242e556f1f8d19e4bdea5",
+      "bytes": 951440,
+      "group": "opencv-main-samples",
+      "width": 800,
+      "height": 640
+    },
+    {
+      "path": "opencv/graf3.png",
+      "url": "https://raw.githubusercontent.com/opencv/opencv/205613a29728c2217049bdddbbe98322b485b34e/samples/data/graf3.png",
+      "sha256": "492e0e96f21748d093e1a29f4dbfd46528bd75966937e85ce7c8abc0f361fc15",
+      "bytes": 976092,
+      "group": "opencv-main-samples",
+      "width": 800,
+      "height": 640
+    },
+    {
+      "path": "opencv/H1to3p.xml",
+      "url": "https://raw.githubusercontent.com/opencv/opencv/205613a29728c2217049bdddbbe98322b485b34e/samples/data/H1to3p.xml",
+      "sha256": "9cd961fef3542462153a95acad164bc0da784622034a4eaf384c9beeaa19588f",
+      "bytes": 298,
+      "group": "opencv-main-samples"
+    },
+    {
+      "path": "opencv/leuvenA.jpg",
+      "url": "https://raw.githubusercontent.com/opencv/opencv/205613a29728c2217049bdddbbe98322b485b34e/samples/data/leuvenA.jpg",
+      "sha256": "b2977cdbd9fb3f94dadd6f76cf586d145676deb8a22b5f0f42149d21c058c09f",
+      "bytes": 324949,
+      "group": "opencv-main-samples",
+      "width": 751,
+      "height": 563
+    },
+    {
+      "path": "opencv/leuvenB.jpg",
+      "url": "https://raw.githubusercontent.com/opencv/opencv/205613a29728c2217049bdddbbe98322b485b34e/samples/data/leuvenB.jpg",
+      "sha256": "5bb41a60038a2baa5d8ea0eaba55e6e3050d721b254cf79d8d8998d7e49d664a",
+      "bytes": 312454,
+      "group": "opencv-main-samples",
+      "width": 751,
+      "height": 563
+    },
+    {
+      "path": "opencv/aloeL.jpg",
+      "url": "https://raw.githubusercontent.com/opencv/opencv/205613a29728c2217049bdddbbe98322b485b34e/samples/data/aloeL.jpg",
+      "sha256": "cce5736808efe80d9f04b118dbb978c344d4345672b332718c3e039a3eeb8eee",
+      "bytes": 315069,
+      "group": "opencv-main-samples",
+      "width": 1282,
+      "height": 1110
+    },
+    {
+      "path": "opencv/aloeR.jpg",
+      "url": "https://raw.githubusercontent.com/opencv/opencv/205613a29728c2217049bdddbbe98322b485b34e/samples/data/aloeR.jpg",
+      "sha256": "9b23100df31a846bc6e6a6545563b2b4120b948c9835c7d36cde00af77f4503e",
+      "bytes": 315113,
+      "group": "opencv-main-samples",
+      "width": 1282,
+      "height": 1110
+    },
+    {
+      "path": "opencv/fruits.jpg",
+      "url": "https://raw.githubusercontent.com/opencv/opencv/205613a29728c2217049bdddbbe98322b485b34e/samples/data/fruits.jpg",
+      "sha256": "9c031d80a1c52da5eca790db896baffec6a7e52bf786cdb7bbfca5c7f880e6a1",
+      "bytes": 82429,
+      "group": "opencv-main-samples",
+      "width": 512,
+      "height": 480
+    },
+    {
+      "path": "opencv/building.jpg",
+      "url": "https://raw.githubusercontent.com/opencv/opencv/205613a29728c2217049bdddbbe98322b485b34e/samples/data/building.jpg",
+      "sha256": "742a1baad62ac82e91e718e77eedf7e85c2eddc4badfb8c87c6cbc86c45a8b07",
+      "bytes": 79718,
+      "group": "opencv-main-samples",
+      "width": 868,
+      "height": 600
+    },
+    {
+      "path": "oxford/graf/img1.png",
+      "url": "https://raw.githubusercontent.com/opencv/opencv_extra/697e5c3de828f3154e82f222dbe902d622bbe19a/testdata/cv/detectors_descriptors_evaluation/images_datasets/graf/img1.png",
+      "sha256": "1504b769303c7bde00fa578eeaad3c68e02aceabeb1242e556f1f8d19e4bdea5",
+      "bytes": 951440,
+      "group": "oxford-affine-download-only",
+      "width": 800,
+      "height": 640
+    },
+    {
+      "path": "oxford/graf/img2.png",
+      "url": "https://raw.githubusercontent.com/opencv/opencv_extra/697e5c3de828f3154e82f222dbe902d622bbe19a/testdata/cv/detectors_descriptors_evaluation/images_datasets/graf/img2.png",
+      "sha256": "9d4118c7ee3909387f27c3c7cd0dc6e9f27e40d12f78313c5cf868da45741274",
+      "bytes": 955882,
+      "group": "oxford-affine-download-only",
+      "width": 800,
+      "height": 640
+    },
+    {
+      "path": "oxford/graf/img3.png",
+      "url": "https://raw.githubusercontent.com/opencv/opencv_extra/697e5c3de828f3154e82f222dbe902d622bbe19a/testdata/cv/detectors_descriptors_evaluation/images_datasets/graf/img3.png",
+      "sha256": "492e0e96f21748d093e1a29f4dbfd46528bd75966937e85ce7c8abc0f361fc15",
+      "bytes": 976092,
+      "group": "oxford-affine-download-only",
+      "width": 800,
+      "height": 640
+    },
+    {
+      "path": "oxford/graf/img4.png",
+      "url": "https://raw.githubusercontent.com/opencv/opencv_extra/697e5c3de828f3154e82f222dbe902d622bbe19a/testdata/cv/detectors_descriptors_evaluation/images_datasets/graf/img4.png",
+      "sha256": "d6e2e64b07867aaae4dbfa2dea20e94cfe162d3f76127a8b939a40c86168ab56",
+      "bytes": 985906,
+      "group": "oxford-affine-download-only",
+      "width": 800,
+      "height": 640
+    },
+    {
+      "path": "oxford/graf/img5.png",
+      "url": "https://raw.githubusercontent.com/opencv/opencv_extra/697e5c3de828f3154e82f222dbe902d622bbe19a/testdata/cv/detectors_descriptors_evaluation/images_datasets/graf/img5.png",
+      "sha256": "8a4b264ac2db166f62fdc361ae31ebcdcdd55d448193cc038bd6ecee9acf3579",
+      "bytes": 975471,
+      "group": "oxford-affine-download-only",
+      "width": 800,
+      "height": 640
+    },
+    {
+      "path": "oxford/graf/img6.png",
+      "url": "https://raw.githubusercontent.com/opencv/opencv_extra/697e5c3de828f3154e82f222dbe902d622bbe19a/testdata/cv/detectors_descriptors_evaluation/images_datasets/graf/img6.png",
+      "sha256": "93f913badc4fa43eee7491f9868ec9bb494c752691f4b46b70b52e08b34564f7",
+      "bytes": 1041926,
+      "group": "oxford-affine-download-only",
+      "width": 800,
+      "height": 640
+    },
+    {
+      "path": "oxford/graf/H1to2p.xml",
+      "url": "https://raw.githubusercontent.com/opencv/opencv_extra/697e5c3de828f3154e82f222dbe902d622bbe19a/testdata/cv/detectors_descriptors_evaluation/images_datasets/graf/H1to2p.xml",
+      "sha256": "61c4f137ae84d6ba8113d062de4e7de94c66a081eb511f05e8761e0fc0e230ef",
+      "bytes": 299,
+      "group": "oxford-affine-download-only"
+    },
+    {
+      "path": "oxford/graf/H1to3p.xml",
+      "url": "https://raw.githubusercontent.com/opencv/opencv_extra/697e5c3de828f3154e82f222dbe902d622bbe19a/testdata/cv/detectors_descriptors_evaluation/images_datasets/graf/H1to3p.xml",
+      "sha256": "9cd961fef3542462153a95acad164bc0da784622034a4eaf384c9beeaa19588f",
+      "bytes": 298,
+      "group": "oxford-affine-download-only"
+    },
+    {
+      "path": "oxford/graf/H1to4p.xml",
+      "url": "https://raw.githubusercontent.com/opencv/opencv_extra/697e5c3de828f3154e82f222dbe902d622bbe19a/testdata/cv/detectors_descriptors_evaluation/images_datasets/graf/H1to4p.xml",
+      "sha256": "7e4e522483164b3fbfd44fa9b3fcd4482af001b06d1b29613a63d5f961c0b9a2",
+      "bytes": 299,
+      "group": "oxford-affine-download-only"
+    },
+    {
+      "path": "oxford/graf/H1to5p.xml",
+      "url": "https://raw.githubusercontent.com/opencv/opencv_extra/697e5c3de828f3154e82f222dbe902d622bbe19a/testdata/cv/detectors_descriptors_evaluation/images_datasets/graf/H1to5p.xml",
+      "sha256": "8d38859e7820a2ebd13ef52e8a2f590b7d8b38f50cf40176b0f718ba9146ec3b",
+      "bytes": 298,
+      "group": "oxford-affine-download-only"
+    },
+    {
+      "path": "oxford/graf/H1to6p.xml",
+      "url": "https://raw.githubusercontent.com/opencv/opencv_extra/697e5c3de828f3154e82f222dbe902d622bbe19a/testdata/cv/detectors_descriptors_evaluation/images_datasets/graf/H1to6p.xml",
+      "sha256": "7148a7f0f77a1f10d98fe2a0cae588c67bebfdc15274869edc65b90e46a720b3",
+      "bytes": 299,
+      "group": "oxford-affine-download-only"
+    },
+    {
+      "path": "oxford/leuven/img1.png",
+      "url": "https://raw.githubusercontent.com/opencv/opencv_extra/697e5c3de828f3154e82f222dbe902d622bbe19a/testdata/cv/detectors_descriptors_evaluation/images_datasets/leuven/img1.png",
+      "sha256": "773bc8c786a9ee78716c3f0269cc28f7ff8194df44652560fe8ce166bd3fb11c",
+      "bytes": 898958,
+      "group": "oxford-affine-download-only",
+      "width": 900,
+      "height": 600
+    },
+    {
+      "path": "oxford/leuven/img2.png",
+      "url": "https://raw.githubusercontent.com/opencv/opencv_extra/697e5c3de828f3154e82f222dbe902d622bbe19a/testdata/cv/detectors_descriptors_evaluation/images_datasets/leuven/img2.png",
+      "sha256": "fec06c93c9a4c449d3db2f57480872d49361e548f6f093d3203f68f6e2d88e95",
+      "bytes": 843926,
+      "group": "oxford-affine-download-only",
+      "width": 900,
+      "height": 600
+    },
+    {
+      "path": "oxford/leuven/img3.png",
+      "url": "https://raw.githubusercontent.com/opencv/opencv_extra/697e5c3de828f3154e82f222dbe902d622bbe19a/testdata/cv/detectors_descriptors_evaluation/images_datasets/leuven/img3.png",
+      "sha256": "cbfb8a14c861abdcf343280eeb6fab592293b099506fc172567554f8217ba7e8",
+      "bytes": 801276,
+      "group": "oxford-affine-download-only",
+      "width": 900,
+      "height": 600
+    },
+    {
+      "path": "oxford/leuven/img4.png",
+      "url": "https://raw.githubusercontent.com/opencv/opencv_extra/697e5c3de828f3154e82f222dbe902d622bbe19a/testdata/cv/detectors_descriptors_evaluation/images_datasets/leuven/img4.png",
+      "sha256": "081b0b508efd551fb112edcf617f4f12c0d486c209550880a15b87bac129fee4",
+      "bytes": 757112,
+      "group": "oxford-affine-download-only",
+      "width": 900,
+      "height": 600
+    },
+    {
+      "path": "oxford/leuven/img5.png",
+      "url": "https://raw.githubusercontent.com/opencv/opencv_extra/697e5c3de828f3154e82f222dbe902d622bbe19a/testdata/cv/detectors_descriptors_evaluation/images_datasets/leuven/img5.png",
+      "sha256": "403e333894dedc08c5b905f35af3078a6576cf8203d394ba8f7c11220cbd86fd",
+      "bytes": 715330,
+      "group": "oxford-affine-download-only",
+      "width": 900,
+      "height": 600
+    },
+    {
+      "path": "oxford/leuven/img6.png",
+      "url": "https://raw.githubusercontent.com/opencv/opencv_extra/697e5c3de828f3154e82f222dbe902d622bbe19a/testdata/cv/detectors_descriptors_evaluation/images_datasets/leuven/img6.png",
+      "sha256": "eb18bcc1682eb9347109ae59f444c8541efcd51037eeb2eae20168341a9eb69d",
+      "bytes": 662283,
+      "group": "oxford-affine-download-only",
+      "width": 900,
+      "height": 600
+    },
+    {
+      "path": "oxford/leuven/H1to2p.xml",
+      "url": "https://raw.githubusercontent.com/opencv/opencv_extra/697e5c3de828f3154e82f222dbe902d622bbe19a/testdata/cv/detectors_descriptors_evaluation/images_datasets/leuven/H1to2p.xml",
+      "sha256": "739e7f22b2ca473dd6d1f9eb01f16ab69ec8cbd95be4924ed9e1c1921950e7bf",
+      "bytes": 299,
+      "group": "oxford-affine-download-only"
+    },
+    {
+      "path": "oxford/leuven/H1to3p.xml",
+      "url": "https://raw.githubusercontent.com/opencv/opencv_extra/697e5c3de828f3154e82f222dbe902d622bbe19a/testdata/cv/detectors_descriptors_evaluation/images_datasets/leuven/H1to3p.xml",
+      "sha256": "6229a24b36afd674dba2e0263ee5b169b61d87db838c7d21faec520c5a146065",
+      "bytes": 300,
+      "group": "oxford-affine-download-only"
+    },
+    {
+      "path": "oxford/leuven/H1to4p.xml",
+      "url": "https://raw.githubusercontent.com/opencv/opencv_extra/697e5c3de828f3154e82f222dbe902d622bbe19a/testdata/cv/detectors_descriptors_evaluation/images_datasets/leuven/H1to4p.xml",
+      "sha256": "23040055107bd80806f86c5ab454416e1aa1bea75c4c252060453b451cd0f616",
+      "bytes": 299,
+      "group": "oxford-affine-download-only"
+    },
+    {
+      "path": "oxford/leuven/H1to5p.xml",
+      "url": "https://raw.githubusercontent.com/opencv/opencv_extra/697e5c3de828f3154e82f222dbe902d622bbe19a/testdata/cv/detectors_descriptors_evaluation/images_datasets/leuven/H1to5p.xml",
+      "sha256": "e673f630294a83a4be381188b1145064138808f36ea2956d0edd2487b5fb5c2a",
+      "bytes": 299,
+      "group": "oxford-affine-download-only"
+    },
+    {
+      "path": "oxford/leuven/H1to6p.xml",
+      "url": "https://raw.githubusercontent.com/opencv/opencv_extra/697e5c3de828f3154e82f222dbe902d622bbe19a/testdata/cv/detectors_descriptors_evaluation/images_datasets/leuven/H1to6p.xml",
+      "sha256": "318cd70b1db0d856950489e9dba7903068147015eb57eef719f537a21f6d8478",
+      "bytes": 299,
+      "group": "oxford-affine-download-only"
+    },
+    {
+      "path": "learnopencv/form.jpg",
+      "url": "https://raw.githubusercontent.com/spmallick/learnopencv/2d51fd56ba5cb809eda72c342f89ea359edc70fb/ImageAlignment-FeatureBased/form.jpg",
+      "sha256": "74ef8c86a64ee7fb1fc7e322ce2eb435442beb92cb4d658ad11225e8232791f5",
+      "bytes": 338256,
+      "group": "learnopencv-document-samples",
+      "width": 1000,
+      "height": 1293
+    },
+    {
+      "path": "learnopencv/scanned-form.jpg",
+      "url": "https://raw.githubusercontent.com/spmallick/learnopencv/2d51fd56ba5cb809eda72c342f89ea359edc70fb/ImageAlignment-FeatureBased/scanned-form.jpg",
+      "sha256": "a0348d6a91423e002ff028c70a6dd9b098ab6f4c299795cf22420ea052f996e6",
+      "bytes": 353508,
+      "group": "learnopencv-document-samples",
+      "width": 1000,
+      "height": 1333
+    }
+  ],
+  "groups": {
+    "opencv-main-samples": {
+      "upstream_license": "Apache-2.0 repository license",
+      "license_url": "https://github.com/opencv/opencv/blob/205613a29728c2217049bdddbbe98322b485b34e/LICENSE",
+      "note": "Official OpenCV samples are fetched unchanged. Preserve the supplied upstream LICENSE and COPYRIGHT notices; repository distribution is not a claim that trademarks/artwork depicted are separately licensed."
+    },
+    "oxford-affine-download-only": {
+      "upstream_license": "No explicit image redistribution license identified in the Oxford page or opencv_extra repository",
+      "source_url": "https://www.robots.ox.ac.uk/~vgg/research/affine/",
+      "note": "Fetch for reproducing the published benchmark. Do not commit the downloaded sequence images as newly licensed project assets; keep attribution to the Oxford affine dataset authors. The HPatches repository MIT software license is not used as image permission."
+    },
+    "learnopencv-document-samples": {
+      "upstream_license": "Existing LearnOpenCV companion assets",
+      "source_url": "https://learnopencv.com/image-alignment-feature-based-using-opencv-c-python/",
+      "note": "Original article uses a DMV form and a real photographed form. Reused unchanged; no new license is asserted for the form design."
+    }
+  },
+  "pairs": [
+    {
+      "id": "graf_1_2",
+      "reference": "oxford/graf/img1.png",
+      "moving": "oxford/graf/img2.png",
+      "homography_reference_to_moving": "oxford/graf/H1to2p.xml",
+      "split": "validation",
+      "capture_type": "real",
+      "change": "viewpoint",
+      "homography_matrix": [
+        0.87976964,
+        0.31245438,
+        -39.430589,
+        -0.18389418,
+        0.93847198,
+        153.15784,
+        0.00019641425,
+        -1.6015275e-05,
+        1.0
+      ]
+    },
+    {
+      "id": "graf_1_3",
+      "reference": "oxford/graf/img1.png",
+      "moving": "oxford/graf/img3.png",
+      "homography_reference_to_moving": "oxford/graf/H1to3p.xml",
+      "split": "evaluation",
+      "capture_type": "real",
+      "change": "viewpoint",
+      "homography_matrix": [
+        0.76285898,
+        -0.29922929,
+        225.67123,
+        0.33443473,
+        1.0143901,
+        -76.999973,
+        0.00034663091,
+        -1.4364524e-05,
+        1.0
+      ]
+    },
+    {
+      "id": "graf_1_4",
+      "reference": "oxford/graf/img1.png",
+      "moving": "oxford/graf/img4.png",
+      "homography_reference_to_moving": "oxford/graf/H1to4p.xml",
+      "split": "evaluation",
+      "capture_type": "real",
+      "change": "viewpoint",
+      "homography_matrix": [
+        0.66378505,
+        0.68003334,
+        -31.230335,
+        -0.144955,
+        0.97128304,
+        148.7742,
+        0.00042518504,
+        -1.3930359e-05,
+        1.0
+      ]
+    },
+    {
+      "id": "graf_1_5",
+      "reference": "oxford/graf/img1.png",
+      "moving": "oxford/graf/img5.png",
+      "homography_reference_to_moving": "oxford/graf/H1to5p.xml",
+      "split": "evaluation",
+      "capture_type": "real",
+      "change": "viewpoint",
+      "homography_matrix": [
+        0.62544644,
+        0.057759174,
+        222.01217,
+        0.22240536,
+        1.1652147,
+        -25.605611,
+        0.00049212545,
+        -3.6542424e-05,
+        1.0
+      ]
+    },
+    {
+      "id": "graf_1_6",
+      "reference": "oxford/graf/img1.png",
+      "moving": "oxford/graf/img6.png",
+      "homography_reference_to_moving": "oxford/graf/H1to6p.xml",
+      "split": "evaluation",
+      "capture_type": "real",
+      "change": "viewpoint",
+      "homography_matrix": [
+        0.4271459,
+        -0.67181765,
+        453.61534,
+        0.44106579,
+        1.013323,
+        -46.534569,
+        0.00051887712,
+        -7.8853731e-05,
+        1.0
+      ]
+    },
+    {
+      "id": "leuven_1_2",
+      "reference": "oxford/leuven/img1.png",
+      "moving": "oxford/leuven/img2.png",
+      "homography_reference_to_moving": "oxford/leuven/H1to2p.xml",
+      "split": "validation",
+      "capture_type": "real",
+      "change": "illumination",
+      "homography_matrix": [
+        0.57783232,
+        -0.00018122966,
+        2.8225664,
+        0.0022114401,
+        0.57937539,
+        -1.7879175,
+        -2.3911512e-06,
+        2.9032886e-06,
+        0.57865196
+      ]
+    },
+    {
+      "id": "leuven_1_3",
+      "reference": "oxford/leuven/img1.png",
+      "moving": "oxford/leuven/img3.png",
+      "homography_reference_to_moving": "oxford/leuven/H1to3p.xml",
+      "split": "evaluation",
+      "capture_type": "real",
+      "change": "illumination",
+      "homography_matrix": [
+        0.5738665,
+        0.0032769965,
+        2.8696063,
+        -0.00042640197,
+        0.5765492,
+        -2.6477989,
+        -3.5986087e-06,
+        5.4939501e-06,
+        0.57489565
+      ]
+    },
+    {
+      "id": "leuven_1_4",
+      "reference": "oxford/leuven/img1.png",
+      "moving": "oxford/leuven/img4.png",
+      "homography_reference_to_moving": "oxford/leuven/H1to4p.xml",
+      "split": "evaluation",
+      "capture_type": "real",
+      "change": "illumination",
+      "homography_matrix": [
+        0.57494804,
+        0.0027800742,
+        4.9723266,
+        0.0017588927,
+        0.57873002,
+        -5.4767862,
+        -4.9951367e-06,
+        8.078439e-06,
+        0.57639952
+      ]
+    },
+    {
+      "id": "leuven_1_5",
+      "reference": "oxford/leuven/img1.png",
+      "moving": "oxford/leuven/img5.png",
+      "homography_reference_to_moving": "oxford/leuven/H1to5p.xml",
+      "split": "evaluation",
+      "capture_type": "real",
+      "change": "illumination",
+      "homography_matrix": [
+        -0.57780461,
+        -0.0074653534,
+        -0.18849466,
+        0.00084414658,
+        -0.58051698,
+        4.5205045,
+        2.0525034e-06,
+        -1.0250081e-05,
+        -0.57604815
+      ]
+    },
+    {
+      "id": "leuven_1_6",
+      "reference": "oxford/leuven/img1.png",
+      "moving": "oxford/leuven/img6.png",
+      "homography_reference_to_moving": "oxford/leuven/H1to6p.xml",
+      "split": "evaluation",
+      "capture_type": "real",
+      "change": "illumination",
+      "homography_matrix": [
+        0.58695833,
+        0.0062763397,
+        1.3078972,
+        0.0019788878,
+        0.58978058,
+        -9.5598967,
+        -1.6508045e-06,
+        1.3162429e-05,
+        0.58394502
+      ]
+    }
+  ],
+  "demonstrations": [
+    {
+      "id": "box_localization",
+      "reference": "opencv/box.png",
+      "moving": "opencv/box_in_scene.png",
+      "ground_truth": "No independent ground-truth homography bundled; use localization as qualitative example, not measured corner-accuracy evidence.",
+      "capture_type": "real"
+    },
+    {
+      "id": "document_alignment",
+      "reference": "learnopencv/form.jpg",
+      "moving": "learnopencv/scanned-form.jpg",
+      "ground_truth": "No independent ground-truth homography bundled; visibly filled fields differ from the blank template.",
+      "capture_type": "real"
+    },
+    {
+      "id": "aloe_parallax",
+      "reference": "opencv/aloeL.jpg",
+      "moving": "opencv/aloeR.jpg",
+      "ground_truth": "Stereo images with real depth differences; a single homography cannot align all depths.",
+      "capture_type": "real"
+    },
+    {
+      "id": "unrelated_fruits",
+      "reference": "opencv/box.png",
+      "moving": "opencv/fruits.jpg",
+      "ground_truth": "Target absent; unrelated negative example.",
+      "capture_type": "real"
+    },
+    {
+      "id": "unrelated_building",
+      "reference": "opencv/box.png",
+      "moving": "opencv/building.jpg",
+      "ground_truth": "Target absent; unrelated negative example.",
+      "capture_type": "real"
+    }
+  ]
+}

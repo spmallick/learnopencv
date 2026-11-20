@@ -1,0 +1,49 @@
+{
+  "opencv": "5.1.0",
+  "evaluation_pairs": 8,
+  "evaluation_scenes": 2,
+  "validation_pairs": 2,
+  "repeats_per_pair": 5,
+  "timing_common_success_pairs": [
+    "graf_1_3",
+    "leuven_1_3",
+    "leuven_1_4",
+    "leuven_1_5",
+    "leuven_1_6"
+  ],
+  "pipelines": [
+    {
+      "method": "sift",
+      "successes": 6,
+      "pairs": 8,
+      "timing_trials": 25,
+      "pipeline_ms_p10_p50_p90": [
+        369.7263088077307,
+        402.84707210958004,
+        430.05548752844334
+      ]
+    },
+    {
+      "method": "aliked-nn",
+      "successes": 6,
+      "pairs": 8,
+      "timing_trials": 25,
+      "pipeline_ms_p10_p50_p90": [
+        105.88963702321053,
+        115.59879221022129,
+        124.28079769015312
+      ]
+    },
+    {
+      "method": "lightglue",
+      "successes": 8,
+      "pairs": 8,
+      "timing_trials": 25,
+      "pipeline_ms_p10_p50_p90": [
+        226.7563596367836,
+        265.3586436063051,
+        390.4175281524658
+      ]
+    }
+  ]
+}
