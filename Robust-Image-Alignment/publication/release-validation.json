@@ -460,5 +460,56 @@
     "setup_shell_fence": "bash syntax passed; installation/source-build commands are covered by the retained clean-source-build evidence and extracted exact-version runtime checks; package installation was not repeated",
     "public_download_verification": "root will perform separately after release publication",
     "newsletter_form": "not submitted by this validation"
+  },
+  "security_revision": {
+    "release": {
+      "repository": "spmallick/learnopencv",
+      "tag": "robust-image-alignment-opencv-5.1.0-2026.11.19-r3",
+      "tested_commit": "71d7245a9138e7bedf6027f4a57941e9e8f740ed",
+      "asset_url": "https://github.com/spmallick/learnopencv/releases/download/robust-image-alignment-opencv-5.1.0-2026.11.19-r3/Robust-Image-Alignment.zip",
+      "checksum_url": "https://github.com/spmallick/learnopencv/releases/download/robust-image-alignment-opencv-5.1.0-2026.11.19-r3/Robust-Image-Alignment.zip.sha256",
+      "sha256": "1e4f14e11cf26188911d39eb78fa9cb1bd65987f334e06183da8d5179baa41d6",
+      "archive_root": "Robust-Image-Alignment/",
+      "manifest_file_count": 130,
+      "anonymous_download_verified": true,
+      "extracted_bundle_tests_verified": true
+    },
+    "acceptance": {
+      "all_passed": true,
+      "python": {
+        "opencv": "5.1.0",
+        "pillow": "13.0.0",
+        "unit_tests": 13,
+        "article_blocks": 10,
+        "cli_combinations": 6,
+        "notebook_cells": 18,
+        "notebook_errors": 0,
+        "all_passed": true
+      },
+      "native_cpp": {
+        "opencv": "5.1.0",
+        "macos_arm64_fresh_release_build_ctest": 10,
+        "linux_x64_fresh_release_build_ctest": 10,
+        "strict_warnings": true
+      },
+      "python_cli_inlier_counts_and_outputs_match_original": true,
+      "source": "Extracted r3 immutable-tag ZIP; declared entry points exercised independently of checkout.",
+      "sha256": "1e4f14e11cf26188911d39eb78fa9cb1bd65987f334e06183da8d5179baa41d6"
+    },
+    "wordpress": {
+      "post_id": 80541,
+      "url": "https://learnopencv.com/robust-image-alignment/",
+      "code_url": "https://github.com/spmallick/learnopencv/releases/download/robust-image-alignment-opencv-5.1.0-2026.11.19-r3/Robust-Image-Alignment.zip",
+      "saved_and_reloaded_in_admin": true,
+      "public_anonymous_hidden_url_matches": true,
+      "browser_popup_matches": true,
+      "registration_required": true,
+      "form_submitted": false,
+      "article_content_original_date_and_identity_unchanged": true,
+      "content_sha256": "7c5dfe982b00e2bf76aa83e37fd73dfe437cd41ca995e3e4e23e8fad4df938ae",
+      "modified_gmt": "2026-11-20T03:45:32"
+    },
+    "source_fix_pr": 1145,
+    "dependency_monitoring_pr": 1146
   }
 }

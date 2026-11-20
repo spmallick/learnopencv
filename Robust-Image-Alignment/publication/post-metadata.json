@@ -29,7 +29,7 @@
   "author_id": 2,
   "featured_media_id": 80540,
   "published_gmt": "2026-11-20T02:21:23",
-  "modified_gmt": "2026-11-20T02:21:23",
+  "modified_gmt": "2026-11-20T03:45:32",
   "content_sha256": "7c5dfe982b00e2bf76aa83e37fd73dfe437cd41ca995e3e4e23e8fad4df938ae",
   "acf_code_url": {
     "label": "Code URL",
@@ -37,19 +37,19 @@
     "field_key": "field_605e315832c84",
     "admin_input_name": "acf[field_605e315832c84]",
     "frontend_hidden_input": "form_fields[code_url]",
-    "intended_value": "https://github.com/spmallick/learnopencv/releases/download/robust-image-alignment-opencv-5.1.0-2026.11.19/Robust-Image-Alignment.zip",
-    "actual_value": "https://github.com/spmallick/learnopencv/releases/download/robust-image-alignment-opencv-5.1.0-2026.11.19/Robust-Image-Alignment.zip",
+    "intended_value": "https://github.com/spmallick/learnopencv/releases/download/robust-image-alignment-opencv-5.1.0-2026.11.19-r3/Robust-Image-Alignment.zip",
+    "actual_value": "https://github.com/spmallick/learnopencv/releases/download/robust-image-alignment-opencv-5.1.0-2026.11.19-r3/Robust-Image-Alignment.zip",
     "result": "verified_in_admin_after_reload_and_public_newsletter_popup"
   },
   "github_release": {
     "repository": "spmallick/learnopencv",
-    "tag": "robust-image-alignment-opencv-5.1.0-2026.11.19",
-    "tested_commit": "761e0d8acaaa069773bf9b859cd4031ce0ec8df4",
-    "asset_url": "https://github.com/spmallick/learnopencv/releases/download/robust-image-alignment-opencv-5.1.0-2026.11.19/Robust-Image-Alignment.zip",
-    "checksum_url": "https://github.com/spmallick/learnopencv/releases/download/robust-image-alignment-opencv-5.1.0-2026.11.19/Robust-Image-Alignment.zip.sha256",
-    "sha256": "bd536db3670a8532a6d70b22346649dc40446fb0c5d0e8b1102d24914607ba67",
+    "tag": "robust-image-alignment-opencv-5.1.0-2026.11.19-r3",
+    "tested_commit": "71d7245a9138e7bedf6027f4a57941e9e8f740ed",
+    "asset_url": "https://github.com/spmallick/learnopencv/releases/download/robust-image-alignment-opencv-5.1.0-2026.11.19-r3/Robust-Image-Alignment.zip",
+    "checksum_url": "https://github.com/spmallick/learnopencv/releases/download/robust-image-alignment-opencv-5.1.0-2026.11.19-r3/Robust-Image-Alignment.zip.sha256",
+    "sha256": "1e4f14e11cf26188911d39eb78fa9cb1bd65987f334e06183da8d5179baa41d6",
     "archive_root": "Robust-Image-Alignment/",
-    "manifest_file_count": 127,
+    "manifest_file_count": 130,
     "anonymous_download_verified": true,
     "extracted_bundle_tests_verified": true
   },
@@ -180,5 +180,79 @@
     4093,
     738
   ],
-  "tag_ids": []
+  "tag_ids": [],
+  "previous_github_releases": [
+    {
+      "repository": "spmallick/learnopencv",
+      "tag": "robust-image-alignment-opencv-5.1.0-2026.11.19",
+      "tested_commit": "761e0d8acaaa069773bf9b859cd4031ce0ec8df4",
+      "asset_url": "https://github.com/spmallick/learnopencv/releases/download/robust-image-alignment-opencv-5.1.0-2026.11.19/Robust-Image-Alignment.zip",
+      "checksum_url": "https://github.com/spmallick/learnopencv/releases/download/robust-image-alignment-opencv-5.1.0-2026.11.19/Robust-Image-Alignment.zip.sha256",
+      "sha256": "bd536db3670a8532a6d70b22346649dc40446fb0c5d0e8b1102d24914607ba67",
+      "archive_root": "Robust-Image-Alignment/",
+      "manifest_file_count": 127,
+      "anonymous_download_verified": true,
+      "extracted_bundle_tests_verified": true
+    }
+  ],
+  "security_revision": {
+    "checked_on": "2026-11-19",
+    "source_fix_pr": "https://github.com/spmallick/learnopencv/pull/1145",
+    "dependency_monitoring_pr": "https://github.com/spmallick/learnopencv/pull/1146",
+    "own_image_operations": "OpenCV",
+    "direct_pil_imports": 0,
+    "indirect_pillow_version": "13.0.0",
+    "pillow_required_by": [
+      "Matplotlib",
+      "Torchvision/LightGlue"
+    ],
+    "release": {
+      "repository": "spmallick/learnopencv",
+      "tag": "robust-image-alignment-opencv-5.1.0-2026.11.19-r3",
+      "tested_commit": "71d7245a9138e7bedf6027f4a57941e9e8f740ed",
+      "asset_url": "https://github.com/spmallick/learnopencv/releases/download/robust-image-alignment-opencv-5.1.0-2026.11.19-r3/Robust-Image-Alignment.zip",
+      "checksum_url": "https://github.com/spmallick/learnopencv/releases/download/robust-image-alignment-opencv-5.1.0-2026.11.19-r3/Robust-Image-Alignment.zip.sha256",
+      "sha256": "1e4f14e11cf26188911d39eb78fa9cb1bd65987f334e06183da8d5179baa41d6",
+      "archive_root": "Robust-Image-Alignment/",
+      "manifest_file_count": 130,
+      "anonymous_download_verified": true,
+      "extracted_bundle_tests_verified": true
+    },
+    "acceptance": {
+      "all_passed": true,
+      "python": {
+        "opencv": "5.1.0",
+        "pillow": "13.0.0",
+        "unit_tests": 13,
+        "article_blocks": 10,
+        "cli_combinations": 6,
+        "notebook_cells": 18,
+        "notebook_errors": 0,
+        "all_passed": true
+      },
+      "native_cpp": {
+        "opencv": "5.1.0",
+        "macos_arm64_fresh_release_build_ctest": 10,
+        "linux_x64_fresh_release_build_ctest": 10,
+        "strict_warnings": true
+      },
+      "python_cli_inlier_counts_and_outputs_match_original": true,
+      "source": "Extracted r3 immutable-tag ZIP; declared entry points exercised independently of checkout.",
+      "sha256": "1e4f14e11cf26188911d39eb78fa9cb1bd65987f334e06183da8d5179baa41d6"
+    },
+    "newsletter_verification": {
+      "post_id": 80541,
+      "url": "https://learnopencv.com/robust-image-alignment/",
+      "code_url": "https://github.com/spmallick/learnopencv/releases/download/robust-image-alignment-opencv-5.1.0-2026.11.19-r3/Robust-Image-Alignment.zip",
+      "saved_and_reloaded_in_admin": true,
+      "public_anonymous_hidden_url_matches": true,
+      "browser_popup_matches": true,
+      "registration_required": true,
+      "form_submitted": false,
+      "article_content_original_date_and_identity_unchanged": true,
+      "content_sha256": "7c5dfe982b00e2bf76aa83e37fd73dfe437cd41ca995e3e4e23e8fad4df938ae",
+      "modified_gmt": "2026-11-20T03:45:32"
+    },
+    "original_article_and_images_preserved": true
+  }
 }
