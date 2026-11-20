@@ -6,7 +6,7 @@ This companion contains three runnable versions: the [complete notebook](robust_
 
 [<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://github.com/spmallick/learnopencv/releases/download/robust-image-alignment-opencv-5.1.0-2026.11.20/Robust-Image-Alignment.zip)
 
-The [versioned standalone release](https://github.com/spmallick/learnopencv/releases/tag/robust-image-alignment-opencv-5.1.0-2026.11.20) contains the tested `Robust-Image-Alignment/` folder. Download its [SHA-256 checksum](https://github.com/spmallick/learnopencv/releases/download/robust-image-alignment-opencv-5.1.0-2026.11.20/Robust-Image-Alignment.zip.sha256) alongside the ZIP. The release notes identify the source commit, tested platforms, and verification results. Sample inputs are fetched separately by the checked downloaders.
+The [versioned standalone release](https://github.com/spmallick/learnopencv/releases/tag/robust-image-alignment-opencv-5.1.0-2026.11.20) contains the tested `Robust-Image-Alignment/` folder. Download its [SHA-256 checksum](https://github.com/spmallick/learnopencv/releases/download/robust-image-alignment-opencv-5.1.0-2026.11.20/Robust-Image-Alignment.zip.sha256) alongside the ZIP. The verified ZIP has SHA-256 `70e16b53a6b3106559275a25902252d0f6b85c5a3f28501cae7bc47df5ddd89d`. The release notes identify the source commit, tested platforms, and verification results. Sample inputs are fetched separately by the checked downloaders.
 
 ## Tested release and environment
 
