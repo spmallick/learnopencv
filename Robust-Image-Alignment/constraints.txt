@@ -1,0 +1,4 @@
+# Matplotlib and Torchvision still require Pillow internally.
+# Our image I/O and drawing use OpenCV; constrain the third-party dependency
+# to the patched release verified for this companion on November 19, 2026.
+Pillow==13.0.0

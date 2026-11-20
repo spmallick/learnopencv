@@ -89,8 +89,10 @@ and aligned-overlay panels from `figures/graf_alignment.png`, plus readable
 typography and an explanatory arrow. It contains no invented matches or
 benchmark numbers. Full-size and 320×180 previews were visually inspected.
 The PNG is 916,180 bytes; the WebP is 181,158 bytes. Source/crop provenance and
-output SHA-256 values are retained in `seo-metadata.json`; the exact composition
-can be regenerated with `scripts/make_thumbnail.py` using Pillow. Use the WebP
+output SHA-256 values are retained in `seo-metadata.json`; the original composition
+is retained in the published media. `scripts/make_thumbnail.py` now uses OpenCV
+to regenerate the same layout with built-in Hershey typography; text rendering
+therefore differs from the original thumbnail. Use the WebP
 for the site where supported and retain the PNG master in the repository.
 
 ## Links, evidence, and accuracy

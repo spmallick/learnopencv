@@ -1,0 +1,188 @@
+{
+  "checked_on": "2026-11-19",
+  "scope": "Security dependency revision and OpenCV replacements for four authoring helpers. Alignment algorithms, notebook sources/recorded outputs, model payloads, article body and published thumbnail unchanged.",
+  "direct_pil_imports": 0,
+  "transitive_dependency": {
+    "package": "Pillow",
+    "version": "13.0.0",
+    "constraint_file": "constraints.txt",
+    "required_by": [
+      "Matplotlib 3.10.8",
+      "Torchvision 0.25.0 via LightGlue"
+    ],
+    "emailed_dependabot_alerts": [
+      6842,
+      6881
+    ],
+    "open_manifest_pillow_alerts_evaluated": 61,
+    "vulnerable_ranges_still_matching_selected_version": 0,
+    "official_security_notes": "https://pillow.readthedocs.io/en/stable/releasenotes/13.0.0.html#security"
+  },
+  "python_environment": {
+    "python": "3.14.3 (main, Feb 12 2026, 00:42:54) [Clang 21.1.4 ]",
+    "executable": "/tmp/robust-alignment-pillow13.Yg987B/venv/bin/python",
+    "opencv": "5.1.0",
+    "opencv_path": "/tmp/robust-align-py314/lib/python3.14/site-packages/cv2/__init__.py",
+    "pillow": "13.0.0",
+    "pillow_path": "/tmp/robust-alignment-pillow13.Yg987B/venv/lib/python3.14/site-packages/PIL/__init__.py",
+    "torch": "2.10.0+cu126",
+    "torchvision": "0.25.0+cu126",
+    "matplotlib": "3.10.8",
+    "kornia": "0.8.2",
+    "lightglue_direct_url": {
+      "url": "https://github.com/cvg/LightGlue.git",
+      "vcs_info": {
+        "commit_id": "5a650c444718caffc2669dc0094cde908f42dd73",
+        "requested_revision": "5a650c444718caffc2669dc0094cde908f42dd73",
+        "vcs": "git"
+      }
+    }
+  },
+  "python_acceptance": {
+    "opencv": "5.1.0",
+    "pillow": "13.0.0",
+    "unit_tests": 13,
+    "article_blocks": 10,
+    "cli_combinations": 6,
+    "notebook_cells": 18,
+    "notebook_errors": 0,
+    "thumbnail_png_webp": [
+      1600,
+      900
+    ],
+    "diagram_files": [
+      "aliked_sampling.png",
+      "aliked_sampling.svg",
+      "lightglue_depth.png",
+      "lightglue_depth.svg",
+      "pipeline.png",
+      "pipeline.svg"
+    ],
+    "all_passed": true
+  },
+  "requirements_resolver_dry_run_passed": true,
+  "native_macos": {
+    "opencv": "5.1.0",
+    "ctest_passed": 10,
+    "source_unchanged": true,
+    "check": "Existing Release build regression rerun; fresh extracted-bundle builds are recorded in release acceptance evidence."
+  },
+  "authoring": {
+    "checked_at_utc": "2026-11-20T03:29:35.138295+00:00",
+    "client_date": "2026-11-19",
+    "passed": true,
+    "scope": "OpenCV authoring image I/O replacement; this agent changed only its three source files and no tracked images or manuscript.",
+    "environment": {
+      "python": "3.14.3",
+      "opencv": "5.0.0",
+      "matplotlib": "3.10.9",
+      "numpy": "2.3.5"
+    },
+    "pinned_runtime_matrix": "Outside this report; the parent validation agent owns exact OpenCV5.1.0/Pillow13.0.0 validation.",
+    "syntax_checks": "All3 edited files pass py_compile; git diff --check passes",
+    "figure_comparisons": [
+      {
+        "file": "aliked_sampling.png",
+        "before_shape": [
+          787,
+          1458,
+          3
+        ],
+        "after_shape": [
+          787,
+          1458,
+          3
+        ],
+        "max_absolute_pixel_delta": 0,
+        "different_pixel_fraction": 0.0
+      },
+      {
+        "file": "lightglue_depth.png",
+        "before_shape": [
+          458,
+          1390,
+          3
+        ],
+        "after_shape": [
+          458,
+          1390,
+          3
+        ],
+        "max_absolute_pixel_delta": 0,
+        "different_pixel_fraction": 0.0
+      },
+      {
+        "file": "pipeline.png",
+        "before_shape": [
+          504,
+          1658,
+          3
+        ],
+        "after_shape": [
+          504,
+          1658,
+          3
+        ],
+        "max_absolute_pixel_delta": 0,
+        "different_pixel_fraction": 0.0
+      },
+      {
+        "file": "raster.png",
+        "before_shape": [
+          365,
+          421,
+          3
+        ],
+        "after_shape": [
+          365,
+          421,
+          3
+        ],
+        "max_absolute_pixel_delta": 0,
+        "different_pixel_fraction": 0.0
+      }
+    ],
+    "figure_parity_passed": true,
+    "publication_checks": {
+      "opencv": "5.0.0",
+      "matplotlib": "3.10.9",
+      "temp_project": "/var/folders/yl/wwf1ddld6qg7wx2tn3y61h1m0000gn/T/alignment-cv2-publication-86lt0lb_/project",
+      "rendered_images": 13,
+      "valid_publication_webp_assets": 14,
+      "real_photo_and_diagram_fallbacks": true,
+      "rgb_channel_order_preserved": true,
+      "transparent_pixels_composited_white": true,
+      "corrupt_read_errors_clear": true,
+      "tracked_artifacts_changed": false
+    },
+    "error_checks": {
+      "corrupt_preview_image": true,
+      "missing_preview_image": true,
+      "corrupt_publication_image": true,
+      "blocked_publication_write": true,
+      "blocked_figure_write": true
+    },
+    "source_sha256": {
+      "make_figures.py": "fc20e3ea963928930f7f6362a1ddfb7a353570898e018993b29ed5010efe90d2",
+      "scripts/render_article.py": "0ad4a9fc517017719ca019f40868efe3cb05f2bd132968b639b1a7788b1b52d1",
+      "scripts/build_publication.py": "4679b37e4fd2b4bedc6d785888305919547148b74d261bc6c56dc243b2ba9b0c"
+    },
+    "independent_diff_review": {
+      "runtime_algorithms_or_notebook_changed_by_agent": false,
+      "direct_pillow_imports_in_owned_files": false,
+      "blocking_findings": [],
+      "notes": [
+        "Matplotlib SVG export remains vector; PNG/WebP encoding uses cv2.",
+        "Agg RGB-to-BGR conversion preserves decoded pixels; transparent pixels composite white.",
+        "The pinned Matplotlib tight-bbox adjustment preserves artists outside the original canvas.",
+        "OpenCV WebP encoding retains quality settings; encoded bytes may differ from the former encoder.",
+        "Release URLs and dependency/security claims are owned by parent and excluded from this review."
+      ]
+    }
+  },
+  "notes": [
+    "This intentionally version-specific companion targets exact OpenCV 5.1.0; OpenCV 4.x is outside its documented contract.",
+    "The native C++ implementation has no Python or Pillow dependency.",
+    "Original experimental timings and stored notebook outputs remain historical; they are not regenerated benchmarks for this security revision."
+  ]
+}

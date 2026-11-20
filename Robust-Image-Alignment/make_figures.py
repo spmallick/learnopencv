@@ -1,6 +1,6 @@
 """Create the article diagrams and figures from actual alignment computations.
 
-The diagrams-only route needs NumPy, Matplotlib and Pillow. The full route also
+The diagrams-only route needs NumPy, Matplotlib and OpenCV. The full route also
 uses the companion alignment module and its selected neural dependencies. Every
 photographic result comes from that module; schematic points are confined to
 explicitly labelled explanatory diagrams.
@@ -10,7 +10,6 @@ from __future__ import annotations
 
 import argparse
 from dataclasses import asdict
-import io
 import json
 from pathlib import Path
 from types import SimpleNamespace
@@ -21,10 +20,11 @@ import matplotlib
 matplotlib.use("Agg")  # Rendering must also work on headless experiment hosts.
 
 import matplotlib.pyplot as plt
+from matplotlib._tight_bbox import adjust_bbox
 from matplotlib.colors import LinearSegmentedColormap, ListedColormap
 from matplotlib.patches import Circle, ConnectionPatch, FancyArrowPatch, FancyBboxPatch
 import numpy as np
-from PIL import Image
+import cv2
 
 
 PROJECT_DIR = Path(__file__).resolve().parent
@@ -53,24 +53,54 @@ def configure_style() -> None:
     )
 
 
+def figure_bgr(fig: plt.Figure, padding: float) -> np.ndarray:
+    """Render the original tight crop at 150 dpi without an intermediate image file."""
+    original_dpi = fig.dpi
+    original_layout = fig.get_layout_engine()
+    restore_bbox = None
+    try:
+        fig.set_dpi(150)
+        fig.canvas.draw()
+        # Reuse Matplotlib's savefig crop adjustment, including artists outside the
+        # initial canvas, instead of clipping a previously rendered full-size image.
+        bounds = fig.get_tightbbox(fig.canvas.get_renderer()).padded(padding)
+        restore_bbox = adjust_bbox(fig, bounds, fixed_dpi=150)
+        fig.set_layout_engine("none")
+        fig.canvas.draw()
+        rgba = np.asarray(fig.canvas.buffer_rgba()).copy()
+    finally:
+        if restore_bbox is not None:
+            restore_bbox()
+        fig.set_layout_engine(original_layout)
+        fig.set_dpi(original_dpi)
+    # Agg supplies RGB channel order; OpenCV's encoders expect BGR. Composite
+    # transparent pixels on white so publication backgrounds stay consistent.
+    if np.any(rgba[..., 3] != 255):
+        alpha = rgba[..., 3:4].astype(np.float32) / 255.0
+        rgb = np.rint(rgba[..., :3].astype(np.float32) * alpha + 255.0 * (1.0 - alpha)).astype(np.uint8)
+        return cv2.cvtColor(rgb, cv2.COLOR_RGB2BGR)
+    return cv2.cvtColor(rgba, cv2.COLOR_RGBA2BGR)
+
+
 def save_figure(fig: plt.Figure, path: Path, *, vector: bool = False) -> None:
-    """Save compact raster figures and optionally preserve editable SVG text."""
+    """Encode the rendered raster with OpenCV and optionally retain editable SVG text."""
     path.parent.mkdir(parents=True, exist_ok=True)
-    if vector:
-        fig.savefig(path.with_suffix(".svg"), bbox_inches="tight", pad_inches=0.18)
-        # Matplotlib adds trailing spaces to SVG path lines; keep repository diffs clean.
-        svg = path.with_suffix(".svg")
-        svg.write_text("\n".join(line.rstrip() for line in svg.read_text().splitlines()) + "\n")
-        fig.savefig(path.with_suffix(".png"), dpi=150, bbox_inches="tight", pad_inches=0.18)
-    else:
-        buffer = io.BytesIO()
-        fig.savefig(buffer, format="png", dpi=150, bbox_inches="tight", pad_inches=0.16)
-        buffer.seek(0)
-        with Image.open(buffer) as image:
-            rgb = image.convert("RGB")
-            rgb.save(path.with_suffix(".png"), optimize=True)
-            rgb.save(path.with_suffix(".webp"), quality=91, method=6)
-    plt.close(fig)
+    try:
+        if vector:
+            fig.savefig(path.with_suffix(".svg"), bbox_inches="tight", pad_inches=0.18)
+            # Matplotlib adds trailing spaces to SVG path lines; keep repository diffs clean.
+            svg = path.with_suffix(".svg")
+            svg.write_text("\n".join(line.rstrip() for line in svg.read_text().splitlines()) + "\n")
+        image = figure_bgr(fig, 0.18 if vector else 0.16)
+        png = path.with_suffix(".png")
+        if not cv2.imwrite(str(png), image, [cv2.IMWRITE_PNG_COMPRESSION, 9]):
+            raise OSError(f"Cannot write figure image: {png}")
+        if not vector:
+            webp = path.with_suffix(".webp")
+            if not cv2.imwrite(str(webp), image, [cv2.IMWRITE_WEBP_QUALITY, 91]):
+                raise OSError(f"Cannot write figure image: {webp}")
+    finally:
+        plt.close(fig)
 
 
 def diagram_box(ax: plt.Axes, x: float, y: float, width: float, height: float,
