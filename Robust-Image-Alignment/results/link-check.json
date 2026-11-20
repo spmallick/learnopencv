@@ -1,0 +1,82 @@
+[
+  {
+    "url": "https://arxiv.org/abs/1803.07469",
+    "status": 200,
+    "final_url": "https://arxiv.org/abs/1803.07469"
+  },
+  {
+    "url": "https://arxiv.org/abs/1912.05909",
+    "status": 200,
+    "final_url": "https://arxiv.org/abs/1912.05909"
+  },
+  {
+    "url": "https://arxiv.org/abs/2304.03608",
+    "status": 200,
+    "final_url": "https://arxiv.org/abs/2304.03608"
+  },
+  {
+    "url": "https://arxiv.org/abs/2306.13643",
+    "status": 200,
+    "final_url": "https://arxiv.org/abs/2306.13643"
+  },
+  {
+    "url": "https://github.com/cvg/LightGlue",
+    "status": 200,
+    "final_url": "https://github.com/cvg/LightGlue"
+  },
+  {
+    "url": "https://github.com/cvg/LightGlue/blob/5a650c444718caffc2669dc0094cde908f42dd73/benchmark.py",
+    "status": 200,
+    "final_url": "https://github.com/cvg/LightGlue/blob/5a650c444718caffc2669dc0094cde908f42dd73/benchmark.py"
+  },
+  {
+    "url": "https://github.com/opencv/opencv/blob/5.1.0/modules/geometry/src/usac/ransac_solvers.cpp#L1176-L1183",
+    "status": 200,
+    "final_url": "https://github.com/opencv/opencv/blob/5.1.0/modules/geometry/src/usac/ransac_solvers.cpp#L1176-L1183"
+  },
+  {
+    "url": "https://github.com/opencv/opencv/blob/5.1.0/modules/video/include/opencv2/video/tracking.hpp#L319-L385",
+    "status": 200,
+    "final_url": "https://github.com/opencv/opencv/blob/5.1.0/modules/video/include/opencv2/video/tracking.hpp#L319-L385"
+  },
+  {
+    "url": "https://github.com/opencv/opencv/releases/tag/5.1.0",
+    "status": 200,
+    "final_url": "https://github.com/opencv/opencv/releases/tag/5.1.0"
+  },
+  {
+    "url": "https://learnopencv.com/automatic-document-scanner-using-opencv/",
+    "status": 200,
+    "final_url": "https://learnopencv.com/automatic-document-scanner-using-opencv/"
+  },
+  {
+    "url": "https://learnopencv.com/feature-matching/",
+    "status": 200,
+    "final_url": "https://learnopencv.com/feature-matching/"
+  },
+  {
+    "url": "https://learnopencv.com/homography-examples-using-opencv-python-c/",
+    "status": 200,
+    "final_url": "https://learnopencv.com/homography-examples-using-opencv-python-c/"
+  },
+  {
+    "url": "https://learnopencv.com/image-alignment-ecc-in-opencv-c-python/",
+    "status": 200,
+    "final_url": "https://learnopencv.com/image-alignment-ecc-in-opencv-c-python/"
+  },
+  {
+    "url": "https://learnopencv.com/image-alignment-feature-based-using-opencv-c-python/",
+    "status": 200,
+    "final_url": "https://learnopencv.com/image-alignment-feature-based-using-opencv-c-python/"
+  },
+  {
+    "url": "https://www.robots.ox.ac.uk/~vgg/research/affine/",
+    "status": 200,
+    "final_url": "https://www.robots.ox.ac.uk/~vgg/research/affine/"
+  },
+  {
+    "url": "https://github.com/opencv/opencv/blob/5.1.0/doc/py_tutorials/py_features/py_feature_homography/py_feature_homography.markdown",
+    "status": 200,
+    "final_url": "https://github.com/opencv/opencv/blob/5.1.0/doc/py_tutorials/py_features/py_feature_homography/py_feature_homography.markdown"
+  }
+]

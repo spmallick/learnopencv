@@ -1,0 +1,713 @@
+{
+    "opencv_version": "5.1.0",
+    "runtime": "native_cpp",
+    "onnxruntime_version": "1.24.3",
+    "neural_device": "cpu",
+    "opencv_build_information_file": "opencv_build.txt",
+    "compiler": "Clang 21.0.0 (clang-2100.4.1.1)",
+    "configuration": {
+        "max_keypoints": 2048,
+        "resize_longest_side_cap": 1024,
+        "repeats": 3,
+        "study_seeds": 3,
+        "threshold_px": 3.0,
+        "opencv_threads_requested": 1,
+        "opencv_threads_reported": 18,
+        "onnxruntime_intra_op_threads": 4,
+        "onnxruntime_inter_op_threads": 1,
+        "homography_direction": "moving_to_reference",
+        "timing_excludes": [
+            "disk_io",
+            "model_load",
+            "warm_up",
+            "visualization"
+        ]
+    },
+    "demonstrations": [
+        {
+            "id": "graf_1_6",
+            "expected_accepted": 1,
+            "validation_passed": 1,
+            "benchmark_success_3px": 0,
+            "accepted": 1,
+            "reasons": [
+            ],
+            "homography_direction": "moving_to_reference",
+            "H": [
+                [
+                    1.4480904331834599,
+                    0.87297610544103565,
+                    -610.21198396278578
+                ],
+                [
+                    -0.64480807348783042,
+                    0.27703951206758748,
+                    303.00698120687696
+                ],
+                [
+                    -0.00077504141049311625,
+                    -0.0004054162219225942,
+                    1.0
+                ]
+            ],
+            "num_matches": 237,
+            "num_inliers": 66,
+            "inlier_ratio": 0.27848101265822783,
+            "median_reprojection_error_px": 1.6097940392986634,
+            "reference_inlier_hull_coverage": 0.45561155619431304,
+            "moving_inlier_hull_coverage": 0.16233840593277762,
+            "projected_reference_visible_fraction": 0.93857238740911131,
+            "projected_reference_quad": [
+                [
+                    449.72467041015625,
+                    -47.000125885009766
+                ],
+                [
+                    560.11285400390625,
+                    209.92788696289062
+                ],
+                [
+                    274.46966552734375,
+                    703.3043212890625
+                ],
+                [
+                    37.293807983398438,
+                    637.1390380859375
+                ]
+            ],
+            "estimator": "magsac",
+            "estimation_ms": 0.90095899999999995,
+            "available": 1,
+            "grid_median_error_px": 11.970080478936065,
+            "grid_p95_error_px": 25.44410066234132,
+            "corner_mean_error_px": 24.704393137175714,
+            "grid_points": 661
+        },
+        {
+            "id": "leuven_1_6",
+            "expected_accepted": 1,
+            "validation_passed": 1,
+            "benchmark_success_3px": 1,
+            "accepted": 1,
+            "reasons": [
+            ],
+            "homography_direction": "moving_to_reference",
+            "H": [
+                [
+                    0.99540699742739081,
+                    -0.012451210715190829,
+                    -2.0390165901136923
+                ],
+                [
+                    -0.002884787624270164,
+                    0.98839379180449538,
+                    16.426165856329803
+                ],
+                [
+                    3.7999128202527417e-06,
+                    -2.5043840521462202e-05,
+                    1.0
+                ]
+            ],
+            "num_matches": 985,
+            "num_inliers": 958,
+            "inlier_ratio": 0.97258883248730965,
+            "median_reprojection_error_px": 0.58030744684530233,
+            "reference_inlier_hull_coverage": 0.82172321303032481,
+            "moving_inlier_hull_coverage": 0.82359563894893717,
+            "projected_reference_visible_fraction": 0.96735462091118951,
+            "projected_reference_quad": [
+                [
+                    1.840610146522522,
+                    -16.613677978515625
+                ],
+                [
+                    908.45550537109375,
+                    -13.967575073242188
+                ],
+                [
+                    902.3768310546875,
+                    585.2440185546875
+                ],
+                [
+                    9.3115873336791992,
+                    580.65057373046875
+                ]
+            ],
+            "estimator": "magsac",
+            "estimation_ms": 0.29149999999999998,
+            "available": 1,
+            "grid_median_error_px": 0.13290622503561597,
+            "grid_p95_error_px": 0.44751910590146432,
+            "corner_mean_error_px": 0.48333874284519074,
+            "grid_points": 667
+        },
+        {
+            "id": "document",
+            "expected_accepted": 1,
+            "accepted": 1,
+            "reasons": [
+            ],
+            "homography_direction": "moving_to_reference",
+            "H": [
+                [
+                    1.4175230983806735,
+                    -0.19827375333529965,
+                    -12.993930266660609
+                ],
+                [
+                    0.22816158999326341,
+                    1.5271508694688425,
+                    -486.15558765121341
+                ],
+                [
+                    -4.4942825800241859e-05,
+                    0.00012346499461443432,
+                    1.0
+                ]
+            ],
+            "num_matches": 1104,
+            "num_inliers": 1016,
+            "inlier_ratio": 0.92028985507246375,
+            "median_reprojection_error_px": 0.94301500767546931,
+            "reference_inlier_hull_coverage": 0.87399188775573622,
+            "moving_inlier_hull_coverage": 0.44913188090075618,
+            "projected_reference_visible_fraction": 1.0,
+            "projected_reference_quad": [
+                [
+                    52.595046997070312,
+                    310.48367309570312
+                ],
+                [
+                    737.76800537109375,
+                    208.11648559570312
+                ],
+                [
+                    934.90185546875,
+                    1104.5064697265625
+                ],
+                [
+                    185.59272766113281,
+                    1261.3270263671875
+                ]
+            ],
+            "estimator": "magsac",
+            "estimation_ms": 0.33016699999999999
+        },
+        {
+            "id": "box_identification",
+            "expected_accepted": 1,
+            "accepted": 1,
+            "reasons": [
+            ],
+            "homography_direction": "moving_to_reference",
+            "H": [
+                [
+                    2.3954832484685498,
+                    0.619774774935405,
+                    -381.22112306292593
+                ],
+                [
+                    -0.23555237980574401,
+                    2.469573751790425,
+                    -367.59479247901231
+                ],
+                [
+                    0.00043224945936637014,
+                    0.00084702687675081568,
+                    1.0
+                ]
+            ],
+            "num_matches": 145,
+            "num_inliers": 131,
+            "inlier_ratio": 0.90344827586206899,
+            "median_reprojection_error_px": 1.092664792060738,
+            "reference_inlier_hull_coverage": 0.65665565974989626,
+            "moving_inlier_hull_coverage": 0.070870117185354298,
+            "projected_reference_visible_fraction": 0.9999999867462237,
+            "projected_reference_quad": [
+                [
+                    117.72514343261719,
+                    160.07832336425781
+                ],
+                [
+                    285.1568603515625,
+                    176.04826354980469
+                ],
+                [
+                    266.57199096679688,
+                    297.15383911132812
+                ],
+                [
+                    88.937973022460938,
+                    271.34323120117188
+                ]
+            ],
+            "estimator": "magsac",
+            "estimation_ms": 0.078375
+        },
+        {
+            "id": "absent_fruits",
+            "expected_accepted": 0,
+            "accepted": 0,
+            "reasons": [
+                "Only 4 inliers; need 12.",
+                "Invalid projected geometry: The projected reference crosses the projective horizon."
+            ],
+            "homography_direction": "moving_to_reference",
+            "H": [
+                [
+                    -0.72435920775561691,
+                    -1.93264028912559,
+                    360.62052109358683
+                ],
+                [
+                    0.48574482752817177,
+                    0.063672747781230624,
+                    -114.95414792454538
+                ],
+                [
+                    -0.0015114902526930183,
+                    -0.0063458889793480524,
+                    1.0
+                ]
+            ],
+            "num_matches": 13,
+            "num_inliers": 4,
+            "inlier_ratio": 0.30769230769230771,
+            "median_reprojection_error_px": 1.52587890625e-05,
+            "reference_inlier_hull_coverage": 0.17303732262112645,
+            "moving_inlier_hull_coverage": 0.0083217572643332731,
+            "projected_reference_visible_fraction": 0.0,
+            "projected_reference_quad": [
+            ],
+            "estimator": "magsac",
+            "estimation_ms": 0.120084
+        },
+        {
+            "id": "absent_building",
+            "expected_accepted": 0,
+            "accepted": 0,
+            "reasons": [
+                "Only 5 inliers; need 12."
+            ],
+            "homography_direction": "moving_to_reference",
+            "H": [
+                [
+                    -0.21164526551283444,
+                    -0.63075128120858392,
+                    331.57458860407218
+                ],
+                [
+                    0.1243887358366734,
+                    -0.85759207196613685,
+                    357.48896750502536
+                ],
+                [
+                    0.00081073739635635926,
+                    -0.0027800669456392226,
+                    1.0
+                ]
+            ],
+            "num_matches": 12,
+            "num_inliers": 5,
+            "inlier_ratio": 0.41666666666666669,
+            "median_reprojection_error_px": 4.3158372875155492e-05,
+            "reference_inlier_hull_coverage": 0.052669546300404622,
+            "moving_inlier_hull_coverage": 0.00083597772344017073,
+            "projected_reference_visible_fraction": 0.67513878906839098,
+            "projected_reference_quad": [
+                [
+                    226.45132446289062,
+                    449.69744873046875
+                ],
+                [
+                    275.9288330078125,
+                    456.87387084960938
+                ],
+                [
+                    297.33197021484375,
+                    494.80154418945312
+                ],
+                [
+                    -363.13833618164062,
+                    647.5311279296875
+                ]
+            ],
+            "estimator": "magsac",
+            "estimation_ms": 0.074833999999999998
+        },
+        {
+            "id": "aloe_parallax",
+            "purpose": "diagnostic: acceptance does not imply all scene depths align",
+            "accepted": 1,
+            "reasons": [
+            ],
+            "homography_direction": "moving_to_reference",
+            "H": [
+                [
+                    1.004272313013246,
+                    0.027194055905912277,
+                    46.325696985513538
+                ],
+                [
+                    0.0022136432942888025,
+                    1.0119704183465921,
+                    -2.8632988112905684
+                ],
+                [
+                    4.7207407529564679e-06,
+                    9.1010238806541593e-06,
+                    1.0
+                ]
+            ],
+            "num_matches": 1385,
+            "num_inliers": 915,
+            "inlier_ratio": 0.66064981949458479,
+            "median_reprojection_error_px": 1.1582143895084942,
+            "reference_inlier_hull_coverage": 0.78732781221907466,
+            "moving_inlier_hull_coverage": 0.79084418831405279,
+            "projected_reference_visible_fraction": 0.95044763236853635,
+            "projected_reference_quad": [
+                [
+                    -46.207973480224609,
+                    2.9305074214935303
+                ],
+                [
+                    1236.8677978515625,
+                    0.12383244931697845
+                ],
+                [
+                    1219.5406494140625,
+                    1113.4580078125
+                ],
+                [
+                    -76.173423767089844,
+                    1109.550048828125
+                ]
+            ],
+            "estimator": "magsac",
+            "estimation_ms": 0.57445800000000002
+        }
+    ],
+    "catalogue": [
+        {
+            "name": "box design",
+            "accepted": 1,
+            "reasons": [
+            ],
+            "homography_direction": "moving_to_reference",
+            "H": [
+                [
+                    2.3954832484685498,
+                    0.619774774935405,
+                    -381.22112306292593
+                ],
+                [
+                    -0.23555237980574401,
+                    2.469573751790425,
+                    -367.59479247901231
+                ],
+                [
+                    0.00043224945936637014,
+                    0.00084702687675081568,
+                    1.0
+                ]
+            ],
+            "num_matches": 145,
+            "num_inliers": 131,
+            "inlier_ratio": 0.90344827586206899,
+            "median_reprojection_error_px": 1.092664792060738,
+            "reference_inlier_hull_coverage": 0.65665565974989626,
+            "moving_inlier_hull_coverage": 0.070870117185354298,
+            "projected_reference_visible_fraction": 0.9999999867462237,
+            "projected_reference_quad": [
+                [
+                    117.72514343261719,
+                    160.07832336425781
+                ],
+                [
+                    285.1568603515625,
+                    176.04826354980469
+                ],
+                [
+                    266.57199096679688,
+                    297.15383911132812
+                ],
+                [
+                    88.937973022460938,
+                    271.34323120117188
+                ]
+            ],
+            "estimator": "magsac",
+            "estimation_ms": 0.104542
+        },
+        {
+            "name": "graffiti wall",
+            "accepted": 0,
+            "reasons": [
+                "Only 5 inliers; need 12.",
+                "Invalid projected geometry: The projected reference crosses the projective horizon."
+            ],
+            "homography_direction": "moving_to_reference",
+            "H": [
+                [
+                    16.744412055645693,
+                    0.85601679407317655,
+                    -1157.2019319181056
+                ],
+                [
+                    12.72754908587469,
+                    4.7013948308190319,
+                    -1595.833016936806
+                ],
+                [
+                    0.057897807890281434,
+                    -0.011663499690920329,
+                    1.0
+                ]
+            ],
+            "num_matches": 6,
+            "num_inliers": 5,
+            "inlier_ratio": 0.83333333333333337,
+            "median_reprojection_error_px": 1.0253634294809,
+            "reference_inlier_hull_coverage": 0.060864745730146157,
+            "moving_inlier_hull_coverage": 0.0063456207245329108,
+            "projected_reference_visible_fraction": 0.0,
+            "projected_reference_quad": [
+            ],
+            "estimator": "magsac",
+            "estimation_ms": 0.034625000000000003
+        },
+        {
+            "name": "blank form",
+            "accepted": 0,
+            "reasons": [
+                "Only 5 inliers; need 12.",
+                "Invalid projected geometry: The projected reference crosses the projective horizon."
+            ],
+            "homography_direction": "moving_to_reference",
+            "H": [
+                [
+                    -2.4470961911627165,
+                    -2.2697566216050493,
+                    731.01068868829884
+                ],
+                [
+                    -2.793375836791296,
+                    -5.9580304216355149,
+                    1165.436705613286
+                ],
+                [
+                    -0.0029105564383918917,
+                    -0.0048289441784763014,
+                    1.0
+                ]
+            ],
+            "num_matches": 13,
+            "num_inliers": 5,
+            "inlier_ratio": 0.38461538461538464,
+            "median_reprojection_error_px": 0.11853753724710575,
+            "reference_inlier_hull_coverage": 0.15027499098691025,
+            "moving_inlier_hull_coverage": 0.12412032810980807,
+            "projected_reference_visible_fraction": 0.0,
+            "projected_reference_quad": [
+            ],
+            "estimator": "magsac",
+            "estimation_ms": 0.087207999999999994
+        }
+    ],
+    "catalogue_identification": "box design",
+    "fixed_match_estimator_comparison": [
+        {
+            "accepted": 1,
+            "reasons": [
+            ],
+            "homography_direction": "moving_to_reference",
+            "H": [
+                [
+                    1.4349108402146282,
+                    0.86415588931023146,
+                    -605.1482283138032
+                ],
+                [
+                    -0.64255401085374597,
+                    0.26767025742427597,
+                    304.02086174339354
+                ],
+                [
+                    -0.0007736062386689708,
+                    -0.00041801272659447317,
+                    1.0
+                ]
+            ],
+            "num_matches": 237,
+            "num_inliers": 67,
+            "inlier_ratio": 0.28270042194092826,
+            "median_reprojection_error_px": 1.5355950634119375,
+            "reference_inlier_hull_coverage": 0.46899942275341872,
+            "moving_inlier_hull_coverage": 0.16741483566411,
+            "projected_reference_visible_fraction": 0.93889263027086256,
+            "projected_reference_quad": [
+                [
+                    452.12295532226562,
+                    -50.463001251220703
+                ],
+                [
+                    560.94158935546875,
+                    210.76083374023438
+                ],
+                [
+                    274.05325317382812,
+                    702.3428955078125
+                ],
+                [
+                    38.134258270263672,
+                    636.95562744140625
+                ]
+            ],
+            "estimator": "ransac",
+            "estimation_ms": 4.2329590000000001,
+            "available": 1,
+            "grid_median_error_px": 11.088333808647299,
+            "grid_p95_error_px": 26.125556990983444,
+            "corner_mean_error_px": 22.421897136416884,
+            "grid_points": 661
+        },
+        {
+            "accepted": 1,
+            "reasons": [
+            ],
+            "homography_direction": "moving_to_reference",
+            "H": [
+                [
+                    1.4480904331834599,
+                    0.87297610544103565,
+                    -610.21198396278578
+                ],
+                [
+                    -0.64480807348783042,
+                    0.27703951206758748,
+                    303.00698120687696
+                ],
+                [
+                    -0.00077504141049311625,
+                    -0.0004054162219225942,
+                    1.0
+                ]
+            ],
+            "num_matches": 237,
+            "num_inliers": 66,
+            "inlier_ratio": 0.27848101265822783,
+            "median_reprojection_error_px": 1.6097940392986634,
+            "reference_inlier_hull_coverage": 0.45561155619431304,
+            "moving_inlier_hull_coverage": 0.16233840593277762,
+            "projected_reference_visible_fraction": 0.93857238740911131,
+            "projected_reference_quad": [
+                [
+                    449.72467041015625,
+                    -47.000125885009766
+                ],
+                [
+                    560.11285400390625,
+                    209.92788696289062
+                ],
+                [
+                    274.46966552734375,
+                    703.3043212890625
+                ],
+                [
+                    37.293807983398438,
+                    637.1390380859375
+                ]
+            ],
+            "estimator": "magsac",
+            "estimation_ms": 0.62833399999999995,
+            "available": 1,
+            "grid_median_error_px": 11.970080478936065,
+            "grid_p95_error_px": 25.44410066234132,
+            "corner_mean_error_px": 24.704393137175714,
+            "grid_points": 661
+        }
+    ],
+    "ecc_comparison": [
+        {
+            "id": "graf_1_6",
+            "before": {
+                "available": 1,
+                "grid_median_error_px": 11.970080478936065,
+                "grid_p95_error_px": 25.44410066234132,
+                "corner_mean_error_px": 24.704393137175714,
+                "grid_points": 661
+            },
+            "status": "returned",
+            "correlation": 0.79572349884975069,
+            "refinement_ms": 262.54729200000003,
+            "after": {
+                "available": 1,
+                "grid_median_error_px": 0.76944101356427341,
+                "grid_p95_error_px": 3.7446233973435854,
+                "corner_mean_error_px": 3.1699730416215104,
+                "grid_points": 661
+            }
+        },
+        {
+            "id": "leuven_1_6",
+            "before": {
+                "available": 1,
+                "grid_median_error_px": 0.13290622503561597,
+                "grid_p95_error_px": 0.44751910590146432,
+                "corner_mean_error_px": 0.48333874284519074,
+                "grid_points": 667
+            },
+            "status": "returned",
+            "correlation": 0.93243817012607921,
+            "refinement_ms": 91.47175,
+            "after": {
+                "available": 1,
+                "grid_median_error_px": 0.18665841381848214,
+                "grid_p95_error_px": 0.4739431401063226,
+                "corner_mean_error_px": 0.34301788418434831,
+                "grid_points": 667
+            }
+        }
+    ],
+    "spatial_support_exercise": {
+        "accepted": 0,
+        "reasons": [
+            "Only 9 inliers; need 12.",
+            "Inliers cover too little of the reference image.",
+            "Invalid projected geometry: The projected reference crosses the projective horizon."
+        ],
+        "homography_direction": "moving_to_reference",
+        "H": [
+            [
+                45.153569788548964,
+                37.44136062770766,
+                -19813.67737912478
+            ],
+            [
+                -12.67872663867435,
+                17.136620273089676,
+                5783.9380302893342
+            ],
+            [
+                0.032165631776083087,
+                0.073557376334473512,
+                1.0
+            ]
+        ],
+        "num_matches": 20,
+        "num_inliers": 9,
+        "inlier_ratio": 0.45000000000000001,
+        "median_reprojection_error_px": 0.97800557480828165,
+        "reference_inlier_hull_coverage": 0.019966520169717689,
+        "moving_inlier_hull_coverage": 0.0090491450869995341,
+        "projected_reference_visible_fraction": 0.0,
+        "projected_reference_quad": [
+        ],
+        "estimator": "magsac",
+        "estimation_ms": 0.18662500000000001
+    },
+    "validation_passed": 1
+}

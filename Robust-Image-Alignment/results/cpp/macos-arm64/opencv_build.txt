@@ -1,0 +1,88 @@
+General configuration for OpenCV 5.1.0 =====================================
+  Version control:               5.1.0
+
+  Platform:
+    Timestamp:                   2026-11-19T20:41:32Z
+    Host:                        Darwin 25.6.0 arm64
+    CMake:                       3.29.3
+    CMake generator:             Unix Makefiles
+    CMake build tool:            /usr/bin/make
+    Configuration:               Release
+    Algorithm Hint:              ALGO_HINT_ACCURATE
+
+  CPU/HW features:
+    Baseline:                    NEON FP16 NEON_DOTPROD NEON_FP16
+      requested:                 DETECT
+    Dispatched code generation:  NEON_BF16
+      requested:                 NEON_FP16 NEON_BF16 NEON_DOTPROD
+      NEON_BF16 (0 files):       + NEON_BF16
+
+  C/C++:
+    Built as dynamic libs?:      YES
+    C++ standard:                17
+    C++ Compiler:                /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  (ver 21.0.0.21000401)
+    C++ flags (Release):         -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wsign-promo -Wuninitialized -Wno-delete-non-virtual-dtor -Wno-unnamed-type-template-args -Wno-comment -fdiagnostics-show-option -Qunused-arguments -Wno-semicolon-before-method-body -ffunction-sections -fdata-sections  -fvisibility=hidden -fvisibility-inlines-hidden -O3 -DNDEBUG  -DNDEBUG
+    C++ flags (Debug):           -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wsign-promo -Wuninitialized -Wno-delete-non-virtual-dtor -Wno-unnamed-type-template-args -Wno-comment -fdiagnostics-show-option -Qunused-arguments -Wno-semicolon-before-method-body -ffunction-sections -fdata-sections  -fvisibility=hidden -fvisibility-inlines-hidden -g  -O0 -DDEBUG -D_DEBUG
+    C Compiler:                  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc
+    C flags (Release):           -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wsign-promo -Wuninitialized -Wno-delete-non-virtual-dtor -Wno-unnamed-type-template-args -Wno-comment -fdiagnostics-show-option -Qunused-arguments -Wno-semicolon-before-method-body -ffunction-sections -fdata-sections  -fvisibility=hidden -fvisibility-inlines-hidden -O3 -DNDEBUG  -DNDEBUG
+    C flags (Debug):             -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wsign-promo -Wuninitialized -Wno-delete-non-virtual-dtor -Wno-unnamed-type-template-args -Wno-comment -fdiagnostics-show-option -Qunused-arguments -Wno-semicolon-before-method-body -ffunction-sections -fdata-sections  -fvisibility=hidden -fvisibility-inlines-hidden -g  -O0 -DDEBUG -D_DEBUG
+    Linker flags (Release):      -Wl,-dead_strip
+    Linker flags (Debug):        -Wl,-dead_strip
+    ccache:                      NO
+    Precompiled headers:         NO
+    Extra dependencies:
+    3rdparty dependencies:
+
+  OpenCV modules:
+    To be built:                 core features flann geometry imgcodecs imgproc video
+    Disabled:                    calib dnn highgui java_bindings_generator js_bindings_generator objc_bindings_generator objdetect photo ptcloud python3 python_bindings_generator python_tests stereo stitching videoio world
+    Disabled by dependency:      -
+    Unavailable:                 java ts
+    Applications:                apps
+    Documentation:               NO
+    Non-free algorithms:         NO
+
+  GUI:
+    Cocoa:                       YES
+    Built-in fonts:              sans
+
+  Media I/O:
+    ZLib:                        build (ver 1.3.2)
+    JPEG:                        build-libjpeg-turbo (ver 3.1.2-70)
+      SIMD Support Request:      YES
+      SIMD Support:              YES
+    WEBP:                        build (ver decoder: 0x0210, encoder: 0x0210, demux: 0x0107)
+    AVIF:                        avif (ver 1.1.1)
+    PNG:                         build (ver 1.6.57)
+      SIMD Support Request:      YES
+      SIMD Support:              YES (Arm NEON)
+      Metadata Support:          EXIF XMP ICC cICP
+    TIFF:                        build (ver 42 - 4.7.2)
+    JPEG 2000:                   build (ver 2.5.4)
+    GIF:                         YES
+    HDR:                         YES
+    SUNRASTER:                   YES
+    PXM:                         YES
+    PFM:                         YES
+
+  Video I/O:
+    Orbbec:                      NO
+
+  Parallel framework:            GCD
+
+  Trace:                         YES (with Intel ITT(3.25.4))
+
+  Other third-party libraries:
+    HarfBuzz:                    build (14.2.1)
+    Intel IPP:                   NO
+    Lapack:                      YES (Unknown -framework Accelerate)
+    Eigen:                       YES (ver 3.4.1)
+    Custom HAL:                  YES (carotene (ver 0.0.1) KleidiCV (ver 26.09))
+    Flatbuffers:                 builtin/3rdparty (25.9.23)
+
+  ONNX Runtime:                  NO
+
+  Python (for build):            /opt/homebrew/bin/python3
+
+  Install to:                    /tmp/robust-opencv-cpp-5.1.0/install
+-----------------------------------------------------------------

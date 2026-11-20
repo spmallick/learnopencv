@@ -1,0 +1,7 @@
+CLI VALIDATION PASSED sift ransac
+CLI VALIDATION PASSED sift magsac
+CLI VALIDATION PASSED aliked-nn ransac
+CLI VALIDATION PASSED aliked-nn magsac
+CLI VALIDATION PASSED lightglue ransac
+CLI VALIDATION PASSED lightglue magsac
+Saved /tmp/robust-image-alignment/results/cli-validation.json

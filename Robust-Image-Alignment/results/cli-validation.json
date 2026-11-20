@@ -1,0 +1,98 @@
+[
+  {
+    "method": "sift",
+    "estimator": "ransac",
+    "device": "cpu",
+    "opencv": "5.1.0",
+    "accepted": true,
+    "inliers": 78,
+    "output_files": [
+      "aligned.png",
+      "matches.jpg",
+      "overlay.jpg",
+      "reference_boundary.jpg",
+      "report.json",
+      "valid_mask.png"
+    ]
+  },
+  {
+    "method": "sift",
+    "estimator": "magsac",
+    "device": "cpu",
+    "opencv": "5.1.0",
+    "accepted": true,
+    "inliers": 78,
+    "output_files": [
+      "aligned.png",
+      "matches.jpg",
+      "overlay.jpg",
+      "reference_boundary.jpg",
+      "report.json",
+      "valid_mask.png"
+    ]
+  },
+  {
+    "method": "aliked-nn",
+    "estimator": "ransac",
+    "device": "cpu",
+    "opencv": "5.1.0",
+    "accepted": true,
+    "inliers": 64,
+    "output_files": [
+      "aligned.png",
+      "matches.jpg",
+      "overlay.jpg",
+      "reference_boundary.jpg",
+      "report.json",
+      "valid_mask.png"
+    ]
+  },
+  {
+    "method": "aliked-nn",
+    "estimator": "magsac",
+    "device": "cpu",
+    "opencv": "5.1.0",
+    "accepted": true,
+    "inliers": 64,
+    "output_files": [
+      "aligned.png",
+      "matches.jpg",
+      "overlay.jpg",
+      "reference_boundary.jpg",
+      "report.json",
+      "valid_mask.png"
+    ]
+  },
+  {
+    "method": "lightglue",
+    "estimator": "ransac",
+    "device": "cpu",
+    "opencv": "5.1.0",
+    "accepted": true,
+    "inliers": 126,
+    "output_files": [
+      "aligned.png",
+      "matches.jpg",
+      "overlay.jpg",
+      "reference_boundary.jpg",
+      "report.json",
+      "valid_mask.png"
+    ]
+  },
+  {
+    "method": "lightglue",
+    "estimator": "magsac",
+    "device": "cpu",
+    "opencv": "5.1.0",
+    "accepted": true,
+    "inliers": 131,
+    "output_files": [
+      "aligned.png",
+      "matches.jpg",
+      "overlay.jpg",
+      "reference_boundary.jpg",
+      "report.json",
+      "valid_mask.png"
+    ]
+  }
+]

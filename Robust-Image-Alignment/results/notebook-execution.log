@@ -1,0 +1,2 @@
+[0;93m2026-11-14 13:51:03.363624717 [W:onnxruntime:Default, device_discovery.cc:211 DiscoverDevicesForPlatform] GPU device discovery failed: device_discovery.cc:91 ReadFileContents Failed to open file: "/sys/class/drm/card0/device/vendor"[m
+NOTEBOOK EXECUTED 37 18

@@ -1,0 +1,174 @@
+{
+  "audited_on": "2026-11-19",
+  "audit_baseline_commit": "8e432bed",
+  "publication_status": "prepared_not_applied_to_live_site",
+  "title": "Robust Image Alignment with ALIKED, LightGlue, and MAGSAC++",
+  "title_characters": 59,
+  "seo_title": "Robust Image Alignment with ALIKED, LightGlue, and MAGSAC++",
+  "meta_description": "Learn robust image alignment with ALIKED, LightGlue, and MAGSAC++ in OpenCV. Align documents, locate objects from one reference, and check failures.",
+  "meta_description_characters": 148,
+  "social_title": "Robust Image Alignment with ALIKED, LightGlue, and MAGSAC++",
+  "social_description": "Learn robust image alignment with ALIKED, LightGlue, and MAGSAC++ in OpenCV. Align documents, locate objects from one reference, and check failures.",
+  "proposed_slug": "robust-image-alignment",
+  "slug_status": "assigned_to_post_80541_pending_publication",
+  "canonical_url": "https://learnopencv.com/robust-image-alignment/",
+  "primary_keyphrase": "robust image alignment",
+  "secondary_keyphrases": [
+    "image alignment OpenCV",
+    "image registration",
+    "ALIKED LightGlue",
+    "MAGSAC++ homography",
+    "single-reference object identification"
+  ],
+  "featured_image_absolute_path": "/Users/spmallick/github/learnopencv-robust-image-alignment/Robust-Image-Alignment/figures/robust-image-alignment-thumbnail.webp",
+  "featured_image_alt": "Robust Image Alignment: a real tilted graffiti photograph beside its aligned overlay, using ALIKED, LightGlue, and MAGSAC++.",
+  "featured_image_public_url": "https://learnopencv.com/wp-content/uploads/2026/11/robust-image-alignment-thumbnail.webp",
+  "author_name": "Satya Mallick",
+  "author_profile_url": "https://learnopencv.com/author/spmallick/",
+  "date_published": null,
+  "date_modified": null,
+  "structured_data": {
+    "preferred_type": "BlogPosting",
+    "implementation": "Use the existing site SEO integration after actual author, canonical, media, and dates are known; avoid duplicate conflicting schema.",
+    "faq_rich_result_markup": false,
+    "faq_note": "Google FAQ rich results stopped appearing May 7, 2026; the documentation was removed June 15, 2026."
+  },
+  "newsletter": {
+    "cta_label": "Download Code",
+    "cta_must_open": "LearnOpenCV newsletter registration flow",
+    "newsletter_landing_url": null,
+    "code_url_metadata_field": "code_url",
+    "code_url_acf_key": "field_605e315832c84",
+    "article_must_contain_direct_code_or_zip_url": false,
+    "delivery": "One ZIP containing notebook, standalone Python, native C++, dependencies/instructions; only after newsletter registration."
+  },
+  "audit_baseline_metrics": {
+    "prose_words_approx": 5258,
+    "external_links": 16,
+    "external_http_200": 16,
+    "contextual_learnopencv_links": 5,
+    "images": 12,
+    "missing_image_assets": 0,
+    "images_with_nonempty_alt": 12,
+    "html_h1": 1,
+    "unique_heading_ids": 25,
+    "duplicate_heading_ids": 0,
+    "toc_fragment_links": 0,
+    "markdown_image_bytes": 8092986,
+    "preview_html_image_bytes": 1735030,
+    "preview_has_meta_description": false,
+    "preview_has_canonical": false,
+    "preview_has_social_metadata": false,
+    "preview_has_article_schema": false
+  },
+  "scope_note": "Technical editorial audit; no search-volume, rank, search-performance, or live Core Web Vitals claims. Final live-page and newsletter checks must be recorded after publication.",
+  "thumbnail": {
+    "size": [
+      1600,
+      900
+    ],
+    "aspect_ratio": "16:9",
+    "source": "figures/graf_alignment.png",
+    "source_sha256": "91d5cea2cc8a5edb919f18d486fa4e1b801dac61b98873cbd719472e7f24f17c",
+    "panels": {
+      "moving_photograph_crop": [
+        565,
+        162,
+        1082,
+        576
+      ],
+      "aligned_overlay_crop": [
+        1106,
+        162,
+        1623,
+        576
+      ]
+    },
+    "composition": "Real recorded photograph and aligned-overlay panels, contained without further cropping; added typography, frames, and explanatory arrow. No fabricated matches or measurement.",
+    "render_script": "scripts/make_thumbnail.py",
+    "visual_qa": "Inspected full1600x900 and mobile320x180 versions.",
+    "outputs": [
+      {
+        "file": "figures/robust-image-alignment-thumbnail.png",
+        "bytes": 916180,
+        "sha256": "41734dde7aafebd1d403d7d259c384788fb0c12efc06029beb378ec53959e1b9"
+      },
+      {
+        "file": "figures/robust-image-alignment-thumbnail.webp",
+        "bytes": 181158,
+        "sha256": "ec90a7de8d7555753658ae958455c3c0419353b2e24b4828d7d61aa420db2efd"
+      }
+    ]
+  },
+  "post_fix_review": {
+    "reviewed_on": "2026-11-19",
+    "article_sha256": "9104874b5c81d5b87271c3fc0c47ff5e05c55e336d07315fc8a9eded161153f8",
+    "prose_words_approx": 5663,
+    "code_fences": 24,
+    "source_math_display_format": "GitHub-supported $$ delimiters",
+    "wordpress_math_equivalence_checked": true,
+    "resolved_findings": [
+      "Learning objectives and sixteen linked contents entries added.",
+      "Conclusion and primary references added.",
+      "Initial extracted-directory cd command added.",
+      "Release check distinguishes November19 from November14 experiments.",
+      "Relative raw-experiment hyperlink removed from article.",
+      "Description and social metadata added to standalone preview.",
+      "All image dimensions and loading priorities added.",
+      "Image-tag closure corrected.",
+      "GitHub display math converted to dollar delimiters; WP equivalent expression checked."
+    ],
+    "remaining_local_rendering_blockers": [],
+    "pending_live_checks": [
+      "Canonical URL, actual author, first publication date and structured data.",
+      "Public featured-image URL and complete social metadata.",
+      "Verified newsletter Code URL and popup without submitting registration.",
+      "Verified GitHub article landing link to LearnOpenCV registration flow.",
+      "Public image/code/table rendering, indexability, and sitemap."
+    ],
+    "outputs": {
+      "repository_preview": {
+        "sha256": "0343fbd17530ed1c99f865826478e17c1019bb0d456fea058a90581c14afcde6",
+        "heading_ids": 29,
+        "unique_heading_ids": 29,
+        "h1_count": 1,
+        "contents_links": 16,
+        "unresolved_fragment_targets": [],
+        "images": 12,
+        "images_with_intrinsic_dimensions": 12,
+        "images_with_alt": 12,
+        "missing_image_files": [],
+        "lazy_images": 11,
+        "high_priority_images": 1,
+        "malformed_image_tags": 0,
+        "syntaxhighlighter_blocks": 0,
+        "external_link_occurrences": 25,
+        "unique_external_urls": 16,
+        "has_meta_description": true,
+        "has_og_title": true,
+        "image_payload_bytes": 1735030
+      },
+      "wordpress_fragment": {
+        "sha256": "02dc77ae74e506dd0c2d7688487f0789649e04c88ffa125f296274e3816e9a8d",
+        "heading_ids": 28,
+        "unique_heading_ids": 28,
+        "h1_count": 0,
+        "contents_links": 16,
+        "unresolved_fragment_targets": [],
+        "images": 12,
+        "images_with_intrinsic_dimensions": 12,
+        "images_with_alt": 12,
+        "missing_image_files": [],
+        "lazy_images": 11,
+        "high_priority_images": 1,
+        "malformed_image_tags": 0,
+        "syntaxhighlighter_blocks": 12,
+        "external_link_occurrences": 25,
+        "unique_external_urls": 16,
+        "has_meta_description": false,
+        "has_og_title": false,
+        "image_payload_bytes": 1841694
+      }
+    }
+  }
+}

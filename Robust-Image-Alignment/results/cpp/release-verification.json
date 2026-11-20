@@ -1,0 +1,11 @@
+{
+  "checked_on": "2026-11-19",
+  "latest_stable_opencv_5x": "5.1.0",
+  "published_at": "2026-11-06T09:58:19Z",
+  "release_url": "https://github.com/opencv/opencv/releases/tag/5.1.0",
+  "api_url": "https://api.github.com/repos/opencv/opencv/releases/latest",
+  "prerelease": false,
+  "draft": false,
+  "release_commit": "e4f78fbcf1a773fbed69e14500e8b734963eb585",
+  "runtime_required": "5.1.0"
+}
