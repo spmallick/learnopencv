@@ -4,9 +4,9 @@
 
 This companion contains three runnable versions: the [complete notebook](robust_image_alignment.ipynb), a [pure Python module and CLI](robust_image_alignment.py), and a [native C++17 program](cpp/main.cpp). They cover natural photographs, planar documents and printed targets, including identification of a known appearance from one reference image. The [article source](article.md), explanatory diagrams, and recorded experiments accompany the code.
 
-[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://github.com/spmallick/learnopencv/releases/download/robust-image-alignment-opencv-5.1.0-2026.11.19/Robust-Image-Alignment.zip)
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://github.com/spmallick/learnopencv/releases/download/robust-image-alignment-opencv-5.1.0-2026.11.19-r2/Robust-Image-Alignment.zip)
 
-The [versioned standalone release](https://github.com/spmallick/learnopencv/releases/tag/robust-image-alignment-opencv-5.1.0-2026.11.19) contains one `Robust-Image-Alignment/` directory with 127 files from tested commit `761e0d8acaaa069773bf9b859cd4031ce0ec8df4`. Download its [SHA-256 checksum](https://github.com/spmallick/learnopencv/releases/download/robust-image-alignment-opencv-5.1.0-2026.11.19/Robust-Image-Alignment.zip.sha256) alongside the ZIP. The extracted package was tested on macOS and Linux; the release includes the validation report. Sample inputs are fetched separately by the checked downloaders.
+The [versioned standalone release](https://github.com/spmallick/learnopencv/releases/tag/robust-image-alignment-opencv-5.1.0-2026.11.19-r2) contains one `Robust-Image-Alignment/` directory with 131 tracked files. Its release notes identify the exact tested source commit. This security revision replaces our direct Pillow image operations with OpenCV and constrains the Pillow dependency required by Matplotlib and Torchvision to 13.0.0. Download its [SHA-256 checksum](https://github.com/spmallick/learnopencv/releases/download/robust-image-alignment-opencv-5.1.0-2026.11.19-r2/Robust-Image-Alignment.zip.sha256) alongside the ZIP. The extracted package is validated against OpenCV 5.1.0; the release notes and `results/dependency-security-validation.json` record the updated Python and native C++ checks. Original experiment and benchmark records remain historical evidence. Sample inputs are fetched separately by the checked downloaders.
 
 ## Tested release and environment
 
@@ -37,6 +37,8 @@ python -m pip install torch==2.10.0 torchvision==0.25.0 --index-url https://down
 ```
 
 The `--no-deps` LightGlue installation is intentional: its upstream dependency list otherwise installs an older OpenCV wheel over the source-built namespace. Do not install any second package supplying `cv2`. The minimal OpenCV build is for headless geometry and image processing; notebook plots and saved images provide visualization.
+
+Our own image loading, encoding, dimension checks, and thumbnail drawing use OpenCV. Matplotlib (notebook/figure plots) and Torchvision (imported by upstream LightGlue) still require Pillow internally. `requirements.txt` applies `constraints.txt` to select the patched Pillow 13.0.0 release for those indirect dependencies; removing our Pillow imports alone would not secure an older installed copy. For an existing environment, rerun `python -m pip install -r requirements.txt` before continuing. The original experiment records retain their historical package versions.
 
 `OPENCV_BUILD_ROOT`, `OPENCV_INSTALL_ROOT`, `PYTHON_BIN`, and `BUILD_JOBS` customize the source build. The script verifies the exact release commit and runtime version. It requires network access for source/dependency downloads; asset and weight downloads also need network access on the first run.
 
@@ -161,7 +163,7 @@ Robust-Image-Alignment/
 │   └── tests/          # Native geometry and CLI regressions
 ├── download_assets.py / download_models.py
 ├── assets_manifest.json
-├── requirements.txt / requirements-lightglue.txt
+├── requirements.txt / requirements-lightglue.txt / constraints.txt
 ├── run_experiments.py / make_figures.py / build_notebook.py
 ├── scripts/            # Python/C++ source builds, export, parity, article checks
 ├── tests/              # Geometry, rejection, and CLI regressions

@@ -10,7 +10,7 @@ import re
 import shutil
 
 import markdown
-from PIL import Image
+import cv2
 
 
 PROJECT = Path(__file__).resolve().parents[1]
@@ -34,8 +34,21 @@ def prepare(output: Path) -> None:
         if webp.exists():
             shutil.copy2(webp, destination)
         else:
-            with Image.open(raster) as image:
-                image.convert('RGB').save(destination, 'WEBP', quality=92, method=6)
+            image = cv2.imread(str(raster), cv2.IMREAD_UNCHANGED)
+            if image is None or image.size == 0:
+                raise OSError(f'Cannot read publication image: {raster}')
+            if image.dtype.name != 'uint8':
+                raise ValueError(f'Expected an 8-bit publication image: {raster}')
+            if image.ndim == 2:
+                image = cv2.cvtColor(image, cv2.COLOR_GRAY2BGR)
+            elif image.shape[2] == 4:
+                # PNG diagrams may carry alpha; preserve their intended white page.
+                alpha = image[..., 3:4].astype('float32') / 255.0
+                image = (image[..., :3].astype('float32') * alpha + 255.0 * (1.0 - alpha)).round().astype('uint8')
+            elif image.shape[2] != 3:
+                raise ValueError(f'Expected a gray, BGR, or BGRA publication image: {raster}')
+            if not cv2.imwrite(str(destination), image, [cv2.IMWRITE_WEBP_QUALITY, 92]):
+                raise OSError(f'Cannot write publication image: {destination}')
         return f'![{label}](assets/{destination.name})'
 
     source = re.sub(r'!\[([^\]]*)\]\((figures/[^)]+)\)', copy_image, source)
@@ -70,8 +83,11 @@ def prepare(output: Path) -> None:
         nonlocal first_image
         tag = match.group(0)
         relative = unescape(re.search(r'src="([^\"]+)"', tag)[1])
-        with Image.open(output / relative) as image:
-            width, height = image.size
+        image_path = output / relative
+        image = cv2.imread(str(image_path), cv2.IMREAD_UNCHANGED)
+        if image is None or image.size == 0:
+            raise OSError(f'Cannot read publication image: {image_path}')
+        height, width = image.shape[:2]
         loading = 'loading="eager" fetchpriority="high"' if first_image else 'loading="lazy"'
         first_image = False
         return (re.sub(r'\s*/?>$', '', tag) + f' width="{width}" height="{height}" decoding="async" '

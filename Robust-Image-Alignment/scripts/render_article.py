@@ -7,7 +7,7 @@ import re
 import xml.etree.ElementTree as ET
 
 import markdown
-from PIL import Image
+import cv2
 
 
 PROJECT = Path(__file__).resolve().parents[1]
@@ -37,7 +37,7 @@ def size_images(fragment):
             return tag
         path = PROJECT / source_match.group(1)
         if not path.is_file():
-            return tag
+            raise OSError(f'Cannot read article image: {path}')
         if path.suffix == '.svg':
             root = ET.parse(path).getroot()
             viewbox = root.get('viewBox', '').split()
@@ -48,8 +48,10 @@ def size_images(fragment):
                 width = round(float(re.match(r'[\d.]+', root.get('width', '0'))[0]))
                 height = round(float(re.match(r'[\d.]+', root.get('height', '0'))[0]))
         else:
-            with Image.open(path) as image:
-                width, height = image.size
+            image = cv2.imread(str(path), cv2.IMREAD_UNCHANGED)
+            if image is None or image.size == 0:
+                raise OSError(f'Cannot read article image: {path}')
+            height, width = image.shape[:2]
         attrs = f' width="{width}" height="{height}" decoding="async"'
         attrs += ' loading="eager" fetchpriority="high"' if first else ' loading="lazy"'
         first = False
