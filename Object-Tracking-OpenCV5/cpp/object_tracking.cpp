@@ -75,7 +75,7 @@ constexpr double kValidateSuccessRate = 0.90;
 // Promote the official demo's 0.30 visualization cutoff into this
 // application's acceptance policy. OpenCV's lower built-in default (0.20) is
 // intended only to reject nearly black inputs and can allow a weak prediction
-// to update the template and trigger scale drift.
+// to update the tracking rectangle and trigger scale drift.
 constexpr float kVitTrackingScoreThreshold = 0.30f;
 
 // MODELS_DIR is injected by CMake as the absolute path of ../models so the

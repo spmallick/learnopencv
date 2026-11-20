@@ -54,7 +54,7 @@ VALIDATE_SUCCESS_RATE = 0.90 # required fraction of frames on target
 # Promote the official demo's 0.30 visualization cutoff into this
 # application's acceptance policy. The lower TrackerVit default (0.20) is
 # intended only to reject nearly black inputs and can accept weak predictions
-# that later produce severe scale drift.
+# that update the tracking rectangle and later produce severe scale drift.
 VITTRACK_SCORE_THRESHOLD = 0.30
 
 
