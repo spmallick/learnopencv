@@ -2,8 +2,6 @@
 
 A photographed form can be easy to read and still be difficult to compare with its template. The page is tilted, one corner is farther from the camera, and handwritten fields introduce content that does not exist in the blank original. If we subtract the two images immediately, almost every printed line looks like a change.
 
-**Updated November 20, 2026:** We checked the sampling and matching diagrams, repeated the accuracy comparison across inference devices, and corrected two coordinate conversions that affect resized SIFT features and ECC refinement.
-
 Image alignment, also called image registration, gives those comparisons a common coordinate system. It also lets us locate a familiar book cover in a cluttered photograph, match two views of a wall, or prepare overlapping photographs for stitching. The interesting part is deciding which correspondences to trust and whether one transformation actually describes the scene.
 
 We will build a Python pipeline that extracts features with **ALIKED**, matches them with **LightGlue**, and estimates a homography using **MAGSAC++**. Alongside the successful examples, we will inspect an absent target and a scene whose depth prevents a single homography from aligning everything.

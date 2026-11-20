@@ -19,6 +19,6 @@
   "real_pair_trials_rechecked": 300,
   "synthetic_estimator_trials_rechecked": 216,
   "experiment_recheck": "review_revalidation.json",
-  "article_sha256": "52285a5c90de013dc04ec1eb4f9c23eb2399bb967a0e22fde5f06b46028226d8",
+  "article_sha256": "e3d5f0eed9b0c5e029f11cd7706eb492f02ad6bc0406248b1c504db90e3d19af",
   "notebook_sha256": "d7b55c70c37578d1da0e30aa75ec768c425ba9e5b62e4fbe0c6be8b759903049"
 }
