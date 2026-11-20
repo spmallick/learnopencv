@@ -10,6 +10,12 @@ times, snapshots and event logs. Seven video examples and eight still-photo exam
 
 Everything at runtime is OpenCV 5 + NumPy. Ultralytics is used once, to export the ONNX model.
 
+## Download the standalone project
+
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://github.com/spmallick/learnopencv/releases/download/opencv5-yolo26-use-cases-2026.11.19/opencv5-yolo26-use-cases.zip)
+
+The versioned ZIP contains one `opencv5-yolo26-use-cases/` folder with 28 tracked files from commit `5a727bec1242bafb8eda075401f5542a0b048585`. Download the [SHA-256 checksum](https://github.com/spmallick/learnopencv/releases/download/opencv5-yolo26-use-cases-2026.11.19/opencv5-yolo26-use-cases.zip.sha256) alongside the ZIP.
+
 ## Quick start
 
 ```bash
@@ -40,7 +46,7 @@ code/
   still_images.py   the eight photo examples
   export_models.py  YOLO26 -> ONNX
   get_media.py      downloads the footage from assets/ in this repository
-notebook/           the Colab notebook
+OpenCV5_Detection_Use_Cases.ipynb   the Colab notebook at the project root
 assets/             the 10 clips and 8 photos used by the examples
 models/, outputs/   created by the scripts above
 ```
