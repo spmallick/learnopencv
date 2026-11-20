@@ -1,0 +1,562 @@
+{
+  "environment": {
+    "opencv": "5.1.0",
+    "opencv_path": "/tmp/robust-align-py314/lib/python3.14/site-packages/cv2/__init__.py",
+    "python": "3.14.3",
+    "numpy": "2.4.2",
+    "torch": "2.10.0+cu126",
+    "torchvision": "0.25.0+cu126",
+    "kornia": "0.8.2",
+    "platform": "Linux-6.17.0-40-generic-x86_64-with-glibc2.39",
+    "cpu": "Intel(R) Core(TM) i7-6850K CPU @ 3.60GHz",
+    "device": "cpu",
+    "gpu": null,
+    "opencv_threads": 1,
+    "torch_threads": 4,
+    "lightglue_commit": "5a650c444718caffc2669dc0094cde908f42dd73",
+    "opencv_release_commit": "e4f78fbcf1a773fbed69e14500e8b734963eb585",
+    "measured_at_utc": "2026-11-20T19:27:17+00:00"
+  },
+  "method": "aliked-n16 + LightGlue + USAC_MAGSAC",
+  "configuration": {
+    "reprojection_threshold": 3.0,
+    "confidence": 0.999,
+    "max_iterations": 10000,
+    "min_inliers": 12,
+    "min_inlier_ratio": 0.25,
+    "min_reference_coverage": 0.04,
+    "max_median_reprojection_error": 3.0,
+    "min_projected_area": 16.0,
+    "min_visible_fraction": 0.1
+  },
+  "default_width_confidence": 0.99,
+  "depth_confidence": 0.95,
+  "filter_threshold": 0.1,
+  "prune_if_keypoint_count_above": -1,
+  "max_keypoints": 2048,
+  "resize": 1024,
+  "results": [
+    {
+      "id": "graf_1_3",
+      "width_confidence": 0.99,
+      "reference_keypoints": 1514,
+      "moving_keypoints": 1932,
+      "accepted": true,
+      "reasons": [],
+      "homography_direction": "moving_to_reference",
+      "H": [
+        [
+          1.1691892214243547,
+          0.34552398293710557,
+          -238.81073166338578
+        ],
+        [
+          -0.4139185477622701,
+          0.7938843939538721,
+          152.99559919219124
+        ],
+        [
+          -0.0004031217335630628,
+          -9.155452324602803e-05,
+          1.0
+        ]
+      ],
+      "num_matches": 807,
+      "num_inliers": 533,
+      "inlier_ratio": 0.6604708798017348,
+      "median_reprojection_error_px": 1.1634840965270996,
+      "reference_inlier_hull_coverage": 0.7512191138057281,
+      "moving_inlier_hull_coverage": 0.42811395337697156,
+      "projected_reference_visible_fraction": 0.9726671828954622,
+      "projected_reference_quad": [
+        [
+          226.3323974609375,
+          -74.71166229248047
+        ],
+        [
+          654.254638671875,
+          148.40011596679688
+        ],
+        [
+          509.605224609375,
+          663.6273193359375
+        ],
+        [
+          33.91644287109375,
+          576.3883056640625
+        ]
+      ],
+      "estimator": "magsac",
+      "estimation_ms": 1.3967398554086685,
+      "grid_median_error_px": 0.7046791315078735,
+      "grid_p95_error_px": 2.556612014770508,
+      "grid_points": 691,
+      "corner_mean_error_px": 2.362834930419922,
+      "success_3px": true
+    },
+    {
+      "id": "graf_1_4",
+      "width_confidence": 0.99,
+      "reference_keypoints": 1514,
+      "moving_keypoints": 2048,
+      "accepted": true,
+      "reasons": [],
+      "homography_direction": "moving_to_reference",
+      "H": [
+        [
+          1.312659564195725,
+          -0.9185238468284735,
+          179.15470383962816
+        ],
+        [
+          0.28437759920490563,
+          0.919170618004132,
+          -130.475038060411
+        ],
+        [
+          -0.0005484455413179187,
+          0.00040998267549976667,
+          1.0
+        ]
+      ],
+      "num_matches": 569,
+      "num_inliers": 300,
+      "inlier_ratio": 0.5272407732864675,
+      "median_reprojection_error_px": 1.6923515796661377,
+      "reference_inlier_hull_coverage": 0.74755820824895,
+      "moving_inlier_hull_coverage": 0.39502724382823257,
+      "projected_reference_visible_fraction": 0.9354821970176178,
+      "projected_reference_quad": [
+        [
+          -30.54254913330078,
+          151.3980712890625
+        ],
+        [
+          372.9313049316406,
+          26.569311141967773
+        ],
+        [
+          703.60205078125,
+          491.1874694824219
+        ],
+        [
+          407.4219055175781,
+          777.2916870117188
+        ]
+      ],
+      "estimator": "magsac",
+      "estimation_ms": 1.8917936831712723,
+      "grid_median_error_px": 1.468902349472046,
+      "grid_p95_error_px": 3.1408610343933105,
+      "grid_points": 679,
+      "corner_mean_error_px": 2.875419855117798,
+      "success_3px": true
+    },
+    {
+      "id": "graf_1_5",
+      "width_confidence": 0.99,
+      "reference_keypoints": 1514,
+      "moving_keypoints": 2048,
+      "accepted": true,
+      "reasons": [],
+      "homography_direction": "moving_to_reference",
+      "H": [
+        [
+          1.640554413077679,
+          -0.09291274634152953,
+          -367.6277186269556
+        ],
+        [
+          -0.32588290726735974,
+          0.7270955536757894,
+          89.62204620357302
+        ],
+        [
+          -0.0008038635302429723,
+          7.444872284452498e-05,
+          1.0
+        ]
+      ],
+      "num_matches": 466,
+      "num_inliers": 314,
+      "inlier_ratio": 0.6738197424892703,
+      "median_reprojection_error_px": 1.4519892930984497,
+      "reference_inlier_hull_coverage": 0.6815859455593886,
+      "moving_inlier_hull_coverage": 0.25798227829140363,
+      "projected_reference_visible_fraction": 0.9100001568684856,
+      "projected_reference_quad": [
+        [
+          222.76113891601562,
+          -23.419200897216797
+        ],
+        [
+          518.3218994140625,
+          109.05060577392578
+        ],
+        [
+          554.7791748046875,
+          655.1630859375
+        ],
+        [
+          265.7167663574219,
+          735.0453491210938
+        ]
+      ],
+      "estimator": "magsac",
+      "estimation_ms": 1.6700699925422668,
+      "grid_median_error_px": 0.9472120404243469,
+      "grid_p95_error_px": 2.308452844619751,
+      "grid_points": 649,
+      "corner_mean_error_px": 2.0830116271972656,
+      "success_3px": true
+    },
+    {
+      "id": "graf_1_6",
+      "width_confidence": 0.99,
+      "reference_keypoints": 1514,
+      "moving_keypoints": 1232,
+      "accepted": true,
+      "reasons": [],
+      "homography_direction": "moving_to_reference",
+      "H": [
+        [
+          1.4480904887020924,
+          0.8729761695734024,
+          -610.2120327845283
+        ],
+        [
+          -0.6448080213666155,
+          0.27703952610360133,
+          303.006950216699
+        ],
+        [
+          -0.0007750413786745645,
+          -0.0004054162810453927,
+          1.0
+        ]
+      ],
+      "num_matches": 237,
+      "num_inliers": 66,
+      "inlier_ratio": 0.27848101265822783,
+      "median_reprojection_error_px": 1.6098182201385498,
+      "reference_inlier_hull_coverage": 0.45561155883301724,
+      "moving_inlier_hull_coverage": 0.1623384056708872,
+      "projected_reference_visible_fraction": 0.9385724395135259,
+      "projected_reference_quad": [
+        [
+          449.72467041015625,
+          -47.00009536743164
+        ],
+        [
+          560.1128540039062,
+          209.9279022216797
+        ],
+        [
+          274.46966552734375,
+          703.3042602539062
+        ],
+        [
+          37.29381561279297,
+          637.1390380859375
+        ]
+      ],
+      "estimator": "magsac",
+      "estimation_ms": 2.721700817346573,
+      "grid_median_error_px": 11.9700927734375,
+      "grid_p95_error_px": 25.44409942626953,
+      "grid_points": 661,
+      "corner_mean_error_px": 24.70437240600586,
+      "success_3px": false
+    },
+    {
+      "id": "graf_1_6",
+      "width_confidence": -1,
+      "reference_keypoints": 1514,
+      "moving_keypoints": 1232,
+      "accepted": true,
+      "reasons": [],
+      "homography_direction": "moving_to_reference",
+      "H": [
+        [
+          1.370793390969587,
+          0.8638138408385824,
+          -580.8815280005008
+        ],
+        [
+          -0.6385665614308345,
+          0.25877000747125495,
+          303.47909492039616
+        ],
+        [
+          -0.0007735216578801797,
+          -0.0004349934044094765,
+          1.0
+        ]
+      ],
+      "num_matches": 237,
+      "num_inliers": 72,
+      "inlier_ratio": 0.3037974683544304,
+      "median_reprojection_error_px": 1.3914594650268555,
+      "reference_inlier_hull_coverage": 0.5281742939139715,
+      "moving_inlier_hull_coverage": 0.17433519641319586,
+      "projected_reference_visible_fraction": 0.9464311127740312,
+      "projected_reference_quad": [
+        [
+          455.0962829589844,
+          -49.734615325927734
+        ],
+        [
+          562.5693359375,
+          215.4766082763672
+        ],
+        [
+          269.0138854980469,
+          697.4369506835938
+        ],
+        [
+          25.511184692382812,
+          631.9775390625
+        ]
+      ],
+      "estimator": "magsac",
+      "estimation_ms": 1.8802527338266373,
+      "grid_median_error_px": 1.7629410028457642,
+      "grid_p95_error_px": 2.226208448410034,
+      "grid_points": 661,
+      "corner_mean_error_px": 1.9334547519683838,
+      "success_3px": true
+    },
+    {
+      "id": "leuven_1_3",
+      "width_confidence": 0.99,
+      "reference_keypoints": 1794,
+      "moving_keypoints": 1592,
+      "accepted": true,
+      "reasons": [],
+      "homography_direction": "moving_to_reference",
+      "H": [
+        [
+          1.0016110822385444,
+          -0.005208729666526447,
+          -4.965140907541677
+        ],
+        [
+          0.0007732150798563689,
+          0.997705133501354,
+          4.46953151361299
+        ],
+        [
+          6.036703916010286e-06,
+          -8.955630235191522e-06,
+          1.0
+        ]
+      ],
+      "num_matches": 1345,
+      "num_inliers": 1317,
+      "inlier_ratio": 0.979182156133829,
+      "median_reprojection_error_px": 0.38641610741615295,
+      "reference_inlier_hull_coverage": 0.8428245291379688,
+      "moving_inlier_hull_coverage": 0.8441725598580933,
+      "projected_reference_visible_fraction": 0.9835377960265691,
+      "projected_reference_quad": [
+        [
+          4.933837890625,
+          -4.483635902404785
+        ],
+        [
+          907.442626953125,
+          -5.183074474334717
+        ],
+        [
+          905.7293090820312,
+          595.2780151367188
+        ],
+        [
+          8.039579391479492,
+          592.73388671875
+        ]
+      ],
+      "estimator": "magsac",
+      "estimation_ms": 0.9199995547533035,
+      "grid_median_error_px": 0.08900317549705505,
+      "grid_p95_error_px": 0.21905794739723206,
+      "grid_points": 667,
+      "corner_mean_error_px": 0.17489342391490936,
+      "success_3px": true
+    },
+    {
+      "id": "leuven_1_4",
+      "width_confidence": 0.99,
+      "reference_keypoints": 1794,
+      "moving_keypoints": 1481,
+      "accepted": true,
+      "reasons": [],
+      "homography_direction": "moving_to_reference",
+      "H": [
+        [
+          1.0027908369942582,
+          -0.005223458926754298,
+          -8.467204952216026
+        ],
+        [
+          -0.002792295842466392,
+          0.9958437458276891,
+          9.437407685484919
+        ],
+        [
+          9.219919958444309e-06,
+          -1.5223470518407952e-05,
+          1.0
+        ]
+      ],
+      "num_matches": 1225,
+      "num_inliers": 1202,
+      "inlier_ratio": 0.9812244897959184,
+      "median_reprojection_error_px": 0.47148463129997253,
+      "reference_inlier_hull_coverage": 0.8356134996044906,
+      "moving_inlier_hull_coverage": 0.8377217164197974,
+      "projected_reference_visible_fraction": 0.9741835996840263,
+      "projected_reference_quad": [
+        [
+          8.39439868927002,
+          -9.453258514404297
+        ],
+        [
+          912.5427856445312,
+          -6.918071269989014
+        ],
+        [
+          907.4281005859375,
+          594.1593017578125
+        ],
+        [
+          11.499956130981445,
+          586.7463989257812
+        ]
+      ],
+      "estimator": "magsac",
+      "estimation_ms": 0.8416641503572464,
+      "grid_median_error_px": 0.18190786242485046,
+      "grid_p95_error_px": 0.2671188712120056,
+      "grid_points": 667,
+      "corner_mean_error_px": 0.2344217300415039,
+      "success_3px": true
+    },
+    {
+      "id": "leuven_1_5",
+      "width_confidence": 0.99,
+      "reference_keypoints": 1794,
+      "moving_keypoints": 1367,
+      "accepted": true,
+      "reasons": [],
+      "homography_direction": "moving_to_reference",
+      "H": [
+        [
+          0.9968930100880995,
+          -0.012665094467005774,
+          -0.2962438572354586
+        ],
+        [
+          0.001761389140148136,
+          0.991997929948627,
+          7.68337767094014
+        ],
+        [
+          3.7837190572175543e-06,
+          -1.8747237295013664e-05,
+          1.0
+        ]
+      ],
+      "num_matches": 1114,
+      "num_inliers": 1088,
+      "inlier_ratio": 0.9766606822262118,
+      "median_reprojection_error_px": 0.5519499778747559,
+      "reference_inlier_hull_coverage": 0.8372248388581305,
+      "moving_inlier_hull_coverage": 0.8393185404772747,
+      "projected_reference_visible_fraction": 0.9802118356983694,
+      "projected_reference_quad": [
+        [
+          0.19876126945018768,
+          -7.745709419250488
+        ],
+        [
+          905.2271118164062,
+          -9.352675437927246
+        ],
+        [
+          902.7007446289062,
+          589.8687133789062
+        ],
+        [
+          7.785470485687256,
+          589.418212890625
+        ]
+      ],
+      "estimator": "magsac",
+      "estimation_ms": 1.7555467784404755,
+      "grid_median_error_px": 0.19312769174575806,
+      "grid_p95_error_px": 0.3743895888328552,
+      "grid_points": 667,
+      "corner_mean_error_px": 0.2898036241531372,
+      "success_3px": true
+    },
+    {
+      "id": "leuven_1_6",
+      "width_confidence": 0.99,
+      "reference_keypoints": 1794,
+      "moving_keypoints": 1212,
+      "accepted": true,
+      "reasons": [],
+      "homography_direction": "moving_to_reference",
+      "H": [
+        [
+          0.9953940011751475,
+          -0.012467169681274148,
+          -2.033694001060583
+        ],
+        [
+          -0.002884271590569953,
+          0.9883798570702255,
+          16.42655316331182
+        ],
+        [
+          3.7930707154852316e-06,
+          -2.506589692416122e-05,
+          1.0
+        ]
+      ],
+      "num_matches": 984,
+      "num_inliers": 957,
+      "inlier_ratio": 0.9725609756097561,
+      "median_reprojection_error_px": 0.5818201899528503,
+      "reference_inlier_hull_coverage": 0.8217232718636747,
+      "moving_inlier_hull_coverage": 0.8235956563168058,
+      "projected_reference_visible_fraction": 0.9673533077609494,
+      "projected_reference_quad": [
+        [
+          1.8350125551223755,
+          -16.614320755004883
+        ],
+        [
+          908.4564819335938,
+          -13.968635559082031
+        ],
+        [
+          902.3754272460938,
+          585.2398681640625
+        ],
+        [
+          9.31567096710205,
+          580.6505737304688
+        ]
+      ],
+      "estimator": "magsac",
+      "estimation_ms": 0.9780637919902802,
+      "grid_median_error_px": 0.13318699598312378,
+      "grid_p95_error_px": 0.44918292760849,
+      "grid_points": 667,
+      "corner_mean_error_px": 0.48640674352645874,
+      "success_3px": true
+    }
+  ]
+}

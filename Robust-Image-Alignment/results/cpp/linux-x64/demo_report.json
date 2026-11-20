@@ -76,7 +76,7 @@
                 ]
             ],
             "estimator": "magsac",
-            "estimation_ms": 2.03043,
+            "estimation_ms": 1.7147779999999999,
             "available": 1,
             "grid_median_error_px": 11.970069884903786,
             "grid_p95_error_px": 25.44410066234132,
@@ -135,7 +135,7 @@
                 ]
             ],
             "estimator": "magsac",
-            "estimation_ms": 0.899922,
+            "estimation_ms": 0.89793400000000001,
             "available": 1,
             "grid_median_error_px": 0.13290622503561597,
             "grid_p95_error_px": 0.44751910590146432,
@@ -192,7 +192,7 @@
                 ]
             ],
             "estimator": "magsac",
-            "estimation_ms": 1.0354080000000001
+            "estimation_ms": 1.0397240000000001
         },
         {
             "id": "box_identification",
@@ -244,7 +244,7 @@
                 ]
             ],
             "estimator": "magsac",
-            "estimation_ms": 0.221223
+            "estimation_ms": 0.36026000000000002
         },
         {
             "id": "absent_fruits",
@@ -297,7 +297,7 @@
                 ]
             ],
             "estimator": "magsac",
-            "estimation_ms": 0.26675500000000002
+            "estimation_ms": 0.28285100000000002
         },
         {
             "id": "absent_building",
@@ -350,7 +350,7 @@
                 ]
             ],
             "estimator": "magsac",
-            "estimation_ms": 0.16852700000000001
+            "estimation_ms": 0.17978
         },
         {
             "id": "aloe_parallax",
@@ -402,7 +402,7 @@
                 ]
             ],
             "estimator": "magsac",
-            "estimation_ms": 1.635394
+            "estimation_ms": 3.141095
         }
     ],
     "catalogue": [
@@ -455,7 +455,7 @@
                 ]
             ],
             "estimator": "magsac",
-            "estimation_ms": 0.22520599999999999
+            "estimation_ms": 0.36546699999999999
         },
         {
             "name": "graffiti wall",
@@ -492,7 +492,7 @@
             "projected_reference_quad": [
             ],
             "estimator": "magsac",
-            "estimation_ms": 0.082520999999999997
+            "estimation_ms": 0.093131000000000005
         },
         {
             "name": "blank form",
@@ -529,7 +529,7 @@
             "projected_reference_quad": [
             ],
             "estimator": "magsac",
-            "estimation_ms": 0.17799100000000001
+            "estimation_ms": 0.32108199999999998
         }
     ],
     "catalogue_identification": "box design",
@@ -582,7 +582,7 @@
                 ]
             ],
             "estimator": "ransac",
-            "estimation_ms": 10.211622999999999,
+            "estimation_ms": 21.955992999999999,
             "available": 1,
             "grid_median_error_px": 11.088333808647299,
             "grid_p95_error_px": 26.125556990983444,
@@ -637,7 +637,7 @@
                 ]
             ],
             "estimator": "magsac",
-            "estimation_ms": 1.6519740000000001,
+            "estimation_ms": 1.7185509999999999,
             "available": 1,
             "grid_median_error_px": 11.970069884903786,
             "grid_p95_error_px": 25.44410066234132,
@@ -656,13 +656,13 @@
                 "grid_points": 661
             },
             "status": "returned",
-            "correlation": 0.79626183003472362,
-            "refinement_ms": 2725.6213670000002,
+            "correlation": 0.79594438673709744,
+            "refinement_ms": 953.20014000000003,
             "after": {
                 "available": 1,
-                "grid_median_error_px": 0.70630463585573899,
-                "grid_p95_error_px": 3.5409005721611817,
-                "corner_mean_error_px": 3.0498179164971613,
+                "grid_median_error_px": 0.7759158658385692,
+                "grid_p95_error_px": 3.7084126993613187,
+                "corner_mean_error_px": 3.2676748135907974,
                 "grid_points": 661
             }
         },
@@ -676,13 +676,13 @@
                 "grid_points": 667
             },
             "status": "returned",
-            "correlation": 0.93243816358705978,
-            "refinement_ms": 254.83810299999999,
+            "correlation": 0.93243846077406467,
+            "refinement_ms": 372.16912500000001,
             "after": {
                 "available": 1,
-                "grid_median_error_px": 0.18665951925094976,
-                "grid_p95_error_px": 0.47393328599936346,
-                "corner_mean_error_px": 0.34298541993396048,
+                "grid_median_error_px": 0.18657036670432531,
+                "grid_p95_error_px": 0.47393612404929353,
+                "corner_mean_error_px": 0.34292300278916943,
                 "grid_points": 667
             }
         }
@@ -722,7 +722,7 @@
         "projected_reference_quad": [
         ],
         "estimator": "magsac",
-        "estimation_ms": 0.32299
+        "estimation_ms": 0.33132200000000001
     },
     "validation_passed": 1
 }

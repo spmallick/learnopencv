@@ -1,4 +1,4 @@
-[0;93m2026-11-19 13:10:09.277349671 [W:onnxruntime:LearnOpenCV native alignment, device_discovery.cc:211 DiscoverDevicesForPlatform] GPU device discovery failed: device_discovery.cc:91 ReadFileContents Failed to open file: "/sys/class/drm/card0/device/vendor"[m
+[0;93m2026-11-20 11:26:29.889110480 [W:onnxruntime:LearnOpenCV native alignment, device_discovery.cc:211 DiscoverDevicesForPlatform] GPU device discovery failed: device_discovery.cc:91 ReadFileContents Failed to open file: "/sys/class/drm/card0/device/vendor"[m
 Completed native benchmark pair graf_1_2
 Completed native benchmark pair graf_1_3
 Completed native benchmark pair graf_1_4

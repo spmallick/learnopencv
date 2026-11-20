@@ -93,10 +93,34 @@ class GeometryTests(unittest.TestCase):
         self.assertTrue(np.all(mask[:, :10] == 0))
         self.assertTrue(np.all(mask[:, 10:] == 255))
 
+    def test_full_bilinear_support_excludes_partially_padded_edges(self) -> None:
+        # Subpixel translation mixes white source pixels with the zero constant border.
+        white = np.full((18, 20, 3), 255, np.uint8)
+        white[8:12, 8:12] = 0
+        H = np.array([[1, 0, 0.4], [0, 1, 0.3], [0, 0, 1]], dtype=np.float64)
+        result = alignment.AlignmentResult(H, np.ones(12, bool), True, [])
+        warped, nearest = alignment.warp_alignment(white, result, white.shape)
+        same_warp, full = alignment.warp_alignment(white, result, white.shape, full_support=True)
+        np.testing.assert_array_equal(same_warp, warped)
+        self.assertTrue(0 < warped[5, 0, 0] < 255)
+        self.assertEqual(nearest[5, 0], 255)
+        self.assertTrue(np.all(full[:, 0] == 0) and np.all(full[0, :] == 0))
+        self.assertTrue(np.all(full[1:, 1:] == 255))
+        self.assertEqual(warped[10, 10, 0], 0)  # A fully supported black pixel stays valid.
+        result.H = np.eye(3)
+        _, unchanged = alignment.warp_alignment(white, result, white.shape, full_support=True)
+        self.assertTrue(np.all(unchanged == 255))  # Zero-weight neighbors at the border are harmless.
+
     def test_projective_horizon_is_rejected(self) -> None:
         points = np.array([[1, 1], [2, 2]], np.float32)
-        with self.assertRaisesRegex(ValueError, "horizon"):
-            alignment.project_points(points, np.array([[1, 0, 0], [0, 1, 0], [1, 0, -1]], np.float64))
+        horizon = np.array([[1, 0, 0], [0, 1, 0], [1, 0, -1]], np.float64)
+        perspective = np.array([[1, 0.1, 5], [-0.02, 1, 8], [0.002, 0.01, 1]])
+        expected = alignment.project_points(points, perspective)
+        for scale in (1, -3, 1e-40, 1e40):
+            with self.subTest(scale=scale):
+                with self.assertRaisesRegex(ValueError, "horizon"):
+                    alignment.project_points(points, scale * horizon)
+                np.testing.assert_array_equal(alignment.project_points(points, scale * perspective), expected)
 
     def test_ecc_keeps_the_moving_to_reference_convention(self) -> None:
         reference = textured_image()
@@ -110,6 +134,32 @@ class GeometryTests(unittest.TestCase):
         np.testing.assert_allclose(actual, expected, atol=0.5)
         self.assertGreater(correlation, 0.95)
 
+    def test_ecc_equivalent_projective_scales_give_the_same_refinement(self) -> None:
+        reference = textured_image()
+        forward = np.array([[0.96, -0.02, 16], [0.03, 0.95, 8], [0.00022, -0.0001, 1]])
+        moving = cv2.warpPerspective(reference, forward, (400, 320))
+        initial = np.linalg.inv(forward)
+        initial[0, 2] += 0.7
+        initial[1, 2] -= 0.5
+        corners = alignment.image_corners(reference.shape)
+        expected = alignment.project_points(corners, np.linalg.inv(forward))
+        baseline, score = alignment.refine_ecc(reference, moving, initial)
+        baseline_points = alignment.project_points(corners, baseline)
+        np.testing.assert_allclose(baseline_points, expected, atol=0.5)
+        # Positive, negative and tiny/large scales all describe the same starting warp.
+        for scale in (8.0, -4.0, 1e-40, 1e40):
+            with self.subTest(scale=scale):
+                refined, correlation = alignment.refine_ecc(reference, moving, initial * scale)
+                np.testing.assert_allclose(alignment.project_points(corners, refined), baseline_points, atol=1e-4)
+                self.assertAlmostEqual(correlation, score, places=6)
+
+    def test_ecc_rejects_an_initial_inverse_with_zero_bottom_right(self) -> None:
+        # This invertible map's inverse cannot be parameterized in OpenCV ECC's h22=1 chart.
+        reference = textured_image()
+        swap_x_w = np.array([[0, 0, 1], [0, 1, 0], [1, 0, 0]], np.float64)
+        with self.assertRaisesRegex(ValueError, "cannot normalize"):
+            alignment.refine_ecc(reference, reference, swap_x_w)
+
     def test_validates_correspondence_and_configuration_contracts(self) -> None:
         with self.assertRaisesRegex(ValueError, "counts differ"):
             alignment.MatchResult(np.zeros((3, 2)), np.zeros((4, 2)))
@@ -122,6 +172,24 @@ class GeometryTests(unittest.TestCase):
 
 
 class EntryPointTests(unittest.TestCase):
+    def test_sift_returns_original_pixel_centers_after_fractional_resize(self) -> None:
+        image = textured_image(shape=(479, 733))
+        matcher = alignment.FeatureMatcher("sift", resize=181)
+        scale = 181 / 733  # The scaled short side is 118.28 pixels, rounded for storage.
+        working = cv2.resize(image, None, fx=scale, fy=scale)
+        self.assertNotEqual(working.shape[0] / image.shape[0], scale)
+        direct = alignment.FeatureMatcher("sift", resize=None).extract(working)
+        features = matcher.extract(image)
+        self.assertGreater(len(direct.keypoints), 8)
+        np.testing.assert_array_equal(direct.descriptors, features.descriptors)
+        # Resizing linear x/y ramps provides independent source-coordinate ground truth.
+        y_grid, x_grid = np.indices(image.shape[:2], dtype=np.float32)
+        expected = []
+        for grid in (x_grid, y_grid):
+            ramp = cv2.resize(grid, None, fx=scale, fy=scale)
+            expected.append([cv2.getRectSubPix(ramp, (1, 1), tuple(pt))[0, 0] for pt in direct.keypoints])
+        np.testing.assert_allclose(features.keypoints, np.column_stack(expected), atol=2e-4, rtol=0)
+
     def test_blank_images_produce_a_clear_rejection(self) -> None:
         image = np.zeros((120, 160, 3), np.uint8)
         matcher = alignment.FeatureMatcher("sift")

@@ -2,7 +2,11 @@ test_blank_images_produce_a_clear_rejection (test_alignment.EntryPointTests.test
 test_cli_from_unrelated_directory_and_exact_outputs (test_alignment.EntryPointTests.test_cli_from_unrelated_directory_and_exact_outputs) ... ok
 test_cli_missing_input_and_invalid_arguments (test_alignment.EntryPointTests.test_cli_missing_input_and_invalid_arguments) ... ok
 test_rejected_run_removes_only_owned_accepted_outputs (test_alignment.EntryPointTests.test_rejected_run_removes_only_owned_accepted_outputs) ... ok
+test_sift_returns_original_pixel_centers_after_fractional_resize (test_alignment.EntryPointTests.test_sift_returns_original_pixel_centers_after_fractional_resize) ... ok
+test_ecc_equivalent_projective_scales_give_the_same_refinement (test_alignment.GeometryTests.test_ecc_equivalent_projective_scales_give_the_same_refinement) ... ok
 test_ecc_keeps_the_moving_to_reference_convention (test_alignment.GeometryTests.test_ecc_keeps_the_moving_to_reference_convention) ... ok
+test_ecc_rejects_an_initial_inverse_with_zero_bottom_right (test_alignment.GeometryTests.test_ecc_rejects_an_initial_inverse_with_zero_bottom_right) ... ok
+test_full_bilinear_support_excludes_partially_padded_edges (test_alignment.GeometryTests.test_full_bilinear_support_excludes_partially_padded_edges) ... ok
 test_mask_distinguishes_black_content_from_missing_pixels (test_alignment.GeometryTests.test_mask_distinguishes_black_content_from_missing_pixels) ... ok
 test_projective_horizon_is_rejected (test_alignment.GeometryTests.test_projective_horizon_is_rejected) ... ok
 test_recovers_known_transform_despite_outliers (test_alignment.GeometryTests.test_recovers_known_transform_despite_outliers) ... ok
@@ -13,6 +17,6 @@ test_small_target_in_large_scene_is_not_rejected_for_scene_coverage (test_alignm
 test_validates_correspondence_and_configuration_contracts (test_alignment.GeometryTests.test_validates_correspondence_and_configuration_contracts) ... ok
 
 ----------------------------------------------------------------------
-Ran 13 tests in 1.085s
+Ran 17 tests in 1.913s
 
 OK

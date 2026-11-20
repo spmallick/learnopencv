@@ -1,26 +1,28 @@
-Internal ctest changing into directory: /tmp/robust-alignment-cpp-linux
-Test project /tmp/robust-alignment-cpp-linux
+Internal ctest changing into directory: /tmp/robust-alignment-review.AJ2cDjli/native-build
+Test project /tmp/robust-alignment-review.AJ2cDjli/native-build
       Start  1: geometry_regressions
- 1/10 Test  #1: geometry_regressions .............   Passed    0.06 sec
-      Start  2: cli_sift_ransac
- 2/10 Test  #2: cli_sift_ransac ..................   Passed    0.15 sec
-      Start  3: cli_sift_magsac
- 3/10 Test  #3: cli_sift_magsac ..................   Passed    0.14 sec
-      Start  4: cli_aliked-nn_ransac
- 4/10 Test  #4: cli_aliked-nn_ransac .............   Passed    0.72 sec
-      Start  5: cli_aliked-nn_magsac
- 5/10 Test  #5: cli_aliked-nn_magsac .............   Passed    0.72 sec
-      Start  6: cli_lightglue_ransac
- 6/10 Test  #6: cli_lightglue_ransac .............   Passed    1.18 sec
-      Start  7: cli_lightglue_magsac
- 7/10 Test  #7: cli_lightglue_magsac .............   Passed    1.17 sec
-      Start  8: native_notebook_demos
- 8/10 Test  #8: native_notebook_demos ............   Passed   18.55 sec
-      Start  9: native_synthetic_study
- 9/10 Test  #9: native_synthetic_study ...........   Passed    1.05 sec
-      Start 10: cli_errors_and_reuse
-10/10 Test #10: cli_errors_and_reuse .............   Passed    0.37 sec
+ 1/11 Test  #1: geometry_regressions .............   Passed    0.41 sec
+      Start  2: sift_resize_pixel_centers
+ 2/11 Test  #2: sift_resize_pixel_centers ........   Passed    0.03 sec
+      Start  3: cli_sift_ransac
+ 3/11 Test  #3: cli_sift_ransac ..................   Passed    0.15 sec
+      Start  4: cli_sift_magsac
+ 4/11 Test  #4: cli_sift_magsac ..................   Passed    0.15 sec
+      Start  5: cli_aliked-nn_ransac
+ 5/11 Test  #5: cli_aliked-nn_ransac .............   Passed    0.95 sec
+      Start  6: cli_aliked-nn_magsac
+ 6/11 Test  #6: cli_aliked-nn_magsac .............   Passed    1.06 sec
+      Start  7: cli_lightglue_ransac
+ 7/11 Test  #7: cli_lightglue_ransac .............   Passed    1.52 sec
+      Start  8: cli_lightglue_magsac
+ 8/11 Test  #8: cli_lightglue_magsac .............   Passed    1.74 sec
+      Start  9: native_notebook_demos
+ 9/11 Test  #9: native_notebook_demos ............   Passed   22.43 sec
+      Start 10: native_synthetic_study
+10/11 Test #10: native_synthetic_study ...........   Passed    1.13 sec
+      Start 11: cli_errors_and_reuse
+11/11 Test #11: cli_errors_and_reuse .............   Passed    0.55 sec
 
-100% tests passed, 0 tests failed out of 10
+100% tests passed, 0 tests failed out of 11
 
-Total Test time (real) =  24.13 sec
+Total Test time (real) =  30.13 sec

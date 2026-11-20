@@ -1,4 +1,4 @@
-# Native C++ validation — November 19, 2026
+# Native C++ validation — November 20, 2026
 
 The C++ companion was built and run against the released OpenCV **5.1.0** and
 ONNX Runtime **1.24.3**, using native CPU inference. Normal builds and runs do
@@ -8,11 +8,11 @@ records the latest stable OpenCV release at validation time.
 
 | Platform | Compiler | CTest | Benchmark rows | Synthetic rows |
 | --- | --- | --- | --- | --- |
-| macOS 26.6.2, Apple M5 Pro, arm64 | Apple Clang 21.0.0 | 10/10 | 180 | 216 |
-| Ubuntu 24.04, Core i7-6850K, x86-64 | GCC 13.3.0 | 10/10 | 180 | 216 |
+| macOS 26.6.2, Apple M5 Pro, arm64 | Apple Clang 21.0.0 | 11/11 | 180 | 216 |
+| Ubuntu 24.04, Core i7-6850K, x86-64 | GCC 13.3.0 | 11/11 | 180 | 216 |
 
 Both Release builds use C++17 and `-Wall -Wextra -Wpedantic -Werror`.
-CTest includes 13 geometry regressions, all six matcher/estimator routes,
+CTest includes 16 geometry regressions, a SIFT resize-coordinate test, all six matcher/estimator routes,
 the notebook demonstrations, a synthetic study, and CLI error/output-reuse
 checks. Tests run outside the source directory. Seven additional macOS CLI
 checks cover empty neural features, help, missing models, and saved ECC candidates.
@@ -37,9 +37,11 @@ comparisons against the original PyTorch layers; worst absolute error is
 
 On Graf6, Python CPU and C++ CPU both accept an estimate with approximately
 11.97 px independent error. It fails the strict accuracy criterion. The
-article's stored Python GPU run has 1.76 px error on this pair. LightGlue's
-upstream CPU/GPU pruning rules differ, and floating-point differences can also
-change sparse decisions. Demo validation follows the notebook's acceptance
+article's stored Python GPU run has 1.76 px error on this pair. In a separate
+Python test on Graf6, disabling LightGlue's point pruning while keeping the
+extracted CPU features fixed produced 1.76 px median error. The CUDA defaults
+already skipped pruning for these keypoint counts. See the [CPU](../backend_cpu.json),
+[CUDA](../backend_cuda.json), and [Apple MPS](../backend_mps.json) results. Demo validation follows the notebook's acceptance
 check while reporting independent accuracy separately. The benchmark keeps
 its stricter criterion and retains failed estimates.
 

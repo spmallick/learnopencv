@@ -8,8 +8,10 @@ These are small teaching experiments, not a claim of benchmark leadership.
 from __future__ import annotations
 
 import argparse
+import csv
 from dataclasses import asdict
-import importlib.metadata
+from datetime import datetime, timezone
+from importlib import metadata
 import json
 from pathlib import Path
 import platform
@@ -27,11 +29,11 @@ from robust_image_alignment import (
 
 
 def geometric_error(H, H_reference_to_moving, reference_shape, moving_shape):
-    """Evaluate on independently specified points inside the true overlap.
+    """Compare two mappings on grid points in the annotated overlap.
 
     Inlier reprojection error evaluates a model on its own selected matches.
-    This grid instead uses the dataset's ground truth and can expose a wrong
-    transformation even when that transformation fits its chosen matches well.
+    The evaluation grid is independent of the estimated inliers. On captured
+    scenes the supplied homography is itself an estimated planar annotation.
     """
     if H is None:
         return {"grid_median_error_px": None, "grid_p95_error_px": None}
@@ -63,14 +65,17 @@ def environment(device):
         lines = Path('/proc/cpuinfo').read_text().splitlines()
         cpu = next((s.split(':', 1)[1].strip() for s in lines if s.startswith('model name')), cpu)
     return {
-        "opencv": cv2.__version__, "python": sys.version.split()[0],
+        "opencv": cv2.__version__, "opencv_path": cv2.__file__, "python": sys.version.split()[0],
         "numpy": np.__version__, "torch": torch.__version__,
         "torchvision": torchvision.__version__, "kornia": kornia.__version__,
         "platform": platform.platform(), "cpu": cpu, "device": device,
         "gpu": torch.cuda.get_device_name(0) if device == 'cuda' else None,
         "opencv_threads": cv2.getNumThreads(), "torch_threads": torch.get_num_threads(),
-        "lightglue_commit": "5a650c444718caffc2669dc0094cde908f42dd73",
+        "lightglue_commit": json.loads(
+            metadata.distribution('lightglue').read_text('direct_url.json') or '{}'
+        ).get('vcs_info', {}).get('commit_id'),
         "opencv_release_commit": "e4f78fbcf1a773fbed69e14500e8b734963eb585",
+        "measured_at_utc": datetime.now(timezone.utc).isoformat(timespec='seconds'),
     }
 
 
@@ -187,14 +192,22 @@ def run_ecc_study(root, device):
         reference, moving = load_image(root / pair['reference']), load_image(root / pair['moving'])
         H_gt = np.asarray(pair['homography_matrix']).reshape(3, 3)
         result = estimate_alignment(matcher.match_images(reference, moving), reference.shape, moving.shape)
-        row = {'id': pair['id'], 'before': geometric_error(result.H, H_gt, reference.shape, moving.shape)}
-        if result.H is None:
-            row['status'] = 'no_initial_model'
+        row = {
+            'id': pair['id'], 'homography_direction': 'moving_to_reference',
+            'initial_H': None if result.H is None else result.H.tolist(),
+            'refined_H': None, 'initial_accepted': result.accepted,
+            'initial_reasons': result.reasons,
+            'before': geometric_error(result.H, H_gt, reference.shape, moving.shape),
+            'iterations': 100, 'epsilon': 1e-6,
+        }
+        if not result.accepted:
+            row['status'] = 'initial_estimate_rejected'
         else:
             try:
                 start = perf_counter()
-                H, correlation = refine_ecc(reference, moving, result.H)
-                row.update(status='returned', correlation=correlation,
+                H, correlation = refine_ecc(reference, moving, result.H,
+                                            iterations=row['iterations'], epsilon=row['epsilon'])
+                row.update(status='returned', correlation=correlation, refined_H=H.tolist(),
                            refinement_ms=(perf_counter() - start)*1000,
                            after=geometric_error(H, H_gt, reference.shape, moving.shape))
             except (cv2.error, ValueError, np.linalg.LinAlgError) as error:
@@ -203,14 +216,101 @@ def run_ecc_study(root, device):
     return rows
 
 
+def check_backend(root, device):
+    """Evaluate each held-out pair once and change only point pruning on Graf6."""
+    import torch
+
+    manifest = json.loads((PROJECT_DIR / 'assets_manifest.json').read_text())
+    matcher = FeatureMatcher('lightglue', device=device)
+    network = matcher.matcher
+    default_width = network.conf.width_confidence
+    rows = []
+    for pair in manifest['pairs']:
+        if pair['split'] != 'evaluation':
+            continue
+        reference = load_image(root / pair['reference'])
+        moving = load_image(root / pair['moving'])
+        # Cache these exact features even when running the matched-pair ablation.
+        reference_features = matcher.extract(reference)
+        moving_features = matcher.extract(moving)
+        widths = [default_width, -1] if pair['id'] == 'graf_1_6' else [default_width]
+        for width in widths:
+            network.conf.width_confidence = width
+            matches = matcher.match(reference_features, moving_features)
+            result = estimate_alignment(matches, reference.shape, moving.shape)
+            H_gt = np.asarray(pair['homography_matrix']).reshape(3, 3)
+            error = geometric_error(result.H, H_gt, reference.shape, moving.shape)
+            rows.append({
+                'id': pair['id'], 'width_confidence': width,
+                'reference_keypoints': matches.reference_keypoints,
+                'moving_keypoints': matches.moving_keypoints,
+                **result.to_dict(), **error,
+                'success_3px': bool(result.accepted and error['grid_median_error_px'] < 3.0),
+            })
+        network.conf.width_confidence = default_width
+    return {
+        'environment': environment(device),
+        'method': 'aliked-n16 + LightGlue + USAC_MAGSAC',
+        'configuration': asdict(AlignmentConfig()),
+        'default_width_confidence': default_width,
+        'depth_confidence': network.conf.depth_confidence,
+        'filter_threshold': network.conf.filter_threshold,
+        'prune_if_keypoint_count_above': network.pruning_min_kpts(torch.device(device)),
+        'max_keypoints': matcher.max_keypoints, 'resize': matcher.resize,
+        'results': rows,
+    }
+
+
+def write_real_pair_tables(data, directory):
+    """Export the same raw rows and common successful-pair timings used in the article."""
+    rows = data['real_pairs']
+    fields = ('id', 'split', 'repeat', 'method', 'estimator', 'accepted', 'success_3px',
+              'grid_median_error_px', 'grid_p95_error_px', 'num_matches', 'num_inliers',
+              'extraction_ms', 'matching_ms', 'geometry_stage_ms', 'warping_ms', 'pipeline_ms')
+    with (directory / 'real_pairs.csv').open('w', newline='') as stream:
+        writer = csv.DictWriter(stream, fieldnames=fields, extrasaction='ignore', lineterminator='\n')
+        writer.writeheader()
+        writer.writerows(rows)
+    evaluation = [row for row in rows if row['split'] == 'evaluation' and row['estimator'] == 'magsac']
+    pairs = sorted({row['id'] for row in evaluation})
+    methods = ('sift', 'aliked-nn', 'lightglue')
+    # Repeats measure timing. A passing pair must pass in every measured trial.
+    successes = {
+        method: {pair for pair in pairs if sum(row['success_3px'] for row in evaluation
+                                               if row['id'] == pair and row['method'] == method)
+                 == data['protocol']['repeats']}
+        for method in methods
+    }
+    common = set.intersection(*successes.values())
+    pipelines = []
+    for method in methods:
+        times = [row['pipeline_ms'] for row in evaluation if row['id'] in common and row['method'] == method]
+        pipelines.append({'method': method, 'successes': len(successes[method]), 'pairs': len(pairs),
+                          'timing_trials': len(times),
+                          'pipeline_ms_p10_p50_p90': np.percentile(times, [10, 50, 90]).tolist() if times else None})
+    summary = {'opencv': data['environment']['opencv'], 'evaluation_pairs': len(pairs),
+               'evaluation_scenes': len({row['id'].split('_')[0] for row in evaluation}),
+               'validation_pairs': len({row['id'] for row in rows if row['split'] == 'validation'}),
+               'repeats_per_pair': data['protocol']['repeats'], 'timing_common_success_pairs': sorted(common),
+               'pipelines': pipelines}
+    (directory / 'summary.json').write_text(json.dumps(summary, indent=2) + '\n')
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--device', default='cuda', choices=['cuda', 'cpu', 'mps'])
-    parser.add_argument('--output', type=Path, default=PROJECT_DIR / 'results' / 'experiments.json')
+    parser.add_argument('--output', type=Path, help='Destination JSON file.')
+    parser.add_argument('--check-backend', action='store_true',
+                        help='Run the eight held-out LightGlue pairs and the Graf6 pruning comparison.')
     parser.add_argument('--repeats', type=int, default=3)
     parser.add_argument('--study-seeds', type=int, default=12)
     parser.add_argument('--allow-other-opencv', action='store_true', help='Smoke tests only; not publication evidence.')
     args = parser.parse_args()
+    if args.repeats < 1 or args.study_seeds < 1:
+        parser.error('Repeats and study seeds must be positive.')
+    if args.output is None:
+        name = f'backend_{args.device}.json' if args.check_backend else 'experiments.json'
+        args.output = PROJECT_DIR / 'results' / name
     if not args.allow_other_opencv and cv2.__version__ != '5.1.0':
         raise RuntimeError(f'Publication experiments require OpenCV 5.1.0, found {cv2.__version__}')
     import torch
@@ -219,6 +319,10 @@ def main():
     torch.manual_seed(0)
     root = download_assets(verbose=False)
     args.output.parent.mkdir(parents=True, exist_ok=True)
+    if args.check_backend:
+        args.output.write_text(json.dumps(check_backend(root, args.device), indent=2, allow_nan=False) + '\n')
+        print('Saved', args.output, flush=True)
+        return
     data = {'environment': environment(args.device),
             'protocol': {'max_keypoints': 2048, 'resize_longest_side_cap': 1024,
                          'repeats': args.repeats, 'config': asdict(AlignmentConfig()),
@@ -232,6 +336,7 @@ def main():
     args.output.write_text(json.dumps(data, indent=2))
     data['ecc_study'] = run_ecc_study(root, args.device)
     args.output.write_text(json.dumps(data, indent=2))
+    write_real_pair_tables(data, args.output.parent)
     args.output.with_name('opencv_build.txt').write_text(cv2.getBuildInformation().strip() + '\n')
     print('Saved', args.output, flush=True)
 

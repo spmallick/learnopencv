@@ -48,6 +48,13 @@ if(BUILD_TESTING)
   add_test(NAME geometry_regressions COMMAND alignment_geometry_tests)
   set_tests_properties(geometry_regressions PROPERTIES PASS_REGULAR_EXPRESSION "VALIDATION PASSED")
   if(TARGET robust_image_alignment_cpp)
+    add_executable(alignment_sift_resize_tests cpp/tests/sift_resize_tests.cpp)
+    target_link_libraries(alignment_sift_resize_tests PRIVATE alignment_features)
+    set_target_properties(alignment_sift_resize_tests PROPERTIES
+      BUILD_RPATH "${ONNXRUNTIME_LIBRARY_DIR}")
+    alignment_warnings(alignment_sift_resize_tests)
+    add_test(NAME sift_resize_pixel_centers COMMAND alignment_sift_resize_tests)
+    set_tests_properties(sift_resize_pixel_centers PROPERTIES PASS_REGULAR_EXPRESSION "VALIDATION PASSED")
     # Each run starts from the build tree, exercising source-independent input resolution.
     foreach(method sift aliked-nn lightglue)
       foreach(estimator ransac magsac)

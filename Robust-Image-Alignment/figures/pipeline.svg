@@ -6,11 +6,11 @@
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-14T13:44:38.366270</dc:date>
+    <dc:date>2026-11-20T11:20:26.479782</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
-      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+      <dc:title>Matplotlib v3.10.9, https://matplotlib.org/</dc:title>
      </cc:Agent>
     </dc:creator>
    </cc:Work>
@@ -40,7 +40,7 @@ Q 16.8102 63.77076 16.8102 69.17616
 L 16.8102 157.82472
 Q 16.8102 163.23012 36.0612 163.23012
 z
-" clip-path="url(#pa1cad19971)" style="fill: #eef3f8; stroke: #087ea4; stroke-width: 1.7; stroke-linejoin: miter"/>
+" clip-path="url(#p89e07393fe)" style="fill: #eef3f8; stroke: #087ea4; stroke-width: 1.7; stroke-linejoin: miter"/>
    </g>
    <g id="patch_3">
     <path d="M 228.5712 163.23012
@@ -53,7 +53,7 @@ Q 209.3202 63.77076 209.3202 69.17616
 L 209.3202 157.82472
 Q 209.3202 163.23012 228.5712 163.23012
 z
-" clip-path="url(#pa1cad19971)" style="fill: #eef3f8; stroke: #087ea4; stroke-width: 1.7; stroke-linejoin: miter"/>
+" clip-path="url(#p89e07393fe)" style="fill: #eef3f8; stroke: #087ea4; stroke-width: 1.7; stroke-linejoin: miter"/>
    </g>
    <g id="patch_4">
     <path d="M 421.0812 163.23012
@@ -66,7 +66,7 @@ Q 401.8302 63.77076 401.8302 69.17616
 L 401.8302 157.82472
 Q 401.8302 163.23012 421.0812 163.23012
 z
-" clip-path="url(#pa1cad19971)" style="fill: #eef3f8; stroke: #008a7a; stroke-width: 1.7; stroke-linejoin: miter"/>
+" clip-path="url(#p89e07393fe)" style="fill: #eef3f8; stroke: #008a7a; stroke-width: 1.7; stroke-linejoin: miter"/>
    </g>
    <g id="patch_5">
     <path d="M 613.5912 163.23012
@@ -79,37 +79,37 @@ Q 594.3402 63.77076 594.3402 69.17616
 L 594.3402 157.82472
 Q 594.3402 163.23012 613.5912 163.23012
 z
-" clip-path="url(#pa1cad19971)" style="fill: #eef3f8; stroke: #008a7a; stroke-width: 1.7; stroke-linejoin: miter"/>
+" clip-path="url(#p89e07393fe)" style="fill: #eef3f8; stroke: #008a7a; stroke-width: 1.7; stroke-linejoin: miter"/>
    </g>
    <g id="patch_6">
     <path d="M 195.918759 113.50044
 Q 205.468939 113.50044 213.342068 113.50044
-" clip-path="url(#pa1cad19971)" style="fill: none; stroke: #64748b; stroke-width: 1.5; stroke-linecap: round"/>
+" clip-path="url(#p89e07393fe)" style="fill: none; stroke: #64748b; stroke-width: 1.5; stroke-linecap: round"/>
     <path d="M 207.342068 110.50044
 L 213.342068 113.50044
 L 207.342068 116.50044
 z
-" clip-path="url(#pa1cad19971)" style="fill: #64748b; stroke: #64748b; stroke-width: 1.5; stroke-linecap: round"/>
+" clip-path="url(#p89e07393fe)" style="fill: #64748b; stroke: #64748b; stroke-width: 1.5; stroke-linecap: round"/>
    </g>
    <g id="patch_7">
     <path d="M 388.428759 113.50044
 Q 397.978939 113.50044 405.852068 113.50044
-" clip-path="url(#pa1cad19971)" style="fill: none; stroke: #64748b; stroke-width: 1.5; stroke-linecap: round"/>
+" clip-path="url(#p89e07393fe)" style="fill: none; stroke: #64748b; stroke-width: 1.5; stroke-linecap: round"/>
     <path d="M 399.852068 110.50044
 L 405.852068 113.50044
 L 399.852068 116.50044
 z
-" clip-path="url(#pa1cad19971)" style="fill: #64748b; stroke: #64748b; stroke-width: 1.5; stroke-linecap: round"/>
+" clip-path="url(#p89e07393fe)" style="fill: #64748b; stroke: #64748b; stroke-width: 1.5; stroke-linecap: round"/>
    </g>
    <g id="patch_8">
     <path d="M 580.938759 113.50044
 Q 590.488939 113.50044 598.362068 113.50044
-" clip-path="url(#pa1cad19971)" style="fill: none; stroke: #64748b; stroke-width: 1.5; stroke-linecap: round"/>
+" clip-path="url(#p89e07393fe)" style="fill: none; stroke: #64748b; stroke-width: 1.5; stroke-linecap: round"/>
     <path d="M 592.362068 110.50044
 L 598.362068 113.50044
 L 592.362068 116.50044
 z
-" clip-path="url(#pa1cad19971)" style="fill: #64748b; stroke: #64748b; stroke-width: 1.5; stroke-linecap: round"/>
+" clip-path="url(#p89e07393fe)" style="fill: #64748b; stroke: #64748b; stroke-width: 1.5; stroke-linecap: round"/>
    </g>
    <g id="text_1">
     <text style="font-weight: 700; font-size: 20px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #18283f" x="28.3608" y="38.967675" transform="rotate(-0 28.3608 38.967675)">From two photographs to a checked alignment</text>
@@ -136,20 +136,20 @@ z
     <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #18283f" transform="translate(467.692813 141.383026)">estimation</text>
    </g>
    <g id="text_8">
-    <text style="font-weight: 700; font-size: 13px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #008a7a" x="686.745" y="103.141695" transform="rotate(-0 686.745 103.141695)">Warp + check</text>
+    <text style="font-weight: 700; font-size: 13px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #008a7a" x="686.745" y="103.090914" transform="rotate(-0 686.745 103.090914)">Check geometry</text>
    </g>
    <g id="text_9">
-    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #18283f" transform="translate(646.148125 130.185214)">Aligned pixels +</text>
-    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #18283f" transform="translate(638.959844 141.383026)">valid support mask</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #18283f" transform="translate(626.172344 130.185214)">If accepted, warp image</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #18283f" transform="translate(644.123906 141.383026)">and source mask</text>
    </g>
    <g id="text_10">
     <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #64748b" transform="translate(28.3608 200.106596)">The homography maps the moving image into reference coordinates.</text>
-    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #64748b" transform="translate(28.3608 212.424189)">Acceptance checks can reject an estimate; they do not prove every scene depth aligns.</text>
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #64748b" transform="translate(28.3608 212.424189)">Return a rejection if the checks fail. Even an accepted model can misalign objects at other depths.</text>
    </g>
   </g>
  </g>
  <defs>
-  <clipPath id="pa1cad19971">
+  <clipPath id="p89e07393fe">
    <rect x="12.96" y="12.96" width="770.04" height="216.216"/>
   </clipPath>
  </defs>

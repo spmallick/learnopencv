@@ -76,9 +76,11 @@ AlignmentResult estimate_alignment(
     const MatchResult& matches, cv::Size reference_size, cv::Size moving_size,
     const AlignmentConfig& config = AlignmentConfig{}, const std::string& estimator = "magsac");
 
+// The nearest-pixel mask is convenient for display. Full support excludes output
+// pixels whose bilinear intensity receives any nonzero contribution from the border.
 std::pair<cv::Mat, cv::Mat> warp_alignment(
     const cv::Mat& moving_bgr, const AlignmentResult& result, cv::Size reference_size,
-    bool require_accepted = true);
+    bool require_accepted = true, bool full_support = false);
 
 std::pair<cv::Mat, double> refine_ecc(
     const cv::Mat& reference_bgr, const cv::Mat& moving_bgr, const cv::Mat& H_moving_to_reference,

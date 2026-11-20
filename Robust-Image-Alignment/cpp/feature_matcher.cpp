@@ -284,8 +284,10 @@ FeatureSet FeatureMatcher::extract(const cv::Mat& image_bgr) {
             result.descriptors = std::move(descriptors);
         }
         for (const auto& point : points) {
-            // Per-axis actual scales reverse the rounded working-image dimensions.
-            result.keypoints.emplace_back(point.pt.x * image_bgr.cols / work.cols, point.pt.y * image_bgr.rows / work.rows);
+            // Resize with fx/fy samples at (destination + 0.5) / scale - 0.5, even
+            // when the shorter output dimension was rounded to an integer.
+            result.keypoints.emplace_back(static_cast<float>((point.pt.x + 0.5) / scale - 0.5),
+                                          static_cast<float>((point.pt.y + 0.5) / scale - 0.5));
         }
         result.method = "sift";
         result.extraction_ms = elapsed_ms(started);

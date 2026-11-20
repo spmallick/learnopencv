@@ -95,10 +95,9 @@ def save_figure(fig: plt.Figure, path: Path, *, vector: bool = False) -> None:
         png = path.with_suffix(".png")
         if not cv2.imwrite(str(png), image, [cv2.IMWRITE_PNG_COMPRESSION, 9]):
             raise OSError(f"Cannot write figure image: {png}")
-        if not vector:
-            webp = path.with_suffix(".webp")
-            if not cv2.imwrite(str(webp), image, [cv2.IMWRITE_WEBP_QUALITY, 91]):
-                raise OSError(f"Cannot write figure image: {webp}")
+        webp = path.with_suffix(".webp")
+        if not cv2.imwrite(str(webp), image, [cv2.IMWRITE_WEBP_QUALITY, 91]):
+            raise OSError(f"Cannot write figure image: {webp}")
     finally:
         plt.close(fig)
 
@@ -126,7 +125,7 @@ def make_pipeline_diagram(output_dir: Path) -> None:
         ("ALIKED", "Keypoints +\nlocal descriptors", BLUE),
         ("LightGlue", "Tentative\ncorrespondences", BLUE),
         ("MAGSAC++", "Robust homography\nestimation", TEAL),
-        ("Warp + check", "Aligned pixels +\nvalid support mask", TEAL),
+        ("Check geometry", "If accepted, warp image\nand source mask", TEAL),
     ]
     starts = [0.02, 0.27, 0.52, 0.77]
     for x, (title, detail, color) in zip(starts, labels):
@@ -136,7 +135,7 @@ def make_pipeline_diagram(output_dir: Path) -> None:
                                     arrowstyle="-|>", mutation_scale=15, linewidth=1.5, color=GRAY))
     ax.text(0.02, 0.12,
             "The homography maps the moving image into reference coordinates.\n"
-            "Acceptance checks can reject an estimate; they do not prove every scene depth aligns.",
+            "Return a rejection if the checks fail. Even an accepted model can misalign objects at other depths.",
             fontsize=11, color=GRAY, va="center")
     save_figure(fig, output_dir / "pipeline", vector=True)
 
@@ -167,7 +166,7 @@ def make_aliked_diagram(output_dir: Path) -> None:
         ax.add_patch(Circle((0, 0), 0.105, facecolor=AMBER, edgecolor="white", linewidth=1, zorder=4))
     fig.suptitle("ALIKED learns where to gather descriptor support", fontsize=18, fontweight="bold", y=1.02)
     fig.text(0.5, -0.015,
-             "Feature-map schematic: orange marks the keypoint; sample positions are illustrative, not network predictions.",
+             "Orange marks the keypoint. Nine sample positions are drawn for clarity. The aliked-n16 model uses 16.",
              ha="center", fontsize=10, color=GRAY)
     fig.tight_layout()
     save_figure(fig, output_dir / "aliked_sampling", vector=True)
@@ -191,7 +190,7 @@ def make_lightglue_diagram(output_dir: Path) -> None:
             ax.text(x + 0.0235, y + 0.015, str(layer + 1), color="white" if enabled else GRAY,
                     ha="center", va="center", fontsize=10)
         if active == 3:
-            ax.text(0.57, y + 0.16, "illustrative early exit", color=TEAL, fontsize=10, ha="center")
+            ax.text(0.515, y + 0.16, "example: stop after layer 3", color=TEAL, fontsize=10, ha="center")
     ax.text(0.02, 0.08, "Conceptual example only; the actual stopping layer depends on the image pair and configuration.",
             fontsize=10, color=GRAY)
     save_figure(fig, output_dir / "lightglue_depth", vector=True)
@@ -342,7 +341,7 @@ def make_measured_benchmark_figure(document: dict[str, Any], output_dir: Path) -
         ("lightglue", "magsac", "ALIKED + LightGlue + MAGSAC++"),
     ]
     cap = 10.0
-    values = np.full((len(configurations), len(pair_ids)), cap)
+    values = np.full((len(configurations), len(pair_ids)), np.nan)
     cells: list[dict[str, Any]] = []
     for row_index, (method, estimator, label) in enumerate(configurations):
         for column, pair_id in enumerate(pair_ids):
@@ -353,12 +352,14 @@ def make_measured_benchmark_figure(document: dict[str, Any], output_dir: Path) -
                       and np.isfinite(row["grid_median_error_px"])]
             median = float(np.median(errors)) if errors else None
             accepted_count = sum(bool(row.get("accepted")) for row in group)
-            values[row_index, column] = cap if median is None else min(cap, median)
+            if median is not None:
+                values[row_index, column] = min(cap, median)
             cells.append({"row": row_index, "column": column, "id": pair_id, "method": method,
                           "estimator": estimator, "median_grid_error_px": median,
                           "accepted_runs": accepted_count, "runs": len(group)})
     fig, ax = plt.subplots(figsize=(14.0, 6.8))
     palette = LinearSegmentedColormap.from_list("alignment_error", ["#EDF8F6", "#82CEC1", "#F3D49D", "#CE6B59"])
+    palette.set_bad("#DADEE3")  # A missing fit has no numerical error.
     image = ax.imshow(values, cmap=palette, vmin=0, vmax=cap, aspect="auto")
     labels = [pair_id.replace("graf_", "Graffiti ").replace("leuven_", "Leuven ").replace("_", "→")
               for pair_id in pair_ids]
@@ -373,13 +374,11 @@ def make_measured_benchmark_figure(document: dict[str, Any], output_dir: Path) -
         median, count, total = cell["median_grid_error_px"], cell["accepted_runs"], cell["runs"]
         if median is None:
             text = "no H"
-        elif median > cap:
-            text = ">10 ▲"
         else:
             text = f"{median:.2f}"
-        if total and count == 0:
+        if median is not None and total and count == 0:
             text += "\n× rejected"
-        elif count != total:
+        elif median is not None and count != total:
             text += f"\n{count}/{total} accepted"
         ax.text(cell["column"], cell["row"], text, ha="center", va="center", fontsize=10,
                 color="#5F1E28" if count != total else NAVY,
@@ -392,11 +391,12 @@ def make_measured_benchmark_figure(document: dict[str, Any], output_dir: Path) -
     fig.suptitle("Alignment error on eight held-out pairs from two real sequences", fontsize=18,
                  fontweight="bold", y=0.98)
     repeats = document.get("protocol", {}).get("repeats", "multiple")
-    fig.text(0.5, 0.90, f"Each cell: median of pair-level grid errors over {repeats} runs · smaller is better",
+    device = document["environment"]["device"].upper()
+    fig.text(0.5, 0.90, f"Neural inference on {device} · median over {repeats} runs per pair · smaller is better",
              ha="center", fontsize=11, color=GRAY)
     fig.text(0.5, 0.055,
-             "Color scale capped at 10 px; ▲ marks an error above the cap. × marks rejection by geometric gates.\n"
-             "‘no H’ means no homography was estimated. This compact study is not a broad accuracy benchmark.",
+             "Colors saturate at 10 px. Cell labels give the measured error. × marks a rejected estimate.\n"
+             "Gray means no homography was estimated. Pair labels identify the reference and moving frames.",
              ha="center", fontsize=10, color=GRAY, linespacing=1.5)
     fig.subplots_adjust(left=0.265, right=0.92, top=0.84, bottom=0.16)
     save_figure(fig, output_dir / "benchmark_grid_errors")
@@ -436,7 +436,7 @@ def make_threshold_sensitivity_figure(document: dict[str, Any], output_dir: Path
             table_rows.append([label, *annotations])
         ax.set_title(f"Synthetic point noise σ = {sigma:g} px", fontsize=12, fontweight="bold", pad=12)
         ax.set_xticks(thresholds)
-        ax.set_xlabel("OpenCV reprojection threshold (px)", fontsize=10, labelpad=10)
+        ax.set_xlabel("Shared threshold (px)", fontsize=10, labelpad=10)
         ax.grid(axis="y", color="#DEE5ED", linewidth=0.7)
         ax.spines[["top", "right"]].set_visible(False)
         ax.tick_params(labelsize=10)
@@ -466,7 +466,7 @@ def make_threshold_sensitivity_figure(document: dict[str, Any], output_dir: Path
     fig.suptitle("MAGSAC++ still needs a sensible threshold", fontsize=18, fontweight="bold", y=1.00)
     fig.text(0.5, 0.02,
              f"Synthetic correspondences only · {outlier_label} · {seeds} paired random seeds per setting\n"
-             "Lines: median error; shading: interquartile range. Tables: geometric-gate acceptances / runs.",
+             "The reprojection threshold and median inlier residual limit change together. Shading shows the interquartile range.",
              ha="center", fontsize=10, color=GRAY, linespacing=1.5)
     fig.subplots_adjust(left=0.07, right=0.985, top=0.84, bottom=0.40, wspace=0.18)
     save_figure(fig, output_dir / "magsac_threshold_sensitivity")

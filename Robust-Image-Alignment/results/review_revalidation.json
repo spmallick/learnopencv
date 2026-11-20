@@ -1,0 +1,108 @@
+{
+  "measured_on": "2026-11-20",
+  "purpose": "Revalidate geometric results after correcting ECC initialization and SIFT resizing.",
+  "environment": {
+    "opencv": "5.1.0",
+    "opencv_path": "/tmp/robust-align-py314/lib/python3.14/site-packages/cv2/__init__.py",
+    "python": "3.14.3",
+    "numpy": "2.4.2",
+    "torch": "2.10.0+cu126",
+    "torchvision": "0.25.0+cu126",
+    "kornia": "0.8.2",
+    "platform": "Linux-6.17.0-40-generic-x86_64-with-glibc2.39",
+    "cpu": "Intel(R) Core(TM) i7-6850K CPU @ 3.60GHz",
+    "device": "cuda",
+    "gpu": "NVIDIA GeForce GTX 1080 Ti",
+    "opencv_threads": 1,
+    "torch_threads": 4,
+    "lightglue_commit": "5a650c444718caffc2669dc0094cde908f42dd73",
+    "opencv_release_commit": "e4f78fbcf1a773fbed69e14500e8b734963eb585",
+    "measured_at_utc": "2026-11-20T19:22:05+00:00"
+  },
+  "command": "python run_experiments.py --device cuda --repeats 5 --study-seeds 12",
+  "assets_verified_sha256": 35,
+  "pretrained_checkpoints_verified_sha256": 2,
+  "comparisons_against_recorded_2026_11_14": {
+    "real_pairs": {
+      "rows": 300,
+      "all_non_timing_fields_exact_matches": 300
+    },
+    "estimator_study": {
+      "rows": 216,
+      "all_non_timing_fields_exact_matches": 216
+    }
+  },
+  "rerun_timing": {
+    "interpretation": "An independent CPU-intensive job was running concurrently. The article retains the November 14 steady-state trials.",
+    "common_success_pair_summary": {
+      "opencv": "5.1.0",
+      "evaluation_pairs": 8,
+      "evaluation_scenes": 2,
+      "validation_pairs": 2,
+      "repeats_per_pair": 5,
+      "timing_common_success_pairs": [
+        "graf_1_3",
+        "leuven_1_3",
+        "leuven_1_4",
+        "leuven_1_5",
+        "leuven_1_6"
+      ],
+      "pipelines": [
+        {
+          "method": "sift",
+          "successes": 6,
+          "pairs": 8,
+          "timing_trials": 25,
+          "pipeline_ms_p10_p50_p90": [
+            383.96989926695824,
+            425.2821858972311,
+            447.5495021790266
+          ]
+        },
+        {
+          "method": "aliked-nn",
+          "successes": 6,
+          "pairs": 8,
+          "timing_trials": 25,
+          "pipeline_ms_p10_p50_p90": [
+            117.89773628115654,
+            130.3645558655262,
+            138.5380681604147
+          ]
+        },
+        {
+          "method": "lightglue",
+          "successes": 8,
+          "pairs": 8,
+          "timing_trials": 25,
+          "pipeline_ms_p10_p50_p90": [
+            239.46258425712585,
+            274.59219843149185,
+            395.6642862409353
+          ]
+        }
+      ]
+    }
+  },
+  "ecc": {
+    "measured_on": "2026-11-20",
+    "input_geometry": "New ALIKED and LightGlue extraction/matching on CUDA and MAGSAC++ homographies.",
+    "results": "experiments.json#ecc_study",
+    "max_abs_error_px_recomputing_saved_refined_matrices": 5.960464477539063e-08
+  },
+  "backend_checks": {
+    "command": "python run_experiments.py --device DEVICE --check-backend",
+    "cuda": "backend_cuda.json",
+    "cpu": "backend_cpu.json",
+    "mps": "backend_mps.json",
+    "scope": "One trial on each of eight held-out pairs per device. The Graf6 ablation reuses the same extracted tensors within each backend and changes width_confidence from 0.99 to -1."
+  },
+  "final_scale_invariance_guard_recheck": {
+    "command": "python run_experiments.py --device cuda --repeats 1 --study-seeds 12",
+    "non_timing_fields_matching_full_run": {
+      "real_pairs": 60,
+      "estimator_study": 216,
+      "ecc_study": 3
+    }
+  }
+}

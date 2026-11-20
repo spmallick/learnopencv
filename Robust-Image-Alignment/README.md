@@ -4,24 +4,35 @@
 
 This companion contains three runnable versions: the [complete notebook](robust_image_alignment.ipynb), a [pure Python module and CLI](robust_image_alignment.py), and a [native C++17 program](cpp/main.cpp). They cover natural photographs, planar documents and printed targets, including identification of a known appearance from one reference image. The [article source](article.md), explanatory diagrams, and recorded experiments accompany the code.
 
-[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://github.com/spmallick/learnopencv/releases/download/robust-image-alignment-opencv-5.1.0-2026.11.19-r3/Robust-Image-Alignment.zip)
+[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://github.com/spmallick/learnopencv/releases/download/robust-image-alignment-opencv-5.1.0-2026.11.20/Robust-Image-Alignment.zip)
 
-The [versioned standalone release](https://github.com/spmallick/learnopencv/releases/tag/robust-image-alignment-opencv-5.1.0-2026.11.19-r3) contains one `Robust-Image-Alignment/` directory with 130 tracked files. Its release notes identify the exact tested source commit. This security revision replaces our direct Pillow image operations with OpenCV and constrains the Pillow dependency required by Matplotlib and Torchvision to 13.0.0. Download its [SHA-256 checksum](https://github.com/spmallick/learnopencv/releases/download/robust-image-alignment-opencv-5.1.0-2026.11.19-r3/Robust-Image-Alignment.zip.sha256) alongside the ZIP. The extracted package is validated against OpenCV 5.1.0; the release notes and `results/dependency-security-validation.json` record the updated Python and native C++ checks. Original experiment and benchmark records remain historical evidence. Sample inputs are fetched separately by the checked downloaders.
+The [versioned standalone release](https://github.com/spmallick/learnopencv/releases/tag/robust-image-alignment-opencv-5.1.0-2026.11.20) contains the tested `Robust-Image-Alignment/` folder. Download its [SHA-256 checksum](https://github.com/spmallick/learnopencv/releases/download/robust-image-alignment-opencv-5.1.0-2026.11.20/Robust-Image-Alignment.zip.sha256) alongside the ZIP. The release notes identify the source commit, tested platforms, and verification results. Sample inputs are fetched separately by the checked downloaders.
 
 ## Tested release and environment
 
-All three versions target **OpenCV 5.1.0**, the latest stable OpenCV 5.x release rechecked on **November 19, 2026**. The [official release](https://github.com/opencv/opencv/releases/tag/5.1.0) was published November 6. Its annotated tag resolves to commit `e4f78fbcf1a773fbed69e14500e8b734963eb585`. This is a source build of the released tag, not a development build. The older PyPI `opencv-python==5.0.0.93` wheel does not satisfy this environment. The original Python experiments and notebook were run November 14; the C++ evidence is recorded separately.
+All three versions target **OpenCV 5.1.0**. The [official November 6 release](https://github.com/opencv/opencv/releases/tag/5.1.0) resolves to commit `e4f78fbcf1a773fbed69e14500e8b734963eb585`. The reference build uses that source commit. PyPI also offers [opencv-python 5.1.0.95](https://pypi.org/project/opencv-python/5.1.0.95/). Install a single provider of the `cv2` namespace per environment.
 
-The recorded machine is Typhoon: Ubuntu 24.04, Intel Core i7-6850K, and NVIDIA GTX 1080 Ti. Python 3.14.3, NumPy 2.4.2, PyTorch 2.10.0+cu126, torchvision 0.25.0+cu126, and Kornia 0.8.2 were used. OpenCV geometry uses one CPU thread; PyTorch is configured for four CPU threads. The neural run uses one GPU. See `results/experiments.json` and `results/opencv_build.txt` for actual runtime evidence. The notebook's first cell checks the imported OpenCV version.
+The November 14 CUDA benchmark and November 20 rerun used Typhoon, Ubuntu 24.04, Intel Core i7-6850K, and NVIDIA GTX 1080 Ti. Python 3.14.3, NumPy 2.4.2, PyTorch 2.10.0+cu126, torchvision 0.25.0+cu126, and Kornia 0.8.2 were used. OpenCV geometry uses one CPU thread; PyTorch is configured for four CPU threads. The neural run uses one GPU. The November 20 rerun reproduced the real and synthetic accuracy results. We retained the November 14 timings because another CPU-intensive job was active on November 20. The ECC outcomes use the corrected initialization on November 20. See `results/experiments.json` and `results/opencv_build.txt` for actual runtime evidence. The notebook's first cell checks the imported OpenCV version.
 
 ## Install
 
-Run these commands in this project directory. Use Python 3.11 or newer (3.14.3 was tested). Linux prerequisites are Git, CMake 3.16+, a C++17 compiler, and matching Python development headers. The build also needs JPEG/PNG development libraries (for example Ubuntu packages `build-essential cmake git libjpeg-dev libpng-dev`; Python installations must supply their own matching headers and library). Source compilation requires several GB of free disk space.
+Run these commands in this project directory. Python 3.14.3 was used for the recorded experiments. Linux prerequisites are Git, CMake 3.16+, a C++17 compiler, and matching Python development headers. The build also needs JPEG/PNG development libraries (for example Ubuntu packages `build-essential cmake git libjpeg-dev libpng-dev`; Python installations must supply their own matching headers and library). Source compilation requires several GB of free disk space.
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
+```
+
+On Linux with the recorded GTX 1080 Ti, install the Pascal-compatible CUDA 12.6 builds before the requirements. On macOS or CPU-only systems, skip this step.
+
+```bash
+python -m pip install torch==2.10.0 torchvision==0.25.0 --index-url https://download.pytorch.org/whl/cu126
+```
+
+Then install the dependencies and build the OpenCV runtime in that environment.
+
+```bash
 python -m pip install -r requirements.txt
 python -m pip install --no-deps -r requirements-lightglue.txt
 PYTHON_BIN="$VIRTUAL_ENV/bin/python" BUILD_JOBS=6 bash scripts/build_opencv.sh
@@ -30,13 +41,7 @@ python download_models.py
 python -c 'import cv2; print(cv2.__version__, cv2.__file__); assert cv2.__version__ == "5.1.0"'
 ```
 
-For NVIDIA inference, install the appropriate PyTorch build for the driver/GPU before the remaining requirements. The tested Pascal-compatible build was installed with:
-
-```bash
-python -m pip install torch==2.10.0 torchvision==0.25.0 --index-url https://download.pytorch.org/whl/cu126
-```
-
-The `--no-deps` LightGlue installation is intentional: its upstream dependency list otherwise installs an older OpenCV wheel over the source-built namespace. Do not install any second package supplying `cv2`. The minimal OpenCV build is for headless geometry and image processing; notebook plots and saved images provide visualization.
+The `--no-deps` LightGlue install keeps its dependency resolver from installing a second package that supplies `cv2`. The OpenCV build handles geometry and image processing. The notebook uses Matplotlib for visualization.
 
 Our own image loading, encoding, dimension checks, and thumbnail drawing use OpenCV. Matplotlib (notebook/figure plots) and Torchvision (imported by upstream LightGlue) still require Pillow internally. `requirements.txt` pins the patched Pillow 13.0.0 release for those indirect dependencies, keeping the version visible to GitHub security monitoring; removing our Pillow imports alone would not secure an older installed copy. For an existing environment, rerun `python -m pip install -r requirements.txt` before continuing. The original experiment records retain their historical package versions.
 
@@ -61,11 +66,11 @@ python robust_image_alignment.py \
   --output-dir alignment-output/box --no-display --validate
 ```
 
-Use `--method sift` for SIFT plus a ratio test, `--method aliked-nn` for ALIKED plus a ratio test, or `--method lightglue` for ALIKED plus LightGlue. The estimator is `ransac` or `magsac`. Device selection is `auto`, `cpu`, `cuda`, or `mps`; CUDA and MPS must actually be available. The article's neural experiments use CUDA, and CPU execution is also checked. Other accelerators are not part of the recorded benchmark.
+Use `--method sift` for SIFT plus a ratio test, `--method aliked-nn` for ALIKED plus a ratio test, or `--method lightglue` for ALIKED plus LightGlue. The estimator is `ransac` or `magsac`. Device selection is `auto`, `cpu`, `cuda`, or `mps`; CUDA and MPS must actually be available. The article’s main neural benchmark uses CUDA. The eight-pair backend comparison checks the same acceptance and 3 px error criterion on CPU, CUDA, and Apple MPS separately.
 
-`--max-keypoints` defaults to 2048; `--resize` caps the longest image side at 1024 without upsampling (0 disables resizing). `--threshold` is in original reference-image pixels, and `--min-inliers` defaults to 12. All returned homographies map **moving → reference**; invert that transform to locate reference corners in the scene.
+`--max-keypoints` defaults to 2048; `--resize` caps the longest image side at 1024 without upsampling (0 disables resizing). `--threshold` is in original reference-image pixels, and `--min-inliers` defaults to 12. All returned homographies map **moving → reference**. Invert that transform to locate reference corners in the scene. For resized SIFT keypoints, both languages map each axis back to original pixel centers as `(coordinate + 0.5) / resize_factor - 0.5`.
 
-Accepted CLI results contain `report.json`, `matches.jpg`, `aligned.png`, `valid_mask.png`, `overlay.jpg`, and `reference_boundary.jpg`. Rejected results contain `report.json` and `matches.jpg`; a rejected rerun removes only the four owned acceptance images while preserving unrelated files. `--validate` exits 3 for a rejected alignment; invalid arguments/inputs exit 2. The program is headless. Scripts and bundled input download paths resolve independently of the caller's current directory; explicit input/output arguments are relative to that caller unless absolute paths are supplied.
+Accepted CLI results contain `report.json`, `matches.jpg`, `aligned.png`, `valid_mask.png`, `overlay.jpg`, and `reference_boundary.jpg`. Rejected results contain `report.json` and `matches.jpg`; a rejected rerun removes only the four owned acceptance images while preserving unrelated files. `--validate` exits 3 for a rejected alignment; invalid arguments/inputs exit 2. The saved mask tests nearest-pixel support. For differences or other intensity measurements, pass `full_support=True` to Python’s `warp_alignment` to require every nonzero bilinear interpolation weight to come from inside the source image. The C++ helper exposes the same option after `require_accepted`. The program is headless. Scripts and bundled input download paths resolve independently of the caller's current directory; explicit input/output arguments are relative to that caller unless absolute paths are supplied.
 
 ## Reproduce the evidence
 
@@ -74,6 +79,9 @@ python -m unittest discover -s tests -v
 python scripts/check_article.py
 python scripts/check_clis.py
 python run_experiments.py --device cuda --repeats 5 --study-seeds 12
+python run_experiments.py --device cpu --check-backend
+python run_experiments.py --device cuda --check-backend
+# On an Apple host, use --device mps --check-backend for the MPS comparison.
 python make_figures.py --device cuda
 python download_assets.py --verify-only
 python scripts/render_article.py
@@ -81,7 +89,7 @@ python scripts/render_article.py
 
 The real-image comparison uses two Oxford sequences, with image 1→2 in each sequence reserved for validation and image 1→3…6 as eight evaluation pairs. Repeated timing trials are not additional independent image pairs. The criterion is an accepted estimate with median ground-truth overlap-grid error below three original reference pixels. This is a compact teaching comparison, not a broad benchmark or a production false-acceptance evaluation.
 
-The controlled estimator study has 160 synthetic correspondences, 60% uniform outliers, three noise levels, three thresholds, and 12 deterministic data seeds. It holds input correspondences fixed between estimators. It does not model coherent repeated-structure errors. ECC is evaluated separately, including cases where an error metric worsens.
+The controlled estimator study has 160 synthetic correspondences, 60% uniform outliers, three noise levels, three thresholds, and 12 deterministic data seeds. The two OpenCV estimator presets receive identical correspondences for each seed. The sweep varies both the estimator threshold and the median inlier residual gate. It does not model coherent repeated-structure errors. ECC is evaluated separately. Both implementations convert the initial moving-to-reference matrix into the reference-to-moving convention and normalize the inverse to a bottom-right entry of one before calling ECC. The returned candidate is converted back to moving-to-reference.
 
 Full pair timing includes both image extractions, matching, geometry/acceptance, and accepted image/mask warping. It excludes disk I/O, model loading, warm-up, plotting, and the optional ECC stage. Reference caching changes the workload; do not treat matcher FPS as end-to-end throughput. Runtime distributions and their scope are recorded with the results.
 
@@ -128,11 +136,11 @@ Default asset/model paths resolve from the compiled project directory, independe
 
 C++ uses CPU inference, whereas the article's stored neural timing results use PyTorch on a GTX 1080 Ti. CPU and GPU LightGlue use different upstream pruning thresholds, and floating-point differences can change near-threshold decisions. C++ results therefore have their own evidence and are not substituted for the article's GPU measurements. The synthetic C++ study uses `std::mt19937`; Python uses NumPy's generator. The distributions and protocol agree, while individual draws differ. Shared point fixtures test geometric equivalence independently of these random streams.
 
-On `graf_1_6`, the original Python CPU implementation and native C++ both produced an accepted homography with an independent median grid error of 11.97 px; the stored Python GPU result was 1.76 px. Both pass the geometric acceptance gates, but the CPU result fails the benchmark's stricter 3 px accuracy criterion. Like the notebook, demo validation checks acceptance and reports independent accuracy separately through `benchmark_success_3px`; the benchmark retains its strict accuracy requirement.
+With default pruning, Python CPU and Apple MPS each passed 7/8, and Python CUDA passed 8/8 on the two Oxford sequences. On `graf_1_6`, the Python CPU, MPS and native C++ CPU estimates passed the geometric gates with a median grid error of 11.97 px. CUDA gave 1.76 px. Switching off point pruning, with the same cached features on each device, also gave 1.76 px on CPU and MPS for this pair. See `results/backend_cpu.json`, `results/backend_cuda.json` and `results/backend_mps.json` for the per-pair checks. Like the notebook, demo validation checks acceptance and reports independent accuracy separately through `benchmark_success_3px`; the benchmark retains its strict accuracy requirement.
 
 The optional Python development tool `scripts/check_cpp_parity.py` compares native outputs with the original Python CPU implementation using shared geometry fixtures and real image pairs. Normal native use does not require this tool. Model re-export is also optional; checked-in graphs are ready to run.
 
-Both tested platforms pass all 10 CTest checks, including 13 geometry regressions inside the geometry test. The Python comparison passes five shared geometry cases and twelve real pipelines. Each native benchmark contains 180 real-image trials and 216 synthetic trials. See [retained C++ validation evidence](results/cpp/README.md) for the exact scope, outcomes, and CPU accuracy caveat. To rerun the optional comparison in the pinned Python environment:
+The native suite includes 11 CTest checks, with 16 geometry cases and a SIFT pixel-center regression. The Python unit suite includes 17 cases. The Python comparison passes five shared geometry cases and twelve real pipelines. Each native benchmark contains 180 real-image trials and 216 synthetic trials. See [retained C++ validation evidence](results/cpp/README.md) for the exact scope, outcomes, and CPU accuracy caveat. To rerun the optional comparison in the pinned Python environment:
 
 ```bash
 python scripts/check_cpp_parity.py \

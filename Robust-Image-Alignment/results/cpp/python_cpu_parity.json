@@ -5,7 +5,7 @@
     "python": "3.14.3",
     "numpy": "2.4.2",
     "platform": "Linux-6.17.0-40-generic-x86_64-with-glibc2.39",
-    "native_executable": "/tmp/robust-alignment-cpp-linux/robust_image_alignment_cpp",
+    "native_executable": "/tmp/robust-alignment-review.AJ2cDjli/native-build/robust_image_alignment_cpp",
     "native_runtime_uses_python": false
   },
   "thresholds": {
@@ -32,7 +32,7 @@
           "report.json",
           "valid_mask.png"
         ],
-        "validation_wall_seconds": 0.024905698373913765
+        "validation_wall_seconds": 0.022974958643317223
       },
       "python_geometry": {
         "accepted": true,
@@ -81,7 +81,7 @@
           ]
         ],
         "estimator": "ransac",
-        "estimation_ms": 0.4246123135089874
+        "estimation_ms": 0.42793527245521545
       },
       "python_inliers": [
         1,
@@ -232,10 +232,15 @@
           ]
         ],
         "estimator": "ransac",
-        "estimation_ms": 0.586599,
+        "estimation_ms": 0.546554,
         "opencv_version": "5.1.0",
         "method": "provided",
         "device": "cpu",
+        "opencv_threads_requested": 1,
+        "opencv_threads_reported": 1,
+        "onnxruntime_version": "1.24.3",
+        "onnxruntime_intra_op_threads": 4,
+        "onnxruntime_inter_op_threads": 1,
         "inference_backend": "provided_correspondences",
         "reference_keypoints": 100,
         "moving_keypoints": 100,
@@ -391,7 +396,7 @@
           "report.json",
           "valid_mask.png"
         ],
-        "validation_wall_seconds": 0.02230416238307953
+        "validation_wall_seconds": 0.022179456427693367
       },
       "python_geometry": {
         "accepted": true,
@@ -440,7 +445,7 @@
           ]
         ],
         "estimator": "magsac",
-        "estimation_ms": 0.2171136438846588
+        "estimation_ms": 0.2141948789358139
       },
       "python_inliers": [
         1,
@@ -591,10 +596,15 @@
           ]
         ],
         "estimator": "magsac",
-        "estimation_ms": 0.26758,
+        "estimation_ms": 0.256985,
         "opencv_version": "5.1.0",
         "method": "provided",
         "device": "cpu",
+        "opencv_threads_requested": 1,
+        "opencv_threads_reported": 1,
+        "onnxruntime_version": "1.24.3",
+        "onnxruntime_intra_op_threads": 4,
+        "onnxruntime_inter_op_threads": 1,
         "inference_backend": "provided_correspondences",
         "reference_keypoints": 100,
         "moving_keypoints": 100,
@@ -750,7 +760,7 @@
           "report.json",
           "valid_mask.png"
         ],
-        "validation_wall_seconds": 0.036064764484763145
+        "validation_wall_seconds": 0.035735808312892914
       },
       "python_geometry": {
         "accepted": true,
@@ -799,7 +809,7 @@
           ]
         ],
         "estimator": "ransac",
-        "estimation_ms": 0.35337917506694794
+        "estimation_ms": 0.3536604344844818
       },
       "python_inliers": [
         1,
@@ -950,10 +960,15 @@
           ]
         ],
         "estimator": "ransac",
-        "estimation_ms": 0.541826,
+        "estimation_ms": 0.55457,
         "opencv_version": "5.1.0",
         "method": "provided",
         "device": "cpu",
+        "opencv_threads_requested": 1,
+        "opencv_threads_reported": 1,
+        "onnxruntime_version": "1.24.3",
+        "onnxruntime_intra_op_threads": 4,
+        "onnxruntime_inter_op_threads": 1,
         "inference_backend": "provided_correspondences",
         "reference_keypoints": 100,
         "moving_keypoints": 100,
@@ -1109,7 +1124,7 @@
           "report.json",
           "valid_mask.png"
         ],
-        "validation_wall_seconds": 0.03406164608895779
+        "validation_wall_seconds": 0.03583411127328873
       },
       "python_geometry": {
         "accepted": true,
@@ -1158,7 +1173,7 @@
           ]
         ],
         "estimator": "magsac",
-        "estimation_ms": 0.15816837549209595
+        "estimation_ms": 0.2589114010334015
       },
       "python_inliers": [
         1,
@@ -1309,10 +1324,15 @@
           ]
         ],
         "estimator": "magsac",
-        "estimation_ms": 0.241694,
+        "estimation_ms": 0.267182,
         "opencv_version": "5.1.0",
         "method": "provided",
         "device": "cpu",
+        "opencv_threads_requested": 1,
+        "opencv_threads_reported": 1,
+        "onnxruntime_version": "1.24.3",
+        "onnxruntime_intra_op_threads": 4,
+        "onnxruntime_inter_op_threads": 1,
         "inference_backend": "provided_correspondences",
         "reference_keypoints": 100,
         "moving_keypoints": 100,
@@ -1464,7 +1484,7 @@
           "matches.jpg",
           "report.json"
         ],
-        "validation_wall_seconds": 0.016324983909726143
+        "validation_wall_seconds": 0.02458031475543976
       },
       "python_geometry": {
         "accepted": false,
@@ -1505,6 +1525,11 @@
         "opencv_version": "5.1.0",
         "method": "provided",
         "device": "cpu",
+        "opencv_threads_requested": 1,
+        "opencv_threads_reported": 1,
+        "onnxruntime_version": "1.24.3",
+        "onnxruntime_intra_op_threads": 4,
+        "onnxruntime_inter_op_threads": 1,
         "inference_backend": "provided_correspondences",
         "reference_keypoints": 0,
         "moving_keypoints": 0,
@@ -1558,7 +1583,7 @@
           "report.json",
           "valid_mask.png"
         ],
-        "validation_wall_seconds": 0.19295492209494114
+        "validation_wall_seconds": 0.3252537176012993
       },
       "reference_features": {
         "python_keypoints": 604,
@@ -1568,10 +1593,10 @@
         "point_recall": 1.0,
         "descriptor_agreement_precision": 1.0,
         "descriptor_agreement_recall": 1.0,
-        "associated_point_max_error_px": 2.15791860682657e-05,
+        "associated_point_max_error_px": 0.0,
         "associated_descriptor_max_abs_error": 0.0,
         "associated_descriptor_p99_max_abs_error": 0.0,
-        "ordered_keypoint_max_abs_error": 1.52587890625e-05,
+        "ordered_keypoint_max_abs_error": 0.0,
         "ordered_descriptor_max_abs_error": 0.0
       },
       "moving_features": {
@@ -1582,10 +1607,10 @@
         "point_recall": 1.0,
         "descriptor_agreement_precision": 1.0,
         "descriptor_agreement_recall": 1.0,
-        "associated_point_max_error_px": 3.0517578125e-05,
+        "associated_point_max_error_px": 0.0,
         "associated_descriptor_max_abs_error": 0.0,
         "associated_descriptor_p99_max_abs_error": 0.0,
-        "ordered_keypoint_max_abs_error": 3.0517578125e-05,
+        "ordered_keypoint_max_abs_error": 0.0,
         "ordered_descriptor_max_abs_error": 0.0
       },
       "matches": {
@@ -1594,7 +1619,7 @@
         "common_matches": 94,
         "match_precision": 1.0,
         "match_recall": 1.0,
-        "common_match_max_coordinate_error_px": 1.52587890625e-05,
+        "common_match_max_coordinate_error_px": 0.0,
         "common_match_max_score_error": 5.960464477539063e-08
       },
       "python_accepted": true,
@@ -1616,7 +1641,7 @@
           "reference_features.json",
           "report.json"
         ],
-        "validation_wall_seconds": 0.5935184601694345
+        "validation_wall_seconds": 0.693635692819953
       },
       "reference_features": {
         "python_keypoints": 2048,
@@ -1626,10 +1651,10 @@
         "point_recall": 1.0,
         "descriptor_agreement_precision": 1.0,
         "descriptor_agreement_recall": 1.0,
-        "associated_point_max_error_px": 6.823938019806519e-05,
+        "associated_point_max_error_px": 0.0,
         "associated_descriptor_max_abs_error": 0.0,
         "associated_descriptor_p99_max_abs_error": 0.0,
-        "ordered_keypoint_max_abs_error": 6.103515625e-05,
+        "ordered_keypoint_max_abs_error": 0.0,
         "ordered_descriptor_max_abs_error": 0.0
       },
       "moving_features": {
@@ -1640,10 +1665,10 @@
         "point_recall": 1.0,
         "descriptor_agreement_precision": 1.0,
         "descriptor_agreement_recall": 1.0,
-        "associated_point_max_error_px": 6.823938019806519e-05,
+        "associated_point_max_error_px": 0.0,
         "associated_descriptor_max_abs_error": 0.0,
         "associated_descriptor_p99_max_abs_error": 0.0,
-        "ordered_keypoint_max_abs_error": 6.103515625e-05,
+        "ordered_keypoint_max_abs_error": 0.0,
         "ordered_descriptor_max_abs_error": 0.0
       },
       "matches": {
@@ -1652,7 +1677,7 @@
         "common_matches": 83,
         "match_precision": 1.0,
         "match_recall": 1.0,
-        "common_match_max_coordinate_error_px": 6.103515625e-05,
+        "common_match_max_coordinate_error_px": 0.0,
         "common_match_max_score_error": 2.9802322387695312e-08
       },
       "python_accepted": false,
@@ -1672,12 +1697,12 @@
         "corner_mean_error_px": 714.393310546875
       },
       "native_ground_truth_error": {
-        "grid_median_error_px": 316.8531494140625,
-        "grid_p95_error_px": 981.3051147460938,
+        "grid_median_error_px": 316.8532409667969,
+        "grid_p95_error_px": 981.3059692382812,
         "grid_points": 661,
-        "corner_mean_error_px": 714.3927612304688
+        "corner_mean_error_px": 714.393310546875
       },
-      "ground_truth_error_difference_px": 9.1552734375e-05,
+      "ground_truth_error_difference_px": 0.0,
       "python_success_3px": false,
       "native_success_3px": false
     },
@@ -1699,7 +1724,7 @@
           "report.json",
           "valid_mask.png"
         ],
-        "validation_wall_seconds": 0.5472522433847189
+        "validation_wall_seconds": 0.554310904815793
       },
       "reference_features": {
         "python_keypoints": 2048,
@@ -1709,10 +1734,10 @@
         "point_recall": 1.0,
         "descriptor_agreement_precision": 1.0,
         "descriptor_agreement_recall": 1.0,
-        "associated_point_max_error_px": 6.291359750321135e-05,
+        "associated_point_max_error_px": 0.0,
         "associated_descriptor_max_abs_error": 0.0,
         "associated_descriptor_p99_max_abs_error": 0.0,
-        "ordered_keypoint_max_abs_error": 6.103515625e-05,
+        "ordered_keypoint_max_abs_error": 0.0,
         "ordered_descriptor_max_abs_error": 0.0
       },
       "moving_features": {
@@ -1723,10 +1748,10 @@
         "point_recall": 1.0,
         "descriptor_agreement_precision": 1.0,
         "descriptor_agreement_recall": 1.0,
-        "associated_point_max_error_px": 6.115424912422895e-05,
+        "associated_point_max_error_px": 0.0,
         "associated_descriptor_max_abs_error": 0.0,
         "associated_descriptor_p99_max_abs_error": 0.0,
-        "ordered_keypoint_max_abs_error": 6.103515625e-05,
+        "ordered_keypoint_max_abs_error": 0.0,
         "ordered_descriptor_max_abs_error": 0.0
       },
       "matches": {
@@ -1735,7 +1760,7 @@
         "common_matches": 491,
         "match_precision": 1.0,
         "match_recall": 1.0,
-        "common_match_max_coordinate_error_px": 6.103515625e-05,
+        "common_match_max_coordinate_error_px": 0.0,
         "common_match_max_score_error": 5.960464477539063e-08
       },
       "python_accepted": true,
@@ -1752,7 +1777,7 @@
         "grid_median_error_px": 0.2842714190483093,
         "grid_p95_error_px": 0.6272660493850708,
         "grid_points": 667,
-        "corner_mean_error_px": 0.5879260897636414
+        "corner_mean_error_px": 0.5879401564598083
       },
       "ground_truth_error_difference_px": 0.0,
       "python_success_3px": true,
@@ -1776,7 +1801,7 @@
           "report.json",
           "valid_mask.png"
         ],
-        "validation_wall_seconds": 0.8373816832900047
+        "validation_wall_seconds": 0.9888046868145466
       },
       "reference_features": {
         "python_keypoints": 2048,
@@ -1786,10 +1811,10 @@
         "point_recall": 1.0,
         "descriptor_agreement_precision": 1.0,
         "descriptor_agreement_recall": 1.0,
-        "associated_point_max_error_px": 6.103515625e-05,
+        "associated_point_max_error_px": 0.0,
         "associated_descriptor_max_abs_error": 0.0,
         "associated_descriptor_p99_max_abs_error": 0.0,
-        "ordered_keypoint_max_abs_error": 6.103515625e-05,
+        "ordered_keypoint_max_abs_error": 0.0,
         "ordered_descriptor_max_abs_error": 0.0
       },
       "moving_features": {
@@ -1800,10 +1825,10 @@
         "point_recall": 1.0,
         "descriptor_agreement_precision": 1.0,
         "descriptor_agreement_recall": 1.0,
-        "associated_point_max_error_px": 6.103515625e-05,
+        "associated_point_max_error_px": 0.0,
         "associated_descriptor_max_abs_error": 0.0,
         "associated_descriptor_p99_max_abs_error": 0.0,
-        "ordered_keypoint_max_abs_error": 6.103515625e-05,
+        "ordered_keypoint_max_abs_error": 0.0,
         "ordered_descriptor_max_abs_error": 0.0
       },
       "matches": {
@@ -1812,7 +1837,7 @@
         "common_matches": 576,
         "match_precision": 1.0,
         "match_recall": 1.0,
-        "common_match_max_coordinate_error_px": 6.103515625e-05,
+        "common_match_max_coordinate_error_px": 0.0,
         "common_match_max_score_error": 5.960464477539063e-08
       },
       "python_accepted": true,
@@ -1838,7 +1863,7 @@
           "report.json",
           "valid_mask.png"
         ],
-        "validation_wall_seconds": 0.7804196570068598
+        "validation_wall_seconds": 1.0992878433316946
       },
       "reference_features": {
         "python_keypoints": 364,
@@ -1896,7 +1921,7 @@
           "reference_features.json",
           "report.json"
         ],
-        "validation_wall_seconds": 1.948717288672924
+        "validation_wall_seconds": 1.9954515658318996
       },
       "reference_features": {
         "python_keypoints": 1514,
@@ -1970,7 +1995,7 @@
           "report.json",
           "valid_mask.png"
         ],
-        "validation_wall_seconds": 2.1047336533665657
+        "validation_wall_seconds": 2.1382956579327583
       },
       "reference_features": {
         "python_keypoints": 1794,
@@ -2047,7 +2072,7 @@
           "report.json",
           "valid_mask.png"
         ],
-        "validation_wall_seconds": 2.948479849845171
+        "validation_wall_seconds": 4.510515468195081
       },
       "reference_features": {
         "python_keypoints": 2048,
@@ -2109,7 +2134,7 @@
           "report.json",
           "valid_mask.png"
         ],
-        "validation_wall_seconds": 1.2161767203360796
+        "validation_wall_seconds": 1.2956371549516916
       },
       "reference_features": {
         "python_keypoints": 364,
@@ -2171,7 +2196,7 @@
           "report.json",
           "valid_mask.png"
         ],
-        "validation_wall_seconds": 2.8098969273269176
+        "validation_wall_seconds": 2.824046466499567
       },
       "reference_features": {
         "python_keypoints": 1514,
@@ -2248,7 +2273,7 @@
           "report.json",
           "valid_mask.png"
         ],
-        "validation_wall_seconds": 2.8034447953104973
+        "validation_wall_seconds": 2.941966423764825
       },
       "reference_features": {
         "python_keypoints": 1794,
@@ -2325,7 +2350,7 @@
           "report.json",
           "valid_mask.png"
         ],
-        "validation_wall_seconds": 3.855193456634879
+        "validation_wall_seconds": 3.943212227895856
       },
       "reference_features": {
         "python_keypoints": 2048,

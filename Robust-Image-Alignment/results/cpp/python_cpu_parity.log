@@ -7,7 +7,7 @@ REAL PIPELINE PARITY PASSED sift box
 REAL PIPELINE PARITY PASSED sift graf_1_6
 REAL PIPELINE PARITY PASSED sift leuven_1_6
 REAL PIPELINE PARITY PASSED sift form
-[0;93m2026-11-19 13:05:00.223451938 [W:onnxruntime:Default, device_discovery.cc:211 DiscoverDevicesForPlatform] GPU device discovery failed: device_discovery.cc:91 ReadFileContents Failed to open file: "/sys/class/drm/card0/device/vendor"[m
+[0;93m2026-11-20 11:28:27.474175303 [W:onnxruntime:Default, device_discovery.cc:211 DiscoverDevicesForPlatform] GPU device discovery failed: device_discovery.cc:91 ReadFileContents Failed to open file: "/sys/class/drm/card0/device/vendor"[m
 REAL PIPELINE PARITY PASSED aliked-nn box
 REAL PIPELINE PARITY PASSED aliked-nn graf_1_6
 REAL PIPELINE PARITY PASSED aliked-nn leuven_1_6
@@ -16,4 +16,4 @@ REAL PIPELINE PARITY PASSED lightglue box
 REAL PIPELINE PARITY PASSED lightglue graf_1_6
 REAL PIPELINE PARITY PASSED lightglue leuven_1_6
 REAL PIPELINE PARITY PASSED lightglue form
-VALIDATION PASSED: native/Python parity 5 geometry cases and 12 real pipelines; /tmp/robust-cpp-parity-linux.json
+VALIDATION PASSED: native/Python parity 5 geometry cases and 12 real pipelines; /tmp/robust-alignment-review.AJ2cDjli/final-native-parity.json

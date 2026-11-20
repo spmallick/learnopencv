@@ -2,13 +2,17 @@
 
 A photographed form can be easy to read and still be difficult to compare with its template. The page is tilted, one corner is farther from the camera, and handwritten fields introduce content that does not exist in the blank original. If we subtract the two images immediately, almost every printed line looks like a change.
 
+**Updated November 20, 2026:** We checked the sampling and matching diagrams, repeated the accuracy comparison across inference devices, and corrected two coordinate conversions that affect resized SIFT features and ECC refinement.
+
 Image alignment, also called image registration, gives those comparisons a common coordinate system. It also lets us locate a familiar book cover in a cluttered photograph, match two views of a wall, or prepare overlapping photographs for stitching. The interesting part is deciding which correspondences to trust and whether one transformation actually describes the scene.
 
 We will build a Python pipeline that extracts features with **ALIKED**, matches them with **LightGlue**, and estimates a homography using **MAGSAC++**. Alongside the successful examples, we will inspect an absent target and a scene whose depth prevents a single homography from aligning everything.
 
 ![A real graffiti wall photographed from sharply different viewpoints, with the moving image aligned to the reference.](figures/graf_alignment.png)
 
-**OpenCV version:** every example and recorded experiment uses **OpenCV 5.1.0**, the latest stable OpenCV 5.x release rechecked on **November 19, 2026**. The Python experiments were run on November 14. The official release tag is pinned in the companion build script. ALIKED and LightGlue run through their PyTorch implementation; OpenCV handles geometric estimation, warping, masks, and the classical baseline. [OpenCV 5.1.0 release](https://github.com/opencv/opencv/releases/tag/5.1.0)
+*The first two panels show frames 1 and 6 of the Oxford graffiti sequence. In the third, the wall lines up after warping frame 6 into frame 1. The pavement lies on a different plane and can still shift. White in the final panel marks the part of frame 1 covered by the warped photograph.*
+
+**OpenCV version:** the examples use **OpenCV 5.1.0**. The companion build script pins the source commit used for the experiments. Python runs ALIKED and LightGlue in PyTorch. The native C++ example uses ONNX Runtime on the CPU. Both use OpenCV for geometric estimation, warping, masks, and SIFT. [OpenCV 5.1.0 release](https://github.com/opencv/opencv/releases/tag/5.1.0)
 
 **Download the code and notebook:** The download includes the complete Jupyter notebook, standalone Python code, and a native C++ implementation of the same examples. Click the **Download Code** button and sign up for our newsletter, and we’ll email you everything in one ZIP file.
 
@@ -55,7 +59,7 @@ The examples deliberately cover different questions. The Oxford *graf* sequence 
 | Unrelated target-absent images | No matching target | Whether our acceptance checks reject the estimate |
 | Aloe stereo pair | Viewpoint and depth-dependent displacement | Where one global homography leaves misalignment |
 
-These are real captured images. The benchmark sequences come from the [Oxford affine-covariant regions dataset](https://www.robots.ox.ac.uk/~vgg/research/affine/); the companion manifest records their sources and checksums. The form comes from our earlier [feature-based image alignment tutorial](https://learnopencv.com/image-alignment-feature-based-using-opencv-c-python/). The box and aloe examples are OpenCV sample images.
+The Oxford sequences are camera captures from the affine-covariant regions dataset. For the form, the reference is a digital DMV template. We printed a copy, filled it in, and photographed it with a phone. The box and aloe photographs are OpenCV samples. The companion manifest records the source and checksum for each input. [Oxford dataset](https://www.robots.ox.ac.uk/~vgg/research/affine/) · [Original form example](https://learnopencv.com/image-alignment-feature-based-using-opencv-c-python/)
 
 The document and box examples do not come with independent ground-truth homographies. We use them to explain applications, not to manufacture precise accuracy numbers. Any synthetic transformations used by the tests are labelled separately from these captured examples.
 
@@ -72,7 +76,7 @@ $$
 (x',y')=\left(\frac{u}{w},\frac{v}{w}\right).
 $$
 
-Multiplying every entry of `H` by the same nonzero value leaves the mapping unchanged. The matrix has eight independent degrees of freedom, so at least four point correspondences are needed, in a nondegenerate configuration. In practice, we want more points spread across the surface.
+The division requires `w ≠ 0`. Multiplying every entry of an invertible `H` by the same nonzero value leaves the mapping unchanged. A homography has eight independent degrees of freedom. Four distinct point pairs determine it when no three points in either set are collinear. In practice, we want more points spread across the surface.
 
 One homography is appropriate for a planar target, such as a flat document or book cover. It can also relate views of a general scene when the camera rotates about its projection center. If the camera translates through a scene with depth, foreground and background usually move differently. Better matches cannot remove that parallax. Our [homography examples](https://learnopencv.com/homography-examples-using-opencv-python-c/) develop these geometric cases with diagrams.
 
@@ -82,7 +86,7 @@ Throughout the code, the **reference** is the coordinate system we want to obtai
 
 ![The alignment pipeline from images through feature extraction, matching, geometric estimation, validation, and warping.](figures/pipeline.svg)
 
-*ALIKED, LightGlue, and MAGSAC++ solve different parts of the problem. Validation applies explicit geometric safeguards before an application uses the estimate.*
+*ALIKED finds features in each image, LightGlue pairs them, and MAGSAC++ fits the homography. Only estimates that pass the geometric checks go on to the warp. Optional ECC refinement is covered in section 8.*
 
 ALIKED finds image locations that can be described locally. LightGlue looks for corresponding locations in the other image. MAGSAC++ estimates a transformation despite incorrect correspondences. We then inspect the transformation and its supporting points before producing an aligned image.
 
@@ -92,13 +96,24 @@ A high match score does not establish that the whole image is aligned. A valid m
 
 ### Set up the released OpenCV environment
 
-Extract the downloaded ZIP. In a terminal, use the first command below to enter its `Robust-Image-Alignment` folder, then create an isolated environment, install the pinned dependencies, and build OpenCV with that environment's Python interpreter. All later commands assume this same project folder:
+Extract the downloaded ZIP. In a terminal, use the first command below to enter its `Robust-Image-Alignment` folder, then create an isolated environment and upgrade its package installer. Keep using this project folder for the remaining commands.
 
 ```bash
 cd Robust-Image-Alignment
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
+```
+
+**To reproduce the Linux GTX 1080 Ti run**, install the CUDA 12.6 PyTorch builds in this environment before the remaining requirements. On CPU or macOS, skip this command. [PyTorch 2.10 installation commands](https://pytorch.org/get-started/previous-versions/)
+
+```bash
+python -m pip install torch==2.10.0 torchvision==0.25.0 --index-url https://download.pytorch.org/whl/cu126
+```
+
+Then install the remaining dependencies and build the tested OpenCV release with the active Python interpreter.
+
+```bash
 python -m pip install -r requirements.txt
 python -m pip install --no-deps -r requirements-lightglue.txt
 PYTHON_BIN="$VIRTUAL_ENV/bin/python" bash scripts/build_opencv.sh
@@ -106,7 +121,7 @@ python download_assets.py
 python download_models.py
 ```
 
-The neural dependency file pins LightGlue to the tested Git commit. We install it with `--no-deps` because its upstream requirements would otherwise pull in an older OpenCV wheel. The build script checks out the verified OpenCV 5.1.0 release commit and builds the modules needed here. Git, CMake, a C++ compiler, and Python development headers are required. On Linux, JPEG and PNG development packages are also needed for the sample-image codecs. The project README gives the tested platform-specific setup.
+The neural dependency file pins LightGlue to the tested Git commit. We install it with `--no-deps` because its upstream requirements would otherwise install a second package supplying `cv2`. The build script checks out the verified OpenCV 5.1.0 release commit and builds the modules needed here. Git, CMake, a C++ compiler, and Python development headers are required. On Linux, JPEG and PNG development packages are also needed for the sample-image codecs. The project README gives the tested platform-specific setup.
 
 Check the imported runtime before running the examples:
 
@@ -119,7 +134,7 @@ assert cv2.__version__ == "5.1.0"
 assert hasattr(cv2, "USAC_MAGSAC")
 ```
 
-As of the environment check for this tutorial, the available OpenCV 5 PyPI wheel was the older `5.0.0.93` distribution. Installing that wheel is not a way to reproduce an experiment labelled 5.1.0. Keep one active `cv2` installation in the environment and inspect its import path if the version assertion fails.
+PyPI also distributes OpenCV 5.1.0 as `opencv-python==5.1.0.95`. The experiment used the source build above. Choose one provider of `cv2` per environment and check the import path as well as the version. [PyPI release](https://pypi.org/project/opencv-python/5.1.0.95/)
 
 The asset downloader resolves paths from its own location, fetches immutable source URLs, and verifies SHA-256 checksums. It reuses files that already match the manifest. The model downloader verifies the exact pretrained checkpoints before they enter the model cache; subsequent runs reuse them.
 
@@ -140,6 +155,8 @@ sift_baseline = FeatureMatcher(
 )
 ```
 
+When SIFT runs on a reduced image, OpenCV samples at pixel centers. For the resize factor `s` passed to `cv2.resize`, a detected coordinate `x` maps back to `(x + 0.5) / s - 0.5` on the original image. Use the same formula for `y`. Both Oxford sequences fit below the 1,024-pixel cap, so this conversion only comes into play on larger inputs.
+
 A ratio test asks whether a local descriptor has an ambiguous alternative. It does not check whether all retained matches agree on the same image transformation. The baseline still needs robust geometric estimation and the same acceptance checks as the learned pipeline.
 
 Direct alignment provides another useful comparison. ECC adjusts a transformation to improve intensity agreement between images. It is especially interesting as a refinement after rough alignment; a large displacement can make initialization important. We introduced the method through historic color-channel registration in [Image Alignment using ECC](https://learnopencv.com/image-alignment-ecc-in-opencv-c-python/). Here we test it as an optional step rather than assuming it improves every pair.
@@ -148,11 +165,11 @@ Direct alignment provides another useful comparison. ECC adjusts a transformatio
 
 ALIKED is the feature extractor. Its Sparse Deformable Descriptor Head learns supporting sample positions around each detected keypoint, gathers feature values there, and combines them into a descriptor. The sample pattern can adapt to local image structure instead of remaining a fixed grid. [ALIKED paper](https://arxiv.org/abs/2304.03608)
 
-![An explanatory diagram contrasting fixed supporting samples with learned offset samples around a keypoint.](figures/aliked_sampling.svg)
+![A fixed 3-by-3 grid and nine illustrative learned sample positions around the same keypoint.](figures/aliked_sampling.svg)
 
-*Illustration of the descriptor-sampling idea. The positions shown are explanatory, not measured offsets from the example photographs.*
+*Orange marks the keypoint. The drawing uses nine positions so the difference between a fixed grid and learned offsets is easy to see. The `aliked-n16` descriptor actually gathers features from 16 positions per keypoint.*
 
-ALIKED still computes convolutional image feature maps. Its sparse descriptor head avoids constructing a separate descriptor at every pixel. For our examples, the wrapper uses the `aliked-n16` variant and its matching LightGlue checkpoint.
+ALIKED computes convolutional feature maps over the image. Its sparse descriptor head builds descriptors only at selected keypoints. The wrapper pairs `aliked-n16` with LightGlue weights trained for ALIKED features. [ALIKED implementation](https://github.com/cvg/LightGlue/blob/5a650c444718caffc2669dc0094cde908f42dd73/lightglue/aliked.py)
 
 ```python
 matcher = FeatureMatcher(
@@ -175,9 +192,9 @@ Consider two similar windows on the same facade. Their local descriptors may loo
 
 The assignment head combines pairwise similarity with matchability: whether a detected point has a corresponding point in the other image. Final matches pass a mutual-consistency check and a score threshold.
 
-![An illustration of early stopping on an easier image pair and additional refinement on a harder pair.](figures/lightglue_depth.svg)
+![One illustrative LightGlue pair stops after layer three. Another continues through all nine layers.](figures/lightglue_depth.svg)
 
-*Adaptive computation: an image pair can stop early when assignments are sufficiently confident. Confidently unmatchable points can be removed from subsequent layers.*
+*The top row shows one possible early exit after three of the nine layers. The bottom row runs all nine. The stopping layer depends on how many point assignments the model expects to stay stable. Point pruning is a separate optimization that also depends on the device and point count.*
 
 It is important to keep three ideas separate. Matchability concerns the existence of a counterpart. An assignment score concerns a proposed correspondence. The confidence used for adaptive depth concerns whether additional layers are expected to change the assignment. Uncertain points are not simply discarded for being uncertain.
 
@@ -225,9 +242,9 @@ The order of the point arrays fixes the matrix direction. Here `H` maps the movi
 
 The OpenCV preset uses MAGSAC scoring and sigma-consensus local optimization with uniform sampling. It does not enable every component described in the paper. The reprojection threshold remains meaningful for the implementation, including its inlier and termination behavior; the call is not parameter-free. [OpenCV 5.1.0 USAC configuration](https://github.com/opencv/opencv/blob/5.1.0/modules/geometry/src/usac/ransac_solvers.cpp#L1176-L1183)
 
-![Tentative correspondences with geometrically consistent and inconsistent matches distinguished.](figures/match_filtering.png)
+![Top row, 60 of 237 tentative graffiti matches. Bottom row, a separate sample of 60 of the 72 estimated inliers.](figures/match_filtering.png)
 
-*Geometric estimation tests whether correspondences support the selected transformation. A match count alone does not answer that question.*
+*The upper row samples all tentative matches, including any that will be rejected. The lower row samples the matches that support the fitted homography. A line missing from the lower row may simply be outside that 60-match sample.*
 
 To compare RANSAC with MAGSAC++, hold the correspondences fixed and change the estimator. If we also change the matcher, we cannot tell which change caused an improvement or failure.
 
@@ -274,7 +291,7 @@ Coverage is especially useful. Twelve correspondences on a tiny repeated word do
 
 ### Warp the mask as well as the image
 
-The homography can map some output pixels outside the source photograph. Those pixels have no source evidence. We warp a white source mask with nearest-neighbor interpolation to mark supported output locations. Testing `aligned != 0` would be wrong because a real document can contain black pixels.
+The default mask marks reference pixels whose nearest source pixel lies inside the moving photograph. A real black mark passes this test. At the source boundary, however, bilinear interpolation can mix that pixel with border padding even though the nearest-pixel mask is valid. The photo figures use this default mask.
 
 For a readable overlay, preserve the reference where source pixels are unavailable:
 
@@ -285,13 +302,25 @@ if result.accepted:
     cv2.imwrite("overlay.png", overlay)
 ```
 
-For quantitative intensity comparisons, also consider interpolation support near boundaries and exclude pixels whose content genuinely changed. An unfilled template and a completed form are not expected to have identical intensities after perfect registration.
+For a pixel-by-pixel intensity comparison, ask for full bilinear support. The function warps an all-ones floating-point mask with the same bilinear interpolation and zero border as the image. A value of one means all source samples with nonzero weight were inside the photograph.
+
+```python
+if result.accepted:
+    aligned, full_mask = warp_alignment(
+        scene, result, reference.shape, full_support=True
+    )
+    differences = cv2.absdiff(reference, aligned)
+    supported_differences = differences[full_mask != 0]
+```
+
+The mask only tests image support. Exclude handwriting, occlusions, or other real content changes separately when assessing intensity agreement.
 
 ### Optional ECC refinement
 
-Our `refine_ecc()` function accepts the same moving-to-reference matrix convention as the rest of the module. Internally it inverts the matrix because OpenCV ECC uses the opposite warp direction, and it restricts optimization to estimated overlap.
+Our `refine_ecc()` function accepts the same moving-to-reference matrix convention as the rest of the module. OpenCV ECC expects a reference-to-moving initialization. The helper inverts the feature estimate, divides by the inverse matrix’s bottom-right entry to make it one, and rejects an initialization for which this normalization is numerically unsafe. OpenCV updates the remaining eight parameters. The helper supplies an overlap mask in moving-image coordinates and inverts the refined matrix before returning it.
 
 ```python
+import numpy as np
 from robust_image_alignment import refine_ecc
 
 if result.accepted:
@@ -300,7 +329,7 @@ if result.accepted:
             reference, scene, result.H
         )
         print("ECC correlation:", correlation)
-    except (cv2.error, ValueError) as error:
+    except (cv2.error, ValueError, np.linalg.LinAlgError) as error:
         print("Keeping the feature estimate:", error)
 ```
 
@@ -312,7 +341,7 @@ A matching pipeline can recognize a known visual appearance without training a n
 
 ![A known biscotti package design localized in a cluttered scene from one reference image.](figures/object_identification.png)
 
-*The reference supplies the known appearance. Its projected boundary locates that appearance in the new photograph. This sample is a qualitative localization demonstration.*
+*The green outline projects the reference boundary into the scene. The rectified crop still contains part of the basmati box in front of the biscotti. A warp can place visible pixels in reference coordinates, but it cannot recover the hidden design.*
 
 For a planar target, the inverse homography maps reference corners into the scene. The companion already computes that quadrilateral:
 
@@ -365,7 +394,7 @@ if form_result.accepted:
 
 ![A photographed form registered to its blank template.](figures/document_alignment.png)
 
-*Registration brings the printed structure into template coordinates. Filled fields remain real content differences.*
+*The left panel is the blank digital template. The second panel is a phone photo of a filled-in paper copy. The overlay aligns the printed boxes and leaves the handwriting visible.*
 
 Once registered, a field can be read from a template-coordinate crop. The downstream OCR still needs its own accuracy checks. This is different from detecting a sheet's four outer corners and producing a front-facing scan, which we cover in [Automatic Document Scanner using OpenCV](https://learnopencv.com/automatic-document-scanner-using-opencv/).
 
@@ -396,7 +425,7 @@ We separate the comparisons:
 | RANSAC versus MAGSAC++ | Correspondences and evaluation geometry | Robust-estimator configuration |
 | Before versus after ECC | Initial feature-based homography | Direct refinement |
 
-For geometric error, sample a fixed grid in the reference image. Use the supplied ground-truth homography to place those points in the moving image and retain the points inside both frames. Apply the estimated moving-to-reference homography to bring them back, then measure their distances from the original reference positions. This reports error in original reference-image pixels and avoids evaluating only on the estimator’s own selected inliers.
+For geometric error, sample a fixed grid in the reference image. Use the supplied ground-truth homography to place those points in the moving image and retain the points inside both frames. Apply the estimated moving-to-reference homography to bring them back, then measure their distances from the original reference positions. This measures agreement with the supplied homography in original reference-image pixels, independently of the estimator’s own inliers. The Oxford authors estimated their homographies from images and reported a root-mean-square fit error below one pixel per pair. A difference of a few hundredths of a pixel tells us how closely two matrices agree with that annotation. It cannot establish physical alignment accuracy to that precision. [Oxford evaluation method, §3](https://cmp.felk.cvut.cz/~matas/papers/mikolajczyk-detectors-ijcv05.pdf)
 
 The *graf* and *leuven* sequences provide a compact reproducible comparison. They do not represent every document, package, camera, or industrial surface. Keep their results separate from the application demonstrations without independent ground truth.
 
@@ -404,7 +433,7 @@ The *graf* and *leuven* sequences provide a compact reproducible comparison. The
 
 We reserved image 1→2 from each sequence for checking the setup and evaluated image 1→3 through 1→6: eight pairs from **two scenes**, with four viewpoint changes and four illumination changes. We requested at most 2,048 features per image and capped the longest side at 1,024 pixels without upsampling. A pair passes our teaching criterion when the estimate passes the configured safeguards and its median overlap-grid error is below three original reference-image pixels. The repeated runs measure timing; they do not turn eight image pairs into 40 independent examples.
 
-With MAGSAC++ after each matching route, the results were:
+Here are the results for the recorded Python run with MAGSAC++. ALIKED extraction and LightGlue matching used CUDA on a GTX 1080 Ti. SIFT and ratio matching ran on the CPU.
 
 | Correspondence pipeline | Evaluation pairs passing the criterion | Which viewpoint cases failed |
 | --- | --- | --- |
@@ -412,17 +441,21 @@ With MAGSAC++ after each matching route, the results were:
 | ALIKED + ratio matching | 6 / 8 | graf 1→4 and 1→6 |
 | ALIKED + LightGlue | 8 / 8 | None in this set |
 
-The useful difference is visible in the difficult graffiti pairs. On graf 1→6, ALIKED with ratio matching supplied too little useful support to estimate a homography. LightGlue used the same extracted features and produced an accepted alignment with **1.76-pixel median independent grid error**. SIFT's estimate for that pair was rejected. On the illumination sequence, all three pipelines passed all four evaluation pairs; learned matching was not necessary for every example.
+The useful difference is visible in the difficult graffiti pairs. On graf 1→6, ALIKED with ratio matching returned zero matches, so neither estimator could fit a homography. LightGlue used the same extracted features and produced an accepted alignment with **1.76-pixel median independent grid error**. SIFT's estimate for that pair was rejected. On the illumination sequence, all three pipelines passed all four evaluation pairs; learned matching was not necessary for every example.
 
-![Independent alignment error across eight evaluation pairs and six matching-estimation configurations.](figures/benchmark_grid_errors.png)
+![Errors for six configurations on eight Oxford pairs in the CUDA experiment. Six pair-and-method combinations produced rejected estimates. Two had no homography.](figures/benchmark_grid_errors.png)
 
-*Each cell uses the median of five repeated runs on the same pair. Rejections and missing homographies remain visible. Values above 10 pixels are capped only in the color scale and marked explicitly. The full uncapped results are retained in the companion JSON.*
+*Cell labels give the median grid error across five runs of the same pair, in original reference pixels. The color saturates at 10 px. A cross marks a rejected fit. Gray cells have no estimated homography and therefore no error value.*
 
 RANSAC also gave LightGlue 8/8 passes in this small set. MAGSAC++ reduced LightGlue's graf 1→6 median error from 2.37 to 1.76 pixels, but it did not improve every correspondence set: with SIFT on graf 1→3, RANSAC gave 0.76 pixels and MAGSAC++ gave 2.32. The appropriate conclusion is that matching and estimator choice both matter. These two scenes do not establish a universally best configuration.
+
+With the same defaults, Python passed **7 of the 8 pairs** on both the CPU and Apple’s Metal backend (MPS). On graf 1→6 both accepted an estimate with **11.97 px** median grid error. The native C++ CPU implementation did the same. CUDA gave **1.76 px**. On this pair, CPU and MPS pruned points while CUDA kept them all. Turning off point pruning, with the same cached features on each device, brought CPU and MPS to **1.76 px** as well. The pinned LightGlue implementation chooses whether to prune using the device and the keypoint count. [LightGlue implementation](https://github.com/cvg/LightGlue/blob/5a650c444718caffc2669dc0094cde908f42dd73/lightglue/lightglue.py)
 
 ### What the processing time includes
 
 The recorded system was **Ubuntu 24.04 on an Intel Core i7-6850K with one NVIDIA GTX 1080 Ti**, using Python 3.14.3, OpenCV 5.1.0, NumPy 2.4.2, PyTorch 2.10.0+cu126, torchvision 0.25.0+cu126, and Kornia 0.8.2. OpenCV used one CPU thread and PyTorch used four CPU threads. Neural extraction and LightGlue ran on the GPU; SIFT and the nearest-neighbor matcher ran on the CPU.
+
+The timing table retains the November 14 measurements. The November 20 rerun reproduced the benchmark geometry and pass decisions on the same machine. Another CPU-intensive job was active during that rerun, so we used the original timings for this comparison.
 
 For a comparable timing workload, the table below uses the **same five pairs that all three MAGSAC++ pipelines successfully aligned**, with five measured repetitions per pair after warm-up. Each time includes extraction for both images, matching, geometric estimation and acceptance checks, and image/mask warping. It excludes file I/O, model loading, plotting, and ECC. The figures are steady-state measurements on this machine; the percentile range spans those 25 trials, rather than a statistical confidence interval.
 
@@ -438,17 +471,17 @@ ALIKED with ratio matching was the quickest route here, while LightGlue recovere
 
 To study estimator behavior separately, we generated 160 point correspondences with a known projective transformation, replaced 60% with uniform outliers, and added Gaussian noise to the remaining moving-image coordinates. Both estimators received exactly the same points for each of 12 data seeds. This is a **synthetic correspondence experiment**, not another set of photographed scenes.
 
-At 1.5-pixel noise and a 3-pixel threshold, the median independent grid error across those seeds was **1.02 pixels for RANSAC and 0.53 pixels for MAGSAC++**. Both passed the acceptance checks in all 12 trials. The result supports the mechanism we wanted to demonstrate: accounting for noise-scale uncertainty can improve an estimate even when matching is held fixed.
+At 1.5-pixel noise and a 3-pixel threshold, the median independent grid error across those seeds was **1.02 pixels for RANSAC and 0.53 pixels for MAGSAC++**. Both passed the acceptance checks in all 12 trials. With identical input points, the OpenCV `USAC_MAGSAC` preset produced the lower median error in this setting. The presets differ in their fitting, scoring, and optimization, so the comparison cannot assign the difference to noise-scale marginalization alone.
 
 ![Estimator error and acceptance counts across synthetic noise levels and reprojection thresholds.](figures/magsac_threshold_sensitivity.png)
 
-*Lines show median geometric error with an interquartile band. Acceptance counts are shown separately. The experiment uses uniform outliers; real repeated structures can create much more coherent false matches.*
+*Lines show median grid error across 12 seeds and shading marks the interquartile range. The parameter on the horizontal axis sets both OpenCV’s reprojection threshold and the application’s maximum median inlier residual. The table counts how many estimates passed all checks.*
 
-The threshold still changes the usable result. At that same 1.5-pixel noise level, the 1-pixel threshold caused **both pipelines to fail our acceptance gates in all 12 trials**, even though MAGSAC++ still fitted relatively accurate models. A good fit and enough threshold-defined support are different requirements. This is why the OpenCV call should not be described as parameter-free.
+The threshold still changes the usable result. At that same 1.5-pixel noise level, the 1-pixel threshold caused **both pipelines to fail our acceptance gates in all 12 trials**. The recorded reason in every trial included insufficient inlier ratio. MAGSAC++ still fitted relatively accurate models. A good fit and enough threshold-defined support are different requirements. This is why the OpenCV call should not be described as parameter-free.
 
 ### ECC can improve one error statistic while worsening another
 
-On graf 1→6, ECC refinement reduced median grid error from **1.76 to 0.54 pixels**, while the 95th-percentile error increased from **2.23 to 2.51 pixels**. On leuven 1→6, median error changed from **0.159 to 0.189 pixels**, and its 95th percentile changed from **0.400 to 0.478 pixels**. Refinement is therefore an optional candidate whose effect should be measured with the error statistic the application needs.
+In the November 20 CUDA rerun with the corrected ECC initialization, refinement on graf 1→6 reduced median grid error from **1.76 to 0.59 pixels**, while the 95th-percentile error increased from **2.23 to 2.71 pixels**. On leuven 1→6, median error changed from **0.159 to 0.189 pixels**, and its 95th percentile changed from **0.400 to 0.478 pixels**. Refinement is therefore an optional candidate whose effect should be measured with the error statistic the application needs.
 
 The downloaded package includes a raw experiment file recording every pair, configuration, repeat, acceptance decision, transformation, stage time, and independent error. It also retains the controlled-study data and ECC outcomes.
 
@@ -499,7 +532,7 @@ The practical choice depends on the images. A classical pipeline can remain an e
 
 **Can I use the pipeline without a GPU?**
 
-Yes. Select `device="cpu"` or `--device cpu`. Expect latency to depend on image resolution, feature budget, hardware, and the chosen matching path. Use the reported complete-pipeline measurements for the tested configuration.
+Yes. Select `device="cpu"` or `--device cpu`. Device choice can change the returned correspondences and the geometric error as well as the runtime. For example, graf 1→6 passed the 3 px accuracy criterion on the recorded CUDA run and missed it on both CPU and MPS with the default settings.
 
 **Does one reference mean I need no training at all?**
 
