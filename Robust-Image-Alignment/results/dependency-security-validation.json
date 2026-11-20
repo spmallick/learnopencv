@@ -5,7 +5,6 @@
   "transitive_dependency": {
     "package": "Pillow",
     "version": "13.0.0",
-    "constraint_file": "constraints.txt",
     "required_by": [
       "Matplotlib 3.10.8",
       "Torchvision 0.25.0 via LightGlue"
@@ -16,7 +15,9 @@
     ],
     "open_manifest_pillow_alerts_evaluated": 61,
     "vulnerable_ranges_still_matching_selected_version": 0,
-    "official_security_notes": "https://pillow.readthedocs.io/en/stable/releasenotes/13.0.0.html#security"
+    "official_security_notes": "https://pillow.readthedocs.io/en/stable/releasenotes/13.0.0.html#security",
+    "pin_manifest": "requirements.txt",
+    "reason_for_explicit_manifest_pin": "GitHub dependency graph did not enumerate the standalone constraint file; the installed version stays identical at 13.0.0."
   },
   "python_environment": {
     "python": "3.14.3 (main, Feb 12 2026, 00:42:54) [Clang 21.1.4 ]",

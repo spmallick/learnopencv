@@ -1,11 +1,13 @@
 # OpenCV 5.1.0 is built separately; do not install a second cv2 package.
--c constraints.txt
 numpy==2.4.2
 torch==2.10.0
 torchvision==0.25.0
 kornia==0.8.2
 kornia_rs==0.2.0
 matplotlib==3.10.8
+# Matplotlib and Torchvision require Pillow internally; keep this patched pin
+# visible in the main manifest for GitHub dependency and security monitoring.
+Pillow==13.0.0
 nbformat==5.10.4
 nbclient==0.10.4
 ipykernel==7.2.0
