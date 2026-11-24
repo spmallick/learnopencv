@@ -1,0 +1,52 @@
+[
+  {
+    "name": "resnet18",
+    "weights_url": "https://download.pytorch.org/models/resnet18-f37072fd.pth",
+    "weights_sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec",
+    "torch": "2.10.0",
+    "torchvision": "0.25.0",
+    "onnx": "1.20.1",
+    "onnxruntime": "1.24.3",
+    "onnxslim": "0.1.90",
+    "opset": 17,
+    "torchvision_top1": {
+      "chelsea.png": "Egyptian cat",
+      "coffee.png": "espresso"
+    },
+    "exports": {
+      "resnet18-fixed.onnx": {
+        "sha256": "277c228ff616c68714a7eb838f0ef92048aa8b3b15e4e19d598782705ba01a6f",
+        "max_abs_error_vs_torch": 1.52587890625e-05
+      },
+      "resnet18-dynamic.onnx": {
+        "sha256": "df8112c60fcaf3c83d43335e48cbc000d3372db58eee0c4cee523dd3c6fcdc56",
+        "max_abs_error_vs_torch": 1.52587890625e-05
+      }
+    }
+  },
+  {
+    "name": "vit_b_16",
+    "weights_url": "https://download.pytorch.org/models/vit_b_16-c867db91.pth",
+    "weights_sha256": "c867db91d3e12c6cbadabb610d73c24a546bf82d8c03a9fea34f43a712ddb0e9",
+    "torch": "2.10.0",
+    "torchvision": "0.25.0",
+    "onnx": "1.20.1",
+    "onnxruntime": "1.24.3",
+    "onnxslim": "0.1.90",
+    "opset": 17,
+    "torchvision_top1": {
+      "chelsea.png": "Egyptian cat",
+      "coffee.png": "espresso"
+    },
+    "exports": {
+      "vit_b_16-fixed.onnx": {
+        "sha256": "2c667cf51691279a491dca8a373361bd94f0c4761eaf8188f3928a26c9e8e7f9",
+        "max_abs_error_vs_torch": 3.0249357223510742e-05
+      },
+      "vit_b_16-dynamic.onnx": {
+        "sha256": "6a54aaac8f9eeaca06e30902524304ec8bac7fc44894f5b0c2b6253fa2f62d36",
+        "max_abs_error_vs_torch": 3.314018249511719e-05
+      }
+    }
+  }
+]

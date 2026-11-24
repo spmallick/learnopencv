@@ -1,0 +1,98 @@
+{
+  "archive_sha256": "6719622b0f39e0296debabf45c247611e7bcd08ad5677669b5758f1f8d824d88",
+  "hashes": {
+    "resnet18-fixed.onnx": {
+      "actual": "277c228ff616c68714a7eb838f0ef92048aa8b3b15e4e19d598782705ba01a6f",
+      "reference_sha256": "277c228ff616c68714a7eb838f0ef92048aa8b3b15e4e19d598782705ba01a6f",
+      "identical": true
+    },
+    "vit_b_16-fixed.onnx": {
+      "actual": "2c667cf51691279a491dca8a373361bd94f0c4761eaf8188f3928a26c9e8e7f9",
+      "reference_sha256": "2c667cf51691279a491dca8a373361bd94f0c4761eaf8188f3928a26c9e8e7f9",
+      "identical": true
+    },
+    "labels.txt": {
+      "actual": "ee4fa67b1dd46919ef87529b70e25bdd1ec9ebd350de3ad426e6640eb70320a1",
+      "reference_sha256": "ee4fa67b1dd46919ef87529b70e25bdd1ec9ebd350de3ad426e6640eb70320a1",
+      "identical": true
+    },
+    "chelsea.png": {
+      "actual": "596aa1e7cb875eb79f437e310381d26b338a81c2da23439704a73c4651e8c4bb",
+      "reference_sha256": "596aa1e7cb875eb79f437e310381d26b338a81c2da23439704a73c4651e8c4bb",
+      "identical": true
+    },
+    "coffee.png": {
+      "actual": "cc02f8ca188b167c775a7101b5d767d1e71792cf762c33d6fa15a4599b5a8de7",
+      "reference_sha256": "cc02f8ca188b167c775a7101b5d767d1e71792cf762c33d6fa15a4599b5a8de7",
+      "identical": true
+    }
+  },
+  "source_sha256": {
+    "benchmark.py": "e65f956f473c8f0ba80dd1d341b45cf3adc9dfa1f7682485708b9d310b790a7f",
+    "build_cuda.sh": "590acc2609d36c5980807b4a67ecd55f82ff556ba31ee47d6b5e87795945b292",
+    "classifier.py": "c15b88f92d7f2f7ba00a52196730da66dc8bfeef678fc004f67fd953e24814d9",
+    "prepare_assets.py": "76ec6160fb6d29c04d2d6ed7224c1ffa0d1bdc7f205a7eda8eec7e2647a61050",
+    "provision.sh": "13b545b6eb37ec6abf745e68a3d9759014e80329271c90bc9effa5175bdf91b0",
+    "requirements-export.txt": "7402bf03a22395b619f2f67dac9db547880d5ba16ea077fd7f6bcd7a0734df79",
+    "test_benchmark.py": "9bc0e051a7c33da65925ae93b72aecedbee6ab7b094387dd39a19c1169b485b0"
+  },
+  "reference_import": {
+    "imported_model": "resnet18-fixed.onnx",
+    "input_archive_sha256": "382d82eec78c8e6be81a93211f980424571994fe85c882614a7fa405fd8045e4",
+    "local_onnx_sha256": "b8ae8bf9f413a44f49be5d8e6fbddcfacfea43d189cf6ba5fe90292a7fe52478",
+    "selected_onnx_sha256": "277c228ff616c68714a7eb838f0ef92048aa8b3b15e4e19d598782705ba01a6f",
+    "local_export_report_sha256": "5bf77786a8baedda7b1010461c4969855cad34e207881f88923f82eff1ad8a28",
+    "selected_export_report_sha256": "7b988d83f44235a5438dc081a1207a04dadddcf8da33aef0a972736a12793894"
+  },
+  "cv_threads": 6,
+  "build_jobs": 12,
+  "build_python": "Python 3.12.3",
+  "gpu": "NVIDIA L4, 8.9, 580.82.07, 23034 MiB",
+  "cpu": {
+    "Model name": "Intel(R) Xeon(R) CPU @ 2.20GHz",
+    "CPU(s)": "12",
+    "Thread(s) per core": "2"
+  },
+  "toolkit": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2025 NVIDIA Corporation\nBuilt on Tue_May_27_02:21:03_PDT_2025\nCuda compilation tools, release 12.9, V12.9.86\nBuild cuda_12.9.r12.9/compiler.36037853_0",
+  "runtime_packages": [
+    "coloredlogs==15.0.1",
+    "flatbuffers==25.12.19",
+    "humanfriendly==10.0",
+    "mpmath==1.3.0",
+    "numpy==2.2.6",
+    "nvidia-cudnn-cu12==9.10.2.21",
+    "onnx==1.18.0",
+    "onnxruntime-gpu==1.22.0",
+    "packaging==26.3",
+    "protobuf==7.36.2",
+    "sympy==1.14.0",
+    "typing_extensions==4.16.0"
+  ],
+  "export_packages": [
+    "colorama==0.4.6",
+    "filelock==4.2.4",
+    "flatbuffers==25.12.19",
+    "fsspec==2026.9.0",
+    "Jinja2==3.1.6",
+    "MarkupSafe==3.0.3",
+    "ml_dtypes==0.7.0",
+    "mpmath==1.3.0",
+    "networkx==3.7",
+    "numpy==2.3.5",
+    "onnx==1.20.1",
+    "onnxruntime==1.24.3",
+    "onnxslim==0.1.90",
+    "packaging==26.3",
+    "pillow==11.3.0",
+    "protobuf==7.36.2",
+    "setuptools==78.1.0",
+    "sympy==1.14.0",
+    "torch==2.10.0+cpu",
+    "torchvision==0.25.0+cpu",
+    "typing_extensions==4.16.0"
+  ],
+  "opencv_version": "5.1.0",
+  "opencv_parallel_framework": "pthreads",
+  "opencv_version_control": "5.1.0",
+  "opencv_cuda_arch": "89"
+}
