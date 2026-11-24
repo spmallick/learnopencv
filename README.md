@@ -30,6 +30,7 @@ This repository contains code for Computer Vision, Deep learning, and AI researc
 
 | Blog Post | Code|
 | ------------- |:-------------|
+| [OpenCV 5.1 DNN on the GPU: When Does CUDA Actually Help?](https://learnopencv.com/opencv-5-1-dnn-cuda/) | [Code](https://github.com/spmallick/learnopencv/tree/master/OpenCV-5-1-DNN-CUDA) |
 | [Robust Image Alignment with ALIKED, LightGlue, and MAGSAC++](https://learnopencv.com/robust-image-alignment/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Robust-Image-Alignment) |
 | [OpenCV 5 Object Detection Use Cases: Traffic Counting, Parking Monitoring and Safety Zones](https://learnopencv.com/opencv-5-object-detection-use-cases/) | [Code](https://github.com/spmallick/learnopencv/tree/master/opencv5-yolo26-use-cases) |
 | [YOLO26 Depth Estimation: Metric Monocular Depth and What You Can Build With It](https://learnopencv.com/yolo26-depth-estimation-metric-monocular-depth-and-what-you-can-build-with-it/) | [Code](https://github.com/spmallick/learnopencv/tree/master/Yolo26-depth-estimation) |
