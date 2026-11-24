@@ -1,0 +1,8 @@
+# Python 3.11+; this CPU-side environment is separate from the CUDA benchmark.
+torch==2.10.0
+torchvision==0.25.0
+onnx==1.20.1
+onnxslim==0.1.90
+onnxruntime==1.24.3
+numpy==2.3.5
+pillow==11.3.0
