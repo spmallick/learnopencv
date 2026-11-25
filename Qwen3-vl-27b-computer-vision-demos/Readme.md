@@ -3,11 +3,7 @@
 **This repository contains the Colab notebook and sample assets for the LearnOpenCV blog post [How to Master Qwen3.8-27B for Real Computer Vision Tasks](https://learnopencv.com/qwen3-8-27b-computer-vision/).**
 ![How to Master Qwen3.8-27B for Real Computer Vision Tasks](Qwen_3.8_27B_featured.jpg)
 
-## Download the standalone project
-
-[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="Download Code" width="200">](https://github.com/spmallick/learnopencv/releases/download/qwen3-8-27b-vision-2026.11.19/Qwen3-vl-27b-computer-vision-demos.zip)
-
-The versioned ZIP contains one `Qwen3-vl-27b-computer-vision-demos/` folder with 22 tracked files from commit `5a727bec1242bafb8eda075401f5542a0b048585`. Download the [SHA-256 checksum](https://github.com/spmallick/learnopencv/releases/download/qwen3-8-27b-vision-2026.11.19/Qwen3-vl-27b-computer-vision-demos.zip.sha256) alongside the ZIP.
+## Open the notebook
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/spmallick/learnopencv/blob/master/Qwen3-vl-27b-computer-vision-demos/Qwen3_8_27B_Vision_Tour.ipynb)
 
