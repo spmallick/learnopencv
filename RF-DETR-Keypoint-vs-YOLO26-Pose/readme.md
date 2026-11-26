@@ -1,7 +1,6 @@
-
 # RF-DETR Keypoint vs YOLO26 Pose: An Independent Test
 
-**This folder contains the notebook and assets for the LearnOpenCV blog post [RF-DETR Keypoint vs YOLO26 Pose: An Independent Test](https://learnopencv.com/rf-detr-keypoint-vs-yolo26-pose/).**
+This folder contains the notebook and assets for the LearnOpenCV blog post [RF-DETR Keypoint vs YOLO26 Pose: An Independent Test](https://learnopencv.com/rf-detr-keypoint-vs-yolo26-pose/).
 
 RF-DETR Keypoint is Roboflow's new transformer pose model, and Roboflow reports it edges past Ultralytics' largest YOLO26 pose model on COCO. We put both models in front of the same photos and clips, drew their skeletons in the same style, hunted for the cases where each one fails, and fine-tuned both on a small tiger dataset. Everything runs in a free Colab notebook.
 
@@ -23,20 +22,18 @@ Open `RF_DETR_Keypoint_vs_YOLO26_Pose.ipynb` in Google Colab with the badge abov
 
 ## What's inside
 
-- `RF_DETR_Keypoint_vs_YOLO26_Pose.ipynb` — the full, runnable notebook.
-- `assets/` — the sample images and short clips the notebook runs on, each credited in `assets/CREDITS.md`.
+* `RF_DETR_Keypoint_vs_YOLO26_Pose.ipynb`: the full, runnable notebook.
+* `assets/`: the sample images and short clips the notebook runs on.
 
 ## References
 
-- [Launch: RF-DETR Keypoint in Roboflow](https://blog.roboflow.com/launch-rf-detr-keypoint-in-roboflow/)
-- [RF-DETR documentation](https://rfdetr.roboflow.com/latest/)
-- [Ultralytics YOLO26 pose docs](https://docs.ultralytics.com/tasks/pose/)
+* [Launch: RF-DETR Keypoint in Roboflow](https://blog.roboflow.com/launch-rf-detr-keypoint-in-roboflow/)
+* [RF-DETR documentation](https://rfdetr.roboflow.com/latest/)
+* [Ultralytics YOLO26 pose docs](https://docs.ultralytics.com/tasks/pose/)
 
 ## License
 
-Code in this folder is released under the MIT License. RF-DETR code and weights are Apache 2.0. Ultralytics YOLO26 is under the AGPL-3.0 license (see the Ultralytics repository). Sample images and videos belong to their sources, listed in `assets/CREDITS.md`.
-
----
+Code in this folder is released under the MIT License. RF-DETR code and weights are Apache 2.0. Ultralytics YOLO26 is under the AGPL-3.0 license (see the Ultralytics repository). Sample images and videos belong to their sources. All test photos and clips are from Wikimedia Commons contributors under CC BY, CC BY-SA and public domain terms, and the Tiger-Pose frames are from the Ultralytics dataset.
 
 <p align="center">
   <a href="https://bigvision.ai/">
