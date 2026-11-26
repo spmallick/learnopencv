@@ -7,7 +7,7 @@ RF-DETR Keypoint is Roboflow's new transformer pose model, and Roboflow reports 
 
 <p align="center">
   <a href="https://learnopencv.com/rf-detr-keypoint-vs-yolo26-pose/">
-    <img src="RF-DETR-Keypoint-vs-YOLO26-Pose-featured.png" alt="RF-DETR Keypoint vs YOLO26 Pose" width="900">
+    <img src="rf-detr-keypoint-vs-yolo26-pose-00b-featured-capoeira.webp" alt="RF-DETR Keypoint vs YOLO26 Pose" width="900">
   </a>
 </p>
 
